@@ -4,12 +4,6 @@ using UnityEngine;
 
 namespace Datenshi.Scripts.Entities.Components {
     [Game]
-    public class HealthComponent : IComponent {
-        public uint Health = 200;
-        public uint MaxHealth = 200;
-    }
-
-    [Game]
     public class VelocityComponent : IComponent {
         public Vector2 Velocity;
     }
@@ -22,5 +16,10 @@ namespace Datenshi.Scripts.Entities.Components {
     [Game]
     public class ViewComponent : IComponent {
         public EntityLink View;
+    }
+
+    [Game]
+    public class CharacterComponent : IComponent {
+        public Character.Character Character;
     }
 }

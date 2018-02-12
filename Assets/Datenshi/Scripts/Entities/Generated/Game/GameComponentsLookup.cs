@@ -9,22 +9,31 @@
 public static class GameComponentsLookup {
 
     public const int Animated = 0;
-    public const int Health = 1;
-    public const int Velocity = 2;
-    public const int View = 3;
+    public const int Character = 1;
+    public const int DamageHistory = 2;
+    public const int Health = 3;
+    public const int Controllable = 4;
+    public const int Velocity = 5;
+    public const int View = 6;
 
-    public const int TotalComponents = 4;
+    public const int TotalComponents = 7;
 
     public static readonly string[] componentNames = {
         "Animated",
+        "Character",
+        "DamageHistory",
         "Health",
+        "Controllable",
         "Velocity",
         "View"
     };
 
     public static readonly System.Type[] componentTypes = {
         typeof(Datenshi.Scripts.Entities.Components.AnimatedComponent),
-        typeof(Datenshi.Scripts.Entities.Components.HealthComponent),
+        typeof(Datenshi.Scripts.Entities.Components.CharacterComponent),
+        typeof(Datenshi.Scripts.Entities.Components.Health.DamageHistoryComponent),
+        typeof(Datenshi.Scripts.Entities.Components.Health.HealthComponent),
+        typeof(Datenshi.Scripts.Entities.Components.Input.ControllableComponent),
         typeof(Datenshi.Scripts.Entities.Components.VelocityComponent),
         typeof(Datenshi.Scripts.Entities.Components.ViewComponent)
     };

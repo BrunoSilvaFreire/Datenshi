@@ -7,8 +7,8 @@ namespace Datenshi.Scripts.Entities.Systems.Initialize {
     public class InitializeViewSystem : ReactiveSystem<GameEntity> {
         private GameContext context;
 
-        public InitializeViewSystem() : base(Contexts.sharedInstance.game) {
-            this.context = Contexts.sharedInstance.game;
+        public InitializeViewSystem(Contexts contexts) : base(contexts.game) {
+            this.context = contexts.game;
         }
 
         protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context) {
