@@ -1,9 +1,11 @@
-﻿using Sirenix.OdinInspector;
+﻿using Datenshi.Scripts.Util;
+using Sirenix.OdinInspector;
+using UnityEditor;
 using UnityEngine;
 
 namespace Datenshi.Scripts.AI.Pathfinding.Links {
     public class LinearLink : Link {
-        public static readonly Color GizmosColor = new Color(0.46f, 1f, 0.01f);
+        public static readonly Color GizmosColor = new Color(1f, 0.92f, 0.23f);
 
         [SerializeField, ReadOnly]
         private uint first;
@@ -23,8 +25,8 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links {
         public override void DrawGizmos(Navmesh navmesh) {
             var pos1 = navmesh.GetWorldPosition(first);
             var pos2 = navmesh.GetWorldPosition(second);
-            Gizmos.color = GizmosColor;
-            Gizmos.DrawLine(pos1, pos2);
+            //HandlesUtil.ArrowDebug(pos1, pos2, GizmosColor);
+            Debug.DrawLine(pos1, pos2, GizmosColor);
         }
     }
 }

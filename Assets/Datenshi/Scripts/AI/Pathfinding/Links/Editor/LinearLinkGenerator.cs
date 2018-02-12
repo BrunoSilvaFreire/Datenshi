@@ -7,6 +7,9 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links.Editor {
     [Serializable]
     public sealed class LinearLinkGenerator : LinkGenerator {
         public override IEnumerable<Link> Generate(Node node, Navmesh navmesh, Vector2 nodeWorldPos) {
+            if (!node.IsWalkable) {
+                yield break;
+            }
             Link left;
             if (TryGetLink(node, navmesh, Direction.Left, out left)) {
                 yield return left;

@@ -1,21 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Datenshi.Scripts.AI.Pathfinding.Links;
 using Datenshi.Scripts.Misc;
 using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using Sirenix.Utilities;
 using UnityEngine;
-using UnityEngine.Networking;
 
 namespace Datenshi.Scripts.AI.Pathfinding {
     public class Navmesh : MonoBehaviour {
         public static readonly Vector2 BoxCastSize = new Vector2(0.9F, 0.9F);
-
-        [NonSerialized, OdinSerialize]
-        private Link[] links;
 
         [SerializeField]
         private Node[] nodes;
@@ -91,12 +86,6 @@ namespace Datenshi.Scripts.AI.Pathfinding {
             }
         }
 
-        public Link[] Links {
-            get {
-                return links;
-            }
-        }
-
         public Node[] Nodes {
             get {
                 return nodes;
@@ -140,12 +129,7 @@ namespace Datenshi.Scripts.AI.Pathfinding {
 
         public Vector2 GetWorldPosition(uint id, int z = 0) {
             var node = this[id];
-            if (node.IsInvalid) {
-                return Vector2.zero;
-            }
-            var nodePos = node.Position;
-            var pos = new Vector3Int(nodePos.x, nodePos.y, z);
-            return Grid.GetCellCenterWorld(pos);
+            return node.IsInvalid ? Vector2.zero : WorldPosCenter(node);
         }
 
         private bool BoxCast(int x, int y, Vector2 size) {
@@ -192,6 +176,14 @@ namespace Datenshi.Scripts.AI.Pathfinding {
             return NodeType.Solo;
         }
 
+        public bool IsOutOfBounds(Vector3 worldPosition) {
+            return IsOutOfBounds(worldPosition.x, worldPosition.y);
+        }
+
+        public bool IsOutOfBounds(float x, float y) {
+            return IsOutOfBounds(x, y, MinWorld, MaxWorld);
+        }
+
         public bool IsOutOfGridBounds(Vector2Int position, Direction direction) {
             return IsOutOfGridBounds(position + direction);
         }
@@ -235,6 +227,27 @@ namespace Datenshi.Scripts.AI.Pathfinding {
 
         public Node GetNode(int index) {
             return nodes[index];
+        }
+
+
+        public Node GetNodeAtWorld(Vector2 position) {
+            if (IsOutOfBounds(position)) {
+                return Node.Invalid;
+            }
+            var pos = Grid.WorldToCell(position).ToVector2();
+            return GetNode(pos);
+        }
+
+        public Vector2 WorldPos(Vector2Int position) {
+            return Grid.CellToWorld(position.ToVector3());
+        }
+
+        public Vector2 WorldPosCenter(Vector2Int position) {
+            return WorldPos(position) + (Vector2) Grid.cellSize / 2;
+        }
+
+        public Vector2 WorldPosCenter(Node position) {
+            return WorldPosCenter(position.Position);
         }
     }
 }
