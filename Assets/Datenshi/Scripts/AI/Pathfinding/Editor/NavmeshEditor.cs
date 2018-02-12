@@ -1,5 +1,5 @@
 ﻿using System;
-using Datenshi.Scripts.AI.Pathfinding.Links.Editor;
+using Datenshi.Scripts.AI.Pathfinding.Links.Generators;
 using Datenshi.Scripts.Util;
 using DesperateDevs.Unity.Editor;
 using Shiroi.Cutscenes.Util;
@@ -23,7 +23,10 @@ namespace Datenshi.Scripts.AI.Pathfinding.Editor {
         private static GUIStyle Style {
             get {
                 return style ?? (style = new GUIStyle {
-                    normal = {textColor = Color.white}
+                    normal = {
+                        textColor = Color.white,
+                        background = Texture2D.blackTexture,
+                    },
                 });
             }
         }
@@ -46,6 +49,7 @@ namespace Datenshi.Scripts.AI.Pathfinding.Editor {
         }
 
         private Navmesh navmesh;
+        private bool showGenerators = true;
         private bool showOptions = true;
         private bool showEmptyNodes;
         private bool showLinks = true;
@@ -57,6 +61,13 @@ namespace Datenshi.Scripts.AI.Pathfinding.Editor {
         }
 
         public override void OnInspectorGUI() {
+            showGenerators = EditorGUILayout.Foldout(showGenerators, "Generators");
+            if (showGenerators) {
+                foreach (var linkGenerator in LinkGenerators.Generators) {
+                    EditorGUILayout.LabelField(linkGenerator.GetType().Name);
+                    linkGenerator.DrawEditor();
+                }
+            }
             showOptions = EditorGUILayout.Foldout(showOptions, "Options");
             if (showOptions) {
                 showEmptyNodes = EditorGUILayout.Toggle("Show Empty Nodes", showEmptyNodes);
@@ -183,9 +194,9 @@ namespace Datenshi.Scripts.AI.Pathfinding.Editor {
                 Text(msg, mouseDisplayPostition, camera);
                 mouseDisplayPostition.y += height;
                 Text("Linear links: " + runLinks, mouseDisplayPostition, camera);
-                /*var gravityLinks = node.TotalGravityLinks;
+                var gravityLinks = node.TotalGravityLinks;
                 mouseDisplayPostition.y += height;
-                Text("Gravity links: " + gravityLinks, mouseDisplayPostition, camera);*/
+                Text("Gravity links: " + gravityLinks, mouseDisplayPostition, camera);
             }
         }
 

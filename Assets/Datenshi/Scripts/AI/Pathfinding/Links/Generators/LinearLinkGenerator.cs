@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Datenshi.Scripts.Misc;
 using UnityEngine;
 
-namespace Datenshi.Scripts.AI.Pathfinding.Links.Editor {
+namespace Datenshi.Scripts.AI.Pathfinding.Links.Generators {
     [Serializable]
     public sealed class LinearLinkGenerator : LinkGenerator {
         public override IEnumerable<Link> Generate(Node node, Navmesh navmesh, Vector2 nodeWorldPos) {

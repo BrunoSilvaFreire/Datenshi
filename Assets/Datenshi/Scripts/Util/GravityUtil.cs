@@ -6,16 +6,21 @@ using UnityEngine;
 
 namespace Datenshi.Scripts.Util {
     public static class GravityUtil {
-        public const float DefaultGravityForce = -9.81f;
+#if UNITY_EDITOR
+        public delegate void PathCalculatedGravityListener(Vector2 a, Vector2 b, RaycastHit2D hit);
 
+        public static event PathCalculatedGravityListener OnCalculated;
+#endif
+        public const float DefaultGravityForce = -9.81f;
+        public const float DefaultTimeIncrementation = 0.1F;
         public static List<Vector2> CalculatePath(
             Vector2 pos,
             Vector2 initialSpeed,
-            float timeIncrementation,
             float gravity,
             Navmesh tileMap,
             Vector2 boxcastSize,
-            out Node finalNode) {
+            out Node finalNode,
+            float timeIncrementation = DefaultTimeIncrementation) {
             finalNode = null;
             float time = 0;
             if (timeIncrementation < 0) {
@@ -34,6 +39,9 @@ namespace Datenshi.Scripts.Util {
                     var last = list.Last();
                     var dir = newPos - last;
                     var raycast = HitDetect(last, dir, mask, boxcastSize);
+#if UNITY_EDITOR
+                    NotifyOnCalculated(last, newPos, raycast);
+#endif
                     if (raycast) {
                         //GizmosUtil.ArrowDebug(last, dir, Color.red);
                         var hitPoint = raycast.point;
@@ -87,13 +95,19 @@ namespace Datenshi.Scripts.Util {
 
                 var newAlpha = maxAlpha * i / path.Length;
                 color.a = newAlpha;
-                Debug.DrawLine(previous, point, color);
+                UnityEngine.Debug.DrawLine(previous, point, color);
 /*                if (i % 8 != 0) {
                     Debug.DrawLine(previous, point, color);
                 } else {
                     GizmosUtil.ArrowDebug(previous, point - previous, color);
                 }*/
             }
+        }
+
+        private static void NotifyOnCalculated(Vector2 a, Vector2 b, RaycastHit2D hit) {
+            var handler = OnCalculated;
+            if (handler != null)
+                handler(a, b, hit);
         }
     }
 }

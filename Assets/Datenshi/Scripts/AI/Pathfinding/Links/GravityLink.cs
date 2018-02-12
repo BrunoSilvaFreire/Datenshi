@@ -24,14 +24,14 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links {
             float timeIncrementation,
             Vector2 boxcastSize) {
             Node end;
-            this.path = GravityUtil.CalculatePath(
+            path = GravityUtil.CalculatePath(
                     nodeWorldPos,
                     direction,
-                    timeIncrementation,
                     gravity,
                     navmesh,
                     boxcastSize,
-                    out end)
+                    out end,
+                    timeIncrementation)
                 .ToArray();
             //fromNode = navmesh.GetNodeIndex(navmesh.GetNodeAtWorld(nodeWorldPos));
             if (end != null) {

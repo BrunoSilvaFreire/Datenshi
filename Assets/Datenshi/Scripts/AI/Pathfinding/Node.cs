@@ -28,6 +28,9 @@ namespace Datenshi.Scripts.AI.Pathfinding {
                 foreach (var linearLink in linearLinks) {
                     yield return linearLink;
                 }
+                foreach (var gravityLink in gravityLinks) {
+                    yield return gravityLink;
+                }
             }
         }
 
@@ -86,6 +89,12 @@ namespace Datenshi.Scripts.AI.Pathfinding {
             }
         }
 
+        public int TotalGravityLinks {
+            get {
+                return gravityLinks.Count;
+            }
+        }
+
         public void AddLink(Link link) {
             var linearLink = link as LinearLink;
             if (linearLink != null) {
@@ -95,6 +104,10 @@ namespace Datenshi.Scripts.AI.Pathfinding {
             if (gravityLink != null) {
                 gravityLinks.Add(gravityLink);
             }
+        }
+
+        public override string ToString() {
+            return string.Format("Node(Position: {0}, Type: {1})", position, type);
         }
     }
 

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Datenshi.Scripts.AI.Pathfinding.Links.Editor {
+namespace Datenshi.Scripts.AI.Pathfinding.Links.Generators {
     public static class LinkGenerators {
         public static readonly LinkGenerator[] Generators = {
             new LinearLinkGenerator(),
