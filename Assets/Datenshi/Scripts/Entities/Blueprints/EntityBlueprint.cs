@@ -1,5 +1,4 @@
 using System;
-using Datenshi.Scripts.Entity.Blueprints;
 using Entitas;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;

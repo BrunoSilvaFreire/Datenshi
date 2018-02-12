@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Datenshi.Scripts.Entity.Blueprints;
 using UnityEditor;
 
 namespace Datenshi.Scripts.Entities.Blueprints.Editor {

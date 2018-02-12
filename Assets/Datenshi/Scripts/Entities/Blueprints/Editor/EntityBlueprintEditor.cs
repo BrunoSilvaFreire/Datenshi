@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using Datenshi.Scripts.Entity.Blueprints;
 using DesperateDevs.Unity.Editor;
 using DesperateDevs.Utils;
 using Entitas;
@@ -56,19 +55,19 @@ namespace Datenshi.Scripts.Entities.Blueprints.Editor {
             binaryBlueprint.ContextIdentifier = context.contextInfo.name;
 
             foreach (var component in binaryBlueprint.Components) {
-                var type = component.fullTypeName.ToType();
+                var type = component.FullTypeName.ToType();
                 var index = Array.IndexOf(context.contextInfo.componentTypes, type);
 
-                if (index != component.index) {
+                if (index != component.Index) {
                     Debug.Log(
                         string.Format(
                             "Blueprint '{0}' has invalid or outdated component index for '{1}'. Index was {2} but should be {3}. Updated index.",
                             binaryBlueprint.name,
-                            component.fullTypeName,
-                            component.index,
+                            component.FullTypeName,
+                            component.Index,
                             index));
 
-                    component.index = index;
+                    component.Index = index;
                     needsUpdate = true;
                 }
             }

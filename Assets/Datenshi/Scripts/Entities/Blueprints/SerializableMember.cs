@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Datenshi.Scripts.Entity.Blueprints {
+namespace Datenshi.Scripts.Entities.Blueprints {
 
     [Serializable]
     public class SerializableMember {

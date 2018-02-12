@@ -8,15 +8,24 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
+    public const int Animated = 0;
+    public const int Health = 1;
+    public const int Velocity = 2;
+    public const int View = 3;
 
-
-    public const int TotalComponents = 0;
+    public const int TotalComponents = 4;
 
     public static readonly string[] componentNames = {
-
+        "Animated",
+        "Health",
+        "Velocity",
+        "View"
     };
 
     public static readonly System.Type[] componentTypes = {
-
+        typeof(Datenshi.Scripts.Entities.Components.AnimatedComponent),
+        typeof(Datenshi.Scripts.Entities.Components.HealthComponent),
+        typeof(Datenshi.Scripts.Entities.Components.VelocityComponent),
+        typeof(Datenshi.Scripts.Entities.Components.ViewComponent)
     };
 }
