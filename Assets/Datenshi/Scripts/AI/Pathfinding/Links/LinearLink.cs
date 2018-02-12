@@ -1,9 +1,9 @@
-﻿using Datenshi.Scripts.Util;
+﻿using System;
 using Sirenix.OdinInspector;
-using UnityEditor;
 using UnityEngine;
 
 namespace Datenshi.Scripts.AI.Pathfinding.Links {
+    [Serializable]
     public class LinearLink : Link {
         public static readonly Color GizmosColor = new Color(1f, 0.92f, 0.23f);
 

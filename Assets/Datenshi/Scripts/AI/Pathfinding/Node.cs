@@ -20,6 +20,8 @@ namespace Datenshi.Scripts.AI.Pathfinding {
 
         [SerializeField]
         private List<LinearLink> linearLinks = new List<LinearLink>();
+        [SerializeField]
+        private List<GravityLink> gravityLinks = new List<GravityLink>();
 
         public IEnumerable<Link> Links {
             get {
@@ -85,9 +87,13 @@ namespace Datenshi.Scripts.AI.Pathfinding {
         }
 
         public void AddLink(Link link) {
-            var item = link as LinearLink;
-            if (item != null) {
-                linearLinks.Add(item);
+            var linearLink = link as LinearLink;
+            if (linearLink != null) {
+                linearLinks.Add(linearLink);
+            }
+            var gravityLink = link as GravityLink;
+            if (gravityLink != null) {
+                gravityLinks.Add(gravityLink);
             }
         }
     }

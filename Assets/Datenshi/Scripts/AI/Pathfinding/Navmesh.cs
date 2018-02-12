@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Datenshi.Scripts.AI.Pathfinding.Links;
 using Datenshi.Scripts.Misc;
 using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
@@ -248,6 +249,37 @@ namespace Datenshi.Scripts.AI.Pathfinding {
 
         public Vector2 WorldPosCenter(Node position) {
             return WorldPosCenter(position.Position);
+        }
+
+        public bool IsOnSamePlatform(Node node, int other) {
+            return IsOnSamePlatform(node, GetNode(other));
+        }
+
+        private bool IsOnSamePlatform(Node a, Node b) {
+            if (a == null || b == null) {
+                return false;
+            }
+            var aPos = a.Position;
+            var bPos = b.Position;
+            if (aPos.y != bPos.y) {
+                return false;
+            }
+            var current = a;
+            var direction = GetXDirection(aPos, bPos);
+            while (current != b) {
+                current = GetNeightboor(current, direction);
+                if (!current.IsWalkable) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private Direction GetXDirection(Vector2Int aPos, Vector2Int bPos) {
+            if (aPos.x == bPos.x) {
+                return Direction.Zero;
+            }
+            return aPos.x > bPos.x ? Direction.Left : Direction.Right;
         }
     }
 }

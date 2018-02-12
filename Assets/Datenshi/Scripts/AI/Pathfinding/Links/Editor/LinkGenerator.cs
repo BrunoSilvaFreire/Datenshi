@@ -4,7 +4,8 @@ using UnityEngine;
 namespace Datenshi.Scripts.AI.Pathfinding.Links.Editor {
     public static class LinkGenerators {
         public static readonly LinkGenerator[] Generators = {
-            new LinearLinkGenerator()
+            new LinearLinkGenerator(),
+            new GravityLinkGenerator(),
         };
     }
 
