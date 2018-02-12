@@ -1,0 +1,240 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Datenshi.Scripts.AI.Pathfinding.Links;
+using Datenshi.Scripts.Misc;
+using Datenshi.Scripts.Util;
+using Sirenix.OdinInspector;
+using Sirenix.Serialization;
+using Sirenix.Utilities;
+using UnityEngine;
+using UnityEngine.Networking;
+
+namespace Datenshi.Scripts.AI.Pathfinding {
+    public class Navmesh : MonoBehaviour {
+        public static readonly Vector2 BoxCastSize = new Vector2(0.9F, 0.9F);
+
+        [NonSerialized, OdinSerialize]
+        private Link[] links;
+
+        [SerializeField]
+        private Node[] nodes;
+
+        [SerializeField, HideInInspector]
+        private Vector2Int min;
+
+        [SerializeField, HideInInspector]
+        private Vector2Int max;
+
+        public Grid Grid;
+        public LayerMask LayerMask;
+
+        [ShowInInspector]
+        public Vector2Int Min {
+            get {
+                return min;
+            }
+            set {
+                AssignMinMax(value, max);
+            }
+        }
+
+        [ShowInInspector]
+        public Vector2Int Max {
+            get {
+                return max;
+            }
+            set {
+                AssignMinMax(min, value);
+            }
+        }
+
+        public int YSize {
+            get {
+                return Max.y - Min.y + 1;
+            }
+        }
+
+        public int XSize {
+            get {
+                return Max.x - Min.x + 1;
+            }
+        }
+
+        public Vector2 Center {
+            get {
+                return (MinWorld + MaxWorld + Vector2.one) / 2;
+            }
+        }
+
+        public Vector2 Size {
+            get {
+                return new Vector2(MaxWorld.x - MinWorld.x + 1, MaxWorld.y - MinWorld.y + 1);
+            }
+        }
+
+        public Vector2 MaxWorld {
+            get {
+                return Grid.CellToWorld(Max.ToVector3());
+            }
+        }
+
+        public Vector2 MinWorld {
+            get {
+                return Grid.CellToWorld(Min.ToVector3());
+            }
+        }
+
+        public int TotalSize {
+            get {
+                return XSize * YSize;
+            }
+        }
+
+        public Link[] Links {
+            get {
+                return links;
+            }
+        }
+
+        public Node[] Nodes {
+            get {
+                return nodes;
+            }
+        }
+
+        private void AssignMinMax(Vector2Int newMin, Vector2Int newMax) {
+            min.x = Mathf.Min(newMin.x, newMax.x);
+            min.y = Mathf.Min(newMin.y, newMax.y);
+            max.x = Mathf.Max(newMin.x, newMax.x);
+            max.y = Mathf.Max(newMin.y, newMax.y);
+        }
+
+        private IEnumerable<Vector2Int> GetAllPossiblePositions() {
+            for (var y = Min.y; y <= Max.y; y++) {
+                for (var x = Min.x; x <= Max.x; x++) {
+                    yield return new Vector2Int(x, y);
+                }
+            }
+        }
+
+        public void Regenerate() {
+            nodes = new Node[TotalSize];
+            foreach (var pos in GetAllPossiblePositions()) {
+                Nodes[GetNodeIndex(pos)] = CreateNode(pos);
+            }
+            for (var x = min.x; x <= max.x; x++) {
+                for (var y = min.y; y < max.y; y++) { }
+            }
+        }
+
+        private Node CreateNode(Vector2Int pos) {
+            return new Node(pos, CheckNodeType(pos, BoxCastSize));
+        }
+
+        public Node this[uint index] {
+            get {
+                return index >= nodes.Length ? Node.Invalid : nodes[index];
+            }
+        }
+
+        public Vector2 GetWorldPosition(uint id, int z = 0) {
+            var node = this[id];
+            if (node.IsInvalid) {
+                return Vector2.zero;
+            }
+            var nodePos = node.Position;
+            var pos = new Vector3Int(nodePos.x, nodePos.y, z);
+            return Grid.GetCellCenterWorld(pos);
+        }
+
+        private bool BoxCast(int x, int y, Vector2 size) {
+            return BoxCast(new Vector3Int(x, y, 0), size);
+        }
+
+        private Vector2 ToCenter(Vector3Int mapPosition) {
+            return Grid.CellToWorld(mapPosition) + Grid.cellSize / 2;
+        }
+
+        private bool BoxCast(Vector3Int mapPosition, Vector2 size) {
+            var b = Physics2D.BoxCastAll(ToCenter(mapPosition), size, 0f, Vector2.zero, 1F, LayerMask);
+            if (b.All(hit => hit.collider.isTrigger)) {
+                return false;
+            }
+            return !b.IsNullOrEmpty();
+        }
+
+        private NodeType CheckNodeType(Vector2Int pos, Vector2 size) {
+            var mapPosition = pos.ToVector3();
+            if (BoxCast(mapPosition, size)) {
+                //Inside an object
+                return NodeType.Blocked;
+            }
+            var x = mapPosition.x;
+            var y = mapPosition.y;
+            if (!BoxCast(x, y - 1, size)) {
+                return NodeType.Empty;
+            }
+            //Is on solid ground, check for edges
+            var leftLowBoxCast = BoxCast(x - 1, y - 1, size);
+            var rightLowBoxCast = BoxCast(x + 1, y - 1, size);
+            var leftBoxCast = BoxCast(x - 1, y, size);
+            var rightBoxCast = BoxCast(x + 1, y, size);
+            if (leftLowBoxCast && rightLowBoxCast && !leftBoxCast && !rightBoxCast) {
+                return NodeType.Platform;
+            }
+            if (leftLowBoxCast || leftBoxCast) {
+                return NodeType.RightEdge;
+            }
+            if (rightLowBoxCast || rightBoxCast) {
+                return NodeType.LeftEdge;
+            }
+            return NodeType.Solo;
+        }
+
+        public bool IsOutOfGridBounds(Vector2Int position, Direction direction) {
+            return IsOutOfGridBounds(position + direction);
+        }
+
+        public bool IsOutOfGridBounds(Vector2Int pos) {
+            return IsOutOfGridBounds(pos.x, pos.y);
+        }
+
+        public bool IsOutOfGridBounds(int posX, int posY) {
+            return posX > Max.x || posX < Min.x || posY > Max.y || posY < Min.y;
+        }
+
+        public bool IsOutOfGridBounds(int posX, int posY, Vector2Int min, Vector2Int max) {
+            return posX > max.x || posX < min.x || posY > max.y || posY < min.y;
+        }
+
+        public bool IsOutOfBounds(float posX, float posY, Vector2 min, Vector2 max) {
+            return posX > max.x || posX < min.x || posY > max.y || posY < min.y;
+        }
+
+        public int GetNodeIndex(Node node) {
+            return GetNodeIndex(node.Position);
+        }
+
+        public int GetNodeIndex(Vector2Int pos) {
+            if (IsOutOfGridBounds(pos)) {
+                return -1;
+            }
+            var x = pos.x - Min.x;
+            var y = pos.y - Min.y;
+            return y * XSize + x;
+        }
+
+        public Node GetNeightboor(Node node, Direction direction) {
+            return GetNode(node.Position + direction);
+        }
+
+        public Node GetNode(Vector2Int pos) {
+            return GetNode(GetNodeIndex(pos));
+        }
+
+        public Node GetNode(int index) {
+            return nodes[index];
+        }
+    }
+}
