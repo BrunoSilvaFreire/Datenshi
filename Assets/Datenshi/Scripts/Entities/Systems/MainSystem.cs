@@ -1,7 +1,12 @@
-﻿namespace Datenshi.Scripts.Entities.Systems {
+﻿using Datenshi.Scripts.Entities.Systems.Initialize;
+using Datenshi.Scripts.Entities.Systems.Movement;
+
+namespace Datenshi.Scripts.Entities.Systems {
     public class MainSystem : Feature {
         public MainSystem(Contexts contexts) {
+            Add(new InitializeSystem(contexts));
             Add(new GameSystem(contexts));
+            Add(new MovementSystem(contexts));
         }
     }
 }

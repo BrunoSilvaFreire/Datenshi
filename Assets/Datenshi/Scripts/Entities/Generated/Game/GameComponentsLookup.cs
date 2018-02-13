@@ -13,10 +13,11 @@ public static class GameComponentsLookup {
     public const int DamageHistory = 2;
     public const int Health = 3;
     public const int Controllable = 4;
-    public const int Velocity = 5;
-    public const int View = 6;
+    public const int GroundMovement = 5;
+    public const int Velocity = 6;
+    public const int View = 7;
 
-    public const int TotalComponents = 7;
+    public const int TotalComponents = 8;
 
     public static readonly string[] componentNames = {
         "Animated",
@@ -24,6 +25,7 @@ public static class GameComponentsLookup {
         "DamageHistory",
         "Health",
         "Controllable",
+        "GroundMovement",
         "Velocity",
         "View"
     };
@@ -34,6 +36,7 @@ public static class GameComponentsLookup {
         typeof(Datenshi.Scripts.Entities.Components.Health.DamageHistoryComponent),
         typeof(Datenshi.Scripts.Entities.Components.Health.HealthComponent),
         typeof(Datenshi.Scripts.Entities.Components.Input.ControllableComponent),
+        typeof(Datenshi.Scripts.Entities.Components.Movement.GroundMovement),
         typeof(Datenshi.Scripts.Entities.Components.VelocityComponent),
         typeof(Datenshi.Scripts.Entities.Components.ViewComponent)
     };
