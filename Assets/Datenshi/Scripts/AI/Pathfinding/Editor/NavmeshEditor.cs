@@ -4,8 +4,10 @@ using Datenshi.Scripts.Util;
 using DesperateDevs.Unity.Editor;
 using Shiroi.Cutscenes.Util;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Datenshi.Scripts.AI.Pathfinding.Editor {
     [CustomEditor(typeof(Navmesh))]
@@ -64,6 +66,7 @@ namespace Datenshi.Scripts.AI.Pathfinding.Editor {
         }
 
         public override void OnInspectorGUI() {
+            var changed = false;
             showGenerators = EditorGUILayout.Foldout(showGenerators, "Generators");
             if (showGenerators) {
                 foreach (var linkGenerator in LinkGenerators.Generators) {
@@ -98,10 +101,14 @@ namespace Datenshi.Scripts.AI.Pathfinding.Editor {
             if (EditorLayout.MiniButton("Regenerate")) {
                 navmesh.Regenerate();
                 GenerateLinks();
+                changed = true;
             }
 
             if (EditorGUI.EndChangeCheck()) {
-                EditorUtility.SetDirty(navmesh);
+                changed = true;
+            }
+            if (changed) {
+                EditorSceneManager.MarkSceneDirty(navmesh.gameObject.scene);
             }
         }
 
