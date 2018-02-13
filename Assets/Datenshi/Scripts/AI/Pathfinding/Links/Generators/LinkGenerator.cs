@@ -10,7 +10,7 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links.Generators {
     }
 
     public abstract class LinkGenerator {
-        public abstract IEnumerable<Link> Generate(Node node, Navmesh navmesh, Vector2 nodeWorldPos);
+        public abstract IEnumerable<Link> Generate(Node node, Navmesh navmesh, Vector2 nodeWorldPos, float precision);
 #if UNITY_EDITOR
         public abstract void DrawEditor();
 #endif

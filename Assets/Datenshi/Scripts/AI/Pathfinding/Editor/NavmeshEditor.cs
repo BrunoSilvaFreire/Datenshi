@@ -15,10 +15,11 @@ namespace Datenshi.Scripts.AI.Pathfinding.Editor {
         private static readonly Color PlatformColor = new Color(0.25f, 0.32f, 0.71f, ColorAlpha);
         private static readonly Color SoloColor = new Color(0.91f, 0.12f, 0.39f, ColorAlpha);
         private static readonly Color EdgeColor = new Color(1f, 0.76f, 0.03f, ColorAlpha);
-        private static readonly Color EmptyColor = new Color(1, 1, 1, ColorAlpha);
+        private static readonly Color EmptyColor = new Color(0.48f, 0.48f, 0.48f, 0.2f);
         private static readonly Color LinearLinksColor = new Color(0f, 0.9f, 1f, ColorAlpha);
         private static readonly Color GravityLinksColor = new Color(0.46f, 1f, 0.01f, ColorAlpha);
         private static GUIStyle style;
+        private float visualizerPrecision;
 
         private static GUIStyle Style {
             get {
@@ -55,9 +56,11 @@ namespace Datenshi.Scripts.AI.Pathfinding.Editor {
         private bool showLinks = true;
         private bool showMouseInfo = true;
         private bool showBlockedNodes = true;
+        private bool precisionChanged;
 
         private void OnEnable() {
             navmesh = (Navmesh) target;
+            visualizerPrecision = EditorPrefs.GetFloat(Constants.PrecisionConfigKey);
         }
 
         public override void OnInspectorGUI() {
@@ -69,7 +72,15 @@ namespace Datenshi.Scripts.AI.Pathfinding.Editor {
                 }
             }
             showOptions = EditorGUILayout.Foldout(showOptions, "Options");
+            precisionChanged = false;
             if (showOptions) {
+                //Precision config
+                EditorGUI.BeginChangeCheck();
+                visualizerPrecision = EditorGUILayout.Slider("Precision", visualizerPrecision, Constants.MinPrecision, Constants.MaxPrecision);
+                precisionChanged = EditorGUI.EndChangeCheck();
+                EditorPrefs.SetFloat(Constants.PrecisionConfigKey, visualizerPrecision);
+
+
                 showEmptyNodes = EditorGUILayout.Toggle("Show Empty Nodes", showEmptyNodes);
                 showBlockedNodes = EditorGUILayout.Toggle("Show Blocked Nodes", showBlockedNodes);
                 showLinks = EditorGUILayout.Toggle("Show Links", showLinks);
@@ -102,7 +113,7 @@ namespace Datenshi.Scripts.AI.Pathfinding.Editor {
             foreach (var node in navmesh.Nodes) {
                 foreach (var generator in LinkGenerators.Generators) {
                     var center = grid.GetCellCenterWorld(node.Position.ToVector3());
-                    foreach (var link in generator.Generate(node, navmesh, center)) {
+                    foreach (var link in generator.Generate(node, navmesh, center, visualizerPrecision)) {
                         node.AddLink(link);
                     }
                 }
@@ -123,7 +134,7 @@ namespace Datenshi.Scripts.AI.Pathfinding.Editor {
             }
         }
 
-        public Vector2 ConvertToWorldPos(Vector2 pos, UnityEngine.Camera camera) {
+        public Vector2 ConvertToWorldPos(Vector2 pos, Camera camera) {
             var position = pos;
             position.y = camera.pixelHeight - position.y;
             position = camera.ScreenToWorldPoint(position);
@@ -136,7 +147,7 @@ namespace Datenshi.Scripts.AI.Pathfinding.Editor {
             if (!selectedGameView) {
                 return;
             }
-            Vector3 mousePosition = UnityEngine.Event.current.mousePosition;
+            Vector3 mousePosition = Event.current.mousePosition;
             var camera = selectedGameView.camera;
             var worldPosition = ConvertToWorldPos(mousePosition, camera);
             //Draw mouse Positions
@@ -155,7 +166,7 @@ namespace Datenshi.Scripts.AI.Pathfinding.Editor {
             }
             var nodeColor = node.IsWalkable ? Color.green : Color.red;
             HandlesUtil.DrawBox2DWire(center, size, nodeColor);
-            var e = UnityEngine.Event.current;
+            var e = Event.current;
             /*bool showGLinkInfos;
             if (e.type == EventType.KeyDown) {
                 showGLinkInfos = e.keyCode == KeyCode.LeftShift;
@@ -168,14 +179,14 @@ namespace Datenshi.Scripts.AI.Pathfinding.Editor {
             Handles.Label(center, getDebugString, Style);
         }
 
-        private void Text(string text, Vector3 pos, UnityEngine.Camera camera) {
+        private void Text(string text, Vector3 pos, Camera camera) {
             TextRaw(ConvertToWorldPos(pos, camera), text);
         }
 
         private void DrawMousePositions(
             Vector3 mousePosition,
             Vector2 worldPosition,
-            UnityEngine.Camera camera,
+            Camera camera,
             Node node) {
             var mousePosText = "Mouse position = " + mousePosition;
             var mouseDisplayPostition = mousePosition;
@@ -197,6 +208,18 @@ namespace Datenshi.Scripts.AI.Pathfinding.Editor {
                 var gravityLinks = node.TotalGravityLinks;
                 mouseDisplayPostition.y += height;
                 Text("Gravity links: " + gravityLinks, mouseDisplayPostition, camera);
+                if (!showLinks) {
+                    return;
+                }
+                if (node.IsInvalid) {
+                    return;
+                }
+                var nodeIndex = navmesh.GetNodeIndex(node);
+                foreach (var link in node.Links) {
+                    if (link.DrawOnlyOnMouseOver()) {
+                        link.DrawGizmos(navmesh, (uint) nodeIndex, visualizerPrecision, precisionChanged);
+                    }
+                }
             }
         }
 
@@ -248,13 +271,13 @@ namespace Datenshi.Scripts.AI.Pathfinding.Editor {
         }
 
         private void DrawSceneLinks() {
-            var nodes = navmesh.Nodes;
-            if (nodes == null) {
-                return;
-            }
-            foreach (var node in nodes) {
+            for (uint i = 0; i < navmesh.TotalSize; i++) {
+                var node = navmesh[i];
                 foreach (var link in node.Links) {
-                    link.DrawGizmos(navmesh);
+                    if (link.DrawOnlyOnMouseOver()) {
+                        continue;
+                    }
+                    link.DrawGizmos(navmesh, i, visualizerPrecision, precisionChanged);
                 }
             }
         }

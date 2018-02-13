@@ -2,34 +2,33 @@
 using System.Collections.Generic;
 using System.Linq;
 using Datenshi.Scripts.AI.Pathfinding;
+using UnityEditor;
 using UnityEngine;
 
-namespace Datenshi.Scripts.Util {
+namespace Datenshi.Scripts.Util.Gravity {
     public static class GravityUtil {
 #if UNITY_EDITOR
         public delegate void PathCalculatedGravityListener(Vector2 a, Vector2 b, RaycastHit2D hit);
 
         public static event PathCalculatedGravityListener OnCalculated;
 #endif
-        public const float DefaultGravityForce = -9.81f;
-        public const float DefaultTimeIncrementation = 0.1F;
         public static List<Vector2> CalculatePath(
             Vector2 pos,
             Vector2 initialSpeed,
-            float gravity,
             Navmesh tileMap,
-            Vector2 boxcastSize,
             out Node finalNode,
-            float timeIncrementation = DefaultTimeIncrementation) {
+            float precision = Constants.Precision) {
             finalNode = null;
             float time = 0;
-            if (timeIncrementation < 0) {
+            if (precision > Constants.MaxPrecision) {
                 return Enumerable.Empty<Vector2>().ToList();
             }
+            var boxcastSize = tileMap.BoxcastSize;
+            var timeIncrementation = 1 / precision;
             var mask = tileMap.LayerMask;
             var list = new List<Vector2>();
             while (finalNode == null) {
-                var y = pos.y + initialSpeed.y * time + gravity * Mathf.Pow(time, 2) / 2;
+                var y = pos.y + initialSpeed.y * time + Constants.Gravity * Mathf.Pow(time, 2) / 2;
                 var x = pos.x + initialSpeed.x * time;
                 if (tileMap.IsOutOfBounds(x, y)) {
                     break;
@@ -95,7 +94,8 @@ namespace Datenshi.Scripts.Util {
 
                 var newAlpha = maxAlpha * i / path.Length;
                 color.a = newAlpha;
-                UnityEngine.Debug.DrawLine(previous, point, color);
+                Handles.color = color;
+                Handles.DrawLine(previous, point);
 /*                if (i % 8 != 0) {
                     Debug.DrawLine(previous, point, color);
                 } else {

@@ -24,6 +24,20 @@ namespace Datenshi.Scripts.AI.Pathfinding {
 
         public Grid Grid;
         public LayerMask LayerMask;
+        private Vector2 cachedBoxcastSize;
+        private bool boxcastCached;
+
+        public Vector2 BoxcastSize {
+            get {
+                if (boxcastCached) {
+                    return cachedBoxcastSize;
+                }
+                cachedBoxcastSize = Grid.cellSize;
+                cachedBoxcastSize.Scale(Constants.NavmeshBoxcastDownsizeScale);
+                boxcastCached = true;
+                return cachedBoxcastSize;
+            }
+        }
 
         [ShowInInspector]
         public Vector2Int Min {
@@ -241,6 +255,10 @@ namespace Datenshi.Scripts.AI.Pathfinding {
 
         public Vector2 WorldPos(Vector2Int position) {
             return Grid.CellToWorld(position.ToVector3());
+        }
+
+        public Vector2 WorldPosCenter(uint position) {
+            return WorldPosCenter(this[position]);
         }
 
         public Vector2 WorldPosCenter(Vector2Int position) {

@@ -1,5 +1,6 @@
 ﻿using System;
 using Sirenix.OdinInspector;
+using UnityEditor;
 using UnityEngine;
 
 namespace Datenshi.Scripts.AI.Pathfinding.Links {
@@ -8,25 +9,25 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links {
         public static readonly Color GizmosColor = new Color(1f, 0.92f, 0.23f);
 
         [SerializeField, ReadOnly]
-        private uint first;
-
-        [SerializeField, ReadOnly]
-        private uint second;
+        private uint destination;
 
         public LinearLink() { }
 
-        public LinearLink(uint first, uint second) {
-            this.first = first;
-            this.second = second;
+        public LinearLink(uint destination) {
+            this.destination = destination;
         }
 
         public override void Execute() { }
 
-        public override void DrawGizmos(Navmesh navmesh) {
-            var pos1 = navmesh.GetWorldPosition(first);
-            var pos2 = navmesh.GetWorldPosition(second);
-            //HandlesUtil.ArrowDebug(pos1, pos2, GizmosColor);
-            Debug.DrawLine(pos1, pos2, GizmosColor);
+        public override bool DrawOnlyOnMouseOver() {
+            return false;
+        }
+
+        public override void DrawGizmos(Navmesh navmesh, uint originNodeIndex, float precision, bool precisionChanged) {
+            var origin = navmesh.GetWorldPosition(originNodeIndex);
+            var dest = navmesh.GetWorldPosition(destination);
+            Handles.color = GizmosColor;
+            Handles.DrawLine(origin, dest);
         }
     }
 }

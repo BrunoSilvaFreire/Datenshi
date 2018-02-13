@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Datenshi.Scripts.AI.Pathfinding.Links.Generators {
     [Serializable]
     public sealed class LinearLinkGenerator : LinkGenerator {
-        public override IEnumerable<Link> Generate(Node node, Navmesh navmesh, Vector2 nodeWorldPos) {
+        public override IEnumerable<Link> Generate(Node node, Navmesh navmesh, Vector2 nodeWorldPos, float precision) {
             if (!node.IsWalkable) {
                 yield break;
             }
@@ -30,16 +30,11 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links.Generators {
             if (neightboor.IsInvalid || !neightboor.IsWalkable) {
                 return false;
             }
-
-            var index = navmesh.GetNodeIndex(node);
-            if (index < 0) {
-                return false;
-            }
             var found = navmesh.GetNodeIndex(neightboor);
             if (found < 0) {
                 return false;
             }
-            link = new LinearLink((uint) index, (uint) found);
+            link = new LinearLink((uint) found);
             return true;
         }
 

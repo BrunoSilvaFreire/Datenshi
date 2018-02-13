@@ -1,14 +1,20 @@
 ﻿using System;
 using Datenshi.Scripts.Util;
+using Datenshi.Scripts.Util.Gravity;
+using UnityEditor;
 using UnityEngine;
 
 namespace Datenshi.Scripts.AI.Pathfinding.Links {
     [Serializable]
     public class GravityLink : Link {
-        public static readonly Color GizmosColor = new Color(0.96f, 0f, 0.34f);
+        public static readonly Color GizmosColor = Color.white;
 
         [SerializeField]
         private int destination;
+
+        [SerializeField]
+        private Vector2 requiredForce;
+
 
         public int Destination {
             get {
@@ -16,37 +22,22 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links {
             }
         }
 
+        private GravityPath loadedPath;
+
         public GravityLink(
             Navmesh navmesh,
-            Vector2 nodeWorldPos,
-            Vector2 direction,
-            float gravity,
-            float timeIncrementation,
-            Vector2 boxcastSize) {
-            Node end;
-            path = GravityUtil.CalculatePath(
-                    nodeWorldPos,
-                    direction,
-                    gravity,
-                    navmesh,
-                    boxcastSize,
-                    out end,
-                    timeIncrementation)
-                .ToArray();
-            //fromNode = navmesh.GetNodeIndex(navmesh.GetNodeAtWorld(nodeWorldPos));
+            Vector2 initialPosition,
+            Vector2 initialVelocity,
+            float precision) {
+            loadedPath = new GravityPath(initialPosition, initialVelocity, navmesh, precision);
+            var end = loadedPath.FinalNode;
             if (end != null) {
                 destination = navmesh.GetNodeIndex(end);
             } else {
                 destination = -1;
             }
-            requiredForce = direction;
+            requiredForce = initialVelocity;
         }
-
-        [SerializeField]
-        private Vector2 requiredForce;
-
-        [SerializeField]
-        private Vector2[] path;
 
         public Vector2 RequiredForce {
             get {
@@ -61,9 +52,26 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links {
         }
 
         public override void Execute() { }
+#if UNITY_EDITOR
 
-        public override void DrawGizmos(Navmesh navmesh) {
-            GravityUtil.DrawDebug(path, GizmosColor);
+        public override bool DrawOnlyOnMouseOver() {
+            return true;
         }
+
+        public override void DrawGizmos(Navmesh navmesh, uint originNodeIndex, float precision, bool precisionChanged) {
+            if (precisionChanged || loadedPath == null) {
+                var initPos = navmesh.WorldPosCenter(originNodeIndex);
+                loadedPath = new GravityPath(initPos, RequiredForce, navmesh, precision);
+            }
+            var path = loadedPath.GetPath(navmesh, precision);
+            Handles.color = GizmosColor;
+            for (var i = 1; i < path.Length; i++) {
+                var point = path[i];
+                var previous = path[i - 1];
+
+                Handles.DrawLine(previous, point);
+            }
+        }
+#endif
     }
 }
