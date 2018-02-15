@@ -5,8 +5,8 @@ using Entitas;
 namespace Datenshi.Scripts.Entities.Components.Health {
     [Game]
     public class HealthComponent : IComponent {
-        public uint Health = 200;
-        public uint MaxHealth = 200;
+        public int Health = 200;
+        public int MaxHealth = 200;
     }
 
     [Game]

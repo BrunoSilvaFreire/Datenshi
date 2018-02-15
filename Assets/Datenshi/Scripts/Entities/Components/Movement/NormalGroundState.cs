@@ -16,7 +16,7 @@ namespace Datenshi.Scripts.Entities.Components.Movement {
             return curve.Evaluate(currentPos);
         }
 
-        public override void OnExecute(StateMachine<GroundState> stateMachine) {
+        public override void OnExecute(StateMachine<GroundState, GroundMovement> stateMachine) {
             var vel = entity.velocity;
             var groundMovement = entity.groundMovement;
             var controller = groundMovement.Provider;

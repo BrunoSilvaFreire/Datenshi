@@ -198,7 +198,6 @@ namespace Datenshi.Scripts.AI.Pathfinding.Editor {
             var mousePosText = "Mouse position = " + mousePosition;
             var mouseDisplayPostition = mousePosition;
             mouseDisplayPostition.x += 20;
-            var s = new GUIContent(mousePosText);
             Text(mousePosText, mouseDisplayPostition, camera);
             var height = EditorGUIUtility.singleLineHeight;
             mouseDisplayPostition.y += height;

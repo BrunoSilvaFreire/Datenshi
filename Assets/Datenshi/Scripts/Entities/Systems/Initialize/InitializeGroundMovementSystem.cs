@@ -16,7 +16,8 @@ namespace Datenshi.Scripts.Entities.Systems.Initialize {
 
         protected override void Execute(List<GameEntity> entities) {
             foreach (var gameEntity in entities) {
-                gameEntity.groundMovement.StateMachine = new StateMachine<GroundState>();
+                var m = gameEntity.groundMovement;
+                m.StateMachine = new StateMachine<GroundState, GroundMovement>(m);
             }
         }
     }

@@ -11,7 +11,7 @@ public partial class GameEntity {
     public Datenshi.Scripts.Entities.Components.Health.HealthComponent health { get { return (Datenshi.Scripts.Entities.Components.Health.HealthComponent)GetComponent(GameComponentsLookup.Health); } }
     public bool hasHealth { get { return HasComponent(GameComponentsLookup.Health); } }
 
-    public void AddHealth(uint newHealth, uint newMaxHealth) {
+    public void AddHealth(int newHealth, int newMaxHealth) {
         var index = GameComponentsLookup.Health;
         var component = CreateComponent<Datenshi.Scripts.Entities.Components.Health.HealthComponent>(index);
         component.Health = newHealth;
@@ -19,7 +19,7 @@ public partial class GameEntity {
         AddComponent(index, component);
     }
 
-    public void ReplaceHealth(uint newHealth, uint newMaxHealth) {
+    public void ReplaceHealth(int newHealth, int newMaxHealth) {
         var index = GameComponentsLookup.Health;
         var component = CreateComponent<Datenshi.Scripts.Entities.Components.Health.HealthComponent>(index);
         component.Health = newHealth;

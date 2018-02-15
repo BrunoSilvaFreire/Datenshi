@@ -55,6 +55,10 @@ namespace Datenshi.Scripts.Entities.Blueprints.Editor {
             binaryBlueprint.ContextIdentifier = context.contextInfo.name;
 
             foreach (var component in binaryBlueprint.Components) {
+                if (component == null) {
+                    Debug.Log("Couldn't find ");
+                    continue;
+                }
                 var type = component.FullTypeName.ToType();
                 var index = Array.IndexOf(context.contextInfo.componentTypes, type);
 

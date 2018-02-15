@@ -11,17 +11,17 @@ public partial class GameEntity {
     public Datenshi.Scripts.Entities.Components.AnimatedComponent animated { get { return (Datenshi.Scripts.Entities.Components.AnimatedComponent)GetComponent(GameComponentsLookup.Animated); } }
     public bool hasAnimated { get { return HasComponent(GameComponentsLookup.Animated); } }
 
-    public void AddAnimated(UnityEngine.RuntimeAnimatorController newController) {
+    public void AddAnimated(UnityEngine.Animator newAnimatorPrefab) {
         var index = GameComponentsLookup.Animated;
         var component = CreateComponent<Datenshi.Scripts.Entities.Components.AnimatedComponent>(index);
-        component.Controller = newController;
+        component.AnimatorPrefab = newAnimatorPrefab;
         AddComponent(index, component);
     }
 
-    public void ReplaceAnimated(UnityEngine.RuntimeAnimatorController newController) {
+    public void ReplaceAnimated(UnityEngine.Animator newAnimatorPrefab) {
         var index = GameComponentsLookup.Animated;
         var component = CreateComponent<Datenshi.Scripts.Entities.Components.AnimatedComponent>(index);
-        component.Controller = newController;
+        component.AnimatorPrefab = newAnimatorPrefab;
         ReplaceComponent(index, component);
     }
 

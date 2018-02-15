@@ -11,7 +11,7 @@ public partial class GameEntity {
     public Datenshi.Scripts.Entities.Components.Movement.GroundMovement groundMovement { get { return (Datenshi.Scripts.Entities.Components.Movement.GroundMovement)GetComponent(GameComponentsLookup.GroundMovement); } }
     public bool hasGroundMovement { get { return HasComponent(GameComponentsLookup.GroundMovement); } }
 
-    public void AddGroundMovement(float newMaxSpeed, float newMaxJumpHeight, UnityEngine.AnimationCurve newAccelerationCurve, UnityEngine.AnimationCurve newDeaccelerationCurve, Datenshi.Scripts.Util.StateMachine.StateMachine<Datenshi.Scripts.Entities.Components.Movement.GroundState> newStateMachine, Datenshi.Scripts.Controller.IInputProvider newProvider) {
+    public void AddGroundMovement(float newMaxSpeed, float newMaxJumpHeight, UnityEngine.AnimationCurve newAccelerationCurve, UnityEngine.AnimationCurve newDeaccelerationCurve, Datenshi.Scripts.Util.StateMachine.StateMachine<Datenshi.Scripts.Entities.Components.Movement.GroundState, Datenshi.Scripts.Entities.Components.Movement.GroundMovement> newStateMachine, Datenshi.Scripts.Controller.IInputProvider newProvider) {
         var index = GameComponentsLookup.GroundMovement;
         var component = CreateComponent<Datenshi.Scripts.Entities.Components.Movement.GroundMovement>(index);
         component.MaxSpeed = newMaxSpeed;
@@ -23,7 +23,7 @@ public partial class GameEntity {
         AddComponent(index, component);
     }
 
-    public void ReplaceGroundMovement(float newMaxSpeed, float newMaxJumpHeight, UnityEngine.AnimationCurve newAccelerationCurve, UnityEngine.AnimationCurve newDeaccelerationCurve, Datenshi.Scripts.Util.StateMachine.StateMachine<Datenshi.Scripts.Entities.Components.Movement.GroundState> newStateMachine, Datenshi.Scripts.Controller.IInputProvider newProvider) {
+    public void ReplaceGroundMovement(float newMaxSpeed, float newMaxJumpHeight, UnityEngine.AnimationCurve newAccelerationCurve, UnityEngine.AnimationCurve newDeaccelerationCurve, Datenshi.Scripts.Util.StateMachine.StateMachine<Datenshi.Scripts.Entities.Components.Movement.GroundState, Datenshi.Scripts.Entities.Components.Movement.GroundMovement> newStateMachine, Datenshi.Scripts.Controller.IInputProvider newProvider) {
         var index = GameComponentsLookup.GroundMovement;
         var component = CreateComponent<Datenshi.Scripts.Entities.Components.Movement.GroundMovement>(index);
         component.MaxSpeed = newMaxSpeed;

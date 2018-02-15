@@ -9,8 +9,16 @@ namespace Datenshi.Scripts.Entities.Components {
     }
 
     [Game]
-    public class AnimatedComponent : IComponent {
-        public RuntimeAnimatorController Controller;
+    public class AnimatedComponent : IComponent, ISpawnPreview {
+        public Animator AnimatorPrefab;
+
+        public Texture2D GetPreviewTexture() {
+            if (AnimatorPrefab == null) {
+                return null;
+            }
+            var renderer = AnimatorPrefab.GetComponent<SpriteRenderer>();
+            return renderer == null ? null : renderer.sprite.texture;
+        }
     }
 
     [Game]
