@@ -148,7 +148,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 101556354}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.48, y: 0.46, z: 0}
+  m_LocalPosition: {x: 1.66, y: 2.87, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -328,7 +328,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 665071748}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f3008abd0084623be5dae67ce54ffc6, type: 3}
+  m_Script: {fileID: 707169203, guid: c65a9773327466a498a6204443d1b04f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   references: []
@@ -717,9 +717,7 @@ MonoBehaviour:
     linearLinks:
     - destination: 71
     - destination: 73
-    gravityLinks:
-    - destination: 273
-      requiredForce: {x: 10, y: 10}
+    gravityLinks: []
   - position: {x: -15, y: -3}
     type: 3
     linearLinks:
@@ -1033,108 +1031,24 @@ MonoBehaviour:
     type: 5
     linearLinks:
     - destination: 149
-    gravityLinks:
-    - destination: 217
-      requiredForce: {x: 8, y: 6}
-    - destination: 218
-      requiredForce: {x: 10, y: 6}
-    - destination: 217
-      requiredForce: {x: 6, y: 8}
-    - destination: 219
-      requiredForce: {x: 8, y: 8}
-    - destination: 220
-      requiredForce: {x: 10, y: 8}
-    - destination: 217
-      requiredForce: {x: 4, y: 10}
-    - destination: 219
-      requiredForce: {x: 6, y: 10}
-    - destination: 221
-      requiredForce: {x: 8, y: 10}
-    - destination: 221
-      requiredForce: {x: 10, y: 10}
+    gravityLinks: []
   - position: {x: -4, y: -2}
     type: 3
     linearLinks:
     - destination: 148
     - destination: 150
-    gravityLinks:
-    - destination: 217
-      requiredForce: {x: 6, y: 6}
-    - destination: 218
-      requiredForce: {x: 8, y: 6}
-    - destination: 219
-      requiredForce: {x: 10, y: 6}
-    - destination: 217
-      requiredForce: {x: 4, y: 8}
-    - destination: 218
-      requiredForce: {x: 6, y: 8}
-    - destination: 220
-      requiredForce: {x: 8, y: 8}
-    - destination: 221
-      requiredForce: {x: 10, y: 8}
-    - destination: 218
-      requiredForce: {x: 4, y: 10}
-    - destination: 220
-      requiredForce: {x: 6, y: 10}
-    - destination: 221
-      requiredForce: {x: 8, y: 10}
-    - destination: 287
-      requiredForce: {x: 10, y: 10}
+    gravityLinks: []
   - position: {x: -3, y: -2}
     type: 3
     linearLinks:
     - destination: 149
     - destination: 151
-    gravityLinks:
-    - destination: 217
-      requiredForce: {x: 4, y: 6}
-    - destination: 218
-      requiredForce: {x: 6, y: 6}
-    - destination: 219
-      requiredForce: {x: 8, y: 6}
-    - destination: 220
-      requiredForce: {x: 10, y: 6}
-    - destination: 217
-      requiredForce: {x: 2, y: 8}
-    - destination: 218
-      requiredForce: {x: 4, y: 8}
-    - destination: 219
-      requiredForce: {x: 6, y: 8}
-    - destination: 221
-      requiredForce: {x: 8, y: 8}
-    - destination: 221
-      requiredForce: {x: 10, y: 8}
-    - destination: 217
-      requiredForce: {x: 2, y: 10}
-    - destination: 219
-      requiredForce: {x: 4, y: 10}
-    - destination: 221
-      requiredForce: {x: 6, y: 10}
-    - destination: 287
-      requiredForce: {x: 8, y: 10}
-    - destination: 288
-      requiredForce: {x: 10, y: 10}
+    gravityLinks: []
   - position: {x: -2, y: -2}
     type: 5
     linearLinks:
     - destination: 150
-    gravityLinks:
-    - destination: 217
-      requiredForce: {x: 2, y: 6}
-    - destination: 218
-      requiredForce: {x: 4, y: 6}
-    - destination: 217
-      requiredForce: {x: 2, y: 8}
-    - destination: 219
-      requiredForce: {x: 4, y: 8}
-    - destination: 220
-      requiredForce: {x: 6, y: 8}
-    - destination: 218
-      requiredForce: {x: 2, y: 10}
-    - destination: 220
-      requiredForce: {x: 4, y: 10}
-    - destination: 221
-      requiredForce: {x: 6, y: 10}
+    gravityLinks: []
   - position: {x: -1, y: -2}
     type: 2
     linearLinks: []
@@ -1399,240 +1313,30 @@ MonoBehaviour:
     type: 4
     linearLinks:
     - destination: 218
-    gravityLinks:
-    - destination: 151
-      requiredForce: {x: -2, y: 2}
-    - destination: 150
-      requiredForce: {x: -4, y: 2}
-    - destination: 149
-      requiredForce: {x: -6, y: 2}
-    - destination: 148
-      requiredForce: {x: -8, y: 2}
-    - destination: 148
-      requiredForce: {x: -10, y: 2}
-    - destination: 151
-      requiredForce: {x: -2, y: 4}
-    - destination: 149
-      requiredForce: {x: -4, y: 4}
-    - destination: 148
-      requiredForce: {x: -6, y: 4}
-    - destination: 148
-      requiredForce: {x: -8, y: 4}
-    - destination: 150
-      requiredForce: {x: -2, y: 6}
-    - destination: 149
-      requiredForce: {x: -4, y: 6}
-    - destination: 148
-      requiredForce: {x: -6, y: 6}
-    - destination: 287
-      requiredForce: {x: 10, y: 6}
-    - destination: 150
-      requiredForce: {x: -2, y: 8}
-    - destination: 148
-      requiredForce: {x: -4, y: 8}
-    - destination: 287
-      requiredForce: {x: 6, y: 8}
-    - destination: 288
-      requiredForce: {x: 8, y: 8}
-    - destination: 288
-      requiredForce: {x: 10, y: 8}
-    - destination: 150
-      requiredForce: {x: -2, y: 10}
-    - destination: 148
-      requiredForce: {x: -4, y: 10}
-    - destination: 288
-      requiredForce: {x: 6, y: 10}
-    - destination: 354
-      requiredForce: {x: 8, y: 10}
-    - destination: 355
-      requiredForce: {x: 10, y: 10}
+    gravityLinks: []
   - position: {x: 0, y: -1}
     type: 3
     linearLinks:
     - destination: 217
     - destination: 219
-    gravityLinks:
-    - destination: 150
-      requiredForce: {x: -6, y: 2}
-    - destination: 149
-      requiredForce: {x: -8, y: 2}
-    - destination: 148
-      requiredForce: {x: -10, y: 2}
-    - destination: 150
-      requiredForce: {x: -4, y: 4}
-    - destination: 149
-      requiredForce: {x: -6, y: 4}
-    - destination: 148
-      requiredForce: {x: -8, y: 4}
-    - destination: 148
-      requiredForce: {x: -10, y: 4}
-    - destination: 150
-      requiredForce: {x: -4, y: 6}
-    - destination: 148
-      requiredForce: {x: -6, y: 6}
-    - destination: 287
-      requiredForce: {x: 8, y: 6}
-    - destination: 288
-      requiredForce: {x: 10, y: 6}
-    - destination: 151
-      requiredForce: {x: -2, y: 8}
-    - destination: 149
-      requiredForce: {x: -4, y: 8}
-    - destination: 288
-      requiredForce: {x: 6, y: 8}
-    - destination: 148
-      requiredForce: {x: -6, y: 8}
-    - destination: 288
-      requiredForce: {x: 8, y: 8}
-    - destination: 288
-      requiredForce: {x: 10, y: 8}
-    - destination: 151
-      requiredForce: {x: -2, y: 10}
-    - destination: 287
-      requiredForce: {x: 4, y: 10}
-    - destination: 148
-      requiredForce: {x: -4, y: 10}
-    - destination: 288
-      requiredForce: {x: 6, y: 10}
-    - destination: 355
-      requiredForce: {x: 8, y: 10}
-    - destination: 356
-      requiredForce: {x: 10, y: 10}
+    gravityLinks: []
   - position: {x: 1, y: -1}
     type: 3
     linearLinks:
     - destination: 218
     - destination: 220
-    gravityLinks:
-    - destination: 150
-      requiredForce: {x: -8, y: 2}
-    - destination: 149
-      requiredForce: {x: -10, y: 2}
-    - destination: 150
-      requiredForce: {x: -6, y: 4}
-    - destination: 149
-      requiredForce: {x: -8, y: 4}
-    - destination: 148
-      requiredForce: {x: -10, y: 4}
-    - destination: 151
-      requiredForce: {x: -4, y: 6}
-    - destination: 287
-      requiredForce: {x: 6, y: 6}
-    - destination: 149
-      requiredForce: {x: -6, y: 6}
-    - destination: 288
-      requiredForce: {x: 8, y: 6}
-    - destination: 148
-      requiredForce: {x: -8, y: 6}
-    - destination: 288
-      requiredForce: {x: 10, y: 6}
-    - destination: 287
-      requiredForce: {x: 4, y: 8}
-    - destination: 150
-      requiredForce: {x: -4, y: 8}
-    - destination: 288
-      requiredForce: {x: 6, y: 8}
-    - destination: 148
-      requiredForce: {x: -6, y: 8}
-    - destination: 288
-      requiredForce: {x: 8, y: 8}
-    - destination: 354
-      requiredForce: {x: 10, y: 8}
-    - destination: 288
-      requiredForce: {x: 4, y: 10}
-    - destination: 149
-      requiredForce: {x: -4, y: 10}
-    - destination: 354
-      requiredForce: {x: 6, y: 10}
-    - destination: 356
-      requiredForce: {x: 8, y: 10}
-    - destination: 357
-      requiredForce: {x: 10, y: 10}
+    gravityLinks: []
   - position: {x: 2, y: -1}
     type: 3
     linearLinks:
     - destination: 219
     - destination: 221
-    gravityLinks:
-    - destination: 150
-      requiredForce: {x: -8, y: 4}
-    - destination: 149
-      requiredForce: {x: -10, y: 4}
-    - destination: 287
-      requiredForce: {x: 4, y: 6}
-    - destination: 288
-      requiredForce: {x: 6, y: 6}
-    - destination: 150
-      requiredForce: {x: -6, y: 6}
-    - destination: 288
-      requiredForce: {x: 8, y: 6}
-    - destination: 149
-      requiredForce: {x: -8, y: 6}
-    - destination: 288
-      requiredForce: {x: 10, y: 6}
-    - destination: 148
-      requiredForce: {x: -10, y: 6}
-    - destination: 287
-      requiredForce: {x: 2, y: 8}
-    - destination: 288
-      requiredForce: {x: 4, y: 8}
-    - destination: 288
-      requiredForce: {x: 6, y: 8}
-    - destination: 149
-      requiredForce: {x: -6, y: 8}
-    - destination: 354
-      requiredForce: {x: 8, y: 8}
-    - destination: 148
-      requiredForce: {x: -8, y: 8}
-    - destination: 355
-      requiredForce: {x: 10, y: 8}
-    - destination: 287
-      requiredForce: {x: 2, y: 10}
-    - destination: 288
-      requiredForce: {x: 4, y: 10}
-    - destination: 150
-      requiredForce: {x: -4, y: 10}
-    - destination: 355
-      requiredForce: {x: 6, y: 10}
-    - destination: 148
-      requiredForce: {x: -6, y: 10}
-    - destination: 357
-      requiredForce: {x: 8, y: 10}
-    - destination: 295
-      requiredForce: {x: 10, y: 10}
+    gravityLinks: []
   - position: {x: 3, y: -1}
     type: 5
     linearLinks:
     - destination: 220
-    gravityLinks:
-    - destination: 150
-      requiredForce: {x: -10, y: 4}
-    - destination: 287
-      requiredForce: {x: 2, y: 6}
-    - destination: 288
-      requiredForce: {x: 4, y: 6}
-    - destination: 150
-      requiredForce: {x: -8, y: 6}
-    - destination: 148
-      requiredForce: {x: -10, y: 6}
-    - destination: 288
-      requiredForce: {x: 2, y: 8}
-    - destination: 288
-      requiredForce: {x: 4, y: 8}
-    - destination: 354
-      requiredForce: {x: 6, y: 8}
-    - destination: 150
-      requiredForce: {x: -6, y: 8}
-    - destination: 148
-      requiredForce: {x: -8, y: 8}
-    - destination: 288
-      requiredForce: {x: 2, y: 10}
-    - destination: 354
-      requiredForce: {x: 4, y: 10}
-    - destination: 356
-      requiredForce: {x: 6, y: 10}
-    - destination: 149
-      requiredForce: {x: -6, y: 10}
+    gravityLinks: []
   - position: {x: 4, y: -1}
     type: 2
     linearLinks: []
@@ -1841,80 +1545,18 @@ MonoBehaviour:
     type: 4
     linearLinks:
     - destination: 274
-    gravityLinks:
-    - destination: 76
-      requiredForce: {x: -2, y: 4}
-    - destination: 75
-      requiredForce: {x: -4, y: 4}
-    - destination: 73
-      requiredForce: {x: -6, y: 4}
-    - destination: 71
-      requiredForce: {x: -8, y: 4}
-    - destination: 76
-      requiredForce: {x: -2, y: 6}
-    - destination: 74
-      requiredForce: {x: -4, y: 6}
-    - destination: 72
-      requiredForce: {x: -6, y: 6}
-    - destination: 71
-      requiredForce: {x: -8, y: 6}
-    - destination: 75
-      requiredForce: {x: -2, y: 10}
-    - destination: 73
-      requiredForce: {x: -4, y: 10}
-    - destination: 71
-      requiredForce: {x: -6, y: 10}
+    gravityLinks: []
   - position: {x: -9, y: 0}
     type: 3
     linearLinks:
     - destination: 273
     - destination: 275
-    gravityLinks:
-    - destination: 76
-      requiredForce: {x: -4, y: 4}
-    - destination: 74
-      requiredForce: {x: -6, y: 4}
-    - destination: 72
-      requiredForce: {x: -8, y: 4}
-    - destination: 71
-      requiredForce: {x: -10, y: 4}
-    - destination: 75
-      requiredForce: {x: -4, y: 6}
-    - destination: 73
-      requiredForce: {x: -6, y: 6}
-    - destination: 71
-      requiredForce: {x: -8, y: 6}
-    - destination: 71
-      requiredForce: {x: -8, y: 8}
-    - destination: 76
-      requiredForce: {x: -2, y: 10}
-    - destination: 74
-      requiredForce: {x: -4, y: 10}
-    - destination: 71
-      requiredForce: {x: -6, y: 10}
+    gravityLinks: []
   - position: {x: -8, y: 0}
     type: 5
     linearLinks:
     - destination: 274
-    gravityLinks:
-    - destination: 75
-      requiredForce: {x: -6, y: 4}
-    - destination: 73
-      requiredForce: {x: -8, y: 4}
-    - destination: 72
-      requiredForce: {x: -10, y: 4}
-    - destination: 76
-      requiredForce: {x: -4, y: 6}
-    - destination: 74
-      requiredForce: {x: -6, y: 6}
-    - destination: 72
-      requiredForce: {x: -8, y: 6}
-    - destination: 71
-      requiredForce: {x: -10, y: 6}
-    - destination: 75
-      requiredForce: {x: -4, y: 10}
-    - destination: 72
-      requiredForce: {x: -6, y: 10}
+    gravityLinks: []
   - position: {x: -7, y: 0}
     type: 2
     linearLinks: []
@@ -1963,142 +1605,12 @@ MonoBehaviour:
     type: 4
     linearLinks:
     - destination: 288
-    gravityLinks:
-    - destination: 221
-      requiredForce: {x: -2, y: 2}
-    - destination: 220
-      requiredForce: {x: -4, y: 2}
-    - destination: 219
-      requiredForce: {x: -6, y: 2}
-    - destination: 218
-      requiredForce: {x: -8, y: 2}
-    - destination: 217
-      requiredForce: {x: -10, y: 2}
-    - destination: 221
-      requiredForce: {x: -2, y: 4}
-    - destination: 219
-      requiredForce: {x: -4, y: 4}
-    - destination: 218
-      requiredForce: {x: -6, y: 4}
-    - destination: 217
-      requiredForce: {x: -8, y: 4}
-    - destination: 149
-      requiredForce: {x: -10, y: 4}
-    - destination: 220
-      requiredForce: {x: -2, y: 6}
-    - destination: 354
-      requiredForce: {x: 4, y: 6}
-    - destination: 219
-      requiredForce: {x: -4, y: 6}
-    - destination: 355
-      requiredForce: {x: 6, y: 6}
-    - destination: 217
-      requiredForce: {x: -6, y: 6}
-    - destination: 356
-      requiredForce: {x: 8, y: 6}
-    - destination: 150
-      requiredForce: {x: -8, y: 6}
-    - destination: 357
-      requiredForce: {x: 10, y: 6}
-    - destination: 148
-      requiredForce: {x: -10, y: 6}
-    - destination: 354
-      requiredForce: {x: 2, y: 8}
-    - destination: 220
-      requiredForce: {x: -2, y: 8}
-    - destination: 355
-      requiredForce: {x: 4, y: 8}
-    - destination: 218
-      requiredForce: {x: -4, y: 8}
-    - destination: 357
-      requiredForce: {x: 6, y: 8}
-    - destination: 151
-      requiredForce: {x: -6, y: 8}
-    - destination: 294
-      requiredForce: {x: 8, y: 8}
-    - destination: 149
-      requiredForce: {x: -8, y: 8}
-    - destination: 296
-      requiredForce: {x: 10, y: 8}
-    - destination: 354
-      requiredForce: {x: 2, y: 10}
-    - destination: 220
-      requiredForce: {x: -2, y: 10}
-    - destination: 356
-      requiredForce: {x: 4, y: 10}
-    - destination: 217
-      requiredForce: {x: -4, y: 10}
-    - destination: 293
-      requiredForce: {x: 6, y: 10}
-    - destination: 150
-      requiredForce: {x: -6, y: 10}
-    - destination: 296
-      requiredForce: {x: 8, y: 10}
-    - destination: 148
-      requiredForce: {x: -8, y: 10}
-    - destination: 298
-      requiredForce: {x: 10, y: 10}
+    gravityLinks: []
   - position: {x: 5, y: 0}
     type: 5
     linearLinks:
     - destination: 287
-    gravityLinks:
-    - destination: 220
-      requiredForce: {x: -6, y: 2}
-    - destination: 219
-      requiredForce: {x: -8, y: 2}
-    - destination: 218
-      requiredForce: {x: -10, y: 2}
-    - destination: 220
-      requiredForce: {x: -4, y: 4}
-    - destination: 219
-      requiredForce: {x: -6, y: 4}
-    - destination: 218
-      requiredForce: {x: -8, y: 4}
-    - destination: 217
-      requiredForce: {x: -10, y: 4}
-    - destination: 354
-      requiredForce: {x: 2, y: 6}
-    - destination: 355
-      requiredForce: {x: 4, y: 6}
-    - destination: 220
-      requiredForce: {x: -4, y: 6}
-    - destination: 218
-      requiredForce: {x: -6, y: 6}
-    - destination: 217
-      requiredForce: {x: -8, y: 6}
-    - destination: 149
-      requiredForce: {x: -10, y: 6}
-    - destination: 354
-      requiredForce: {x: 2, y: 8}
-    - destination: 221
-      requiredForce: {x: -2, y: 8}
-    - destination: 356
-      requiredForce: {x: 4, y: 8}
-    - destination: 219
-      requiredForce: {x: -4, y: 8}
-    - destination: 357
-      requiredForce: {x: 6, y: 8}
-    - destination: 217
-      requiredForce: {x: -6, y: 8}
-    - destination: 150
-      requiredForce: {x: -8, y: 8}
-    - destination: 148
-      requiredForce: {x: -10, y: 8}
-    - destination: 355
-      requiredForce: {x: 2, y: 10}
-    - destination: 221
-      requiredForce: {x: -2, y: 10}
-    - destination: 357
-      requiredForce: {x: 4, y: 10}
-    - destination: 218
-      requiredForce: {x: -4, y: 10}
-    - destination: 294
-      requiredForce: {x: 6, y: 10}
-    - destination: 151
-      requiredForce: {x: -6, y: 10}
-    - destination: 148
-      requiredForce: {x: -8, y: 10}
+    gravityLinks: []
   - position: {x: 6, y: 0}
     type: 2
     linearLinks: []
@@ -2119,185 +1631,61 @@ MonoBehaviour:
     type: 5
     linearLinks:
     - destination: 294
-    gravityLinks:
-    - destination: 357
-      requiredForce: {x: -2, y: 6}
-    - destination: 356
-      requiredForce: {x: -4, y: 6}
-    - destination: 357
-      requiredForce: {x: -2, y: 8}
-    - destination: 355
-      requiredForce: {x: -4, y: 8}
-    - destination: 354
-      requiredForce: {x: -6, y: 8}
-    - destination: 356
-      requiredForce: {x: -2, y: 10}
-    - destination: 354
-      requiredForce: {x: -4, y: 10}
-    - destination: 287
-      requiredForce: {x: -6, y: 10}
+    gravityLinks: []
   - position: {x: 11, y: 0}
     type: 3
     linearLinks:
     - destination: 293
     - destination: 295
-    gravityLinks:
-    - destination: 357
-      requiredForce: {x: -4, y: 6}
-    - destination: 356
-      requiredForce: {x: -6, y: 6}
-    - destination: 355
-      requiredForce: {x: -8, y: 6}
-    - destination: 354
-      requiredForce: {x: -10, y: 6}
-    - destination: 357
-      requiredForce: {x: -2, y: 8}
-    - destination: 356
-      requiredForce: {x: -4, y: 8}
-    - destination: 354
-      requiredForce: {x: -6, y: 8}
-    - destination: 287
-      requiredForce: {x: -8, y: 8}
-    - destination: 219
-      requiredForce: {x: -10, y: 8}
-    - destination: 357
-      requiredForce: {x: -2, y: 10}
-    - destination: 355
-      requiredForce: {x: -4, y: 10}
-    - destination: 288
-      requiredForce: {x: -6, y: 10}
-    - destination: 220
-      requiredForce: {x: -8, y: 10}
-    - destination: 217
-      requiredForce: {x: -10, y: 10}
+    gravityLinks: []
   - position: {x: 12, y: 0}
     type: 3
     linearLinks:
     - destination: 294
     - destination: 296
-    gravityLinks:
-    - destination: 357
-      requiredForce: {x: -6, y: 6}
-    - destination: 356
-      requiredForce: {x: -8, y: 6}
-    - destination: 355
-      requiredForce: {x: -10, y: 6}
-    - destination: 357
-      requiredForce: {x: -4, y: 8}
-    - destination: 355
-      requiredForce: {x: -6, y: 8}
-    - destination: 354
-      requiredForce: {x: -8, y: 8}
-    - destination: 220
-      requiredForce: {x: -10, y: 8}
-    - destination: 356
-      requiredForce: {x: -4, y: 10}
-    - destination: 354
-      requiredForce: {x: -6, y: 10}
-    - destination: 287
-      requiredForce: {x: -8, y: 10}
-    - destination: 218
-      requiredForce: {x: -10, y: 10}
+    gravityLinks: []
   - position: {x: 13, y: 0}
     type: 3
     linearLinks:
     - destination: 295
     - destination: 297
-    gravityLinks:
-    - destination: 357
-      requiredForce: {x: -8, y: 6}
-    - destination: 356
-      requiredForce: {x: -10, y: 6}
-    - destination: 357
-      requiredForce: {x: -6, y: 8}
-    - destination: 355
-      requiredForce: {x: -8, y: 8}
-    - destination: 354
-      requiredForce: {x: -10, y: 8}
-    - destination: 357
-      requiredForce: {x: -4, y: 10}
-    - destination: 355
-      requiredForce: {x: -6, y: 10}
-    - destination: 288
-      requiredForce: {x: -8, y: 10}
-    - destination: 219
-      requiredForce: {x: -10, y: 10}
+    gravityLinks: []
   - position: {x: 14, y: 0}
     type: 3
     linearLinks:
     - destination: 296
     - destination: 298
-    gravityLinks:
-    - destination: 357
-      requiredForce: {x: -10, y: 6}
-    - destination: 357
-      requiredForce: {x: -6, y: 8}
-    - destination: 356
-      requiredForce: {x: -8, y: 8}
-    - destination: 355
-      requiredForce: {x: -10, y: 8}
-    - destination: 356
-      requiredForce: {x: -6, y: 10}
-    - destination: 354
-      requiredForce: {x: -8, y: 10}
-    - destination: 220
-      requiredForce: {x: -10, y: 10}
+    gravityLinks: []
   - position: {x: 15, y: 0}
     type: 3
     linearLinks:
     - destination: 297
     - destination: 299
-    gravityLinks:
-    - destination: 357
-      requiredForce: {x: -8, y: 8}
-    - destination: 356
-      requiredForce: {x: -10, y: 8}
-    - destination: 357
-      requiredForce: {x: -6, y: 10}
-    - destination: 355
-      requiredForce: {x: -8, y: 10}
-    - destination: 499
-      requiredForce: {x: 10, y: 10}
-    - destination: 287
-      requiredForce: {x: -10, y: 10}
+    gravityLinks: []
   - position: {x: 16, y: 0}
     type: 3
     linearLinks:
     - destination: 298
     - destination: 300
-    gravityLinks:
-    - destination: 357
-      requiredForce: {x: -10, y: 8}
-    - destination: 356
-      requiredForce: {x: -8, y: 10}
-    - destination: 354
-      requiredForce: {x: -10, y: 10}
+    gravityLinks: []
   - position: {x: 17, y: 0}
     type: 3
     linearLinks:
     - destination: 299
     - destination: 301
-    gravityLinks:
-    - destination: 357
-      requiredForce: {x: -8, y: 10}
-    - destination: 355
-      requiredForce: {x: -10, y: 10}
+    gravityLinks: []
   - position: {x: 18, y: 0}
     type: 3
     linearLinks:
     - destination: 300
     - destination: 302
-    gravityLinks:
-    - destination: 356
-      requiredForce: {x: -10, y: 10}
+    gravityLinks: []
   - position: {x: 19, y: 0}
     type: 3
     linearLinks:
     - destination: 301
     - destination: 303
-    gravityLinks:
-    - destination: 357
-      requiredForce: {x: -10, y: 10}
+    gravityLinks: []
   - position: {x: 20, y: 0}
     type: 5
     linearLinks:
@@ -2319,156 +1707,42 @@ MonoBehaviour:
     type: 5
     linearLinks:
     - destination: 308
-    gravityLinks:
-    - destination: 379
-      requiredForce: {x: 10, y: 8}
-    - destination: 380
-      requiredForce: {x: 8, y: 10}
-    - destination: 382
-      requiredForce: {x: 10, y: 10}
+    gravityLinks: []
   - position: {x: 25, y: 0}
     type: 3
     linearLinks:
     - destination: 307
     - destination: 309
-    gravityLinks:
-    - destination: 379
-      requiredForce: {x: 8, y: 8}
-    - destination: 380
-      requiredForce: {x: 10, y: 8}
-    - destination: 379
-      requiredForce: {x: 6, y: 10}
-    - destination: 381
-      requiredForce: {x: 8, y: 10}
-    - destination: 383
-      requiredForce: {x: 10, y: 10}
+    gravityLinks: []
   - position: {x: 26, y: 0}
     type: 3
     linearLinks:
     - destination: 308
     - destination: 310
-    gravityLinks:
-    - destination: 379
-      requiredForce: {x: 10, y: 6}
-    - destination: 379
-      requiredForce: {x: 6, y: 8}
-    - destination: 380
-      requiredForce: {x: 8, y: 8}
-    - destination: 381
-      requiredForce: {x: 10, y: 8}
-    - destination: 380
-      requiredForce: {x: 6, y: 10}
-    - destination: 382
-      requiredForce: {x: 8, y: 10}
-    - destination: 384
-      requiredForce: {x: 10, y: 10}
+    gravityLinks: []
   - position: {x: 27, y: 0}
     type: 3
     linearLinks:
     - destination: 309
     - destination: 311
-    gravityLinks:
-    - destination: 379
-      requiredForce: {x: 8, y: 6}
-    - destination: 380
-      requiredForce: {x: 10, y: 6}
-    - destination: 380
-      requiredForce: {x: 6, y: 8}
-    - destination: 381
-      requiredForce: {x: 8, y: 8}
-    - destination: 382
-      requiredForce: {x: 10, y: 8}
-    - destination: 379
-      requiredForce: {x: 4, y: 10}
-    - destination: 381
-      requiredForce: {x: 6, y: 10}
-    - destination: 383
-      requiredForce: {x: 8, y: 10}
-    - destination: 384
-      requiredForce: {x: 10, y: 10}
+    gravityLinks: []
   - position: {x: 28, y: 0}
     type: 3
     linearLinks:
     - destination: 310
     - destination: 312
-    gravityLinks:
-    - destination: 379
-      requiredForce: {x: 6, y: 6}
-    - destination: 380
-      requiredForce: {x: 8, y: 6}
-    - destination: 381
-      requiredForce: {x: 10, y: 6}
-    - destination: 379
-      requiredForce: {x: 4, y: 8}
-    - destination: 380
-      requiredForce: {x: 6, y: 8}
-    - destination: 382
-      requiredForce: {x: 8, y: 8}
-    - destination: 383
-      requiredForce: {x: 10, y: 8}
-    - destination: 380
-      requiredForce: {x: 4, y: 10}
-    - destination: 382
-      requiredForce: {x: 6, y: 10}
-    - destination: 384
-      requiredForce: {x: 8, y: 10}
-    - destination: 384
-      requiredForce: {x: 10, y: 10}
+    gravityLinks: []
   - position: {x: 29, y: 0}
     type: 3
     linearLinks:
     - destination: 311
     - destination: 313
-    gravityLinks:
-    - destination: 379
-      requiredForce: {x: 4, y: 6}
-    - destination: 380
-      requiredForce: {x: 6, y: 6}
-    - destination: 381
-      requiredForce: {x: 8, y: 6}
-    - destination: 382
-      requiredForce: {x: 10, y: 6}
-    - destination: 379
-      requiredForce: {x: 2, y: 8}
-    - destination: 380
-      requiredForce: {x: 4, y: 8}
-    - destination: 381
-      requiredForce: {x: 6, y: 8}
-    - destination: 383
-      requiredForce: {x: 8, y: 8}
-    - destination: 384
-      requiredForce: {x: 10, y: 8}
-    - destination: 379
-      requiredForce: {x: 2, y: 10}
-    - destination: 381
-      requiredForce: {x: 4, y: 10}
-    - destination: 383
-      requiredForce: {x: 6, y: 10}
-    - destination: 384
-      requiredForce: {x: 8, y: 10}
-    - destination: 501
-      requiredForce: {x: -10, y: 10}
+    gravityLinks: []
   - position: {x: 30, y: 0}
     type: 5
     linearLinks:
     - destination: 312
-    gravityLinks:
-    - destination: 379
-      requiredForce: {x: 2, y: 6}
-    - destination: 380
-      requiredForce: {x: 4, y: 6}
-    - destination: 380
-      requiredForce: {x: 2, y: 8}
-    - destination: 381
-      requiredForce: {x: 4, y: 8}
-    - destination: 383
-      requiredForce: {x: 6, y: 8}
-    - destination: 380
-      requiredForce: {x: 2, y: 10}
-    - destination: 382
-      requiredForce: {x: 4, y: 10}
-    - destination: 384
-      requiredForce: {x: 6, y: 10}
+    gravityLinks: []
   - position: {x: 31, y: 0}
     type: 2
     linearLinks: []
@@ -2633,322 +1907,24 @@ MonoBehaviour:
     type: 4
     linearLinks:
     - destination: 355
-    gravityLinks:
-    - destination: 288
-      requiredForce: {x: -2, y: 2}
-    - destination: 287
-      requiredForce: {x: -4, y: 2}
-    - destination: 220
-      requiredForce: {x: -6, y: 2}
-    - destination: 219
-      requiredForce: {x: -8, y: 2}
-    - destination: 218
-      requiredForce: {x: -10, y: 2}
-    - destination: 288
-      requiredForce: {x: -2, y: 4}
-    - destination: 221
-      requiredForce: {x: -4, y: 4}
-    - destination: 220
-      requiredForce: {x: -6, y: 4}
-    - destination: 294
-      requiredForce: {x: 8, y: 4}
-    - destination: 218
-      requiredForce: {x: -8, y: 4}
-    - destination: 295
-      requiredForce: {x: 10, y: 4}
-    - destination: 217
-      requiredForce: {x: -10, y: 4}
-    - destination: 287
-      requiredForce: {x: -2, y: 6}
-    - destination: 220
-      requiredForce: {x: -4, y: 6}
-    - destination: 294
-      requiredForce: {x: 6, y: 6}
-    - destination: 219
-      requiredForce: {x: -6, y: 6}
-    - destination: 295
-      requiredForce: {x: 8, y: 6}
-    - destination: 217
-      requiredForce: {x: -8, y: 6}
-    - destination: 297
-      requiredForce: {x: 10, y: 6}
-    - destination: 149
-      requiredForce: {x: -10, y: 6}
-    - destination: 287
-      requiredForce: {x: -2, y: 8}
-    - destination: 220
-      requiredForce: {x: -4, y: 8}
-    - destination: 295
-      requiredForce: {x: 6, y: 8}
-    - destination: 218
-      requiredForce: {x: -6, y: 8}
-    - destination: 297
-      requiredForce: {x: 8, y: 8}
-    - destination: 150
-      requiredForce: {x: -8, y: 8}
-    - destination: 299
-      requiredForce: {x: 10, y: 8}
-    - destination: 148
-      requiredForce: {x: -10, y: 8}
-    - destination: 287
-      requiredForce: {x: -2, y: 10}
-    - destination: 294
-      requiredForce: {x: 4, y: 10}
-    - destination: 219
-      requiredForce: {x: -4, y: 10}
-    - destination: 296
-      requiredForce: {x: 6, y: 10}
-    - destination: 217
-      requiredForce: {x: -6, y: 10}
-    - destination: 298
-      requiredForce: {x: 8, y: 10}
-    - destination: 149
-      requiredForce: {x: -8, y: 10}
-    - destination: 301
-      requiredForce: {x: 10, y: 10}
+    gravityLinks: []
   - position: {x: 7, y: 1}
     type: 3
     linearLinks:
     - destination: 354
     - destination: 356
-    gravityLinks:
-    - destination: 287
-      requiredForce: {x: -6, y: 2}
-    - destination: 294
-      requiredForce: {x: 8, y: 2}
-    - destination: 220
-      requiredForce: {x: -8, y: 2}
-    - destination: 295
-      requiredForce: {x: 10, y: 2}
-    - destination: 219
-      requiredForce: {x: -10, y: 2}
-    - destination: 287
-      requiredForce: {x: -4, y: 4}
-    - destination: 294
-      requiredForce: {x: 6, y: 4}
-    - destination: 221
-      requiredForce: {x: -6, y: 4}
-    - destination: 295
-      requiredForce: {x: 8, y: 4}
-    - destination: 219
-      requiredForce: {x: -8, y: 4}
-    - destination: 296
-      requiredForce: {x: 10, y: 4}
-    - destination: 218
-      requiredForce: {x: -10, y: 4}
-    - destination: 293
-      requiredForce: {x: 4, y: 6}
-    - destination: 287
-      requiredForce: {x: -4, y: 6}
-    - destination: 295
-      requiredForce: {x: 6, y: 6}
-    - destination: 220
-      requiredForce: {x: -6, y: 6}
-    - destination: 296
-      requiredForce: {x: 8, y: 6}
-    - destination: 218
-      requiredForce: {x: -8, y: 6}
-    - destination: 298
-      requiredForce: {x: 10, y: 6}
-    - destination: 150
-      requiredForce: {x: -10, y: 6}
-    - destination: 288
-      requiredForce: {x: -2, y: 8}
-    - destination: 294
-      requiredForce: {x: 4, y: 8}
-    - destination: 221
-      requiredForce: {x: -4, y: 8}
-    - destination: 296
-      requiredForce: {x: 6, y: 8}
-    - destination: 219
-      requiredForce: {x: -6, y: 8}
-    - destination: 298
-      requiredForce: {x: 8, y: 8}
-    - destination: 217
-      requiredForce: {x: -8, y: 8}
-    - destination: 300
-      requiredForce: {x: 10, y: 8}
-    - destination: 149
-      requiredForce: {x: -10, y: 8}
-    - destination: 288
-      requiredForce: {x: -2, y: 10}
-    - destination: 295
-      requiredForce: {x: 4, y: 10}
-    - destination: 220
-      requiredForce: {x: -4, y: 10}
-    - destination: 297
-      requiredForce: {x: 6, y: 10}
-    - destination: 218
-      requiredForce: {x: -6, y: 10}
-    - destination: 299
-      requiredForce: {x: 8, y: 10}
-    - destination: 150
-      requiredForce: {x: -8, y: 10}
-    - destination: 302
-      requiredForce: {x: 10, y: 10}
-    - destination: 148
-      requiredForce: {x: -10, y: 10}
+    gravityLinks: []
   - position: {x: 8, y: 1}
     type: 3
     linearLinks:
     - destination: 355
     - destination: 357
-    gravityLinks:
-    - destination: 294
-      requiredForce: {x: 6, y: 2}
-    - destination: 295
-      requiredForce: {x: 8, y: 2}
-    - destination: 287
-      requiredForce: {x: -8, y: 2}
-    - destination: 296
-      requiredForce: {x: 10, y: 2}
-    - destination: 220
-      requiredForce: {x: -10, y: 2}
-    - destination: 294
-      requiredForce: {x: 4, y: 4}
-    - destination: 295
-      requiredForce: {x: 6, y: 4}
-    - destination: 287
-      requiredForce: {x: -6, y: 4}
-    - destination: 296
-      requiredForce: {x: 8, y: 4}
-    - destination: 220
-      requiredForce: {x: -8, y: 4}
-    - destination: 297
-      requiredForce: {x: 10, y: 4}
-    - destination: 219
-      requiredForce: {x: -10, y: 4}
-    - destination: 294
-      requiredForce: {x: 4, y: 6}
-    - destination: 288
-      requiredForce: {x: -4, y: 6}
-    - destination: 296
-      requiredForce: {x: 6, y: 6}
-    - destination: 221
-      requiredForce: {x: -6, y: 6}
-    - destination: 297
-      requiredForce: {x: 8, y: 6}
-    - destination: 219
-      requiredForce: {x: -8, y: 6}
-    - destination: 299
-      requiredForce: {x: 10, y: 6}
-    - destination: 217
-      requiredForce: {x: -10, y: 6}
-    - destination: 293
-      requiredForce: {x: 2, y: 8}
-    - destination: 295
-      requiredForce: {x: 4, y: 8}
-    - destination: 287
-      requiredForce: {x: -4, y: 8}
-    - destination: 297
-      requiredForce: {x: 6, y: 8}
-    - destination: 220
-      requiredForce: {x: -6, y: 8}
-    - destination: 299
-      requiredForce: {x: 8, y: 8}
-    - destination: 218
-      requiredForce: {x: -8, y: 8}
-    - destination: 301
-      requiredForce: {x: 10, y: 8}
-    - destination: 150
-      requiredForce: {x: -10, y: 8}
-    - destination: 293
-      requiredForce: {x: 2, y: 10}
-    - destination: 296
-      requiredForce: {x: 4, y: 10}
-    - destination: 221
-      requiredForce: {x: -4, y: 10}
-    - destination: 298
-      requiredForce: {x: 6, y: 10}
-    - destination: 219
-      requiredForce: {x: -6, y: 10}
-    - destination: 300
-      requiredForce: {x: 8, y: 10}
-    - destination: 151
-      requiredForce: {x: -8, y: 10}
-    - destination: 303
-      requiredForce: {x: 10, y: 10}
-    - destination: 148
-      requiredForce: {x: -10, y: 10}
+    gravityLinks: []
   - position: {x: 9, y: 1}
     type: 5
     linearLinks:
     - destination: 356
-    gravityLinks:
-    - destination: 293
-      requiredForce: {x: 2, y: 2}
-    - destination: 294
-      requiredForce: {x: 4, y: 2}
-    - destination: 295
-      requiredForce: {x: 6, y: 2}
-    - destination: 296
-      requiredForce: {x: 8, y: 2}
-    - destination: 297
-      requiredForce: {x: 10, y: 2}
-    - destination: 293
-      requiredForce: {x: 2, y: 4}
-    - destination: 295
-      requiredForce: {x: 4, y: 4}
-    - destination: 296
-      requiredForce: {x: 6, y: 4}
-    - destination: 297
-      requiredForce: {x: 8, y: 4}
-    - destination: 287
-      requiredForce: {x: -8, y: 4}
-    - destination: 298
-      requiredForce: {x: 10, y: 4}
-    - destination: 220
-      requiredForce: {x: -10, y: 4}
-    - destination: 294
-      requiredForce: {x: 2, y: 6}
-    - destination: 295
-      requiredForce: {x: 4, y: 6}
-    - destination: 297
-      requiredForce: {x: 6, y: 6}
-    - destination: 287
-      requiredForce: {x: -6, y: 6}
-    - destination: 298
-      requiredForce: {x: 8, y: 6}
-    - destination: 220
-      requiredForce: {x: -8, y: 6}
-    - destination: 300
-      requiredForce: {x: 10, y: 6}
-    - destination: 218
-      requiredForce: {x: -10, y: 6}
-    - destination: 294
-      requiredForce: {x: 2, y: 8}
-    - destination: 296
-      requiredForce: {x: 4, y: 8}
-    - destination: 298
-      requiredForce: {x: 6, y: 8}
-    - destination: 221
-      requiredForce: {x: -6, y: 8}
-    - destination: 300
-      requiredForce: {x: 8, y: 8}
-    - destination: 219
-      requiredForce: {x: -8, y: 8}
-    - destination: 302
-      requiredForce: {x: 10, y: 8}
-    - destination: 217
-      requiredForce: {x: -10, y: 8}
-    - destination: 294
-      requiredForce: {x: 2, y: 10}
-    - destination: 297
-      requiredForce: {x: 4, y: 10}
-    - destination: 287
-      requiredForce: {x: -4, y: 10}
-    - destination: 299
-      requiredForce: {x: 6, y: 10}
-    - destination: 220
-      requiredForce: {x: -6, y: 10}
-    - destination: 301
-      requiredForce: {x: 8, y: 10}
-    - destination: 217
-      requiredForce: {x: -8, y: 10}
-    - destination: 303
-      requiredForce: {x: 10, y: 10}
-    - destination: 149
-      requiredForce: {x: -10, y: 10}
+    gravityLinks: []
   - position: {x: 10, y: 1}
     type: 1
     linearLinks: []
@@ -3037,202 +2013,36 @@ MonoBehaviour:
     type: 4
     linearLinks:
     - destination: 380
-    gravityLinks:
-    - destination: 313
-      requiredForce: {x: -2, y: 2}
-    - destination: 312
-      requiredForce: {x: -4, y: 2}
-    - destination: 311
-      requiredForce: {x: -6, y: 2}
-    - destination: 310
-      requiredForce: {x: -8, y: 2}
-    - destination: 309
-      requiredForce: {x: -10, y: 2}
-    - destination: 313
-      requiredForce: {x: -2, y: 4}
-    - destination: 311
-      requiredForce: {x: -4, y: 4}
-    - destination: 310
-      requiredForce: {x: -6, y: 4}
-    - destination: 309
-      requiredForce: {x: -8, y: 4}
-    - destination: 308
-      requiredForce: {x: -10, y: 4}
-    - destination: 312
-      requiredForce: {x: -2, y: 6}
-    - destination: 311
-      requiredForce: {x: -4, y: 6}
-    - destination: 309
-      requiredForce: {x: -6, y: 6}
-    - destination: 308
-      requiredForce: {x: -8, y: 6}
-    - destination: 307
-      requiredForce: {x: -10, y: 6}
-    - destination: 312
-      requiredForce: {x: -2, y: 8}
-    - destination: 310
-      requiredForce: {x: -4, y: 8}
-    - destination: 308
-      requiredForce: {x: -6, y: 8}
-    - destination: 307
-      requiredForce: {x: -8, y: 8}
-    - destination: 312
-      requiredForce: {x: -2, y: 10}
-    - destination: 309
-      requiredForce: {x: -4, y: 10}
-    - destination: 307
-      requiredForce: {x: -6, y: 10}
-    - destination: 501
-      requiredForce: {x: -10, y: 10}
+    gravityLinks: []
   - position: {x: 32, y: 1}
     type: 3
     linearLinks:
     - destination: 379
     - destination: 381
-    gravityLinks:
-    - destination: 312
-      requiredForce: {x: -6, y: 2}
-    - destination: 311
-      requiredForce: {x: -8, y: 2}
-    - destination: 310
-      requiredForce: {x: -10, y: 2}
-    - destination: 312
-      requiredForce: {x: -4, y: 4}
-    - destination: 311
-      requiredForce: {x: -6, y: 4}
-    - destination: 310
-      requiredForce: {x: -8, y: 4}
-    - destination: 309
-      requiredForce: {x: -10, y: 4}
-    - destination: 312
-      requiredForce: {x: -4, y: 6}
-    - destination: 310
-      requiredForce: {x: -6, y: 6}
-    - destination: 309
-      requiredForce: {x: -8, y: 6}
-    - destination: 307
-      requiredForce: {x: -10, y: 6}
-    - destination: 313
-      requiredForce: {x: -2, y: 8}
-    - destination: 311
-      requiredForce: {x: -4, y: 8}
-    - destination: 309
-      requiredForce: {x: -6, y: 8}
-    - destination: 307
-      requiredForce: {x: -8, y: 8}
-    - destination: 313
-      requiredForce: {x: -2, y: 10}
-    - destination: 310
-      requiredForce: {x: -4, y: 10}
-    - destination: 308
-      requiredForce: {x: -6, y: 10}
+    gravityLinks: []
   - position: {x: 33, y: 1}
     type: 3
     linearLinks:
     - destination: 380
     - destination: 382
-    gravityLinks:
-    - destination: 312
-      requiredForce: {x: -8, y: 2}
-    - destination: 311
-      requiredForce: {x: -10, y: 2}
-    - destination: 312
-      requiredForce: {x: -6, y: 4}
-    - destination: 311
-      requiredForce: {x: -8, y: 4}
-    - destination: 310
-      requiredForce: {x: -10, y: 4}
-    - destination: 313
-      requiredForce: {x: -4, y: 6}
-    - destination: 311
-      requiredForce: {x: -6, y: 6}
-    - destination: 310
-      requiredForce: {x: -8, y: 6}
-    - destination: 308
-      requiredForce: {x: -10, y: 6}
-    - destination: 312
-      requiredForce: {x: -4, y: 8}
-    - destination: 310
-      requiredForce: {x: -6, y: 8}
-    - destination: 308
-      requiredForce: {x: -8, y: 8}
-    - destination: 307
-      requiredForce: {x: -10, y: 8}
-    - destination: 311
-      requiredForce: {x: -4, y: 10}
-    - destination: 309
-      requiredForce: {x: -6, y: 10}
-    - destination: 307
-      requiredForce: {x: -8, y: 10}
+    gravityLinks: []
   - position: {x: 34, y: 1}
     type: 3
     linearLinks:
     - destination: 381
     - destination: 383
-    gravityLinks:
-    - destination: 312
-      requiredForce: {x: -8, y: 4}
-    - destination: 311
-      requiredForce: {x: -10, y: 4}
-    - destination: 312
-      requiredForce: {x: -6, y: 6}
-    - destination: 311
-      requiredForce: {x: -8, y: 6}
-    - destination: 309
-      requiredForce: {x: -10, y: 6}
-    - destination: 311
-      requiredForce: {x: -6, y: 8}
-    - destination: 309
-      requiredForce: {x: -8, y: 8}
-    - destination: 307
-      requiredForce: {x: -10, y: 8}
-    - destination: 312
-      requiredForce: {x: -4, y: 10}
-    - destination: 310
-      requiredForce: {x: -6, y: 10}
-    - destination: 308
-      requiredForce: {x: -8, y: 10}
+    gravityLinks: []
   - position: {x: 35, y: 1}
     type: 3
     linearLinks:
     - destination: 382
     - destination: 384
-    gravityLinks:
-    - destination: 312
-      requiredForce: {x: -10, y: 4}
-    - destination: 312
-      requiredForce: {x: -8, y: 6}
-    - destination: 310
-      requiredForce: {x: -10, y: 6}
-    - destination: 312
-      requiredForce: {x: -6, y: 8}
-    - destination: 310
-      requiredForce: {x: -8, y: 8}
-    - destination: 308
-      requiredForce: {x: -10, y: 8}
-    - destination: 311
-      requiredForce: {x: -6, y: 10}
-    - destination: 309
-      requiredForce: {x: -8, y: 10}
-    - destination: 307
-      requiredForce: {x: -10, y: 10}
+    gravityLinks: []
   - position: {x: 36, y: 1}
     type: 5
     linearLinks:
     - destination: 383
-    gravityLinks:
-    - destination: 311
-      requiredForce: {x: -10, y: 6}
-    - destination: 311
-      requiredForce: {x: -8, y: 8}
-    - destination: 309
-      requiredForce: {x: -10, y: 8}
-    - destination: 312
-      requiredForce: {x: -6, y: 10}
-    - destination: 310
-      requiredForce: {x: -8, y: 10}
-    - destination: 307
-      requiredForce: {x: -10, y: 10}
+    gravityLinks: []
   - position: {x: 37, y: 1}
     type: 2
     linearLinks: []
@@ -3581,164 +2391,12 @@ MonoBehaviour:
     type: 4
     linearLinks:
     - destination: 472
-    gravityLinks:
-    - destination: 275
-      requiredForce: {x: -2, y: 2}
-    - destination: 273
-      requiredForce: {x: -4, y: 2}
-    - destination: 151
-      requiredForce: {x: 6, y: 2}
-    - destination: 217
-      requiredForce: {x: 8, y: 2}
-    - destination: 219
-      requiredForce: {x: 10, y: 2}
-    - destination: 274
-      requiredForce: {x: -2, y: 4}
-    - destination: 150
-      requiredForce: {x: 4, y: 4}
-    - destination: 273
-      requiredForce: {x: -4, y: 4}
-    - destination: 217
-      requiredForce: {x: 6, y: 4}
-    - destination: 75
-      requiredForce: {x: -6, y: 4}
-    - destination: 218
-      requiredForce: {x: 8, y: 4}
-    - destination: 73
-      requiredForce: {x: -8, y: 4}
-    - destination: 220
-      requiredForce: {x: 10, y: 4}
-    - destination: 71
-      requiredForce: {x: -10, y: 4}
-    - destination: 274
-      requiredForce: {x: -2, y: 6}
-    - destination: 151
-      requiredForce: {x: 4, y: 6}
-    - destination: 76
-      requiredForce: {x: -4, y: 6}
-    - destination: 217
-      requiredForce: {x: 6, y: 6}
-    - destination: 74
-      requiredForce: {x: -6, y: 6}
-    - destination: 219
-      requiredForce: {x: 8, y: 6}
-    - destination: 72
-      requiredForce: {x: -8, y: 6}
-    - destination: 221
-      requiredForce: {x: 10, y: 6}
-    - destination: 148
-      requiredForce: {x: 2, y: 8}
-    - destination: 274
-      requiredForce: {x: -2, y: 8}
-    - destination: 151
-      requiredForce: {x: 4, y: 8}
-    - destination: 218
-      requiredForce: {x: 6, y: 8}
-    - destination: 221
-      requiredForce: {x: 8, y: 8}
-    - destination: 287
-      requiredForce: {x: 10, y: 8}
-    - destination: 149
-      requiredForce: {x: 2, y: 10}
-    - destination: 273
-      requiredForce: {x: -2, y: 10}
-    - destination: 151
-      requiredForce: {x: 4, y: 10}
-    - destination: 75
-      requiredForce: {x: -4, y: 10}
-    - destination: 219
-      requiredForce: {x: 6, y: 10}
-    - destination: 72
-      requiredForce: {x: -6, y: 10}
-    - destination: 221
-      requiredForce: {x: 8, y: 10}
-    - destination: 288
-      requiredForce: {x: 10, y: 10}
+    gravityLinks: []
   - position: {x: -6, y: 3}
     type: 5
     linearLinks:
     - destination: 471
-    gravityLinks:
-    - destination: 149
-      requiredForce: {x: 2, y: 2}
-    - destination: 150
-      requiredForce: {x: 4, y: 2}
-    - destination: 217
-      requiredForce: {x: 6, y: 2}
-    - destination: 273
-      requiredForce: {x: -6, y: 2}
-    - destination: 218
-      requiredForce: {x: 8, y: 2}
-    - destination: 220
-      requiredForce: {x: 10, y: 2}
-    - destination: 149
-      requiredForce: {x: 2, y: 4}
-    - destination: 151
-      requiredForce: {x: 4, y: 4}
-    - destination: 274
-      requiredForce: {x: -4, y: 4}
-    - destination: 218
-      requiredForce: {x: 6, y: 4}
-    - destination: 76
-      requiredForce: {x: -6, y: 4}
-    - destination: 219
-      requiredForce: {x: 8, y: 4}
-    - destination: 74
-      requiredForce: {x: -8, y: 4}
-    - destination: 221
-      requiredForce: {x: 10, y: 4}
-    - destination: 72
-      requiredForce: {x: -10, y: 4}
-    - destination: 149
-      requiredForce: {x: 2, y: 6}
-    - destination: 151
-      requiredForce: {x: 4, y: 6}
-    - destination: 273
-      requiredForce: {x: -4, y: 6}
-    - destination: 218
-      requiredForce: {x: 6, y: 6}
-    - destination: 75
-      requiredForce: {x: -6, y: 6}
-    - destination: 220
-      requiredForce: {x: 8, y: 6}
-    - destination: 73
-      requiredForce: {x: -8, y: 6}
-    - destination: 287
-      requiredForce: {x: 10, y: 6}
-    - destination: 71
-      requiredForce: {x: -10, y: 6}
-    - destination: 149
-      requiredForce: {x: 2, y: 8}
-    - destination: 275
-      requiredForce: {x: -2, y: 8}
-    - destination: 217
-      requiredForce: {x: 4, y: 8}
-    - destination: 273
-      requiredForce: {x: -4, y: 8}
-    - destination: 219
-      requiredForce: {x: 6, y: 8}
-    - destination: 221
-      requiredForce: {x: 8, y: 8}
-    - destination: 288
-      requiredForce: {x: 10, y: 8}
-    - destination: 150
-      requiredForce: {x: 2, y: 10}
-    - destination: 274
-      requiredForce: {x: -2, y: 10}
-    - destination: 217
-      requiredForce: {x: 4, y: 10}
-    - destination: 76
-      requiredForce: {x: -4, y: 10}
-    - destination: 220
-      requiredForce: {x: 6, y: 10}
-    - destination: 73
-      requiredForce: {x: -6, y: 10}
-    - destination: 287
-      requiredForce: {x: 8, y: 10}
-    - destination: 71
-      requiredForce: {x: -8, y: 10}
-    - destination: 354
-      requiredForce: {x: 10, y: 10}
+    gravityLinks: []
   - position: {x: -5, y: 3}
     type: 1
     linearLinks: []
@@ -3847,270 +2505,18 @@ MonoBehaviour:
     type: 4
     linearLinks:
     - destination: 500
-    gravityLinks:
-    - destination: 303
-      requiredForce: {x: -2, y: 2}
-    - destination: 301
-      requiredForce: {x: -4, y: 2}
-    - destination: 300
-      requiredForce: {x: -6, y: 2}
-    - destination: 310
-      requiredForce: {x: 8, y: 2}
-    - destination: 298
-      requiredForce: {x: -8, y: 2}
-    - destination: 311
-      requiredForce: {x: 10, y: 2}
-    - destination: 297
-      requiredForce: {x: -10, y: 2}
-    - destination: 302
-      requiredForce: {x: -2, y: 4}
-    - destination: 301
-      requiredForce: {x: -4, y: 4}
-    - destination: 309
-      requiredForce: {x: 6, y: 4}
-    - destination: 299
-      requiredForce: {x: -6, y: 4}
-    - destination: 311
-      requiredForce: {x: 8, y: 4}
-    - destination: 297
-      requiredForce: {x: -8, y: 4}
-    - destination: 312
-      requiredForce: {x: 10, y: 4}
-    - destination: 296
-      requiredForce: {x: -10, y: 4}
-    - destination: 302
-      requiredForce: {x: -2, y: 6}
-    - destination: 308
-      requiredForce: {x: 4, y: 6}
-    - destination: 300
-      requiredForce: {x: -4, y: 6}
-    - destination: 310
-      requiredForce: {x: 6, y: 6}
-    - destination: 298
-      requiredForce: {x: -6, y: 6}
-    - destination: 312
-      requiredForce: {x: 8, y: 6}
-    - destination: 296
-      requiredForce: {x: -8, y: 6}
-    - destination: 313
-      requiredForce: {x: 10, y: 6}
-    - destination: 294
-      requiredForce: {x: -10, y: 6}
-    - destination: 302
-      requiredForce: {x: -2, y: 8}
-    - destination: 309
-      requiredForce: {x: 4, y: 8}
-    - destination: 299
-      requiredForce: {x: -4, y: 8}
-    - destination: 311
-      requiredForce: {x: 6, y: 8}
-    - destination: 297
-      requiredForce: {x: -6, y: 8}
-    - destination: 313
-      requiredForce: {x: 8, y: 8}
-    - destination: 295
-      requiredForce: {x: -8, y: 8}
-    - destination: 380
-      requiredForce: {x: 10, y: 8}
-    - destination: 293
-      requiredForce: {x: -10, y: 8}
-    - destination: 301
-      requiredForce: {x: -2, y: 10}
-    - destination: 309
-      requiredForce: {x: 4, y: 10}
-    - destination: 299
-      requiredForce: {x: -4, y: 10}
-    - destination: 312
-      requiredForce: {x: 6, y: 10}
-    - destination: 296
-      requiredForce: {x: -6, y: 10}
-    - destination: 379
-      requiredForce: {x: 8, y: 10}
-    - destination: 294
-      requiredForce: {x: -8, y: 10}
-    - destination: 381
-      requiredForce: {x: 10, y: 10}
-    - destination: 357
-      requiredForce: {x: -10, y: 10}
+    gravityLinks: []
   - position: {x: 22, y: 3}
     type: 3
     linearLinks:
     - destination: 499
     - destination: 501
-    gravityLinks:
-    - destination: 309
-      requiredForce: {x: 6, y: 2}
-    - destination: 301
-      requiredForce: {x: -6, y: 2}
-    - destination: 311
-      requiredForce: {x: 8, y: 2}
-    - destination: 299
-      requiredForce: {x: -8, y: 2}
-    - destination: 312
-      requiredForce: {x: 10, y: 2}
-    - destination: 298
-      requiredForce: {x: -10, y: 2}
-    - destination: 308
-      requiredForce: {x: 4, y: 4}
-    - destination: 302
-      requiredForce: {x: -4, y: 4}
-    - destination: 310
-      requiredForce: {x: 6, y: 4}
-    - destination: 300
-      requiredForce: {x: -6, y: 4}
-    - destination: 312
-      requiredForce: {x: 8, y: 4}
-    - destination: 298
-      requiredForce: {x: -8, y: 4}
-    - destination: 313
-      requiredForce: {x: 10, y: 4}
-    - destination: 297
-      requiredForce: {x: -10, y: 4}
-    - destination: 309
-      requiredForce: {x: 4, y: 6}
-    - destination: 301
-      requiredForce: {x: -4, y: 6}
-    - destination: 311
-      requiredForce: {x: 6, y: 6}
-    - destination: 299
-      requiredForce: {x: -6, y: 6}
-    - destination: 313
-      requiredForce: {x: 8, y: 6}
-    - destination: 297
-      requiredForce: {x: -8, y: 6}
-    - destination: 379
-      requiredForce: {x: 10, y: 6}
-    - destination: 295
-      requiredForce: {x: -10, y: 6}
-    - destination: 307
-      requiredForce: {x: 2, y: 8}
-    - destination: 303
-      requiredForce: {x: -2, y: 8}
-    - destination: 310
-      requiredForce: {x: 4, y: 8}
-    - destination: 300
-      requiredForce: {x: -4, y: 8}
-    - destination: 312
-      requiredForce: {x: 6, y: 8}
-    - destination: 298
-      requiredForce: {x: -6, y: 8}
-    - destination: 313
-      requiredForce: {x: 8, y: 8}
-    - destination: 296
-      requiredForce: {x: -8, y: 8}
-    - destination: 381
-      requiredForce: {x: 10, y: 8}
-    - destination: 294
-      requiredForce: {x: -10, y: 8}
-    - destination: 308
-      requiredForce: {x: 2, y: 10}
-    - destination: 302
-      requiredForce: {x: -2, y: 10}
-    - destination: 310
-      requiredForce: {x: 4, y: 10}
-    - destination: 300
-      requiredForce: {x: -4, y: 10}
-    - destination: 313
-      requiredForce: {x: 6, y: 10}
-    - destination: 297
-      requiredForce: {x: -6, y: 10}
-    - destination: 380
-      requiredForce: {x: 8, y: 10}
-    - destination: 295
-      requiredForce: {x: -8, y: 10}
-    - destination: 382
-      requiredForce: {x: 10, y: 10}
-    - destination: 293
-      requiredForce: {x: -10, y: 10}
+    gravityLinks: []
   - position: {x: 23, y: 3}
     type: 5
     linearLinks:
     - destination: 500
-    gravityLinks:
-    - destination: 307
-      requiredForce: {x: 2, y: 2}
-    - destination: 309
-      requiredForce: {x: 4, y: 2}
-    - destination: 310
-      requiredForce: {x: 6, y: 2}
-    - destination: 312
-      requiredForce: {x: 8, y: 2}
-    - destination: 300
-      requiredForce: {x: -8, y: 2}
-    - destination: 313
-      requiredForce: {x: 10, y: 2}
-    - destination: 299
-      requiredForce: {x: -10, y: 2}
-    - destination: 308
-      requiredForce: {x: 2, y: 4}
-    - destination: 309
-      requiredForce: {x: 4, y: 4}
-    - destination: 311
-      requiredForce: {x: 6, y: 4}
-    - destination: 301
-      requiredForce: {x: -6, y: 4}
-    - destination: 313
-      requiredForce: {x: 8, y: 4}
-    - destination: 299
-      requiredForce: {x: -8, y: 4}
-    - destination: 379
-      requiredForce: {x: 10, y: 4}
-    - destination: 298
-      requiredForce: {x: -10, y: 4}
-    - destination: 308
-      requiredForce: {x: 2, y: 6}
-    - destination: 310
-      requiredForce: {x: 4, y: 6}
-    - destination: 302
-      requiredForce: {x: -4, y: 6}
-    - destination: 312
-      requiredForce: {x: 6, y: 6}
-    - destination: 300
-      requiredForce: {x: -6, y: 6}
-    - destination: 313
-      requiredForce: {x: 8, y: 6}
-    - destination: 298
-      requiredForce: {x: -8, y: 6}
-    - destination: 380
-      requiredForce: {x: 10, y: 6}
-    - destination: 296
-      requiredForce: {x: -10, y: 6}
-    - destination: 308
-      requiredForce: {x: 2, y: 8}
-    - destination: 311
-      requiredForce: {x: 4, y: 8}
-    - destination: 301
-      requiredForce: {x: -4, y: 8}
-    - destination: 313
-      requiredForce: {x: 6, y: 8}
-    - destination: 299
-      requiredForce: {x: -6, y: 8}
-    - destination: 379
-      requiredForce: {x: 8, y: 8}
-    - destination: 297
-      requiredForce: {x: -8, y: 8}
-    - destination: 382
-      requiredForce: {x: 10, y: 8}
-    - destination: 295
-      requiredForce: {x: -10, y: 8}
-    - destination: 309
-      requiredForce: {x: 2, y: 10}
-    - destination: 311
-      requiredForce: {x: 4, y: 10}
-    - destination: 301
-      requiredForce: {x: -4, y: 10}
-    - destination: 313
-      requiredForce: {x: 6, y: 10}
-    - destination: 298
-      requiredForce: {x: -6, y: 10}
-    - destination: 381
-      requiredForce: {x: 8, y: 10}
-    - destination: 296
-      requiredForce: {x: -8, y: 10}
-    - destination: 383
-      requiredForce: {x: 10, y: 10}
-    - destination: 293
-      requiredForce: {x: -10, y: 10}
+    gravityLinks: []
   - position: {x: 24, y: 3}
     type: 1
     linearLinks: []
@@ -4455,124 +2861,24 @@ MonoBehaviour:
     type: 5
     linearLinks:
     - destination: 588
-    gravityLinks:
-    - destination: 76
-      requiredForce: {x: 8, y: 4}
-    - destination: 75
-      requiredForce: {x: 6, y: 6}
-    - destination: 77
-      requiredForce: {x: 8, y: 6}
-    - destination: 273
-      requiredForce: {x: 10, y: 6}
-    - destination: 275
-      requiredForce: {x: 10, y: 8}
-    - destination: 73
-      requiredForce: {x: 4, y: 10}
-    - destination: 76
-      requiredForce: {x: 6, y: 10}
-    - destination: 273
-      requiredForce: {x: 8, y: 10}
+    gravityLinks: []
   - position: {x: -20, y: 5}
     type: 3
     linearLinks:
     - destination: 587
     - destination: 589
-    gravityLinks:
-    - destination: 75
-      requiredForce: {x: 6, y: 4}
-    - destination: 77
-      requiredForce: {x: 8, y: 4}
-    - destination: 273
-      requiredForce: {x: 10, y: 4}
-    - destination: 73
-      requiredForce: {x: 4, y: 6}
-    - destination: 76
-      requiredForce: {x: 6, y: 6}
-    - destination: 274
-      requiredForce: {x: 10, y: 6}
-    - destination: 273
-      requiredForce: {x: 8, y: 8}
-    - destination: 275
-      requiredForce: {x: 10, y: 8}
-    - destination: 74
-      requiredForce: {x: 4, y: 10}
-    - destination: 77
-      requiredForce: {x: 6, y: 10}
-    - destination: 274
-      requiredForce: {x: 8, y: 10}
+    gravityLinks: []
   - position: {x: -19, y: 5}
     type: 3
     linearLinks:
     - destination: 588
     - destination: 590
-    gravityLinks:
-    - destination: 273
-      requiredForce: {x: 10, y: 2}
-    - destination: 74
-      requiredForce: {x: 4, y: 4}
-    - destination: 76
-      requiredForce: {x: 6, y: 4}
-    - destination: 274
-      requiredForce: {x: 10, y: 4}
-    - destination: 74
-      requiredForce: {x: 4, y: 6}
-    - destination: 77
-      requiredForce: {x: 6, y: 6}
-    - destination: 273
-      requiredForce: {x: 8, y: 6}
-    - destination: 275
-      requiredForce: {x: 10, y: 6}
-    - destination: 274
-      requiredForce: {x: 8, y: 8}
-    - destination: 72
-      requiredForce: {x: 2, y: 10}
-    - destination: 75
-      requiredForce: {x: 4, y: 10}
-    - destination: 273
-      requiredForce: {x: 6, y: 10}
-    - destination: 275
-      requiredForce: {x: 8, y: 10}
-    - destination: 471
-      requiredForce: {x: 10, y: 10}
+    gravityLinks: []
   - position: {x: -18, y: 5}
     type: 5
     linearLinks:
     - destination: 589
-    gravityLinks:
-    - destination: 274
-      requiredForce: {x: 10, y: 2}
-    - destination: 72
-      requiredForce: {x: 2, y: 4}
-    - destination: 75
-      requiredForce: {x: 4, y: 4}
-    - destination: 77
-      requiredForce: {x: 6, y: 4}
-    - destination: 273
-      requiredForce: {x: 8, y: 4}
-    - destination: 275
-      requiredForce: {x: 10, y: 4}
-    - destination: 73
-      requiredForce: {x: 2, y: 6}
-    - destination: 75
-      requiredForce: {x: 4, y: 6}
-    - destination: 77
-      requiredForce: {x: 6, y: 6}
-    - destination: 274
-      requiredForce: {x: 8, y: 6}
-    - destination: 273
-      requiredForce: {x: 6, y: 8}
-    - destination: 275
-      requiredForce: {x: 8, y: 8}
-    - destination: 471
-      requiredForce: {x: 10, y: 8}
-    - destination: 73
-      requiredForce: {x: 2, y: 10}
-    - destination: 76
-      requiredForce: {x: 4, y: 10}
-    - destination: 274
-      requiredForce: {x: 6, y: 10}
-    - destination: 472
-      requiredForce: {x: 10, y: 10}
+    gravityLinks: []
   - position: {x: -17, y: 5}
     type: 1
     linearLinks: []
@@ -7437,47 +5743,25 @@ MonoBehaviour:
     type: 4
     linearLinks:
     - destination: 1307
-    gravityLinks:
-    - destination: 589
-      requiredForce: {x: -2, y: 2}
-    - destination: 588
-      requiredForce: {x: -2, y: 4}
-    - destination: 588
-      requiredForce: {x: -2, y: 6}
-    - destination: 588
-      requiredForce: {x: -2, y: 8}
-    - destination: 588
-      requiredForce: {x: -2, y: 10}
+    gravityLinks: []
   - position: {x: -16, y: 16}
     type: 3
     linearLinks:
     - destination: 1306
     - destination: 1308
-    gravityLinks:
-    - destination: 587
-      requiredForce: {x: -4, y: 4}
-    - destination: 589
-      requiredForce: {x: -2, y: 8}
-    - destination: 589
-      requiredForce: {x: -2, y: 10}
+    gravityLinks: []
   - position: {x: -15, y: 16}
     type: 3
     linearLinks:
     - destination: 1307
     - destination: 1309
-    gravityLinks:
-    - destination: 587
-      requiredForce: {x: -4, y: 6}
-    - destination: 587
-      requiredForce: {x: -4, y: 8}
+    gravityLinks: []
   - position: {x: -14, y: 16}
     type: 3
     linearLinks:
     - destination: 1308
     - destination: 1310
-    gravityLinks:
-    - destination: 587
-      requiredForce: {x: -4, y: 10}
+    gravityLinks: []
   - position: {x: -13, y: 16}
     type: 3
     linearLinks:
@@ -7531,9 +5815,7 @@ MonoBehaviour:
     linearLinks:
     - destination: 1317
     - destination: 1319
-    gravityLinks:
-    - destination: 297
-      requiredForce: {x: 10, y: 10}
+    gravityLinks: []
   - position: {x: -4, y: 16}
     type: 3
     linearLinks:
@@ -7545,174 +5827,54 @@ MonoBehaviour:
     linearLinks:
     - destination: 1319
     - destination: 1321
-    gravityLinks:
-    - destination: 298
-      requiredForce: {x: 10, y: 8}
+    gravityLinks: []
   - position: {x: -2, y: 16}
     type: 3
     linearLinks:
     - destination: 1320
     - destination: 1322
-    gravityLinks:
-    - destination: 296
-      requiredForce: {x: 8, y: 10}
+    gravityLinks: []
   - position: {x: -1, y: 16}
     type: 3
     linearLinks:
     - destination: 1321
     - destination: 1323
-    gravityLinks:
-    - destination: 296
-      requiredForce: {x: 8, y: 8}
-    - destination: 1333
-      requiredForce: {x: 10, y: 10}
+    gravityLinks: []
   - position: {x: 0, y: 16}
     type: 3
     linearLinks:
     - destination: 1322
     - destination: 1324
-    gravityLinks:
-    - destination: 294
-      requiredForce: {x: 6, y: 10}
-    - destination: 1334
-      requiredForce: {x: 10, y: 10}
+    gravityLinks: []
   - position: {x: 1, y: 16}
     type: 3
     linearLinks:
     - destination: 1323
     - destination: 1325
-    gravityLinks:
-    - destination: 297
-      requiredForce: {x: 8, y: 6}
-    - destination: 295
-      requiredForce: {x: 6, y: 8}
-    - destination: 1333
-      requiredForce: {x: 10, y: 8}
-    - destination: 295
-      requiredForce: {x: 6, y: 10}
-    - destination: 1333
-      requiredForce: {x: 8, y: 10}
-    - destination: 1335
-      requiredForce: {x: 10, y: 10}
+    gravityLinks: []
   - position: {x: 2, y: 16}
     type: 3
     linearLinks:
     - destination: 1324
     - destination: 1326
-    gravityLinks:
-    - destination: 297
-      requiredForce: {x: 8, y: 4}
-    - destination: 295
-      requiredForce: {x: 6, y: 6}
-    - destination: 296
-      requiredForce: {x: 6, y: 8}
-    - destination: 1334
-      requiredForce: {x: 10, y: 8}
-    - destination: 357
-      requiredForce: {x: 4, y: 10}
-    - destination: 1334
-      requiredForce: {x: 8, y: 10}
-    - destination: 1336
-      requiredForce: {x: 10, y: 10}
+    gravityLinks: []
   - position: {x: 3, y: 16}
     type: 3
     linearLinks:
     - destination: 1325
     - destination: 1327
-    gravityLinks:
-    - destination: 297
-      requiredForce: {x: 8, y: 2}
-    - destination: 295
-      requiredForce: {x: 6, y: 4}
-    - destination: 357
-      requiredForce: {x: 4, y: 6}
-    - destination: 296
-      requiredForce: {x: 6, y: 6}
-    - destination: 1333
-      requiredForce: {x: 10, y: 6}
-    - destination: 293
-      requiredForce: {x: 4, y: 8}
-    - destination: 1333
-      requiredForce: {x: 8, y: 8}
-    - destination: 1335
-      requiredForce: {x: 10, y: 8}
-    - destination: 294
-      requiredForce: {x: 4, y: 10}
-    - destination: 1335
-      requiredForce: {x: 8, y: 10}
-    - destination: 1337
-      requiredForce: {x: 10, y: 10}
+    gravityLinks: []
   - position: {x: 4, y: 16}
     type: 3
     linearLinks:
     - destination: 1326
     - destination: 1328
-    gravityLinks:
-    - destination: 295
-      requiredForce: {x: 6, y: 2}
-    - destination: 293
-      requiredForce: {x: 4, y: 4}
-    - destination: 294
-      requiredForce: {x: 4, y: 6}
-    - destination: 1333
-      requiredForce: {x: 8, y: 6}
-    - destination: 1334
-      requiredForce: {x: 10, y: 6}
-    - destination: 356
-      requiredForce: {x: 2, y: 8}
-    - destination: 294
-      requiredForce: {x: 4, y: 8}
-    - destination: 1334
-      requiredForce: {x: 8, y: 8}
-    - destination: 1336
-      requiredForce: {x: 10, y: 8}
-    - destination: 356
-      requiredForce: {x: 2, y: 10}
-    - destination: 1333
-      requiredForce: {x: 6, y: 10}
-    - destination: 1336
-      requiredForce: {x: 8, y: 10}
-    - destination: 1338
-      requiredForce: {x: 10, y: 10}
+    gravityLinks: []
   - position: {x: 5, y: 16}
     type: 5
     linearLinks:
     - destination: 1327
-    gravityLinks:
-    - destination: 356
-      requiredForce: {x: 2, y: 2}
-    - destination: 294
-      requiredForce: {x: 4, y: 2}
-    - destination: 356
-      requiredForce: {x: 2, y: 4}
-    - destination: 294
-      requiredForce: {x: 4, y: 4}
-    - destination: 1333
-      requiredForce: {x: 10, y: 4}
-    - destination: 356
-      requiredForce: {x: 2, y: 6}
-    - destination: 295
-      requiredForce: {x: 4, y: 6}
-    - destination: 1334
-      requiredForce: {x: 8, y: 6}
-    - destination: 1335
-      requiredForce: {x: 10, y: 6}
-    - destination: 357
-      requiredForce: {x: 2, y: 8}
-    - destination: 1333
-      requiredForce: {x: 6, y: 8}
-    - destination: 1335
-      requiredForce: {x: 8, y: 8}
-    - destination: 1337
-      requiredForce: {x: 10, y: 8}
-    - destination: 357
-      requiredForce: {x: 2, y: 10}
-    - destination: 1334
-      requiredForce: {x: 6, y: 10}
-    - destination: 1337
-      requiredForce: {x: 8, y: 10}
-    - destination: 1339
-      requiredForce: {x: 10, y: 10}
+    gravityLinks: []
   - position: {x: 6, y: 16}
     type: 1
     linearLinks: []
@@ -7733,175 +5895,55 @@ MonoBehaviour:
     type: 4
     linearLinks:
     - destination: 1334
-    gravityLinks:
-    - destination: 355
-      requiredForce: {x: -2, y: 2}
-    - destination: 287
-      requiredForce: {x: -4, y: 2}
-    - destination: 355
-      requiredForce: {x: -2, y: 4}
-    - destination: 287
-      requiredForce: {x: -4, y: 4}
-    - destination: 1328
-      requiredForce: {x: -10, y: 4}
-    - destination: 355
-      requiredForce: {x: -2, y: 6}
-    - destination: 287
-      requiredForce: {x: -4, y: 6}
-    - destination: 1327
-      requiredForce: {x: -8, y: 6}
-    - destination: 1326
-      requiredForce: {x: -10, y: 6}
-    - destination: 354
-      requiredForce: {x: -2, y: 8}
-    - destination: 1328
-      requiredForce: {x: -6, y: 8}
-    - destination: 1326
-      requiredForce: {x: -8, y: 8}
-    - destination: 1324
-      requiredForce: {x: -10, y: 8}
-    - destination: 354
-      requiredForce: {x: -2, y: 10}
-    - destination: 1327
-      requiredForce: {x: -6, y: 10}
-    - destination: 1324
-      requiredForce: {x: -8, y: 10}
-    - destination: 1322
-      requiredForce: {x: -10, y: 10}
+    gravityLinks: []
   - position: {x: 11, y: 16}
     type: 3
     linearLinks:
     - destination: 1333
     - destination: 1335
-    gravityLinks:
-    - destination: 220
-      requiredForce: {x: -6, y: 2}
-    - destination: 288
-      requiredForce: {x: -4, y: 4}
-    - destination: 287
-      requiredForce: {x: -4, y: 6}
-    - destination: 1328
-      requiredForce: {x: -8, y: 6}
-    - destination: 1327
-      requiredForce: {x: -10, y: 6}
-    - destination: 355
-      requiredForce: {x: -2, y: 8}
-    - destination: 287
-      requiredForce: {x: -4, y: 8}
-    - destination: 1327
-      requiredForce: {x: -8, y: 8}
-    - destination: 1325
-      requiredForce: {x: -10, y: 8}
-    - destination: 355
-      requiredForce: {x: -2, y: 10}
-    - destination: 1328
-      requiredForce: {x: -6, y: 10}
-    - destination: 1325
-      requiredForce: {x: -8, y: 10}
-    - destination: 1323
-      requiredForce: {x: -10, y: 10}
+    gravityLinks: []
   - position: {x: 12, y: 16}
     type: 3
     linearLinks:
     - destination: 1334
     - destination: 1336
-    gravityLinks:
-    - destination: 219
-      requiredForce: {x: -8, y: 2}
-    - destination: 221
-      requiredForce: {x: -6, y: 4}
-    - destination: 354
-      requiredForce: {x: -4, y: 6}
-    - destination: 220
-      requiredForce: {x: -6, y: 6}
-    - destination: 1328
-      requiredForce: {x: -10, y: 6}
-    - destination: 288
-      requiredForce: {x: -4, y: 8}
-    - destination: 1328
-      requiredForce: {x: -8, y: 8}
-    - destination: 1326
-      requiredForce: {x: -10, y: 8}
-    - destination: 287
-      requiredForce: {x: -4, y: 10}
-    - destination: 1326
-      requiredForce: {x: -8, y: 10}
-    - destination: 1324
-      requiredForce: {x: -10, y: 10}
+    gravityLinks: []
   - position: {x: 13, y: 16}
     type: 3
     linearLinks:
     - destination: 1335
     - destination: 1337
-    gravityLinks:
-    - destination: 219
-      requiredForce: {x: -8, y: 4}
-    - destination: 221
-      requiredForce: {x: -6, y: 6}
-    - destination: 220
-      requiredForce: {x: -6, y: 8}
-    - destination: 1327
-      requiredForce: {x: -10, y: 8}
-    - destination: 354
-      requiredForce: {x: -4, y: 10}
-    - destination: 1328
-      requiredForce: {x: -8, y: 10}
-    - destination: 1325
-      requiredForce: {x: -10, y: 10}
+    gravityLinks: []
   - position: {x: 14, y: 16}
     type: 3
     linearLinks:
     - destination: 1336
     - destination: 1338
-    gravityLinks:
-    - destination: 219
-      requiredForce: {x: -8, y: 6}
-    - destination: 221
-      requiredForce: {x: -6, y: 8}
-    - destination: 1328
-      requiredForce: {x: -10, y: 8}
-    - destination: 220
-      requiredForce: {x: -6, y: 10}
-    - destination: 1328
-      requiredForce: {x: -8, y: 10}
-    - destination: 1326
-      requiredForce: {x: -10, y: 10}
+    gravityLinks: []
   - position: {x: 15, y: 16}
     type: 3
     linearLinks:
     - destination: 1337
     - destination: 1339
-    gravityLinks:
-    - destination: 287
-      requiredForce: {x: -6, y: 10}
-    - destination: 1327
-      requiredForce: {x: -10, y: 10}
+    gravityLinks: []
   - position: {x: 16, y: 16}
     type: 3
     linearLinks:
     - destination: 1338
     - destination: 1340
-    gravityLinks:
-    - destination: 220
-      requiredForce: {x: -8, y: 8}
-    - destination: 1328
-      requiredForce: {x: -10, y: 10}
+    gravityLinks: []
   - position: {x: 17, y: 16}
     type: 3
     linearLinks:
     - destination: 1339
     - destination: 1341
-    gravityLinks:
-    - destination: 219
-      requiredForce: {x: -8, y: 10}
+    gravityLinks: []
   - position: {x: 18, y: 16}
     type: 3
     linearLinks:
     - destination: 1340
     - destination: 1342
-    gravityLinks:
-    - destination: 218
-      requiredForce: {x: -10, y: 8}
+    gravityLinks: []
   - position: {x: 19, y: 16}
     type: 3
     linearLinks:
@@ -7913,9 +5955,7 @@ MonoBehaviour:
     linearLinks:
     - destination: 1342
     - destination: 1344
-    gravityLinks:
-    - destination: 219
-      requiredForce: {x: -10, y: 10}
+    gravityLinks: []
   - position: {x: 21, y: 16}
     type: 3
     linearLinks:
@@ -7951,130 +5991,48 @@ MonoBehaviour:
     linearLinks:
     - destination: 1348
     - destination: 1350
-    gravityLinks:
-    - destination: 1360
-      requiredForce: {x: 10, y: 10}
+    gravityLinks: []
   - position: {x: 27, y: 16}
     type: 3
     linearLinks:
     - destination: 1349
     - destination: 1351
-    gravityLinks:
-    - destination: 1361
-      requiredForce: {x: 10, y: 10}
+    gravityLinks: []
   - position: {x: 28, y: 16}
     type: 3
     linearLinks:
     - destination: 1350
     - destination: 1352
-    gravityLinks:
-    - destination: 1360
-      requiredForce: {x: 10, y: 8}
-    - destination: 1360
-      requiredForce: {x: 8, y: 10}
-    - destination: 1362
-      requiredForce: {x: 10, y: 10}
+    gravityLinks: []
   - position: {x: 29, y: 16}
     type: 3
     linearLinks:
     - destination: 1351
     - destination: 1353
-    gravityLinks:
-    - destination: 1361
-      requiredForce: {x: 10, y: 8}
-    - destination: 1360
-      requiredForce: {x: 8, y: 10}
-    - destination: 1362
-      requiredForce: {x: 10, y: 10}
+    gravityLinks: []
   - position: {x: 30, y: 16}
     type: 3
     linearLinks:
     - destination: 1352
     - destination: 1354
-    gravityLinks:
-    - destination: 1360
-      requiredForce: {x: 10, y: 6}
-    - destination: 1360
-      requiredForce: {x: 8, y: 8}
-    - destination: 1362
-      requiredForce: {x: 10, y: 8}
-    - destination: 1361
-      requiredForce: {x: 8, y: 10}
+    gravityLinks: []
   - position: {x: 31, y: 16}
     type: 3
     linearLinks:
     - destination: 1353
     - destination: 1355
-    gravityLinks:
-    - destination: 1360
-      requiredForce: {x: 8, y: 6}
-    - destination: 1361
-      requiredForce: {x: 10, y: 6}
-    - destination: 1361
-      requiredForce: {x: 8, y: 8}
-    - destination: 1362
-      requiredForce: {x: 10, y: 8}
-    - destination: 1360
-      requiredForce: {x: 6, y: 10}
-    - destination: 1362
-      requiredForce: {x: 8, y: 10}
+    gravityLinks: []
   - position: {x: 32, y: 16}
     type: 3
     linearLinks:
     - destination: 1354
     - destination: 1356
-    gravityLinks:
-    - destination: 1360
-      requiredForce: {x: 10, y: 4}
-    - destination: 1360
-      requiredForce: {x: 8, y: 6}
-    - destination: 1362
-      requiredForce: {x: 10, y: 6}
-    - destination: 384
-      requiredForce: {x: 2, y: 8}
-    - destination: 1360
-      requiredForce: {x: 6, y: 8}
-    - destination: 1362
-      requiredForce: {x: 8, y: 8}
-    - destination: 1362
-      requiredForce: {x: 10, y: 8}
-    - destination: 384
-      requiredForce: {x: 2, y: 10}
-    - destination: 1361
-      requiredForce: {x: 6, y: 10}
+    gravityLinks: []
   - position: {x: 33, y: 16}
     type: 5
     linearLinks:
     - destination: 1355
-    gravityLinks:
-    - destination: 384
-      requiredForce: {x: 2, y: 2}
-    - destination: 384
-      requiredForce: {x: 2, y: 4}
-    - destination: 1360
-      requiredForce: {x: 8, y: 4}
-    - destination: 1361
-      requiredForce: {x: 10, y: 4}
-    - destination: 384
-      requiredForce: {x: 2, y: 6}
-    - destination: 1360
-      requiredForce: {x: 6, y: 6}
-    - destination: 1361
-      requiredForce: {x: 8, y: 6}
-    - destination: 1362
-      requiredForce: {x: 10, y: 6}
-    - destination: 384
-      requiredForce: {x: 2, y: 8}
-    - destination: 1360
-      requiredForce: {x: 4, y: 8}
-    - destination: 1361
-      requiredForce: {x: 6, y: 8}
-    - destination: 1362
-      requiredForce: {x: 8, y: 8}
-    - destination: 1360
-      requiredForce: {x: 4, y: 10}
-    - destination: 1362
-      requiredForce: {x: 6, y: 10}
+    gravityLinks: []
   - position: {x: 34, y: 16}
     type: 1
     linearLinks: []
@@ -8091,92 +6049,18 @@ MonoBehaviour:
     type: 4
     linearLinks:
     - destination: 1361
-    gravityLinks:
-    - destination: 382
-      requiredForce: {x: -2, y: 2}
-    - destination: 382
-      requiredForce: {x: -2, y: 4}
-    - destination: 1356
-      requiredForce: {x: -8, y: 4}
-    - destination: 1355
-      requiredForce: {x: -10, y: 4}
-    - destination: 382
-      requiredForce: {x: -2, y: 6}
-    - destination: 1356
-      requiredForce: {x: -6, y: 6}
-    - destination: 1355
-      requiredForce: {x: -8, y: 6}
-    - destination: 1353
-      requiredForce: {x: -10, y: 6}
-    - destination: 381
-      requiredForce: {x: -2, y: 8}
-    - destination: 1356
-      requiredForce: {x: -4, y: 8}
-    - destination: 1355
-      requiredForce: {x: -6, y: 8}
-    - destination: 1353
-      requiredForce: {x: -8, y: 8}
-    - destination: 1351
-      requiredForce: {x: -10, y: 8}
-    - destination: 381
-      requiredForce: {x: -2, y: 10}
-    - destination: 1356
-      requiredForce: {x: -4, y: 10}
-    - destination: 1354
-      requiredForce: {x: -6, y: 10}
-    - destination: 1352
-      requiredForce: {x: -8, y: 10}
-    - destination: 1349
-      requiredForce: {x: -10, y: 10}
+    gravityLinks: []
   - position: {x: 38, y: 16}
     type: 3
     linearLinks:
     - destination: 1360
     - destination: 1362
-    gravityLinks:
-    - destination: 1356
-      requiredForce: {x: -10, y: 4}
-    - destination: 1356
-      requiredForce: {x: -8, y: 6}
-    - destination: 1354
-      requiredForce: {x: -10, y: 6}
-    - destination: 382
-      requiredForce: {x: -2, y: 8}
-    - destination: 1356
-      requiredForce: {x: -6, y: 8}
-    - destination: 1354
-      requiredForce: {x: -8, y: 8}
-    - destination: 1352
-      requiredForce: {x: -10, y: 8}
-    - destination: 382
-      requiredForce: {x: -2, y: 10}
-    - destination: 1355
-      requiredForce: {x: -6, y: 10}
-    - destination: 1353
-      requiredForce: {x: -8, y: 10}
-    - destination: 1350
-      requiredForce: {x: -10, y: 10}
+    gravityLinks: []
   - position: {x: 39, y: 16}
     type: 5
     linearLinks:
     - destination: 1361
-    gravityLinks:
-    - destination: 381
-      requiredForce: {x: -4, y: 6}
-    - destination: 1356
-      requiredForce: {x: -8, y: 6}
-    - destination: 1355
-      requiredForce: {x: -10, y: 6}
-    - destination: 1355
-      requiredForce: {x: -8, y: 8}
-    - destination: 1353
-      requiredForce: {x: -10, y: 8}
-    - destination: 1356
-      requiredForce: {x: -6, y: 10}
-    - destination: 1354
-      requiredForce: {x: -8, y: 10}
-    - destination: 1351
-      requiredForce: {x: -10, y: 10}
+    gravityLinks: []
   - position: {x: 40, y: 16}
     type: 2
     linearLinks: []
@@ -10088,7 +7972,7 @@ Camera:
   far clip plane: 10
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

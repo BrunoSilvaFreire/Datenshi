@@ -10,8 +10,9 @@ namespace Datenshi.Scripts.Util.StateMachine {
 
         private Dictionary<Variable, object> variables = new Dictionary<Variable, object>();
 
-        public StateMachine(O owner) {
+        public StateMachine(S initialState, O owner) {
             Owner = owner;
+            CurrentState = initialState;
         }
 
         public void SetVariable<T>(Variable<T> variable, T value) {
@@ -22,6 +23,7 @@ namespace Datenshi.Scripts.Util.StateMachine {
             if (variables.ContainsKey(variable)) {
                 return (T) variables[variable];
             }
+
             return variable.DefaultValue;
         }
 
@@ -32,6 +34,10 @@ namespace Datenshi.Scripts.Util.StateMachine {
 
 
         public void Execute() {
+            if (CurrentState == null) {
+                return;
+            }
+
             CurrentState.OnExecute(this);
         }
     }

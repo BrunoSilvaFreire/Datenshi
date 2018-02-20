@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace Datenshi.Scripts.Entities.Components.Movement {
     public class NormalGroundState : GroundState {
-        private GameEntity entity;
 
         public static float CalculateSpeedMultiplier(GameEntity e) {
             return Evaluate(e, e.groundMovement.AccelerationCurve);
@@ -16,7 +15,8 @@ namespace Datenshi.Scripts.Entities.Components.Movement {
             return curve.Evaluate(currentPos);
         }
 
-        public override void OnExecute(StateMachine<GroundState, GroundMovement> stateMachine) {
+        public override void OnExecute(StateMachine<GroundState, GameEntity> stateMachine) {
+            var entity = stateMachine.Owner;
             var vel = entity.velocity;
             var groundMovement = entity.groundMovement;
             var controller = groundMovement.Provider;

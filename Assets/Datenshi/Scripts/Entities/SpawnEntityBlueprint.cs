@@ -13,6 +13,7 @@ namespace Datenshi.Scripts.Entities {
         private void Start() {
             var entity = Contexts.sharedInstance.game.CreateEntity();
             entity.ApplyBlueprint(Blueprint);
+            Destroy(gameObject);
         }
 
 #if UNITY_EDITOR

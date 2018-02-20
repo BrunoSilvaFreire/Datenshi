@@ -13,3 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterViewPrefab: {fileID: 114894635326919280, guid: 309f1aee5dedc644e9d99068bfdd1f37,
     type: 2}
+  CharacterSelectionMenuPrefab: {fileID: 114645752388065866, guid: 2ed7ff5b1fd8009489f5d23947317e46,
+    type: 2}
