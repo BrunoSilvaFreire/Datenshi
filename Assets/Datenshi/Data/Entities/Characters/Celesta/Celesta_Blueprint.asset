@@ -14,10 +14,7 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 95501811983654516, guid: 565e49e27e945d34e9f270e4e0edbcad, type: 2}
-    - {fileID: 11400000, guid: 8a2ea0deeae62114f97ad13a532bdf1b, type: 2}
-    - {fileID: 114255016677564628, guid: 22f76103c61ce804e98f711024ba744f, type: 2}
+    ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -28,7 +25,7 @@ MonoBehaviour:
       Data: 0|Datenshi.Scripts.Entities.Blueprints.ComponentBlueprint[], Assembly-CSharp
     - Name: 
       Entry: 12
-      Data: 7
+      Data: 8
     - Name: 
       Entry: 7
       Data: 1|Datenshi.Scripts.Entities.Blueprints.ComponentBlueprint, Assembly-CSharp
@@ -51,8 +48,8 @@ MonoBehaviour:
       Entry: 1
       Data: AnimatorPrefab
     - Name: value
-      Entry: 10
-      Data: 0
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -87,8 +84,8 @@ MonoBehaviour:
       Entry: 1
       Data: Character
     - Name: value
-      Entry: 10
-      Data: 1
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -123,17 +120,7 @@ MonoBehaviour:
       Entry: 1
       Data: LatestCauses
     - Name: value
-      Entry: 7
-      Data: 10|System.Collections.Generic.List`1[[Datenshi.Scripts.Health.DamageCause,
-        Assembly-CSharp]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
+      Entry: 6
       Data: 
     - Name: 
       Entry: 8
@@ -149,7 +136,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 11|Datenshi.Scripts.Entities.Blueprints.ComponentBlueprint, Assembly-CSharp
+      Data: 10|Datenshi.Scripts.Entities.Blueprints.ComponentBlueprint, Assembly-CSharp
     - Name: Index
       Entry: 3
       Data: 3
@@ -158,19 +145,19 @@ MonoBehaviour:
       Data: Datenshi.Scripts.Entities.Components.Health.HealthComponent
     - Name: Members
       Entry: 7
-      Data: 12|Datenshi.Scripts.Entities.Blueprints.SerializableMember[], Assembly-CSharp
+      Data: 11|Datenshi.Scripts.Entities.Blueprints.SerializableMember[], Assembly-CSharp
     - Name: 
       Entry: 12
       Data: 2
     - Name: 
       Entry: 7
-      Data: 13|Datenshi.Scripts.Entities.Blueprints.SerializableMember, Assembly-CSharp
+      Data: 12|Datenshi.Scripts.Entities.Blueprints.SerializableMember, Assembly-CSharp
     - Name: name
       Entry: 1
       Data: Health
     - Name: value
       Entry: 7
-      Data: 14|System.Int32, mscorlib
+      Data: 13|System.Int32, mscorlib
     - Name: 
       Entry: 3
       Data: 200
@@ -182,13 +169,13 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 15|Datenshi.Scripts.Entities.Blueprints.SerializableMember, Assembly-CSharp
+      Data: 14|Datenshi.Scripts.Entities.Blueprints.SerializableMember, Assembly-CSharp
     - Name: name
       Entry: 1
       Data: MaxHealth
     - Name: value
       Entry: 7
-      Data: 16|System.Int32, mscorlib
+      Data: 15|System.Int32, mscorlib
     - Name: 
       Entry: 3
       Data: 200
@@ -209,7 +196,52 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 17|Datenshi.Scripts.Entities.Blueprints.ComponentBlueprint, Assembly-CSharp
+      Data: 16|Datenshi.Scripts.Entities.Blueprints.ComponentBlueprint, Assembly-CSharp
+    - Name: Index
+      Entry: 3
+      Data: 4
+    - Name: FullTypeName
+      Entry: 1
+      Data: Datenshi.Scripts.Entities.Components.Input.InteractionComponent
+    - Name: Members
+      Entry: 7
+      Data: 17|Datenshi.Scripts.Entities.Blueprints.SerializableMember[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 18|Datenshi.Scripts.Entities.Blueprints.SerializableMember, Assembly-CSharp
+    - Name: name
+      Entry: 1
+      Data: Size
+    - Name: value
+      Entry: 7
+      Data: 19|UnityEngine.Vector2, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 20|Datenshi.Scripts.Entities.Blueprints.ComponentBlueprint, Assembly-CSharp
     - Name: Index
       Entry: 3
       Data: 5
@@ -218,19 +250,19 @@ MonoBehaviour:
       Data: Datenshi.Scripts.Entities.Components.Movement.GroundMovement
     - Name: Members
       Entry: 7
-      Data: 18|Datenshi.Scripts.Entities.Blueprints.SerializableMember[], Assembly-CSharp
+      Data: 21|Datenshi.Scripts.Entities.Blueprints.SerializableMember[], Assembly-CSharp
     - Name: 
       Entry: 12
       Data: 10
     - Name: 
       Entry: 7
-      Data: 19|Datenshi.Scripts.Entities.Blueprints.SerializableMember, Assembly-CSharp
+      Data: 22|Datenshi.Scripts.Entities.Blueprints.SerializableMember, Assembly-CSharp
     - Name: name
       Entry: 1
       Data: MaxSpeed
     - Name: value
       Entry: 7
-      Data: 20|System.Single, mscorlib
+      Data: 23|System.Single, mscorlib
     - Name: 
       Entry: 4
       Data: 10
@@ -242,13 +274,13 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 21|Datenshi.Scripts.Entities.Blueprints.SerializableMember, Assembly-CSharp
+      Data: 24|Datenshi.Scripts.Entities.Blueprints.SerializableMember, Assembly-CSharp
     - Name: name
       Entry: 1
       Data: GravityScale
     - Name: value
       Entry: 7
-      Data: 22|System.Single, mscorlib
+      Data: 25|System.Single, mscorlib
     - Name: 
       Entry: 4
       Data: 1
@@ -260,91 +292,16 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 23|Datenshi.Scripts.Entities.Blueprints.SerializableMember, Assembly-CSharp
+      Data: 26|Datenshi.Scripts.Entities.Blueprints.SerializableMember, Assembly-CSharp
     - Name: name
       Entry: 1
       Data: MaxJumpHeight
     - Name: value
       Entry: 7
-      Data: 24|System.Single, mscorlib
+      Data: 27|System.Single, mscorlib
     - Name: 
       Entry: 4
       Data: 10
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 25|Datenshi.Scripts.Entities.Blueprints.SerializableMember, Assembly-CSharp
-    - Name: name
-      Entry: 1
-      Data: AccelerationCurve
-    - Name: value
-      Entry: 7
-      Data: 26|UnityEngine.AnimationCurve, UnityEngine.CoreModule
-    - Name: 
-      Entry: 7
-      Data: 27|UnityEngine.Keyframe[], UnityEngine.CoreModule
-    - Name: 
-      Entry: 12
-      Data: 2
-    - Name: 
-      Entry: 7
-      Data: UnityEngine.Keyframe, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 0.5
-    - Name: 
-      Entry: 3
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: UnityEngine.Keyframe, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 0.5
-    - Name: 
-      Entry: 4
-      Data: 1
-    - Name: 
-      Entry: 3
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 3
-      Data: 8
-    - Name: 
-      Entry: 3
-      Data: 8
     - Name: 
       Entry: 8
       Data: 
@@ -356,7 +313,7 @@ MonoBehaviour:
       Data: 28|Datenshi.Scripts.Entities.Blueprints.SerializableMember, Assembly-CSharp
     - Name: name
       Entry: 1
-      Data: DeaccelerationCurve
+      Data: AccelerationCurve
     - Name: value
       Entry: 7
       Data: 29|UnityEngine.AnimationCurve, UnityEngine.CoreModule
@@ -431,6 +388,81 @@ MonoBehaviour:
       Data: 31|Datenshi.Scripts.Entities.Blueprints.SerializableMember, Assembly-CSharp
     - Name: name
       Entry: 1
+      Data: DeaccelerationCurve
+    - Name: value
+      Entry: 7
+      Data: 32|UnityEngine.AnimationCurve, UnityEngine.CoreModule
+    - Name: 
+      Entry: 7
+      Data: 33|UnityEngine.Keyframe[], UnityEngine.CoreModule
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: UnityEngine.Keyframe, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0.5
+    - Name: 
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: UnityEngine.Keyframe, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0.5
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 8
+    - Name: 
+      Entry: 3
+      Data: 8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 34|Datenshi.Scripts.Entities.Blueprints.SerializableMember, Assembly-CSharp
+    - Name: name
+      Entry: 1
       Data: StateMachine
     - Name: value
       Entry: 6
@@ -440,7 +472,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 32|Datenshi.Scripts.Entities.Blueprints.SerializableMember, Assembly-CSharp
+      Data: 35|Datenshi.Scripts.Entities.Blueprints.SerializableMember, Assembly-CSharp
     - Name: name
       Entry: 1
       Data: Controller
@@ -452,25 +484,25 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 33|Datenshi.Scripts.Entities.Blueprints.SerializableMember, Assembly-CSharp
+      Data: 36|Datenshi.Scripts.Entities.Blueprints.SerializableMember, Assembly-CSharp
     - Name: name
       Entry: 1
       Data: ControllerPrefab
     - Name: value
-      Entry: 10
-      Data: 2
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
       Data: 
     - Name: 
       Entry: 7
-      Data: 34|Datenshi.Scripts.Entities.Blueprints.SerializableMember, Assembly-CSharp
+      Data: 37|Datenshi.Scripts.Entities.Blueprints.SerializableMember, Assembly-CSharp
     - Name: name
       Entry: 1
       Data: SpeedMultiplier
     - Name: value
       Entry: 7
-      Data: 35|System.Single, mscorlib
+      Data: 38|System.Single, mscorlib
     - Name: 
       Entry: 4
       Data: 1
@@ -482,7 +514,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 36|Datenshi.Scripts.Entities.Blueprints.SerializableMember, Assembly-CSharp
+      Data: 39|Datenshi.Scripts.Entities.Blueprints.SerializableMember, Assembly-CSharp
     - Name: name
       Entry: 1
       Data: Provider
@@ -503,7 +535,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 37|Datenshi.Scripts.Entities.Blueprints.ComponentBlueprint, Assembly-CSharp
+      Data: 40|Datenshi.Scripts.Entities.Blueprints.ComponentBlueprint, Assembly-CSharp
     - Name: Index
       Entry: 3
       Data: 7
@@ -512,19 +544,19 @@ MonoBehaviour:
       Data: Datenshi.Scripts.Entities.Components.VelocityComponent
     - Name: Members
       Entry: 7
-      Data: 38|Datenshi.Scripts.Entities.Blueprints.SerializableMember[], Assembly-CSharp
+      Data: 41|Datenshi.Scripts.Entities.Blueprints.SerializableMember[], Assembly-CSharp
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 39|Datenshi.Scripts.Entities.Blueprints.SerializableMember, Assembly-CSharp
+      Data: 42|Datenshi.Scripts.Entities.Blueprints.SerializableMember, Assembly-CSharp
     - Name: name
       Entry: 1
       Data: Velocity
     - Name: value
       Entry: 7
-      Data: 40|UnityEngine.Vector2, UnityEngine.CoreModule
+      Data: 43|UnityEngine.Vector2, UnityEngine.CoreModule
     - Name: 
       Entry: 4
       Data: 0
@@ -548,7 +580,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 41|Datenshi.Scripts.Entities.Blueprints.ComponentBlueprint, Assembly-CSharp
+      Data: 44|Datenshi.Scripts.Entities.Blueprints.ComponentBlueprint, Assembly-CSharp
     - Name: Index
       Entry: 3
       Data: 8
@@ -557,13 +589,13 @@ MonoBehaviour:
       Data: Datenshi.Scripts.Entities.Components.ViewComponent
     - Name: Members
       Entry: 7
-      Data: 42|Datenshi.Scripts.Entities.Blueprints.SerializableMember[], Assembly-CSharp
+      Data: 45|Datenshi.Scripts.Entities.Blueprints.SerializableMember[], Assembly-CSharp
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 43|Datenshi.Scripts.Entities.Blueprints.SerializableMember, Assembly-CSharp
+      Data: 46|Datenshi.Scripts.Entities.Blueprints.SerializableMember, Assembly-CSharp
     - Name: name
       Entry: 1
       Data: View

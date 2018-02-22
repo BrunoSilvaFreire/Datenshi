@@ -50,7 +50,9 @@ namespace Datenshi.Scripts.Entities {
                 }
                 var entity = Contexts.sharedInstance.game.CreateEntity();
                 var temp = ((ISpawnPreview) component.CreateComponent(entity)).GetPreviewTexture();
-
+                if (temp == null) {
+                    return null;
+                }
                 entity.Destroy();
                 var pixels = temp.GetPixels();
                 for (var i = 0; i < pixels.Length; i++) {
