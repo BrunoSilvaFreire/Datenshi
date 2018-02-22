@@ -4,6 +4,7 @@
             Add(new InitializeViewSystem(contexts));
             Add(new InitializeGroundMovementSystem(contexts));
             Add(new InitializePlayerSystem(contexts, players));
+            Add(new InitializeAnimationSystem(contexts));
         }
     }
 }

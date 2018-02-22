@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿/*using System.Collections;
 using Shiroi.Cutscenes;
 using Shiroi.Cutscenes.Tokens;
 
@@ -13,4 +13,4 @@ namespace Datenshi.Scripts.Cutscenes.Tokens {
             yield break;
         }
     }
-}
+}*/

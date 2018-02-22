@@ -1,8 +1,6 @@
 fileFormatVersion: 2
-guid: d8b65f0d62bf64a4b8a8c9fa8041af3e
-labels:
-- EntitasBinaryBlueprint
-timeCreated: 1519145715
+guid: 83fcd00a0177e7d4e8be6abeefd52afb
+timeCreated: 1519148628
 licenseType: Free
 NativeFormatImporter:
   externalObjects: {}

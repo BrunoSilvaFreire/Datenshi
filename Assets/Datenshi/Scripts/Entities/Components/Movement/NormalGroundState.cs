@@ -4,64 +4,69 @@ using UnityEngine;
 
 namespace Datenshi.Scripts.Entities.Components.Movement {
     public class NormalGroundState : GroundState {
-
-        public static float CalculateSpeedMultiplier(GameEntity e) {
-            return Evaluate(e, e.groundMovement.AccelerationCurve);
-        }
-
-        private static float Evaluate(GameEntity gameEntity, AnimationCurve curve) {
-            var speed = gameEntity.velocity.Velocity.magnitude;
-            var currentPos = speed / gameEntity.groundMovement.MaxSpeed;
-            return curve.Evaluate(currentPos);
-        }
-
         public override void OnExecute(StateMachine<GroundState, GameEntity> stateMachine) {
             var entity = stateMachine.Owner;
-            var vel = entity.velocity;
+
+            //Components
             var groundMovement = entity.groundMovement;
-            var controller = groundMovement.Provider;
+            var provider = groundMovement.Provider;
+            var controller = groundMovement.Controller;
+            //Variables
+            var vel = entity.velocity.Velocity;
+            var speed = vel.magnitude;
+            var maxSpeed = groundMovement.MaxSpeed;
+            var currentPos = speed / maxSpeed;
+            var grounded = controller.Collisions.Below;
+            //Inputs
             float x;
             float y;
             bool jump;
-            if (controller == null) {
+            if (provider == null) {
+                //No provider
                 x = 0;
                 y = 0;
                 jump = false;
             } else {
-                x = controller.GetXInput();
-                y = controller.GetYInput();
-                jump = controller.GetButtonDown(Action.Jump);
+                x = provider.GetXInput();
+                y = provider.GetYInput();
+                jump = provider.GetButtonDown(Action.Jump);
             }
-            //x *= entity.SpeedMultiplier;
-            //y *= entity.SpeedMultiplier;
-/*            if (Mathf.Abs(x) < Constants.DefaultInputThreshold && !jump) {
+            x *= groundMovement.SpeedMultiplier;
+            y *= groundMovement.SpeedMultiplier;
+            if (Mathf.Abs(x) < Constants.DefaultInputThreshold && !jump) {
                 //Not inputing, should deaccelerate if grounded
-                if (entity.Grounded) {
-                    vel.x = Mathf.Lerp(vel.x, 0, entity.CurrentDeacceleration);
+                if (grounded) {
+                    var deacceleration = groundMovement.DeaccelerationCurve.Evaluate(currentPos);
+                    vel.x = Mathf.Lerp(vel.x, 0, deacceleration);
                 }
             } else {
                 //Has input, do movement
-                if (IsUnderLimit(x, vel.x, entity)) {
-                    vel.x += x * entity.CurrentAcceleration;
+                if (IsUnderLimit(x, vel.x, groundMovement)) {
+                    var acceleration = groundMovement.AccelerationCurve.Evaluate(currentPos);
+                    vel.x += x * acceleration;
                 }
-                vel.x = Mathf.Clamp(vel.x, -entity.MaxSpeed, entity.MaxSpeed);
+                vel.x = Mathf.Clamp(vel.x, -maxSpeed, maxSpeed);
             }
-            if (jump && entity.Grounded) {
-                vel.y += entity.JumpHeight;
-                EntityJumpEvent.Instance.Invoke(entity);
+            if (jump && grounded) {
+                vel.y += groundMovement.MaxJumpHeight;
             }
-            var p = entity.Controller;
-            p.Move(vel * Time.deltaTime, new Vector2(x, y));
-            if (!p.Collisions.Below) {
-                vel.y += entity.Gravity * Time.deltaTime;
-            } else if (!jump) {
-                vel.y = entity.Gravity * Time.deltaTime;
+
+            var finalVel = vel * Time.deltaTime;
+            controller.Move(ref finalVel, new Vector2(x, y));
+            Debug.Log("");
+            if (!controller.Collisions.Below) {
+                vel.y += Constants.Gravity * Time.deltaTime;
             }
-            entity.Velocity = vel;*/
+            entity.ReplaceVelocity(vel);
         }
 
         public override bool AllowInteraction() {
             return true;
+        }
+
+        private static bool IsUnderLimit(float x, float velX, GroundMovement entity) {
+            var limit = entity.MaxSpeed * x;
+            return x < 0 ? velX > limit : velX < limit;
         }
     }
 }

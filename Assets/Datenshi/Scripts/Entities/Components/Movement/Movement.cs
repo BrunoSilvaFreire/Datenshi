@@ -7,10 +7,14 @@ namespace Datenshi.Scripts.Entities.Components.Movement {
     [Game]
     public class GroundMovement : Movement {
         public float MaxSpeed = Constants.DefaultSpeed;
+        public float GravityScale = 1F;
         public float MaxJumpHeight = Constants.DefaultJumpHeight;
         public AnimationCurve AccelerationCurve = AnimationCurve.EaseInOut(0, 0.5F, 0.5F, 1F);
         public AnimationCurve DeaccelerationCurve = AnimationCurve.EaseInOut(0, 0.5F, 0.5F, 1F);
         public StateMachine<GroundState, GameEntity> StateMachine;
+        public Controller2D Controller;
+        public Controller2D ControllerPrefab;
+        public float SpeedMultiplier = 1F;
     }
 
     public abstract class Movement : IComponent {

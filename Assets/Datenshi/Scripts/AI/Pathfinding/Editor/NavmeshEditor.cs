@@ -2,12 +2,10 @@
 using Datenshi.Scripts.AI.Pathfinding.Links.Generators;
 using Datenshi.Scripts.Util;
 using DesperateDevs.Unity.Editor;
-using Shiroi.Cutscenes.Util;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEditorInternal;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Datenshi.Scripts.AI.Pathfinding.Editor {
     [CustomEditor(typeof(Navmesh))]

@@ -16,8 +16,9 @@ namespace Datenshi.Scripts.Util.Singleton {
 
         private static T Load() {
 #if UNITY_EDITOR
-            var resourcePath = string.Format("Assets/Resources/{0}", Path);
-            if (AssetDatabase.LoadAssetAtPath<T>(resourcePath)) {
+            var resourcePath = string.Format("Assets/Resources/{0}.asset", Path);
+            if (!AssetDatabase.LoadAssetAtPath<T>(resourcePath)) {
+                Debug.LogFormat("Creating new singleton @ {0}", resourcePath);
                 var asset = CreateInstance<T>();
                 AssetDatabase.CreateAsset(asset, resourcePath);
                 return asset;

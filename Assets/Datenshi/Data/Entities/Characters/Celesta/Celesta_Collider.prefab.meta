@@ -1,12 +1,10 @@
 fileFormatVersion: 2
-guid: d8b65f0d62bf64a4b8a8c9fa8041af3e
-labels:
-- EntitasBinaryBlueprint
-timeCreated: 1519145715
+guid: 22f76103c61ce804e98f711024ba744f
+timeCreated: 1519149025
 licenseType: Free
 NativeFormatImporter:
   externalObjects: {}
-  mainObjectFileID: 11400000
+  mainObjectFileID: 100100000
   userData: 
   assetBundleName: 
   assetBundleVariant: 

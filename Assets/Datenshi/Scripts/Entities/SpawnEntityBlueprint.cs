@@ -36,6 +36,10 @@ namespace Datenshi.Scripts.Entities {
                 return null;
             }
             foreach (var component in Blueprint.Components) {
+                if (component == null) {
+                    Debug.LogWarningFormat("Found null component in blueprint {0}", Blueprint);
+                    continue;
+                }
                 var typeName = component.FullTypeName;
                 var type = Type.GetType(typeName);
                 if (type == null) {

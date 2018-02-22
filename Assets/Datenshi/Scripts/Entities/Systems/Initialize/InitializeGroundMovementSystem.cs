@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Datenshi.Scripts.Entities.Components.Movement;
+using Datenshi.Scripts.Util;
 using Datenshi.Scripts.Util.StateMachine;
 using Entitas;
 
@@ -19,6 +20,7 @@ namespace Datenshi.Scripts.Entities.Systems.Initialize {
             foreach (var gameEntity in entities) {
                 var m = gameEntity.groundMovement;
                 m.StateMachine = new StateMachine<GroundState, GameEntity>(new NormalGroundState(), gameEntity);
+                m.Controller = m.ControllerPrefab.Clone(gameEntity.view.View.transform);
             }
         }
     }
