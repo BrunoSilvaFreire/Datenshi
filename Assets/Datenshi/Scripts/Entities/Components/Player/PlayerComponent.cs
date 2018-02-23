@@ -4,6 +4,7 @@ using Datenshi.Scripts.UI.Menus;
 using Datenshi.Scripts.Util.StateMachine;
 using Datenshi_Input_Constants;
 using Entitas;
+using UnityEngine;
 
 namespace Datenshi.Scripts.Entities.Components.Player {
     public static class PlayerVariables {
@@ -21,7 +22,8 @@ namespace Datenshi.Scripts.Entities.Components.Player {
         public override void OnExecute(StateMachine<PlayerState, PlayerComponent> stateMachine) {
             var component = stateMachine.Owner;
             var controller = component.Controller;
-            component.CharacterSelectionMenu.Showing = controller.GetButtonDown(Action.SlowMotion);
+            component.CharacterSelectionMenu.Showing = controller.GetButton(Action.SlowMotion);
+            Debug.Log(component.CharacterSelectionMenu.Showing);
         }
     }
 

@@ -14,7 +14,10 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 95501811983654516, guid: 565e49e27e945d34e9f270e4e0edbcad, type: 2}
+    - {fileID: 11400000, guid: 8a2ea0deeae62114f97ad13a532bdf1b, type: 2}
+    - {fileID: 114255016677564628, guid: 22f76103c61ce804e98f711024ba744f, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -48,8 +51,8 @@ MonoBehaviour:
       Entry: 1
       Data: AnimatorPrefab
     - Name: value
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -84,8 +87,8 @@ MonoBehaviour:
       Entry: 1
       Data: Character
     - Name: value
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -489,8 +492,8 @@ MonoBehaviour:
       Entry: 1
       Data: ControllerPrefab
     - Name: value
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 2
     - Name: 
       Entry: 8
       Data: 

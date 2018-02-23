@@ -21,7 +21,13 @@ namespace Datenshi.Scripts.Entities.Systems.Initialize {
             foreach (var player in players) {
                 Debug.Log("Initializing player " + player);
                 var entity = context.CreateEntity();
-                entity.AddPlayer(new PlayerController(player), null,
+                var controller = new PlayerController(player);
+                var p = controller.Player;
+                var msg = string.Format("{2} ({0} - {1})", p.id, p.descriptiveName, p.name);
+                Debug.LogFormat("Using controller {0} for player {1}", msg, player);
+                entity.AddPlayer(
+                    controller,
+                    null,
                     UIResources.Instance.CharacterSelectionMenuPrefab.Clone());
                 var c = entity.player;
                 c.StateMachine = new StateMachine<PlayerState, PlayerComponent>(new NormalPlayerState(), c);

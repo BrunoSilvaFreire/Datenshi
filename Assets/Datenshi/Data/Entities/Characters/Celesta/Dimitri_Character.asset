@@ -9,8 +9,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ea20600d168412e94b4022686351c4b, type: 3}
-  m_Name: Celesta_Character
+  m_Name: Dimitri_Character
   m_EditorClassIdentifier: 
-  Alias: Celesta
-  SignatureColor: {r: 0.7793102, g: 0, b: 1, a: 1}
-  CharacterScreen: {fileID: 8400000, guid: 6d8666327460cce409bdb972cac62e92, type: 2}
+  Alias: Dimitri
+  SignatureColor: {r: 0, g: 0.17241406, b: 1, a: 1}
+  CharacterScreen: {fileID: 0}

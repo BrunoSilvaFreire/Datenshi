@@ -4,7 +4,7 @@ namespace Datenshi.Scripts.UI {
     public abstract class UIElement : MonoBehaviour {
         public bool Showing {
             get {
-                throw new System.NotImplementedException();
+                return showing;
             }
             set {
                 if (value == showing) {

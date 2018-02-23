@@ -53,11 +53,10 @@ namespace Datenshi.Scripts.Entities.Components.Movement {
 
             var finalVel = vel * Time.deltaTime;
             controller.Move(ref finalVel, new Vector2(x, y));
-            Debug.Log("");
             if (!controller.Collisions.Below) {
-                vel.y += Constants.Gravity * Time.deltaTime;
+                finalVel.y += Constants.Gravity * Time.deltaTime;
             }
-            entity.ReplaceVelocity(vel);
+            entity.ReplaceVelocity(finalVel);
         }
 
         public override bool AllowInteraction() {

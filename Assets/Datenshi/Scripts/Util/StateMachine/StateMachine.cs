@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Datenshi.Scripts.Misc;
+using UnityEngine;
 
 namespace Datenshi.Scripts.Util.StateMachine {
     public class StateMachine<S, O> where S : State<S, O> {
@@ -35,6 +36,7 @@ namespace Datenshi.Scripts.Util.StateMachine {
 
         public void Execute() {
             if (CurrentState == null) {
+                Debug.LogWarningFormat("State machine @ {0} doesn't have any state set!", Owner);
                 return;
             }
 

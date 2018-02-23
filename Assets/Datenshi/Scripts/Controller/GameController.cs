@@ -7,10 +7,15 @@ namespace Datenshi.Scripts.Controller {
 
         private void Awake() {
             mainSystem = new MainSystem(Contexts.sharedInstance);
+            mainSystem.Initialize();
         }
 
         private void Update() {
             mainSystem.Execute();
+        }
+
+        private void OnDisable() {
+            mainSystem.TearDown();
         }
     }
 }
