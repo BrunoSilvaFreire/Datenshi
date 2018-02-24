@@ -10,10 +10,11 @@ namespace Datenshi.Scripts.UI {
                 if (value == showing) {
                     return;
                 }
+
                 if (value) {
-                    OnShow();
+                    Show();
                 } else {
-                    OnHide();
+                    Hide();
                 }
             }
         }

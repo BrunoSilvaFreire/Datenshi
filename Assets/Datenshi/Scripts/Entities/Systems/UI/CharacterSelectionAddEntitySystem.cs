@@ -23,8 +23,7 @@ namespace Datenshi.Scripts.Entities.Systems.UI {
             var ps = from e in players.collectedEntities select e.player;
             foreach (var player in ps) {
                 foreach (var entity in entities) {
-                    var c = (PlayableCharacter) entity.character.Character;
-                    player.CharacterSelectionMenu.AddCharacter(c);
+                    player.CharacterSelectionMenu.AddCharacter(player, entity);
                 }
             }
         }

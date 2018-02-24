@@ -1,4 +1,5 @@
-﻿using Datenshi.Scripts.Util;
+﻿using Datenshi.Scripts.Entities.Components.Player;
+using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,9 +7,6 @@ using UnityEngine.UI.Extensions;
 
 namespace Datenshi.Scripts.UI {
     public class UIPlayerView : MonoBehaviour {
-        [SerializeField, HideInInspector]
-        private Character.Character character;
-
         [SerializeField, HideInInspector]
         private byte defaultColor;
 
@@ -26,6 +24,9 @@ namespace Datenshi.Scripts.UI {
         public Text LevelLabel;
         public Text CharacterNameLabel;
         public Image HealthBar;
+        public PlayerComponent Player;
+        public bool Showing = true;
+
 
         [ShowInInspector]
         public byte CurrentLevel {
@@ -71,9 +72,11 @@ namespace Datenshi.Scripts.UI {
                     CurrentLevel++;
                     return;
                 }
+
                 if (currentLevel >= byte.MaxValue) {
                     return;
                 }
+
                 UpdateXP();
             }
         }
@@ -81,12 +84,11 @@ namespace Datenshi.Scripts.UI {
         [ShowInInspector]
         public Character.Character Character {
             get {
-                return character;
-            }
-            set {
-                character = value;
-                CharacterNameLabel.text = value ? value.Alias : "Dimitri Vodka Vladimir Putin";
-                UpdateColors();
+                if (Player == null) {
+                    return null;
+                }
+                var e = Player.CurrentEntity;
+                return e.hasCharacter ? e.character.Character : null;
             }
         }
 
@@ -103,16 +105,19 @@ namespace Datenshi.Scripts.UI {
 
         private void UpdateColors() {
             float hue;
+            var character = Character;
             if (character) {
                 float s, v;
                 Color.RGBToHSV(character.SignatureColor, out hue, out s, out v);
             } else {
                 hue = (float) defaultColor / byte.MaxValue;
             }
-            UpdateColors(hue);
+
+            UpdateColors(hue, character);
         }
 
-        private void UpdateColors(float hue) {
+        private void UpdateColors(float hue, Character.Character character) {
+            CharacterNameLabel.text = character ? character.Alias : "No character selected :c";
             var color = Color.HSVToRGB(hue, (float) saturation / byte.MaxValue, 1, true);
             LevelLabel.color = color;
             Circle.SetProgressColor(color);

@@ -7,5 +7,6 @@ namespace Datenshi.Scripts.UI {
     public class UIResources : SingletonScriptableObject<UIResources> {
         public UICharacterView CharacterViewPrefab;
         public UICharacterSelectionMenu CharacterSelectionMenuPrefab;
+        public UIPlayerView PlayerViewPrefab;
     }
 }

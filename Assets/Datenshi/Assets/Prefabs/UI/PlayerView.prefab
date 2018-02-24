@@ -20,6 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 224351709632980320}
   - component: {fileID: 95910854040051896}
+  - component: {fileID: 223141766181464750}
+  - component: {fileID: 114711954893991832}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -437,6 +439,20 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Dimitri Vodka Vladimir Putin
+--- !u!114 &114711954893991832
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1099453197535720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54490d777b0e4114bc74cceabfb0d507, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 95910854040051896}
+  ShowingKey: Showing
+  View: {fileID: 114987942772696908}
 --- !u!114 &114987942772696908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -458,6 +474,7 @@ MonoBehaviour:
   LevelLabel: {fileID: 114009927845990258}
   CharacterNameLabel: {fileID: 114710813745827140}
   HealthBar: {fileID: 114625659183596716}
+  Showing: 1
 --- !u!222 &222185929099405618
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -494,6 +511,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1948269993578852}
+--- !u!223 &223141766181464750
+Canvas:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1099453197535720}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!224 &224168596673191826
 RectTransform:
   m_ObjectHideFlags: 1
@@ -550,7 +587,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 10, y: -10}
-  m_SizeDelta: {x: 1320, y: 100}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!224 &224350454138760992
 RectTransform:

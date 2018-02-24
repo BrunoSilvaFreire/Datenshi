@@ -15,3 +15,5 @@ MonoBehaviour:
     type: 2}
   CharacterSelectionMenuPrefab: {fileID: 114645752388065866, guid: 2ed7ff5b1fd8009489f5d23947317e46,
     type: 2}
+  PlayerViewPrefab: {fileID: 114987942772696908, guid: defa54ce7e4182e43b9af66f2afeaff4,
+    type: 2}

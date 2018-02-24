@@ -8,15 +8,15 @@
 //------------------------------------------------------------------------------
 public static class UIComponentsLookup {
 
+    public const int MainCanvas = 0;
 
-
-    public const int TotalComponents = 0;
+    public const int TotalComponents = 1;
 
     public static readonly string[] componentNames = {
-
+        "MainCanvas"
     };
 
     public static readonly System.Type[] componentTypes = {
-
+        typeof(Datenshi.Scripts.Entities.Components.UI.MainCanvasComponent)
     };
 }

@@ -15,7 +15,9 @@ namespace Datenshi.Scripts.Controller {
         }
 
         private void OnDisable() {
-            mainSystem.TearDown();
+            if (mainSystem != null) {
+                mainSystem.TearDown();
+            }
         }
     }
 }

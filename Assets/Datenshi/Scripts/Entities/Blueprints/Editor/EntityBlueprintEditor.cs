@@ -12,7 +12,7 @@ namespace Datenshi.Scripts.Entities.Blueprints.Editor {
     [CustomEditor(typeof(EntityBlueprint))]
     public class EntityBlueprintInspector : UnityEditor.Editor {
         public static EntityBlueprint[] FindAllBlueprints() {
-            return AssetDatabase.FindAssets("l:" + EntityBlueprintPostprocessor.ASSET_LABEL)
+            return AssetDatabase.FindAssets("l:" + EntityBlueprintPostprocessor.AssetLabel)
                 .Select(guid => AssetDatabase.GUIDToAssetPath(guid))
                 .Select(path => AssetDatabase.LoadAssetAtPath<EntityBlueprint>(path))
                 .ToArray();
@@ -21,7 +21,7 @@ namespace Datenshi.Scripts.Entities.Blueprints.Editor {
         [DidReloadScripts, MenuItem("Tools/Entitas/Blueprints/Update all Blueprints", false, 300)]
         public static void UpdateAllEntityBlueprints() {
             if (!EditorApplication.isPlayingOrWillChangePlaymode) {
-                var allContexts = findAllContexts();
+                var allContexts = FindAllContexts();
                 if (allContexts == null) {
                     return;
                 }
@@ -37,12 +37,14 @@ namespace Datenshi.Scripts.Entities.Blueprints.Editor {
                 }
 
                 if (updated > 0) {
-                    Debug.Log("Validated " + binaryBlueprints.Length + " Blueprints, " + updated + " have been updated.");
+                    Debug.Log(
+                        "Validated " + binaryBlueprints.Length + " Blueprints, " + updated + " have been updated.");
                 }
             }
         }
 
-        public static bool UpdateEntityBlueprint(EntityBlueprint binaryBlueprint, IContext[] allContexts, string[] allContextNames) {
+        public static bool UpdateEntityBlueprint(EntityBlueprint binaryBlueprint, IContext[] allContexts,
+            string[] allContextNames) {
             var needsUpdate = false;
 
             var contextIndex = Array.IndexOf(allContextNames, binaryBlueprint.ContextIdentifier);
@@ -56,9 +58,9 @@ namespace Datenshi.Scripts.Entities.Blueprints.Editor {
 
             foreach (var component in binaryBlueprint.Components) {
                 if (component == null) {
-                    Debug.Log("Couldn't find ");
                     continue;
                 }
+
                 var type = component.FullTypeName.ToType();
                 var index = Array.IndexOf(context.contextInfo.componentTypes, type);
 
@@ -76,63 +78,58 @@ namespace Datenshi.Scripts.Entities.Blueprints.Editor {
                 }
             }
 
-            /*if (needsUpdate) {
-                Debug.Log("Updating Blueprint '" + binaryBlueprint.name + "'");
-                binaryBlueprint.Serialize(binaryBlueprint);
-            }*/
-
             return needsUpdate;
         }
 
-        static IContext[] findAllContexts() {
+        private static IContext[] FindAllContexts() {
             var contextsType = AppDomain.CurrentDomain
                 .GetNonAbstractTypes<IContexts>()
                 .SingleOrDefault();
-            if (contextsType != null) {
-                var contexts = (IContexts) Activator.CreateInstance(contextsType);
-                return contexts.allContexts;
+            if (contextsType == null) {
+                return null;
             }
 
-            return null;
+            var contexts = (IContexts) Activator.CreateInstance(contextsType);
+            return contexts.allContexts;
         }
 
-        EntityBlueprint _blueprint;
+        private EntityBlueprint blueprint;
 
-        IContext[] _allContexts;
-        string[] _allContextNames;
-        int _contextIndex;
+        private IContext[] allContexts;
+        private string[] allContextNames;
+        private int contextIndex;
 
-        IContext _context;
-        IEntity _entity;
+        private IContext context;
+        private IEntity entity;
 
-        void Awake() {
-            _allContexts = findAllContexts();
-            if (_allContexts == null) {
+        private void Awake() {
+            allContexts = FindAllContexts();
+            if (allContexts == null) {
                 return;
             }
 
             var binaryBlueprint = ((EntityBlueprint) target);
 
-            _allContextNames = _allContexts.Select(context => context.contextInfo.name).ToArray();
+            allContextNames = allContexts.Select(context => context.contextInfo.name).ToArray();
 
-            UpdateEntityBlueprint(binaryBlueprint, _allContexts, _allContextNames);
+            UpdateEntityBlueprint(binaryBlueprint, allContexts, allContextNames);
 
-            _blueprint = binaryBlueprint;
+            blueprint = binaryBlueprint;
 
-            AssetDatabase.RenameAsset(AssetDatabase.GetAssetPath(target), _blueprint.name);
+            AssetDatabase.RenameAsset(AssetDatabase.GetAssetPath(target), blueprint.name);
 
-            _contextIndex = Array.IndexOf(_allContextNames, _blueprint.ContextIdentifier);
-            switchToContext();
+            contextIndex = Array.IndexOf(allContextNames, blueprint.ContextIdentifier);
+            SwitchToContext();
 
-            _entity.ApplyBlueprint(_blueprint);
+            entity.ApplyBlueprint(blueprint);
 
             // Serialize in case the structure of a component changed, e.g. field got removed
-            binaryBlueprint.Serialize(_entity);
+            binaryBlueprint.Serialize(entity);
         }
 
-        void OnDisable() {
-            if (_context != null) {
-                _context.Reset();
+        private void OnDisable() {
+            if (context != null) {
+                context.Reset();
             }
         }
 
@@ -142,37 +139,38 @@ namespace Datenshi.Scripts.Entities.Blueprints.Editor {
             EditorGUI.BeginChangeCheck();
             {
                 EditorGUILayout.LabelField("Blueprint", EditorStyles.boldLabel);
-                if (_context != null) {
+                if (context != null) {
                     EditorGUILayout.BeginHorizontal();
                     {
-                        _contextIndex = EditorGUILayout.Popup(_contextIndex, _allContextNames);
+                        contextIndex = EditorGUILayout.Popup(contextIndex, allContextNames);
 
                         if (EditorLayout.MiniButton("Switch Context")) {
-                            switchToContext();
+                            SwitchToContext();
                         }
                     }
                     EditorGUILayout.EndHorizontal();
 
-                    EntityDrawer.DrawComponents(_context, _entity);
+                    EntityDrawer.DrawComponents(context, entity);
                 } else {
                     EditorGUILayout.LabelField("No contexts found!");
                 }
             }
             var changed = EditorGUI.EndChangeCheck();
             if (changed) {
-                binaryBlueprint.Serialize(_entity);
+                binaryBlueprint.Serialize(entity);
                 AssetDatabase.RenameAsset(AssetDatabase.GetAssetPath(target), binaryBlueprint.name);
                 EditorUtility.SetDirty(target);
             }
         }
 
-        void switchToContext() {
-            if (_context != null) {
-                _context.Reset();
+        private void SwitchToContext() {
+            if (context != null) {
+                context.Reset();
             }
-            var targetContext = _allContexts[_contextIndex];
-            _context = (IContext) Activator.CreateInstance(targetContext.GetType());
-            _entity = (IEntity) _context.GetType().GetMethod("CreateEntity").Invoke(_context, null);
+
+            var targetContext = allContexts[contextIndex];
+            context = (IContext) Activator.CreateInstance(targetContext.GetType());
+            entity = (IEntity) context.GetType().GetMethod("CreateEntity").Invoke(context, null);
         }
     }
 }

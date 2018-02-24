@@ -31,6 +31,7 @@ namespace Datenshi.Scripts.Entities.Components.Movement {
                 y = provider.GetYInput();
                 jump = provider.GetButtonDown(Action.Jump);
             }
+
             x *= groundMovement.SpeedMultiplier;
             y *= groundMovement.SpeedMultiplier;
             if (Mathf.Abs(x) < Constants.DefaultInputThreshold && !jump) {
@@ -45,17 +46,20 @@ namespace Datenshi.Scripts.Entities.Components.Movement {
                     var acceleration = groundMovement.AccelerationCurve.Evaluate(currentPos);
                     vel.x += x * acceleration;
                 }
+
                 vel.x = Mathf.Clamp(vel.x, -maxSpeed, maxSpeed);
             }
+
             if (jump && grounded) {
                 vel.y += groundMovement.MaxJumpHeight;
             }
 
             var finalVel = vel * Time.deltaTime;
-            controller.Move(ref finalVel, new Vector2(x, y));
             if (!controller.Collisions.Below) {
                 finalVel.y += Constants.Gravity * Time.deltaTime;
             }
+            controller.Move(ref finalVel, new Vector2(x, y));
+
             entity.ReplaceVelocity(finalVel);
         }
 
