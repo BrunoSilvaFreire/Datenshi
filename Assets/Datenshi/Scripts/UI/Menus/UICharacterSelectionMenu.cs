@@ -1,7 +1,10 @@
-﻿using Datenshi.Scripts.Entities.Components.Player;
+﻿using System.Collections.Generic;
+using Datenshi.Scripts.Entities.Components.Player;
 using Datenshi.Scripts.Util;
 using DG.Tweening;
+using Sirenix.Utilities;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI.Extensions;
 
 namespace Datenshi.Scripts.UI.Menus {
@@ -11,16 +14,44 @@ namespace Datenshi.Scripts.UI.Menus {
         public CanvasGroup Group;
         public UICircle Circle;
         public float OpenRadius = 150F;
+        private readonly List<UICharacterView> knownViews = new List<UICharacterView>();
 
         public void AddCharacter(PlayerComponent component, GameEntity character) {
-            Instantiate(UIResources.Instance.CharacterViewPrefab, transform).Setup(component, character);
+            var view = Instantiate(UIResources.Instance.CharacterViewPrefab, Layout.transform);
+            view.Setup(component, character);
+            knownViews.Add(view);
+        }
+
+        protected override void SnapShow() {
+            Group.interactable = true;
+            Group.alpha = 1;
+            var diameter = OpenRadius * 2;
+            Circle.rectTransform.sizeDelta = new Vector2(diameter, diameter);
+            Layout.Radius = OpenRadius;
+            Select();
+        }
+
+        private void Select() {
+            if (knownViews.IsNullOrEmpty()) {
+                return;
+            }
+            EventSystem.current.SetSelectedGameObject(knownViews[0].Button.gameObject);
+        }
+
+        protected override void SnapHide() {
+            Group.interactable = false;
+            Group.alpha = 0;
+            Circle.rectTransform.sizeDelta = Vector2.zero;
+            Layout.Radius = 0;
         }
 
         protected override void OnShow() {
             Group.interactable = true;
-            Circle.rectTransform.DOSizeDelta(new Vector2(OpenRadius, OpenRadius), ToggleDuration);
+            var diameter = OpenRadius * 2;
+            Circle.rectTransform.DOSizeDelta(new Vector2(diameter, diameter), ToggleDuration);
             Group.DOFade(1, ToggleDuration);
             Layout.DORadius(OpenRadius, ToggleDuration);
+            Select();
         }
 
         protected override void OnHide() {

@@ -6,7 +6,7 @@ using Shiroi.Cutscenes.Util;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Cutscenes.Tokens {
-    public class CreateNarratorToken : IToken {
+/*    public class CreateNarratorToken : IToken {
         public Narrator Prefab;
         public Reference<RectTransform> Parent;
 
@@ -29,5 +29,5 @@ namespace Datenshi.Scripts.Cutscenes.Tokens {
             rectTransform.anchoredPosition = Rect.position;
             yield break;
         }
-    }
+    }*/
 }

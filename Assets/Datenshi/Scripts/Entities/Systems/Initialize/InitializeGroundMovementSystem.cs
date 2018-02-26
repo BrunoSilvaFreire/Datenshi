@@ -9,7 +9,7 @@ namespace Datenshi.Scripts.Entities.Systems.Initialize {
         public InitializeGroundMovementSystem(Contexts contexts) : base(contexts.game) { }
 
         protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context) {
-            return context.CreateCollector(GameMatcher.GroundMovement.Added());
+            return context.CreateCollector(GameMatcher.GroundMovementBlueprint.Added());
         }
 
         protected override bool Filter(GameEntity entity) {
@@ -18,9 +18,21 @@ namespace Datenshi.Scripts.Entities.Systems.Initialize {
 
         protected override void Execute(List<GameEntity> entities) {
             foreach (var gameEntity in entities) {
-                var m = gameEntity.groundMovement;
-                m.StateMachine = new StateMachine<GroundState, GameEntity>(new NormalGroundState(), gameEntity);
-                m.Controller = m.ControllerPrefab.Clone(gameEntity.view.View.transform);
+                var b = gameEntity.groundMovementBlueprint;
+                var stateMachine = new StateMachine<GroundState, GameEntity>(new NormalGroundState(), gameEntity);
+                var controller = b.ControllerPrefab.Clone(gameEntity.view.View.transform);
+                gameEntity.AddGroundMovement(
+                    b.MaxSpeed,
+                    b.GravityScale,
+                    b.MaxJumpHeight,
+                    b.AccelerationCurve,
+                    b.DeaccelerationCurve,
+                    stateMachine,
+                    controller,
+                    1,
+                    null
+                );
+                gameEntity.RemoveGroundMovementBlueprint();
             }
         }
     }

@@ -2,12 +2,15 @@ using System;
 using System.Collections.Generic;
 using DesperateDevs.Utils;
 using Entitas;
+using Sirenix.Serialization;
 
 namespace Datenshi.Scripts.Entities.Blueprints {
     [Serializable]
     public class ComponentBlueprint {
         public int Index;
         public string FullTypeName;
+
+        [NonSerialized, OdinSerialize]
         public SerializableMember[] Members;
 
         private Type type;

@@ -10,7 +10,6 @@ namespace Datenshi.Scripts.Entities.Blueprints {
         public string ContextIdentifier;
 
         [NonSerialized, OdinSerialize]
-        // ReSharper disable once FieldCanBeMadeReadOnly.Global
         private ComponentBlueprint[] components;
 
         public ComponentBlueprint[] Components {

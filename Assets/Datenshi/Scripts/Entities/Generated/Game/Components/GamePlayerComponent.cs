@@ -11,23 +11,25 @@ public partial class GameEntity {
     public Datenshi.Scripts.Entities.Components.Player.PlayerComponent player { get { return (Datenshi.Scripts.Entities.Components.Player.PlayerComponent)GetComponent(GameComponentsLookup.Player); } }
     public bool hasPlayer { get { return HasComponent(GameComponentsLookup.Player); } }
 
-    public void AddPlayer(Datenshi.Scripts.Controller.PlayerController newController, Datenshi.Scripts.Util.StateMachine.StateMachine<Datenshi.Scripts.Entities.Components.Player.PlayerState, Datenshi.Scripts.Entities.Components.Player.PlayerComponent> newStateMachine, Datenshi.Scripts.UI.Menus.UICharacterSelectionMenu newCharacterSelectionMenu, Datenshi.Scripts.UI.UIPlayerView newUIView) {
+    public void AddPlayer(Datenshi.Scripts.Controller.PlayerController newController, Datenshi.Scripts.Util.StateMachine.StateMachine<Datenshi.Scripts.Entities.Components.Player.PlayerState, Datenshi.Scripts.Entities.Components.Player.PlayerComponent> newStateMachine, Datenshi.Scripts.UI.Menus.UICharacterSelectionMenu newCharacterSelectionMenu, Datenshi.Scripts.UI.UIPlayerView newUIView, GameEntity newCurrentEntity) {
         var index = GameComponentsLookup.Player;
         var component = CreateComponent<Datenshi.Scripts.Entities.Components.Player.PlayerComponent>(index);
         component.Controller = newController;
         component.StateMachine = newStateMachine;
         component.CharacterSelectionMenu = newCharacterSelectionMenu;
         component.UIView = newUIView;
+        component.CurrentEntity = newCurrentEntity;
         AddComponent(index, component);
     }
 
-    public void ReplacePlayer(Datenshi.Scripts.Controller.PlayerController newController, Datenshi.Scripts.Util.StateMachine.StateMachine<Datenshi.Scripts.Entities.Components.Player.PlayerState, Datenshi.Scripts.Entities.Components.Player.PlayerComponent> newStateMachine, Datenshi.Scripts.UI.Menus.UICharacterSelectionMenu newCharacterSelectionMenu, Datenshi.Scripts.UI.UIPlayerView newUIView) {
+    public void ReplacePlayer(Datenshi.Scripts.Controller.PlayerController newController, Datenshi.Scripts.Util.StateMachine.StateMachine<Datenshi.Scripts.Entities.Components.Player.PlayerState, Datenshi.Scripts.Entities.Components.Player.PlayerComponent> newStateMachine, Datenshi.Scripts.UI.Menus.UICharacterSelectionMenu newCharacterSelectionMenu, Datenshi.Scripts.UI.UIPlayerView newUIView, GameEntity newCurrentEntity) {
         var index = GameComponentsLookup.Player;
         var component = CreateComponent<Datenshi.Scripts.Entities.Components.Player.PlayerComponent>(index);
         component.Controller = newController;
         component.StateMachine = newStateMachine;
         component.CharacterSelectionMenu = newCharacterSelectionMenu;
         component.UIView = newUIView;
+        component.CurrentEntity = newCurrentEntity;
         ReplaceComponent(index, component);
     }
 

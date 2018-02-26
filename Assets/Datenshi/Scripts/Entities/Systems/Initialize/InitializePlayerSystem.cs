@@ -36,7 +36,8 @@ namespace Datenshi.Scripts.Entities.Systems.Initialize {
                     controller,
                     null,
                     charSelPrefab.Clone(mainCanvas),
-                    viewPrefab.Clone(mainCanvas));
+                    viewPrefab.Clone(mainCanvas), 
+                    null);
                 var c = entity.player;
                 c.StateMachine = new StateMachine<PlayerState, PlayerComponent>(new NormalPlayerState(), c);
             }

@@ -35,7 +35,7 @@ namespace Datenshi.Scripts.Entities.Components.Movement {
 
         public virtual void Start() {
             CalculateRaySpacing();
-            CollisionMask = GameConfig.Instance.WorldMask;
+            CollisionMask = GameResources.Instance.WorldMask;
         }
 
         public void UpdateRaycastOrigins() {

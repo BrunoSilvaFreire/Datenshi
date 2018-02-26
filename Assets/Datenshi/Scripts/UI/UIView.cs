@@ -1,7 +1,10 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEditor;
+using UnityEngine;
 
 namespace Datenshi.Scripts.UI {
     public abstract class UIElement : MonoBehaviour {
+        [ShowInInspector]
         public bool Showing {
             get {
                 return showing;
@@ -10,12 +13,26 @@ namespace Datenshi.Scripts.UI {
                 if (value == showing) {
                     return;
                 }
-
+#if UNITY_EDITOR
+                if (!EditorApplication.isPlaying) {
+                    SnapShowing(value);
+                    return;
+                }
+#endif
                 if (value) {
                     Show();
                 } else {
                     Hide();
                 }
+            }
+        }
+
+        public void SnapShowing(bool show) {
+            showing = show;
+            if (show) {
+                SnapShow();
+            } else {
+                SnapHide();
             }
         }
 
@@ -31,6 +48,8 @@ namespace Datenshi.Scripts.UI {
             OnHide();
         }
 
+        protected abstract void SnapShow();
+        protected abstract void SnapHide();
         protected abstract void OnShow();
         protected abstract void OnHide();
     }

@@ -10,7 +10,6 @@ namespace Datenshi.Scripts.Entities.Systems.Initialize {
         }
 
         public void Initialize() {
-            Debug.Log("Initializing canvas");
             var canvas = new GameObject("MainCanvas").AddComponent<Canvas>();
             canvas.renderMode = RenderMode.ScreenSpaceCamera;
             canvas.worldCamera = Camera.main;

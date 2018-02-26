@@ -11,7 +11,7 @@ public partial class GameEntity {
     public Datenshi.Scripts.Entities.Components.Movement.GroundMovement groundMovement { get { return (Datenshi.Scripts.Entities.Components.Movement.GroundMovement)GetComponent(GameComponentsLookup.GroundMovement); } }
     public bool hasGroundMovement { get { return HasComponent(GameComponentsLookup.GroundMovement); } }
 
-    public void AddGroundMovement(float newMaxSpeed, float newGravityScale, float newMaxJumpHeight, UnityEngine.AnimationCurve newAccelerationCurve, UnityEngine.AnimationCurve newDeaccelerationCurve, Datenshi.Scripts.Util.StateMachine.StateMachine<Datenshi.Scripts.Entities.Components.Movement.GroundState, GameEntity> newStateMachine, Datenshi.Scripts.Entities.Components.Movement.Controller2D newController, Datenshi.Scripts.Entities.Components.Movement.Controller2D newControllerPrefab, float newSpeedMultiplier, Datenshi.Scripts.Controller.IInputProvider newProvider) {
+    public void AddGroundMovement(float newMaxSpeed, float newGravityScale, float newMaxJumpHeight, UnityEngine.AnimationCurve newAccelerationCurve, UnityEngine.AnimationCurve newDeaccelerationCurve, Datenshi.Scripts.Util.StateMachine.StateMachine<Datenshi.Scripts.Entities.Components.Movement.GroundState, GameEntity> newStateMachine, Datenshi.Scripts.Entities.Components.Movement.Controller2D newController, float newSpeedMultiplier, Datenshi.Scripts.Controller.IInputProvider newProvider) {
         var index = GameComponentsLookup.GroundMovement;
         var component = CreateComponent<Datenshi.Scripts.Entities.Components.Movement.GroundMovement>(index);
         component.MaxSpeed = newMaxSpeed;
@@ -21,13 +21,12 @@ public partial class GameEntity {
         component.DeaccelerationCurve = newDeaccelerationCurve;
         component.StateMachine = newStateMachine;
         component.Controller = newController;
-        component.ControllerPrefab = newControllerPrefab;
         component.SpeedMultiplier = newSpeedMultiplier;
         component.Provider = newProvider;
         AddComponent(index, component);
     }
 
-    public void ReplaceGroundMovement(float newMaxSpeed, float newGravityScale, float newMaxJumpHeight, UnityEngine.AnimationCurve newAccelerationCurve, UnityEngine.AnimationCurve newDeaccelerationCurve, Datenshi.Scripts.Util.StateMachine.StateMachine<Datenshi.Scripts.Entities.Components.Movement.GroundState, GameEntity> newStateMachine, Datenshi.Scripts.Entities.Components.Movement.Controller2D newController, Datenshi.Scripts.Entities.Components.Movement.Controller2D newControllerPrefab, float newSpeedMultiplier, Datenshi.Scripts.Controller.IInputProvider newProvider) {
+    public void ReplaceGroundMovement(float newMaxSpeed, float newGravityScale, float newMaxJumpHeight, UnityEngine.AnimationCurve newAccelerationCurve, UnityEngine.AnimationCurve newDeaccelerationCurve, Datenshi.Scripts.Util.StateMachine.StateMachine<Datenshi.Scripts.Entities.Components.Movement.GroundState, GameEntity> newStateMachine, Datenshi.Scripts.Entities.Components.Movement.Controller2D newController, float newSpeedMultiplier, Datenshi.Scripts.Controller.IInputProvider newProvider) {
         var index = GameComponentsLookup.GroundMovement;
         var component = CreateComponent<Datenshi.Scripts.Entities.Components.Movement.GroundMovement>(index);
         component.MaxSpeed = newMaxSpeed;
@@ -37,7 +36,6 @@ public partial class GameEntity {
         component.DeaccelerationCurve = newDeaccelerationCurve;
         component.StateMachine = newStateMachine;
         component.Controller = newController;
-        component.ControllerPrefab = newControllerPrefab;
         component.SpeedMultiplier = newSpeedMultiplier;
         component.Provider = newProvider;
         ReplaceComponent(index, component);

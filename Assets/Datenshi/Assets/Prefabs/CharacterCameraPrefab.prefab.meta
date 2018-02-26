@@ -1,12 +1,10 @@
 fileFormatVersion: 2
-guid: ad5b24d228d0446499e4aa3fa4397e02
-labels:
-- EntityBlueprint
-timeCreated: 1519573675
+guid: 43ce321bec897ca41857d4901bdcfd3b
+timeCreated: 1519489434
 licenseType: Free
 NativeFormatImporter:
   externalObjects: {}
-  mainObjectFileID: 11400000
+  mainObjectFileID: 100100000
   userData: 
   assetBundleName: 
   assetBundleVariant: 

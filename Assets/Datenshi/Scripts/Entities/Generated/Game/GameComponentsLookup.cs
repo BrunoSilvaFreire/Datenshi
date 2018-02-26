@@ -14,11 +14,12 @@ public static class GameComponentsLookup {
     public const int Health = 3;
     public const int Interaction = 4;
     public const int GroundMovement = 5;
-    public const int Player = 6;
-    public const int Velocity = 7;
-    public const int View = 8;
+    public const int GroundMovementBlueprint = 6;
+    public const int Player = 7;
+    public const int Velocity = 8;
+    public const int View = 9;
 
-    public const int TotalComponents = 9;
+    public const int TotalComponents = 10;
 
     public static readonly string[] componentNames = {
         "Animated",
@@ -27,6 +28,7 @@ public static class GameComponentsLookup {
         "Health",
         "Interaction",
         "GroundMovement",
+        "GroundMovementBlueprint",
         "Player",
         "Velocity",
         "View"
@@ -39,6 +41,7 @@ public static class GameComponentsLookup {
         typeof(Datenshi.Scripts.Entities.Components.Health.HealthComponent),
         typeof(Datenshi.Scripts.Entities.Components.Input.InteractionComponent),
         typeof(Datenshi.Scripts.Entities.Components.Movement.GroundMovement),
+        typeof(Datenshi.Scripts.Entities.Components.Movement.GroundMovementBlueprint),
         typeof(Datenshi.Scripts.Entities.Components.Player.PlayerComponent),
         typeof(Datenshi.Scripts.Entities.Components.VelocityComponent),
         typeof(Datenshi.Scripts.Entities.Components.ViewComponent)
