@@ -1,5 +1,5 @@
 ﻿using Datenshi.Scripts.UI.Menus;
-using Datenshi.Scripts.Util.Singleton;
+using Datenshi.Scripts.Util;
 using UnityEngine;
 
 namespace Datenshi.Scripts.UI {

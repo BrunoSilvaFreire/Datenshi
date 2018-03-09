@@ -1,4 +1,6 @@
 ﻿using System;
+using Datenshi.Scripts.Entities;
+using Datenshi.Scripts.Entities.Input;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
@@ -11,13 +13,23 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links {
         [SerializeField, ReadOnly]
         private uint destination;
 
+        [SerializeField, ReadOnly]
+        private uint origin;
+
         public LinearLink() { }
 
-        public LinearLink(uint destination) {
+        public LinearLink(uint destination, uint origin) {
             this.destination = destination;
+            this.origin = origin;
         }
 
-        public override void Execute() { }
+        public override int GetDestination() {
+            return (int) destination;
+        }
+
+        public override int GetOrigin() {
+            return (int) origin;
+        }
 
         public override bool DrawOnlyOnMouseOver() {
             return false;
@@ -28,6 +40,14 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links {
             var dest = navmesh.GetWorldPosition(destination);
             Handles.color = GizmosColor;
             Handles.DrawLine(origin, dest);
+        }
+
+        public override void Execute(MovableEntity entity, AIStateInputProvider provider, Navmesh navmesh) {
+            provider.Horizontal = Math.Sign((int) destination - origin);
+        }
+
+        public override bool CanMakeIt(MovableEntity entity) {
+            return true;
         }
     }
 }

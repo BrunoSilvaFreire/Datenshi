@@ -1,8 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using JetBrains.Annotations;
-using Sirenix.OdinInspector;
-using Sirenix.Utilities.Editor;
 using UnityEditor;
 using UnityEngine;
 
@@ -17,16 +13,18 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links.Generators {
             if (!node.IsWalkable) {
                 yield break;
             }
+            var ySize = navmesh.Grid.cellSize.y / 2;
+            var start = nodeWorldPos;
+            start.y -= ySize - 0.1F;
             var links = DoGenerateLinks(
                 node,
                 navmesh,
-                nodeWorldPos,
+                start,
                 JumpDivisions,
                 SpeedDivisions,
                 Speed,
                 Jump,
-                precision,
-                navmesh.BoxcastSize);
+                precision);
             foreach (var generatedLink in links) {
                 yield return generatedLink;
             }
@@ -40,20 +38,20 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links.Generators {
             int speedDivisions,
             float speed,
             float jump,
-            float timeIncrementation,
-            Vector2 boxcastSize) {
+            float timeIncrementation) {
             for (var yi = 1; yi <= jumpDivisions; yi++) {
                 for (var xi = 1; xi <= speedDivisions; xi++) {
                     var x = (float) xi / speedDivisions * speed;
                     var y = (float) yi / jumpDivisions * jump;
                     var direction = new Vector2(x, y);
                     GravityLink right;
-                    if (DoTryGetLink(navmesh, node, nodeWorldPos, direction, timeIncrementation, boxcastSize, out right)) {
+                    if (DoTryGetLink(navmesh, node, nodeWorldPos, direction, timeIncrementation, out right)) {
                         yield return right;
                     }
+
                     direction.x = -direction.x;
                     GravityLink left;
-                    if (DoTryGetLink(navmesh, node, nodeWorldPos, direction, timeIncrementation, boxcastSize, out left)) {
+                    if (DoTryGetLink(navmesh, node, nodeWorldPos, direction, timeIncrementation, out left)) {
                         yield return left;
                     }
                 }
@@ -76,12 +74,12 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links.Generators {
             Vector2 nodeWorldPos,
             Vector2 direction,
             float precision,
-            Vector2 boxcastSize,
             out GravityLink link) {
-            link = new GravityLink(navmesh, nodeWorldPos, direction, precision);
+            link = new GravityLink(navmesh.GetNodeIndex(node), navmesh, nodeWorldPos, direction, precision);
             if (link.IsDefined && navmesh.GetNode(link.Destination).IsWalkable) {
                 return !navmesh.IsOnSamePlatform(node, link.Destination);
             }
+
             return false;
         }
     }

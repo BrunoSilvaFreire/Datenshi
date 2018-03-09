@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Datenshi.Scripts.AI.Pathfinding;
+using Datenshi.Scripts.Controller;
 using UnityEditor;
 using UnityEngine;
 
@@ -16,23 +17,34 @@ namespace Datenshi.Scripts.Util.Gravity {
             Vector2 pos,
             Vector2 initialSpeed,
             Navmesh tileMap,
+            out Node finalNode
+        ) {
+            return CalculatePath(pos, initialSpeed, tileMap, out finalNode, GameResources.Instance.DefaultPrecision);
+        }
+
+        public static List<Vector2> CalculatePath(
+            Vector2 pos,
+            Vector2 initialSpeed,
+            Navmesh tileMap,
             out Node finalNode,
-            float precision = Constants.Precision) {
+            float precision) {
             finalNode = null;
             float time = 0;
-            if (precision > Constants.MaxPrecision) {
-                return Enumerable.Empty<Vector2>().ToList();
+            if (precision > GameResources.Instance.MaxPrecision) {
+                return CollectionUtil.EmptyList<Vector2>();
             }
+
             var boxcastSize = tileMap.BoxcastSize;
             var timeIncrementation = 1 / precision;
             var mask = tileMap.LayerMask;
             var list = new List<Vector2>();
             while (finalNode == null) {
-                var y = pos.y + initialSpeed.y * time + Constants.Gravity * Mathf.Pow(time, 2) / 2;
+                var y = pos.y + initialSpeed.y * time + GameResources.Instance.Gravity * Mathf.Pow(time, 2) / 2;
                 var x = pos.x + initialSpeed.x * time;
                 if (tileMap.IsOutOfBounds(x, y)) {
                     break;
                 }
+
                 var newPos = new Vector2(x, y);
                 if (list.Count > 0) {
                     var last = list.Last();
@@ -51,13 +63,17 @@ namespace Datenshi.Scripts.Util.Gravity {
                         } catch (Exception e) {
                             continue;
                         }
+
                         if (hitNode != null) {
                             finalNode = hitNode;
                         }
+
                         break;
                     }
+
                     //GizmosUtil.ArrowDebug(last, dir, Color.yellow);
                 }
+
                 list.Add(newPos);
                 time += timeIncrementation;
             }
@@ -82,6 +98,7 @@ namespace Datenshi.Scripts.Util.Gravity {
                 var previous = path[i - 1];
                 distance += Vector2.Distance(point, previous);
             }
+
             return distance;
         }
 

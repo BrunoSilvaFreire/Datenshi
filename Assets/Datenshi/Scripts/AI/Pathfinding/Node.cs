@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Datenshi.Scripts.AI.Pathfinding.Links;
 using Sirenix.OdinInspector;
-using Sirenix.Serialization;
-using Sirenix.Utilities;
 using UnityEngine;
 
 namespace Datenshi.Scripts.AI.Pathfinding {
@@ -20,6 +17,7 @@ namespace Datenshi.Scripts.AI.Pathfinding {
 
         [SerializeField]
         private List<LinearLink> linearLinks = new List<LinearLink>();
+
         [SerializeField]
         private List<GravityLink> gravityLinks = new List<GravityLink>();
 
@@ -28,6 +26,7 @@ namespace Datenshi.Scripts.AI.Pathfinding {
                 foreach (var linearLink in linearLinks) {
                     yield return linearLink;
                 }
+
                 foreach (var gravityLink in gravityLinks) {
                     yield return gravityLink;
                 }
@@ -100,6 +99,7 @@ namespace Datenshi.Scripts.AI.Pathfinding {
             if (linearLink != null) {
                 linearLinks.Add(linearLink);
             }
+
             var gravityLink = link as GravityLink;
             if (gravityLink != null) {
                 gravityLinks.Add(gravityLink);

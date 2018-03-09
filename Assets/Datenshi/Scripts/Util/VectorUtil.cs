@@ -2,6 +2,10 @@
 
 namespace Datenshi.Scripts.Util {
     public static class VectorUtil {
+        public static string ToPrecisionString(this Vector2 vector) {
+            return string.Format("({0}, {1})", vector.x, vector.y);
+        }
+
         public static Vector2 Multiply(this Vector2 a, Vector2 b) {
             return new Vector2(a.x * b.x, a.y * b.y);
         }

@@ -1,8 +1,8 @@
 ﻿using Datenshi.Scripts.Character;
-using Datenshi.Scripts.Entities.Components.Player;
+using Datenshi.Scripts.Entities;
+using Datenshi.Scripts.Entities.Input;
 using Datenshi.Scripts.Util;
 using DG.Tweening;
-using NUnit.Framework.Internal;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -18,13 +18,13 @@ namespace Datenshi.Scripts.UI {
         public UICircle ExternalCircle;
         public UICircle InternalCircle;
         public float PaddingFadeDuration;
-        private GameEntity entity;
-        private PlayerComponent component;
+        private Entity entity;
+        private PlayerInputProvider playerInputProvider;
 
-        public void Setup(PlayerComponent component, GameEntity entity) {
+        public void Setup(Entity entity, PlayerInputProvider provider) {
             this.entity = entity;
-            this.component = component;
-            var character = entity.character.Character;
+            playerInputProvider = provider;
+            var character = entity.Character;
             var color = character.SignatureColor;
             InternalCircle.SetBaseColor(color);
 
@@ -55,9 +55,7 @@ namespace Datenshi.Scripts.UI {
         }
 
         private void OnClick() {
-            Debug.Log("Current Entity = " + component.CurrentEntity);
-            component.CurrentEntity = entity;
-            Debug.Log("After Entity = " + component.CurrentEntity);
+            entity.InputProvider = playerInputProvider;
         }
 
         public override void Select() {

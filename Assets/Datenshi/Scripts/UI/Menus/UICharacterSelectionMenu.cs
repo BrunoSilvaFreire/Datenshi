@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
-using Datenshi.Scripts.Entities.Components.Player;
+using Datenshi.Scripts.Entities;
+using Datenshi.Scripts.Entities.Input;
 using Datenshi.Scripts.Util;
 using DG.Tweening;
 using Sirenix.Utilities;
@@ -15,10 +16,11 @@ namespace Datenshi.Scripts.UI.Menus {
         public UICircle Circle;
         public float OpenRadius = 150F;
         private readonly List<UICharacterView> knownViews = new List<UICharacterView>();
+        public PlayerInputProvider InputProvider;
 
-        public void AddCharacter(PlayerComponent component, GameEntity character) {
+        public void AddCharacter(Entity component) {
             var view = Instantiate(UIResources.Instance.CharacterViewPrefab, Layout.transform);
-            view.Setup(component, character);
+            view.Setup(component, InputProvider);
             knownViews.Add(view);
         }
 

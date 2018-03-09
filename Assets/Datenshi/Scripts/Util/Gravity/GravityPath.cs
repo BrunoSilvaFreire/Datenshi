@@ -29,7 +29,8 @@ namespace Datenshi.Scripts.Util.Gravity {
         private Vector2[] path;
         private Node finalNode;
 
-        public GravityPath(Vector2 initialPosition, Vector2 initialVelocity, Navmesh navmesh, float precision) : this(initialPosition, initialVelocity) {
+        public GravityPath(Vector2 initialPosition, Vector2 initialVelocity, Navmesh navmesh, float precision) : this(
+            initialPosition, initialVelocity) {
             Calculate(navmesh, precision);
         }
 
@@ -37,11 +38,13 @@ namespace Datenshi.Scripts.Util.Gravity {
             if (path == null) {
                 Calculate(navmesh, precision);
             }
+
             return path;
         }
 
         public void Calculate(Navmesh navmesh, float precision) {
-            path = GravityUtil.CalculatePath(InitialPosition, InitialVelocity, navmesh, out finalNode, precision).ToArray();
+            path = GravityUtil.CalculatePath(InitialPosition, InitialVelocity, navmesh, out finalNode, precision)
+                .ToArray();
         }
     }
 }

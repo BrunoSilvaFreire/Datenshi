@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using Datenshi.Scripts.AI.Pathfinding.Links;
-using Datenshi.Scripts.Misc;
+using Datenshi.Scripts.Controller;
 using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
-using Sirenix.Serialization;
 using Sirenix.Utilities;
 using UnityEngine;
 
@@ -32,8 +29,9 @@ namespace Datenshi.Scripts.AI.Pathfinding {
                 if (boxcastCached) {
                     return cachedBoxcastSize;
                 }
+
                 cachedBoxcastSize = Grid.cellSize;
-                cachedBoxcastSize.Scale(Constants.NavmeshBoxcastDownsizeScale);
+                cachedBoxcastSize.Scale(GameResources.Instance.NavmeshBoxcastDownsizeScale);
                 boxcastCached = true;
                 return cachedBoxcastSize;
             }
@@ -127,6 +125,7 @@ namespace Datenshi.Scripts.AI.Pathfinding {
             foreach (var pos in GetAllPossiblePositions()) {
                 Nodes[GetNodeIndex(pos)] = CreateNode(pos);
             }
+
             for (var x = min.x; x <= max.x; x++) {
                 for (var y = min.y; y < max.y; y++) { }
             }
@@ -160,6 +159,7 @@ namespace Datenshi.Scripts.AI.Pathfinding {
             if (b.All(hit => hit.collider.isTrigger)) {
                 return false;
             }
+
             return !b.IsNullOrEmpty();
         }
 
@@ -169,11 +169,13 @@ namespace Datenshi.Scripts.AI.Pathfinding {
                 //Inside an object
                 return NodeType.Blocked;
             }
+
             var x = mapPosition.x;
             var y = mapPosition.y;
             if (!BoxCast(x, y - 1, size)) {
                 return NodeType.Empty;
             }
+
             //Is on solid ground, check for edges
             var leftLowBoxCast = BoxCast(x - 1, y - 1, size);
             var rightLowBoxCast = BoxCast(x + 1, y - 1, size);
@@ -182,12 +184,15 @@ namespace Datenshi.Scripts.AI.Pathfinding {
             if (leftLowBoxCast && rightLowBoxCast && !leftBoxCast && !rightBoxCast) {
                 return NodeType.Platform;
             }
+
             if (leftLowBoxCast || leftBoxCast) {
                 return NodeType.RightEdge;
             }
+
             if (rightLowBoxCast || rightBoxCast) {
                 return NodeType.LeftEdge;
             }
+
             return NodeType.Solo;
         }
 
@@ -227,6 +232,7 @@ namespace Datenshi.Scripts.AI.Pathfinding {
             if (IsOutOfGridBounds(pos)) {
                 return -1;
             }
+
             var x = pos.x - Min.x;
             var y = pos.y - Min.y;
             return y * XSize + x;
@@ -249,6 +255,7 @@ namespace Datenshi.Scripts.AI.Pathfinding {
             if (IsOutOfBounds(position)) {
                 return Node.Invalid;
             }
+
             var pos = Grid.WorldToCell(position).ToVector2();
             return GetNode(pos);
         }
@@ -277,11 +284,13 @@ namespace Datenshi.Scripts.AI.Pathfinding {
             if (a == null || b == null) {
                 return false;
             }
+
             var aPos = a.Position;
             var bPos = b.Position;
             if (aPos.y != bPos.y) {
                 return false;
             }
+
             var current = a;
             var direction = GetXDirection(aPos, bPos);
             while (current != b) {
@@ -290,6 +299,7 @@ namespace Datenshi.Scripts.AI.Pathfinding {
                     return false;
                 }
             }
+
             return true;
         }
 
@@ -297,7 +307,10 @@ namespace Datenshi.Scripts.AI.Pathfinding {
             if (aPos.x == bPos.x) {
                 return Direction.Zero;
             }
+
             return aPos.x > bPos.x ? Direction.Left : Direction.Right;
         }
+
+      
     }
 }

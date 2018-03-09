@@ -1,6 +1,8 @@
 ﻿using System;
-using Datenshi.Scripts.Util;
+using Datenshi.Scripts.Entities;
+using Datenshi.Scripts.Entities.Input;
 using Datenshi.Scripts.Util.Gravity;
+using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
 
@@ -9,8 +11,11 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links {
     public class GravityLink : Link {
         public static readonly Color GizmosColor = Color.white;
 
-        [SerializeField]
+        [SerializeField, ReadOnly]
         private int destination;
+
+        [SerializeField, ReadOnly]
+        private int origin;
 
         [SerializeField]
         private Vector2 requiredForce;
@@ -25,10 +30,12 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links {
         private GravityPath loadedPath;
 
         public GravityLink(
+            int origin,
             Navmesh navmesh,
             Vector2 initialPosition,
             Vector2 initialVelocity,
             float precision) {
+            this.origin = origin;
             loadedPath = new GravityPath(initialPosition, initialVelocity, navmesh, precision);
             var end = loadedPath.FinalNode;
             if (end != null) {
@@ -36,6 +43,7 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links {
             } else {
                 destination = -1;
             }
+
             requiredForce = initialVelocity;
         }
 
@@ -51,8 +59,16 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links {
             }
         }
 
-        public override void Execute() { }
+        public override int GetDestination() {
+            return destination;
+        }
+
+        public override int GetOrigin() {
+            return origin;
+        }
+
 #if UNITY_EDITOR
+
 
         public override bool DrawOnlyOnMouseOver() {
             return true;
@@ -63,6 +79,7 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links {
                 var initPos = navmesh.WorldPosCenter(originNodeIndex);
                 loadedPath = new GravityPath(initPos, RequiredForce, navmesh, precision);
             }
+
             var path = loadedPath.GetPath(navmesh, precision);
             Handles.color = GizmosColor;
             for (var i = 1; i < path.Length; i++) {
@@ -71,6 +88,24 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links {
 
                 Handles.DrawLine(previous, point);
             }
+        }
+
+        public override void Execute(MovableEntity entity, AIStateInputProvider provider, Navmesh navmesh) {
+            var pos = entity.GroundPosition;
+            var direction = Math.Sign(requiredForce.x);
+            var originPos = navmesh.WorldPosCenter((uint) origin);
+            var distance = Mathf.Abs(Mathf.Abs(originPos.x) - Mathf.Abs(pos.x));
+            if (distance > 0.5F) {
+                //Run towards middle
+                provider.Jump = false;
+                provider.Horizontal = direction;
+            } else if (entity.CollisionStatus.Down) {
+                entity.Velocity = requiredForce;
+            }
+        }
+
+        public override bool CanMakeIt(MovableEntity entity) {
+            return entity.MaxSpeed > requiredForce.x && entity.YForce > requiredForce.y;
         }
 #endif
     }

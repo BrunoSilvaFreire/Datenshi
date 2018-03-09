@@ -1,7 +1,7 @@
 ﻿using System;
 using Datenshi.Scripts.AI.Pathfinding.Links.Generators;
+using Datenshi.Scripts.Controller;
 using Datenshi.Scripts.Util;
-using DesperateDevs.Unity.Editor;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEditorInternal;
@@ -46,6 +46,7 @@ namespace Datenshi.Scripts.AI.Pathfinding.Editor {
                 case NodeType.Empty:
                     return EmptyColor;
             }
+
             throw new ArgumentOutOfRangeException("NodeType", NodeType, null);
         }
 
@@ -72,12 +73,14 @@ namespace Datenshi.Scripts.AI.Pathfinding.Editor {
                     linkGenerator.DrawEditor();
                 }
             }
+
             showOptions = EditorGUILayout.Foldout(showOptions, "Options");
             precisionChanged = false;
             if (showOptions) {
                 //Precision config
                 EditorGUI.BeginChangeCheck();
-                visualizerPrecision = EditorGUILayout.Slider("Precision", visualizerPrecision, Constants.MinPrecision, Constants.MaxPrecision);
+                visualizerPrecision = EditorGUILayout.Slider("Precision", visualizerPrecision,
+                    GameResources.Instance.MinPrecision, GameResources.Instance.MaxPrecision);
                 precisionChanged = EditorGUI.EndChangeCheck();
                 EditorPrefs.SetFloat(Constants.PrecisionConfigKey, visualizerPrecision);
 
@@ -87,16 +90,19 @@ namespace Datenshi.Scripts.AI.Pathfinding.Editor {
                 showLinks = EditorGUILayout.Toggle("Show Links", showLinks);
                 showMouseInfo = EditorGUILayout.Toggle("Show Mouse Info", showMouseInfo);
             }
+
             EditorGUI.BeginChangeCheck();
             //EditorGUILayout.BeginHorizontal();
             navmesh.Min = EditorGUILayout.Vector2IntField("Min", navmesh.Min);
             navmesh.Max = EditorGUILayout.Vector2IntField("Max", navmesh.Max);
             //EditorGUILayout.EndHorizontal();
-            LayerMask tempMask = EditorGUILayout.MaskField("LayerMask", InternalEditorUtility.LayerMaskToConcatenatedLayersMask(navmesh.LayerMask), InternalEditorUtility.layers);
+            LayerMask tempMask = EditorGUILayout.MaskField("LayerMask",
+                InternalEditorUtility.LayerMaskToConcatenatedLayersMask(navmesh.LayerMask),
+                InternalEditorUtility.layers);
             navmesh.LayerMask = InternalEditorUtility.ConcatenatedLayersMaskToLayerMask(tempMask);
             navmesh.Grid = (Grid) EditorGUILayout.ObjectField("Grid", navmesh.Grid, typeof(Grid), true);
             GUI.enabled = navmesh.Grid;
-            if (EditorLayout.MiniButton("Regenerate")) {
+            if (GUILayout.Button("Regenerate")) {
                 navmesh.Regenerate();
                 GenerateLinks();
                 changed = true;
@@ -105,6 +111,7 @@ namespace Datenshi.Scripts.AI.Pathfinding.Editor {
             if (EditorGUI.EndChangeCheck()) {
                 changed = true;
             }
+
             if (changed) {
                 EditorSceneManager.MarkSceneDirty(navmesh.gameObject.scene);
             }
@@ -115,6 +122,7 @@ namespace Datenshi.Scripts.AI.Pathfinding.Editor {
             if (grid == null) {
                 return;
             }
+
             foreach (var node in navmesh.Nodes) {
                 foreach (var generator in LinkGenerators.Generators) {
                     var center = grid.GetCellCenterWorld(node.Position.ToVector3());
@@ -129,10 +137,12 @@ namespace Datenshi.Scripts.AI.Pathfinding.Editor {
             if (navmesh.Grid == null) {
                 return;
             }
+
             DrawSceneNodes();
             if (showLinks) {
                 DrawSceneLinks();
             }
+
             DrawSceneBounds();
             if (showMouseInfo) {
                 DrawMouseInfo();
@@ -152,6 +162,7 @@ namespace Datenshi.Scripts.AI.Pathfinding.Editor {
             if (!selectedGameView) {
                 return;
             }
+
             Vector3 mousePosition = Event.current.mousePosition;
             var camera = selectedGameView.camera;
             var worldPosition = ConvertToWorldPos(mousePosition, camera);
@@ -163,12 +174,14 @@ namespace Datenshi.Scripts.AI.Pathfinding.Editor {
             if (node.IsInvalid) {
                 return;
             }
+
             var center = navmesh.WorldPosCenter(node);
             //HandlesUtil.DrawBox2D(center, Navmesh.BoxCastSize, Color.cyan);
             if (node.IsEmpty) {
                 HandlesUtil.DrawBox2D(center, size, Color.white);
                 return;
             }
+
             var nodeColor = node.IsWalkable ? Color.green : Color.red;
             HandlesUtil.DrawBox2DWire(center, size, nodeColor);
             var e = Event.current;
@@ -215,9 +228,11 @@ namespace Datenshi.Scripts.AI.Pathfinding.Editor {
                 if (!showLinks) {
                     return;
                 }
+
                 if (node.IsInvalid) {
                     return;
                 }
+
                 var nodeIndex = navmesh.GetNodeIndex(node);
                 foreach (var link in node.Links) {
                     if (link.DrawOnlyOnMouseOver()) {
@@ -231,6 +246,7 @@ namespace Datenshi.Scripts.AI.Pathfinding.Editor {
             if (navmesh.IsOutOfBounds(worldPosition)) {
                 return Node.Invalid;
             }
+
             return navmesh.GetNodeAtWorld(worldPosition);
         }
 
@@ -239,17 +255,21 @@ namespace Datenshi.Scripts.AI.Pathfinding.Editor {
             if (grid == null) {
                 return;
             }
+
             var cellSize = grid.cellSize;
             foreach (var node in navmesh.Nodes) {
                 if (node.IsInvalid) {
                     continue;
                 }
+
                 if (!showEmptyNodes && node.IsEmpty) {
                     continue;
                 }
+
                 if (!showBlockedNodes && node.IsBlocked) {
                     continue;
                 }
+
                 var color = GetColor(node.Type);
                 var center = grid.CellToWorld(node.Position.ToVector3()) + cellSize / 2;
                 HandlesUtil.DrawBox2D(center, cellSize, color);
@@ -262,6 +282,7 @@ namespace Datenshi.Scripts.AI.Pathfinding.Editor {
             if (grid == null) {
                 return;
             }
+
             var size = grid.cellSize;
             var min = navmesh.Min;
             var max = navmesh.Max;
@@ -281,6 +302,7 @@ namespace Datenshi.Scripts.AI.Pathfinding.Editor {
                     if (link.DrawOnlyOnMouseOver()) {
                         continue;
                     }
+
                     link.DrawGizmos(navmesh, i, visualizerPrecision, precisionChanged);
                 }
             }

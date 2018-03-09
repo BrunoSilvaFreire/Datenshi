@@ -1,4 +1,5 @@
-﻿using Datenshi.Scripts.Entities.Components.Player;
+﻿using Datenshi.Scripts.Entities;
+using Datenshi.Scripts.Entities.Input;
 using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -24,9 +25,9 @@ namespace Datenshi.Scripts.UI {
         public Text LevelLabel;
         public Text CharacterNameLabel;
         public Image HealthBar;
-        public PlayerComponent Player;
         public bool Showing = true;
-
+        public PlayerInputProvider Player;
+        private Entity currentEntity;
 
         [ShowInInspector]
         public byte CurrentLevel {
@@ -53,7 +54,7 @@ namespace Datenshi.Scripts.UI {
             }
             set {
                 defaultColor = value;
-                if (!Character) {
+                if (!currentEntity.Character) {
                     UpdateColors();
                 }
             }
@@ -81,16 +82,6 @@ namespace Datenshi.Scripts.UI {
             }
         }
 
-        [ShowInInspector]
-        public Character.Character Character {
-            get {
-                if (Player == null) {
-                    return null;
-                }
-                var e = Player.CurrentEntity;
-                return e.hasCharacter ? e.character.Character : null;
-            }
-        }
 
         [ShowInInspector]
         public byte Saturation {
@@ -105,7 +96,7 @@ namespace Datenshi.Scripts.UI {
 
         private void UpdateColors() {
             float hue;
-            var character = Character;
+            var character = currentEntity.Character;
             if (character) {
                 float s, v;
                 Color.RGBToHSV(character.SignatureColor, out hue, out s, out v);

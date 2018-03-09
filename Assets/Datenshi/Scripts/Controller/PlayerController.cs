@@ -1,7 +1,6 @@
 using System;
+using Datenshi.Input.Constants;
 using Rewired;
-using UnityEngine;
-using Action = Datenshi_Input_Constants.Action;
 using Player = Rewired.Player;
 
 namespace Datenshi.Scripts.Controller {
@@ -20,11 +19,11 @@ namespace Datenshi.Scripts.Controller {
 
 
         public float GetXInput() {
-            return Player.GetAxis(Action.Horizontal);
+            return Player.GetAxis(Actions.Horizontal);
         }
 
         public float GetYInput() {
-            return Player.GetAxis(Action.Vertical);
+            return Player.GetAxis(Actions.Vertical);
         }
 
         public bool GetButtonDown(int button) {

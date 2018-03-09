@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Datenshi.Scripts.Misc;
+using Datenshi.Scripts.Util;
 using UnityEngine;
 
 namespace Datenshi.Scripts.AI.Pathfinding.Links.Generators {
@@ -34,7 +34,7 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links.Generators {
             if (found < 0) {
                 return false;
             }
-            link = new LinearLink((uint) found);
+            link = new LinearLink((uint) found, (uint) navmesh.GetNodeIndex(node));
             return true;
         }
 
