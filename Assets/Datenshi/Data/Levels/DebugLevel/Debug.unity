@@ -397,25 +397,25 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0.1
+      value: 2
       inSlope: 0
-      outSlope: 0.9
-      tangentMode: 0
+      outSlope: 0
+      tangentMode: 136
     - serializedVersion: 2
       time: 1
       value: 1
-      inSlope: 0.9
+      inSlope: 0
       outSlope: 0
-      tangentMode: 0
+      tangentMode: 136
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   aiAgent: {fileID: 214375741}
   SkinWidth: 0.1
   MaxSpeed: 10
-  YForce: 5
+  YForce: 27
   SpeedMultiplier: 1
-  GravityScale: 1
+  GravityScale: 2
 --- !u!4 &559728626
 Transform:
   m_ObjectHideFlags: 0
@@ -423,7 +423,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 559728624}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.66, y: -0.32, z: 0}
+  m_LocalPosition: {x: -12.62, y: -0.77, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1428612192}
@@ -22933,8 +22933,8 @@ MonoBehaviour:
       _digitalAxisSimulation: 1
       _digitalAxisSnap: 1
       _digitalAxisInstantReverse: 0
-      _digitalAxisGravity: 3
-      _digitalAxisSensitivity: 3
+      _digitalAxisGravity: 30
+      _digitalAxisSensitivity: 30
       _mouseXYAxisMode: 0
       _mouseOtherAxisMode: 0
       _mouseXYAxisSensitivity: 1
