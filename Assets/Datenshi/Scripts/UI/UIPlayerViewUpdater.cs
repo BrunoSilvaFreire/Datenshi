@@ -6,10 +6,9 @@ namespace Datenshi.Scripts.UI {
         public string ShowingKey = "Showing";
         public UIPlayerView View;
 
-        protected override void UpdateAnimator(Animator animator, AnimatorControllerParameter parameter) {
-            if (parameter.name == ShowingKey) {
-                animator.SetBool(ShowingKey, View.Showing);
-            }
+
+        protected override void UpdateAnimator(Animator anim) {
+            anim.SetBool(ShowingKey, View.Showing);
         }
     }
 }

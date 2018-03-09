@@ -3,9 +3,9 @@ using UnityEditor;
 #endif
 using UnityEngine;
 
-namespace Datenshi.Scripts.Util {
+namespace Datenshi.Scripts.Util.Singleton {
     public abstract class SingletonScriptableObject<T> : ScriptableObject where T : ScriptableObject {
-        private static readonly string Path =  typeof(T).Name;
+        private static readonly string Path = typeof(T).Name;
         private static T instance;
 
         public static T Instance {

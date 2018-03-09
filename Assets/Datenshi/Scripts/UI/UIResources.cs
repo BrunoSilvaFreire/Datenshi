@@ -1,5 +1,7 @@
-﻿using Datenshi.Scripts.UI.Menus;
+﻿using Datenshi.Scripts.UI.Dialogue;
+using Datenshi.Scripts.UI.Menus;
 using Datenshi.Scripts.Util;
+using Datenshi.Scripts.Util.Singleton;
 using UnityEngine;
 
 namespace Datenshi.Scripts.UI {
@@ -8,5 +10,6 @@ namespace Datenshi.Scripts.UI {
         public UICharacterView CharacterViewPrefab;
         public UICharacterSelectionMenu CharacterSelectionMenuPrefab;
         public UIPlayerView PlayerViewPrefab;
+        public UIDialogueBox DialogueBoxPrefab;
     }
 }

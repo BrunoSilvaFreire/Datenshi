@@ -1,5 +1,5 @@
-﻿using Datenshi.Scripts.Controller;
-using Datenshi.Scripts.Entities;
+﻿using Datenshi.Scripts.Entities;
+using Datenshi.Scripts.Game;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Util {

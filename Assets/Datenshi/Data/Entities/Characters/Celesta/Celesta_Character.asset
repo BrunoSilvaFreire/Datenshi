@@ -13,4 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Alias: Celesta
   SignatureColor: {r: 0.7793102, g: 0, b: 1, a: 1}
+  DialoguePortraitPrefab: {fileID: 114840371308095040, guid: a4774fb45fa04a349b9e4cbdc322ad69,
+    type: 2}
   CharacterScreen: {fileID: 8400000, guid: 6d8666327460cce409bdb972cac62e92, type: 2}

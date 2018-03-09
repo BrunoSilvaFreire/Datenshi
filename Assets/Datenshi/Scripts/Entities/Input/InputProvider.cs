@@ -22,7 +22,7 @@ namespace Datenshi.Scripts.Entities.Input {
         public abstract bool GetJump();
 
         public abstract bool GetAttack();
-        
+
         public abstract bool GetWalk();
 
         public abstract bool GetDash();

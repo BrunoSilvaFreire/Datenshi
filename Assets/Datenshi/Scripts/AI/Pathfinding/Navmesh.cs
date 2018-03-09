@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Datenshi.Scripts.Controller;
+using Datenshi.Scripts.Game;
 using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
 using Sirenix.Utilities;

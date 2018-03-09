@@ -1,5 +1,5 @@
 ﻿using System;
-using Datenshi.Scripts.Controller;
+using Datenshi.Scripts.Game;
 using Datenshi.Scripts.Util;
 using UnityEngine;
 

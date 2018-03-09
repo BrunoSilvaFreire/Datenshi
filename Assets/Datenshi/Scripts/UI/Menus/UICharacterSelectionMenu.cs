@@ -24,6 +24,10 @@ namespace Datenshi.Scripts.UI.Menus {
             knownViews.Add(view);
         }
 
+        private void Update() {
+            Showing = InputProvider.GetPlanningMenu();
+        }
+
         protected override void SnapShow() {
             Group.interactable = true;
             Group.alpha = 1;
@@ -37,6 +41,7 @@ namespace Datenshi.Scripts.UI.Menus {
             if (knownViews.IsNullOrEmpty()) {
                 return;
             }
+
             EventSystem.current.SetSelectedGameObject(knownViews[0].Button.gameObject);
         }
 

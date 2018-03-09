@@ -65,6 +65,10 @@ namespace Datenshi.Scripts.Entities.Input {
         [ShowIf("DebugInput")]
         public bool Dash;
 #endif
+        public bool GetPlanningMenu() {
+            return Fetch(player => player.GetButton(Actions.Planning));
+        }
+
         public override float GetHorizontal() {
 #if UNITY_EDITOR
             if (DebugInput) {

@@ -19,7 +19,7 @@ MonoBehaviour:
   EntitiesMask:
     serializedVersion: 2
     m_Bits: 0
-  Gravity: -39.24
+  Gravity: -78.48
   NavmeshBoxcastDownsizeValue: 0.1
   MinPrecision: 1
   MaxPrecision: 100

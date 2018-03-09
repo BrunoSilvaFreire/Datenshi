@@ -29,6 +29,10 @@ namespace Datenshi.Scripts.UI {
         public PlayerInputProvider Player;
         private Entity currentEntity;
 
+        private void Update() {
+            Showing = Player.GetPlanningMenu();
+        }
+
         [ShowInInspector]
         public byte CurrentLevel {
             get {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Datenshi.Scripts.AI.Pathfinding;
-using Datenshi.Scripts.Controller;
+using Datenshi.Scripts.Game;
 using UnityEditor;
 using UnityEngine;
 

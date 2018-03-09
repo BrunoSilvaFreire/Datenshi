@@ -1,6 +1,6 @@
-﻿using Datenshi.Scripts.Controller;
-using Datenshi.Scripts.Entities;
+﻿using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Entities.Input;
+using Datenshi.Scripts.Game;
 using Datenshi.Scripts.Misc;
 using Datenshi.Scripts.Util;
 using UnityEngine;

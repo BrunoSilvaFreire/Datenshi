@@ -133,7 +133,9 @@ namespace Datenshi.Scripts.UI.Narrator {
 
                 ++printedCharCount;
 
-                var delay = typedText.Delay > 0 ? typedText.Delay : this.GetPrintDelayForCharacter(typedText.LastPrintedChar);
+                var delay = typedText.Delay > 0
+                    ? typedText.Delay
+                    : this.GetPrintDelayForCharacter(typedText.LastPrintedChar);
                 yield return new WaitForSeconds(delay);
             } while (!typedText.IsComplete);
 

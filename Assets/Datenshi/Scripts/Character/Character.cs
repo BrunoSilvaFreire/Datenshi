@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Datenshi.Scripts.UI.Dialogue;
+using UnityEngine;
 
 namespace Datenshi.Scripts.Character {
     [CreateAssetMenu(menuName = "Datenshi/Characters/Character")]
@@ -6,6 +7,7 @@ namespace Datenshi.Scripts.Character {
         public const float AlternativeBrightnessDifference = 0.3F;
         public string Alias;
         public Color SignatureColor;
+        public UIDialoguePortrait DialoguePortraitPrefab;
 
         public Color AlternativeSignatureColor {
             get {

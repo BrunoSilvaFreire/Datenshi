@@ -1,6 +1,6 @@
 ﻿using System;
 using Datenshi.Scripts.AI.Pathfinding.Links.Generators;
-using Datenshi.Scripts.Controller;
+using Datenshi.Scripts.Game;
 using Datenshi.Scripts.Util;
 using UnityEditor;
 using UnityEditor.SceneManagement;
