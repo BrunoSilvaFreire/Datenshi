@@ -6,18 +6,21 @@ using UnityEngine;
 
 namespace Datenshi.Scripts.Entities.Motors.State.Ground {
     public class SlopeGroundMotorState : GroundMotorState {
-        public static readonly Variable<bool> GroundedLastFrame = new Variable<bool>("entity.motor.slope.groundedLast", false);
+        public static readonly Variable<bool> GroundedLastFrame =
+            new Variable<bool>("entity.motor.slope.groundedLast", false);
 
         public static readonly SlopeGroundMotorState Instance = new SlopeGroundMotorState();
         private SlopeGroundMotorState() { }
 
-        public override void Execute(MovableEntity entity, MotorStateMachine<GroundMotorState> machine, ref CollisionStatus collStatus) {
+        public override void Execute(MovableEntity entity, MotorStateMachine<GroundMotorState> machine,
+            ref CollisionStatus collStatus) {
             var vel = entity.Velocity;
             NormalGroundMotorState.ProcessInputs(ref vel, entity, machine);
             if (entity.InputProvider.GetJump()) {
                 machine.CurrentState = NormalGroundMotorState.Instance;
                 return;
             }
+
             vel.y += GameResources.Instance.Gravity * entity.GravityScale * Time.deltaTime;
             var maxSpeed = entity.MaxSpeed;
             vel.x = Mathf.Clamp(vel.x, -maxSpeed, maxSpeed);
@@ -29,15 +32,18 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
             var skinBounds = bounds;
             skinBounds.Expand(-2 * entity.SkinWidth);
             var layerMask = GameResources.Instance.WorldMask;
-            PhysicsUtil.DoPhysics(entity, ref vel, ref collStatus, out tempVer, out horizontal, bounds, skinBounds, layerMask);
+            PhysicsUtil.DoPhysics(entity, ref vel, ref collStatus, out tempVer, out horizontal, bounds, skinBounds,
+                layerMask);
             var config = (GroundMotorConfig) entity.Config;
             var groundedLastFrame = entity.GetVariable(GroundedLastFrame);
             var gravityY = -config.SlopeGroundCheckLength;
             if (groundedLastFrame) {
                 gravityY *= 2;
             }
+
             var gravity = new Vector2(0, gravityY);
-            var downRaycast = PhysicsUtil.RaycastEntityVertical(ref gravity, entity, ref collStatus, bounds, skinBounds, layerMask);
+            var downRaycast =
+                PhysicsUtil.RaycastEntityVertical(ref gravity, entity, ref collStatus, bounds, skinBounds, layerMask);
             var down = downRaycast.HasValue;
             collStatus.Down = down;
             var vertical = CheckVerticalSlope(entity, skinBounds, vel, layerMask);
@@ -46,15 +52,18 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
                 if (vertical) {
                     Debug.Log("Has vertical");
                     var angle = Vector2.Angle(vertical.normal, Vector2.up);
-
-                    var slopeDir = Math.Sign(angle);
-                    var entityDir = Math.Sign(vel.x);
-                    Debug.Log("Angle = " + angle);
-                    Debug.Log("Slope dir = " + slopeDir + " vs " + entityDir);
-                    if (slopeDir == entityDir) {
-                        vel.y = -Mathf.Abs(Mathf.Tan(angle * Mathf.Deg2Rad) * vel.x);
+                    if (Mathf.RoundToInt(Mathf.Abs(angle)) != 0) {
+                        var slopeDir = Math.Sign(vertical.point.x - entity.GroundPosition.x);
+                        var entityDir = Math.Sign(vel.x);
+                        Debug.Log("Angle = " + angle);
+                        Debug.Log("Slope dir = " + slopeDir + " vs " + entityDir);
+                        if (slopeDir == entityDir) {
+                            vel.y = -Mathf.Abs(Mathf.Tan(angle * Mathf.Deg2Rad) * vel.x);
+                            Debug.Log("Vel y = " + vel.y);
+                        }
                     }
                 }
+
                 if (groundedLastFrame) {
                     if (down) {
                         var yDifference = downRaycast.Value.point.y - bounds.Min.y;
@@ -62,6 +71,7 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
                         newPos.y += yDifference;
                         entity.transform.position = newPos;
                     }
+
                     entity.SetVariable(GroundedLastFrame, false);
                     machine.CurrentState = NormalGroundMotorState.Instance;
                     vel.y = 0;
@@ -84,8 +94,10 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
                         if (hasProvider && provider.GetWalk()) {
                             xInput /= 2;
                         }
+
                         vel.x += entity.AccelerationCurve.Evaluate(entity.SpeedPercent) * xInput;
                     }
+
                     vel.x *= slopeModifier;
                     vel.y = Mathf.Abs(Mathf.Tan(angle * Mathf.Deg2Rad) * vel.x);
                 } else {
@@ -93,11 +105,13 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
                     machine.CurrentState = NormalGroundMotorState.Instance;
                 }
             }
+
             vel.x *= entity.SpeedMultiplier;
             entity.Velocity = vel;
         }
 
-        private RaycastHit2D CheckVerticalSlope(MovableEntity entity, Bounds2D skinBounds, Vector2 vel, LayerMask layerMask) {
+        private RaycastHit2D CheckVerticalSlope(MovableEntity entity, Bounds2D skinBounds, Vector2 vel,
+            LayerMask layerMask) {
             var dir = Math.Sign(vel.x);
 
 
@@ -109,6 +123,7 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
                 var spacing = width / total;
                 xOrigin += total * spacing;
             }
+
             var gravity = ((GroundMotorConfig) entity.Config).SlopeGroundCheckLength;
             return Physics2D.Raycast(
                 new Vector2(xOrigin, min.y + entity.SkinWidth),

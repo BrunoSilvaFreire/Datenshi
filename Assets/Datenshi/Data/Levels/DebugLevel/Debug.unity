@@ -406,7 +406,7 @@ MonoBehaviour:
   DashDistance: 4
   DashCooldown: 3
   MaxAngle: 60
-  SlopeGroundCheckLength: 7.5
+  SlopeGroundCheckLength: 10
   SlopeSpeedMultiplier:
     serializedVersion: 2
     m_Curve:
@@ -729,8 +729,8 @@ RectTransform:
   m_Father: {fileID: 1106534440}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
@@ -925,7 +925,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 559728624}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.8, y: -9.76, z: 0}
+  m_LocalPosition: {x: -1.36, y: -9.67, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1428612192}
@@ -1296,7 +1296,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 20
-  field of view: 11.421186
+  field of view: 40
   orthographic: 1
   orthographic size: 10
   m_Depth: -1
@@ -1321,7 +1321,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1079403540}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.590415, y: -11.364651, z: -9.963937}
+  m_LocalPosition: {x: -3.5695853, y: -11.274651, z: -9.963937}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 144859981}
@@ -1334,7 +1334,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1079403540}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 

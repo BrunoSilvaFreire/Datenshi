@@ -27,10 +27,13 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
             var skinWidth = entity.SkinWidth;
             skinBounds.Expand(-2 * skinWidth);
             var layerMask = GameResources.Instance.WorldMask;
-            PhysicsUtil.DoPhysics(entity, ref vel, ref collStatus, out vertical, out horizontal, bounds, skinBounds, layerMask);
-            if (CheckSlope(entity, ref collStatus, ref vel, bounds, skinBounds, layerMask, horizontal, machine, skinWidth)) {
+            PhysicsUtil.DoPhysics(entity, ref vel, ref collStatus, out vertical, out horizontal, bounds, skinBounds,
+                layerMask);
+            if (CheckSlope(entity, ref collStatus, ref vel, bounds, skinBounds, layerMask, horizontal, machine,
+                skinWidth)) {
                 return;
             }
+
             vel.x *= entity.SpeedMultiplier;
             entity.Velocity = vel;
         }
@@ -49,18 +52,21 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
             var hasInput = provider != null && Mathf.Abs(provider.GetHorizontal()) > 0;
             var config = (GroundMotorConfig) entity.Config;
             var gravity = new Vector2(0, -config.SlopeGroundCheckLength);
-            var vertical = PhysicsUtil.RaycastEntityVertical(ref gravity, entity, ref collStatus, bounds, skinBounds, layerMask);
-            Debug.Log("Vertical for vet = " + horizontal.HasValue);
+            var vertical =
+                PhysicsUtil.RaycastEntityVertical(ref gravity, entity, ref collStatus, bounds, skinBounds, layerMask);
+            Debug.Log("Vertical for vet = " + vertical.HasValue);
             if (vertical.HasValue && hasInput) {
                 var val = vertical.Value;
                 var angle = Mathf.Abs(Vector2.Angle(val.normal, Vector2.up));
                 var max = ((GroundMotorConfig) entity.Config).MaxAngle;
-                Debug.Log("Test for " + angle + " < " + max + " = " + (angle < max));
-                if (angle < max) {
+                Debug.Log("Angle = " + angle + " / " + max);
+                Debug.Log(Mathf.RoundToInt(Mathf.Abs(angle)) != 0) + "  && " + angle < max);
+                if (Mathf.RoundToInt(Mathf.Abs(angle)) != 0 && angle < max) {
                     machine.SetState(entity, ref collStatus, SlopeGroundMotorState.Instance);
                     return true;
                 }
             }
+
             Debug.Log("Horizontal for vet = " + horizontal.HasValue);
             if (horizontal.HasValue && hasInput) {
                 //Check for slope
@@ -84,10 +90,12 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
                     return true;
                 }
             }
+
             return false;
         }
 
-        public static void ProcessInputs(ref Vector2 vel, MovableEntity entity, MotorStateMachine<GroundMotorState> machine) {
+        public static void ProcessInputs(ref Vector2 vel, MovableEntity entity,
+            MotorStateMachine<GroundMotorState> machine) {
             var provider = entity.InputProvider;
             var hasProvider = provider != null;
             if (hasProvider && provider.GetDash()) {
@@ -97,6 +105,7 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
                     return;
                 }
             }
+
             if (hasProvider && entity.CollisionStatus.Down) {
                 if (provider.GetJump()) {
                     vel.y = entity.YForce;
@@ -121,6 +130,7 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
                 if (speed < maxSpeed) {
                     vel.x += acceleration;
                 }
+
                 return;
             }
 
