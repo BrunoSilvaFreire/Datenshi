@@ -1,5 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Datenshi.Input.Constants;
+using Datenshi.Scripts.Util;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -32,9 +35,12 @@ namespace Datenshi.Scripts.UI.Narrator {
         [Tooltip("Event called when a character is printed. Inteded for audio callbacks.")]
         private CharacterPrintedEvent characterPrinted = new CharacterPrintedEvent();
 
+        [ShowInInspector]
         private Text textComponent;
+
+        public float DefaultPrintDelay;
+        public bool WaitForInput;
         private string printingText;
-        private float defaultPrintDelay;
         private Coroutine typeTextCoroutine;
 
         /// <summary>
@@ -43,7 +49,7 @@ namespace Datenshi.Scripts.UI.Narrator {
         /// <value>The print completed callback event.</value>
         public UnityEvent PrintCompleted {
             get {
-                return this.printCompleted;
+                return printCompleted;
             }
         }
 
@@ -53,7 +59,7 @@ namespace Datenshi.Scripts.UI.Narrator {
         /// <value>The character printed event.</value>
         public CharacterPrintedEvent CharacterPrinted {
             get {
-                return this.characterPrinted;
+                return characterPrinted;
             }
         }
 
@@ -63,17 +69,17 @@ namespace Datenshi.Scripts.UI.Narrator {
         /// <value><c>true</c> if printing; otherwise, <c>false</c>.</value>
         public bool IsTyping {
             get {
-                return this.typeTextCoroutine != null;
+                return typeTextCoroutine != null;
             }
         }
 
         private Text TextComponent {
             get {
-                if (this.textComponent == null) {
-                    this.textComponent = this.GetComponent<Text>();
+                if (textComponent == null) {
+                    textComponent = GetComponent<Text>();
                 }
 
-                return this.textComponent;
+                return textComponent;
             }
         }
 
@@ -83,25 +89,25 @@ namespace Datenshi.Scripts.UI.Narrator {
         /// <param name="text">Text to type.</param>
         /// <param name="printDelay">Print delay (in seconds) per character.</param>
         public void TypeText(string text, float printDelay = -1) {
-            this.Cleanup();
+            Cleanup();
 
-            this.defaultPrintDelay = printDelay > 0 ? printDelay : PrintDelaySetting;
-            this.printingText = text;
+            DefaultPrintDelay = printDelay > 0 ? printDelay : PrintDelaySetting;
+            printingText = text;
 
-            this.typeTextCoroutine = this.StartCoroutine(this.TypeTextCharByChar(text));
+            typeTextCoroutine = StartCoroutine(TypeTextCharByChar(text));
         }
 
         /// <summary>
         /// Skips the typing to the end.
         /// </summary>
         public void Skip() {
-            this.Cleanup();
+            Cleanup();
 
             var generator = new TypedTextGenerator();
-            var typedText = generator.GetCompletedText(this.printingText);
-            this.TextComponent.text = typedText.TextToPrint;
+            var typedText = generator.GetCompletedText(printingText);
+            TextComponent.text = typedText.TextToPrint;
 
-            this.OnTypewritingComplete();
+            OnTypewritingComplete();
         }
 
         /// <summary>
@@ -110,58 +116,62 @@ namespace Datenshi.Scripts.UI.Narrator {
         /// <returns><c>true</c> if this instance is skippable; otherwise, <c>false</c>.</returns>
         public bool IsSkippable() {
             // For now there's no way to configure this. Just make sure it's currently typing.
-            return this.IsTyping;
+            return IsTyping;
         }
 
         private void Cleanup() {
-            if (this.typeTextCoroutine != null) {
-                this.StopCoroutine(this.typeTextCoroutine);
-                this.typeTextCoroutine = null;
+            if (typeTextCoroutine != null) {
+                StopCoroutine(typeTextCoroutine);
+                typeTextCoroutine = null;
             }
         }
 
-        private IEnumerator TypeTextCharByChar(string text) {
-            this.TextComponent.text = string.Empty;
+        public IEnumerator TypeTextCharByChar(string text) {
+            TextComponent.text = string.Empty;
 
             var generator = new TypedTextGenerator();
             TypedTextGenerator.TypedText typedText;
-            int printedCharCount = 0;
+            var printedCharCount = 0;
             do {
                 typedText = generator.GetTypedTextAt(text, printedCharCount);
-                this.TextComponent.text = typedText.TextToPrint;
-                this.OnCharacterPrinted(typedText.LastPrintedChar.ToString());
+                TextComponent.text = typedText.TextToPrint;
+                OnCharacterPrinted(typedText.LastPrintedChar.ToString());
 
                 ++printedCharCount;
 
                 var delay = typedText.Delay > 0
                     ? typedText.Delay
-                    : this.GetPrintDelayForCharacter(typedText.LastPrintedChar);
+                    : GetPrintDelayForCharacter(typedText.LastPrintedChar);
                 yield return new WaitForSeconds(delay);
+                if (InputUtil.GetAnyPlayerButtonDown(Actions.Attack)) {
+                    Skip();
+                }
             } while (!typedText.IsComplete);
+            if (WaitForInput) {
+                while (!InputUtil.GetAnyPlayerButtonDown(Actions.Attack)) {
+                    yield return null;
+                }
+            }
 
-            this.typeTextCoroutine = null;
-            this.OnTypewritingComplete();
+            typeTextCoroutine = null;
+            OnTypewritingComplete();
         }
 
         private float GetPrintDelayForCharacter(char characterToPrint) {
             // Then get the default print delay for the current character
-            float punctuationDelay = this.defaultPrintDelay * 8.0f;
-            if (this.punctutationCharacters.Contains(characterToPrint)) {
-                return punctuationDelay;
-            } else {
-                return this.defaultPrintDelay;
-            }
+            var punctuationDelay = DefaultPrintDelay * 8.0f;
+            return punctutationCharacters.Contains(characterToPrint) ? punctuationDelay : DefaultPrintDelay;
         }
 
         private void OnCharacterPrinted(string printedCharacter) {
-            if (this.CharacterPrinted != null) {
-                this.CharacterPrinted.Invoke(printedCharacter);
+            if (CharacterPrinted != null) {
+                CharacterPrinted.Invoke(printedCharacter);
             }
         }
 
         private void OnTypewritingComplete() {
-            if (this.PrintCompleted != null) {
-                this.PrintCompleted.Invoke();
+            if (PrintCompleted != null) {
+                PrintCompleted.Invoke();
             }
         }
 

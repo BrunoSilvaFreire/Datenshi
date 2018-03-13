@@ -18,18 +18,82 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
             vel.y += GameResources.Instance.Gravity * entity.GravityScale * Time.deltaTime;
             var maxSpeed = entity.MaxSpeed;
             vel.x = Mathf.Clamp(vel.x, -maxSpeed, maxSpeed);
-            PhysicsUtil.DoPhysics(entity, ref vel, ref collStatus);
+            RaycastHit2D? vertical;
+            RaycastHit2D? horizontal;
+            var bounds = (Bounds2D) entity.Hitbox.bounds;
+            //bounds.Center += vel * Time.deltaTime;
+            DebugUtil.DrawBounds2D(bounds, Color.red);
+            var skinBounds = bounds;
+            var skinWidth = entity.SkinWidth;
+            skinBounds.Expand(-2 * skinWidth);
+            var layerMask = GameResources.Instance.WorldMask;
+            PhysicsUtil.DoPhysics(entity, ref vel, ref collStatus, out vertical, out horizontal, bounds, skinBounds, layerMask);
+            if (CheckSlope(entity, ref collStatus, ref vel, bounds, skinBounds, layerMask, horizontal, machine, skinWidth)) {
+                return;
+            }
             vel.x *= entity.SpeedMultiplier;
             entity.Velocity = vel;
         }
 
-        private static void ProcessInputs(ref Vector2 vel, MovableEntity entity, MotorStateMachine<GroundMotorState> machine) {
+        public bool CheckSlope(
+            MovableEntity entity,
+            ref CollisionStatus collStatus,
+            ref Vector2 vel,
+            Bounds2D bounds,
+            Bounds2D skinBounds,
+            LayerMask layerMask,
+            RaycastHit2D? horizontal,
+            MotorStateMachine<GroundMotorState> machine,
+            float skinWidth) {
+            var provider = entity.InputProvider;
+            var hasInput = provider != null && Mathf.Abs(provider.GetHorizontal()) > 0;
+            var config = (GroundMotorConfig) entity.Config;
+            var gravity = new Vector2(0, -config.SlopeGroundCheckLength);
+            var vertical = PhysicsUtil.RaycastEntityVertical(ref gravity, entity, ref collStatus, bounds, skinBounds, layerMask);
+            Debug.Log("Vertical for vet = " + horizontal.HasValue);
+            if (vertical.HasValue && hasInput) {
+                var val = vertical.Value;
+                var angle = Mathf.Abs(Vector2.Angle(val.normal, Vector2.up));
+                var max = ((GroundMotorConfig) entity.Config).MaxAngle;
+                Debug.Log("Test for " + angle + " < " + max + " = " + (angle < max));
+                if (angle < max) {
+                    machine.SetState(entity, ref collStatus, SlopeGroundMotorState.Instance);
+                    return true;
+                }
+            }
+            Debug.Log("Horizontal for vet = " + horizontal.HasValue);
+            if (horizontal.HasValue && hasInput) {
+                //Check for slope
+                var val = horizontal.Value;
+                var angle = Mathf.Abs(Vector2.Angle(val.normal, Vector2.up));
+                var max = ((GroundMotorConfig) entity.Config).MaxAngle;
+                if (angle < max) {
+                    machine.SetState(entity, ref collStatus, SlopeGroundMotorState.Instance);
+                    return true;
+                }
+
+                //On this point, we may be "bugged inside"
+                var origin = new Vector2(val.point.x, vel.y + skinWidth);
+                var secondTry = Physics2D.Raycast(origin, vel, vel.magnitude, layerMask);
+                Debug.DrawRay(origin, vel, secondTry ? Color.green : Color.red);
+                if (!secondTry) {
+                    var pos = entity.transform.position;
+                    pos.y += skinWidth;
+                    entity.transform.position = pos;
+                    machine.SetState(entity, ref collStatus, SlopeGroundMotorState.Instance);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public static void ProcessInputs(ref Vector2 vel, MovableEntity entity, MotorStateMachine<GroundMotorState> machine) {
             var provider = entity.InputProvider;
             var hasProvider = provider != null;
             if (hasProvider && provider.GetDash()) {
                 var lastTimeDash = entity.GetVariable(DashGroundMotorState.DashStart);
                 if (Time.time - lastTimeDash > ((GroundMotorConfig) entity.Config).DashCooldown) {
-                    machine.CurrentState = DashGroundMotorState.Instance;                    
+                    machine.CurrentState = DashGroundMotorState.Instance;
                     return;
                 }
             }

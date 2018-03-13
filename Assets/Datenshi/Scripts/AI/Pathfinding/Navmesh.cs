@@ -125,10 +125,6 @@ namespace Datenshi.Scripts.AI.Pathfinding {
             foreach (var pos in GetAllPossiblePositions()) {
                 Nodes[GetNodeIndex(pos)] = CreateNode(pos);
             }
-
-            for (var x = min.x; x <= max.x; x++) {
-                for (var y = min.y; y < max.y; y++) { }
-            }
         }
 
         private Node CreateNode(Vector2Int pos) {

@@ -12,7 +12,8 @@ namespace Datenshi.Scripts.Entities.Motors {
 
             var maxSpeed = entity.MaxSpeed;
             vel = Vector2.ClampMagnitude(vel, maxSpeed);
-            PhysicsUtil.DoPhysics(entity, ref vel, ref collStatus);
+            RaycastHit2D? hit;
+            PhysicsUtil.DoPhysics(entity, ref vel, ref collStatus, out hit);
             vel *= entity.SpeedMultiplier;
             entity.Velocity = vel;
         }

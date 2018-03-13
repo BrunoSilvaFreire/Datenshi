@@ -118,6 +118,8 @@ namespace Datenshi.Scripts.AI.Pathfinding {
         Platform,
         LeftEdge,
         RightEdge,
+        LeftSlope,
+        RightSlope,
         Solo
     }
 }

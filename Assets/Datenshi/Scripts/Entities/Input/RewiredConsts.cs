@@ -10,7 +10,6 @@
 namespace Datenshi.Input.Constants {
     public static partial class Actions {
         // Default
-        [Rewired.Dev.ActionIdFieldInfo(categoryName = "Default", friendlyName = "XAxis")]
         public const int Horizontal = 0;
         [Rewired.Dev.ActionIdFieldInfo(categoryName = "Default", friendlyName = "YAxis")]
         public const int Vertical = 1;

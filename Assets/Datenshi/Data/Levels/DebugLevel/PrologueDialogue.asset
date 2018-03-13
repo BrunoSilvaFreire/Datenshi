@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd4a0fd22918454a9c1c90b96b9a170a, type: 3}
+  m_Name: PrologueDialogue
+  m_EditorClassIdentifier: 
+  Speeches:
+  - Character: {fileID: 11400000, guid: 8a2ea0deeae62114f97ad13a532bdf1b, type: 2}
+    Lines:
+    - Text: Mia, just forget it, we should just go home...
+      Move: 1
+      AppearanceMode:
+        Duration: 0.5
+        Offset: 0
+        Left: 1
+  - Character: {fileID: 11400000, guid: c4136996a51686c4ba1b2c6e76a94163, type: 2}
+    Lines:
+    - Text: Stop being such a pussy!
+      Move: 1
+      AppearanceMode:
+        Duration: 0.5
+        Offset: 0
+        Left: 0

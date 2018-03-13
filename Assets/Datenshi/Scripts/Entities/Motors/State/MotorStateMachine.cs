@@ -13,6 +13,13 @@ namespace Datenshi.Scripts.Entities.Motors.State {
             set;
         }
 
+        public void SetState(MovableEntity entity, ref CollisionStatus collStatus, S state) {
+            CurrentState = state;
+            if (CurrentState != null) {
+                CurrentState.Execute(entity, this, ref collStatus);
+            }
+        }
+
         public override void Execute(MovableEntity entity, ref CollisionStatus collStatus) {
             CurrentState.Execute(entity, this, ref collStatus);
         }

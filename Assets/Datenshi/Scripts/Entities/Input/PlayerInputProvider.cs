@@ -1,5 +1,6 @@
 ﻿using System;
 using Datenshi.Input.Constants;
+using Datenshi.Scripts.Game;
 using Rewired;
 using Sirenix.OdinInspector;
 using UnityEditor;
@@ -43,6 +44,9 @@ namespace Datenshi.Scripts.Entities.Input {
         }
 
         public T Fetch<T>(Func<Player, T> selector) {
+            if (!RuntimeVariables.Instance.AllowPlayerInput) {
+                return default(T);
+            }
             return currentPlayer == null ? default(T) : selector(currentPlayer);
         }
 #if UNITY_EDITOR
@@ -62,6 +66,7 @@ namespace Datenshi.Scripts.Entities.Input {
 
         [ShowIf("DebugInput")]
         public bool Walk;
+
         [ShowIf("DebugInput")]
         public bool Dash;
 #endif

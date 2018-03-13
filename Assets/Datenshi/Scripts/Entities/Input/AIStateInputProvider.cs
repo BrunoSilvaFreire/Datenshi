@@ -1,4 +1,5 @@
 ﻿using Datenshi.Scripts.AI.Behaviour;
+using Datenshi.Scripts.Game;
 
 namespace Datenshi.Scripts.Entities.Input {
     public class AIStateInputProvider : InputProvider {
@@ -14,34 +15,37 @@ namespace Datenshi.Scripts.Entities.Input {
         public bool Dash;
 
         public override float GetHorizontal() {
-            return Horizontal;
+            return Fetch(Horizontal);
+        }
+
+        private static T Fetch<T>(T horizontal) {
+            return !RuntimeVariables.Instance.AllowPlayerInput ? default(T) : horizontal;
         }
 
         public override float GetVertical() {
-            return Vertical;
+            return Fetch(Vertical);
         }
 
         public override bool GetJump() {
-            return Jump;
+            return Fetch(Jump);
         }
 
         public override bool GetAttack() {
-            return Attack;
+            return Fetch(Attack);
         }
 
         public override bool GetWalk() {
-            return Walk;
+            return Fetch(Walk);
         }
 
         public override bool GetDash() {
-            return Dash;
+            return Fetch(Dash);
         }
 
         private void Update() {
             if (CurrentState == null) {
                 return;
             }
-
             CurrentState.Execute(this, Entity);
         }
     }

@@ -13,9 +13,8 @@ namespace Datenshi.Scripts.UI.Dialogue {
         public bool SpriteFacesLeft;
 
         public void Appear(AppearanceMode mode) {
-            Image.DOKill();
             Last = mode;
-            var appearPos = GetAppearPos(mode);
+            OnShow();
         }
 
         private Vector2 GetAppearPos(AppearanceMode mode) {
@@ -23,10 +22,10 @@ namespace Datenshi.Scripts.UI.Dialogue {
             var pos = rect.sizeDelta.x;
             var offset = mode.Offset;
             pos *= Mathf.Abs(rect.localScale.x);
-            if (!mode.Left) {
-                pos *= -1;
-                offset *= -1;
-            }
+            if (mode.Left)
+                return new Vector2(pos / 2 + offset, VerticalOffset);
+            pos *= -1;
+            offset *= -1;
 
             return new Vector2(pos / 2 + offset, VerticalOffset);
         }
@@ -93,6 +92,11 @@ namespace Datenshi.Scripts.UI.Dialogue {
         public float Duration;
         public float Offset;
         public bool Left;
+        public AppearanceMode(float duration, float offset, bool left) {
+            Duration = duration;
+            Offset = offset;
+            Left = left;
+        }
 #if UNITY_EDITOR
 
         [ShowInInspector]

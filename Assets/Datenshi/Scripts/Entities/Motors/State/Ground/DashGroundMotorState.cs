@@ -35,15 +35,16 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
                 var start = entity.GetVariable(DashStart);
                 dir = entity.GetVariable(DashDirection);
                 if (time - start > dashDuration) {
-                    machine.CurrentState = NormalGroundMotorState.Instance;
                     entity.Invulnerable = false;
                     entity.SetVariable(Dashing, false);
+                    machine.CurrentState = NormalGroundMotorState.Instance;
                     return;
                 }
             }
             dir.Normalize();
             dir *= dashDistance / dashDuration;
-            PhysicsUtil.DoPhysics(entity, ref dir, ref collStatus);
+            RaycastHit2D? hit;
+            PhysicsUtil.DoPhysics(entity, ref dir, ref collStatus, out hit);
             entity.Velocity = dir;
         }
     }
