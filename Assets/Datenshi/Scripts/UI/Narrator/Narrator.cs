@@ -92,8 +92,6 @@ namespace Datenshi.Scripts.UI.Narrator {
             Cleanup();
 
             DefaultPrintDelay = printDelay > 0 ? printDelay : PrintDelaySetting;
-            printingText = text;
-
             typeTextCoroutine = StartCoroutine(TypeTextCharByChar(text));
         }
 
@@ -127,6 +125,7 @@ namespace Datenshi.Scripts.UI.Narrator {
         }
 
         public IEnumerator TypeTextCharByChar(string text) {
+            printingText = text;
             TextComponent.text = string.Empty;
 
             var generator = new TypedTextGenerator();

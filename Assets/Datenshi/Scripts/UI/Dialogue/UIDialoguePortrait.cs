@@ -14,7 +14,7 @@ namespace Datenshi.Scripts.UI.Dialogue {
 
         public void Appear(AppearanceMode mode) {
             Last = mode;
-            OnShow();
+            Showing = true;
         }
 
         private Vector2 GetAppearPos(AppearanceMode mode) {

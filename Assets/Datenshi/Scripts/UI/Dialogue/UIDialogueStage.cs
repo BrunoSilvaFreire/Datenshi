@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Datenshi.Scripts.UI.Misc;
 using Datenshi.Scripts.Util;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,9 +22,12 @@ namespace Datenshi.Scripts.UI.Dialogue {
 
         public float IndicatorYOffset;
         public Image Indicator;
+        public Text CharacterLabel;
         public UIBlackBarView BlackBar;
         public Narrator.Narrator Narrator;
-        private List<UIDialoguePortrait> portraits = new List<UIDialoguePortrait>();
+
+        [ShowInInspector]
+        private readonly List<UIDialoguePortrait> portraits = new List<UIDialoguePortrait>();
 
         public UIDialoguePortrait AddPortrait(Character.Character character) {
             var portrait = character.DialoguePortraitPrefab.Clone(transform);
@@ -63,12 +67,12 @@ namespace Datenshi.Scripts.UI.Dialogue {
             }
         }
 
-        public void Speech(UIDialoguePortrait portrait, string text) { }
 
         public IEnumerator PlayDialogue(Cutscenes.Dialogue.Dialogue dialogue) {
             var speeches = dialogue.Speeches;
             foreach (var speech in speeches) {
                 var character = speech.Character;
+                CharacterLabel.text = character.Alias;
                 foreach (var line in speech.Lines) {
                     var portrait = GetPortrait(character);
                     var rectTransform = ((RectTransform) portrait.transform);

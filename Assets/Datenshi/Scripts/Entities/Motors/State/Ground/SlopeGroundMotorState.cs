@@ -12,15 +12,12 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
         public static readonly SlopeGroundMotorState Instance = new SlopeGroundMotorState();
         private SlopeGroundMotorState() { }
 
-        public override void Execute(MovableEntity entity, MotorStateMachine<GroundMotorState> machine,
+        public override void Execute(
+            MovableEntity entity,
+            MotorStateMachine<GroundMotorState> machine,
             ref CollisionStatus collStatus) {
             var vel = entity.Velocity;
             NormalGroundMotorState.ProcessInputs(ref vel, entity, machine);
-            if (entity.InputProvider.GetJump()) {
-                machine.CurrentState = NormalGroundMotorState.Instance;
-                return;
-            }
-
             vel.y += GameResources.Instance.Gravity * entity.GravityScale * Time.deltaTime;
             var maxSpeed = entity.MaxSpeed;
             vel.x = Mathf.Clamp(vel.x, -maxSpeed, maxSpeed);
@@ -32,7 +29,14 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
             var skinBounds = bounds;
             skinBounds.Expand(-2 * entity.SkinWidth);
             var layerMask = GameResources.Instance.WorldMask;
-            PhysicsUtil.DoPhysics(entity, ref vel, ref collStatus, out tempVer, out horizontal, bounds, skinBounds,
+            PhysicsUtil.DoPhysics(
+                entity,
+                ref vel,
+                ref collStatus,
+                out tempVer,
+                out horizontal,
+                bounds,
+                skinBounds,
                 layerMask);
             var config = (GroundMotorConfig) entity.Config;
             var groundedLastFrame = entity.GetVariable(GroundedLastFrame);
@@ -46,39 +50,7 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
                 PhysicsUtil.RaycastEntityVertical(ref gravity, entity, ref collStatus, bounds, skinBounds, layerMask);
             var down = downRaycast.HasValue;
             collStatus.Down = down;
-            var vertical = CheckVerticalSlope(entity, skinBounds, vel, layerMask);
-            if (!horizontal.HasValue) {
-                Debug.Log("No horizontal");
-                if (vertical) {
-                    Debug.Log("Has vertical");
-                    var angle = Vector2.Angle(vertical.normal, Vector2.up);
-                    if (Mathf.RoundToInt(Mathf.Abs(angle)) != 0) {
-                        var slopeDir = Math.Sign(vertical.point.x - entity.GroundPosition.x);
-                        var entityDir = Math.Sign(vel.x);
-                        Debug.Log("Angle = " + angle);
-                        Debug.Log("Slope dir = " + slopeDir + " vs " + entityDir);
-                        if (slopeDir == entityDir) {
-                            vel.y = -Mathf.Abs(Mathf.Tan(angle * Mathf.Deg2Rad) * vel.x);
-                            Debug.Log("Vel y = " + vel.y);
-                        }
-                    }
-                }
-
-                if (groundedLastFrame) {
-                    if (down) {
-                        var yDifference = downRaycast.Value.point.y - bounds.Min.y;
-                        var newPos = entity.transform.position;
-                        newPos.y += yDifference;
-                        entity.transform.position = newPos;
-                    }
-
-                    entity.SetVariable(GroundedLastFrame, false);
-                    machine.CurrentState = NormalGroundMotorState.Instance;
-                    vel.y = 0;
-                } else {
-                    entity.SetVariable(GroundedLastFrame, true);
-                }
-            } else {
+            if (horizontal.HasValue) {
                 var raycast = horizontal.Value;
                 var angle = Mathf.Abs(Vector2.Angle(raycast.normal, Vector2.up));
                 var slopeLimit = config.MaxAngle;
@@ -97,26 +69,84 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
 
                         vel.x += entity.AccelerationCurve.Evaluate(entity.SpeedPercent) * xInput;
                     }
-
+                    var angleRad = angle * Mathf.Deg2Rad;
                     vel.x *= slopeModifier;
-                    vel.y = Mathf.Abs(Mathf.Tan(angle * Mathf.Deg2Rad) * vel.x);
+                    var max = maxSpeed * Mathf.Abs(Mathf.Cos(angleRad));
+                    vel.x = Mathf.Clamp(vel.x, -max, max);
+                    vel.y = Mathf.Abs(Mathf.Tan(angleRad) * vel.x);
                 } else {
                     vel.x = 0;
                     machine.CurrentState = NormalGroundMotorState.Instance;
                 }
+            } else {
+                HandleSlopeNoHorizontal(
+                    entity,
+                    bounds,
+                    skinBounds,
+                    layerMask,
+                    groundedLastFrame,
+                    downRaycast,
+                    machine,
+                    ref vel);
             }
 
             vel.x *= entity.SpeedMultiplier;
             entity.Velocity = vel;
         }
 
-        private RaycastHit2D CheckVerticalSlope(MovableEntity entity, Bounds2D skinBounds, Vector2 vel,
+        private void HandleSlopeNoHorizontal(
+            MovableEntity entity,
+            Bounds2D bounds,
+            Bounds2D skinBounds,
+            LayerMask layerMask,
+            bool groundedLastFrame,
+            RaycastHit2D? down,
+            MotorStateMachine<GroundMotorState> machine,
+            ref Vector2 vel
+        ) {
+            Debug.Log("No horizontal");
+            var slopeDescend = CheckVerticalSlope(entity, bounds, skinBounds, vel, layerMask);
+            if (slopeDescend) {
+                Debug.Log("Has vertical");
+                var angle = Vector2.Angle(slopeDescend.normal, Vector2.up);
+                if (Mathf.RoundToInt(Mathf.Abs(angle)) != 0) {
+                    var slopeDir = Math.Sign(entity.GroundPosition.x - slopeDescend.point.x);
+                    var entityDir = Math.Sign(vel.x);
+                    Debug.Log("Angle = " + angle);
+                    Debug.Log("Slope dir = " + slopeDir + " vs " + entityDir);
+                    if (slopeDir == entityDir) {
+                        vel.y = -Mathf.Abs(Mathf.Tan(angle * Mathf.Deg2Rad) * vel.x);
+                        Debug.Log("Vel y = " + vel.y);
+                        return;
+                    }
+                }
+            }
+
+            if (groundedLastFrame) {
+                if (down.HasValue) {
+                    var yDifference = down.Value.point.y - bounds.Min.y;
+                    var newPos = entity.transform.position;
+                    newPos.y += yDifference;
+                    entity.transform.position = newPos;
+                }
+                vel.y = 0;       
+                entity.SetVariable(GroundedLastFrame, false);
+            } else {
+                entity.SetVariable(GroundedLastFrame, true);
+            }
+            machine.CurrentState = NormalGroundMotorState.Instance;
+        }
+
+        private RaycastHit2D CheckVerticalSlope(
+            MovableEntity entity,
+            Bounds2D bounds,
+            Bounds2D skinBounds,
+            Vector2 vel,
             LayerMask layerMask) {
             var dir = Math.Sign(vel.x);
 
 
-            var min = skinBounds.Min;
-            var xOrigin = min.x;
+            var xOrigin = skinBounds.Min.x;
             if (dir == -1) {
                 var width = skinBounds.Size.x;
                 var total = (entity.Motor.VerticalRays - 1);
@@ -124,13 +154,17 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
                 xOrigin += total * spacing;
             }
 
-            var gravity = ((GroundMotorConfig) entity.Config).SlopeGroundCheckLength;
-            return Physics2D.Raycast(
-                new Vector2(xOrigin, min.y + entity.SkinWidth),
-                new Vector2(0, -gravity),
+            var gravity = ((GroundMotorConfig) entity.Config).SlopeGroundCheckLength * Time.deltaTime;
+            var origin = new Vector2(xOrigin, bounds.Min.y);
+            var dirVec = new Vector2(0, -gravity);
+            var hit = Physics2D.Raycast(
+                origin,
+                dirVec,
                 gravity,
                 layerMask
             );
+            Debug.DrawRay(origin, dirVec, hit ? Color.magenta : Color.cyan);
+            return hit;
         }
     }
 }

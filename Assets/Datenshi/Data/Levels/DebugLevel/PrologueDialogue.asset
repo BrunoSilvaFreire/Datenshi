@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: PrologueDialogue
   m_EditorClassIdentifier: 
   Speeches:
-  - Character: {fileID: 11400000, guid: 8a2ea0deeae62114f97ad13a532bdf1b, type: 2}
+  - Character: {fileID: 11400000, guid: d6a0890305ce7b4418923676302b3377, type: 2}
     Lines:
-    - Text: Mia, just forget it, we should just go home...
+    - Text: Okay... Let's go.
       Move: 1
       AppearanceMode:
         Duration: 0.5
@@ -22,9 +22,17 @@ MonoBehaviour:
         Left: 1
   - Character: {fileID: 11400000, guid: c4136996a51686c4ba1b2c6e76a94163, type: 2}
     Lines:
-    - Text: Stop being such a pussy!
+    - Text: Are you gonna play the song?
       Move: 1
       AppearanceMode:
         Duration: 0.5
+        Offset: 0
+        Left: 0
+  - Character: {fileID: 11400000, guid: d6a0890305ce7b4418923676302b3377, type: 2}
+    Lines:
+    - Text: Of <b>COURSE</b> I'm gonna play the song!
+      Move: 0
+      AppearanceMode:
+        Duration: 0
         Offset: 0
         Left: 0

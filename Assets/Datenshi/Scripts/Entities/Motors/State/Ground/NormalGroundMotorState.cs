@@ -60,7 +60,7 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
                 var angle = Mathf.Abs(Vector2.Angle(val.normal, Vector2.up));
                 var max = ((GroundMotorConfig) entity.Config).MaxAngle;
                 Debug.Log("Angle = " + angle + " / " + max);
-                Debug.Log(Mathf.RoundToInt(Mathf.Abs(angle)) != 0) + "  && " + angle < max);
+                Debug.Log((Mathf.RoundToInt(Mathf.Abs(angle)) != 0) + "  && " + (angle < max));
                 if (Mathf.RoundToInt(Mathf.Abs(angle)) != 0 && angle < max) {
                     machine.SetState(entity, ref collStatus, SlopeGroundMotorState.Instance);
                     return true;

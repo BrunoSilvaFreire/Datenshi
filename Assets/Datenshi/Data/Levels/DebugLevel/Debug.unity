@@ -20720,15 +20720,15 @@ MonoBehaviour:
     - destination: 771
       origin: 770
     gravityLinks:
-    - destination: 872
+    - destination: 871
       origin: 770
-      requiredForce: {x: -2, y: 15}
-    - destination: 872
+      requiredForce: {x: -6, y: 15}
+    - destination: 871
       origin: 770
-      requiredForce: {x: -4, y: 15}
-    - destination: 872
+      requiredForce: {x: -8, y: 15}
+    - destination: 870
       origin: 770
-      requiredForce: {x: -2, y: 20}
+      requiredForce: {x: -10, y: 15}
     - destination: 871
       origin: 770
       requiredForce: {x: -4, y: 20}
@@ -20738,9 +20738,9 @@ MonoBehaviour:
     - destination: 869
       origin: 770
       requiredForce: {x: -8, y: 20}
-    - destination: 872
+    - destination: 868
       origin: 770
-      requiredForce: {x: -2, y: 25}
+      requiredForce: {x: -10, y: 20}
     - destination: 871
       origin: 770
       requiredForce: {x: -4, y: 25}
@@ -20763,16 +20763,10 @@ MonoBehaviour:
     gravityLinks:
     - destination: 872
       origin: 771
-      requiredForce: {x: -6, y: 15}
-    - destination: 872
-      origin: 771
       requiredForce: {x: -8, y: 15}
     - destination: 871
       origin: 771
       requiredForce: {x: -10, y: 15}
-    - destination: 872
-      origin: 771
-      requiredForce: {x: -4, y: 20}
     - destination: 871
       origin: 771
       requiredForce: {x: -6, y: 20}
@@ -20782,9 +20776,6 @@ MonoBehaviour:
     - destination: 869
       origin: 771
       requiredForce: {x: -10, y: 20}
-    - destination: 872
-      origin: 771
-      requiredForce: {x: -4, y: 25}
     - destination: 870
       origin: 771
       requiredForce: {x: -6, y: 25}
@@ -20802,15 +20793,6 @@ MonoBehaviour:
     - destination: 773
       origin: 772
     gravityLinks:
-    - destination: 872
-      origin: 772
-      requiredForce: {x: -8, y: 15}
-    - destination: 872
-      origin: 772
-      requiredForce: {x: -10, y: 15}
-    - destination: 872
-      origin: 772
-      requiredForce: {x: -6, y: 20}
     - destination: 871
       origin: 772
       requiredForce: {x: -8, y: 20}
@@ -20834,15 +20816,9 @@ MonoBehaviour:
     - destination: 774
       origin: 773
     gravityLinks:
-    - destination: 872
-      origin: 773
-      requiredForce: {x: -8, y: 20}
     - destination: 871
       origin: 773
       requiredForce: {x: -10, y: 20}
-    - destination: 872
-      origin: 773
-      requiredForce: {x: -6, y: 25}
     - destination: 871
       origin: 773
       requiredForce: {x: -8, y: 25}
@@ -20857,12 +20833,6 @@ MonoBehaviour:
     - destination: 775
       origin: 774
     gravityLinks:
-    - destination: 872
-      origin: 774
-      requiredForce: {x: -10, y: 20}
-    - destination: 872
-      origin: 774
-      requiredForce: {x: -8, y: 25}
     - destination: 871
       origin: 774
       requiredForce: {x: -10, y: 25}
@@ -20873,10 +20843,7 @@ MonoBehaviour:
       origin: 775
     - destination: 776
       origin: 775
-    gravityLinks:
-    - destination: 872
-      origin: 775
-      requiredForce: {x: -10, y: 25}
+    gravityLinks: []
   - position: {x: 12, y: -10}
     type: 3
     linearLinks:
@@ -20924,10 +20891,7 @@ MonoBehaviour:
       origin: 781
     - destination: 782
       origin: 781
-    gravityLinks:
-    - destination: 890
-      origin: 781
-      requiredForce: {x: 10, y: 25}
+    gravityLinks: []
   - position: {x: 18, y: -10}
     type: 3
     linearLinks:
@@ -20935,16 +20899,7 @@ MonoBehaviour:
       origin: 782
     - destination: 783
       origin: 782
-    gravityLinks:
-    - destination: 890
-      origin: 782
-      requiredForce: {x: 10, y: 20}
-    - destination: 890
-      origin: 782
-      requiredForce: {x: 8, y: 25}
-    - destination: 891
-      origin: 782
-      requiredForce: {x: 10, y: 25}
+    gravityLinks: []
   - position: {x: 19, y: -10}
     type: 3
     linearLinks:
@@ -20952,22 +20907,7 @@ MonoBehaviour:
       origin: 783
     - destination: 784
       origin: 783
-    gravityLinks:
-    - destination: 890
-      origin: 783
-      requiredForce: {x: 8, y: 20}
-    - destination: 891
-      origin: 783
-      requiredForce: {x: 10, y: 20}
-    - destination: 890
-      origin: 783
-      requiredForce: {x: 6, y: 25}
-    - destination: 891
-      origin: 783
-      requiredForce: {x: 8, y: 25}
-    - destination: 892
-      origin: 783
-      requiredForce: {x: 10, y: 25}
+    gravityLinks: []
   - position: {x: 20, y: -10}
     type: 3
     linearLinks:
@@ -20975,31 +20915,7 @@ MonoBehaviour:
       origin: 784
     - destination: 785
       origin: 784
-    gravityLinks:
-    - destination: 890
-      origin: 784
-      requiredForce: {x: 8, y: 15}
-    - destination: 890
-      origin: 784
-      requiredForce: {x: 10, y: 15}
-    - destination: 890
-      origin: 784
-      requiredForce: {x: 6, y: 20}
-    - destination: 891
-      origin: 784
-      requiredForce: {x: 8, y: 20}
-    - destination: 892
-      origin: 784
-      requiredForce: {x: 10, y: 20}
-    - destination: 891
-      origin: 784
-      requiredForce: {x: 6, y: 25}
-    - destination: 892
-      origin: 784
-      requiredForce: {x: 8, y: 25}
-    - destination: 893
-      origin: 784
-      requiredForce: {x: 10, y: 25}
+    gravityLinks: []
   - position: {x: 21, y: -10}
     type: 3
     linearLinks:
@@ -21007,79 +20923,13 @@ MonoBehaviour:
       origin: 785
     - destination: 786
       origin: 785
-    gravityLinks:
-    - destination: 890
-      origin: 785
-      requiredForce: {x: 6, y: 15}
-    - destination: 890
-      origin: 785
-      requiredForce: {x: 8, y: 15}
-    - destination: 891
-      origin: 785
-      requiredForce: {x: 10, y: 15}
-    - destination: 890
-      origin: 785
-      requiredForce: {x: 4, y: 20}
-    - destination: 891
-      origin: 785
-      requiredForce: {x: 6, y: 20}
-    - destination: 892
-      origin: 785
-      requiredForce: {x: 8, y: 20}
-    - destination: 893
-      origin: 785
-      requiredForce: {x: 10, y: 20}
-    - destination: 890
-      origin: 785
-      requiredForce: {x: 4, y: 25}
-    - destination: 892
-      origin: 785
-      requiredForce: {x: 6, y: 25}
-    - destination: 893
-      origin: 785
-      requiredForce: {x: 8, y: 25}
-    - destination: 894
-      origin: 785
-      requiredForce: {x: 10, y: 25}
+    gravityLinks: []
   - position: {x: 22, y: -10}
     type: 5
     linearLinks:
     - destination: 785
       origin: 786
-    gravityLinks:
-    - destination: 890
-      origin: 786
-      requiredForce: {x: 2, y: 15}
-    - destination: 890
-      origin: 786
-      requiredForce: {x: 4, y: 15}
-    - destination: 890
-      origin: 786
-      requiredForce: {x: 2, y: 20}
-    - destination: 891
-      origin: 786
-      requiredForce: {x: 4, y: 20}
-    - destination: 892
-      origin: 786
-      requiredForce: {x: 6, y: 20}
-    - destination: 893
-      origin: 786
-      requiredForce: {x: 8, y: 20}
-    - destination: 890
-      origin: 786
-      requiredForce: {x: 2, y: 25}
-    - destination: 891
-      origin: 786
-      requiredForce: {x: 4, y: 25}
-    - destination: 893
-      origin: 786
-      requiredForce: {x: 6, y: 25}
-    - destination: 894
-      origin: 786
-      requiredForce: {x: 8, y: 25}
-    - destination: 895
-      origin: 786
-      requiredForce: {x: 10, y: 25}
+    gravityLinks: []
   - position: {x: 23, y: -10}
     type: 2
     linearLinks: []
@@ -21398,15 +21248,15 @@ MonoBehaviour:
     - destination: 866
       origin: 865
     gravityLinks:
-    - destination: 967
+    - destination: 966
       origin: 865
-      requiredForce: {x: -2, y: 15}
-    - destination: 967
+      requiredForce: {x: -6, y: 15}
+    - destination: 966
       origin: 865
-      requiredForce: {x: -4, y: 15}
-    - destination: 967
+      requiredForce: {x: -8, y: 15}
+    - destination: 965
       origin: 865
-      requiredForce: {x: -2, y: 20}
+      requiredForce: {x: -10, y: 15}
     - destination: 966
       origin: 865
       requiredForce: {x: -4, y: 20}
@@ -21416,9 +21266,9 @@ MonoBehaviour:
     - destination: 964
       origin: 865
       requiredForce: {x: -8, y: 20}
-    - destination: 967
+    - destination: 963
       origin: 865
-      requiredForce: {x: -2, y: 25}
+      requiredForce: {x: -10, y: 20}
     - destination: 966
       origin: 865
       requiredForce: {x: -4, y: 25}
@@ -21441,16 +21291,10 @@ MonoBehaviour:
     gravityLinks:
     - destination: 967
       origin: 866
-      requiredForce: {x: -6, y: 15}
-    - destination: 967
-      origin: 866
       requiredForce: {x: -8, y: 15}
     - destination: 966
       origin: 866
       requiredForce: {x: -10, y: 15}
-    - destination: 967
-      origin: 866
-      requiredForce: {x: -4, y: 20}
     - destination: 966
       origin: 866
       requiredForce: {x: -6, y: 20}
@@ -21460,15 +21304,15 @@ MonoBehaviour:
     - destination: 964
       origin: 866
       requiredForce: {x: -10, y: 20}
-    - destination: 967
-      origin: 866
-      requiredForce: {x: -4, y: 25}
     - destination: 965
       origin: 866
       requiredForce: {x: -6, y: 25}
     - destination: 964
       origin: 866
       requiredForce: {x: -8, y: 25}
+    - destination: 770
+      origin: 866
+      requiredForce: {x: 10, y: 25}
     - destination: 963
       origin: 866
       requiredForce: {x: -10, y: 25}
@@ -21480,18 +21324,12 @@ MonoBehaviour:
     - destination: 868
       origin: 867
     gravityLinks:
-    - destination: 967
-      origin: 867
-      requiredForce: {x: -8, y: 15}
-    - destination: 967
-      origin: 867
-      requiredForce: {x: -10, y: 15}
-    - destination: 967
-      origin: 867
-      requiredForce: {x: -6, y: 20}
     - destination: 966
       origin: 867
       requiredForce: {x: -8, y: 20}
+    - destination: 770
+      origin: 867
+      requiredForce: {x: 10, y: 20}
     - destination: 965
       origin: 867
       requiredForce: {x: -10, y: 20}
@@ -21515,18 +21353,12 @@ MonoBehaviour:
     - destination: 869
       origin: 868
     gravityLinks:
-    - destination: 967
-      origin: 868
-      requiredForce: {x: -8, y: 20}
     - destination: 771
       origin: 868
       requiredForce: {x: 10, y: 20}
     - destination: 966
       origin: 868
       requiredForce: {x: -10, y: 20}
-    - destination: 967
-      origin: 868
-      requiredForce: {x: -6, y: 25}
     - destination: 770
       origin: 868
       requiredForce: {x: 8, y: 25}
@@ -21549,25 +21381,22 @@ MonoBehaviour:
     gravityLinks:
     - destination: 770
       origin: 869
-      requiredForce: {x: 10, y: 15}
+      requiredForce: {x: 8, y: 15}
     - destination: 770
+      origin: 869
+      requiredForce: {x: 10, y: 15}
+    - destination: 771
       origin: 869
       requiredForce: {x: 8, y: 20}
     - destination: 772
       origin: 869
       requiredForce: {x: 10, y: 20}
-    - destination: 967
-      origin: 869
-      requiredForce: {x: -10, y: 20}
     - destination: 770
       origin: 869
       requiredForce: {x: 6, y: 25}
     - destination: 771
       origin: 869
       requiredForce: {x: 8, y: 25}
-    - destination: 967
-      origin: 869
-      requiredForce: {x: -8, y: 25}
     - destination: 773
       origin: 869
       requiredForce: {x: 10, y: 25}
@@ -21584,7 +21413,13 @@ MonoBehaviour:
     gravityLinks:
     - destination: 770
       origin: 870
+      requiredForce: {x: 8, y: 10}
+    - destination: 770
+      origin: 870
       requiredForce: {x: 10, y: 10}
+    - destination: 770
+      origin: 870
+      requiredForce: {x: 6, y: 15}
     - destination: 771
       origin: 870
       requiredForce: {x: 8, y: 15}
@@ -21612,9 +21447,6 @@ MonoBehaviour:
     - destination: 774
       origin: 870
       requiredForce: {x: 10, y: 25}
-    - destination: 967
-      origin: 870
-      requiredForce: {x: -10, y: 25}
   - position: {x: 4, y: -9}
     type: 3
     linearLinks:
@@ -21625,6 +21457,12 @@ MonoBehaviour:
     gravityLinks:
     - destination: 770
       origin: 871
+      requiredForce: {x: 8, y: 5}
+    - destination: 770
+      origin: 871
+      requiredForce: {x: 10, y: 5}
+    - destination: 770
+      origin: 871
       requiredForce: {x: 6, y: 10}
     - destination: 771
       origin: 871
@@ -21632,6 +21470,9 @@ MonoBehaviour:
     - destination: 771
       origin: 871
       requiredForce: {x: 10, y: 10}
+    - destination: 770
+      origin: 871
+      requiredForce: {x: 4, y: 15}
     - destination: 771
       origin: 871
       requiredForce: {x: 6, y: 15}
@@ -21647,7 +21488,7 @@ MonoBehaviour:
     - destination: 771
       origin: 871
       requiredForce: {x: 6, y: 20}
-    - destination: 772
+    - destination: 773
       origin: 871
       requiredForce: {x: 8, y: 20}
     - destination: 774
@@ -21685,6 +21526,9 @@ MonoBehaviour:
       requiredForce: {x: 10, y: 5}
     - destination: 770
       origin: 872
+      requiredForce: {x: 2, y: 10}
+    - destination: 770
+      origin: 872
       requiredForce: {x: 4, y: 10}
     - destination: 771
       origin: 872
@@ -21719,7 +21563,7 @@ MonoBehaviour:
     - destination: 772
       origin: 872
       requiredForce: {x: 6, y: 20}
-    - destination: 773
+    - destination: 774
       origin: 872
       requiredForce: {x: 8, y: 20}
     - destination: 775
@@ -21810,9 +21654,7 @@ MonoBehaviour:
     gravityLinks: []
   - position: {x: 23, y: -9}
     type: 4
-    linearLinks:
-    - destination: 891
-      origin: 890
+    linearLinks: []
     gravityLinks:
     - destination: 786
       origin: 890
@@ -21826,6 +21668,9 @@ MonoBehaviour:
     - destination: 785
       origin: 890
       requiredForce: {x: -10, y: 5}
+    - destination: 786
+      origin: 890
+      requiredForce: {x: -2, y: 10}
     - destination: 786
       origin: 890
       requiredForce: {x: -4, y: 10}
@@ -21862,7 +21707,7 @@ MonoBehaviour:
     - destination: 784
       origin: 890
       requiredForce: {x: -6, y: 20}
-    - destination: 782
+    - destination: 783
       origin: 890
       requiredForce: {x: -8, y: 20}
     - destination: 781
@@ -21877,285 +21722,46 @@ MonoBehaviour:
     - destination: 783
       origin: 890
       requiredForce: {x: -6, y: 25}
+    - destination: 1203
+      origin: 890
+      requiredForce: {x: 8, y: 25}
     - destination: 782
       origin: 890
       requiredForce: {x: -8, y: 25}
+    - destination: 1204
+      origin: 890
+      requiredForce: {x: 10, y: 25}
     - destination: 780
       origin: 890
       requiredForce: {x: -10, y: 25}
   - position: {x: 24, y: -9}
-    type: 3
-    linearLinks:
-    - destination: 890
-      origin: 891
-    - destination: 892
-      origin: 891
-    gravityLinks:
-    - destination: 786
-      origin: 891
-      requiredForce: {x: -6, y: 10}
-    - destination: 785
-      origin: 891
-      requiredForce: {x: -8, y: 10}
-    - destination: 785
-      origin: 891
-      requiredForce: {x: -10, y: 10}
-    - destination: 785
-      origin: 891
-      requiredForce: {x: -6, y: 15}
-    - destination: 784
-      origin: 891
-      requiredForce: {x: -8, y: 15}
-    - destination: 784
-      origin: 891
-      requiredForce: {x: -10, y: 15}
-    - destination: 786
-      origin: 891
-      requiredForce: {x: -4, y: 20}
-    - destination: 785
-      origin: 891
-      requiredForce: {x: -6, y: 20}
-    - destination: 783
-      origin: 891
-      requiredForce: {x: -8, y: 20}
-    - destination: 782
-      origin: 891
-      requiredForce: {x: -10, y: 20}
-    - destination: 785
-      origin: 891
-      requiredForce: {x: -4, y: 25}
-    - destination: 784
-      origin: 891
-      requiredForce: {x: -6, y: 25}
-    - destination: 783
-      origin: 891
-      requiredForce: {x: -8, y: 25}
-    - destination: 781
-      origin: 891
-      requiredForce: {x: -10, y: 25}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
   - position: {x: 25, y: -9}
-    type: 3
-    linearLinks:
-    - destination: 891
-      origin: 892
-    - destination: 893
-      origin: 892
-    gravityLinks:
-    - destination: 786
-      origin: 892
-      requiredForce: {x: -10, y: 10}
-    - destination: 785
-      origin: 892
-      requiredForce: {x: -8, y: 15}
-    - destination: 785
-      origin: 892
-      requiredForce: {x: -10, y: 15}
-    - destination: 786
-      origin: 892
-      requiredForce: {x: -6, y: 20}
-    - destination: 784
-      origin: 892
-      requiredForce: {x: -8, y: 20}
-    - destination: 783
-      origin: 892
-      requiredForce: {x: -10, y: 20}
-    - destination: 786
-      origin: 892
-      requiredForce: {x: -4, y: 25}
-    - destination: 785
-      origin: 892
-      requiredForce: {x: -6, y: 25}
-    - destination: 784
-      origin: 892
-      requiredForce: {x: -8, y: 25}
-    - destination: 1001
-      origin: 892
-      requiredForce: {x: 10, y: 25}
-    - destination: 782
-      origin: 892
-      requiredForce: {x: -10, y: 25}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
   - position: {x: 26, y: -9}
-    type: 3
-    linearLinks:
-    - destination: 892
-      origin: 893
-    - destination: 894
-      origin: 893
-    gravityLinks:
-    - destination: 786
-      origin: 893
-      requiredForce: {x: -10, y: 15}
-    - destination: 785
-      origin: 893
-      requiredForce: {x: -8, y: 20}
-    - destination: 1001
-      origin: 893
-      requiredForce: {x: 10, y: 20}
-    - destination: 784
-      origin: 893
-      requiredForce: {x: -10, y: 20}
-    - destination: 786
-      origin: 893
-      requiredForce: {x: -6, y: 25}
-    - destination: 1001
-      origin: 893
-      requiredForce: {x: 8, y: 25}
-    - destination: 785
-      origin: 893
-      requiredForce: {x: -8, y: 25}
-    - destination: 1002
-      origin: 893
-      requiredForce: {x: 10, y: 25}
-    - destination: 783
-      origin: 893
-      requiredForce: {x: -10, y: 25}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
   - position: {x: 27, y: -9}
-    type: 3
-    linearLinks:
-    - destination: 893
-      origin: 894
-    - destination: 895
-      origin: 894
-    gravityLinks:
-    - destination: 1001
-      origin: 894
-      requiredForce: {x: 8, y: 20}
-    - destination: 1002
-      origin: 894
-      requiredForce: {x: 10, y: 20}
-    - destination: 785
-      origin: 894
-      requiredForce: {x: -10, y: 20}
-    - destination: 1001
-      origin: 894
-      requiredForce: {x: 6, y: 25}
-    - destination: 1002
-      origin: 894
-      requiredForce: {x: 8, y: 25}
-    - destination: 786
-      origin: 894
-      requiredForce: {x: -8, y: 25}
-    - destination: 1003
-      origin: 894
-      requiredForce: {x: 10, y: 25}
-    - destination: 784
-      origin: 894
-      requiredForce: {x: -10, y: 25}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
   - position: {x: 28, y: -9}
-    type: 3
-    linearLinks:
-    - destination: 894
-      origin: 895
-    - destination: 896
-      origin: 895
-    gravityLinks:
-    - destination: 1001
-      origin: 895
-      requiredForce: {x: 8, y: 15}
-    - destination: 1001
-      origin: 895
-      requiredForce: {x: 10, y: 15}
-    - destination: 1001
-      origin: 895
-      requiredForce: {x: 6, y: 20}
-    - destination: 1002
-      origin: 895
-      requiredForce: {x: 8, y: 20}
-    - destination: 1003
-      origin: 895
-      requiredForce: {x: 10, y: 20}
-    - destination: 1002
-      origin: 895
-      requiredForce: {x: 6, y: 25}
-    - destination: 1003
-      origin: 895
-      requiredForce: {x: 8, y: 25}
-    - destination: 1004
-      origin: 895
-      requiredForce: {x: 10, y: 25}
-    - destination: 785
-      origin: 895
-      requiredForce: {x: -10, y: 25}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
   - position: {x: 29, y: -9}
-    type: 3
-    linearLinks:
-    - destination: 895
-      origin: 896
-    - destination: 897
-      origin: 896
-    gravityLinks:
-    - destination: 1001
-      origin: 896
-      requiredForce: {x: 6, y: 15}
-    - destination: 1001
-      origin: 896
-      requiredForce: {x: 8, y: 15}
-    - destination: 1002
-      origin: 896
-      requiredForce: {x: 10, y: 15}
-    - destination: 1001
-      origin: 896
-      requiredForce: {x: 4, y: 20}
-    - destination: 1002
-      origin: 896
-      requiredForce: {x: 6, y: 20}
-    - destination: 1003
-      origin: 896
-      requiredForce: {x: 8, y: 20}
-    - destination: 1004
-      origin: 896
-      requiredForce: {x: 10, y: 20}
-    - destination: 1001
-      origin: 896
-      requiredForce: {x: 4, y: 25}
-    - destination: 1003
-      origin: 896
-      requiredForce: {x: 6, y: 25}
-    - destination: 1004
-      origin: 896
-      requiredForce: {x: 8, y: 25}
-    - destination: 1005
-      origin: 896
-      requiredForce: {x: 10, y: 25}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
   - position: {x: 30, y: -9}
-    type: 5
-    linearLinks:
-    - destination: 896
-      origin: 897
-    gravityLinks:
-    - destination: 1001
-      origin: 897
-      requiredForce: {x: 2, y: 15}
-    - destination: 1001
-      origin: 897
-      requiredForce: {x: 4, y: 15}
-    - destination: 1001
-      origin: 897
-      requiredForce: {x: 2, y: 20}
-    - destination: 1002
-      origin: 897
-      requiredForce: {x: 4, y: 20}
-    - destination: 1003
-      origin: 897
-      requiredForce: {x: 6, y: 20}
-    - destination: 1004
-      origin: 897
-      requiredForce: {x: 8, y: 20}
-    - destination: 1001
-      origin: 897
-      requiredForce: {x: 2, y: 25}
-    - destination: 1002
-      origin: 897
-      requiredForce: {x: 4, y: 25}
-    - destination: 1004
-      origin: 897
-      requiredForce: {x: 6, y: 25}
-    - destination: 1005
-      origin: 897
-      requiredForce: {x: 8, y: 25}
-    - destination: 1006
-      origin: 897
-      requiredForce: {x: 10, y: 25}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
   - position: {x: 31, y: -9}
     type: 2
     linearLinks: []
@@ -22418,15 +22024,15 @@ MonoBehaviour:
     - destination: 963
       origin: 962
     gravityLinks:
-    - destination: 1064
+    - destination: 1063
       origin: 962
-      requiredForce: {x: -2, y: 15}
-    - destination: 1064
+      requiredForce: {x: -6, y: 15}
+    - destination: 1062
       origin: 962
-      requiredForce: {x: -4, y: 15}
-    - destination: 1064
+      requiredForce: {x: -8, y: 15}
+    - destination: 1062
       origin: 962
-      requiredForce: {x: -2, y: 20}
+      requiredForce: {x: -10, y: 15}
     - destination: 1063
       origin: 962
       requiredForce: {x: -4, y: 20}
@@ -22436,9 +22042,12 @@ MonoBehaviour:
     - destination: 1061
       origin: 962
       requiredForce: {x: -8, y: 20}
-    - destination: 1064
+    - destination: 865
       origin: 962
-      requiredForce: {x: -2, y: 25}
+      requiredForce: {x: 10, y: 20}
+    - destination: 1060
+      origin: 962
+      requiredForce: {x: -10, y: 20}
     - destination: 1063
       origin: 962
       requiredForce: {x: -4, y: 25}
@@ -22464,16 +22073,10 @@ MonoBehaviour:
     gravityLinks:
     - destination: 1064
       origin: 963
-      requiredForce: {x: -6, y: 15}
-    - destination: 1064
-      origin: 963
       requiredForce: {x: -8, y: 15}
     - destination: 1063
       origin: 963
       requiredForce: {x: -10, y: 15}
-    - destination: 1064
-      origin: 963
-      requiredForce: {x: -4, y: 20}
     - destination: 1063
       origin: 963
       requiredForce: {x: -6, y: 20}
@@ -22486,9 +22089,6 @@ MonoBehaviour:
     - destination: 1061
       origin: 963
       requiredForce: {x: -10, y: 20}
-    - destination: 1064
-      origin: 963
-      requiredForce: {x: -4, y: 25}
     - destination: 1062
       origin: 963
       requiredForce: {x: -6, y: 25}
@@ -22512,19 +22112,13 @@ MonoBehaviour:
     - destination: 965
       origin: 964
     gravityLinks:
-    - destination: 1064
+    - destination: 865
       origin: 964
-      requiredForce: {x: -8, y: 15}
+      requiredForce: {x: 8, y: 15}
     - destination: 865
       origin: 964
       requiredForce: {x: 10, y: 15}
-    - destination: 1064
-      origin: 964
-      requiredForce: {x: -10, y: 15}
-    - destination: 1064
-      origin: 964
-      requiredForce: {x: -6, y: 20}
-    - destination: 866
+    - destination: 865
       origin: 964
       requiredForce: {x: 8, y: 20}
     - destination: 1063
@@ -22564,7 +22158,13 @@ MonoBehaviour:
     gravityLinks:
     - destination: 865
       origin: 965
+      requiredForce: {x: 8, y: 10}
+    - destination: 865
+      origin: 965
       requiredForce: {x: 10, y: 10}
+    - destination: 865
+      origin: 965
+      requiredForce: {x: 6, y: 15}
     - destination: 866
       origin: 965
       requiredForce: {x: 8, y: 15}
@@ -22574,12 +22174,9 @@ MonoBehaviour:
     - destination: 865
       origin: 965
       requiredForce: {x: 6, y: 20}
-    - destination: 867
+    - destination: 866
       origin: 965
       requiredForce: {x: 8, y: 20}
-    - destination: 1064
-      origin: 965
-      requiredForce: {x: -8, y: 20}
     - destination: 868
       origin: 965
       requiredForce: {x: 10, y: 20}
@@ -22592,9 +22189,6 @@ MonoBehaviour:
     - destination: 866
       origin: 965
       requiredForce: {x: 6, y: 25}
-    - destination: 1064
-      origin: 965
-      requiredForce: {x: -6, y: 25}
     - destination: 867
       origin: 965
       requiredForce: {x: 8, y: 25}
@@ -22617,6 +22211,12 @@ MonoBehaviour:
     gravityLinks:
     - destination: 865
       origin: 966
+      requiredForce: {x: 8, y: 5}
+    - destination: 865
+      origin: 966
+      requiredForce: {x: 10, y: 5}
+    - destination: 865
+      origin: 966
       requiredForce: {x: 6, y: 10}
     - destination: 866
       origin: 966
@@ -22624,6 +22224,9 @@ MonoBehaviour:
     - destination: 866
       origin: 966
       requiredForce: {x: 10, y: 10}
+    - destination: 865
+      origin: 966
+      requiredForce: {x: 4, y: 15}
     - destination: 866
       origin: 966
       requiredForce: {x: 6, y: 15}
@@ -22639,15 +22242,12 @@ MonoBehaviour:
     - destination: 866
       origin: 966
       requiredForce: {x: 6, y: 20}
-    - destination: 868
+    - destination: 867
       origin: 966
       requiredForce: {x: 8, y: 20}
     - destination: 869
       origin: 966
       requiredForce: {x: 10, y: 20}
-    - destination: 1064
-      origin: 966
-      requiredForce: {x: -10, y: 20}
     - destination: 866
       origin: 966
       requiredForce: {x: 4, y: 25}
@@ -22657,9 +22257,6 @@ MonoBehaviour:
     - destination: 868
       origin: 966
       requiredForce: {x: 8, y: 25}
-    - destination: 1064
-      origin: 966
-      requiredForce: {x: -8, y: 25}
     - destination: 870
       origin: 966
       requiredForce: {x: 10, y: 25}
@@ -22684,6 +22281,9 @@ MonoBehaviour:
     - destination: 866
       origin: 967
       requiredForce: {x: 10, y: 5}
+    - destination: 865
+      origin: 967
+      requiredForce: {x: 2, y: 10}
     - destination: 865
       origin: 967
       requiredForce: {x: 4, y: 10}
@@ -22720,7 +22320,7 @@ MonoBehaviour:
     - destination: 867
       origin: 967
       requiredForce: {x: 6, y: 20}
-    - destination: 869
+    - destination: 868
       origin: 967
       requiredForce: {x: 8, y: 20}
     - destination: 870
@@ -22741,9 +22341,6 @@ MonoBehaviour:
     - destination: 871
       origin: 967
       requiredForce: {x: 10, y: 25}
-    - destination: 1064
-      origin: 967
-      requiredForce: {x: -10, y: 25}
   - position: {x: -2, y: -8}
     type: 1
     linearLinks: []
@@ -22849,365 +22446,129 @@ MonoBehaviour:
     linearLinks: []
     gravityLinks: []
   - position: {x: 24, y: -8}
-    type: 1
+    type: 4
     linearLinks: []
-    gravityLinks: []
+    gravityLinks:
+    - destination: 786
+      origin: 994
+      requiredForce: {x: -6, y: 5}
+    - destination: 786
+      origin: 994
+      requiredForce: {x: -8, y: 5}
+    - destination: 785
+      origin: 994
+      requiredForce: {x: -10, y: 5}
+    - destination: 786
+      origin: 994
+      requiredForce: {x: -4, y: 10}
+    - destination: 786
+      origin: 994
+      requiredForce: {x: -6, y: 10}
+    - destination: 785
+      origin: 994
+      requiredForce: {x: -8, y: 10}
+    - destination: 784
+      origin: 994
+      requiredForce: {x: -10, y: 10}
+    - destination: 786
+      origin: 994
+      requiredForce: {x: -4, y: 15}
+    - destination: 785
+      origin: 994
+      requiredForce: {x: -6, y: 15}
+    - destination: 784
+      origin: 994
+      requiredForce: {x: -8, y: 15}
+    - destination: 783
+      origin: 994
+      requiredForce: {x: -10, y: 15}
+    - destination: 786
+      origin: 994
+      requiredForce: {x: -4, y: 20}
+    - destination: 784
+      origin: 994
+      requiredForce: {x: -6, y: 20}
+    - destination: 1203
+      origin: 994
+      requiredForce: {x: 8, y: 20}
+    - destination: 783
+      origin: 994
+      requiredForce: {x: -8, y: 20}
+    - destination: 1204
+      origin: 994
+      requiredForce: {x: 10, y: 20}
+    - destination: 782
+      origin: 994
+      requiredForce: {x: -10, y: 20}
+    - destination: 785
+      origin: 994
+      requiredForce: {x: -4, y: 25}
+    - destination: 1203
+      origin: 994
+      requiredForce: {x: 6, y: 25}
+    - destination: 784
+      origin: 994
+      requiredForce: {x: -6, y: 25}
+    - destination: 1204
+      origin: 994
+      requiredForce: {x: 8, y: 25}
+    - destination: 782
+      origin: 994
+      requiredForce: {x: -8, y: 25}
+    - destination: 1206
+      origin: 994
+      requiredForce: {x: 10, y: 25}
+    - destination: 781
+      origin: 994
+      requiredForce: {x: -10, y: 25}
   - position: {x: 25, y: -8}
-    type: 1
+    type: 2
     linearLinks: []
     gravityLinks: []
   - position: {x: 26, y: -8}
-    type: 1
+    type: 2
     linearLinks: []
     gravityLinks: []
   - position: {x: 27, y: -8}
-    type: 1
+    type: 2
     linearLinks: []
     gravityLinks: []
   - position: {x: 28, y: -8}
-    type: 1
+    type: 2
     linearLinks: []
     gravityLinks: []
   - position: {x: 29, y: -8}
-    type: 1
+    type: 2
     linearLinks: []
     gravityLinks: []
   - position: {x: 30, y: -8}
-    type: 1
+    type: 2
     linearLinks: []
     gravityLinks: []
   - position: {x: 31, y: -8}
-    type: 4
-    linearLinks:
-    - destination: 1002
-      origin: 1001
-    gravityLinks:
-    - destination: 897
-      origin: 1001
-      requiredForce: {x: -4, y: 5}
-    - destination: 896
-      origin: 1001
-      requiredForce: {x: -6, y: 5}
-    - destination: 896
-      origin: 1001
-      requiredForce: {x: -8, y: 5}
-    - destination: 896
-      origin: 1001
-      requiredForce: {x: -10, y: 5}
-    - destination: 897
-      origin: 1001
-      requiredForce: {x: -4, y: 10}
-    - destination: 896
-      origin: 1001
-      requiredForce: {x: -6, y: 10}
-    - destination: 895
-      origin: 1001
-      requiredForce: {x: -8, y: 10}
-    - destination: 895
-      origin: 1001
-      requiredForce: {x: -10, y: 10}
-    - destination: 897
-      origin: 1001
-      requiredForce: {x: -2, y: 15}
-    - destination: 896
-      origin: 1001
-      requiredForce: {x: -4, y: 15}
-    - destination: 895
-      origin: 1001
-      requiredForce: {x: -6, y: 15}
-    - destination: 894
-      origin: 1001
-      requiredForce: {x: -8, y: 15}
-    - destination: 894
-      origin: 1001
-      requiredForce: {x: -10, y: 15}
-    - destination: 897
-      origin: 1001
-      requiredForce: {x: -2, y: 20}
-    - destination: 896
-      origin: 1001
-      requiredForce: {x: -4, y: 20}
-    - destination: 895
-      origin: 1001
-      requiredForce: {x: -6, y: 20}
-    - destination: 894
-      origin: 1001
-      requiredForce: {x: -8, y: 20}
-    - destination: 892
-      origin: 1001
-      requiredForce: {x: -10, y: 20}
-    - destination: 897
-      origin: 1001
-      requiredForce: {x: -2, y: 25}
-    - destination: 895
-      origin: 1001
-      requiredForce: {x: -4, y: 25}
-    - destination: 894
-      origin: 1001
-      requiredForce: {x: -6, y: 25}
-    - destination: 893
-      origin: 1001
-      requiredForce: {x: -8, y: 25}
-    - destination: 1110
-      origin: 1001
-      requiredForce: {x: 10, y: 25}
-    - destination: 891
-      origin: 1001
-      requiredForce: {x: -10, y: 25}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
   - position: {x: 32, y: -8}
-    type: 3
-    linearLinks:
-    - destination: 1001
-      origin: 1002
-    - destination: 1003
-      origin: 1002
-    gravityLinks:
-    - destination: 897
-      origin: 1002
-      requiredForce: {x: -6, y: 10}
-    - destination: 896
-      origin: 1002
-      requiredForce: {x: -8, y: 10}
-    - destination: 896
-      origin: 1002
-      requiredForce: {x: -10, y: 10}
-    - destination: 896
-      origin: 1002
-      requiredForce: {x: -6, y: 15}
-    - destination: 895
-      origin: 1002
-      requiredForce: {x: -8, y: 15}
-    - destination: 895
-      origin: 1002
-      requiredForce: {x: -10, y: 15}
-    - destination: 897
-      origin: 1002
-      requiredForce: {x: -4, y: 20}
-    - destination: 896
-      origin: 1002
-      requiredForce: {x: -6, y: 20}
-    - destination: 895
-      origin: 1002
-      requiredForce: {x: -8, y: 20}
-    - destination: 1110
-      origin: 1002
-      requiredForce: {x: 10, y: 20}
-    - destination: 893
-      origin: 1002
-      requiredForce: {x: -10, y: 20}
-    - destination: 896
-      origin: 1002
-      requiredForce: {x: -4, y: 25}
-    - destination: 895
-      origin: 1002
-      requiredForce: {x: -6, y: 25}
-    - destination: 1110
-      origin: 1002
-      requiredForce: {x: 8, y: 25}
-    - destination: 894
-      origin: 1002
-      requiredForce: {x: -8, y: 25}
-    - destination: 1111
-      origin: 1002
-      requiredForce: {x: 10, y: 25}
-    - destination: 892
-      origin: 1002
-      requiredForce: {x: -10, y: 25}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
   - position: {x: 33, y: -8}
-    type: 3
-    linearLinks:
-    - destination: 1002
-      origin: 1003
-    - destination: 1004
-      origin: 1003
-    gravityLinks:
-    - destination: 897
-      origin: 1003
-      requiredForce: {x: -10, y: 10}
-    - destination: 896
-      origin: 1003
-      requiredForce: {x: -8, y: 15}
-    - destination: 896
-      origin: 1003
-      requiredForce: {x: -10, y: 15}
-    - destination: 897
-      origin: 1003
-      requiredForce: {x: -6, y: 20}
-    - destination: 1110
-      origin: 1003
-      requiredForce: {x: 8, y: 20}
-    - destination: 896
-      origin: 1003
-      requiredForce: {x: -8, y: 20}
-    - destination: 1111
-      origin: 1003
-      requiredForce: {x: 10, y: 20}
-    - destination: 894
-      origin: 1003
-      requiredForce: {x: -10, y: 20}
-    - destination: 897
-      origin: 1003
-      requiredForce: {x: -4, y: 25}
-    - destination: 1110
-      origin: 1003
-      requiredForce: {x: 6, y: 25}
-    - destination: 896
-      origin: 1003
-      requiredForce: {x: -6, y: 25}
-    - destination: 1111
-      origin: 1003
-      requiredForce: {x: 8, y: 25}
-    - destination: 895
-      origin: 1003
-      requiredForce: {x: -8, y: 25}
-    - destination: 1112
-      origin: 1003
-      requiredForce: {x: 10, y: 25}
-    - destination: 893
-      origin: 1003
-      requiredForce: {x: -10, y: 25}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
   - position: {x: 34, y: -8}
-    type: 3
-    linearLinks:
-    - destination: 1003
-      origin: 1004
-    - destination: 1005
-      origin: 1004
-    gravityLinks:
-    - destination: 1110
-      origin: 1004
-      requiredForce: {x: 8, y: 15}
-    - destination: 1110
-      origin: 1004
-      requiredForce: {x: 10, y: 15}
-    - destination: 897
-      origin: 1004
-      requiredForce: {x: -10, y: 15}
-    - destination: 1110
-      origin: 1004
-      requiredForce: {x: 6, y: 20}
-    - destination: 1111
-      origin: 1004
-      requiredForce: {x: 8, y: 20}
-    - destination: 897
-      origin: 1004
-      requiredForce: {x: -8, y: 20}
-    - destination: 1112
-      origin: 1004
-      requiredForce: {x: 10, y: 20}
-    - destination: 895
-      origin: 1004
-      requiredForce: {x: -10, y: 20}
-    - destination: 1111
-      origin: 1004
-      requiredForce: {x: 6, y: 25}
-    - destination: 897
-      origin: 1004
-      requiredForce: {x: -6, y: 25}
-    - destination: 1112
-      origin: 1004
-      requiredForce: {x: 8, y: 25}
-    - destination: 896
-      origin: 1004
-      requiredForce: {x: -8, y: 25}
-    - destination: 1113
-      origin: 1004
-      requiredForce: {x: 10, y: 25}
-    - destination: 894
-      origin: 1004
-      requiredForce: {x: -10, y: 25}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
   - position: {x: 35, y: -8}
-    type: 3
-    linearLinks:
-    - destination: 1004
-      origin: 1005
-    - destination: 1006
-      origin: 1005
-    gravityLinks:
-    - destination: 1110
-      origin: 1005
-      requiredForce: {x: 6, y: 15}
-    - destination: 1110
-      origin: 1005
-      requiredForce: {x: 8, y: 15}
-    - destination: 1111
-      origin: 1005
-      requiredForce: {x: 10, y: 15}
-    - destination: 1110
-      origin: 1005
-      requiredForce: {x: 4, y: 20}
-    - destination: 1111
-      origin: 1005
-      requiredForce: {x: 6, y: 20}
-    - destination: 1112
-      origin: 1005
-      requiredForce: {x: 8, y: 20}
-    - destination: 1113
-      origin: 1005
-      requiredForce: {x: 10, y: 20}
-    - destination: 896
-      origin: 1005
-      requiredForce: {x: -10, y: 20}
-    - destination: 1110
-      origin: 1005
-      requiredForce: {x: 4, y: 25}
-    - destination: 1112
-      origin: 1005
-      requiredForce: {x: 6, y: 25}
-    - destination: 1113
-      origin: 1005
-      requiredForce: {x: 8, y: 25}
-    - destination: 897
-      origin: 1005
-      requiredForce: {x: -8, y: 25}
-    - destination: 1114
-      origin: 1005
-      requiredForce: {x: 10, y: 25}
-    - destination: 895
-      origin: 1005
-      requiredForce: {x: -10, y: 25}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
   - position: {x: 36, y: -8}
-    type: 5
-    linearLinks:
-    - destination: 1005
-      origin: 1006
-    gravityLinks:
-    - destination: 1110
-      origin: 1006
-      requiredForce: {x: 2, y: 15}
-    - destination: 1110
-      origin: 1006
-      requiredForce: {x: 4, y: 15}
-    - destination: 1110
-      origin: 1006
-      requiredForce: {x: 2, y: 20}
-    - destination: 1111
-      origin: 1006
-      requiredForce: {x: 4, y: 20}
-    - destination: 1112
-      origin: 1006
-      requiredForce: {x: 6, y: 20}
-    - destination: 1113
-      origin: 1006
-      requiredForce: {x: 8, y: 20}
-    - destination: 1110
-      origin: 1006
-      requiredForce: {x: 2, y: 25}
-    - destination: 1111
-      origin: 1006
-      requiredForce: {x: 4, y: 25}
-    - destination: 1113
-      origin: 1006
-      requiredForce: {x: 6, y: 25}
-    - destination: 1114
-      origin: 1006
-      requiredForce: {x: 8, y: 25}
-    - destination: 1115
-      origin: 1006
-      requiredForce: {x: 10, y: 25}
-    - destination: 896
-      origin: 1006
-      requiredForce: {x: -10, y: 25}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
   - position: {x: 37, y: -8}
     type: 2
     linearLinks: []
@@ -23422,15 +22783,15 @@ MonoBehaviour:
     - destination: 1060
       origin: 1059
     gravityLinks:
-    - destination: 1161
+    - destination: 1160
       origin: 1059
-      requiredForce: {x: -2, y: 15}
-    - destination: 1161
+      requiredForce: {x: -6, y: 15}
+    - destination: 1159
       origin: 1059
-      requiredForce: {x: -4, y: 15}
-    - destination: 1161
+      requiredForce: {x: -8, y: 15}
+    - destination: 1159
       origin: 1059
-      requiredForce: {x: -2, y: 20}
+      requiredForce: {x: -10, y: 15}
     - destination: 1160
       origin: 1059
       requiredForce: {x: -4, y: 20}
@@ -23440,9 +22801,12 @@ MonoBehaviour:
     - destination: 1158
       origin: 1059
       requiredForce: {x: -8, y: 20}
-    - destination: 1161
+    - destination: 962
       origin: 1059
-      requiredForce: {x: -2, y: 25}
+      requiredForce: {x: 10, y: 20}
+    - destination: 1157
+      origin: 1059
+      requiredForce: {x: -10, y: 20}
     - destination: 1160
       origin: 1059
       requiredForce: {x: -4, y: 25}
@@ -23468,16 +22832,10 @@ MonoBehaviour:
     gravityLinks:
     - destination: 1161
       origin: 1060
-      requiredForce: {x: -6, y: 15}
-    - destination: 1161
-      origin: 1060
       requiredForce: {x: -8, y: 15}
     - destination: 1160
       origin: 1060
       requiredForce: {x: -10, y: 15}
-    - destination: 1161
-      origin: 1060
-      requiredForce: {x: -4, y: 20}
     - destination: 1160
       origin: 1060
       requiredForce: {x: -6, y: 20}
@@ -23490,9 +22848,6 @@ MonoBehaviour:
     - destination: 1158
       origin: 1060
       requiredForce: {x: -10, y: 20}
-    - destination: 1161
-      origin: 1060
-      requiredForce: {x: -4, y: 25}
     - destination: 1159
       origin: 1060
       requiredForce: {x: -6, y: 25}
@@ -23516,18 +22871,12 @@ MonoBehaviour:
     - destination: 1062
       origin: 1061
     gravityLinks:
-    - destination: 1161
+    - destination: 962
       origin: 1061
-      requiredForce: {x: -8, y: 15}
+      requiredForce: {x: 8, y: 15}
     - destination: 962
       origin: 1061
       requiredForce: {x: 10, y: 15}
-    - destination: 1161
-      origin: 1061
-      requiredForce: {x: -10, y: 15}
-    - destination: 1161
-      origin: 1061
-      requiredForce: {x: -6, y: 20}
     - destination: 962
       origin: 1061
       requiredForce: {x: 8, y: 20}
@@ -23568,7 +22917,13 @@ MonoBehaviour:
     gravityLinks:
     - destination: 962
       origin: 1062
+      requiredForce: {x: 8, y: 10}
+    - destination: 962
+      origin: 1062
       requiredForce: {x: 10, y: 10}
+    - destination: 962
+      origin: 1062
+      requiredForce: {x: 6, y: 15}
     - destination: 963
       origin: 1062
       requiredForce: {x: 8, y: 15}
@@ -23578,12 +22933,9 @@ MonoBehaviour:
     - destination: 962
       origin: 1062
       requiredForce: {x: 6, y: 20}
-    - destination: 963
+    - destination: 964
       origin: 1062
       requiredForce: {x: 8, y: 20}
-    - destination: 1161
-      origin: 1062
-      requiredForce: {x: -8, y: 20}
     - destination: 965
       origin: 1062
       requiredForce: {x: 10, y: 20}
@@ -23596,9 +22948,6 @@ MonoBehaviour:
     - destination: 963
       origin: 1062
       requiredForce: {x: 6, y: 25}
-    - destination: 1161
-      origin: 1062
-      requiredForce: {x: -6, y: 25}
     - destination: 964
       origin: 1062
       requiredForce: {x: 8, y: 25}
@@ -23621,6 +22970,12 @@ MonoBehaviour:
     gravityLinks:
     - destination: 962
       origin: 1063
+      requiredForce: {x: 8, y: 5}
+    - destination: 962
+      origin: 1063
+      requiredForce: {x: 10, y: 5}
+    - destination: 962
+      origin: 1063
       requiredForce: {x: 6, y: 10}
     - destination: 963
       origin: 1063
@@ -23628,6 +22983,9 @@ MonoBehaviour:
     - destination: 963
       origin: 1063
       requiredForce: {x: 10, y: 10}
+    - destination: 962
+      origin: 1063
+      requiredForce: {x: 4, y: 15}
     - destination: 963
       origin: 1063
       requiredForce: {x: 6, y: 15}
@@ -23643,15 +23001,12 @@ MonoBehaviour:
     - destination: 963
       origin: 1063
       requiredForce: {x: 6, y: 20}
-    - destination: 964
+    - destination: 965
       origin: 1063
       requiredForce: {x: 8, y: 20}
     - destination: 966
       origin: 1063
       requiredForce: {x: 10, y: 20}
-    - destination: 1161
-      origin: 1063
-      requiredForce: {x: -10, y: 20}
     - destination: 963
       origin: 1063
       requiredForce: {x: 4, y: 25}
@@ -23661,12 +23016,6 @@ MonoBehaviour:
     - destination: 965
       origin: 1063
       requiredForce: {x: 8, y: 25}
-    - destination: 1161
-      origin: 1063
-      requiredForce: {x: -8, y: 25}
-    - destination: 967
-      origin: 1063
-      requiredForce: {x: 10, y: 25}
     - destination: 1160
       origin: 1063
       requiredForce: {x: -10, y: 25}
@@ -23688,6 +23037,9 @@ MonoBehaviour:
     - destination: 963
       origin: 1064
       requiredForce: {x: 10, y: 5}
+    - destination: 962
+      origin: 1064
+      requiredForce: {x: 2, y: 10}
     - destination: 962
       origin: 1064
       requiredForce: {x: 4, y: 10}
@@ -23724,12 +23076,9 @@ MonoBehaviour:
     - destination: 964
       origin: 1064
       requiredForce: {x: 6, y: 20}
-    - destination: 965
+    - destination: 966
       origin: 1064
       requiredForce: {x: 8, y: 20}
-    - destination: 967
-      origin: 1064
-      requiredForce: {x: 10, y: 20}
     - destination: 962
       origin: 1064
       requiredForce: {x: 2, y: 25}
@@ -23745,9 +23094,6 @@ MonoBehaviour:
     - destination: 865
       origin: 1064
       requiredForce: {x: 10, y: 25}
-    - destination: 1161
-      origin: 1064
-      requiredForce: {x: -10, y: 25}
   - position: {x: -8, y: -7}
     type: 1
     linearLinks: []
@@ -23881,417 +23227,171 @@ MonoBehaviour:
     linearLinks: []
     gravityLinks: []
   - position: {x: 25, y: -7}
-    type: 1
+    type: 4
     linearLinks: []
-    gravityLinks: []
+    gravityLinks:
+    - destination: 786
+      origin: 1098
+      requiredForce: {x: -8, y: 5}
+    - destination: 786
+      origin: 1098
+      requiredForce: {x: -10, y: 5}
+    - destination: 786
+      origin: 1098
+      requiredForce: {x: -6, y: 10}
+    - destination: 785
+      origin: 1098
+      requiredForce: {x: -8, y: 10}
+    - destination: 785
+      origin: 1098
+      requiredForce: {x: -10, y: 10}
+    - destination: 1203
+      origin: 1098
+      requiredForce: {x: 6, y: 15}
+    - destination: 786
+      origin: 1098
+      requiredForce: {x: -6, y: 15}
+    - destination: 1204
+      origin: 1098
+      requiredForce: {x: 8, y: 15}
+    - destination: 785
+      origin: 1098
+      requiredForce: {x: -8, y: 15}
+    - destination: 1204
+      origin: 1098
+      requiredForce: {x: 10, y: 15}
+    - destination: 784
+      origin: 1098
+      requiredForce: {x: -10, y: 15}
+    - destination: 1203
+      origin: 1098
+      requiredForce: {x: 4, y: 20}
+    - destination: 1204
+      origin: 1098
+      requiredForce: {x: 6, y: 20}
+    - destination: 785
+      origin: 1098
+      requiredForce: {x: -6, y: 20}
+    - destination: 1205
+      origin: 1098
+      requiredForce: {x: 8, y: 20}
+    - destination: 784
+      origin: 1098
+      requiredForce: {x: -8, y: 20}
+    - destination: 1206
+      origin: 1098
+      requiredForce: {x: 10, y: 20}
+    - destination: 783
+      origin: 1098
+      requiredForce: {x: -10, y: 20}
+    - destination: 1203
+      origin: 1098
+      requiredForce: {x: 4, y: 25}
+    - destination: 786
+      origin: 1098
+      requiredForce: {x: -4, y: 25}
+    - destination: 1205
+      origin: 1098
+      requiredForce: {x: 6, y: 25}
+    - destination: 784
+      origin: 1098
+      requiredForce: {x: -6, y: 25}
+    - destination: 1206
+      origin: 1098
+      requiredForce: {x: 8, y: 25}
+    - destination: 783
+      origin: 1098
+      requiredForce: {x: -8, y: 25}
+    - destination: 1207
+      origin: 1098
+      requiredForce: {x: 10, y: 25}
+    - destination: 782
+      origin: 1098
+      requiredForce: {x: -10, y: 25}
   - position: {x: 26, y: -7}
-    type: 1
+    type: 2
     linearLinks: []
     gravityLinks: []
   - position: {x: 27, y: -7}
-    type: 1
+    type: 2
     linearLinks: []
     gravityLinks: []
   - position: {x: 28, y: -7}
-    type: 1
+    type: 2
     linearLinks: []
     gravityLinks: []
   - position: {x: 29, y: -7}
-    type: 1
+    type: 2
     linearLinks: []
     gravityLinks: []
   - position: {x: 30, y: -7}
-    type: 1
+    type: 2
     linearLinks: []
     gravityLinks: []
   - position: {x: 31, y: -7}
-    type: 1
+    type: 2
     linearLinks: []
     gravityLinks: []
   - position: {x: 32, y: -7}
-    type: 1
+    type: 2
     linearLinks: []
     gravityLinks: []
   - position: {x: 33, y: -7}
-    type: 1
+    type: 2
     linearLinks: []
     gravityLinks: []
   - position: {x: 34, y: -7}
-    type: 1
+    type: 2
     linearLinks: []
     gravityLinks: []
   - position: {x: 35, y: -7}
-    type: 1
+    type: 2
     linearLinks: []
     gravityLinks: []
   - position: {x: 36, y: -7}
-    type: 1
+    type: 2
     linearLinks: []
     gravityLinks: []
   - position: {x: 37, y: -7}
-    type: 4
-    linearLinks:
-    - destination: 1111
-      origin: 1110
-    gravityLinks:
-    - destination: 1006
-      origin: 1110
-      requiredForce: {x: -4, y: 5}
-    - destination: 1005
-      origin: 1110
-      requiredForce: {x: -6, y: 5}
-    - destination: 1005
-      origin: 1110
-      requiredForce: {x: -8, y: 5}
-    - destination: 1005
-      origin: 1110
-      requiredForce: {x: -10, y: 5}
-    - destination: 1006
-      origin: 1110
-      requiredForce: {x: -4, y: 10}
-    - destination: 1005
-      origin: 1110
-      requiredForce: {x: -6, y: 10}
-    - destination: 1004
-      origin: 1110
-      requiredForce: {x: -8, y: 10}
-    - destination: 1004
-      origin: 1110
-      requiredForce: {x: -10, y: 10}
-    - destination: 1006
-      origin: 1110
-      requiredForce: {x: -2, y: 15}
-    - destination: 1005
-      origin: 1110
-      requiredForce: {x: -4, y: 15}
-    - destination: 1004
-      origin: 1110
-      requiredForce: {x: -6, y: 15}
-    - destination: 1003
-      origin: 1110
-      requiredForce: {x: -8, y: 15}
-    - destination: 1003
-      origin: 1110
-      requiredForce: {x: -10, y: 15}
-    - destination: 1006
-      origin: 1110
-      requiredForce: {x: -2, y: 20}
-    - destination: 1005
-      origin: 1110
-      requiredForce: {x: -4, y: 20}
-    - destination: 1004
-      origin: 1110
-      requiredForce: {x: -6, y: 20}
-    - destination: 1003
-      origin: 1110
-      requiredForce: {x: -8, y: 20}
-    - destination: 1001
-      origin: 1110
-      requiredForce: {x: -10, y: 20}
-    - destination: 1006
-      origin: 1110
-      requiredForce: {x: -2, y: 25}
-    - destination: 1004
-      origin: 1110
-      requiredForce: {x: -4, y: 25}
-    - destination: 1003
-      origin: 1110
-      requiredForce: {x: -6, y: 25}
-    - destination: 1002
-      origin: 1110
-      requiredForce: {x: -8, y: 25}
-    - destination: 897
-      origin: 1110
-      requiredForce: {x: -10, y: 25}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
   - position: {x: 38, y: -7}
-    type: 3
-    linearLinks:
-    - destination: 1110
-      origin: 1111
-    - destination: 1112
-      origin: 1111
-    gravityLinks:
-    - destination: 1006
-      origin: 1111
-      requiredForce: {x: -6, y: 10}
-    - destination: 1005
-      origin: 1111
-      requiredForce: {x: -8, y: 10}
-    - destination: 1005
-      origin: 1111
-      requiredForce: {x: -10, y: 10}
-    - destination: 1005
-      origin: 1111
-      requiredForce: {x: -6, y: 15}
-    - destination: 1004
-      origin: 1111
-      requiredForce: {x: -8, y: 15}
-    - destination: 1004
-      origin: 1111
-      requiredForce: {x: -10, y: 15}
-    - destination: 1006
-      origin: 1111
-      requiredForce: {x: -4, y: 20}
-    - destination: 1005
-      origin: 1111
-      requiredForce: {x: -6, y: 20}
-    - destination: 1004
-      origin: 1111
-      requiredForce: {x: -8, y: 20}
-    - destination: 1002
-      origin: 1111
-      requiredForce: {x: -10, y: 20}
-    - destination: 1005
-      origin: 1111
-      requiredForce: {x: -4, y: 25}
-    - destination: 1004
-      origin: 1111
-      requiredForce: {x: -6, y: 25}
-    - destination: 1003
-      origin: 1111
-      requiredForce: {x: -8, y: 25}
-    - destination: 1001
-      origin: 1111
-      requiredForce: {x: -10, y: 25}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
   - position: {x: 39, y: -7}
-    type: 3
-    linearLinks:
-    - destination: 1111
-      origin: 1112
-    - destination: 1113
-      origin: 1112
-    gravityLinks:
-    - destination: 1006
-      origin: 1112
-      requiredForce: {x: -10, y: 10}
-    - destination: 1005
-      origin: 1112
-      requiredForce: {x: -8, y: 15}
-    - destination: 1005
-      origin: 1112
-      requiredForce: {x: -10, y: 15}
-    - destination: 1006
-      origin: 1112
-      requiredForce: {x: -6, y: 20}
-    - destination: 1005
-      origin: 1112
-      requiredForce: {x: -8, y: 20}
-    - destination: 1003
-      origin: 1112
-      requiredForce: {x: -10, y: 20}
-    - destination: 1006
-      origin: 1112
-      requiredForce: {x: -4, y: 25}
-    - destination: 1005
-      origin: 1112
-      requiredForce: {x: -6, y: 25}
-    - destination: 1004
-      origin: 1112
-      requiredForce: {x: -8, y: 25}
-    - destination: 1002
-      origin: 1112
-      requiredForce: {x: -10, y: 25}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
   - position: {x: 40, y: -7}
-    type: 3
-    linearLinks:
-    - destination: 1112
-      origin: 1113
-    - destination: 1114
-      origin: 1113
-    gravityLinks:
-    - destination: 1006
-      origin: 1113
-      requiredForce: {x: -10, y: 15}
-    - destination: 1006
-      origin: 1113
-      requiredForce: {x: -8, y: 20}
-    - destination: 1004
-      origin: 1113
-      requiredForce: {x: -10, y: 20}
-    - destination: 1006
-      origin: 1113
-      requiredForce: {x: -6, y: 25}
-    - destination: 1005
-      origin: 1113
-      requiredForce: {x: -8, y: 25}
-    - destination: 1003
-      origin: 1113
-      requiredForce: {x: -10, y: 25}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
   - position: {x: 41, y: -7}
-    type: 3
-    linearLinks:
-    - destination: 1113
-      origin: 1114
-    - destination: 1115
-      origin: 1114
-    gravityLinks:
-    - destination: 1005
-      origin: 1114
-      requiredForce: {x: -10, y: 20}
-    - destination: 1006
-      origin: 1114
-      requiredForce: {x: -8, y: 25}
-    - destination: 1223
-      origin: 1114
-      requiredForce: {x: 10, y: 25}
-    - destination: 1004
-      origin: 1114
-      requiredForce: {x: -10, y: 25}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
   - position: {x: 42, y: -7}
-    type: 3
-    linearLinks:
-    - destination: 1114
-      origin: 1115
-    - destination: 1116
-      origin: 1115
-    gravityLinks:
-    - destination: 1223
-      origin: 1115
-      requiredForce: {x: 10, y: 20}
-    - destination: 1223
-      origin: 1115
-      requiredForce: {x: 8, y: 25}
-    - destination: 1224
-      origin: 1115
-      requiredForce: {x: 10, y: 25}
-    - destination: 1005
-      origin: 1115
-      requiredForce: {x: -10, y: 25}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
   - position: {x: 43, y: -7}
-    type: 3
-    linearLinks:
-    - destination: 1115
-      origin: 1116
-    - destination: 1117
-      origin: 1116
-    gravityLinks:
-    - destination: 1223
-      origin: 1116
-      requiredForce: {x: 8, y: 20}
-    - destination: 1224
-      origin: 1116
-      requiredForce: {x: 10, y: 20}
-    - destination: 1223
-      origin: 1116
-      requiredForce: {x: 6, y: 25}
-    - destination: 1224
-      origin: 1116
-      requiredForce: {x: 8, y: 25}
-    - destination: 1225
-      origin: 1116
-      requiredForce: {x: 10, y: 25}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
   - position: {x: 44, y: -7}
-    type: 3
-    linearLinks:
-    - destination: 1116
-      origin: 1117
-    - destination: 1118
-      origin: 1117
-    gravityLinks:
-    - destination: 1223
-      origin: 1117
-      requiredForce: {x: 8, y: 15}
-    - destination: 1223
-      origin: 1117
-      requiredForce: {x: 10, y: 15}
-    - destination: 1223
-      origin: 1117
-      requiredForce: {x: 6, y: 20}
-    - destination: 1224
-      origin: 1117
-      requiredForce: {x: 8, y: 20}
-    - destination: 1225
-      origin: 1117
-      requiredForce: {x: 10, y: 20}
-    - destination: 1224
-      origin: 1117
-      requiredForce: {x: 6, y: 25}
-    - destination: 1225
-      origin: 1117
-      requiredForce: {x: 8, y: 25}
-    - destination: 1226
-      origin: 1117
-      requiredForce: {x: 10, y: 25}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
   - position: {x: 45, y: -7}
-    type: 3
-    linearLinks:
-    - destination: 1117
-      origin: 1118
-    - destination: 1119
-      origin: 1118
-    gravityLinks:
-    - destination: 1223
-      origin: 1118
-      requiredForce: {x: 6, y: 15}
-    - destination: 1223
-      origin: 1118
-      requiredForce: {x: 8, y: 15}
-    - destination: 1224
-      origin: 1118
-      requiredForce: {x: 10, y: 15}
-    - destination: 1223
-      origin: 1118
-      requiredForce: {x: 4, y: 20}
-    - destination: 1224
-      origin: 1118
-      requiredForce: {x: 6, y: 20}
-    - destination: 1225
-      origin: 1118
-      requiredForce: {x: 8, y: 20}
-    - destination: 1226
-      origin: 1118
-      requiredForce: {x: 10, y: 20}
-    - destination: 1223
-      origin: 1118
-      requiredForce: {x: 4, y: 25}
-    - destination: 1225
-      origin: 1118
-      requiredForce: {x: 6, y: 25}
-    - destination: 1226
-      origin: 1118
-      requiredForce: {x: 8, y: 25}
-    - destination: 1227
-      origin: 1118
-      requiredForce: {x: 10, y: 25}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
   - position: {x: 46, y: -7}
-    type: 5
-    linearLinks:
-    - destination: 1118
-      origin: 1119
-    gravityLinks:
-    - destination: 1223
-      origin: 1119
-      requiredForce: {x: 2, y: 15}
-    - destination: 1223
-      origin: 1119
-      requiredForce: {x: 4, y: 15}
-    - destination: 1223
-      origin: 1119
-      requiredForce: {x: 2, y: 20}
-    - destination: 1224
-      origin: 1119
-      requiredForce: {x: 4, y: 20}
-    - destination: 1225
-      origin: 1119
-      requiredForce: {x: 6, y: 20}
-    - destination: 1226
-      origin: 1119
-      requiredForce: {x: 8, y: 20}
-    - destination: 1223
-      origin: 1119
-      requiredForce: {x: 2, y: 25}
-    - destination: 1224
-      origin: 1119
-      requiredForce: {x: 4, y: 25}
-    - destination: 1226
-      origin: 1119
-      requiredForce: {x: 6, y: 25}
-    - destination: 1227
-      origin: 1119
-      requiredForce: {x: 8, y: 25}
-    - destination: 1228
-      origin: 1119
-      requiredForce: {x: 10, y: 25}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
   - position: {x: 47, y: -7}
     type: 2
     linearLinks: []
@@ -24430,15 +23530,15 @@ MonoBehaviour:
     - destination: 1154
       origin: 1153
     gravityLinks:
-    - destination: 1255
+    - destination: 1254
       origin: 1153
-      requiredForce: {x: -2, y: 15}
-    - destination: 1255
+      requiredForce: {x: -6, y: 15}
+    - destination: 1253
       origin: 1153
-      requiredForce: {x: -4, y: 15}
-    - destination: 1255
+      requiredForce: {x: -8, y: 15}
+    - destination: 1253
       origin: 1153
-      requiredForce: {x: -2, y: 20}
+      requiredForce: {x: -10, y: 15}
     - destination: 1254
       origin: 1153
       requiredForce: {x: -4, y: 20}
@@ -24448,9 +23548,9 @@ MonoBehaviour:
     - destination: 1252
       origin: 1153
       requiredForce: {x: -8, y: 20}
-    - destination: 1255
+    - destination: 1251
       origin: 1153
-      requiredForce: {x: -2, y: 25}
+      requiredForce: {x: -10, y: 20}
     - destination: 1254
       origin: 1153
       requiredForce: {x: -4, y: 25}
@@ -24460,9 +23560,6 @@ MonoBehaviour:
     - destination: 1251
       origin: 1153
       requiredForce: {x: -8, y: 25}
-    - destination: 1353
-      origin: 1153
-      requiredForce: {x: -10, y: 25}
   - position: {x: -22, y: -6}
     type: 3
     linearLinks:
@@ -24473,16 +23570,10 @@ MonoBehaviour:
     gravityLinks:
     - destination: 1255
       origin: 1154
-      requiredForce: {x: -6, y: 15}
-    - destination: 1255
-      origin: 1154
       requiredForce: {x: -8, y: 15}
     - destination: 1254
       origin: 1154
       requiredForce: {x: -10, y: 15}
-    - destination: 1255
-      origin: 1154
-      requiredForce: {x: -4, y: 20}
     - destination: 1254
       origin: 1154
       requiredForce: {x: -6, y: 20}
@@ -24492,9 +23583,6 @@ MonoBehaviour:
     - destination: 1252
       origin: 1154
       requiredForce: {x: -10, y: 20}
-    - destination: 1255
-      origin: 1154
-      requiredForce: {x: -4, y: 25}
     - destination: 1253
       origin: 1154
       requiredForce: {x: -6, y: 25}
@@ -24512,15 +23600,6 @@ MonoBehaviour:
     - destination: 1156
       origin: 1155
     gravityLinks:
-    - destination: 1255
-      origin: 1155
-      requiredForce: {x: -8, y: 15}
-    - destination: 1255
-      origin: 1155
-      requiredForce: {x: -10, y: 15}
-    - destination: 1255
-      origin: 1155
-      requiredForce: {x: -6, y: 20}
     - destination: 1254
       origin: 1155
       requiredForce: {x: -8, y: 20}
@@ -24533,6 +23612,9 @@ MonoBehaviour:
     - destination: 1253
       origin: 1155
       requiredForce: {x: -8, y: 25}
+    - destination: 1059
+      origin: 1155
+      requiredForce: {x: 10, y: 25}
     - destination: 1252
       origin: 1155
       requiredForce: {x: -10, y: 25}
@@ -24544,15 +23626,12 @@ MonoBehaviour:
     - destination: 1157
       origin: 1156
     gravityLinks:
-    - destination: 1255
+    - destination: 1059
       origin: 1156
-      requiredForce: {x: -8, y: 20}
+      requiredForce: {x: 10, y: 20}
     - destination: 1254
       origin: 1156
       requiredForce: {x: -10, y: 20}
-    - destination: 1255
-      origin: 1156
-      requiredForce: {x: -6, y: 25}
     - destination: 1254
       origin: 1156
       requiredForce: {x: -8, y: 25}
@@ -24573,15 +23652,9 @@ MonoBehaviour:
     - destination: 1060
       origin: 1157
       requiredForce: {x: 10, y: 20}
-    - destination: 1255
-      origin: 1157
-      requiredForce: {x: -10, y: 20}
     - destination: 1059
       origin: 1157
       requiredForce: {x: 8, y: 25}
-    - destination: 1255
-      origin: 1157
-      requiredForce: {x: -8, y: 25}
     - destination: 1061
       origin: 1157
       requiredForce: {x: 10, y: 25}
@@ -24598,8 +23671,11 @@ MonoBehaviour:
     gravityLinks:
     - destination: 1059
       origin: 1158
+      requiredForce: {x: 8, y: 15}
+    - destination: 1059
+      origin: 1158
       requiredForce: {x: 10, y: 15}
-    - destination: 1060
+    - destination: 1059
       origin: 1158
       requiredForce: {x: 8, y: 20}
     - destination: 1061
@@ -24614,9 +23690,6 @@ MonoBehaviour:
     - destination: 1062
       origin: 1158
       requiredForce: {x: 10, y: 25}
-    - destination: 1255
-      origin: 1158
-      requiredForce: {x: -10, y: 25}
   - position: {x: -17, y: -6}
     type: 3
     linearLinks:
@@ -24627,7 +23700,13 @@ MonoBehaviour:
     gravityLinks:
     - destination: 1059
       origin: 1159
+      requiredForce: {x: 8, y: 10}
+    - destination: 1059
+      origin: 1159
       requiredForce: {x: 10, y: 10}
+    - destination: 1059
+      origin: 1159
+      requiredForce: {x: 6, y: 15}
     - destination: 1060
       origin: 1159
       requiredForce: {x: 8, y: 15}
@@ -24637,7 +23716,7 @@ MonoBehaviour:
     - destination: 1059
       origin: 1159
       requiredForce: {x: 6, y: 20}
-    - destination: 1061
+    - destination: 1060
       origin: 1159
       requiredForce: {x: 8, y: 20}
     - destination: 1062
@@ -24665,6 +23744,12 @@ MonoBehaviour:
     gravityLinks:
     - destination: 1059
       origin: 1160
+      requiredForce: {x: 8, y: 5}
+    - destination: 1059
+      origin: 1160
+      requiredForce: {x: 10, y: 5}
+    - destination: 1059
+      origin: 1160
       requiredForce: {x: 6, y: 10}
     - destination: 1060
       origin: 1160
@@ -24672,6 +23757,9 @@ MonoBehaviour:
     - destination: 1060
       origin: 1160
       requiredForce: {x: 10, y: 10}
+    - destination: 1059
+      origin: 1160
+      requiredForce: {x: 4, y: 15}
     - destination: 1060
       origin: 1160
       requiredForce: {x: 6, y: 15}
@@ -24687,7 +23775,7 @@ MonoBehaviour:
     - destination: 1060
       origin: 1160
       requiredForce: {x: 6, y: 20}
-    - destination: 1062
+    - destination: 1061
       origin: 1160
       requiredForce: {x: 8, y: 20}
     - destination: 1063
@@ -24702,9 +23790,6 @@ MonoBehaviour:
     - destination: 1062
       origin: 1160
       requiredForce: {x: 8, y: 25}
-    - destination: 1064
-      origin: 1160
-      requiredForce: {x: 10, y: 25}
   - position: {x: -15, y: -6}
     type: 5
     linearLinks:
@@ -24723,6 +23808,9 @@ MonoBehaviour:
     - destination: 1060
       origin: 1161
       requiredForce: {x: 10, y: 5}
+    - destination: 1059
+      origin: 1161
+      requiredForce: {x: 2, y: 10}
     - destination: 1059
       origin: 1161
       requiredForce: {x: 4, y: 10}
@@ -24759,12 +23847,9 @@ MonoBehaviour:
     - destination: 1061
       origin: 1161
       requiredForce: {x: 6, y: 20}
-    - destination: 1063
+    - destination: 1062
       origin: 1161
       requiredForce: {x: 8, y: 20}
-    - destination: 1064
-      origin: 1161
-      requiredForce: {x: 10, y: 20}
     - destination: 1059
       origin: 1161
       requiredForce: {x: 2, y: 25}
@@ -24941,164 +24026,388 @@ MonoBehaviour:
     linearLinks: []
     gravityLinks: []
   - position: {x: 26, y: -6}
-    type: 1
-    linearLinks: []
-    gravityLinks: []
+    type: 4
+    linearLinks:
+    - destination: 1203
+      origin: 1202
+    gravityLinks:
+    - destination: 786
+      origin: 1202
+      requiredForce: {x: -10, y: 5}
+    - destination: 786
+      origin: 1202
+      requiredForce: {x: -8, y: 10}
+    - destination: 785
+      origin: 1202
+      requiredForce: {x: -10, y: 10}
+    - destination: 786
+      origin: 1202
+      requiredForce: {x: -8, y: 15}
+    - destination: 784
+      origin: 1202
+      requiredForce: {x: -10, y: 15}
+    - destination: 786
+      origin: 1202
+      requiredForce: {x: -6, y: 20}
+    - destination: 785
+      origin: 1202
+      requiredForce: {x: -8, y: 20}
+    - destination: 783
+      origin: 1202
+      requiredForce: {x: -10, y: 20}
+    - destination: 785
+      origin: 1202
+      requiredForce: {x: -6, y: 25}
+    - destination: 784
+      origin: 1202
+      requiredForce: {x: -8, y: 25}
+    - destination: 782
+      origin: 1202
+      requiredForce: {x: -10, y: 25}
   - position: {x: 27, y: -6}
-    type: 1
-    linearLinks: []
-    gravityLinks: []
+    type: 3
+    linearLinks:
+    - destination: 1202
+      origin: 1203
+    - destination: 1204
+      origin: 1203
+    gravityLinks:
+    - destination: 786
+      origin: 1203
+      requiredForce: {x: -10, y: 10}
+    - destination: 785
+      origin: 1203
+      requiredForce: {x: -10, y: 15}
+    - destination: 786
+      origin: 1203
+      requiredForce: {x: -8, y: 20}
+    - destination: 784
+      origin: 1203
+      requiredForce: {x: -10, y: 20}
+    - destination: 786
+      origin: 1203
+      requiredForce: {x: -6, y: 25}
+    - destination: 785
+      origin: 1203
+      requiredForce: {x: -8, y: 25}
+    - destination: 1312
+      origin: 1203
+      requiredForce: {x: 10, y: 25}
+    - destination: 783
+      origin: 1203
+      requiredForce: {x: -10, y: 25}
   - position: {x: 28, y: -6}
-    type: 1
-    linearLinks: []
-    gravityLinks: []
+    type: 3
+    linearLinks:
+    - destination: 1203
+      origin: 1204
+    - destination: 1205
+      origin: 1204
+    gravityLinks:
+    - destination: 786
+      origin: 1204
+      requiredForce: {x: -10, y: 15}
+    - destination: 1312
+      origin: 1204
+      requiredForce: {x: 10, y: 20}
+    - destination: 785
+      origin: 1204
+      requiredForce: {x: -10, y: 20}
+    - destination: 1312
+      origin: 1204
+      requiredForce: {x: 8, y: 25}
+    - destination: 786
+      origin: 1204
+      requiredForce: {x: -8, y: 25}
+    - destination: 1313
+      origin: 1204
+      requiredForce: {x: 10, y: 25}
+    - destination: 784
+      origin: 1204
+      requiredForce: {x: -10, y: 25}
   - position: {x: 29, y: -6}
-    type: 1
-    linearLinks: []
-    gravityLinks: []
+    type: 3
+    linearLinks:
+    - destination: 1204
+      origin: 1205
+    - destination: 1206
+      origin: 1205
+    gravityLinks:
+    - destination: 1312
+      origin: 1205
+      requiredForce: {x: 8, y: 20}
+    - destination: 1313
+      origin: 1205
+      requiredForce: {x: 10, y: 20}
+    - destination: 786
+      origin: 1205
+      requiredForce: {x: -10, y: 20}
+    - destination: 1312
+      origin: 1205
+      requiredForce: {x: 6, y: 25}
+    - destination: 1313
+      origin: 1205
+      requiredForce: {x: 8, y: 25}
+    - destination: 1314
+      origin: 1205
+      requiredForce: {x: 10, y: 25}
+    - destination: 785
+      origin: 1205
+      requiredForce: {x: -10, y: 25}
   - position: {x: 30, y: -6}
-    type: 1
-    linearLinks: []
-    gravityLinks: []
+    type: 3
+    linearLinks:
+    - destination: 1205
+      origin: 1206
+    - destination: 1207
+      origin: 1206
+    gravityLinks:
+    - destination: 1312
+      origin: 1206
+      requiredForce: {x: 8, y: 15}
+    - destination: 1312
+      origin: 1206
+      requiredForce: {x: 10, y: 15}
+    - destination: 1312
+      origin: 1206
+      requiredForce: {x: 6, y: 20}
+    - destination: 1313
+      origin: 1206
+      requiredForce: {x: 8, y: 20}
+    - destination: 1314
+      origin: 1206
+      requiredForce: {x: 10, y: 20}
+    - destination: 1313
+      origin: 1206
+      requiredForce: {x: 6, y: 25}
+    - destination: 1314
+      origin: 1206
+      requiredForce: {x: 8, y: 25}
+    - destination: 1315
+      origin: 1206
+      requiredForce: {x: 10, y: 25}
+    - destination: 786
+      origin: 1206
+      requiredForce: {x: -10, y: 25}
   - position: {x: 31, y: -6}
-    type: 1
-    linearLinks: []
-    gravityLinks: []
+    type: 5
+    linearLinks:
+    - destination: 1206
+      origin: 1207
+    gravityLinks:
+    - destination: 1312
+      origin: 1207
+      requiredForce: {x: 6, y: 15}
+    - destination: 1313
+      origin: 1207
+      requiredForce: {x: 8, y: 15}
+    - destination: 1313
+      origin: 1207
+      requiredForce: {x: 10, y: 15}
+    - destination: 1312
+      origin: 1207
+      requiredForce: {x: 4, y: 20}
+    - destination: 1313
+      origin: 1207
+      requiredForce: {x: 6, y: 20}
+    - destination: 1314
+      origin: 1207
+      requiredForce: {x: 8, y: 20}
+    - destination: 1315
+      origin: 1207
+      requiredForce: {x: 10, y: 20}
+    - destination: 1312
+      origin: 1207
+      requiredForce: {x: 4, y: 25}
+    - destination: 1314
+      origin: 1207
+      requiredForce: {x: 6, y: 25}
+    - destination: 1315
+      origin: 1207
+      requiredForce: {x: 8, y: 25}
   - position: {x: 32, y: -6}
-    type: 1
+    type: 2
     linearLinks: []
     gravityLinks: []
   - position: {x: 33, y: -6}
-    type: 1
+    type: 2
     linearLinks: []
     gravityLinks: []
   - position: {x: 34, y: -6}
-    type: 1
+    type: 2
     linearLinks: []
     gravityLinks: []
   - position: {x: 35, y: -6}
-    type: 1
+    type: 2
     linearLinks: []
     gravityLinks: []
   - position: {x: 36, y: -6}
-    type: 1
+    type: 2
     linearLinks: []
     gravityLinks: []
   - position: {x: 37, y: -6}
-    type: 1
+    type: 2
     linearLinks: []
     gravityLinks: []
   - position: {x: 38, y: -6}
-    type: 1
-    linearLinks: []
-    gravityLinks: []
+    type: 5
+    linearLinks:
+    - destination: 1215
+      origin: 1214
+    gravityLinks:
+    - destination: 1315
+      origin: 1214
+      requiredForce: {x: -6, y: 15}
+    - destination: 1314
+      origin: 1214
+      requiredForce: {x: -8, y: 15}
+    - destination: 1314
+      origin: 1214
+      requiredForce: {x: -10, y: 15}
+    - destination: 1315
+      origin: 1214
+      requiredForce: {x: -4, y: 20}
+    - destination: 1314
+      origin: 1214
+      requiredForce: {x: -6, y: 20}
+    - destination: 1313
+      origin: 1214
+      requiredForce: {x: -8, y: 20}
+    - destination: 1312
+      origin: 1214
+      requiredForce: {x: -10, y: 20}
+    - destination: 1315
+      origin: 1214
+      requiredForce: {x: -4, y: 25}
+    - destination: 1313
+      origin: 1214
+      requiredForce: {x: -6, y: 25}
+    - destination: 1312
+      origin: 1214
+      requiredForce: {x: -8, y: 25}
   - position: {x: 39, y: -6}
-    type: 1
-    linearLinks: []
-    gravityLinks: []
+    type: 3
+    linearLinks:
+    - destination: 1214
+      origin: 1215
+    - destination: 1216
+      origin: 1215
+    gravityLinks:
+    - destination: 1316
+      origin: 1215
+      requiredForce: {x: -8, y: 15}
+    - destination: 1315
+      origin: 1215
+      requiredForce: {x: -10, y: 15}
+    - destination: 1315
+      origin: 1215
+      requiredForce: {x: -6, y: 20}
+    - destination: 1314
+      origin: 1215
+      requiredForce: {x: -8, y: 20}
+    - destination: 1313
+      origin: 1215
+      requiredForce: {x: -10, y: 20}
+    - destination: 1314
+      origin: 1215
+      requiredForce: {x: -6, y: 25}
+    - destination: 1313
+      origin: 1215
+      requiredForce: {x: -8, y: 25}
+    - destination: 1312
+      origin: 1215
+      requiredForce: {x: -10, y: 25}
   - position: {x: 40, y: -6}
-    type: 1
-    linearLinks: []
-    gravityLinks: []
+    type: 3
+    linearLinks:
+    - destination: 1215
+      origin: 1216
+    - destination: 1217
+      origin: 1216
+    gravityLinks:
+    - destination: 1315
+      origin: 1216
+      requiredForce: {x: -8, y: 20}
+    - destination: 1314
+      origin: 1216
+      requiredForce: {x: -10, y: 20}
+    - destination: 1315
+      origin: 1216
+      requiredForce: {x: -6, y: 25}
+    - destination: 1314
+      origin: 1216
+      requiredForce: {x: -8, y: 25}
+    - destination: 1313
+      origin: 1216
+      requiredForce: {x: -10, y: 25}
   - position: {x: 41, y: -6}
-    type: 1
-    linearLinks: []
-    gravityLinks: []
+    type: 3
+    linearLinks:
+    - destination: 1216
+      origin: 1217
+    - destination: 1218
+      origin: 1217
+    gravityLinks:
+    - destination: 1315
+      origin: 1217
+      requiredForce: {x: -10, y: 20}
+    - destination: 1315
+      origin: 1217
+      requiredForce: {x: -8, y: 25}
+    - destination: 1314
+      origin: 1217
+      requiredForce: {x: -10, y: 25}
   - position: {x: 42, y: -6}
-    type: 1
-    linearLinks: []
-    gravityLinks: []
+    type: 3
+    linearLinks:
+    - destination: 1217
+      origin: 1218
+    - destination: 1219
+      origin: 1218
+    gravityLinks:
+    - destination: 1315
+      origin: 1218
+      requiredForce: {x: -10, y: 25}
   - position: {x: 43, y: -6}
-    type: 1
-    linearLinks: []
+    type: 3
+    linearLinks:
+    - destination: 1218
+      origin: 1219
+    - destination: 1220
+      origin: 1219
     gravityLinks: []
   - position: {x: 44, y: -6}
-    type: 1
-    linearLinks: []
+    type: 3
+    linearLinks:
+    - destination: 1219
+      origin: 1220
+    - destination: 1221
+      origin: 1220
     gravityLinks: []
   - position: {x: 45, y: -6}
-    type: 1
-    linearLinks: []
+    type: 3
+    linearLinks:
+    - destination: 1220
+      origin: 1221
+    - destination: 1222
+      origin: 1221
     gravityLinks: []
   - position: {x: 46, y: -6}
-    type: 1
-    linearLinks: []
+    type: 3
+    linearLinks:
+    - destination: 1221
+      origin: 1222
+    - destination: 1223
+      origin: 1222
     gravityLinks: []
   - position: {x: 47, y: -6}
-    type: 4
+    type: 3
     linearLinks:
+    - destination: 1222
+      origin: 1223
     - destination: 1224
       origin: 1223
-    gravityLinks:
-    - destination: 1119
-      origin: 1223
-      requiredForce: {x: -4, y: 5}
-    - destination: 1118
-      origin: 1223
-      requiredForce: {x: -6, y: 5}
-    - destination: 1118
-      origin: 1223
-      requiredForce: {x: -8, y: 5}
-    - destination: 1118
-      origin: 1223
-      requiredForce: {x: -10, y: 5}
-    - destination: 1119
-      origin: 1223
-      requiredForce: {x: -4, y: 10}
-    - destination: 1118
-      origin: 1223
-      requiredForce: {x: -6, y: 10}
-    - destination: 1117
-      origin: 1223
-      requiredForce: {x: -8, y: 10}
-    - destination: 1117
-      origin: 1223
-      requiredForce: {x: -10, y: 10}
-    - destination: 1119
-      origin: 1223
-      requiredForce: {x: -2, y: 15}
-    - destination: 1118
-      origin: 1223
-      requiredForce: {x: -4, y: 15}
-    - destination: 1117
-      origin: 1223
-      requiredForce: {x: -6, y: 15}
-    - destination: 1116
-      origin: 1223
-      requiredForce: {x: -8, y: 15}
-    - destination: 1116
-      origin: 1223
-      requiredForce: {x: -10, y: 15}
-    - destination: 1119
-      origin: 1223
-      requiredForce: {x: -2, y: 20}
-    - destination: 1118
-      origin: 1223
-      requiredForce: {x: -4, y: 20}
-    - destination: 1117
-      origin: 1223
-      requiredForce: {x: -6, y: 20}
-    - destination: 1116
-      origin: 1223
-      requiredForce: {x: -8, y: 20}
-    - destination: 1114
-      origin: 1223
-      requiredForce: {x: -10, y: 20}
-    - destination: 1119
-      origin: 1223
-      requiredForce: {x: -2, y: 25}
-    - destination: 1117
-      origin: 1223
-      requiredForce: {x: -4, y: 25}
-    - destination: 1116
-      origin: 1223
-      requiredForce: {x: -6, y: 25}
-    - destination: 1115
-      origin: 1223
-      requiredForce: {x: -8, y: 25}
-    - destination: 1113
-      origin: 1223
-      requiredForce: {x: -10, y: 25}
+    gravityLinks: []
   - position: {x: 48, y: -6}
     type: 3
     linearLinks:
@@ -25106,49 +24415,7 @@ MonoBehaviour:
       origin: 1224
     - destination: 1225
       origin: 1224
-    gravityLinks:
-    - destination: 1119
-      origin: 1224
-      requiredForce: {x: -6, y: 10}
-    - destination: 1118
-      origin: 1224
-      requiredForce: {x: -8, y: 10}
-    - destination: 1118
-      origin: 1224
-      requiredForce: {x: -10, y: 10}
-    - destination: 1118
-      origin: 1224
-      requiredForce: {x: -6, y: 15}
-    - destination: 1117
-      origin: 1224
-      requiredForce: {x: -8, y: 15}
-    - destination: 1117
-      origin: 1224
-      requiredForce: {x: -10, y: 15}
-    - destination: 1119
-      origin: 1224
-      requiredForce: {x: -4, y: 20}
-    - destination: 1118
-      origin: 1224
-      requiredForce: {x: -6, y: 20}
-    - destination: 1117
-      origin: 1224
-      requiredForce: {x: -8, y: 20}
-    - destination: 1115
-      origin: 1224
-      requiredForce: {x: -10, y: 20}
-    - destination: 1118
-      origin: 1224
-      requiredForce: {x: -4, y: 25}
-    - destination: 1117
-      origin: 1224
-      requiredForce: {x: -6, y: 25}
-    - destination: 1116
-      origin: 1224
-      requiredForce: {x: -8, y: 25}
-    - destination: 1114
-      origin: 1224
-      requiredForce: {x: -10, y: 25}
+    gravityLinks: []
   - position: {x: 49, y: -6}
     type: 3
     linearLinks:
@@ -25156,37 +24423,7 @@ MonoBehaviour:
       origin: 1225
     - destination: 1226
       origin: 1225
-    gravityLinks:
-    - destination: 1119
-      origin: 1225
-      requiredForce: {x: -10, y: 10}
-    - destination: 1118
-      origin: 1225
-      requiredForce: {x: -8, y: 15}
-    - destination: 1118
-      origin: 1225
-      requiredForce: {x: -10, y: 15}
-    - destination: 1119
-      origin: 1225
-      requiredForce: {x: -6, y: 20}
-    - destination: 1118
-      origin: 1225
-      requiredForce: {x: -8, y: 20}
-    - destination: 1116
-      origin: 1225
-      requiredForce: {x: -10, y: 20}
-    - destination: 1119
-      origin: 1225
-      requiredForce: {x: -4, y: 25}
-    - destination: 1118
-      origin: 1225
-      requiredForce: {x: -6, y: 25}
-    - destination: 1117
-      origin: 1225
-      requiredForce: {x: -8, y: 25}
-    - destination: 1115
-      origin: 1225
-      requiredForce: {x: -10, y: 25}
+    gravityLinks: []
   - position: {x: 50, y: -6}
     type: 3
     linearLinks:
@@ -25194,25 +24431,7 @@ MonoBehaviour:
       origin: 1226
     - destination: 1227
       origin: 1226
-    gravityLinks:
-    - destination: 1119
-      origin: 1226
-      requiredForce: {x: -10, y: 15}
-    - destination: 1119
-      origin: 1226
-      requiredForce: {x: -8, y: 20}
-    - destination: 1117
-      origin: 1226
-      requiredForce: {x: -10, y: 20}
-    - destination: 1119
-      origin: 1226
-      requiredForce: {x: -6, y: 25}
-    - destination: 1118
-      origin: 1226
-      requiredForce: {x: -8, y: 25}
-    - destination: 1116
-      origin: 1226
-      requiredForce: {x: -10, y: 25}
+    gravityLinks: []
   - position: {x: 51, y: -6}
     type: 3
     linearLinks:
@@ -25220,16 +24439,7 @@ MonoBehaviour:
       origin: 1227
     - destination: 1228
       origin: 1227
-    gravityLinks:
-    - destination: 1118
-      origin: 1227
-      requiredForce: {x: -10, y: 20}
-    - destination: 1119
-      origin: 1227
-      requiredForce: {x: -8, y: 25}
-    - destination: 1117
-      origin: 1227
-      requiredForce: {x: -10, y: 25}
+    gravityLinks: []
   - position: {x: 52, y: -6}
     type: 3
     linearLinks:
@@ -25237,10 +24447,7 @@ MonoBehaviour:
       origin: 1228
     - destination: 1229
       origin: 1228
-    gravityLinks:
-    - destination: 1118
-      origin: 1228
-      requiredForce: {x: -10, y: 25}
+    gravityLinks: []
   - position: {x: 53, y: -6}
     type: 3
     linearLinks:
@@ -25361,15 +24568,15 @@ MonoBehaviour:
     - destination: 1252
       origin: 1251
     gravityLinks:
-    - destination: 1353
+    - destination: 1352
       origin: 1251
-      requiredForce: {x: -2, y: 15}
-    - destination: 1353
+      requiredForce: {x: -6, y: 15}
+    - destination: 1351
       origin: 1251
-      requiredForce: {x: -4, y: 15}
-    - destination: 1353
+      requiredForce: {x: -8, y: 15}
+    - destination: 1351
       origin: 1251
-      requiredForce: {x: -2, y: 20}
+      requiredForce: {x: -10, y: 15}
     - destination: 1352
       origin: 1251
       requiredForce: {x: -4, y: 20}
@@ -25382,9 +24589,9 @@ MonoBehaviour:
     - destination: 1154
       origin: 1251
       requiredForce: {x: 10, y: 20}
-    - destination: 1353
+    - destination: 1349
       origin: 1251
-      requiredForce: {x: -2, y: 25}
+      requiredForce: {x: -10, y: 20}
     - destination: 1352
       origin: 1251
       requiredForce: {x: -4, y: 25}
@@ -25411,9 +24618,9 @@ MonoBehaviour:
     - destination: 1253
       origin: 1252
     gravityLinks:
-    - destination: 1353
+    - destination: 1153
       origin: 1252
-      requiredForce: {x: -6, y: 15}
+      requiredForce: {x: 8, y: 15}
     - destination: 1353
       origin: 1252
       requiredForce: {x: -8, y: 15}
@@ -25423,9 +24630,6 @@ MonoBehaviour:
     - destination: 1352
       origin: 1252
       requiredForce: {x: -10, y: 15}
-    - destination: 1353
-      origin: 1252
-      requiredForce: {x: -4, y: 20}
     - destination: 1352
       origin: 1252
       requiredForce: {x: -6, y: 20}
@@ -25441,9 +24645,6 @@ MonoBehaviour:
     - destination: 1350
       origin: 1252
       requiredForce: {x: -10, y: 20}
-    - destination: 1353
-      origin: 1252
-      requiredForce: {x: -4, y: 25}
     - destination: 1153
       origin: 1252
       requiredForce: {x: 6, y: 25}
@@ -25472,25 +24673,22 @@ MonoBehaviour:
     gravityLinks:
     - destination: 1153
       origin: 1253
+      requiredForce: {x: 8, y: 10}
+    - destination: 1153
+      origin: 1253
       requiredForce: {x: 10, y: 10}
+    - destination: 1153
+      origin: 1253
+      requiredForce: {x: 6, y: 15}
     - destination: 1154
       origin: 1253
       requiredForce: {x: 8, y: 15}
-    - destination: 1353
-      origin: 1253
-      requiredForce: {x: -8, y: 15}
     - destination: 1154
       origin: 1253
       requiredForce: {x: 10, y: 15}
-    - destination: 1353
-      origin: 1253
-      requiredForce: {x: -10, y: 15}
     - destination: 1153
       origin: 1253
       requiredForce: {x: 6, y: 20}
-    - destination: 1353
-      origin: 1253
-      requiredForce: {x: -6, y: 20}
     - destination: 1155
       origin: 1253
       requiredForce: {x: 8, y: 20}
@@ -25534,6 +24732,12 @@ MonoBehaviour:
     gravityLinks:
     - destination: 1153
       origin: 1254
+      requiredForce: {x: 8, y: 5}
+    - destination: 1153
+      origin: 1254
+      requiredForce: {x: 10, y: 5}
+    - destination: 1153
+      origin: 1254
       requiredForce: {x: 6, y: 10}
     - destination: 1154
       origin: 1254
@@ -25541,6 +24745,9 @@ MonoBehaviour:
     - destination: 1154
       origin: 1254
       requiredForce: {x: 10, y: 10}
+    - destination: 1153
+      origin: 1254
+      requiredForce: {x: 4, y: 15}
     - destination: 1154
       origin: 1254
       requiredForce: {x: 6, y: 15}
@@ -25559,9 +24766,6 @@ MonoBehaviour:
     - destination: 1156
       origin: 1254
       requiredForce: {x: 8, y: 20}
-    - destination: 1353
-      origin: 1254
-      requiredForce: {x: -8, y: 20}
     - destination: 1157
       origin: 1254
       requiredForce: {x: 10, y: 20}
@@ -25574,9 +24778,6 @@ MonoBehaviour:
     - destination: 1155
       origin: 1254
       requiredForce: {x: 6, y: 25}
-    - destination: 1353
-      origin: 1254
-      requiredForce: {x: -6, y: 25}
     - destination: 1156
       origin: 1254
       requiredForce: {x: 8, y: 25}
@@ -25607,6 +24808,9 @@ MonoBehaviour:
     - destination: 1154
       origin: 1255
       requiredForce: {x: 10, y: 5}
+    - destination: 1153
+      origin: 1255
+      requiredForce: {x: 2, y: 10}
     - destination: 1153
       origin: 1255
       requiredForce: {x: 4, y: 10}
@@ -25649,9 +24853,6 @@ MonoBehaviour:
     - destination: 1158
       origin: 1255
       requiredForce: {x: 10, y: 20}
-    - destination: 1353
-      origin: 1255
-      requiredForce: {x: -10, y: 20}
     - destination: 1153
       origin: 1255
       requiredForce: {x: 2, y: 25}
@@ -25664,9 +24865,6 @@ MonoBehaviour:
     - destination: 1157
       origin: 1255
       requiredForce: {x: 8, y: 25}
-    - destination: 1353
-      origin: 1255
-      requiredForce: {x: -8, y: 25}
     - destination: 1159
       origin: 1255
       requiredForce: {x: 10, y: 25}
@@ -25894,29 +25092,430 @@ MonoBehaviour:
     linearLinks: []
     gravityLinks: []
   - position: {x: 32, y: -5}
-    type: 1
-    linearLinks: []
-    gravityLinks: []
+    type: 4
+    linearLinks:
+    - destination: 1312
+      origin: 1311
+    gravityLinks:
+    - destination: 1207
+      origin: 1311
+      requiredForce: {x: -4, y: 5}
+    - destination: 1206
+      origin: 1311
+      requiredForce: {x: -6, y: 5}
+    - destination: 1206
+      origin: 1311
+      requiredForce: {x: -8, y: 5}
+    - destination: 1206
+      origin: 1311
+      requiredForce: {x: -10, y: 5}
+    - destination: 1207
+      origin: 1311
+      requiredForce: {x: -2, y: 10}
+    - destination: 1207
+      origin: 1311
+      requiredForce: {x: -4, y: 10}
+    - destination: 1206
+      origin: 1311
+      requiredForce: {x: -6, y: 10}
+    - destination: 1205
+      origin: 1311
+      requiredForce: {x: -8, y: 10}
+    - destination: 1205
+      origin: 1311
+      requiredForce: {x: -10, y: 10}
+    - destination: 1207
+      origin: 1311
+      requiredForce: {x: -2, y: 15}
+    - destination: 1206
+      origin: 1311
+      requiredForce: {x: -4, y: 15}
+    - destination: 1205
+      origin: 1311
+      requiredForce: {x: -6, y: 15}
+    - destination: 1204
+      origin: 1311
+      requiredForce: {x: -8, y: 15}
+    - destination: 1204
+      origin: 1311
+      requiredForce: {x: -10, y: 15}
+    - destination: 1207
+      origin: 1311
+      requiredForce: {x: -2, y: 20}
+    - destination: 1206
+      origin: 1311
+      requiredForce: {x: -4, y: 20}
+    - destination: 1205
+      origin: 1311
+      requiredForce: {x: -6, y: 20}
+    - destination: 1203
+      origin: 1311
+      requiredForce: {x: -8, y: 20}
+    - destination: 1214
+      origin: 1311
+      requiredForce: {x: 10, y: 20}
+    - destination: 1207
+      origin: 1311
+      requiredForce: {x: -2, y: 25}
+    - destination: 1205
+      origin: 1311
+      requiredForce: {x: -4, y: 25}
+    - destination: 1204
+      origin: 1311
+      requiredForce: {x: -6, y: 25}
+    - destination: 1203
+      origin: 1311
+      requiredForce: {x: -8, y: 25}
+    - destination: 1215
+      origin: 1311
+      requiredForce: {x: 10, y: 25}
   - position: {x: 33, y: -5}
-    type: 1
-    linearLinks: []
-    gravityLinks: []
+    type: 3
+    linearLinks:
+    - destination: 1311
+      origin: 1312
+    - destination: 1313
+      origin: 1312
+    gravityLinks:
+    - destination: 1207
+      origin: 1312
+      requiredForce: {x: -8, y: 5}
+    - destination: 1207
+      origin: 1312
+      requiredForce: {x: -10, y: 5}
+    - destination: 1207
+      origin: 1312
+      requiredForce: {x: -6, y: 10}
+    - destination: 1206
+      origin: 1312
+      requiredForce: {x: -8, y: 10}
+    - destination: 1206
+      origin: 1312
+      requiredForce: {x: -10, y: 10}
+    - destination: 1207
+      origin: 1312
+      requiredForce: {x: -4, y: 15}
+    - destination: 1206
+      origin: 1312
+      requiredForce: {x: -6, y: 15}
+    - destination: 1205
+      origin: 1312
+      requiredForce: {x: -8, y: 15}
+    - destination: 1205
+      origin: 1312
+      requiredForce: {x: -10, y: 15}
+    - destination: 1207
+      origin: 1312
+      requiredForce: {x: -4, y: 20}
+    - destination: 1206
+      origin: 1312
+      requiredForce: {x: -6, y: 20}
+    - destination: 1204
+      origin: 1312
+      requiredForce: {x: -8, y: 20}
+    - destination: 1215
+      origin: 1312
+      requiredForce: {x: 10, y: 20}
+    - destination: 1203
+      origin: 1312
+      requiredForce: {x: -10, y: 20}
+    - destination: 1206
+      origin: 1312
+      requiredForce: {x: -4, y: 25}
+    - destination: 1205
+      origin: 1312
+      requiredForce: {x: -6, y: 25}
+    - destination: 1214
+      origin: 1312
+      requiredForce: {x: 8, y: 25}
+    - destination: 1204
+      origin: 1312
+      requiredForce: {x: -8, y: 25}
+    - destination: 1216
+      origin: 1312
+      requiredForce: {x: 10, y: 25}
   - position: {x: 34, y: -5}
-    type: 1
-    linearLinks: []
-    gravityLinks: []
+    type: 3
+    linearLinks:
+    - destination: 1312
+      origin: 1313
+    - destination: 1314
+      origin: 1313
+    gravityLinks:
+    - destination: 1207
+      origin: 1313
+      requiredForce: {x: -8, y: 10}
+    - destination: 1207
+      origin: 1313
+      requiredForce: {x: -10, y: 10}
+    - destination: 1207
+      origin: 1313
+      requiredForce: {x: -6, y: 15}
+    - destination: 1214
+      origin: 1313
+      requiredForce: {x: 8, y: 15}
+    - destination: 1206
+      origin: 1313
+      requiredForce: {x: -8, y: 15}
+    - destination: 1214
+      origin: 1313
+      requiredForce: {x: 10, y: 15}
+    - destination: 1206
+      origin: 1313
+      requiredForce: {x: -10, y: 15}
+    - destination: 1207
+      origin: 1313
+      requiredForce: {x: -6, y: 20}
+    - destination: 1215
+      origin: 1313
+      requiredForce: {x: 8, y: 20}
+    - destination: 1205
+      origin: 1313
+      requiredForce: {x: -8, y: 20}
+    - destination: 1216
+      origin: 1313
+      requiredForce: {x: 10, y: 20}
+    - destination: 1204
+      origin: 1313
+      requiredForce: {x: -10, y: 20}
+    - destination: 1207
+      origin: 1313
+      requiredForce: {x: -4, y: 25}
+    - destination: 1214
+      origin: 1313
+      requiredForce: {x: 6, y: 25}
+    - destination: 1206
+      origin: 1313
+      requiredForce: {x: -6, y: 25}
+    - destination: 1215
+      origin: 1313
+      requiredForce: {x: 8, y: 25}
+    - destination: 1205
+      origin: 1313
+      requiredForce: {x: -8, y: 25}
+    - destination: 1217
+      origin: 1313
+      requiredForce: {x: 10, y: 25}
+    - destination: 1203
+      origin: 1313
+      requiredForce: {x: -10, y: 25}
   - position: {x: 35, y: -5}
-    type: 1
-    linearLinks: []
-    gravityLinks: []
+    type: 3
+    linearLinks:
+    - destination: 1313
+      origin: 1314
+    - destination: 1315
+      origin: 1314
+    gravityLinks:
+    - destination: 1214
+      origin: 1314
+      requiredForce: {x: 8, y: 10}
+    - destination: 1214
+      origin: 1314
+      requiredForce: {x: 10, y: 10}
+    - destination: 1214
+      origin: 1314
+      requiredForce: {x: 6, y: 15}
+    - destination: 1215
+      origin: 1314
+      requiredForce: {x: 8, y: 15}
+    - destination: 1207
+      origin: 1314
+      requiredForce: {x: -8, y: 15}
+    - destination: 1215
+      origin: 1314
+      requiredForce: {x: 10, y: 15}
+    - destination: 1207
+      origin: 1314
+      requiredForce: {x: -10, y: 15}
+    - destination: 1214
+      origin: 1314
+      requiredForce: {x: 6, y: 20}
+    - destination: 1216
+      origin: 1314
+      requiredForce: {x: 8, y: 20}
+    - destination: 1206
+      origin: 1314
+      requiredForce: {x: -8, y: 20}
+    - destination: 1217
+      origin: 1314
+      requiredForce: {x: 10, y: 20}
+    - destination: 1205
+      origin: 1314
+      requiredForce: {x: -10, y: 20}
+    - destination: 1214
+      origin: 1314
+      requiredForce: {x: 4, y: 25}
+    - destination: 1215
+      origin: 1314
+      requiredForce: {x: 6, y: 25}
+    - destination: 1207
+      origin: 1314
+      requiredForce: {x: -6, y: 25}
+    - destination: 1216
+      origin: 1314
+      requiredForce: {x: 8, y: 25}
+    - destination: 1206
+      origin: 1314
+      requiredForce: {x: -8, y: 25}
+    - destination: 1218
+      origin: 1314
+      requiredForce: {x: 10, y: 25}
+    - destination: 1204
+      origin: 1314
+      requiredForce: {x: -10, y: 25}
   - position: {x: 36, y: -5}
-    type: 1
-    linearLinks: []
-    gravityLinks: []
+    type: 3
+    linearLinks:
+    - destination: 1314
+      origin: 1315
+    - destination: 1316
+      origin: 1315
+    gravityLinks:
+    - destination: 1214
+      origin: 1315
+      requiredForce: {x: 8, y: 5}
+    - destination: 1214
+      origin: 1315
+      requiredForce: {x: 10, y: 5}
+    - destination: 1214
+      origin: 1315
+      requiredForce: {x: 6, y: 10}
+    - destination: 1215
+      origin: 1315
+      requiredForce: {x: 8, y: 10}
+    - destination: 1215
+      origin: 1315
+      requiredForce: {x: 10, y: 10}
+    - destination: 1214
+      origin: 1315
+      requiredForce: {x: 4, y: 15}
+    - destination: 1215
+      origin: 1315
+      requiredForce: {x: 6, y: 15}
+    - destination: 1216
+      origin: 1315
+      requiredForce: {x: 8, y: 15}
+    - destination: 1216
+      origin: 1315
+      requiredForce: {x: 10, y: 15}
+    - destination: 1214
+      origin: 1315
+      requiredForce: {x: 4, y: 20}
+    - destination: 1215
+      origin: 1315
+      requiredForce: {x: 6, y: 20}
+    - destination: 1217
+      origin: 1315
+      requiredForce: {x: 8, y: 20}
+    - destination: 1218
+      origin: 1315
+      requiredForce: {x: 10, y: 20}
+    - destination: 1206
+      origin: 1315
+      requiredForce: {x: -10, y: 20}
+    - destination: 1215
+      origin: 1315
+      requiredForce: {x: 4, y: 25}
+    - destination: 1216
+      origin: 1315
+      requiredForce: {x: 6, y: 25}
+    - destination: 1217
+      origin: 1315
+      requiredForce: {x: 8, y: 25}
+    - destination: 1207
+      origin: 1315
+      requiredForce: {x: -8, y: 25}
+    - destination: 1219
+      origin: 1315
+      requiredForce: {x: 10, y: 25}
+    - destination: 1205
+      origin: 1315
+      requiredForce: {x: -10, y: 25}
   - position: {x: 37, y: -5}
-    type: 1
-    linearLinks: []
-    gravityLinks: []
+    type: 5
+    linearLinks:
+    - destination: 1315
+      origin: 1316
+    gravityLinks:
+    - destination: 1214
+      origin: 1316
+      requiredForce: {x: 4, y: 5}
+    - destination: 1215
+      origin: 1316
+      requiredForce: {x: 6, y: 5}
+    - destination: 1215
+      origin: 1316
+      requiredForce: {x: 8, y: 5}
+    - destination: 1215
+      origin: 1316
+      requiredForce: {x: 10, y: 5}
+    - destination: 1214
+      origin: 1316
+      requiredForce: {x: 2, y: 10}
+    - destination: 1214
+      origin: 1316
+      requiredForce: {x: 4, y: 10}
+    - destination: 1215
+      origin: 1316
+      requiredForce: {x: 6, y: 10}
+    - destination: 1216
+      origin: 1316
+      requiredForce: {x: 8, y: 10}
+    - destination: 1216
+      origin: 1316
+      requiredForce: {x: 10, y: 10}
+    - destination: 1214
+      origin: 1316
+      requiredForce: {x: 2, y: 15}
+    - destination: 1215
+      origin: 1316
+      requiredForce: {x: 4, y: 15}
+    - destination: 1216
+      origin: 1316
+      requiredForce: {x: 6, y: 15}
+    - destination: 1217
+      origin: 1316
+      requiredForce: {x: 8, y: 15}
+    - destination: 1217
+      origin: 1316
+      requiredForce: {x: 10, y: 15}
+    - destination: 1214
+      origin: 1316
+      requiredForce: {x: 2, y: 20}
+    - destination: 1215
+      origin: 1316
+      requiredForce: {x: 4, y: 20}
+    - destination: 1216
+      origin: 1316
+      requiredForce: {x: 6, y: 20}
+    - destination: 1218
+      origin: 1316
+      requiredForce: {x: 8, y: 20}
+    - destination: 1219
+      origin: 1316
+      requiredForce: {x: 10, y: 20}
+    - destination: 1207
+      origin: 1316
+      requiredForce: {x: -10, y: 20}
+    - destination: 1214
+      origin: 1316
+      requiredForce: {x: 2, y: 25}
+    - destination: 1216
+      origin: 1316
+      requiredForce: {x: 4, y: 25}
+    - destination: 1217
+      origin: 1316
+      requiredForce: {x: 6, y: 25}
+    - destination: 1218
+      origin: 1316
+      requiredForce: {x: 8, y: 25}
+    - destination: 1220
+      origin: 1316
+      requiredForce: {x: 10, y: 25}
+    - destination: 1206
+      origin: 1316
+      requiredForce: {x: -10, y: 25}
   - position: {x: 38, y: -5}
     type: 1
     linearLinks: []
@@ -26074,7 +25673,10 @@ MonoBehaviour:
       origin: 1347
     - destination: 1348
       origin: 1347
-    gravityLinks: []
+    gravityLinks:
+    - destination: 1251
+      origin: 1347
+      requiredForce: {x: 10, y: 25}
   - position: {x: -34, y: -4}
     type: 3
     linearLinks:
@@ -26083,6 +25685,9 @@ MonoBehaviour:
     - destination: 1349
       origin: 1348
     gravityLinks:
+    - destination: 1251
+      origin: 1348
+      requiredForce: {x: 10, y: 20}
     - destination: 1252
       origin: 1348
       requiredForce: {x: 10, y: 25}
@@ -26113,6 +25718,9 @@ MonoBehaviour:
     gravityLinks:
     - destination: 1251
       origin: 1350
+      requiredForce: {x: 8, y: 15}
+    - destination: 1251
+      origin: 1350
       requiredForce: {x: 10, y: 15}
     - destination: 1252
       origin: 1350
@@ -26139,7 +25747,13 @@ MonoBehaviour:
     gravityLinks:
     - destination: 1251
       origin: 1351
+      requiredForce: {x: 8, y: 10}
+    - destination: 1251
+      origin: 1351
       requiredForce: {x: 10, y: 10}
+    - destination: 1251
+      origin: 1351
+      requiredForce: {x: 6, y: 15}
     - destination: 1252
       origin: 1351
       requiredForce: {x: 8, y: 15}
@@ -26164,9 +25778,6 @@ MonoBehaviour:
     - destination: 1253
       origin: 1351
       requiredForce: {x: 8, y: 25}
-    - destination: 1255
-      origin: 1351
-      requiredForce: {x: 10, y: 25}
   - position: {x: -30, y: -4}
     type: 3
     linearLinks:
@@ -26177,6 +25788,12 @@ MonoBehaviour:
     gravityLinks:
     - destination: 1251
       origin: 1352
+      requiredForce: {x: 8, y: 5}
+    - destination: 1251
+      origin: 1352
+      requiredForce: {x: 10, y: 5}
+    - destination: 1251
+      origin: 1352
       requiredForce: {x: 6, y: 10}
     - destination: 1252
       origin: 1352
@@ -26184,6 +25801,9 @@ MonoBehaviour:
     - destination: 1252
       origin: 1352
       requiredForce: {x: 10, y: 10}
+    - destination: 1251
+      origin: 1352
+      requiredForce: {x: 4, y: 15}
     - destination: 1252
       origin: 1352
       requiredForce: {x: 6, y: 15}
@@ -26202,9 +25822,6 @@ MonoBehaviour:
     - destination: 1254
       origin: 1352
       requiredForce: {x: 8, y: 20}
-    - destination: 1255
-      origin: 1352
-      requiredForce: {x: 10, y: 20}
     - destination: 1252
       origin: 1352
       requiredForce: {x: 4, y: 25}
@@ -26235,6 +25852,9 @@ MonoBehaviour:
     - destination: 1252
       origin: 1353
       requiredForce: {x: 10, y: 5}
+    - destination: 1251
+      origin: 1353
+      requiredForce: {x: 2, y: 10}
     - destination: 1251
       origin: 1353
       requiredForce: {x: 4, y: 10}
@@ -26286,7 +25906,7 @@ MonoBehaviour:
     - destination: 1254
       origin: 1353
       requiredForce: {x: 6, y: 25}
-    - destination: 1255
+    - destination: 1153
       origin: 1353
       requiredForce: {x: 8, y: 25}
     - destination: 1154
@@ -28887,6 +28507,12 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212706959196361474, guid: 565e49e27e945d34e9f270e4e0edbcad,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 425bf0be468554d6cb0b4ddd8c1c48c2,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 565e49e27e945d34e9f270e4e0edbcad, type: 2}
   m_IsPrefabParent: 0
@@ -28965,6 +28591,7 @@ MonoBehaviour:
   YSpeedKey: YSpeed
   AttackKey: Attack
   DamagedKey: Damaged
+  StoppingKey: Stopping
   LastDamageKey: LastDamage
   Entity: {fileID: 559728625}
   Renderer: {fileID: 1428612196}

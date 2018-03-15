@@ -12,17 +12,6 @@ MonoBehaviour:
   m_Name: PrologueCutscene
   m_EditorClassIdentifier: 
   tokens:
-  - TokenType: Datenshi.Scripts.Cutscenes.Tokens.DialogueStageToken
-    TokenData:
-      Booleans:
-      - key: Show
-        value: 1
-      Ints: []
-      Floats: []
-      Strings: []
-      Objects: []
-      UnityObjects: []
-      Arrays: []
   - TokenType: Datenshi.Scripts.Cutscenes.Tokens.AcceptInputToken
     TokenData:
       Booleans:
@@ -31,6 +20,17 @@ MonoBehaviour:
       Ints:
       - key: Target
         value: 0
+      Floats: []
+      Strings: []
+      Objects: []
+      UnityObjects: []
+      Arrays: []
+  - TokenType: Datenshi.Scripts.Cutscenes.Tokens.DialogueStageToken
+    TokenData:
+      Booleans:
+      - key: Show
+        value: 1
+      Ints: []
       Floats: []
       Strings: []
       Objects: []
@@ -48,6 +48,21 @@ MonoBehaviour:
       UnityObjects:
       - key: Dialogue
         value: {fileID: 11400000, guid: 423e09ae2a27617449c1fecd0f04a51a, type: 2}
+      Arrays: []
+  - TokenType: Datenshi.Scripts.Cutscenes.Tokens.PlayAudioOnPlayerToken
+    TokenData:
+      Booleans:
+      - key: DeleteOnFinish
+        value: 1
+      - key: Wait
+        value: 0
+      Ints: []
+      Floats: []
+      Strings: []
+      Objects: []
+      UnityObjects:
+      - key: AudioClip
+        value: {fileID: 8300000, guid: 680bf4731dd5b84409a2cbc669e99f94, type: 3}
       Arrays: []
   - TokenType: Datenshi.Scripts.Cutscenes.Tokens.AcceptInputToken
     TokenData:

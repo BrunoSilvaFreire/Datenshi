@@ -30,15 +30,6 @@ namespace Datenshi.Scripts.Cutscenes.Tokens {
         }
     }
 
-    public class PortraitSpeechToken : IToken {
-        public string Text;
-        public Reference<UIDialoguePortrait> Portrait;
-        public IEnumerator Execute(CutscenePlayer player) {
-            UIDialogueStage.Instance.Speech(Portrait.Resolve(player), Text);
-            yield break;
-        }
-    }
-
     public class MovePortraitToken : IToken {
         public Reference<UIDialoguePortrait> Portrait;
         public AppearanceMode AppearanceMode;

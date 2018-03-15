@@ -13,4 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Alias: Dimitri
   SignatureColor: {r: 0, g: 0.17241406, b: 1, a: 1}
+  DialoguePortraitPrefab: {fileID: 0}
   CharacterScreen: {fileID: 0}

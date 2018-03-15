@@ -1,4 +1,5 @@
-﻿using Datenshi.Scripts.Entities;
+﻿using System;
+using Datenshi.Scripts.Entities;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Animation {
@@ -9,9 +10,10 @@ namespace Datenshi.Scripts.Animation {
         public string YSpeedKey = "YSpeed";
         public string AttackKey = "Attack";
         public string DamagedKey = "Damaged";
+        public string StoppingKey = "Stopping";
         public string LastDamageKey = "LastDamage";
         public MovableEntity Entity;
-        public SpriteRenderer     Renderer;
+        public SpriteRenderer Renderer;
 
         private void Awake() {
             Entity.OnDamaged.AddListener(OnDamaged);
@@ -26,6 +28,9 @@ namespace Datenshi.Scripts.Animation {
             var vel = Entity.Velocity;
             var speed = vel.magnitude;
             var percentSpeed = speed / Entity.MaxSpeed;
+            var velDir = Math.Sign(vel.x);
+            var inputDir = Math.Sign(Entity.InputProvider.GetHorizontal());
+            anim.SetBool(StoppingKey, inputDir == -velDir);
             anim.SetFloat(YSpeedKey, vel.y);
             anim.SetFloat(SpeedRawKey, speed);
             anim.SetFloat(SpeedPercentKey, percentSpeed);

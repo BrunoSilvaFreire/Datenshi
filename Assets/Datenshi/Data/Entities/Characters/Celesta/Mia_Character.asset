@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea20600d168412e94b4022686351c4b, type: 3}
   m_Name: Mia_Character
   m_EditorClassIdentifier: 
-  Alias: Dimitri
+  Alias: Ezra
   SignatureColor: {r: 0, g: 0.17241406, b: 1, a: 1}
   DialoguePortraitPrefab: {fileID: 114840371308095040, guid: a4774fb45fa04a349b9e4cbdc322ad69,
     type: 2}
