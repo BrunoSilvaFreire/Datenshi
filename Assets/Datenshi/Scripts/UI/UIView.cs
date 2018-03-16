@@ -56,5 +56,6 @@ namespace Datenshi.Scripts.UI {
 
     public abstract class UIView : UIElement {
         public abstract void Select();
+        public abstract void Deselect();
     }
 }

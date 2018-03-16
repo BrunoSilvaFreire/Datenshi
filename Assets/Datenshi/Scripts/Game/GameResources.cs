@@ -14,6 +14,7 @@ namespace Datenshi.Scripts.Game {
         public float MaxPrecision = 100;
         public float DefaultPrecision = 0.5F;
         public const string PrecisionConfigKey = "datenshi.navmesh.precision";
+        public LineRenderer HackLineRendererPrefab;
 
         public Vector2 NavmeshBoxcastDownsizeScale {
             get {

@@ -19,7 +19,7 @@ MonoBehaviour:
         value: 0
       Ints:
       - key: Target
-        value: 0
+        value: 2
       Floats: []
       Strings: []
       Objects: []

@@ -1,5 +1,7 @@
-﻿namespace Datenshi.Scripts.Stealth {
+﻿using Datenshi.Scripts.Entities;
+
+namespace Datenshi.Scripts.Stealth {
     public class LightSource : HackableElement {
-        public override void Hack() { }
+        protected override void Execute(MovableEntity e) { }
     }
 }

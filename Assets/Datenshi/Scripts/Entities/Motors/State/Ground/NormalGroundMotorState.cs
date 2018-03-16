@@ -54,12 +54,10 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
             var gravity = new Vector2(0, -config.SlopeGroundCheckLength);
             var vertical =
                 PhysicsUtil.RaycastEntityVertical(ref gravity, entity, ref collStatus, bounds, skinBounds, layerMask);
-            Debug.Log("Vertical for vet = " + vertical.HasValue);
             if (vertical.HasValue && hasInput) {
                 var val = vertical.Value;
                 var angle = Mathf.Abs(Vector2.Angle(val.normal, Vector2.up));
                 var max = ((GroundMotorConfig) entity.Config).MaxAngle;
-                Debug.Log("Angle = " + angle + " / " + max);
                 Debug.Log((Mathf.RoundToInt(Mathf.Abs(angle)) != 0) + "  && " + (angle < max));
                 if (Mathf.RoundToInt(Mathf.Abs(angle)) != 0 && angle < max) {
                     machine.SetState(entity, ref collStatus, SlopeGroundMotorState.Instance);
@@ -67,7 +65,6 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
                 }
             }
 
-            Debug.Log("Horizontal for vet = " + horizontal.HasValue);
             if (horizontal.HasValue && hasInput) {
                 //Check for slope
                 var val = horizontal.Value;

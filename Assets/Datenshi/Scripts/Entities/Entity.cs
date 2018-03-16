@@ -27,8 +27,30 @@ namespace Datenshi.Scripts.Entities {
         /// <summary>
         /// O provedor a partir de qual essa entidade está recebendo input.
         /// </summary>
-        [TitleGroup(MiscGroup, "Informações que não se encaixam em outros lugares aparecem aqui")]
-        public InputProvider InputProvider;
+        [TitleGroup(MiscGroup, "Informações que não se encaixam em outros lugares aparecem aqui"), ShowInInspector]
+        public InputProvider InputProvider {
+            get {
+                return inputProvider;
+            }
+        }
+
+        [SerializeField, HideInInspector]
+        private InputProvider inputProvider;
+
+        public bool IsOwned {
+            get {
+                return inputProvider != null;
+            }
+        }
+
+        public bool RequestOwnership(InputProvider provider) {
+            if (IsOwned) {
+                return false;
+            }
+
+            inputProvider = provider;
+            return true;
+        }
 
         /// <summary>
         /// A hitbox desta entidade
@@ -93,6 +115,9 @@ namespace Datenshi.Scripts.Entities {
             transform.position = raycast.point + new Vector2(0, bounds.Size.y / 2);
         }
 #endif
+        public void RevokeOwnership() {
+            inputProvider = null;
+        }
     }
 
     public sealed class VariableValue {

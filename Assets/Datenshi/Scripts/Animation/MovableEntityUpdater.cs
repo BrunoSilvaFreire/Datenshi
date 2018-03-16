@@ -29,8 +29,11 @@ namespace Datenshi.Scripts.Animation {
             var speed = vel.magnitude;
             var percentSpeed = speed / Entity.MaxSpeed;
             var velDir = Math.Sign(vel.x);
-            var inputDir = Math.Sign(Entity.InputProvider.GetHorizontal());
-            anim.SetBool(StoppingKey, inputDir == -velDir);
+            var provider = Entity.InputProvider;
+            if (provider != null) {
+                var inputDir = Math.Sign(provider.GetHorizontal());
+                anim.SetBool(StoppingKey, inputDir == -velDir);
+            }
             anim.SetFloat(YSpeedKey, vel.y);
             anim.SetFloat(SpeedRawKey, speed);
             anim.SetFloat(SpeedPercentKey, percentSpeed);

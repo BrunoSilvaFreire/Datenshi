@@ -1,11 +1,11 @@
+using UnityEngine;
+using System;
 using Datenshi.Scripts.AI;
 using Datenshi.Scripts.Combat.Attacks;
 using Datenshi.Scripts.Combat.Strategies;
-using Datenshi.Scripts.Entities.Input;
 using Datenshi.Scripts.Entities.Motors;
 using Datenshi.Scripts.Entities.Motors.State;
 using Datenshi.Scripts.Util;
-using UnityEngine;
 
 namespace Datenshi.Scripts.Entities {
     public class MovableEntityProxy : MonoBehaviour {
@@ -13,6 +13,10 @@ namespace Datenshi.Scripts.Entities {
 
         public void ExecuteAttack(Attack attack) {
             Target.ExecuteAttack(attack);
+        }
+
+        public void SetInvulnerable(float seconds) {
+            Target.SetInvulnerable(seconds);
         }
 
         public void Kill() {
@@ -67,6 +71,14 @@ namespace Datenshi.Scripts.Entities {
             Target.GravityScale = value;
         }
 
+        public void SetDamageInvulnerability(bool value) {
+            Target.DamageInvulnerability = value;
+        }
+
+        public void SetDamageInvulnerabilityDuration(float value) {
+            Target.DamageInvulnerabilityDuration = value;
+        }
+
         public void SetRelationship(EntityRelationship value) {
             Target.Relationship = value;
         }
@@ -79,16 +91,24 @@ namespace Datenshi.Scripts.Entities {
             Target.OnDamaged = value;
         }
 
-        public void SetInputProvider(InputProvider value) {
-            Target.InputProvider = value;
+        public void SetOnAttack(EntityAttackEvent value) {
+            Target.OnAttack = value;
         }
 
         public void SetHitbox(Collider2D value) {
             Target.Hitbox = value;
         }
 
+        public void SetCharacter(Character.Character value) {
+            Target.Character = value;
+        }
+
         public void SetCurrentDirection(Direction value) {
             Target.CurrentDirection = value;
+        }
+
+        public void SetConfig(MotorConfig value) {
+            Target.Config = value;
         }
 
         public void SetMaxHealth(uint value) {

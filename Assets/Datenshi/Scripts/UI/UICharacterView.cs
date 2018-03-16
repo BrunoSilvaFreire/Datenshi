@@ -55,11 +55,15 @@ namespace Datenshi.Scripts.UI {
         }
 
         private void OnClick() {
-            entity.InputProvider = playerInputProvider;
+            //entity.InputProvider = playerInputProvider;
         }
 
         public override void Select() {
             EventSystem.current.SetSelectedGameObject(Button.gameObject);
+        }
+
+        public override void Deselect() {
+            EventSystem.current.SetSelectedGameObject(null);
         }
 
         protected override void SnapShow() {

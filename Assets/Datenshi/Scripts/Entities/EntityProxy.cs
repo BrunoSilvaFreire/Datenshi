@@ -1,7 +1,7 @@
-using Datenshi.Scripts.Entities.Input;
-using Datenshi.Scripts.Misc;
-using Datenshi.Scripts.Util;
 using UnityEngine;
+using System;
+using Datenshi.Scripts.Entities.Motors;
+using Datenshi.Scripts.Util;
 
 namespace Datenshi.Scripts.Entities {
     public class EntityProxy : MonoBehaviour {
@@ -11,16 +11,20 @@ namespace Datenshi.Scripts.Entities {
             Target.SnapToFloor();
         }
 
-        public void SetInputProvider(InputProvider value) {
-            Target.InputProvider = value;
-        }
-
         public void SetHitbox(Collider2D value) {
             Target.Hitbox = value;
         }
 
+        public void SetCharacter(Character.Character value) {
+            Target.Character = value;
+        }
+
         public void SetCurrentDirection(Direction value) {
             Target.CurrentDirection = value;
+        }
+
+        public void SetConfig(MotorConfig value) {
+            Target.Config = value;
         }
 
         public void SetUseGUILayout(bool value) {
