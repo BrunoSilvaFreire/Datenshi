@@ -13,6 +13,7 @@ namespace Datenshi.Scripts.Entities.Input {
         public bool Attack;
         public bool Walk;
         public bool Dash;
+        public bool Submit;
 
         public override float GetHorizontal() {
             return Fetch(Horizontal);
@@ -40,6 +41,10 @@ namespace Datenshi.Scripts.Entities.Input {
 
         public override bool GetDash() {
             return Fetch(Dash);
+        }
+
+        public override bool GetSubmit() {
+            return Fetch(Submit);
         }
 
         private void Update() {

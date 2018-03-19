@@ -15,9 +15,9 @@ TagManager:
   - 
   - Background
   - World
+  - Interactables
+  - Entities
   - Foreground
-  - 
-  - 
   - 
   - 
   - 

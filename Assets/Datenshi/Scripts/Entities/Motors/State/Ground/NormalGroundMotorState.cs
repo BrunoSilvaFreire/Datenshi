@@ -104,6 +104,9 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
             }
 
             if (hasProvider && entity.CollisionStatus.Down) {
+                if (provider.GetSubmit()) {
+                    entity.Interact();
+                }
                 if (provider.GetJump()) {
                     vel.y = entity.YForce;
                 } else if (provider.GetAttack()) {

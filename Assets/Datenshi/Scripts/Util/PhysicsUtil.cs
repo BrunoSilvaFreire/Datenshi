@@ -170,7 +170,7 @@ namespace Datenshi.Scripts.Util {
             for (var y = 0; y < horizontalRays; y++) {
                 var raycast = Physics2D.Raycast(origin, directionVector, rayLength, layerMask);
                 Debug.DrawRay(origin, directionVector, raycast ? Color.green : Color.red);
-                if (raycast) {
+                if (raycast && !raycast.collider.isTrigger) {
                     return raycast;
                 }
 
@@ -210,7 +210,7 @@ namespace Datenshi.Scripts.Util {
             for (var y = 0; y < horizontalRays; y++) {
                 var raycast = Physics2D.Raycast(origin, directionVector, rayLength, layerMask);
                 Debug.DrawRay(origin, directionVector, raycast ? Color.green : Color.red);
-                if (raycast) {
+                if (raycast && !raycast.collider.isTrigger) {
                     hit = raycast;
                     if (direction == 1) {
                         collStatus.Right = true;

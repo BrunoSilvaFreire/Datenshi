@@ -15,13 +15,9 @@ namespace Datenshi.Scripts.UI.Stealth {
         public float AppearenceDelay = 0.1F;
 
         private void Start() {
-            var e = GetComponentInParent<InteractableElement>();
-            Button.interactable = false;
-            if (e != null) {
-                return;
+            if (Button != null) {
+                Button.interactable = false;
             }
-
-            Destroy(gameObject);
         }
 
 

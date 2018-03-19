@@ -2,6 +2,8 @@
 using Datenshi.Scripts.AI;
 using Datenshi.Scripts.Entities.Motors;
 using Datenshi.Scripts.Entities.Motors.State;
+using Datenshi.Scripts.Game;
+using Datenshi.Scripts.Interaction;
 using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -49,6 +51,7 @@ namespace Datenshi.Scripts.Entities {
         public float GravityScale = 1;
 
         private CollisionStatus collisionStatus;
+        public InteractionController InteractionController;
 
         [ShowInInspector, ReadOnly, TitleGroup(MovementGroup)]
         public CollisionStatus CollisionStatus {
@@ -57,6 +60,19 @@ namespace Datenshi.Scripts.Entities {
             }
             private set {
                 collisionStatus = value;
+            }
+        }
+
+        public void Interact() {
+            var interactableMask = GameResources.Instance.InteractableMask;
+            var bounds = InteractionController.Hitbox.bounds;
+            var hit = Physics2D.OverlapBox(bounds.center, bounds.size, 0, interactableMask);
+            if (hit == null) {
+                return;
+            }
+            var e = hit.GetComponentInParent<InteractableElement>();
+            if (e != null && e.CanInteract(this)) {
+                e.Interact(this);
             }
         }
 

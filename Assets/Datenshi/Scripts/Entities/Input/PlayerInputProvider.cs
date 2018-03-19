@@ -69,6 +69,9 @@ namespace Datenshi.Scripts.Entities.Input {
 
         [ShowIf("DebugInput")]
         public bool Dash;
+
+        [ShowIf("DebugInput")]
+        public bool Submit;
 #endif
         public bool GetPlanningMenu() {
             return Fetch(player => player.GetButton(Actions.Planning));
@@ -126,6 +129,15 @@ namespace Datenshi.Scripts.Entities.Input {
             }
 #endif
             return Fetch(player => player.GetButtonDown(Actions.Dash));
+        }
+
+        public override bool GetSubmit() {
+#if UNITY_EDITOR
+            if (DebugInput) {
+                return Submit;
+            }
+#endif
+            return Fetch(player => player.GetButtonDown(Actions.Submit));
         }
     }
 }

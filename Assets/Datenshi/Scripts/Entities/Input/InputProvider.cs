@@ -27,5 +27,6 @@ namespace Datenshi.Scripts.Entities.Input {
 
         public abstract bool GetDash();
 
+        public abstract bool GetSubmit();
     }
 }

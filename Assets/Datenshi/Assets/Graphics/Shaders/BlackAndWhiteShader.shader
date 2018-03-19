@@ -2,6 +2,7 @@
 {
     Properties
     {
+        _Amount("Amount", Float) = 0    
         _MainTex ("Texture", 2D) = "white" {}
     }
     SubShader

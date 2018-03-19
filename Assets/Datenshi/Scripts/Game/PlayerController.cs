@@ -16,7 +16,6 @@ namespace Datenshi.Scripts.Game {
         public float SlowMoChangeDuration = 1;
         private Tweener currentTween;
         private bool slowMo;
-        public HackController HackController;
 
         [ShowInInspector]
         public Entity CurrentEntity {
@@ -61,9 +60,15 @@ namespace Datenshi.Scripts.Game {
                 );
                 currentTween.onComplete = () => currentTween = null;
                 currentTween.Play();
-                
-                HackController.IsHacking = planning;
-
+                var e = currentEntity;
+                if (e == null) {
+                    return;
+                }
+                var controller = e.AbilityController;
+                if (controller == null) {
+                    return;
+                }
+                controller.IsActive = planning;
             }
         }
     }

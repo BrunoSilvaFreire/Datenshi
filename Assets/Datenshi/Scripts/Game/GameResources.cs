@@ -21,5 +21,7 @@ namespace Datenshi.Scripts.Game {
                 return new Vector2(NavmeshBoxcastDownsizeValue, NavmeshBoxcastDownsizeValue);
             }
         }
+
+        public LayerMask InteractableMask;
     }
 }
