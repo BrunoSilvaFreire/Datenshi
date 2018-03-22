@@ -14,5 +14,6 @@ namespace Datenshi.Scripts.Entities.Motors {
         public float SlopeGroundCheckLength;
         public AnimationCurve SlopeSpeedMultiplier = AnimationCurve.EaseInOut(0, 0, 1, 1);
         public float WallClimbGravityScale = 0.1F;
+        public float WallClimbCounterForce = 1;
     }
 }

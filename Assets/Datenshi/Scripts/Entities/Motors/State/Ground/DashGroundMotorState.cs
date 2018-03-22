@@ -37,11 +37,11 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
                 if (time - start > dashDuration) {
                     entity.Invulnerable = false;
                     entity.SetVariable(Dashing, false);
+                    entity.Velocity = dir * entity.MaxSpeed;
                     machine.CurrentState = NormalGroundMotorState.Instance;
                     return;
                 }
             }
-            dir.Normalize();
             dir *= dashDistance / dashDuration;
             RaycastHit2D? hit;
             PhysicsUtil.DoPhysics(entity, ref dir, ref collStatus, out hit);

@@ -23,6 +23,7 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground
                 machine.SetState(entity, ref collStatus, NormalGroundMotorState.Instance);
                 return;
             }
+
             var xInput = provider.GetHorizontal();
 
 
@@ -33,32 +34,36 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground
 
                 return;
             }
+
             var velDir = Math.Sign(vel.x);
             var rawAcceleration = entity.AccelerationCurve.Evaluate(entity.SpeedPercent);
             var acceleration = rawAcceleration * inputDir;
             var maxSpeed = entity.MaxSpeed * Mathf.Abs(xInput);
             var speed = Mathf.Abs(vel.x);
             vel.x += acceleration;
-           
+
             var deacceleration = entity.AccelerationCurve.Evaluate(1 - entity.SpeedPercent);
             if (Mathf.Abs(xInput) > 0)
             {
                 //Changing direction, Double deacceleration
                 vel.x += deacceleration * inputDir * 2;
-                return;
-            }
-
-            //Not inputting
-            if (speed < rawAcceleration)
-            {
-                vel.x = 0;
             }
             else
             {
-                vel.x += deacceleration * -velDir;
+                //Not inputting
+                if (speed < rawAcceleration)
+                {
+                    vel.x = 0;
+                }
+                else
+                {
+                    vel.x += deacceleration * -velDir;
+                }
             }
+
             RaycastHit2D? hit;
             PhysicsUtil.DoPhysics(entity, ref vel, ref collStatus, out hit);
+            var config = (GroundMotorConfig) entity.Config;
             if (!collStatus.Down && (collStatus.Left || collStatus.Right) &&
                 collStatus.HorizontalCollisionDir == inputDir)
             {
@@ -66,12 +71,15 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground
                 if (provider.GetJump())
                 {
                     vel.y = entity.YForce;
+                    vel.x = -inputDir * config.WallClimbCounterForce;
+                    machine.CurrentState = NormalGroundMotorState.Instance;
                 }
                 else
                 {
-                    vel.y = GameResources.Instance.Gravity * entity.GravityScale * Time.deltaTime * ((GroundMotorConfig) entity.Config).WallClimbGravityScale;
-
+                    vel.y = GameResources.Instance.Gravity * entity.GravityScale * Time.deltaTime *
+                            config.WallClimbGravityScale;
                 }
+
                 entity.Velocity = vel;
             }
             else

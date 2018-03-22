@@ -21,7 +21,10 @@ GameObject:
   - component: {fileID: 4023816053682374}
   - component: {fileID: 95501811983654516}
   - component: {fileID: 212706959196361474}
-  m_Layer: 0
+  - component: {fileID: 61006887387437640}
+  - component: {fileID: 114251226307155298}
+  - component: {fileID: 114983583191191688}
+  m_Layer: 11
   m_Name: Celesta_Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,11 +39,36 @@ Transform:
   m_GameObject: {fileID: 1503228497781312}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &61006887387437640
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1503228497781312}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.11268425, y: -0.14995837}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.44}
+    oldSize: {x: 3, y: 3}
+    newSize: {x: 0.72, y: 0.72}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.5940361, y: 1.823626}
+  m_EdgeRadius: 0
 --- !u!95 &95501811983654516
 Animator:
   serializedVersion: 3
@@ -58,6 +86,40 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114251226307155298
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1503228497781312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7b213f60ea20a48ac7fa4b9d8b4ad9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 0}
+--- !u!114 &114983583191191688
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1503228497781312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aef4956867049d9a991e65034ed5936, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 95501811983654516}
+  SpeedPercentKey: SpeedPercent
+  SpeedRawKey: SpeedRaw
+  GroundedKey: Grounded
+  YSpeedKey: YSpeed
+  AttackKey: Attack
+  DamagedKey: Damaged
+  StoppingKey: Stopping
+  LastDamageKey: LastDamage
+  Entity: {fileID: 0}
+  Renderer: {fileID: 212706959196361474}
 --- !u!212 &212706959196361474
 SpriteRenderer:
   m_ObjectHideFlags: 1

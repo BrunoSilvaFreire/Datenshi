@@ -1,5 +1,6 @@
 ﻿using System;
 using Datenshi.Scripts.Game;
+using Datenshi.Scripts.Misc;
 using Datenshi.Scripts.Util;
 using UnityEngine;
 
@@ -25,12 +26,15 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground
             ProcessInputs(ref vel, entity, machine, out xDir);
             vel.y += GameResources.Instance.Gravity * entity.GravityScale * Time.deltaTime;
             var maxSpeed = entity.MaxSpeed;
-            vel.x = Mathf.Clamp(vel.x, -maxSpeed, maxSpeed);
+            if (collStatus.Down)
+            {
+                vel.x = Mathf.Clamp(vel.x, -maxSpeed, maxSpeed);
+            }
+
             RaycastHit2D? vertical;
             RaycastHit2D? horizontal;
             var bounds = (Bounds2D) entity.Hitbox.bounds;
             //bounds.Center += vel * Time.deltaTime;
-            DebugUtil.DrawBounds2D(bounds, Color.red);
             var skinBounds = bounds;
             var skinWidth = entity.SkinWidth;
             skinBounds.Expand(-2 * skinWidth);
@@ -40,13 +44,13 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground
             var gravity = new Vector2(0, -config.SlopeGroundCheckLength);
             var down =
                 PhysicsUtil.RaycastEntityVertical(ref gravity, entity, ref collStatus, bounds, skinBounds, layerMask);
-            if (down.HasValue && !down.Value && (collStatus.Left || collStatus.Right) &&
-                collStatus.HorizontalCollisionDir == xDir)
+            if (vel.y < 0 && IsRunningTowardsWall(down, collStatus, xDir))
             {
                 machine.SetState(entity, ref collStatus, WallClimbingState.Instance);
                 return;
             }
-            if (CheckSlope(entity, ref collStatus, ref vel, bounds, skinBounds, layerMask, horizontal, down, machine,
+
+            if (CheckSlope(entity, ref collStatus, ref vel, layerMask, horizontal, down, machine,
                 skinWidth))
             {
                 return;
@@ -57,12 +61,16 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground
             entity.Velocity = vel;
         }
 
+        private bool IsRunningTowardsWall(RaycastHit2D? down, CollisionStatus collStatus, int xDir)
+        {
+            return (!down.HasValue || !down.Value) && (collStatus.Left || collStatus.Right) &&
+                   collStatus.HorizontalCollisionDir == xDir;
+        }
+
         public bool CheckSlope(
             MovableEntity entity,
             ref CollisionStatus collStatus,
             ref Vector2 vel,
-            Bounds2D bounds,
-            Bounds2D skinBounds,
             LayerMask layerMask,
             RaycastHit2D? horizontal,
             RaycastHit2D? vertical,
@@ -77,7 +85,6 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground
                 var val = vertical.Value;
                 var angle = Mathf.Abs(Vector2.Angle(val.normal, Vector2.up));
                 var max = ((GroundMotorConfig) entity.Config).MaxAngle;
-                Debug.Log((Mathf.RoundToInt(Mathf.Abs(angle)) != 0) + "  && " + (angle < max));
                 if (Mathf.RoundToInt(Mathf.Abs(angle)) != 0 && angle < max)
                 {
                     machine.SetState(entity, ref collStatus, SlopeGroundMotorState.Instance);
@@ -129,29 +136,31 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground
             var hasProvider = provider != null;
             var xInput = hasProvider ? provider.GetHorizontal() : 0;
             inputDir = Math.Sign(xInput);
-            if (hasProvider && provider.GetDash())
-            {
-                var lastTimeDash = entity.GetVariable(DashGroundMotorState.DashStart);
-                if (Time.time - lastTimeDash > ((GroundMotorConfig) entity.Config).DashCooldown)
-                {
-                    machine.CurrentState = DashGroundMotorState.Instance;
-                    return;
-                }
-            }
 
             if (hasProvider)
             {
+                if (provider.GetDash())
+                {
+                    var lastTimeDash = entity.GetVariable(DashGroundMotorState.DashStart);
+                    if (Time.time - lastTimeDash > ((GroundMotorConfig) entity.Config).DashCooldown)
+                    {
+                        machine.CurrentState = DashGroundMotorState.Instance;
+                        return;
+                    }
+                }
+
                 if (provider.GetAttack())
                 {
                     entity.SetVariable(LivingEntity.Attacking, true);
                 }
-                if (
-                    entity.CollisionStatus.Down)
+
+                if (entity.CollisionStatus.Down)
                 {
                     if (provider.GetSubmit())
                     {
                         entity.Interact();
                     }
+
                     if (provider.GetJump())
                     {
                         vel.y = entity.YForce;
@@ -163,6 +172,7 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground
                     xInput /= 2;
                 }
             }
+
             var velDir = Math.Sign(vel.x);
             var rawAcceleration = entity.AccelerationCurve.Evaluate(entity.SpeedPercent);
             var acceleration = rawAcceleration * inputDir;
@@ -191,7 +201,8 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground
             if (speed < rawAcceleration)
             {
                 vel.x = 0;
-            } else
+            }
+            else
             {
                 vel.x += deacceleration * -velDir;
             }

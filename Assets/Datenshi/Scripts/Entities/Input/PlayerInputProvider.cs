@@ -101,7 +101,7 @@ namespace Datenshi.Scripts.Entities.Input {
                 return Jump;
             }
 #endif
-            return Fetch(player => player.GetButton(Actions.Jump));
+            return Fetch(player => player.GetButtonDown(Actions.Jump));
         }
 
         public override bool GetAttack() {

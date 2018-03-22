@@ -50,7 +50,7 @@ namespace Datenshi.Scripts.Util {
 
             for (var x = 0; x < verticalRays; x++) {
                 var raycast = Physics2D.Raycast(origin, directionVector, rayLength, layerMask);
-                Debug.DrawRay(origin, directionVector, raycast ? Color.green : Color.red);
+                Debug.DrawRay(origin, directionVector, raycast ? Color.cyan : Color.magenta);
                 if (raycast && !raycast.collider.isTrigger) {
                     hit = raycast;
                     vel.y = raycast.distance / Time.deltaTime * direction;
@@ -212,12 +212,8 @@ namespace Datenshi.Scripts.Util {
                 Debug.DrawRay(origin, directionVector, raycast ? Color.green : Color.red);
                 if (raycast && !raycast.collider.isTrigger) {
                     hit = raycast;
-                    if (direction == 1) {
-                        collStatus.Right = true;
-                    } else {
-                        collStatus.Left = true;
-                    }
-
+                    collStatus.Left = direction == -1;
+                    collStatus.Right = direction == 1;
                     var slopeAngle = Vector2.Angle(raycast.normal, Vector2.up);
                     if (slopeAngle > motor.MaxAngle) {
                         //Hit wall
@@ -228,8 +224,7 @@ namespace Datenshi.Scripts.Util {
                               moveAmount.y = Mathf.Tan(Collisions.SlopeAngle * Mathf.Deg2Rad) * Mathf.Abs(moveAmount.x);
                           }*/
 
-                        collStatus.Left = direction == -1;
-                        collStatus.Right = direction == 1;
+       
                         continue;
                     }
 
@@ -250,6 +245,11 @@ namespace Datenshi.Scripts.Util {
 
 
                 origin.y += spacing;
+            }
+
+            if (hit == null) {
+                collStatus.Left = false;
+                collStatus.Right = false;
             }
         }
 

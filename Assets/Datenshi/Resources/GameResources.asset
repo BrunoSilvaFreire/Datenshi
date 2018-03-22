@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldMask:
     serializedVersion: 2
-    m_Bits: 1536
+    m_Bits: 512
   CharacterCameraPrefab: {fileID: 20756155145847792, guid: 43ce321bec897ca41857d4901bdcfd3b,
     type: 2}
   EntitiesMask:
