@@ -4,7 +4,6 @@ using Datenshi.Scripts.Entities.Input;
 using Datenshi.Scripts.Entities.Motors;
 using Datenshi.Scripts.Game;
 using Datenshi.Scripts.Misc;
-using Datenshi.Scripts.Stealth;
 using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -65,7 +64,6 @@ namespace Datenshi.Scripts.Entities {
         public Direction CurrentDirection;
 
         public MotorConfig Config;
-        public AbilityController AbilityController;
 
         [ShowInInspector, ReadOnly, TitleGroup(MiscGroup)]
         private List<VariableValue> variables = new List<VariableValue>();

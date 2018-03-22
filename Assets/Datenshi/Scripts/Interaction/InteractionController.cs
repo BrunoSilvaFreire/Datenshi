@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Datenshi.Scripts.Stealth;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -16,16 +15,9 @@ namespace Datenshi.Scripts.Interaction {
             }
         }
 
-        protected virtual bool Allows(InteractableElement e) {
-            return !(e is InfiltrableElement);
-        }
-
         private void OnTriggerEnter2D(Collider2D other) {
             var e = other.GetComponentInParent<InteractableElement>();
             if (e == null) {
-                return;
-            }
-            if (!Allows(e)) {
                 return;
             }
             elementsInRange.Add(e);
@@ -38,9 +30,6 @@ namespace Datenshi.Scripts.Interaction {
         private void OnTriggerExit2D(Collider2D other) {
             var e = other.GetComponentInParent<InteractableElement>();
             if (e == null) {
-                return;
-            }
-            if (!Allows(e)) {
                 return;
             }
             elementsInRange.Remove(e);
