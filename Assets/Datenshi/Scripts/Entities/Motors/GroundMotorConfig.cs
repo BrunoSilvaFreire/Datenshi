@@ -11,8 +11,9 @@ namespace Datenshi.Scripts.Entities.Motors {
         public float DashDistance = DefaultDistance;
         public float DashCooldown = DefaultDashcooldown;
         public float MaxAngle = DefaultMaxAngle;
-        public float SlopeGroundCheckLength;
+        public float SlopeGroundCheckLength = DefaultSlopeGroundCheckLength;
         public AnimationCurve SlopeSpeedMultiplier = AnimationCurve.EaseInOut(0, 0, 1, 1);
+        public AnimationCurve AirControlSlope = AnimationCurve.EaseInOut(0, 0, 1, 1);
         public float WallClimbGravityScale = 0.1F;
         public float WallClimbCounterForce = 1;
     }

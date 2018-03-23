@@ -438,8 +438,26 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+  AirControlSlope:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0.5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
   WallClimbGravityScale: 3
-  WallClimbCounterForce: 30
+  WallClimbCounterForce: 15
 --- !u!1 &226891536
 GameObject:
   m_ObjectHideFlags: 0
@@ -942,7 +960,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 559728624}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.94, y: -9.59, z: 0}
+  m_LocalPosition: {x: -57, y: -9.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1428612192}
@@ -1295,7 +1313,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 20
-  field of view: 40
+  field of view: 11.421186
   orthographic: 1
   orthographic size: 10
   m_Depth: -1
@@ -1320,7 +1338,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1079403540}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -18.149586, y: -11.194651, z: -9.963937}
+  m_LocalPosition: {x: -59.209587, y: -11.404651, z: -9.963937}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 144859981}

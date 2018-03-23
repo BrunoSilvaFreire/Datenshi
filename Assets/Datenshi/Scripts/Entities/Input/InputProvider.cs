@@ -20,6 +20,8 @@ namespace Datenshi.Scripts.Entities.Input {
         public abstract float GetVertical();
 
         public abstract bool GetJump();
+        
+        public abstract bool GetJumpDown();
 
         public abstract bool GetAttack();
 

@@ -31,6 +31,10 @@ namespace Datenshi.Scripts.Entities.Input {
             return Fetch(Jump);
         }
 
+        public override bool GetJumpDown() {
+            return Fetch(Jump);
+        }
+
         public override bool GetAttack() {
             return Fetch(Attack);
         }

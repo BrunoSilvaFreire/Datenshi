@@ -68,7 +68,7 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground
                 collStatus.HorizontalCollisionDir == inputDir)
             {
                 //Sliding down
-                if (provider.GetJump())
+                if (provider.GetJumpDown())
                 {
                     vel.y = entity.YForce;
                     vel.x = -inputDir * config.WallClimbCounterForce;

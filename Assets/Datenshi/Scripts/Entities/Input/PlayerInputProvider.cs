@@ -47,6 +47,7 @@ namespace Datenshi.Scripts.Entities.Input {
             if (!RuntimeVariables.Instance.AllowPlayerInput) {
                 return default(T);
             }
+
             return currentPlayer == null ? default(T) : selector(currentPlayer);
         }
 #if UNITY_EDITOR
@@ -96,6 +97,15 @@ namespace Datenshi.Scripts.Entities.Input {
         }
 
         public override bool GetJump() {
+#if UNITY_EDITOR
+            if (DebugInput) {
+                return Jump;
+            }
+#endif
+            return Fetch(player => player.GetButton(Actions.Jump));
+        }
+
+        public override bool GetJumpDown() {
 #if UNITY_EDITOR
             if (DebugInput) {
                 return Jump;

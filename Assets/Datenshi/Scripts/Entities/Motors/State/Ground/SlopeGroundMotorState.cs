@@ -17,7 +17,7 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
             MotorStateMachine<GroundMotorState> machine,
             ref CollisionStatus collStatus) {
             var vel = entity.Velocity;
-            NormalGroundMotorState.ProcessInputs(ref vel, entity, machine);
+            NormalGroundMotorState.ProcessInputs(ref vel, entity, machine, collStatus);
             vel.y += GameResources.Instance.Gravity * entity.GravityScale * Time.deltaTime;
             var maxSpeed = entity.MaxSpeed;
             vel.x = Mathf.Clamp(vel.x, -maxSpeed, maxSpeed);
