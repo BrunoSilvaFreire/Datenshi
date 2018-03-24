@@ -79,6 +79,14 @@ AnimationClip:
     floatParameter: 0.1
     intParameter: 0
     messageOptions: 0
+  - time: 0
+    functionName: PlayAudioOneShot
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: dbb0cbff2f6d74041a295ba24a0d3a30,
+      type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.25
     functionName: SetSpeedMultiplier
     data: 

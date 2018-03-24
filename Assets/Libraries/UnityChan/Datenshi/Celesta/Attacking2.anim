@@ -75,6 +75,14 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
+  - time: 0
+    functionName: PlayAudioOneShot
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: 59cd4522bdd4ee441b87ffbad0fd5cd1,
+      type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.33333334
     functionName: SetSpeedMultiplier
     data: 

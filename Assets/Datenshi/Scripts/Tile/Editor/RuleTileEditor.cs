@@ -159,11 +159,19 @@ namespace Datenshi.Scripts.Tile.Editor {
         }
 
         public override void OnInspectorGUI() {
+            EditorGUI.BeginChangeCheck();
+
+
             tile.m_DefaultSprite =
                 EditorGUILayout.ObjectField("Default Sprite", tile.m_DefaultSprite, typeof(Sprite), false) as Sprite;
+            tile.NeightboorThisTile = EditorGUILayout.Toggle("Neightboor this tile", tile.NeightboorThisTile);
             tile.m_DefaultColliderType =
                 (UnityEngine.Tilemaps.Tile.ColliderType) EditorGUILayout.EnumPopup("Default Collider",
                     tile.m_DefaultColliderType);
+            if (EditorGUI.EndChangeCheck()) {
+                SaveTile();
+            }
+
             EditorGUILayout.Space();
 
             if (m_ReorderableList != null && tile.m_TilingRules != null)

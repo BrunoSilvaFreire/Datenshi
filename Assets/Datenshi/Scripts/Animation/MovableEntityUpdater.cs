@@ -11,6 +11,8 @@ namespace Datenshi.Scripts.Animation {
         public string AttackKey = "Attack";
         public string DamagedKey = "Damaged";
         public string StoppingKey = "Stopping";
+        public string InputVerticalKey = "InputVertical";
+        public string InputHorizontalKey = "InputHorizontal";
         public string LastDamageKey = "LastDamage";
         public MovableEntity Entity;
         public SpriteRenderer Renderer;
@@ -33,6 +35,8 @@ namespace Datenshi.Scripts.Animation {
             if (provider != null) {
                 var inputDir = Math.Sign(provider.GetHorizontal());
                 anim.SetBool(StoppingKey, inputDir == -velDir);
+                anim.SetFloat(InputVerticalKey, provider.GetVertical());
+                anim.SetFloat(InputHorizontalKey, provider.GetHorizontal());
             }
             anim.SetFloat(YSpeedKey, vel.y);
             anim.SetFloat(SpeedRawKey, speed);

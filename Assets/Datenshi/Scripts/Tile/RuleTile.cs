@@ -8,6 +8,7 @@ namespace Datenshi.Scripts.Tile {
     [CreateAssetMenu]
     public class RuleTile : TileBase {
         public Sprite m_DefaultSprite;
+        public bool NeightboorThisTile;
 
         public UnityEngine.Tilemaps.Tile.ColliderType m_DefaultColliderType =
             UnityEngine.Tilemaps.Tile.ColliderType.Sprite;
@@ -31,8 +32,9 @@ namespace Datenshi.Scripts.Tile {
                 m_PerlinScale = 0.5f;
                 m_ColliderType = UnityEngine.Tilemaps.Tile.ColliderType.Sprite;
 
-                for (int i = 0; i < m_Neighbors.Length; i++)
+                for (var i = 0; i < m_Neighbors.Length; i++) {
                     m_Neighbors[i] = Neighbor.DontCare;
+                }
             }
 
             public enum Transform {
@@ -64,8 +66,8 @@ namespace Datenshi.Scripts.Tile {
             tileData.flags = TileFlags.LockTransform;
             tileData.transform = Matrix4x4.identity;
 
-            foreach (TilingRule rule in m_TilingRules) {
-                Matrix4x4 transform = Matrix4x4.identity;
+            foreach (var rule in m_TilingRules) {
+                var transform = Matrix4x4.identity;
                 if (RuleMatches(rule, position, tileMap, ref transform)) {
                     switch (rule.m_Output) {
                         case TilingRule.OutputSprite.Single:
@@ -73,7 +75,7 @@ namespace Datenshi.Scripts.Tile {
                             tileData.sprite = rule.m_Sprites[0];
                             break;
                         case TilingRule.OutputSprite.Random:
-                            int index = Mathf.Clamp(
+                            var index = Mathf.Clamp(
                                 Mathf.FloorToInt(GetPerlinValue(position, rule.m_PerlinScale, 100000f) *
                                                  rule.m_Sprites.Length), 0, rule.m_Sprites.Length - 1);
                             tileData.sprite = rule.m_Sprites[index];
@@ -96,8 +98,8 @@ namespace Datenshi.Scripts.Tile {
 
         public override bool GetTileAnimationData(Vector3Int position, ITilemap tilemap,
             ref TileAnimationData tileAnimationData) {
-            foreach (TilingRule rule in m_TilingRules) {
-                Matrix4x4 transform = Matrix4x4.identity;
+            foreach (var rule in m_TilingRules) {
+                var transform = Matrix4x4.identity;
                 if (RuleMatches(rule, position, tilemap, ref transform) &&
                     rule.m_Output == TilingRule.OutputSprite.Animation) {
                     tileAnimationData.animatedSprites = rule.m_Sprites;
@@ -111,8 +113,8 @@ namespace Datenshi.Scripts.Tile {
 
         public override void RefreshTile(Vector3Int location, ITilemap tileMap) {
             if (m_TilingRules != null && m_TilingRules.Count > 0) {
-                for (int y = -1; y <= 1; y++) {
-                    for (int x = -1; x <= 1; x++) {
+                for (var y = -1; y <= 1; y++) {
+                    for (var x = -1; x <= 1; x++) {
                         base.RefreshTile(location + new Vector3Int(x, y, 0), tileMap);
                     }
                 }
@@ -121,11 +123,10 @@ namespace Datenshi.Scripts.Tile {
             }
         }
 
-        public bool RuleMatches(TilingRule rule, Vector3Int position, ITilemap tilemap, ref Matrix4x4 transform) {
+        private bool RuleMatches(TilingRule rule, Vector3Int position, ITilemap tilemap, ref Matrix4x4 transform) {
             // Check rule against rotations of 0, 90, 180, 270
-            for (int angle = 0;
-                angle <= (rule.m_RuleTransform == TilingRule.Transform.Rotated ? 270 : 0);
-                angle += 90) {
+            var t = rule.m_RuleTransform;
+            for (var angle = 0; angle <= (t == TilingRule.Transform.Rotated ? 270 : 0); angle += 90) {
                 if (RuleMatches(rule, position, tilemap, angle)) {
                     transform = Matrix4x4.TRS(Vector3.zero, Quaternion.Euler(0f, 0f, -angle), Vector3.one);
                     return true;
@@ -133,15 +134,13 @@ namespace Datenshi.Scripts.Tile {
             }
 
             // Check rule against x-axis mirror
-            if ((rule.m_RuleTransform == TilingRule.Transform.MirrorX) &&
-                RuleMatches(rule, position, tilemap, true, false)) {
+            if (t == TilingRule.Transform.MirrorX && RuleMatches(rule, position, tilemap, true, false)) {
                 transform = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, new Vector3(-1f, 1f, 1f));
                 return true;
             }
 
             // Check rule against y-axis mirror
-            if ((rule.m_RuleTransform == TilingRule.Transform.MirrorY) &&
-                RuleMatches(rule, position, tilemap, false, true)) {
+            if (t == TilingRule.Transform.MirrorY && RuleMatches(rule, position, tilemap, false, true)) {
                 transform = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, new Vector3(1f, -1f, 1f));
                 return true;
             }
@@ -151,7 +150,7 @@ namespace Datenshi.Scripts.Tile {
 
         private static Matrix4x4 ApplyRandomTransform(TilingRule.Transform type, Matrix4x4 original, float perlinScale,
             Vector3Int position) {
-            float perlin = GetPerlinValue(position, perlinScale, 200000f);
+            var perlin = GetPerlinValue(position, perlinScale, 200000f);
             switch (type) {
                 case TilingRule.Transform.MirrorX:
                     return original * Matrix4x4.TRS(Vector3.zero, Quaternion.identity,
@@ -160,7 +159,7 @@ namespace Datenshi.Scripts.Tile {
                     return original * Matrix4x4.TRS(Vector3.zero, Quaternion.identity,
                                new Vector3(1f, perlin < 0.5 ? 1f : -1f, 1f));
                 case TilingRule.Transform.Rotated:
-                    int angle = Mathf.Clamp(Mathf.FloorToInt(perlin * 4), 0, 3) * 90;
+                    var angle = Mathf.Clamp(Mathf.FloorToInt(perlin * 4), 0, 3) * 90;
                     return Matrix4x4.TRS(Vector3.zero, Quaternion.Euler(0f, 0f, -angle), Vector3.one);
             }
 
@@ -168,13 +167,13 @@ namespace Datenshi.Scripts.Tile {
         }
 
         public bool RuleMatches(TilingRule rule, Vector3Int position, ITilemap tilemap, int angle) {
-            for (int y = -1; y <= 1; y++) {
-                for (int x = -1; x <= 1; x++) {
+            for (var y = -1; y <= 1; y++) {
+                for (var x = -1; x <= 1; x++) {
                     if (x != 0 || y != 0) {
-                        Vector3Int offset = new Vector3Int(x, y, 0);
-                        Vector3Int rotated = GetRotatedPos(offset, angle);
-                        int index = GetIndexOfOffset(rotated);
-                        TileBase tile = tilemap.GetTile(position + offset);
+                        var offset = new Vector3Int(x, y, 0);
+                        var rotated = GetRotatedPos(offset, angle);
+                        var index = GetIndexOfOffset(rotated);
+                        var tile = tilemap.GetTile(position + offset);
                         if (rule.m_Neighbors[index] == TilingRule.Neighbor.This && tile != this ||
                             rule.m_Neighbors[index] == TilingRule.Neighbor.NotThis && tile == this) {
                             return false;
@@ -187,17 +186,25 @@ namespace Datenshi.Scripts.Tile {
         }
 
         public bool RuleMatches(TilingRule rule, Vector3Int position, ITilemap tilemap, bool mirrorX, bool mirrorY) {
-            for (int y = -1; y <= 1; y++) {
-                for (int x = -1; x <= 1; x++) {
-                    if (x != 0 || y != 0) {
-                        Vector3Int offset = new Vector3Int(x, y, 0);
-                        Vector3Int mirrored = GetMirroredPos(offset, mirrorX, mirrorY);
-                        int index = GetIndexOfOffset(mirrored);
-                        TileBase tile = tilemap.GetTile(position + offset);
-                        if (rule.m_Neighbors[index] == TilingRule.Neighbor.This && tile != this ||
-                            rule.m_Neighbors[index] == TilingRule.Neighbor.NotThis && tile == this) {
-                            return false;
-                        }
+            for (var y = -1; y <= 1; y++) {
+                for (var x = -1; x <= 1; x++) {
+                    if (x == 0 && y == 0) {
+                        continue;
+                    }
+
+                    var offset = new Vector3Int(x, y, 0);
+                    var mirrored = GetMirroredPos(offset, mirrorX, mirrorY);
+                    var index = GetIndexOfOffset(mirrored);
+                    var tile = tilemap.GetTile(position + offset);
+                    var neightboor = rule.m_Neighbors[index];
+                    var target = NeightboorThisTile ? tile != this : tile == null;
+                    if (neightboor == TilingRule.Neighbor.This && target) {
+                        return false;
+                    }
+
+                    var valid = NeightboorThisTile ? tile == this : tile != null;
+                    if (neightboor == TilingRule.Neighbor.NotThis && valid) {
+                        return false;
                     }
                 }
             }
@@ -206,7 +213,7 @@ namespace Datenshi.Scripts.Tile {
         }
 
         private int GetIndexOfOffset(Vector3Int offset) {
-            int result = offset.x + 1 + (-offset.y + 1) * 3;
+            var result = offset.x + 1 + (-offset.y + 1) * 3;
             if (result >= 4)
                 result--;
             return result;
