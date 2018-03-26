@@ -8,9 +8,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d31f31bed06483c8631985dfd1c7b09, type: 3}
+  m_Script: {fileID: 11500000, guid: 460f3e92c2024b7aa42e2cf09469979c, type: 3}
   m_Name: SlopeTile
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 21300002, guid: aa78cc9bdfa634d449377d8e10aca206, type: 3}
-  DefaultSpriteLeft: 1
-  PrefersLeft: 1
+  m_DefaultSprite: {fileID: 21300000, guid: aa78cc9bdfa634d449377d8e10aca206, type: 3}
+  NeightboorThisTile: 0
+  m_DefaultColliderType: 1
+  m_TilingRules:
+  - m_Neighbors: 0000000000000000000000000100000002000000000000000000000000000000
+    m_Sprites:
+    - {fileID: 21300002, guid: aa78cc9bdfa634d449377d8e10aca206, type: 3}
+    m_AnimationSpeed: 1
+    m_PerlinScale: 0.5
+    m_RuleTransform: 2
+    m_Output: 0
+    m_ColliderType: 1
+    m_RandomTransform: 0

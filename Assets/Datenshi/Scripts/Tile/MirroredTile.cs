@@ -16,25 +16,26 @@ namespace Datenshi.Scripts.Tile {
             var pos = position;
             position.x += 1;
             var right = tilemap.GetTile(position);
-            Debug.Log("Right = " + right + " @ " + position + " vs " + pos);
             position.x -= 2;
             var left = tilemap.GetTile(position);
-            Debug.Log("Left = " + left + " @ " + position + " vs " + pos);
-            int x;
+            bool flipped;
             if (left != null && right != null) {
-                x = PrefersLeft ? 1 : -1;
+                flipped = PrefersLeft;
             } else {
-                var flipped = DefaultSpriteLeft ? -1 : 1;
+                var flippedX = DefaultSpriteLeft ? -1 : 1;
                 if (right) {
-                    x = -flipped;
+                    flipped = DefaultSpriteLeft;
                 } else if (left) {
-                    x = flipped;
+                    flipped = !DefaultSpriteLeft;
                 } else {
-                    x = 0;
+                    flipped = false;
                 }
             }
 
-            tileData.transform = Matrix4x4.Scale(new Vector3(x, 1, 1));
+            tileData.transform = Matrix4x4.TRS(
+                Vector3.zero,
+                Quaternion.Euler(0, flipped ? 180 : 0, 0),
+                Vector3.one);
         }
 #if UNITY_EDITOR
 
