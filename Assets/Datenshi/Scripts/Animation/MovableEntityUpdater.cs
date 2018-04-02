@@ -1,5 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using Datenshi.Scripts.Entities;
+using Datenshi.Scripts.Util;
+using Shiroi.Serialization;
+using Sirenix.OdinInspector;
+using UnityEditor.Animations;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Animation {
@@ -11,9 +16,13 @@ namespace Datenshi.Scripts.Animation {
         public string AttackKey = "Attack";
         public string DamagedKey = "Damaged";
         public string StoppingKey = "Stopping";
+        public string AbsInputVerticalKey = "AbsInputVertical";
+        public string AbsInputHorizontalKey = "AbsInputHorizontal";
         public string InputVerticalKey = "InputVertical";
         public string InputHorizontalKey = "InputHorizontal";
         public string LastDamageKey = "LastDamage";
+        public string BecameGroundedKey = "BecameGroundedKey";
+        public string BecameAiredKey = "BecameAiredKey";
         public MovableEntity Entity;
         public SpriteRenderer Renderer;
 
@@ -34,17 +43,27 @@ namespace Datenshi.Scripts.Animation {
             var provider = Entity.InputProvider;
             if (provider != null) {
                 var inputDir = Math.Sign(provider.GetHorizontal());
-                anim.SetBool(StoppingKey, inputDir == -velDir);
-                anim.SetFloat(InputVerticalKey, provider.GetVertical());
-                anim.SetFloat(InputHorizontalKey, provider.GetHorizontal());
+                anim.AttemptSetBool(StoppingKey, inputDir == -velDir);
+                var v = provider.GetVertical();
+                var h = provider.GetHorizontal();
+                anim.AttemptSetFloat(InputVerticalKey, v);
+                anim.AttemptSetFloat(InputHorizontalKey, h);
+                anim.AttemptSetFloat(AbsInputVerticalKey, Mathf.Abs(v));
+                anim.AttemptSetFloat(AbsInputHorizontalKey, Mathf.Abs(h));
             }
-            anim.SetFloat(YSpeedKey, vel.y);
-            anim.SetFloat(SpeedRawKey, speed);
-            anim.SetFloat(SpeedPercentKey, percentSpeed);
-            anim.SetBool(GroundedKey, Entity.CollisionStatus.Down);
+
+            anim.AttemptSetFloat(YSpeedKey, vel.y);
+            anim.AttemptSetFloat(SpeedRawKey, speed);
+            anim.AttemptSetFloat(SpeedPercentKey, percentSpeed);
+            var grounded = Entity.CollisionStatus.Down;
+            var wasGrounded = anim.GetBool(GroundedKey);
+            if (wasGrounded != grounded) {
+                anim.AttemptSetTrigger(grounded ? BecameGroundedKey : BecameAiredKey);
+            }
+            anim.AttemptSetBool(GroundedKey, grounded);
             if (Entity.GetVariable(LivingEntity.Attacking)) {
                 Entity.SetVariable(LivingEntity.Attacking, false);
-                anim.SetTrigger(AttackKey);
+                anim.AttemptSetTrigger(AttackKey);
             }
 
             Renderer.flipX = Entity.CurrentDirection.X == -1;

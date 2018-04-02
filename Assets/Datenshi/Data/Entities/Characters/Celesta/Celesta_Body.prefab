@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 61006887387437640}
   - component: {fileID: 114251226307155298}
   - component: {fileID: 114983583191191688}
+  - component: {fileID: 114834750012952740}
   m_Layer: 11
   m_Name: Celesta_Body
   m_TagString: Untagged
@@ -56,18 +57,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.11268425, y: -0.14995837}
+  m_Offset: {x: 0.082754135, y: 0.9677377}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.44}
-    oldSize: {x: 3, y: 3}
+    pivot: {x: 0.45348838, y: 0}
+    oldSize: {x: 1.7916666, y: 1.9583334}
     newSize: {x: 0.72, y: 0.72}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5940361, y: 1.823626}
+  m_Size: {x: 0.9849129, y: 1.747365}
   m_EdgeRadius: 0
 --- !u!95 &95501811983654516
 Animator:
@@ -78,7 +79,7 @@ Animator:
   m_GameObject: {fileID: 1503228497781312}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bfebb7fc21d5ce14b9f157b67a2b53f4, type: 2}
+  m_Controller: {fileID: 9100000, guid: e0969d4992532924a81d562f2eb355ad, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -98,6 +99,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
+--- !u!114 &114834750012952740
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1503228497781312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5050bb8a95647b08557e195ed96545a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EntityAudioSource: {fileID: 0}
+  StepSounds:
+  - {fileID: 8300000, guid: 0d698d1a7710d324ca7105a558bd815c, type: 3}
+  - {fileID: 8300000, guid: 474a231c1ad41e34dbbde24b175af1ee, type: 3}
+  minPitch: 0.9
+  maxPitch: 1.1
 --- !u!114 &114983583191191688
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -117,6 +135,8 @@ MonoBehaviour:
   AttackKey: Attack
   DamagedKey: Damaged
   StoppingKey: Stopping
+  InputVerticalKey: InputVertical
+  InputHorizontalKey: InputHorizontal
   LastDamageKey: LastDamage
   Entity: {fileID: 0}
   Renderer: {fileID: 212706959196361474}
@@ -154,7 +174,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 425bf0be468554d6cb0b4ddd8c1c48c2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 326e1d76241ffd747b86ec475e8e23a6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

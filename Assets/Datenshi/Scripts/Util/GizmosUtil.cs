@@ -51,7 +51,7 @@ namespace Datenshi.Scripts.Util {
             var topRight = new Vector2(center.x + halfWidth, center.y + halfHeight);
             Handles.color = color;
             Handles.DrawSolidRectangleWithOutline(new Vector3[] {bottomLeft, topLeft, topRight, bottomRight},
-                Color.white, Color.black);
+                Color.white, Color.clear);
         }
 
         public static void DrawRay(Vector2 pos, Vector2 dir) {
@@ -93,6 +93,16 @@ namespace Datenshi.Scripts.Util {
             DrawRay(pos + direction, left * arrowHeadLength);
             DrawRay(pos + direction, up * arrowHeadLength);
             DrawRay(pos + direction, down * arrowHeadLength);
+        }
+
+        public static void DrawBox(Bounds2D hb, Color hitboxColor) {
+            var verts = new Vector3[] {
+                hb.BottomLeft,
+                hb.BottomRight,
+                hb.TopRight,
+                hb.TopLeft
+            };
+            Handles.DrawSolidRectangleWithOutline(verts, hitboxColor, hitboxColor);
         }
     }
 

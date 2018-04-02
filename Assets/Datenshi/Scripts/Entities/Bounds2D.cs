@@ -58,6 +58,31 @@ namespace Datenshi.Scripts.Entities {
         public override string ToString() {
             return string.Format("Bounds2D(Center: {0}, Size: {1}, Min: {2}, Max: {3})", Center, Size, Min, Max);
         }
+
+
+        public Vector2 BottomLeft {
+            get {
+                return Min;
+            }
+        }
+
+        public Vector2 TopRight {
+            get {
+                return new Vector2(Min.x, Max.y);
+            }
+        }
+
+        public Vector2 TopLeft {
+            get {
+                return Max;
+            }
+        }
+
+        public Vector2 BottomRight {
+            get {
+                return new Vector2(Max.x, Min.y);
+            }
+        }
 #if UNITY_EDITOR
         [ShowInInspector]
         public Collider2D CopyFrom {
@@ -66,7 +91,7 @@ namespace Datenshi.Scripts.Entities {
             }
             set {
                 var bounds = value.bounds;
-                Center = bounds.center;
+                Center = value.offset;
                 Size = bounds.size;
             }
         }
