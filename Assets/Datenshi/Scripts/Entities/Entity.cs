@@ -16,13 +16,19 @@ namespace Datenshi.Scripts.Entities {
         private EntityInputProviderChangedEvent() { }
     }
 
+    [Serializable]
+    public sealed class EntityEvent : UnityEvent<Entity> { }
+
     /// <inheritdoc />
     /// <summary>
     /// Classe base de todas as entidades.
     /// Qualquer objeto que tenha um comportamento no jogo é considerado uma entidade.
     /// </summary>
     public class Entity : MonoBehaviour {
+        public static readonly EntityEvent EntityEnabledEvent = new EntityEvent();
+        public static readonly EntityEvent EntityDisabledEvent = new EntityEvent();
         public const string MiscGroup = "Misc";
+        public const string GeneralGroup = "General";
 
         /// <summary>
         /// O provedor a partir de qual essa entidade está recebendo input.
@@ -55,9 +61,13 @@ namespace Datenshi.Scripts.Entities {
         /// <summary>
         /// A hitbox desta entidade
         /// </summary>
-        [TitleGroup(MiscGroup)]
+        [TitleGroup(GeneralGroup)]
         public Collider2D Hitbox;
 
+        [TitleGroup(GeneralGroup)]
+        public EntityRenderer Renderer;
+
+        [TitleGroup(GeneralGroup)]
         public Character.Character Character;
 
         [TitleGroup(MiscGroup)]
@@ -117,6 +127,14 @@ namespace Datenshi.Scripts.Entities {
 #endif
         public void RevokeOwnership() {
             inputProvider = null;
+        }
+
+        private void OnEnable() {
+            EntityEnabledEvent.Invoke(this);
+        }
+
+        private void OnDisable() {
+            EntityDisabledEvent.Invoke(this);
         }
     }
 

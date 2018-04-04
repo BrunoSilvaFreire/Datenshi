@@ -73,11 +73,11 @@ namespace Datenshi.Scripts.Entities.Input {
 
         [ShowIf("DebugInput")]
         public bool Submit;
+        
+        [ShowIf("DebugInput")]
+        public bool Defend;
 #endif
-        public bool GetPlanningMenu() {
-            return Fetch(player => player.GetButton(Actions.Planning));
-        }
-
+      
         public override float GetHorizontal() {
 #if UNITY_EDITOR
             if (DebugInput) {
@@ -139,6 +139,15 @@ namespace Datenshi.Scripts.Entities.Input {
             }
 #endif
             return Fetch(player => player.GetButtonDown(Actions.Dash));
+        }
+
+        public override bool GetDefend() {
+#if UNITY_EDITOR
+            if (DebugInput) {
+                return Defend;
+            }
+#endif
+            return Fetch(player => player.GetButton(Actions.Defend));
         }
 
         public override bool GetSubmit() {

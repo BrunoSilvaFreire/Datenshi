@@ -24,7 +24,7 @@ namespace Datenshi.Scripts.Util {
             UpLeft, UpRight, DownLeft, DownRight
         };
 
-        public static readonly Direction[] All = AllNonZero.Append(Zero).ToArray();
+        public static readonly Direction[] All = LinqExtensions.Append(AllNonZero, Zero).ToArray();
 
 
         public int CompareTo(Direction other) {

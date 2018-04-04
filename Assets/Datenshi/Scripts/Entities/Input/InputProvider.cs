@@ -20,7 +20,7 @@ namespace Datenshi.Scripts.Entities.Input {
         public abstract float GetVertical();
 
         public abstract bool GetJump();
-        
+
         public abstract bool GetJumpDown();
 
         public abstract bool GetAttack();
@@ -28,7 +28,7 @@ namespace Datenshi.Scripts.Entities.Input {
         public abstract bool GetWalk();
 
         public abstract bool GetDash();
-
+        public abstract bool GetDefend();
         public abstract bool GetSubmit();
     }
 }

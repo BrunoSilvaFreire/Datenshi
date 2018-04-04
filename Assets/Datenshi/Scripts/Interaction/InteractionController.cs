@@ -20,9 +20,11 @@ namespace Datenshi.Scripts.Interaction {
             if (e == null) {
                 return;
             }
+
             elementsInRange.Add(e);
             var ui = e.UIElement;
             if (ui != null) {
+                ui.Showing = true;
                 ui.Button.interactable = true;
             }
         }
@@ -32,9 +34,11 @@ namespace Datenshi.Scripts.Interaction {
             if (e == null) {
                 return;
             }
+
             elementsInRange.Remove(e);
             var ui = e.UIElement;
             if (ui != null) {
+                ui.Showing = false;
                 ui.Button.interactable = false;
             }
         }

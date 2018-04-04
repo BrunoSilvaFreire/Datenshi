@@ -2,7 +2,8 @@
 {
     Properties
     {
-        _Amount("Amount", Float) = 0    
+        _Amount("Amount", Range(0,1)) = 0
+        _DarkenAmount("Darken Amount", Range(0,1)) =0    
         _MainTex ("Texture", 2D) = "white" {}
     }
     SubShader
@@ -39,12 +40,14 @@
 			}
 			
 			sampler2D _MainTex;
-			Float _Amount;
+			fixed _Amount;
+			fixed _DarkenAmount;
 			fixed4 frag (v2f i) : SV_Target
 			{
 				fixed4 col = tex2D(_MainTex, i.uv);
 				fixed4 bw = (col.r + col.g + col.b) / 3;
 				col = lerp(col, bw, _Amount);
+				col.rgb -= _DarkenAmount * _Amount;
 				return col;
 			}
 			ENDCG

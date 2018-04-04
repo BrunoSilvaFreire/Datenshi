@@ -14,4 +14,4 @@ MonoBehaviour:
   Hitbox:
     Center: {x: 1.423771, y: 0.9090745}
     Size: {x: 1.3609543, y: 1.9625487}
-  Damage: 0
+  Damage: 5
