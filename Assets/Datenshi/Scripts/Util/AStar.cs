@@ -125,64 +125,78 @@ namespace Datenshi.Scripts.Util {
             // For each node, which node it can most efficiently be reached from.
             // If a node can be reached from many nodes, cameFrom will eventually contain the
             // most efficient previous step.
-            var cameFrom = new Dictionary<Node, AerialLink>();
+            var cameFrom = new Dictionary<Node, Node>();
+
+            // For each node, the cost of getting from the start node to that node.
             var gScore = new Dictionary<Node, float>();
+
+            // The cost of going from start to start is zero.
             gScore[from] = 0.0f;
+
             // For each node, the total cost of getting from the start node to the goal
             // by passing by that node. That value is partly known, partly heuristic.
             var fScore = new Dictionary<Node, float>();
 
+            // For the first node, that value is completely heuristic.
             fScore[from] = Distance(from, to, navMesh);
-            var current = from;
-            var boxSize = entity.Hitbox.bounds.size;
+
+
             var worldMask = GameResources.Instance.WorldMask;
+            var fromP = navMesh.WorldPosCenter(from);
+            var toP = navMesh.WorldPosCenter(to);
+            if (!Physics2D.Linecast(fromP, toP, worldMask)) {
+                return new List<Node> {
+                    from,
+                    to
+                };
+            }
+            var boxSize = entity.Hitbox.bounds.size;
             while (!openSet.IsEmpty()) {
                 // the node in openSet having the lowest fScore[] value
-                current = openSet.MinBy(node => fScore.GetOrPut(node, () => float.PositiveInfinity));
+                var current = openSet.MinBy(node => fScore.GetOrPut(node, () => float.PositiveInfinity));
                 if (current == to) {
-                    return ReconstructAerial(cameFrom, current, navMesh);
+                    return ReconstructAerial(cameFrom, current, navMesh, boxSize, worldMask);
                 }
                 var currentWorldPos = navMesh.WorldPosCenter(current);
                 openSet.Remove(current);
                 closedSet.Add(current);
+                //Check all available neightboors
                 var neightboors = new List<Node>();
                 foreach (var direction in Direction.AllNonZero) {
                     if (navMesh.IsOutOfGridBounds(current.Position, direction)) {
                         continue;
                     }
+                    if (Physics2D.BoxCast(currentWorldPos, boxSize, 0, direction, 1, worldMask)) {
+                        continue;
+                    }
                     var neightboor = navMesh.GetNeightboor(current, direction);
-                    if (neightboor.IsEmpty) {
+                    if (!closedSet.Contains(neightboor) && neightboor.IsEmpty) {
                         neightboors.Add(neightboor);
                     }
                 }
-                foreach (var neighbor in neightboors) {
-                    var neightboorWorldPos = navMesh.WorldPosCenter(neighbor.Position);
+                foreach (var neighboor in neightboors) {
+                    var neightboorWorldPos = navMesh.WorldPosCenter(neighboor.Position);
                     var dir = neightboorWorldPos - currentWorldPos;
-                    if (Physics2D.BoxCast(neightboorWorldPos, boxSize, 0, dir, dir.magnitude, worldMask)) {
-                        continue;
+                    if (!openSet.Contains(neighboor)) {
+                        openSet.Add(neighboor);
                     }
 
-                    if (closedSet.Contains(neighbor)) {
-                        // Ignore the neighbor which is already evaluated.
-                        continue;
-                    }
-
+                    //GScore = cost to get from start to current node, start always have 0
                     var currentGScore = gScore.GetOrPut(current, () => float.PositiveInfinity);
-                    var neightborGScore = gScore.GetOrPut(neighbor, () => float.PositiveInfinity);
-                    var linkDistance = Distance(current, neighbor, navMesh);
+                    var neightborGScore = gScore.GetOrPut(neighboor, () => float.PositiveInfinity);
+                    var linkDistance = Distance(current, neighboor, navMesh);
                     // The distance from start to a neighbor
                     var tentativeGScore = currentGScore + linkDistance;
-                    if (!openSet.Contains(neighbor)) {
-                        openSet.Add(neighbor);
-                    } else if (tentativeGScore >= neightborGScore) {
+                    if (tentativeGScore >= neightborGScore) {
                         // This is not a better path.
                         continue;
                     }
 
                     // This path is the best until now. Record it!
-                    cameFrom[neighbor] = new AerialLink(navMesh.GetNodeIndex(current), navMesh.GetNodeIndex(neighbor));
-                    gScore[neighbor] = tentativeGScore;
-                    fScore[neighbor] = gScore[neighbor] + Distance(neighbor, to, navMesh);
+                    cameFrom[neighboor] = current;
+                    gScore[neighboor] = tentativeGScore;
+                    //fScore is the "supposed lowest score"
+                    fScore[neighboor] = gScore[neighboor] + Distance(neighboor, to, navMesh);
                 }
             }
 
@@ -190,47 +204,33 @@ namespace Datenshi.Scripts.Util {
         }
 
         private static List<Node> ReconstructAerial(
-            Dictionary<Node, AerialLink> cameFrom,
+            Dictionary<Node, Node> cameFrom,
             Node current,
-            Navmesh navMesh
+            Navmesh navmesh,
+            Vector2 size,
+            LayerMask worldMask
         ) {
+            // Here we "backtrack" the path defined by cameFrom, current starts as the destination
             if (!cameFrom.ContainsKey(current)) {
                 return null;
             }
-
-            var currentCameFrom = cameFrom[current];
             var totalPath = new List<Node> {
-                navMesh.GetNode(currentCameFrom.From)
+                current
             };
-            var lastX = 0;
-            var lastY = 0;
+            var lastNoHit = current;
             while (cameFrom.ContainsKey(current)) {
-                AerialLink link;
-                if (!cameFrom.TryGetValue(current, out link)) {
-                    Debug.Log("Couldn find value for " + current + "@ " + cameFrom);
-                    return totalPath;
-                }
-
-                var first = navMesh.GetWorldPosition((uint) link.From);
-                var second = navMesh.GetWorldPosition((uint) link.To);
-                Debug.DrawLine(
-                    first,
-                    second,
-                    Color.yellow
-                );
-                var x = Math.Sign(second.x - first.x);
-                var y = Math.Sign(second.y - first.y);
-                if (x != lastX || y != lastY) {
-                    lastX = x;
-                    lastY = y;
-
+                var source = cameFrom[current];
+                var firstPos = navmesh.WorldPosCenter(lastNoHit);
+                var secondPos = navmesh.WorldPosCenter(source);
+                var dir = secondPos - firstPos;
+                Debug.DrawLine(firstPos, secondPos, Color.cyan);
+                if (Physics2D.BoxCast(firstPos, size, 0, dir, dir.magnitude, worldMask)) {
+                    lastNoHit = current;
                     totalPath.Add(current);
                 }
-                current = navMesh.GetNode(link.From);
+                current = source;
             }
-            if (!totalPath.Contains(current)) {
-                totalPath.Add(current);
-            }
+            totalPath.Add(current);
             return totalPath;
         }
     }

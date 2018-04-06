@@ -6,7 +6,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Combat.Attacks.Ranged {
-    [CreateAssetMenu(menuName = "Origame/Combat/RangedAttack")]
+    [CreateAssetMenu(menuName = "Datenshi/Combat/RangedAttack")]
     public class RangedAttack : Attack {
         public static readonly Variable<float> LastFire = new Variable<float>("entity.combat.lastFire", 0);
         public Projectile Prefab;

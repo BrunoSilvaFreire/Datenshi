@@ -301,5 +301,10 @@ namespace Datenshi.Scripts.Util {
             DoVerticalCollisions(ref vel, entity, ref collStatus, bounds, skinBounds, layerMask, out verticalHit, null);
             DoHorizontalCollisions(ref vel, entity, ref collStatus, bounds, skinBounds, layerMask, out horizontalHit, null);
         }
+
+        public static void DoPhysics(MovableEntity entity, ref Vector2 externalForces, ref CollisionStatus collisionStatus) {
+            RaycastHit2D? r;
+            DoPhysics(entity, ref externalForces, ref collisionStatus, out r);
+        }
     }
 }

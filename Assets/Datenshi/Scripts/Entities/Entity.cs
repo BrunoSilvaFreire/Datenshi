@@ -68,6 +68,9 @@ namespace Datenshi.Scripts.Entities {
         public EntityRenderer Renderer;
 
         [TitleGroup(GeneralGroup)]
+        public EntityMiscController MiscController;
+
+        [TitleGroup(GeneralGroup)]
         public Character.Character Character;
 
         [TitleGroup(MiscGroup)]
@@ -77,6 +80,7 @@ namespace Datenshi.Scripts.Entities {
 
         [ShowInInspector, ReadOnly, TitleGroup(MiscGroup)]
         private List<VariableValue> variables = new List<VariableValue>();
+
 
         public void SetVariable<T>(Variable<T> variable, T value) {
             var key = variable.Key;

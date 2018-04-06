@@ -23,6 +23,7 @@ namespace Datenshi.Scripts.Animation {
         public string LastDamageKey = "LastDamage";
         public string BecameGroundedKey = "BecameGroundedKey";
         public string BecameAiredKey = "BecameAiredKey";
+        public string StunKey = "Stunned";
         public MovableEntity Entity;
         public SpriteRenderer Renderer;
 
@@ -51,7 +52,7 @@ namespace Datenshi.Scripts.Animation {
                 anim.AttemptSetFloat(AbsInputVerticalKey, Mathf.Abs(v));
                 anim.AttemptSetFloat(AbsInputHorizontalKey, Mathf.Abs(h));
             }
-
+            anim.AttemptSetBool(StunKey, Entity.Stunned);
             anim.AttemptSetFloat(YSpeedKey, vel.y);
             anim.AttemptSetFloat(SpeedRawKey, speed);
             anim.AttemptSetFloat(SpeedPercentKey, percentSpeed);

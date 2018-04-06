@@ -82,7 +82,10 @@ namespace Datenshi.Scripts.Game {
         private void SetFilter(float f) {
             var filter = Singletons.Instance.LowPassFilter;
             filter.DOKill();
-            DOTween.To(() => filter.cutoffFrequency, value => filter.cutoffFrequency = value, f,
+            DOTween.To(
+                () => filter.cutoffFrequency,
+                value => filter.cutoffFrequency = value,
+                f,
                 DefendOverrideDuration);
         }
 
@@ -93,6 +96,9 @@ namespace Datenshi.Scripts.Game {
 
         private void SetColorOverride(float i) {
             foreach (var obj in tracker.Objects) {
+                if (obj == null) {
+                    continue;
+                }
                 obj.DOKill();
                 var eRenderer = obj.Renderer;
                 if (eRenderer == null) {
@@ -104,7 +110,10 @@ namespace Datenshi.Scripts.Game {
         }
 
         private void SetColorOverride(EntityRenderer eRenderer, float i) {
-            DOTween.To(() => eRenderer.ColorOverrideAmount, value => eRenderer.ColorOverrideAmount = value, i,
+            DOTween.To(
+                () => eRenderer.ColorOverrideAmount,
+                value => eRenderer.ColorOverrideAmount = value,
+                i,
                 DefendOverrideDuration);
         }
     }

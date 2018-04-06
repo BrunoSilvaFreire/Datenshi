@@ -7,7 +7,7 @@ namespace Datenshi.Scripts.Entities {
         public const string OverrideAmountKey = "_OverrideAmount";
         public const string OverrideColorKey = "_OverrideColor";
         public const string ShaderName = "Datenshi/EntityShader";
-        public SpriteRenderer Renderer;
+        public SpriteRenderer[] Renderers;
         public Entity Entity;
         public Color DefaultOverrideColor = Color.red;
 
@@ -33,7 +33,9 @@ namespace Datenshi.Scripts.Entities {
             var c = Entity.Character;
             var color = c != null ? c.SignatureColor : DefaultOverrideColor;
             material.SetColor(OverrideColorKey, color);
-            Renderer.material = material;
+            foreach (var r in Renderers) {
+                r.material = material;
+            }
         }
 
         private void Awake() {
@@ -43,19 +45,12 @@ namespace Datenshi.Scripts.Entities {
         [ShowInInspector]
         public float ColorOverrideAmount {
             get {
-                if (Renderer == null) {
-                    return 0;
-                }
-#if UNITY_EDITOR
-                if (PrefabUtility.GetPrefabParent(Renderer) == null) {
-                    return 0;
-                }
-#endif
-                var rendererMat = Renderer.material;
-                return rendererMat == null ? 0 : rendererMat.GetFloat(OverrideAmountKey);
+                EnsureMaterialSet();
+                return material.GetFloat(OverrideAmountKey);
             }
             set {
-                Renderer.material.SetFloat(OverrideAmountKey, value);
+                EnsureMaterialSet();
+                material.SetFloat(OverrideAmountKey, value);
             }
         }
     }

@@ -25,7 +25,10 @@ namespace Datenshi.Scripts.Interaction {
             var ui = e.UIElement;
             if (ui != null) {
                 ui.Showing = true;
-                ui.Button.interactable = true;
+                var b = ui.Button;
+                if (b != null) {
+                    b.interactable = true;
+                }
             }
         }
 
@@ -39,7 +42,10 @@ namespace Datenshi.Scripts.Interaction {
             var ui = e.UIElement;
             if (ui != null) {
                 ui.Showing = false;
-                ui.Button.interactable = false;
+                var b = ui.Button;
+                if (b != null) {
+                    b.interactable = false;
+                }
             }
         }
     }

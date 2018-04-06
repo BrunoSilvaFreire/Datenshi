@@ -4,7 +4,7 @@ using Datenshi.Scripts.Misc;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Combat.Strategies {
-    [CreateAssetMenu(menuName = "Origame/AI/Combat/Strategy/CQBAttackStrategy")]
+    [CreateAssetMenu(menuName = "Datenshi/AI/Combat/Strategy/CQBAttackStrategy")]
     public class CQBAttackStategy : AttackStrategy {
         public static readonly Variable<float> LastAttack =
             new Variable<float>("entity.ai.combat.strategy.cqb.lastAttack", 0);
@@ -23,7 +23,7 @@ namespace Datenshi.Scripts.Combat.Strategies {
 
             if (Vector2.Distance(entity.GroundPosition, targetPos) > MinDistance) {
                 provider.Attack = false;
-                var agent = entity.aiAgent;
+                var agent = entity.AIAgent;
                 agent.Target = targetPos;
                 agent.Execute(entity, provider);
                 return;

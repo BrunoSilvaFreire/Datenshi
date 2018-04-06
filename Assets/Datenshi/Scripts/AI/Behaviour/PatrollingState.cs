@@ -6,7 +6,7 @@ using Datenshi.Scripts.Util;
 using UnityEngine;
 
 namespace Datenshi.Scripts.AI.Behaviour {
-    [CreateAssetMenu(menuName = "Origame/AI/States/Patrolling")]
+    [CreateAssetMenu(menuName = "Datenshi/AI/States/Patrolling")]
     public class PatrollingState : BehaviourState {
         public enum StartDirection {
             Left,

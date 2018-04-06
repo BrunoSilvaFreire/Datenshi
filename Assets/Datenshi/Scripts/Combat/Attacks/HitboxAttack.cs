@@ -2,7 +2,7 @@
 using UnityEngine;
 
 namespace Datenshi.Scripts.Combat.Attacks {
-    [CreateAssetMenu(menuName = "Origame/Combat/HitboxAttack")]
+    [CreateAssetMenu(menuName = "Datenshi/Combat/HitboxAttack")]
     public class HitboxAttack : AbstractHitboxAttack {
         public uint Damage;
 

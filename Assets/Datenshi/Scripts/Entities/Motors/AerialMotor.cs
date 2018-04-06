@@ -3,7 +3,7 @@ using Datenshi.Scripts.Util;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Entities.Motors {
-    [CreateAssetMenu(menuName = "Origame/Motor/AerialMotor")]
+    [CreateAssetMenu(menuName = "Datenshi/Motor/AerialMotor")]
     public class AerialMotor : Motor {
         public override void Execute(MovableEntity entity, ref CollisionStatus collStatus) {
             var vel = entity.Velocity;
@@ -40,17 +40,15 @@ namespace Datenshi.Scripts.Entities.Motors {
             vel.x += xAcceleration;
             vel.y += yAcceleration;
             var deacceleration = entity.AccelerationCurve.Evaluate(1 - entity.SpeedPercent);
-            if (Mathf.Abs(xInput) <= 0 && Mathf.Abs(yInput) <= 0) {
-                var de = deacceleration / 2;
-                if (vel.magnitude <= de) {
-                    vel = Vector2.zero;
-                } else {
-                    vel += de * -vel.normalized;
-                }
+            if (Mathf.Abs(xInput) > 0 || Mathf.Abs(yInput) > 0) {
+                return;
             }
-
-            entity.gameObject.GetOrAddComponent<SpriteRenderer>();
-            entity.gameObject.GetOrAddComponent<SpriteRenderer>();
+            var de = deacceleration / 2;
+            if (vel.magnitude <= de) {
+                vel = Vector2.zero;
+            } else {
+                vel += de * -vel.normalized;
+            }
         }
 
         public override void Initialize(MovableEntity entity) { }

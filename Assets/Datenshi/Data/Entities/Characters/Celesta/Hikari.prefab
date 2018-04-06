@@ -37,6 +37,9 @@ GameObject:
   - component: {fileID: 4217494877118616}
   - component: {fileID: 114297920940230108}
   - component: {fileID: 114708593015091422}
+  - component: {fileID: 50431390151862010}
+  - component: {fileID: 61748871178828850}
+  - component: {fileID: 114290058960585102}
   m_Layer: 11
   m_Name: Hikari_Managers
   m_TagString: Untagged
@@ -65,6 +68,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1833655799009062
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4568967399229686}
+  - component: {fileID: 114664300870157918}
+  m_Layer: 11
+  m_Name: Hikari_Ghosting
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1896484453590728
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,7 +93,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4644533255977216}
   - component: {fileID: 114281234270348236}
-  - component: {fileID: 95723629881488704}
   m_Layer: 11
   m_Name: Hikari
   m_TagString: Untagged
@@ -108,6 +126,19 @@ Transform:
   m_Father: {fileID: 4644533255977216}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4568967399229686
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1833655799009062}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4654424630026524}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4644533255977216
 Transform:
   m_ObjectHideFlags: 1
@@ -133,10 +164,31 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4568967399229686}
   m_Father: {fileID: 4644533255977216}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50431390151862010
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1511377753782900}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 1
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &61269217306511274
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -161,6 +213,31 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.9849129, y: 1.747365}
+  m_EdgeRadius: 0
+--- !u!61 &61748871178828850
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1511377753782900}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.727376}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2.454752}
   m_EdgeRadius: 0
 --- !u!82 &82719858962506280
 AudioSource:
@@ -259,23 +336,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &95723629881488704
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1896484453590728}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114281234270348236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -290,6 +350,7 @@ MonoBehaviour:
   inputProvider: {fileID: 0}
   Hitbox: {fileID: 61269217306511274}
   Renderer: {fileID: 114868846459615602}
+  MiscController: {fileID: 114661486031546108}
   Character: {fileID: 11400000, guid: 8a2ea0deeae62114f97ad13a532bdf1b, type: 2}
   CurrentDirection: {}
   Config: {fileID: 114297920940230108}
@@ -310,6 +371,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Datenshi.Scripts.Entities.EntityAttackEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  DamageGivesStun: 1
+  DamageStunMin: 10
+  DamageStunDuration: 1
   Motor: {fileID: 11400000, guid: cc5b22130f7e9c74da83c3d12dc02dac, type: 2}
   AccelerationCurve:
     serializedVersion: 2
@@ -329,13 +393,32 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  aiAgent: {fileID: 0}
+  AIAgent: {fileID: 0}
   SkinWidth: 0.05
   MaxSpeed: 8
   YForce: 24
   SpeedMultiplier: 1
   GravityScale: 1
-  InteractionController: {fileID: 0}
+  InteractionController: {fileID: 114290058960585102}
+  ApplyVelocity: 1
+  DamageGivesKnockback: 1
+  DamageKnockbackMin: 10
+  DamageKnockbackStrenght: 1
+  KnockbackLiftoff: 0.1
+  ExternalForces: {x: 0, y: 0}
+  ExternalForcesDeacceleration: 0.1
+--- !u!114 &114290058960585102
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1511377753782900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de28747d891c4ede845f3f58db2c6a2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hitbox: {fileID: 0}
 --- !u!114 &114297920940230108
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -389,7 +472,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 0
   WallClimbGravityScale: 3
-  WallClimbCounterForce: 10
+  WallClimbCounterForce: 5
   JumpCutGravityModifier: 1
 --- !u!114 &114508554076039628
 MonoBehaviour:
@@ -418,8 +501,27 @@ MonoBehaviour:
   StepSounds:
   - {fileID: 8300000, guid: 0d698d1a7710d324ca7105a558bd815c, type: 3}
   - {fileID: 8300000, guid: 474a231c1ad41e34dbbde24b175af1ee, type: 3}
+  Container: {fileID: 0}
   minPitch: 0.9
   maxPitch: 1.1
+--- !u!114 &114664300870157918
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1833655799009062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d76c7fa0c2b4b489beefdc95b59cf0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnRate: 0
+  trailLength: 1
+  sortingLayer: 0
+  desiredAlpha: 0.8
+  HasStarted: 0
+  effectDuration: 1
+  desiredColor: {r: 1, g: 1, b: 1, a: 0.5882353}
 --- !u!114 &114708593015091422
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -446,6 +548,7 @@ MonoBehaviour:
   LastDamageKey: LastDamage
   BecameGroundedKey: BecameGrounded
   BecameAiredKey: BecameAerial
+  StunKey: Stunned
   Entity: {fileID: 114281234270348236}
   Renderer: {fileID: 212669247791164156}
 --- !u!114 &114868846459615602

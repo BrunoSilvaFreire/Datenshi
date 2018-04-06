@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4276041465565030}
   - component: {fileID: 108772712459880102}
   m_Layer: 0
-  m_Name: Point light
+  m_Name: ParticleLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,9 +49,9 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 0.4117647, g: 0.8666667, b: 0.19215687, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 15
+  m_Range: 5
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:

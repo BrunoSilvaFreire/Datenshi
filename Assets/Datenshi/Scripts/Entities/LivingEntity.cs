@@ -60,6 +60,42 @@ namespace Datenshi.Scripts.Entities {
         [TitleGroup(CombatGroup)]
         public EntityAttackEvent OnAttack;
 
+        [TitleGroup(CombatGroup)]
+        public bool DamageGivesStun;
+
+        [TitleGroup(CombatGroup)]
+        public bool Stunned {
+            get;
+            private set;
+        }
+
+        [ShowIf("DamageGivesStun"), TitleGroup(CombatGroup)]
+        public uint DamageStunMin = 10;
+
+        [ShowIf("DamageGivesStun"), TitleGroup(CombatGroup)]
+        public float DamageStunDuration = 1;
+
+
+        [ShowIf("DamageGivesStun"), TitleGroup(CombatGroup), ReadOnly]
+        private float totalStunTimeLeft;
+
+        private void Update() {
+            if (Stunned) {
+                totalStunTimeLeft -= Time.deltaTime;
+                if (totalStunTimeLeft < 0) {
+                    Stunned = false;
+                }
+            }
+        }
+
+        public void Stun(float duration) {
+            if (Invulnerable) {
+                return;
+            }
+            Stunned = true;
+            totalStunTimeLeft += duration;
+        }
+
         /// <summary>
         /// O total de vida da entidade atual.
         /// <br/>
@@ -91,6 +127,9 @@ namespace Datenshi.Scripts.Entities {
         }
 
         public void ExecuteAttack(Attack attack) {
+            if (Stunned) {
+                return;
+            }
             OnAttack.Invoke(attack);
             attack.Execute(this);
         }
@@ -188,7 +227,7 @@ namespace Datenshi.Scripts.Entities {
             Destroy(gameObject);
         }
 
-        public void Damage(LivingEntity entity, uint damage) {
+        public virtual void Damage(LivingEntity entity, uint damage) {
             if (Invulnerable) {
                 return;
             }
@@ -198,11 +237,13 @@ namespace Datenshi.Scripts.Entities {
                 Kill();
                 return;
             }
-
             OnDamaged.Invoke(entity, damage);
             Health -= damage;
             if (DamageInvulnerability) {
                 SetInvulnerable(DamageInvulnerabilityDuration);
+            }
+            if (DamageGivesStun && damage >= DamageStunMin) {
+                Stun(DamageStunDuration);
             }
         }
     }

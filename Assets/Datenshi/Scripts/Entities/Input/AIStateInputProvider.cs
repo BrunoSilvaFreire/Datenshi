@@ -55,6 +55,11 @@ namespace Datenshi.Scripts.Entities.Input {
             return Fetch(Submit);
         }
 
+        private void Start() {
+            Entity.RevokeOwnership();
+            Entity.RequestOwnership(this);
+        }
+
         private void Update() {
             if (CurrentState == null) {
                 return;

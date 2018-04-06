@@ -72,7 +72,7 @@ namespace Datenshi.Scripts.AI.Pathfinding {
 
         public bool IsEmpty {
             get {
-                return Type == NodeType.Empty;
+                return Type != NodeType.Blocked;
             }
         }
 

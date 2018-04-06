@@ -13,6 +13,13 @@ namespace Datenshi.Scripts.Interaction {
         public EntityInteractionEvent OnInteract;
         public abstract bool CanInteract(MovableEntity e);
 
+        private void Awake() {
+            var e = UIElement;
+            if (e != null) {
+                e.SnapShowing(false);
+            }
+        }
+
         public void Interact(MovableEntity e) {
             Execute(e);
             OnInteract.Invoke(e);

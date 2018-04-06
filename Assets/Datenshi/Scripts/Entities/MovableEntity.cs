@@ -27,10 +27,11 @@ namespace Datenshi.Scripts.Entities {
         [TitleGroup(MovementGroup, "Informações sobre a maneira de locomoção desta entidade")]
         public Motor Motor;
 
+        [TitleGroup(MovementGroup)]
         public AnimationCurve AccelerationCurve = AnimationCurve.Linear(0, 0.1F, 1, 1);
 
         [TitleGroup(MovementGroup)]
-        public AIAgent aiAgent;
+        public AIAgent AIAgent;
 
         [NonSerialized, ShowInInspector, ReadOnly, TitleGroup(MovementGroup)]
         public Vector2 Velocity;
@@ -51,7 +52,30 @@ namespace Datenshi.Scripts.Entities {
         public float GravityScale = 1;
 
         private CollisionStatus collisionStatus;
+
+        [TitleGroup(GeneralGroup)]
         public InteractionController InteractionController;
+
+        [TitleGroup(MovementGroup)]
+        public bool ApplyVelocity = true;
+
+        [TitleGroup(CombatGroup)]
+        public bool DamageGivesKnockback;
+
+        [ShowIf("DamageGivesKnockback"), TitleGroup(CombatGroup)]
+        public uint DamageKnockbackMin = 10;
+
+        [ShowIf("DamageGivesKnockback"), TitleGroup(CombatGroup)]
+        public float DamageKnockbackStrenght = 3;
+
+        [ShowIf("DamageGivesKnockback"), TitleGroup(CombatGroup)]
+        public float KnockbackLiftoff = 3;
+
+        [TitleGroup(MovementGroup)]
+        public Vector2 ExternalForces;
+
+        [TitleGroup(MovementGroup)]
+        public float ExternalForcesDeacceleration = 0.1F;
 
         [ShowInInspector, ReadOnly, TitleGroup(MovementGroup)]
         public CollisionStatus CollisionStatus {
@@ -64,6 +88,9 @@ namespace Datenshi.Scripts.Entities {
         }
 
         public void Interact() {
+            if (Stunned) {
+                return;
+            }
             var interactableMask = GameResources.Instance.InteractableMask;
             var bounds = InteractionController.Hitbox.bounds;
             var hit = Physics2D.OverlapBox(bounds.center, bounds.size, 0, interactableMask);
@@ -109,7 +136,14 @@ namespace Datenshi.Scripts.Entities {
             }
 
             Motor.Execute(this, ref collisionStatus);
-            transform.position += (Vector3) Velocity * Time.deltaTime;
+            if (ApplyVelocity && !Stunned) {
+                transform.position += (Vector3) Velocity * Time.deltaTime;
+            }
+            if (ExternalForces.magnitude > 0.1) {
+                PhysicsUtil.DoPhysics(this, ref ExternalForces, ref collisionStatus);
+                transform.position += (Vector3) ExternalForces;
+                ExternalForces = Vector2.Lerp(ExternalForces, Vector2.zero, ExternalForcesDeacceleration);
+            }
             var newDirection = Direction.FromVector(Velocity);
             var xDir = newDirection.X;
             var yDir = newDirection.Y;
@@ -121,29 +155,35 @@ namespace Datenshi.Scripts.Entities {
                 CurrentDirection.Y = yDir;
             }
         }
+
+        public override void Damage(LivingEntity entity, uint damage) {
+            base.Damage(entity, damage);
+            if (DamageGivesKnockback && damage >= DamageKnockbackMin) {
+                ExternalForces = transform.position - entity.transform.position;
+                ExternalForces.Normalize();
+                ExternalForces *= DamageKnockbackStrenght;
+                if (ExternalForces.y <= 0) {
+                    ExternalForces.y += KnockbackLiftoff;
+                }
+            }
+        }
     }
 
-    public struct CollisionStatus
-    {
+    public struct CollisionStatus {
         public bool Up;
         public bool Down;
         public bool Left;
         public bool Right;
 
-        public int HorizontalCollisionDir
-        {
-            get
-            {
-                if (Left == Right)
-                {
+        public int HorizontalCollisionDir {
+            get {
+                if (Left == Right) {
                     return 0;
                 }
-                if (Left)
-                {
+                if (Left) {
                     return -1;
                 }
-                if (Right)
-                {
+                if (Right) {
                     return 1;
                 }
                 return 0;

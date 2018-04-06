@@ -3,7 +3,7 @@ using Datenshi.Scripts.Entities;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Combat.Attacks {
-    [CreateAssetMenu(menuName = "Origame/Combat/RepeatedHitboxAttack")]
+    [CreateAssetMenu(menuName = "Datenshi/Combat/RepeatedHitboxAttack")]
     public class RepeatedHitboxAttack : AbstractHitboxAttack {
         public uint TotalAttacks;
         public uint DamagePerAttack;

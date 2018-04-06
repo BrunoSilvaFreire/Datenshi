@@ -11,6 +11,9 @@ using UnityEditor;
 using UnityEngine;
 
 namespace Datenshi.Scripts.AI {
+    public class AerialPath {
+        
+    }
     public class AerialAIAgent : AIAgent {
         [ShowInInspector]
         private List<Vector2Int> path;
@@ -44,14 +47,18 @@ namespace Datenshi.Scripts.AI {
             for (var i = 1; i < path.Count; i++) {
                 var first = path[i];
                 var second = path[i - 1];
-                var firstPos = Navmesh.Grid.GetCellCenterWorld(first.ToVector3());
-                var secondPos = Navmesh.Grid.GetCellCenterWorld(second.ToVector3());
-                Handles.Label(
-                    firstPos,
-                    string.Format("{0} {1}\n->\n{2} {3}", i, first, (i - 1), second));
-
-                Gizmos.DrawLine(firstPos, secondPos);
+                Draw(first, second, i);
             }
+        }
+
+        private void Draw(Vector2Int first, Vector2Int second, int i) {
+            var firstPos = Navmesh.Grid.GetCellCenterWorld(first.ToVector3());
+            var secondPos = Navmesh.Grid.GetCellCenterWorld(second.ToVector3());
+            Handles.Label(
+                firstPos,
+                string.Format("{0} {1}\n->\n{2} {3}", i, first, (i - 1), second));
+
+            Gizmos.DrawLine(firstPos, secondPos);
         }
 
         public override void Execute(MovableEntity entity, AIStateInputProvider provider) {
@@ -63,18 +70,15 @@ namespace Datenshi.Scripts.AI {
             var currentNode = Navmesh.GetNodeAtWorld(entityPos).Position;
             var targetNode = path.Last();
             if (path.Count < 2) {
-                if (targetNode == currentNode) {
+                // Is not between last 2 points
+                dir = targetNode - currentNode;
+            } else {
+                if (currentNode == targetNode) {
                     provider.Horizontal = 0;
                     provider.Vertical = 0;
                     return;
                 }
                 dir = targetNode - currentNode;
-            } else {
-                if (currentNode == targetNode) {
-                    path.RemoveAt(path.Count - 1);
-                    targetNode = path.Last();
-                }
-                dir = (Vector2) (targetNode - currentNode);
                 dir.Normalize();
             }
 

@@ -4,7 +4,7 @@ using Datenshi.Scripts.Entities.Input;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Combat.Strategies {
-    [CreateAssetMenu(menuName = "Origame/AI/Combat/Strategy/RangedAttackStrategy")]
+    [CreateAssetMenu(menuName = "Datenshi/AI/Combat/Strategy/RangedAttackStrategy")]
     public class RangedAttackStrategy : AttackStrategy {
         public float MinDistance = 5F;
         public float Threshold = 1F;
@@ -19,10 +19,10 @@ namespace Datenshi.Scripts.Combat.Strategies {
             }
             var entityPos = entity.GroundPosition;
             var xDir = Math.Sign(entityPos.x - targetEntityPos.x);
-            var targetPos = entity.aiAgent.GetFavourablePosition(this, target);
+            var targetPos = entity.AIAgent.GetFavourablePosition(this, target);
             if (Vector2.Distance(entityPos, targetPos) > Threshold) {
                 provider.Attack = false;
-                var agent = entity.aiAgent;
+                var agent = entity.AIAgent;
                 agent.Target = targetPos;
                 agent.Execute(entity, provider);
                 return;

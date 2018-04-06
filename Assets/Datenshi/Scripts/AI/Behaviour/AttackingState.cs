@@ -4,7 +4,7 @@ using Datenshi.Scripts.Misc;
 using UnityEngine;
 
 namespace Datenshi.Scripts.AI.Behaviour {
-    [CreateAssetMenu(menuName = "Origame/AI/States/Attacking")]
+    [CreateAssetMenu(menuName = "Datenshi/AI/States/Attacking")]
     public class AttackingState : BehaviourState {
         public static readonly Variable<LivingEntity> EntityTarget = new Variable<LivingEntity>("entity.ai.target", null);
         public BehaviourState OnTargetLost;

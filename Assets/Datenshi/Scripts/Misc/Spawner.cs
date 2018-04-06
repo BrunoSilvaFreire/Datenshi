@@ -13,7 +13,7 @@ namespace Datenshi.Scripts.Misc {
         }
 
         protected override void Execute(MovableEntity e) {
-            var pos = transform.position;
+            var pos = Center.position;
             pos.x += Random.value * Radius * (Random.value > 0.5 ? 1 : -1);
             Instantiate(Prefab, pos, Quaternion.identity);
         }

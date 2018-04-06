@@ -187,7 +187,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1896484453590728}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -33.484314, y: -10.499922, z: 0}
+  m_LocalPosition: {x: -35.19, y: -10.499922, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4654424630026524}
@@ -410,6 +410,7 @@ MonoBehaviour:
   inputProvider: {fileID: 0}
   Hitbox: {fileID: 61269217306511274}
   Renderer: {fileID: 114868846459615602}
+  MiscController: {fileID: 0}
   Character: {fileID: 0}
   CurrentDirection: {}
   Config: {fileID: 114297920940230108}
@@ -430,6 +431,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Datenshi.Scripts.Entities.EntityAttackEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  DamageGivesStun: 0
+  DamageStunMin: 10
+  DamageStunDuration: 1
   Motor: {fileID: 11400000, guid: cc5b22130f7e9c74da83c3d12dc02dac, type: 2}
   AccelerationCurve:
     serializedVersion: 2
@@ -449,13 +453,20 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  aiAgent: {fileID: 0}
+  AIAgent: {fileID: 0}
   SkinWidth: 0.05
   MaxSpeed: 8
   YForce: 24
   SpeedMultiplier: 1
   GravityScale: 1
   InteractionController: {fileID: 0}
+  ApplyVelocity: 1
+  DamageGivesKnockback: 0
+  DamageKnockbackMin: 10
+  DamageKnockbackStrenght: 0.5
+  KnockbackLiftoff: 0
+  ExternalForces: {x: 0, y: 0}
+  ExternalForcesDeacceleration: 0.25
 --- !u!114 &114297920940230108
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -631,6 +642,7 @@ MonoBehaviour:
   LastDamageKey: LastDamage
   BecameGroundedKey: BecameGrounded
   BecameAiredKey: BecameAerial
+  StunKey: Stunned
   Entity: {fileID: 114281234270348236}
   Renderer: {fileID: 212669247791164156}
 --- !u!114 &114864337436595098
@@ -689,6 +701,7 @@ MonoBehaviour:
   StepSounds:
   - {fileID: 8300000, guid: 0d698d1a7710d324ca7105a558bd815c, type: 3}
   - {fileID: 8300000, guid: 474a231c1ad41e34dbbde24b175af1ee, type: 3}
+  Container: {fileID: 0}
   minPitch: 0.9
   maxPitch: 1.1
 --- !u!212 &212669247791164156

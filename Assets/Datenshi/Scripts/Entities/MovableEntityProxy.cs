@@ -44,7 +44,7 @@ namespace Datenshi.Scripts.Entities {
         }
 
         public void SetAiAgent(AIAgent value) {
-            Target.aiAgent = value;
+            Target.AIAgent = value;
         }
 
         public void SetVelocity(Vector2 value) {

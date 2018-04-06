@@ -9,7 +9,7 @@
 	SubShader {
 	    Tags { "Queue"="Transparent" "RenderType"="Transparent" "IgnoreProjector"="True" }
 		LOD 200
-		Cull Off
+		ZWrite On Cull Off
 
 		CGPROGRAM
 		#pragma surface surf Standard fullforwardshadows alpha:fade

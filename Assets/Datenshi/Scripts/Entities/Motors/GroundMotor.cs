@@ -3,7 +3,7 @@ using Datenshi.Scripts.Util;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Entities.Motors {
-    [CreateAssetMenu(menuName = "Origame/Motor/GroundMotor")]
+    [CreateAssetMenu(menuName = "Datenshi/Motor/GroundMotor")]
     public class GroundMotor : Motor<GroundMotorConfig> {
         public override void Initialize(MovableEntity entity, GroundMotorConfig config) {
             entity.MovementStateMachine = entity.GetOrAddComponent<GroundMotorStateMachine>();
