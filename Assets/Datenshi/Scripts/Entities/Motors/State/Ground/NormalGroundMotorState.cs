@@ -133,7 +133,7 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
                 }
 
                 if (provider.GetAttack()) {
-                    entity.SetVariable(LivingEntity.Attacking, true);
+                    entity.AnimatorUpdater.TriggerAttack();
                 }
 
                 if (entity.CollisionStatus.Down) {

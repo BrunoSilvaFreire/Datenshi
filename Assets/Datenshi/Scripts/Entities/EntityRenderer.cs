@@ -11,13 +11,17 @@ namespace Datenshi.Scripts.Entities {
         public Entity Entity;
         public Color DefaultOverrideColor = Color.red;
 
-        [ReadOnly]
+        [ReadOnly, ShowInInspector]
         private Material material;
 
         [ShowInInspector]
         private void Reload() {
             material = null;
             EnsureMaterialSet();
+        }
+
+        private void Start() {
+            Reload();
         }
 
         private void OnValidate() {
@@ -53,5 +57,6 @@ namespace Datenshi.Scripts.Entities {
                 material.SetFloat(OverrideAmountKey, value);
             }
         }
+        public float 
     }
 }

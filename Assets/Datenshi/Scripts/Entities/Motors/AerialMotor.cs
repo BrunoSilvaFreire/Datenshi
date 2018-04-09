@@ -25,7 +25,7 @@ namespace Datenshi.Scripts.Entities.Motors {
             }
 
             if (provider.GetAttack()) {
-                entity.SetVariable(LivingEntity.Attacking, true);
+                entity.AnimatorUpdater.TriggerAttack();
             }
 
             var xInput = provider.GetHorizontal();
@@ -43,6 +43,7 @@ namespace Datenshi.Scripts.Entities.Motors {
             if (Mathf.Abs(xInput) > 0 || Mathf.Abs(yInput) > 0) {
                 return;
             }
+
             var de = deacceleration / 2;
             if (vel.magnitude <= de) {
                 vel = Vector2.zero;

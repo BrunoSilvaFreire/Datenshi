@@ -15,6 +15,7 @@ using UnityEngine.Events;
 namespace Datenshi.Scripts.Entities {
     public enum EntityRelationship {
         Ally,
+        Neutral,
         Enemy
     }
 
@@ -30,7 +31,6 @@ namespace Datenshi.Scripts.Entities {
     public class LivingEntity : Entity {
         public const string HealthGroup = "Health";
         public const string CombatGroup = "Combat";
-        public static Variable<bool> Attacking = new Variable<bool>("entity.attacking", false);
 
 
         [SerializeField, HideInInspector]
@@ -75,6 +75,7 @@ namespace Datenshi.Scripts.Entities {
         [ShowIf("DamageGivesStun"), TitleGroup(CombatGroup)]
         public float DamageStunDuration = 1;
 
+        public UnityEvent OnKilled;
 
         [ShowIf("DamageGivesStun"), TitleGroup(CombatGroup), ReadOnly]
         private float totalStunTimeLeft;
@@ -92,6 +93,7 @@ namespace Datenshi.Scripts.Entities {
             if (Invulnerable) {
                 return;
             }
+
             Stunned = true;
             totalStunTimeLeft += duration;
         }
@@ -130,6 +132,7 @@ namespace Datenshi.Scripts.Entities {
             if (Stunned) {
                 return;
             }
+
             OnAttack.Invoke(attack);
             attack.Execute(this);
         }
@@ -215,6 +218,12 @@ namespace Datenshi.Scripts.Entities {
             }
         }
 
+        public bool IsNeutral {
+            get {
+                return Relationship == EntityRelationship.Neutral;
+            }
+        }
+
         public bool IsAlly {
             get {
                 return Relationship == EntityRelationship.Ally;
@@ -224,6 +233,7 @@ namespace Datenshi.Scripts.Entities {
         public void Kill() {
             //TODO: Delegar efeitos de morte para um outro objeto
             health = 0;
+            OnKilled.Invoke();    
             Destroy(gameObject);
         }
 
@@ -237,11 +247,13 @@ namespace Datenshi.Scripts.Entities {
                 Kill();
                 return;
             }
+
             OnDamaged.Invoke(entity, damage);
             Health -= damage;
             if (DamageInvulnerability) {
                 SetInvulnerable(DamageInvulnerabilityDuration);
             }
+
             if (DamageGivesStun && damage >= DamageStunMin) {
                 Stun(DamageStunDuration);
             }

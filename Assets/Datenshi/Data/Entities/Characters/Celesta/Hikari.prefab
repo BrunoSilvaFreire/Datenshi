@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4238075283980382}
   - component: {fileID: 82719858962506280}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: Hikari_AudioSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 50431390151862010}
   - component: {fileID: 61748871178828850}
   - component: {fileID: 114290058960585102}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: Hikari_Managers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 61269217306511274}
   - component: {fileID: 114508554076039628}
   - component: {fileID: 114661486031546108}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: Hikari_Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,7 +77,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4568967399229686}
   - component: {fileID: 114664300870157918}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: Hikari_Ghosting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4644533255977216}
   - component: {fileID: 114281234270348236}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: Hikari
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1896484453590728}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -45.44, y: -8.41, z: 0}
+  m_LocalPosition: {x: 51.06, y: 1.07, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4654424630026524}
@@ -349,6 +349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputProvider: {fileID: 0}
   Hitbox: {fileID: 61269217306511274}
+  AnimatorUpdater: {fileID: 114708593015091422}
   Renderer: {fileID: 114868846459615602}
   MiscController: {fileID: 114661486031546108}
   Character: {fileID: 11400000, guid: 8a2ea0deeae62114f97ad13a532bdf1b, type: 2}
@@ -374,6 +375,11 @@ MonoBehaviour:
   DamageGivesStun: 1
   DamageStunMin: 10
   DamageStunDuration: 1
+  OnKilled:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   Motor: {fileID: 11400000, guid: cc5b22130f7e9c74da83c3d12dc02dac, type: 2}
   AccelerationCurve:
     serializedVersion: 2
@@ -557,12 +563,13 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1730045920672700}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d8cf396134c4b9a8db2f709756695b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Renderer: {fileID: 212669247791164156}
+  Renderers:
+  - {fileID: 212669247791164156}
   Entity: {fileID: 114281234270348236}
   DefaultOverrideColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!212 &212669247791164156
@@ -596,8 +603,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 388240983
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 326e1d76241ffd747b86ec475e8e23a6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

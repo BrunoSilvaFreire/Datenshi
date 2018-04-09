@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Datenshi.Scripts.Animation;
 using Datenshi.Scripts.Entities.Input;
 using Datenshi.Scripts.Entities.Motors;
 using Datenshi.Scripts.Game;
@@ -63,6 +64,9 @@ namespace Datenshi.Scripts.Entities {
         /// </summary>
         [TitleGroup(GeneralGroup)]
         public Collider2D Hitbox;
+
+        [TitleGroup(GeneralGroup)]
+        public EntityAnimatorUpdater AnimatorUpdater;
 
         [TitleGroup(GeneralGroup)]
         public EntityRenderer Renderer;

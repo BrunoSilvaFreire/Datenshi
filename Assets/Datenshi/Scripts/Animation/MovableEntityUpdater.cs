@@ -8,7 +8,7 @@ using UnityEditor.Animations;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Animation {
-    public class MovableEntityUpdater : AnimatorUpdater {
+    public class MovableEntityUpdater : EntityAnimatorUpdater {
         public string SpeedPercentKey = "SpeedPercent";
         public string SpeedRawKey = "SpeedRaw";
         public string GroundedKey = "Grounded";
@@ -52,6 +52,7 @@ namespace Datenshi.Scripts.Animation {
                 anim.AttemptSetFloat(AbsInputVerticalKey, Mathf.Abs(v));
                 anim.AttemptSetFloat(AbsInputHorizontalKey, Mathf.Abs(h));
             }
+
             anim.AttemptSetBool(StunKey, Entity.Stunned);
             anim.AttemptSetFloat(YSpeedKey, vel.y);
             anim.AttemptSetFloat(SpeedRawKey, speed);
@@ -61,13 +62,15 @@ namespace Datenshi.Scripts.Animation {
             if (wasGrounded != grounded) {
                 anim.AttemptSetTrigger(grounded ? BecameGroundedKey : BecameAiredKey);
             }
+
             anim.AttemptSetBool(GroundedKey, grounded);
-            if (Entity.GetVariable(LivingEntity.Attacking)) {
-                Entity.SetVariable(LivingEntity.Attacking, false);
-                anim.AttemptSetTrigger(AttackKey);
-            }
+
 
             Renderer.flipX = Entity.CurrentDirection.X == -1;
+        }
+
+        public override void TriggerAttack() {
+            Animator.AttemptSetTrigger(AttackKey);
         }
     }
 }

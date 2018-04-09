@@ -16,10 +16,10 @@ TagManager:
   - Background
   - World
   - Interactables
-  - EntitiesFriendly
+  - EntitiesNeutral
   - EntitiesEnemy
+  - EntitiesFriendly
   - Foreground
-  - 
   - 
   - 
   - 
@@ -46,6 +46,9 @@ TagManager:
     locked: 0
   - name: Entities
     uniqueID: 388240983
+    locked: 0
+  - name: World
+    uniqueID: 634296933
     locked: 0
   - name: Foreground
     uniqueID: 2559115125

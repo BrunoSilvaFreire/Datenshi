@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 460f3e92c2024b7aa42e2cf09469979c, type: 3}
   m_Name: SlopeTile
   m_EditorClassIdentifier: 
-  m_DefaultSprite: {fileID: 21300000, guid: aa78cc9bdfa634d449377d8e10aca206, type: 3}
+  m_DefaultSprite: {fileID: 21300008, guid: aa78cc9bdfa634d449377d8e10aca206, type: 3}
   NeightboorThisTile: 0
   m_DefaultColliderType: 1
   m_TilingRules:

@@ -1,16 +1,60 @@
 ﻿Shader "Datenshi/EntityShader" {
 	Properties {
-		_Color ("Color", Color) = (1,1,1,1)
+		[PerRendererData] _Color ("Color", Color) = (1,1,1,1)
 		_OverrideColor ("OverrideColor", Color) = (1,1,1,1)
-		_OverrideAmount ("OverrideAmount", float) = 0
+		_OccludeColor ("OccludeColor", Color) = (1,1,1,1)
+		_OccludeAmount ("OccludeAmount", Range(0, 1)) = 0
+		_OverrideAmount ("OverrideAmount", Range(0, 1)) = 0
 		[PerRendererData] _MainTex ("Albedo (RGB)", 2D) = "white" {}
 		_NormalMap("Normal Map", 2D) = "white" {}
 	}
 	SubShader {
-	    Tags { "Queue"="Transparent" "RenderType"="Transparent" "IgnoreProjector"="True" }
-		LOD 200
-		ZWrite On Cull Off
+	    Tags { 
+	        "Queue"="Transparent" 
+	        "RenderType"="Transparent"
+	     }
+		//LOD 200
+        Cull Off
+        Pass {
+		    ZWrite Off        
+            Blend SrcAlpha OneMinusSrcAlpha
+            ZTest Greater 
+            CGPROGRAM
+		        #pragma vertex vert
+			    #pragma fragment frag
+    			
+    			#include "UnityCG.cginc"
 
+	    		struct appdata
+		    	{
+			    	float4 vertex : POSITION;
+				    float2 uv : TEXCOORD;
+			    };
+
+			    struct v2f {
+				    float2 uv : TEXCOORD;
+				    float4 vertex : SV_POSITION;
+			    };
+
+			    v2f vert (appdata v) {
+				    v2f o;
+				    o.vertex = UnityObjectToClipPos(v.vertex);
+				    o.uv = v.uv;
+				    return o;
+			    }
+			
+			sampler2D _MainTex;
+			fixed4 _OccludeColor;
+			fixed _OccludeAmount;
+			fixed4 frag (v2f i) : SV_Target {
+			    fixed4 rawCol = tex2D(_MainTex, i.uv);
+				fixed4 col = lerp(rawCol, _OccludeColor, _OccludeAmount);
+				col.a = rawCol.a;
+				return col;
+			}
+        ENDCG
+        
+        }
 		CGPROGRAM
 		#pragma surface surf Standard fullforwardshadows alpha:fade
 		#pragma target 3.0
@@ -26,8 +70,6 @@
 		fixed4 _OverrideColor;
         fixed _OverrideAmount;
         
-		UNITY_INSTANCING_BUFFER_START(Props)
-		UNITY_INSTANCING_BUFFER_END(Props)
 
 		void surf (Input IN, inout SurfaceOutputStandard o) {
 			fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;

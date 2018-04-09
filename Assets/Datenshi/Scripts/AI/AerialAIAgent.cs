@@ -11,9 +11,8 @@ using UnityEditor;
 using UnityEngine;
 
 namespace Datenshi.Scripts.AI {
-    public class AerialPath {
-        
-    }
+    public class AerialPath { }
+
     public class AerialAIAgent : AIAgent {
         [ShowInInspector]
         private List<Vector2Int> path;
@@ -32,6 +31,7 @@ namespace Datenshi.Scripts.AI {
             if (Navmesh.IsOutOfBounds(entityPos) || Navmesh.IsOutOfBounds(Target)) {
                 return;
             }
+
             var origin = Navmesh.GetNodeAtWorld(entityPos);
             var target = Navmesh.GetNodeAtWorld(Target);
             var tempPath = AStar.CalculatePathAerial(origin, target, Navmesh, Entity);
@@ -44,6 +44,7 @@ namespace Datenshi.Scripts.AI {
             if (path == null) {
                 return;
             }
+
             for (var i = 1; i < path.Count; i++) {
                 var first = path[i];
                 var second = path[i - 1];
@@ -65,19 +66,22 @@ namespace Datenshi.Scripts.AI {
             if (path == null) {
                 return;
             }
+
             Vector2 dir;
             var entityPos = entity.transform.position;
             var currentNode = Navmesh.GetNodeAtWorld(entityPos).Position;
-            var targetNode = path.Last();
+            var lastIndex = path.Count - 1;
+            var targetNode = path[lastIndex];
+            Debug.Log(string.Format("Current node = {0} Target = {1}", currentNode, targetNode));
             if (path.Count < 2) {
                 // Is not between last 2 points
                 dir = targetNode - currentNode;
             } else {
                 if (currentNode == targetNode) {
-                    provider.Horizontal = 0;
-                    provider.Vertical = 0;
-                    return;
+                    path.RemoveAt(lastIndex);
+                    targetNode = path[path.Count - 1];
                 }
+
                 dir = targetNode - currentNode;
                 dir.Normalize();
             }

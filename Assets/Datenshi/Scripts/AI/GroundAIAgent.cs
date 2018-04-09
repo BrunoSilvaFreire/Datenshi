@@ -19,18 +19,28 @@ namespace Datenshi.Scripts.AI {
         private Link currentLink;
 
         public MovableEntity Entity;
-        public Navmesh Navmesh;
+
+        [ShowInInspector, ReadOnly]
+        private Navmesh navmesh;
 
         protected override bool CanReload() {
             return Entity.CollisionStatus.Down;
         }
 
+        private void Start() {
+            navmesh = FindObjectOfType<Navmesh>();
+        }
+
         [Button]
         protected override void ReloadPath() {
+            if (navmesh == null) {
+                return;
+            }
+
             path = AStar.CalculatePath(
-                Navmesh.GetNodeAtWorld(Entity.GroundPosition),
-                Navmesh.GetNodeAtWorld(Target),
-                Navmesh,
+                navmesh.GetNodeAtWorld(Entity.GroundPosition),
+                navmesh.GetNodeAtWorld(Target),
+                navmesh,
                 Entity);
             if (path != null) {
                 currentLink = path.Last();
@@ -46,7 +56,7 @@ namespace Datenshi.Scripts.AI {
 
             Gizmos.color = Color.magenta;
             foreach (var link in path) {
-                link.DrawGizmos(Navmesh, (uint) link.GetOrigin(), 10F, false);
+                link.DrawGizmos(navmesh, (uint) link.GetOrigin(), 10F, false);
             }
         }
 
@@ -56,7 +66,7 @@ namespace Datenshi.Scripts.AI {
                 return;
             }
 
-            if (Navmesh.GetNodeAtWorld(entity.GroundPosition) == Navmesh.GetNode(currentLink.GetDestination())) {
+            if (navmesh.GetNodeAtWorld(entity.GroundPosition) == navmesh.GetNode(currentLink.GetDestination())) {
                 if (path == null) {
                     currentLink = null;
                     return;
@@ -74,7 +84,7 @@ namespace Datenshi.Scripts.AI {
                 currentLink = path.Last();
             }
 
-            currentLink.Execute(entity, provider, Navmesh);
+            currentLink.Execute(entity, provider, navmesh);
         }
 
         public override Vector2 GetFavourablePosition(RangedAttackStrategy state, LivingEntity target) {
@@ -85,6 +95,7 @@ namespace Datenshi.Scripts.AI {
             } else {
                 pos = target.transform.position;
             }
+
             pos.x += state.MinDistance * Math.Sign(Entity.GroundPosition.x - pos.x);
             return pos;
         }

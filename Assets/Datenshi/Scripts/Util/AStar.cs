@@ -1,13 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
 using Datenshi.Scripts.AI.Pathfinding;
 using Datenshi.Scripts.AI.Pathfinding.Links;
 using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Game;
+using Datenshi.Scripts.Misc;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Util {
     public static class AStar {
+        public static void CalculatePathAsync(Node @from,
+            Node to,
+            Navmesh navMesh,
+            MovableEntity entity, Action<List<Node>> action) {
+            new Thread(() => { action(CalculatePathAerial(from, to, navMesh, entity)); }).Start();
+        }
+
+
         public static List<Link> CalculatePath(
             Node @from,
             Node to,
@@ -115,6 +126,10 @@ namespace Datenshi.Scripts.Util {
         }
 
         public static List<Node> CalculatePathAerial(Node from, Node to, Navmesh navMesh, MovableEntity entity) {
+            if (from.IsBlocked || to.IsBlocked) {
+                return null;
+            }
+
             // The set of nodes already evaluated.
             var closedSet = new List<Node>();
             // The set of currently discovered nodes that are not evaluated yet.
@@ -150,6 +165,7 @@ namespace Datenshi.Scripts.Util {
                     to
                 };
             }
+
             var boxSize = entity.Hitbox.bounds.size;
             while (!openSet.IsEmpty()) {
                 // the node in openSet having the lowest fScore[] value
@@ -157,6 +173,7 @@ namespace Datenshi.Scripts.Util {
                 if (current == to) {
                     return ReconstructAerial(cameFrom, current, navMesh, boxSize, worldMask);
                 }
+
                 var currentWorldPos = navMesh.WorldPosCenter(current);
                 openSet.Remove(current);
                 closedSet.Add(current);
@@ -166,14 +183,17 @@ namespace Datenshi.Scripts.Util {
                     if (navMesh.IsOutOfGridBounds(current.Position, direction)) {
                         continue;
                     }
+
                     if (Physics2D.BoxCast(currentWorldPos, boxSize, 0, direction, 1, worldMask)) {
                         continue;
                     }
+
                     var neightboor = navMesh.GetNeightboor(current, direction);
                     if (!closedSet.Contains(neightboor) && neightboor.IsEmpty) {
                         neightboors.Add(neightboor);
                     }
                 }
+
                 foreach (var neighboor in neightboors) {
                     var neightboorWorldPos = navMesh.WorldPosCenter(neighboor.Position);
                     var dir = neightboorWorldPos - currentWorldPos;
@@ -214,6 +234,7 @@ namespace Datenshi.Scripts.Util {
             if (!cameFrom.ContainsKey(current)) {
                 return null;
             }
+
             var totalPath = new List<Node> {
                 current
             };
@@ -223,13 +244,14 @@ namespace Datenshi.Scripts.Util {
                 var firstPos = navmesh.WorldPosCenter(lastNoHit);
                 var secondPos = navmesh.WorldPosCenter(source);
                 var dir = secondPos - firstPos;
-                Debug.DrawLine(firstPos, secondPos, Color.cyan);
                 if (Physics2D.BoxCast(firstPos, size, 0, dir, dir.magnitude, worldMask)) {
                     lastNoHit = current;
                     totalPath.Add(current);
                 }
+
                 current = source;
             }
+
             totalPath.Add(current);
             return totalPath;
         }
