@@ -118,6 +118,7 @@ namespace Datenshi.Scripts.Entities {
         }
 
 
+
         private void Start() {
             Motor.Initialize(this);
         }
@@ -167,6 +168,8 @@ namespace Datenshi.Scripts.Entities {
                 }
             }
         }
+
+        
     }
 
     public struct CollisionStatus {

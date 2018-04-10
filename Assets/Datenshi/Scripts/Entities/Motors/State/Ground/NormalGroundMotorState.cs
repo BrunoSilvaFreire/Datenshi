@@ -1,5 +1,6 @@
 ﻿using System;
 using Datenshi.Scripts.Game;
+using Datenshi.Scripts.Interaction;
 using Datenshi.Scripts.Misc;
 using Datenshi.Scripts.Util;
 using UnityEngine;
@@ -132,9 +133,15 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
                     }
                 }
 
-                if (provider.GetAttack()) {
-                    entity.AnimatorUpdater.TriggerAttack();
+                var updater = entity.AnimatorUpdater;
+
+                if (updater != null) {
+                    updater.SetDefend(provider.GetDefend());
+                    if (provider.GetAttack()) {
+                        updater.TriggerAttack();
+                    }
                 }
+
 
                 if (entity.CollisionStatus.Down) {
                     if (provider.GetSubmit()) {
@@ -146,7 +153,8 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
                     }
                 } else {
                     if (vel.y > 0 && !provider.GetJump()) {
-                        vel.y += GameResources.Instance.Gravity * Time.deltaTime * entity.GravityScale * config.JumpCutGravityModifier;
+                        vel.y += GameResources.Instance.Gravity * Time.deltaTime * entity.GravityScale *
+                                 config.JumpCutGravityModifier;
                     }
                 }
 

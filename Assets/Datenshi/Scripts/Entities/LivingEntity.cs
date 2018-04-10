@@ -80,6 +80,8 @@ namespace Datenshi.Scripts.Entities {
         [ShowIf("DamageGivesStun"), TitleGroup(CombatGroup), ReadOnly]
         private float totalStunTimeLeft;
 
+        public Bounds2D DefaultAttackHitbox;
+
         private void Update() {
             if (Stunned) {
                 totalStunTimeLeft -= Time.deltaTime;
@@ -233,8 +235,12 @@ namespace Datenshi.Scripts.Entities {
         public void Kill() {
             //TODO: Delegar efeitos de morte para um outro objeto
             health = 0;
-            OnKilled.Invoke();    
+            OnKilled.Invoke();
             Destroy(gameObject);
+        }
+
+        public void Heal(uint healthAmount) {
+            health += healthAmount;
         }
 
         public virtual void Damage(LivingEntity entity, uint damage) {

@@ -11,52 +11,29 @@ namespace Datenshi.Scripts.Entities {
         public Entity Entity;
         public Color DefaultOverrideColor = Color.red;
 
-        [ReadOnly, ShowInInspector]
-        private Material material;
+        private float overrideAmount;
 
-        [ShowInInspector]
-        private void Reload() {
-            material = null;
-            EnsureMaterialSet();
-        }
-
-        private void Start() {
-            Reload();
-        }
-
-        private void OnValidate() {
-            EnsureMaterialSet();
-        }
-
-        private void EnsureMaterialSet() {
-            if (material != null) {
-                return;
-            }
-
-            material = new Material(Shader.Find(ShaderName));
-            var c = Entity.Character;
-            var color = c != null ? c.SignatureColor : DefaultOverrideColor;
-            material.SetColor(OverrideColorKey, color);
-            foreach (var r in Renderers) {
-                r.material = material;
-            }
-        }
-
-        private void Awake() {
-            EnsureMaterialSet();
-        }
+        private MaterialPropertyBlock block;
 
         [ShowInInspector]
         public float ColorOverrideAmount {
             get {
-                EnsureMaterialSet();
-                return material.GetFloat(OverrideAmountKey);
+                return overrideAmount;
             }
             set {
-                EnsureMaterialSet();
-                material.SetFloat(OverrideAmountKey, value);
+                overrideAmount = value;
+                if (block == null) {
+                    block = new MaterialPropertyBlock();
+                }
+
+                foreach (var renderer in Renderers) {
+                    renderer.GetPropertyBlock(block);
+                    block.SetFloat(OverrideAmountKey, value);
+
+                    renderer.SetPropertyBlock(block);
+                    
+                }
             }
         }
-        public float 
     }
 }

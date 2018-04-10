@@ -72,7 +72,6 @@ namespace Datenshi.Scripts.AI {
             var currentNode = Navmesh.GetNodeAtWorld(entityPos).Position;
             var lastIndex = path.Count - 1;
             var targetNode = path[lastIndex];
-            Debug.Log(string.Format("Current node = {0} Target = {1}", currentNode, targetNode));
             if (path.Count < 2) {
                 // Is not between last 2 points
                 dir = targetNode - currentNode;

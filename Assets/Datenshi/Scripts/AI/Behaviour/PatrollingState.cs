@@ -30,7 +30,8 @@ namespace Datenshi.Scripts.AI.Behaviour {
                 distance = 0;
                 entity.SetVariable(Left, !left);
             } else {
-                distance += entity.Velocity.x;
+                distance += Mathf.Abs(entity.Velocity.x * Time.deltaTime);
+                entity.SetVariable(Distance, distance);
             }
 
             entity.SetVariable(Distance, distance);

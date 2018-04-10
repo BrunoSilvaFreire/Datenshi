@@ -1,6 +1,10 @@
 ﻿using System.Collections;
 using Datenshi.Scripts.Entities;
 using DG.Tweening;
+using Sirenix.OdinInspector;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,32 +16,82 @@ namespace Datenshi.Scripts.UI.Misc {
         public float FadeDuration = 3;
         public float SubHealthDelay = 1;
         public float SubHealthAnimationDuration = 1;
-        public LivingEntity Entity;
+        private LivingEntity entity;
+
+        [ShowInInspector]
+        public LivingEntity Entity {
+            get {
+                return entity;
+            }
+            set {
+                if (entity != null
+#if UNITY_EDITOR
+                    && EditorApplication.isPlaying
+#endif
+                ) {
+                    entity.OnDamaged.AddListener(OnDamaged);
+                }
+
+                entity = value;
+#if UNITY_EDITOR
+                if (!EditorApplication.isPlaying) {
+                    return;
+                }
+#endif
+                SetValue();
+                if (entity != null) {
+                    entity.OnDamaged.AddListener(OnDamaged);
+                }
+            }
+        }
+
+        private void SetValue() {
+            SetValue(entity == null ? 1 : entity.HealthPercentage);
+        }
+
+        private void SetValue(float f) {
+            if (currentRoutine != null) {
+                StopCoroutine(currentRoutine);
+            }
+
+            currentRoutine = StartCoroutine(DamageEffect(f));
+        }
 
         private void Start() {
-            Entity.OnDamaged.AddListener(OnDamaged);
+            if (entity != null) {
+                entity.OnDamaged.AddListener(OnDamaged);
+            }
+
             SnapHide();
         }
 
         private Coroutine currentRoutine;
 
         private void OnDamaged(LivingEntity arg0, uint arg1) {
-            if (currentRoutine != null) {
-                StopCoroutine(currentRoutine);
-            }
-
-            currentRoutine = StartCoroutine(DamageEffect());
+            SetValue();
         }
 
         private IEnumerator DamageEffect() {
+            return DamageEffect(Entity.HealthPercentage);
+        }
+
+        private IEnumerator DamageEffect(float amount) {
             SnapShow();
             SubHealthBar.DOComplete();
             CanvasGroup.DOComplete();
-            var percent = Entity.HealthPercentage;
-            HealthBar.fillAmount = percent;
-            yield return new WaitForSeconds(SubHealthDelay);
-            SubHealthBar.DOFillAmount(percent, SubHealthAnimationDuration);
-            yield return new WaitForSeconds(SubHealthAnimationDuration);
+            var currentFill = HealthBar.fillAmount;
+            if (amount < currentFill) {
+                HealthBar.fillAmount = amount;
+                yield return new WaitForSeconds(SubHealthDelay);
+                SubHealthBar.DOFillAmount(amount, SubHealthAnimationDuration);
+                yield return new WaitForSeconds(SubHealthAnimationDuration);
+            } else {
+                SubHealthBar.fillAmount = amount;
+                yield return new WaitForSeconds(SubHealthDelay);
+                HealthBar.DOFillAmount(amount, SubHealthAnimationDuration);
+                yield return new WaitForSeconds(SubHealthAnimationDuration);
+            }
+
             Hide();
             currentRoutine = null;
         }

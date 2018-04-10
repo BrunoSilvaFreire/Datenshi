@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Datenshi.Scripts.AI.Pathfinding;
 using Datenshi.Scripts.Game;
-using UnityEditor;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Util.Gravity {
@@ -100,25 +99,6 @@ namespace Datenshi.Scripts.Util.Gravity {
             }
 
             return distance;
-        }
-
-        public static void DrawDebug(Vector2[] path, Color initColor) {
-            var color = initColor;
-            var maxAlpha = color.a;
-            for (var i = 1; i < path.Length; i++) {
-                var point = path[i];
-                var previous = path[i - 1];
-
-                var newAlpha = maxAlpha * i / path.Length;
-                color.a = newAlpha;
-                Handles.color = color;
-                Handles.DrawLine(previous, point);
-/*                if (i % 8 != 0) {
-                    Debug.DrawLine(previous, point, color);
-                } else {
-                    GizmosUtil.ArrowDebug(previous, point - previous, color);
-                }*/
-            }
         }
 
         private static void NotifyOnCalculated(Vector2 a, Vector2 b, RaycastHit2D hit) {

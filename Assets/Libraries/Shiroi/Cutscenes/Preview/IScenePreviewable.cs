@@ -1,4 +1,6 @@
-﻿using UnityEditor;
+﻿#if UNITY_EDITOR
+
+using UnityEditor;
 using UnityEngine;
 
 namespace Shiroi.Cutscenes.Preview {
@@ -24,3 +26,4 @@ namespace Shiroi.Cutscenes.Preview {
         Vector3 ScaleHandle(Vector3 previousScale, Vector3 position, Quaternion rotation, string label, float size = 1);
     }
 }
+#endif

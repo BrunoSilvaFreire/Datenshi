@@ -5,6 +5,7 @@ using Datenshi.Scripts.Misc;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Datenshi.Scripts.Game {
     public class PlayerController : MonoBehaviour {
@@ -16,10 +17,11 @@ namespace Datenshi.Scripts.Game {
         [ShowInInspector]
         private Tracker<Entity> tracker;
 
-        public BlackAndWhiteFX Fx;
+        public BlackAndWhiteFX[] Fxs;
         public float LowCutoff = 440;
         public float DefendOverrideAmount = 1;
         public float DefendOverrideDuration = 0.5F;
+        public UnityEvent OnEntityChanged;
 
         [ShowInInspector]
         public Entity CurrentEntity {
@@ -57,7 +59,6 @@ namespace Datenshi.Scripts.Game {
 
             var currentDefending = p.GetDefend();
             if (currentDefending != defending) {
-                Debug.Log("Defending = " + currentDefending + " - " + defending);
                 defending = currentDefending;
                 if (defending) {
                     ShowDefend();
@@ -74,7 +75,7 @@ namespace Datenshi.Scripts.Game {
         }
 
         private void ShowDefend() {
-            SetFilter(440);
+            SetFilter(LowCutoff);
             SetColorOverride(DefendOverrideAmount);
             SetFX(1);
         }
@@ -90,8 +91,11 @@ namespace Datenshi.Scripts.Game {
         }
 
         private void SetFX(float x) {
-            Fx.DOKill();
-            DOTween.To(() => Fx.Amount, value => Fx.Amount = value, x, DefendOverrideDuration);
+            foreach (var fx in Fxs) {
+                var fx1 = fx;
+                fx1.DOKill();
+                DOTween.To(() => fx1.Amount, value => fx1.Amount = value, x, DefendOverrideDuration);
+            }
         }
 
         private void SetColorOverride(float i) {
@@ -99,6 +103,7 @@ namespace Datenshi.Scripts.Game {
                 if (obj == null) {
                     continue;
                 }
+
                 obj.DOKill();
                 var eRenderer = obj.Renderer;
                 if (eRenderer == null) {

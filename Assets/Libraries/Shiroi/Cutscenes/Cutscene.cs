@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
 using Shiroi.Cutscenes.Futures;
 using Shiroi.Cutscenes.Serialization;
 using Shiroi.Cutscenes.Tokens;
-using Shiroi.Cutscenes.Util;
-using UnityEditorInternal;
 using UnityEngine;
 using Object = UnityEngine.Object;
 

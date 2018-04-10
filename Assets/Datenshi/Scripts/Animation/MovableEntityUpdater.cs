@@ -21,8 +21,11 @@ namespace Datenshi.Scripts.Animation {
         public string InputVerticalKey = "InputVertical";
         public string InputHorizontalKey = "InputHorizontal";
         public string LastDamageKey = "LastDamage";
-        public string BecameGroundedKey = "BecameGroundedKey";
-        public string BecameAiredKey = "BecameAiredKey";
+        public string BecameGroundedKey = "BecameGrounded";
+        public string DefendKey = "Defend";
+        public string DeflectKey = "Deflect";
+        public string CounterKey = "Counter";
+        public string BecameAiredKey = "BecameAired";
         public string StunKey = "Stunned";
         public MovableEntity Entity;
         public SpriteRenderer Renderer;
@@ -71,6 +74,18 @@ namespace Datenshi.Scripts.Animation {
 
         public override void TriggerAttack() {
             Animator.AttemptSetTrigger(AttackKey);
+        }
+
+        public override void SetDefend(bool defend) {
+            Animator.AttemptSetBool(DefendKey, defend);
+        }
+
+        public override void TriggerDeflect() {
+            Animator.AttemptSetTrigger(DeflectKey);
+        }
+
+        public override void TriggerCounter() {
+            Animator.AttemptSetTrigger(CounterKey);
         }
     }
 }

@@ -1,8 +1,11 @@
 ﻿using System;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Random = UnityEngine.Random;
+
 #if UNITY_EDITOR
 #endif
 

@@ -189,7 +189,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1896484453590728}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 50.51, y: 16.84, z: 0.0088191815}
+  m_LocalPosition: {x: 57.65, y: 14.08, z: 0.558}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4654424630026524}
@@ -382,7 +382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10275570aeb5478989d015bf3362c9bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentState: {fileID: 0}
+  CurrentState: {fileID: 11400000, guid: a57fcb18cd616724d8b7e1c95d5b9ac2, type: 2}
   Entity: {fileID: 114281234270348236}
   Horizontal: 0
   Vertical: 0
@@ -456,9 +456,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Datenshi.Scripts.Entities.EntityAttackEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  DamageGivesStun: 0
-  DamageStunMin: 10
-  DamageStunDuration: 1
+  DamageGivesStun: 1
+  DamageStunMin: 0
+  DamageStunDuration: 0.25
   OnKilled:
     m_PersistentCalls:
       m_Calls: []
@@ -497,6 +497,9 @@ MonoBehaviour:
   KnockbackLiftoff: 0
   ExternalForces: {x: 0, y: 0}
   ExternalForcesDeacceleration: 0.25
+  DefaultAttackHitbox:
+    Center: {x: 0, y: 0}
+    Size: {x: 0, y: 0}
 --- !u!114 &114297920940230108
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -671,6 +674,7 @@ MonoBehaviour:
   InputHorizontalKey: InputHorizontal
   LastDamageKey: LastDamage
   BecameGroundedKey: BecameGrounded
+  DefendKey: Defend
   BecameAiredKey: BecameAerial
   StunKey: Stunned
   Entity: {fileID: 114281234270348236}
@@ -730,7 +734,7 @@ MonoBehaviour:
   Renderers:
   - {fileID: 212669247791164156}
   Entity: {fileID: 114281234270348236}
-  DefaultOverrideColor: {r: 1, g: 0, b: 0, a: 1}
+  DefaultOverrideColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &114932899101906818
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -763,7 +767,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 7ecaa590cace8ac41af787c467c16109, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

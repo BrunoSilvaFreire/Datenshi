@@ -22,6 +22,9 @@ namespace Datenshi.Scripts.Game {
             }
         }
 
+        public float DeflectSpeed = 20;
+        public float DeflectDamageMultiply = 3;
+
         public LayerMask InteractableMask;
     }
 }

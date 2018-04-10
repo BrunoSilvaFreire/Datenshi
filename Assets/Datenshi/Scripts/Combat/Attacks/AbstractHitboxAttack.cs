@@ -1,5 +1,6 @@
 ﻿using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Game;
+using Datenshi.Scripts.Interaction;
 using Datenshi.Scripts.Util;
 using UnityEditor;
 using UnityEngine;
@@ -19,6 +20,10 @@ namespace Datenshi.Scripts.Combat.Attacks {
             hb.Center += (Vector2) entity.transform.position;
             DebugUtil.DrawBox2DWire(hb.Center, hb.Size, HitboxColor);
             foreach (var hit in Physics2D.OverlapBoxAll(hb.Center, hb.Size, 0, GameResources.Instance.EntitiesMask)) {
+                var d = hit.GetComponentInParent<Defendable>();
+                if (d != null && d.CanPoorlyDefend(entity)) {
+                    d.PoorlyDefend(entity);
+                }
                 var e = hit.GetComponentInParent<LivingEntity>();
                 if (e == null || e == entity || e.Relationship == entity.Relationship) {
                     continue;

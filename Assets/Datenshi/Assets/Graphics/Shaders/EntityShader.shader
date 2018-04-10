@@ -1,9 +1,12 @@
 ﻿Shader "Datenshi/EntityShader" {
 	Properties {
-		[PerRendererData] _Color ("Color", Color) = (1,1,1,1)
+		_Color ("Color", Color) = (1,1,1,1)
 		_OverrideColor ("OverrideColor", Color) = (1,1,1,1)
 		_OccludeColor ("OccludeColor", Color) = (1,1,1,1)
 		_OccludeAmount ("OccludeAmount", Range(0, 1)) = 0
+		[Toggle]
+		_DrawOcclusion("Draw Occlusion", Float) = 1
+		[PerRendererData] 
 		_OverrideAmount ("OverrideAmount", Range(0, 1)) = 0
 		[PerRendererData] _MainTex ("Albedo (RGB)", 2D) = "white" {}
 		_NormalMap("Normal Map", 2D) = "white" {}
@@ -46,7 +49,11 @@
 			sampler2D _MainTex;
 			fixed4 _OccludeColor;
 			fixed _OccludeAmount;
+			fixed _DrawOcclusion;
 			fixed4 frag (v2f i) : SV_Target {
+			    if (_DrawOcclusion == 0) {
+			        return fixed4(0,0,0,0);
+			    }
 			    fixed4 rawCol = tex2D(_MainTex, i.uv);
 				fixed4 col = lerp(rawCol, _OccludeColor, _OccludeAmount);
 				col.a = rawCol.a;
@@ -76,11 +83,11 @@
 			
 			o.Alpha = c.a;
 			o.Albedo = lerp(c.rgb, _OverrideColor.rgb, _OverrideAmount); 
-			o.Normal = UnpackNormal(tex2D(_NormalMap, IN.uv_MainTex));
+			//o.Normal = UnpackNormal(tex2D(_NormalMap, IN.uv_MainTex));
+				o.Normal = fixed3(0,0,1);
 
 			// Hack for outline: Make black pixels always black
 			if (length(c.rgb)<0.001) {
-				o.Normal = fixed3(0,0,-1);
 				o.Albedo = fixed3(0,0,0);
 			}
 			

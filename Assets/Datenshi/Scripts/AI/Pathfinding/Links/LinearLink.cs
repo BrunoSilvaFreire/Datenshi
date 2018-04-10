@@ -2,7 +2,6 @@
 using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Entities.Input;
 using Sirenix.OdinInspector;
-using UnityEditor;
 using UnityEngine;
 
 namespace Datenshi.Scripts.AI.Pathfinding.Links {
@@ -38,8 +37,7 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links {
         public override void DrawGizmos(Navmesh navmesh, uint originNodeIndex, float precision, bool precisionChanged) {
             var origin = navmesh.GetWorldPosition(originNodeIndex);
             var dest = navmesh.GetWorldPosition(destination);
-            Handles.color = GizmosColor;
-            Handles.DrawLine(origin, dest);
+            Debug.DrawLine(origin, dest);
         }
 
         public override void Execute(MovableEntity entity, AIStateInputProvider provider, Navmesh navmesh) {

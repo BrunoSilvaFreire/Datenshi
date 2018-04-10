@@ -1,6 +1,4 @@
-﻿using Datenshi.Scripts.Entities;
-using Datenshi.Scripts.Interaction;
-using DG.Tweening;
+﻿using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;

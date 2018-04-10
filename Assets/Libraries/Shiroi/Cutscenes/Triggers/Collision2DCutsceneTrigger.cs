@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Shiroi.Cutscenes.Triggers {
     public class Collision2DCutsceneTrigger : CollisionCutsceneTrigger<Collider2D> {

@@ -61,24 +61,9 @@ GameObject:
   - component: {fileID: 61269217306511274}
   - component: {fileID: 114508554076039628}
   - component: {fileID: 114661486031546108}
+  - component: {fileID: 50677276716509710}
   m_Layer: 13
   m_Name: Hikari_Body
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1833655799009062
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4568967399229686}
-  - component: {fileID: 114664300870157918}
-  m_Layer: 13
-  m_Name: Hikari_Ghosting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -126,19 +111,6 @@ Transform:
   m_Father: {fileID: 4644533255977216}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4568967399229686
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1833655799009062}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4654424630026524}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4644533255977216
 Transform:
   m_ObjectHideFlags: 1
@@ -146,7 +118,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1896484453590728}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 51.06, y: 1.07, z: -0}
+  m_LocalPosition: {x: -135.956, y: 8.019, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4654424630026524}
@@ -164,8 +136,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4568967399229686}
+  m_Children: []
   m_Father: {fileID: 4644533255977216}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -188,6 +159,26 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!50 &50677276716509710
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1730045920672700}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 1
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!61 &61269217306511274
 BoxCollider2D:
@@ -226,7 +217,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.727376}
+  m_Offset: {x: 0, y: 1.25}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -237,7 +228,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 2.454752}
+  m_Size: {x: 2, y: 2.5}
   m_EdgeRadius: 0
 --- !u!82 &82719858962506280
 AudioSource:
@@ -358,7 +349,7 @@ MonoBehaviour:
   health: 100
   maxHealth: 100
   invulnerable: 0
-  DamageInvulnerability: 1
+  DamageInvulnerability: 0
   DamageInvulnerabilityDuration: 3
   Relationship: 0
   DefaultAttackStrategy: {fileID: 0}
@@ -373,13 +364,16 @@ MonoBehaviour:
     m_TypeName: Datenshi.Scripts.Entities.EntityAttackEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   DamageGivesStun: 1
-  DamageStunMin: 10
-  DamageStunDuration: 1
+  DamageStunMin: 1
+  DamageStunDuration: 0.1
   OnKilled:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  DefaultAttackHitbox:
+    Center: {x: 1.3296442, y: 0.9252987}
+    Size: {x: 2.1316128, y: 1.8887272}
   Motor: {fileID: 11400000, guid: cc5b22130f7e9c74da83c3d12dc02dac, type: 2}
   AccelerationCurve:
     serializedVersion: 2
@@ -408,8 +402,8 @@ MonoBehaviour:
   InteractionController: {fileID: 114290058960585102}
   ApplyVelocity: 1
   DamageGivesKnockback: 1
-  DamageKnockbackMin: 10
-  DamageKnockbackStrenght: 1
+  DamageKnockbackMin: 1
+  DamageKnockbackStrenght: 0.5
   KnockbackLiftoff: 0.1
   ExternalForces: {x: 0, y: 0}
   ExternalForcesDeacceleration: 0.1
@@ -510,24 +504,6 @@ MonoBehaviour:
   Container: {fileID: 0}
   minPitch: 0.9
   maxPitch: 1.1
---- !u!114 &114664300870157918
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1833655799009062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d76c7fa0c2b4b489beefdc95b59cf0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnRate: 0
-  trailLength: 1
-  sortingLayer: 0
-  desiredAlpha: 0.8
-  HasStarted: 0
-  effectDuration: 1
-  desiredColor: {r: 1, g: 1, b: 1, a: 0.5882353}
 --- !u!114 &114708593015091422
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -553,6 +529,9 @@ MonoBehaviour:
   InputHorizontalKey: InputHorizontal
   LastDamageKey: LastDamage
   BecameGroundedKey: BecameGrounded
+  DefendKey: Defend
+  DeflectKey: Deflect
+  CounterKey: Counter
   BecameAiredKey: BecameAerial
   StunKey: Stunned
   Entity: {fileID: 114281234270348236}
@@ -586,7 +565,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 4321bd8d4dab722488409eac2c62665a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

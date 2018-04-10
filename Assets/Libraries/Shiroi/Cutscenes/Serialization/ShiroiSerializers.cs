@@ -2,7 +2,6 @@
 using Shiroi.Cutscenes.Futures;
 using Shiroi.Cutscenes.Util;
 using Shiroi.Serialization;
-using UnityEditor;
 using Object = UnityEngine.Object;
 using SerializedObject = Shiroi.Serialization.SerializedObject;
 

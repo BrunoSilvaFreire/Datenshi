@@ -8,9 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: daa59a9e91d14f54a1d29f259ad60d90, type: 3}
-  m_Name: AerialRangedAttack
+  m_Script: {fileID: 11500000, guid: 9fafc12c387548b5b328a3e57dc8d957, type: 3}
+  m_Name: RangedCombatStrategy
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 114042919928230816, guid: 6bfafbdd80c89b4438f86e3d82154342, type: 2}
-  TimeDelay: 0.2
-  Offset: {x: 0, y: 0}
+  MinDistance: 5
+  Threshold: 2

@@ -83,7 +83,6 @@ namespace Datenshi.Scripts.Util {
             }
 
             //Failure
-            Debug.LogWarning("Couldn't find a path from " + from + " to " + to);
             return null;
         }
 

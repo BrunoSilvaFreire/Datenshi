@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: FriendlyMaterial
+  m_Name: BoxMaterial
   m_Shader: {fileID: 4800000, guid: 4a866e3565274c4297a398f32c059958, type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
@@ -62,14 +62,16 @@ Material:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
+    - _DrawOcclusion: 0
     - _DstBlend: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
+    - _OccludeAmount: 0.9
     - _OcclusionStrength: 1
-    - _OverrideAmount: 0.5
+    - _OverrideAmount: 0
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -79,4 +81,5 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _OverrideColor: {r: 0, g: 1, b: 0, a: 1}
+    - _OccludeColor: {r: 0.87843144, g: 0.33333334, b: 0.32941177, a: 1}
+    - _OverrideColor: {r: 0.8784314, g: 0.33333334, b: 0.32941177, a: 1}
