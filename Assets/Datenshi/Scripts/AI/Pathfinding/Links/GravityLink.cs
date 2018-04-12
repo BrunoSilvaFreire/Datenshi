@@ -3,7 +3,9 @@ using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Entities.Input;
 using Datenshi.Scripts.Util.Gravity;
 using Sirenix.OdinInspector;
-using UnityEditor;
+#if UNITY_EDITOR
+    using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace Datenshi.Scripts.AI.Pathfinding.Links {
@@ -89,6 +91,7 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links {
                 Handles.DrawLine(previous, point);
             }
         }
+#endif
 
         public override void Execute(MovableEntity entity, AIStateInputProvider provider, Navmesh navmesh) {
             var pos = entity.GroundPosition;
@@ -107,6 +110,5 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links {
         public override bool CanMakeIt(MovableEntity entity) {
             return entity.MaxSpeed > requiredForce.x && entity.YForce > requiredForce.y;
         }
-#endif
     }
 }

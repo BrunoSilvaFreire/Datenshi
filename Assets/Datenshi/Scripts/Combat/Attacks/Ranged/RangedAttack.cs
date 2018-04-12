@@ -12,7 +12,9 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
         public Projectile Prefab;
         public float TimeDelay;
         public Vector2 Offset;
-
+        public bool Aim = true;
+        [HideIf("Aim")]
+        public bool RawDir = true;
 #if UNITY_EDITOR
         [ShowInInspector]
         public GameObject CopyOffset {
@@ -45,7 +47,12 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
             offset.x *= entity.CurrentDirection.X;
             var startPos = entity.transform.position + offset;
             var target = entity.GetVariable(AttackingState.EntityTarget);
-            Prefab.Clone(startPos).Shoot(entity, target);
+            var proj = Prefab.Clone(startPos);
+            if (Aim) {
+                proj.Shoot(entity, target);
+            } else {
+                proj.Shoot(entity, RawDir ? entity.CurrentDirection : entity.InputProvider.GetInputVector());
+            }
             entity.SetVariable(LastFire, time);
         }
     }

@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using JetBrains.Annotations;
 using Shiroi.Cutscenes.Futures;
-using Shiroi.Cutscenes.Preview;
 #if UNITY_EDITOR
+using Shiroi.Cutscenes.Preview;
 using UnityEditor;
 #endif
 using UnityEngine;

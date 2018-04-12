@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 10
   Damage: 5
+  MaxAngle: 50
 --- !u!212 &212735261168588498
 SpriteRenderer:
   m_ObjectHideFlags: 1

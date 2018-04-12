@@ -27,6 +27,7 @@ MonoBehaviour:
   HackLineRendererPrefab: {fileID: 120488013179541072, guid: 60e63c61042c5e14aa06fa9d2707b8cb,
     type: 2}
   DeflectSpeed: 50
+  DeflectDamageMultiply: 3
   InteractableMask:
     serializedVersion: 2
     m_Bits: 1024

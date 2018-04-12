@@ -100,11 +100,13 @@ namespace Datenshi.Scripts.Util.Gravity {
 
             return distance;
         }
+#if UNITY_EDITOR
 
         private static void NotifyOnCalculated(Vector2 a, Vector2 b, RaycastHit2D hit) {
             var handler = OnCalculated;
             if (handler != null)
                 handler(a, b, hit);
         }
+#endif
     }
 }

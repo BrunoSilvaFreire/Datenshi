@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Util;
-using Shiroi.Serialization;
-using Sirenix.OdinInspector;
-using UnityEditor.Animations;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Animation {

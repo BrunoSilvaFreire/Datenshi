@@ -1,7 +1,9 @@
 ﻿using Datenshi.Scripts.AI.Behaviour;
 using Datenshi.Scripts.Entities;
 using Sirenix.OdinInspector;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace Datenshi.Scripts.Misc {

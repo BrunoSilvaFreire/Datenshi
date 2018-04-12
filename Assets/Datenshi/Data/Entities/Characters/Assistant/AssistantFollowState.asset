@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e281f85fe30e4c3c8ecceeb985c8feab, type: 3}
   m_Name: AssistantFollowState
   m_EditorClassIdentifier: 
-  Offset: {x: 0, y: 3}
+  Offset: {x: 2, y: 3}

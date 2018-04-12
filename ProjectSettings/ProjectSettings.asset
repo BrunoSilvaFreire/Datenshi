@@ -570,7 +570,7 @@ PlayerSettings:
   additionalIl2CppArgs: 
   scriptingRuntimeVersion: 0
   apiCompatibilityLevelPerPlatform:
-    Standalone: 3
+    Standalone: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   metroPackageName: Datenshi
@@ -649,7 +649,7 @@ PlayerSettings:
   cloudServicesEnabled:
     UNet: 1
   facebookSdkVersion: 7.9.4
-  apiCompatibilityLevel: 3
+  apiCompatibilityLevel: 2
   cloudProjectId: b6b4d9d2-dd28-4808-a8c4-add1808eb7c6
   projectName: Datenshi (4)
   organizationId: ddevil

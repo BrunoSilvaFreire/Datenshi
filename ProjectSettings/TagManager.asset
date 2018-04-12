@@ -20,7 +20,7 @@ TagManager:
   - EntitiesEnemy
   - EntitiesFriendly
   - Foreground
-  - 
+  - WorldUI
   - 
   - 
   - 
@@ -52,4 +52,7 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 2559115125
+    locked: 0
+  - name: UI
+    uniqueID: 2717159831
     locked: 0

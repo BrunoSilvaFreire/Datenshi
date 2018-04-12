@@ -1,12 +1,13 @@
 ﻿using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Game;
 using Datenshi.Scripts.Interaction;
+using Datenshi.Scripts.Misc;
 using Datenshi.Scripts.Util;
-using UnityEditor;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Combat.Attacks {
     public abstract class AbstractHitboxAttack : Attack {
+        public static readonly Variable<bool> Blocked = new Variable<bool>("entity.combat.cqb.blocked", true);
         private static readonly Color HitboxColor = Color.green;
         public Bounds2D Hitbox;
 
@@ -19,10 +20,22 @@ namespace Datenshi.Scripts.Combat.Attacks {
 
             hb.Center += (Vector2) entity.transform.position;
             DebugUtil.DrawBox2DWire(hb.Center, hb.Size, HitboxColor);
+            var window = entity.GetComponentInChildren<HitboxAttackCounterWindow>();
+            if (window != null) {
+                window.Available = true;
+            }
             foreach (var hit in Physics2D.OverlapBoxAll(hb.Center, hb.Size, 0, GameResources.Instance.EntitiesMask)) {
                 var d = hit.GetComponentInParent<Defendable>();
                 if (d != null && d.CanPoorlyDefend(entity)) {
+                    var w = d as HitboxAttackCounterWindow;
+                    if (w) {
+                        w.AttackDamage = damage;
+                    }
                     d.PoorlyDefend(entity);
+                }
+                if (entity.GetVariable(Blocked)) {
+                    entity.SetVariable(Blocked, false);
+                    return;
                 }
                 var e = hit.GetComponentInParent<LivingEntity>();
                 if (e == null || e == entity || e.Relationship == entity.Relationship) {
@@ -30,6 +43,9 @@ namespace Datenshi.Scripts.Combat.Attacks {
                 }
 
                 e.Damage(entity, damage);
+            }
+            if (window != null) {
+                window.Available = false;
             }
         }
     }

@@ -1,16 +1,15 @@
 using UnityEngine;
-using System;
 using Datenshi.Scripts.Entities.Motors;
 using Datenshi.Scripts.Util;
 
 namespace Datenshi.Scripts.Entities {
     public class EntityProxy : MonoBehaviour {
         public Entity Target;
-
+#if UNITY_EDITOR
         public void SnapToFloor() {
             Target.SnapToFloor();
         }
-
+#endif
         public void SetHitbox(Collider2D value) {
             Target.Hitbox = value;
         }
@@ -31,9 +30,11 @@ namespace Datenshi.Scripts.Entities {
             Target.useGUILayout = value;
         }
 
+#if UNITY_EDITOR
         public void SetRunInEditMode(bool value) {
             Target.runInEditMode = value;
         }
+#endif
 
         public void SetEnabled(bool value) {
             Target.enabled = value;

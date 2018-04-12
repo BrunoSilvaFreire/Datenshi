@@ -1,4 +1,5 @@
-﻿using Datenshi.Assets.Graphics.Shaders;
+﻿using System;
+using Datenshi.Assets.Graphics.Shaders;
 using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Entities.Input;
 using Datenshi.Scripts.Misc;
@@ -8,6 +9,9 @@ using UnityEngine;
 using UnityEngine.Events;
 
 namespace Datenshi.Scripts.Game {
+    [Serializable]
+    public class PlayerEntityChangedEvent : UnityEvent<Entity, Entity> { }
+
     public class PlayerController : MonoBehaviour {
         public PlayerInputProvider Player;
 
@@ -21,7 +25,7 @@ namespace Datenshi.Scripts.Game {
         public float LowCutoff = 440;
         public float DefendOverrideAmount = 1;
         public float DefendOverrideDuration = 0.5F;
-        public UnityEvent OnEntityChanged;
+        public PlayerEntityChangedEvent OnEntityChanged;
 
         [ShowInInspector]
         public Entity CurrentEntity {
@@ -32,7 +36,7 @@ namespace Datenshi.Scripts.Game {
                 if (currentEntity != null) {
                     currentEntity.RevokeOwnership();
                 }
-
+                OnEntityChanged.Invoke(currentEntity, value);
                 currentEntity = value;
                 currentEntity.RequestOwnership(Player);
             }
@@ -45,6 +49,7 @@ namespace Datenshi.Scripts.Game {
 
             currentEntity.RevokeOwnership();
             currentEntity.RequestOwnership(Player);
+            OnEntityChanged.Invoke(null, currentEntity);
             tracker = new Tracker<Entity>(Entity.EntityEnabledEvent, Entity.EntityDisabledEvent);
         }
 
@@ -57,7 +62,8 @@ namespace Datenshi.Scripts.Game {
                 return;
             }
 
-            var currentDefending = p.GetDefend();
+            var l = currentEntity as LivingEntity;
+            var currentDefending = l != null && l.Defending;
             if (currentDefending != defending) {
                 defending = currentDefending;
                 if (defending) {

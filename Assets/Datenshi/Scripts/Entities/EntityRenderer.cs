@@ -1,5 +1,4 @@
 ﻿using Sirenix.OdinInspector;
-using UnityEditor;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Entities {

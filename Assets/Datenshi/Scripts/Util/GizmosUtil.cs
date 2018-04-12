@@ -1,9 +1,14 @@
 ﻿using Datenshi.Scripts.Entities;
+#if UNITY_EDITOR
 using UnityEditor;
+    
+#endif
 using UnityEngine;
 
 namespace Datenshi.Scripts.Util {
     public static class HandlesUtil {
+#if UNITY_EDITOR
+        
         public static void DrawBox2DWire(Vector2 center, Vector2 size) {
             var halfWidth = size.x / 2;
             var halfHeight = size.y / 2;
@@ -104,6 +109,7 @@ namespace Datenshi.Scripts.Util {
             };
             Handles.DrawSolidRectangleWithOutline(verts, hitboxColor, hitboxColor);
         }
+#endif
     }
 
     public static class DebugUtil {

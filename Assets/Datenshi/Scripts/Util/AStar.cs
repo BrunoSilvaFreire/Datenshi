@@ -11,10 +11,12 @@ using UnityEngine;
 
 namespace Datenshi.Scripts.Util {
     public static class AStar {
-        public static void CalculatePathAsync(Node @from,
+        public static void CalculatePathAsync(
+            Node @from,
             Node to,
             Navmesh navMesh,
-            MovableEntity entity, Action<List<Node>> action) {
+            MovableEntity entity,
+            Action<List<Node>> action) {
             new Thread(() => { action(CalculatePathAerial(from, to, navMesh, entity)); }).Start();
         }
 

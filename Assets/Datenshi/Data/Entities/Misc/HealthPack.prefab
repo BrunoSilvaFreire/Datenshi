@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: 1
-  HealthAmount: 6
+  HealthAmount: 20
 --- !u!212 &212744682910750084
 SpriteRenderer:
   m_ObjectHideFlags: 1

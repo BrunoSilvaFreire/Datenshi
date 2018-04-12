@@ -16,8 +16,12 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
         public uint Damage;
 
         public void Shoot(LivingEntity shooter, LivingEntity target) {
+            Shoot(shooter, target.Hitbox.bounds.center - transform.position);
+        }
+
+        public void Shoot(LivingEntity shooter, Vector2 direction) {
             owner = shooter;
-            velocity = target.transform.position - transform.position;
+            velocity = direction;
             velocity.Normalize();
             velocity *= Speed;
         }

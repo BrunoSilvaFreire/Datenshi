@@ -9,7 +9,11 @@ namespace Datenshi.Scripts.Combat.Strategies {
         public float MinDistance = 5F;
         public float Threshold = 1F;
 
-        public override void Execute(AIStateInputProvider provider, MovableEntity entity, LivingEntity target) {
+        public override void Execute(AIStateInputProvider provider, LivingEntity e, LivingEntity target) {
+            var entity = e as MovableEntity;
+            if (entity == null) {
+                return;
+            }
             Vector2 targetEntityPos;
             var movableEntity = target as MovableEntity;
             if (movableEntity != null) {

@@ -2,14 +2,12 @@
 using System.Collections;
 using Datenshi.Scripts.Combat.Attacks;
 using Datenshi.Scripts.Combat.Strategies;
-using Datenshi.Scripts.Misc;
 using Sirenix.OdinInspector;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
 #if UNITY_EDITOR
-
+using UnityEditor;
 #endif
 
 namespace Datenshi.Scripts.Entities {
@@ -43,7 +41,7 @@ namespace Datenshi.Scripts.Entities {
         private bool invulnerable;
 
         [TitleGroup(HealthGroup, "Informações sobre a vida desta LivingEntity")]
-        public bool DamageInvulnerability = true;
+        public bool DamageInvulnerability;
 
         [ShowIf("DamageInvulnerability")]
         public float DamageInvulnerabilityDuration = 3;
@@ -59,6 +57,9 @@ namespace Datenshi.Scripts.Entities {
 
         [TitleGroup(CombatGroup)]
         public EntityAttackEvent OnAttack;
+
+        [TitleGroup(CombatGroup)]
+        public UnityEvent OnHealthChanged;
 
         [TitleGroup(CombatGroup)]
         public bool DamageGivesStun;
@@ -81,6 +82,36 @@ namespace Datenshi.Scripts.Entities {
         private float totalStunTimeLeft;
 
         public Bounds2D DefaultAttackHitbox;
+        public float FocusMaxTime = 2;
+        private bool defending;
+        public float MinDefenseRequired = 0.1F;
+        public float DefenseRecoverAmountMultiplier = 1;
+        public float DefenseDepleteAmountMultiplier = 2;
+
+        public float FocusTimeLeft {
+            get;
+            set;
+        }
+        public bool Defending {
+            get {
+                return defending;
+            }
+            set {
+                if (Defending == value) {
+                    return;
+                }
+                if (value && !CanDefend) {
+                    return;
+                }
+                defending = value;
+            }
+        }
+
+        public bool CanDefend {
+            get {
+                return FocusTimeLeft > MinDefenseRequired;
+            }
+        }
 
         private void Update() {
             if (Stunned) {
@@ -88,6 +119,28 @@ namespace Datenshi.Scripts.Entities {
                 if (totalStunTimeLeft < 0) {
                     Stunned = false;
                 }
+            }
+            if (Defending) {
+                if (FocusTimeLeft <= 0) {
+                    Defending = false;
+                } else {
+                    FocusTimeLeft -= Time.deltaTime * DefenseDepleteAmountMultiplier;
+                }
+            } else {
+                var recoverAmount = Time.deltaTime * DefenseRecoverAmountMultiplier;
+                if (FocusTimeLeft + recoverAmount > FocusMaxTime) {
+                    FocusTimeLeft = FocusMaxTime;
+                } else {
+                    FocusTimeLeft += recoverAmount;
+                }
+            }
+            var updater = AnimatorUpdater;
+            if (updater == null) {
+                return;
+            }
+            updater.SetDefend(Defending);
+            if (InputProvider.GetAttack()) {
+                updater.TriggerAttack();
             }
         }
 
@@ -127,6 +180,7 @@ namespace Datenshi.Scripts.Entities {
 
 
                 health = value > maxHealth ? maxHealth : value;
+                OnHealthChanged.Invoke();
             }
         }
 
@@ -214,10 +268,11 @@ namespace Datenshi.Scripts.Entities {
             Invulnerable = false;
         }
 
-        public bool IsEnemy {
-            get {
-                return Relationship == EntityRelationship.Enemy;
+        public bool IsEnemy(LivingEntity entity) {
+            if (Relationship == EntityRelationship.Neutral || entity.Relationship == EntityRelationship.Neutral) {
+                return false;
             }
+            return Relationship != entity.Relationship;
         }
 
         public bool IsNeutral {
@@ -232,6 +287,12 @@ namespace Datenshi.Scripts.Entities {
             }
         }
 
+        public float FocusTimePercent {
+            get {
+                return FocusTimeLeft / FocusMaxTime;
+            }
+        }
+
         public void Kill() {
             //TODO: Delegar efeitos de morte para um outro objeto
             health = 0;
@@ -240,7 +301,7 @@ namespace Datenshi.Scripts.Entities {
         }
 
         public void Heal(uint healthAmount) {
-            health += healthAmount;
+            Health += healthAmount;
         }
 
         public virtual void Damage(LivingEntity entity, uint damage) {

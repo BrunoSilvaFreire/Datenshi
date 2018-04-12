@@ -1,83 +1,37 @@
 ﻿using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Game;
-using Datenshi.Scripts.UI.Misc;
-using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Datenshi.Scripts.UI {
-    public class UIPlayerView : MonoBehaviour {
-        [SerializeField, HideInInspector]
-        private byte defaultColor;
-
-        [SerializeField, HideInInspector]
-        private byte currentLevel;
-
-        [SerializeField, HideInInspector]
-        private uint currentXP;
-
-        [SerializeField, HideInInspector]
-        private byte saturation;
-
+    public class UIPlayerView : UIDefaultColoredElement {
         public Text CharacterNameLabel;
-        public bool Showing = true;
         public PlayerController Player;
-        public UIHealthElement HealthBar;
 
         private void Awake() {
             Player.OnEntityChanged.AddListener(OnChanged);
-            OnChanged();
         }
 
-        private void OnChanged() {
-            HealthBar.Entity = Player.CurrentEntity as LivingEntity;
+        private void OnChanged(Entity arg0, Entity entity) {
             UpdateColors();
         }
 
-        [ShowInInspector]
-        public byte DefaultColor {
-            get {
-                return defaultColor;
-            }
-            set {
-                defaultColor = value;
-                var currentEntity = Player.CurrentEntity;
-                if (!currentEntity.Character) {
-                    UpdateColors();
-                }
-            }
+
+        protected override bool HasColorAvailable() {
+            var e = Player.CurrentEntity;
+            var character = e != null ? e.Character : null;
+            return character != null;
         }
 
-        [ShowInInspector]
-        public byte Saturation {
-            get {
-                return saturation;
-            }
-            set {
-                saturation = value;
-                UpdateColors();
-            }
+        protected override Color GetAvailableColor() {
+            return Player.CurrentEntity.Character.SignatureColor;
         }
 
-        private void UpdateColors() {
-            float hue;
-            var currentEntity = Player.CurrentEntity;
-            var character = currentEntity.Character;
-            if (character) {
-                float s, v;
-                Color.RGBToHSV(character.SignatureColor, out hue, out s, out v);
-            } else {
-                hue = (float) defaultColor / byte.MaxValue;
-            }
-
-            UpdateColors(hue, character);
-        }
-
-        private void UpdateColors(float hue, Character.Character character) {
-            CharacterNameLabel.text = character ? character.Alias : "No character selected :c";
-            var color = Color.HSVToRGB(hue, (float) saturation / byte.MaxValue, 1, true);
+        protected override void UpdateColors(Color color) {
+            var e = Player.CurrentEntity;
+            var character = e != null ? e.Character : null;
+            CharacterNameLabel.text = character != null ? character.Alias : "No character selected :c";
             CharacterNameLabel.color = color;
-            HealthBar.HealthBar.color = color;
         }
     }
 }

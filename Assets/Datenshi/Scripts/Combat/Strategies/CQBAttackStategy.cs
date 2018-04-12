@@ -7,12 +7,16 @@ namespace Datenshi.Scripts.Combat.Strategies {
     [CreateAssetMenu(menuName = "Datenshi/AI/Combat/Strategy/CQBAttackStrategy")]
     public class CQBAttackStategy : AttackStrategy {
         public static readonly Variable<float> LastAttack =
-            new Variable<float>("entity.ai.combat.strategy.cqb.lastAttack", 0);
+            new Variable<float>("entity.ai.combat.strategy.lastAttack", 0);
 
         public float MinDistance = 1F;
         public float MinDelayBetweenAttacks = 1F;
 
-        public override void Execute(AIStateInputProvider provider, MovableEntity entity, LivingEntity target) {
+        public override void Execute(AIStateInputProvider provider, LivingEntity e, LivingEntity target) {
+            var entity = e as MovableEntity;
+            if (entity == null) {
+                return;
+            }
             Vector2 targetPos;
             var movableEntity = target as MovableEntity;
             if (movableEntity != null) {
@@ -21,7 +25,7 @@ namespace Datenshi.Scripts.Combat.Strategies {
                 targetPos = target.transform.position;
             }
 
-            if (Vector2.Distance(entity.GroundPosition, targetPos) > MinDistance) {
+            if (Vector2.Distance(entity.transform.position, targetPos) > MinDistance) {
                 provider.Attack = false;
                 var agent = entity.AIAgent;
                 agent.Target = targetPos;

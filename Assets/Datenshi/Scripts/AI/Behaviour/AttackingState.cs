@@ -10,7 +10,11 @@ namespace Datenshi.Scripts.AI.Behaviour {
         public BehaviourState OnTargetLost;
         public BehaviourState OnEntityKilled;
 
-        public override void Execute(AIStateInputProvider provider, MovableEntity entity) {
+        public override void Execute(AIStateInputProvider provider, Entity e) {
+            var entity = e as LivingEntity;
+            if (entity == null) {
+                return;
+            }
             var target = entity.GetVariable(EntityTarget);
             if (target == null && OnTargetLost != null) {
                 provider.CurrentState = OnTargetLost;

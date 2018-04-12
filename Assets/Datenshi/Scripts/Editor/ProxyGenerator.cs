@@ -64,7 +64,7 @@ namespace Datenshi.Scripts.Editor {
         }
 
         private static string CreateSetter(MemberInfo field, Type fieldFieldType) {
-            return string.Format("public void Set{0}({1} value) {{\n    Target.{2} = value;\n}}\n\n",
+            return string.Format("public void Set{0}({1} value) {{\n    \nif (Target == null) {{\n        return;\n        }   Target.{2} = value;\n}}\n\n",
                 Capitalize(field.Name), fieldFieldType.Name, field.Name);
         }
 

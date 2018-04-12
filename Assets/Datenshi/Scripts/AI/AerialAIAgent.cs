@@ -7,36 +7,49 @@ using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Entities.Input;
 using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace Datenshi.Scripts.AI {
-    public class AerialPath { }
-
     public class AerialAIAgent : AIAgent {
         [ShowInInspector]
         private List<Vector2Int> path;
 
         public MovableEntity Entity;
         public float MinimumHeightAdvantage = 3;
-        public Navmesh Navmesh;
+
+        [ShowInInspector, ReadOnly]
+        private Navmesh navmesh;
+
+        private void Start() {
+            navmesh = FindObjectOfType<Navmesh>();
+        }
 
         protected override bool CanReload() {
             return true;
         }
 
+        private void OnValidate() {
+            if (navmesh == null) {
+                navmesh = FindObjectOfType<Navmesh>();
+            }
+        }
+
         [Button]
         protected override void ReloadPath() {
             var entityPos = Entity.transform.position;
-            if (Navmesh.IsOutOfBounds(entityPos) || Navmesh.IsOutOfBounds(Target)) {
+            if (navmesh.IsOutOfBounds(entityPos) || navmesh.IsOutOfBounds(Target)) {
                 return;
             }
 
-            var origin = Navmesh.GetNodeAtWorld(entityPos);
-            var target = Navmesh.GetNodeAtWorld(Target);
-            var tempPath = AStar.CalculatePathAerial(origin, target, Navmesh, Entity);
+            var origin = navmesh.GetNodeAtWorld(entityPos);
+            var target = navmesh.GetNodeAtWorld(Target);
+            var tempPath = AStar.CalculatePathAerial(origin, target, navmesh, Entity);
             path = tempPath == null ? null : (from node in tempPath select node.Position).ToList();
         }
+#if UNITY_EDITOR
 
         private void OnDrawGizmos() {
             Gizmos.color = Color.yellow;
@@ -53,14 +66,15 @@ namespace Datenshi.Scripts.AI {
         }
 
         private void Draw(Vector2Int first, Vector2Int second, int i) {
-            var firstPos = Navmesh.Grid.GetCellCenterWorld(first.ToVector3());
-            var secondPos = Navmesh.Grid.GetCellCenterWorld(second.ToVector3());
+            var firstPos = navmesh.Grid.GetCellCenterWorld(first.ToVector3());
+            var secondPos = navmesh.Grid.GetCellCenterWorld(second.ToVector3());
             Handles.Label(
                 firstPos,
                 string.Format("{0} {1}\n->\n{2} {3}", i, first, (i - 1), second));
 
             Gizmos.DrawLine(firstPos, secondPos);
         }
+#endif
 
         public override void Execute(MovableEntity entity, AIStateInputProvider provider) {
             if (path == null) {
@@ -69,7 +83,7 @@ namespace Datenshi.Scripts.AI {
 
             Vector2 dir;
             var entityPos = entity.transform.position;
-            var currentNode = Navmesh.GetNodeAtWorld(entityPos).Position;
+            var currentNode = navmesh.GetNodeAtWorld(entityPos).Position;
             var lastIndex = path.Count - 1;
             var targetNode = path[lastIndex];
             if (path.Count < 2) {

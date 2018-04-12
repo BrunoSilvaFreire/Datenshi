@@ -106,8 +106,8 @@ GameObject:
   - component: {fileID: 223458795694408990}
   - component: {fileID: 114477171769105754}
   - component: {fileID: 114486273846827306}
-  - component: {fileID: 114305987433061042}
   - component: {fileID: 225873204065704502}
+  - component: {fileID: 114173248802826670}
   m_Layer: 12
   m_Name: Enemy_UI
   m_TagString: Untagged
@@ -146,7 +146,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4644533255977216}
   - component: {fileID: 114281234270348236}
-  - component: {fileID: 95723629881488704}
   - component: {fileID: 114743229920002802}
   - component: {fileID: 114100418287594798}
   m_Layer: 12
@@ -189,7 +188,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1896484453590728}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 57.65, y: 14.08, z: 0.558}
+  m_LocalPosition: {x: -87.4, y: 7.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4654424630026524}
@@ -354,23 +353,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &95723629881488704
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1896484453590728}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e0969d4992532924a81d562f2eb355ad, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114100418287594798
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -419,6 +401,30 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114173248802826670
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1723325761164858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 594d88b9ffec4455a198a7e96e0b0c83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultColor: 0
+  currentLevel: 0
+  currentXP: 0
+  saturation: 150
+  CanvasGroup: {fileID: 225873204065704502}
+  CanvasGroupShowAmount: 1
+  CanvasGroupHideAmount: 0
+  CanvasGroupFadeDuration: 1
+  HealthBar: {fileID: 114864337436595098}
+  SubHealthBar: {fileID: 114435865946197590}
+  SubHealthDelay: 1
+  SubHealthAnimationDuration: 1
+  Entity: {fileID: 114281234270348236}
 --- !u!114 &114281234270348236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -456,6 +462,11 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Datenshi.Scripts.Entities.EntityAttackEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   DamageGivesStun: 1
   DamageStunMin: 0
   DamageStunDuration: 0.25
@@ -464,6 +475,13 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  DefaultAttackHitbox:
+    Center: {x: 0, y: 0}
+    Size: {x: 0, y: 0}
+  FocusMaxTime: 2
+  MinDefenseRequired: 0.1
+  DefenseRecoverAmountMultiplier: 1
+  DefenseDepleteAmountMultiplier: 2
   Motor: {fileID: 11400000, guid: cc5b22130f7e9c74da83c3d12dc02dac, type: 2}
   AccelerationCurve:
     serializedVersion: 2
@@ -497,9 +515,6 @@ MonoBehaviour:
   KnockbackLiftoff: 0
   ExternalForces: {x: 0, y: 0}
   ExternalForcesDeacceleration: 0.25
-  DefaultAttackHitbox:
-    Center: {x: 0, y: 0}
-    Size: {x: 0, y: 0}
 --- !u!114 &114297920940230108
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -555,24 +570,6 @@ MonoBehaviour:
   WallClimbGravityScale: 3
   WallClimbCounterForce: 5
   JumpCutGravityModifier: 1
---- !u!114 &114305987433061042
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1723325761164858}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: beac2dcf21134395acf146f95f609cb9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HealthBar: {fileID: 114864337436595098}
-  SubHealthBar: {fileID: 114435865946197590}
-  CanvasGroup: {fileID: 225873204065704502}
-  FadeDuration: 3
-  SubHealthDelay: 1
-  SubHealthAnimationDuration: 1
-  Entity: {fileID: 114281234270348236}
 --- !u!114 &114435865946197590
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -675,6 +672,8 @@ MonoBehaviour:
   LastDamageKey: LastDamage
   BecameGroundedKey: BecameGrounded
   DefendKey: Defend
+  DeflectKey: Deflect
+  CounterKey: Counter
   BecameAiredKey: BecameAerial
   StunKey: Stunned
   Entity: {fileID: 114281234270348236}
@@ -705,7 +704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.41176468, b: 0.41176468, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -917,7 +916,7 @@ CanvasGroup:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1723325761164858}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0

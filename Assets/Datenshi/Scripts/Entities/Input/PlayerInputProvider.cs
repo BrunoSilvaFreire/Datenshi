@@ -3,7 +3,9 @@ using Datenshi.Input.Constants;
 using Datenshi.Scripts.Game;
 using Rewired;
 using Sirenix.OdinInspector;
-using UnityEditor;
+#if UNITY_EDITOR
+    using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace Datenshi.Scripts.Entities.Input {
@@ -73,11 +75,11 @@ namespace Datenshi.Scripts.Entities.Input {
 
         [ShowIf("DebugInput")]
         public bool Submit;
-        
+
         [ShowIf("DebugInput")]
         public bool Defend;
 #endif
-      
+
         public override float GetHorizontal() {
 #if UNITY_EDITOR
             if (DebugInput) {
@@ -141,13 +143,42 @@ namespace Datenshi.Scripts.Entities.Input {
             return Fetch(player => player.GetButtonDown(Actions.Dash));
         }
 
+        private bool wasDefending;
+        private bool canReDefend;
+        private bool pressingDefend;
+        public PlayerController Controller;
+        private bool defendingLastFrame;
+
+        private void Update() {
+            pressingDefend = Fetch(player => player.GetButton(Actions.Defend));
+            var e = Controller.CurrentEntity as LivingEntity;
+            if (e != null) {
+                var entityDefending = e.Defending;
+                if (!entityDefending) {
+                    if (!canReDefend) {
+                        canReDefend = !pressingDefend;
+                    }
+                } else if (defendingLastFrame && !e.CanDefend) {
+                    canReDefend = false;
+                }
+
+                defendingLastFrame = e.Defending;
+            } else {
+                canReDefend = true;
+                defendingLastFrame = false;
+            }
+        }
+
         public override bool GetDefend() {
 #if UNITY_EDITOR
             if (DebugInput) {
                 return Defend;
             }
 #endif
-            return Fetch(player => player.GetButton(Actions.Defend));
+            if (!canReDefend) {
+                return false;
+            }
+            return pressingDefend;
         }
 
         public override bool GetSubmit() {

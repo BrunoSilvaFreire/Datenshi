@@ -4,4 +4,7 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Datenshi/Data/Levels/Prologue/Prologue.unity
+    guid: d01f4f48bf5cfc24e99a9780039e3613

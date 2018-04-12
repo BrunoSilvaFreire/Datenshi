@@ -1,7 +1,5 @@
 ﻿using System;
 using Datenshi.Scripts.Game;
-using Datenshi.Scripts.Interaction;
-using Datenshi.Scripts.Misc;
 using Datenshi.Scripts.Util;
 using UnityEngine;
 
@@ -35,7 +33,14 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
             var skinWidth = entity.SkinWidth;
             skinBounds.Expand(-2 * skinWidth);
             var layerMask = GameResources.Instance.WorldMask;
-            PhysicsUtil.DoPhysics(entity, ref vel, ref collStatus, out vertical, out horizontal, bounds, skinBounds,
+            PhysicsUtil.DoPhysics(
+                entity,
+                ref vel,
+                ref collStatus,
+                out vertical,
+                out horizontal,
+                bounds,
+                skinBounds,
                 layerMask);
             var gravity = new Vector2(0, -config.SlopeGroundCheckLength);
             var down =
@@ -45,7 +50,14 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
                 return;
             }
 
-            if (CheckSlope(entity, ref collStatus, ref vel, layerMask, horizontal, down, machine,
+            if (CheckSlope(
+                entity,
+                ref collStatus,
+                ref vel,
+                layerMask,
+                horizontal,
+                down,
+                machine,
                 skinWidth)) {
                 return;
             }
@@ -108,14 +120,18 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
             return false;
         }
 
-        public static void ProcessInputs(ref Vector2 vel, MovableEntity entity,
+        public static void ProcessInputs(
+            ref Vector2 vel,
+            MovableEntity entity,
             MotorStateMachine<GroundMotorState> machine,
             CollisionStatus collisionStatus) {
             int x;
             ProcessInputs(ref vel, entity, machine, collisionStatus, out x);
         }
 
-        public static void ProcessInputs(ref Vector2 vel, MovableEntity entity,
+        public static void ProcessInputs(
+            ref Vector2 vel,
+            MovableEntity entity,
             MotorStateMachine<GroundMotorState> machine,
             CollisionStatus collisionStatus,
             out int inputDir) {
@@ -132,15 +148,8 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
                         return;
                     }
                 }
-
-                var updater = entity.AnimatorUpdater;
-
-                if (updater != null) {
-                    updater.SetDefend(provider.GetDefend());
-                    if (provider.GetAttack()) {
-                        updater.TriggerAttack();
-                    }
-                }
+                var pressingDefend = provider.GetDefend();
+                entity.Defending = pressingDefend;
 
 
                 if (entity.CollisionStatus.Down) {

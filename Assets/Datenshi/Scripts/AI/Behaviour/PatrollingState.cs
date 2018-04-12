@@ -21,7 +21,11 @@ namespace Datenshi.Scripts.AI.Behaviour {
         public BehaviourState OnSawEnemy;
         public float SightRadius = 10F;
 
-        public override void Execute(AIStateInputProvider provider, MovableEntity entity) {
+        public override void Execute(AIStateInputProvider provider, Entity en) {
+            var entity = en as MovableEntity;
+            if (entity == null) {
+                return;
+            }
             provider.Walk = true;
             var left = entity.GetVariable(Left);
             provider.Horizontal = left ? -1 : 1;
@@ -41,7 +45,7 @@ namespace Datenshi.Scripts.AI.Behaviour {
                 SightRadius,
                 GameResources.Instance.EntitiesMask)) {
                 var e = hit.GetComponentInParent<LivingEntity>();
-                if (e == null || e == entity || e.Relationship == entity.Relationship) {
+                if (e == null || e == entity || !e.IsEnemy(entity)) {
                     continue;
                 }
 

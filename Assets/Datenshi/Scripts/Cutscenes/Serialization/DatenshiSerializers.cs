@@ -1,10 +1,11 @@
 ﻿using Shiroi.Serialization;
-using UnityEditor;
+using UnityEngine;
 
 namespace Datenshi.Scripts.Cutscenes.Serialization {
-    [InitializeOnLoad]
+
     public static class DatenshiSerializers {
-        static DatenshiSerializers() {
+        [RuntimeInitializeOnLoadMethod]
+        static void Init() {
             Serializers.RegisterSerializer(new AppearanceModeSerializer());
         }
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Datenshi.Scripts.Animation {
     public class DebugRangedUpdater : EntityAnimatorUpdater {
         public Attack Attack;
-        public MovableEntity Entity;
+        public LivingEntity Entity;
         protected override void UpdateAnimator(Animator anim) { }
 
         public override void TriggerAttack() {

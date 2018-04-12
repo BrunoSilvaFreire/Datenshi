@@ -47,7 +47,7 @@ namespace Datenshi.Scripts.AI {
             }
         }
 
-
+#if UNITY_EDITOR
         private void OnDrawGizmos() {
             Gizmos.DrawWireSphere(Target, 1);
             if (path == null) {
@@ -59,6 +59,7 @@ namespace Datenshi.Scripts.AI {
                 link.DrawGizmos(navmesh, (uint) link.GetOrigin(), 10F, false);
             }
         }
+#endif
 
 
         public override void Execute(MovableEntity entity, AIStateInputProvider provider) {

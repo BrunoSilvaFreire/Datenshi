@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Tilemaps;
 
 namespace Datenshi.Scripts.Animation.Behaviour {
     public class ChargeTimeDelayer : StateMachineBehaviour {

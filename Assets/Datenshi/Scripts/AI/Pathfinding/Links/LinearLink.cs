@@ -29,7 +29,8 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links {
         public override int GetOrigin() {
             return (int) origin;
         }
-
+#if UNITY_EDITOR
+        
         public override bool DrawOnlyOnMouseOver() {
             return false;
         }
@@ -39,6 +40,7 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links {
             var dest = navmesh.GetWorldPosition(destination);
             Debug.DrawLine(origin, dest);
         }
+#endif
 
         public override void Execute(MovableEntity entity, AIStateInputProvider provider, Navmesh navmesh) {
             provider.Horizontal = Math.Sign((int) destination - origin);

@@ -5,7 +5,7 @@ namespace Datenshi.Scripts.Entities.Input {
     public class AIStateInputProvider : InputProvider {
         public BehaviourState CurrentState;
 
-        public MovableEntity Entity;
+        public Entity Entity;
 
         public float Horizontal;
         public float Vertical;
@@ -15,6 +15,7 @@ namespace Datenshi.Scripts.Entities.Input {
         public bool Dash;
         public bool Submit;
         public bool Defend;
+
         public override float GetHorizontal() {
             return Fetch(Horizontal);
         }
@@ -65,6 +66,16 @@ namespace Datenshi.Scripts.Entities.Input {
                 return;
             }
             CurrentState.Execute(this, Entity);
+        }
+
+        public void Reset() {
+            Vertical = 0;
+            Horizontal = 0;
+            Walk = false;
+            Attack = false;
+            Defend = false;
+            Submit = false;
+            Jump = false;
         }
     }
 }
