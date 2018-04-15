@@ -5,9 +5,9 @@ using Datenshi.Scripts.Combat.Strategies;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
-
 #if UNITY_EDITOR
 using UnityEditor;
+
 #endif
 
 namespace Datenshi.Scripts.Entities {
@@ -92,6 +92,7 @@ namespace Datenshi.Scripts.Entities {
             get;
             set;
         }
+
         public bool Defending {
             get {
                 return defending;
@@ -100,9 +101,11 @@ namespace Datenshi.Scripts.Entities {
                 if (Defending == value) {
                     return;
                 }
+
                 if (value && !CanDefend) {
                     return;
                 }
+
                 defending = value;
             }
         }
@@ -120,6 +123,7 @@ namespace Datenshi.Scripts.Entities {
                     Stunned = false;
                 }
             }
+
             if (Defending) {
                 if (FocusTimeLeft <= 0) {
                     Defending = false;
@@ -134,10 +138,12 @@ namespace Datenshi.Scripts.Entities {
                     FocusTimeLeft += recoverAmount;
                 }
             }
+
             var updater = AnimatorUpdater;
             if (updater == null) {
                 return;
             }
+
             updater.SetDefend(Defending);
             if (InputProvider.GetAttack()) {
                 updater.TriggerAttack();
@@ -227,6 +233,8 @@ namespace Datenshi.Scripts.Entities {
             }
         }
 
+        public bool Ignored;
+
         [ShowInInspector, TitleGroup(HealthGroup)]
         public bool Invulnerable {
             get {
@@ -272,6 +280,7 @@ namespace Datenshi.Scripts.Entities {
             if (Relationship == EntityRelationship.Neutral || entity.Relationship == EntityRelationship.Neutral) {
                 return false;
             }
+
             return Relationship != entity.Relationship;
         }
 
@@ -305,7 +314,7 @@ namespace Datenshi.Scripts.Entities {
         }
 
         public virtual void Damage(LivingEntity entity, uint damage) {
-            if (Invulnerable) {
+            if (Invulnerable || Ignored) {
                 return;
             }
 

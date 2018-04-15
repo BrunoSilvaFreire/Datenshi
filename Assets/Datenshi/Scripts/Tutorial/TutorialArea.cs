@@ -3,22 +3,39 @@ using Datenshi.Scripts.Game;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Tutorial {
-    public class TutorialArea : MonoBehaviour {
-        public PlayerController Controller;
-        public UITutorial UITutorialPrefab;
+    public class TutorialTrigger : MonoBehaviour {
+        public UITutorial TutorialPrefab;
+        public bool HasCustomLocation;
+        public Vector2 CustomLocation;
+
+        public void Show() {
+            UITutorialBox.Instance.Show(this);
+        }
+
+        public void Hide() {
+            UITutorialBox.Instance.Deregister(this);
+        }
+    }
+
+    public class TutorialArea : TutorialTrigger {
+        public bool DestroyOnLeave = true;
 
         private void OnTriggerEnter2D(Collider2D other) {
-            if (other.GetComponentInParent<Entity>() != Controller.CurrentEntity) {
+            var controller = PlayerController.Instance;
+            if (other.GetComponentInParent<Entity>() != controller.CurrentEntity) {
                 return;
             }
-            UITutorialBox.Instance.Show(UITutorialPrefab);
+
+            Show();
         }
 
         private void OnTriggerExit2D(Collider2D other) {
-            if (other.GetComponentInParent<Entity>() != Controller.CurrentEntity) {
+            var controller = PlayerController.Instance;
+            if (other.GetComponentInParent<Entity>() != controller.CurrentEntity) {
                 return;
             }
-            UITutorialBox.Instance.Deregister(UITutorialPrefab);
+
+            Hide();
         }
     }
 }

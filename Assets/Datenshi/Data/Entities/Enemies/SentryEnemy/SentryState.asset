@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b970055ed798485a997c2141e183e31c, type: 3}
   m_Name: SentryState
   m_EditorClassIdentifier: 
-  SightRadius: 9.64
+  SightRadius: 20
   AttackCooldown: 1.5

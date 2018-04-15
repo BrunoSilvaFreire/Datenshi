@@ -17,5 +17,7 @@ namespace Datenshi.Scripts.Entities.Motors {
         public float WallClimbGravityScale = 0.1F;
         public float WallClimbCounterForce = 1;
         public float JumpCutGravityModifier = 1;
+
+        public float OffWallTimeMargin = 0.3F;
     }
 }

@@ -3,6 +3,7 @@ using Datenshi.Assets.Graphics.Shaders;
 using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Entities.Input;
 using Datenshi.Scripts.Misc;
+using Datenshi.Scripts.Util.Singleton;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -12,14 +13,14 @@ namespace Datenshi.Scripts.Game {
     [Serializable]
     public class PlayerEntityChangedEvent : UnityEvent<Entity, Entity> { }
 
-    public class PlayerController : MonoBehaviour {
+    public class PlayerController : Singleton<PlayerController> {
         public PlayerInputProvider Player;
 
         [SerializeField, HideInInspector]
         private Entity currentEntity;
 
         [ShowInInspector]
-        private Tracker<Entity> tracker;
+        private Tracker<ColorizableRenderer> tracker;
 
         public BlackAndWhiteFX[] Fxs;
         public float LowCutoff = 440;
@@ -36,6 +37,7 @@ namespace Datenshi.Scripts.Game {
                 if (currentEntity != null) {
                     currentEntity.RevokeOwnership();
                 }
+
                 OnEntityChanged.Invoke(currentEntity, value);
                 currentEntity = value;
                 currentEntity.RequestOwnership(Player);
@@ -50,7 +52,8 @@ namespace Datenshi.Scripts.Game {
             currentEntity.RevokeOwnership();
             currentEntity.RequestOwnership(Player);
             OnEntityChanged.Invoke(null, currentEntity);
-            tracker = new Tracker<Entity>(Entity.EntityEnabledEvent, Entity.EntityDisabledEvent);
+            tracker = new Tracker<ColorizableRenderer>(ColorizableRenderer.ColorizableRendererEnabledEvent,
+                ColorizableRenderer.ColorizableRendererDisabledEvent);
         }
 
         [ShowInInspector]
@@ -110,20 +113,15 @@ namespace Datenshi.Scripts.Game {
                     continue;
                 }
 
-                obj.DOKill();
-                var eRenderer = obj.Renderer;
-                if (eRenderer == null) {
-                    return;
-                }
-
-                SetColorOverride(eRenderer, i);
+                SetColorOverride(obj, i);
             }
         }
 
-        private void SetColorOverride(EntityRenderer eRenderer, float i) {
+        private void SetColorOverride(ColorizableRenderer renderer, float i) {
+            renderer.DOKill();
             DOTween.To(
-                () => eRenderer.ColorOverrideAmount,
-                value => eRenderer.ColorOverrideAmount = value,
+                () => renderer.ColorOverrideAmount,
+                value => renderer.ColorOverrideAmount = value,
                 i,
                 DefendOverrideDuration);
         }

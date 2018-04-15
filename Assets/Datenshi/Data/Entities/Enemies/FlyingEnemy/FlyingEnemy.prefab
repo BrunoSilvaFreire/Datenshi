@@ -257,8 +257,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderers:
   - {fileID: 212103069438078220}
-  Entity: {fileID: 0}
-  DefaultOverrideColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &114272136902398876
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -468,6 +466,7 @@ MonoBehaviour:
   MinDefenseRequired: 0.1
   DefenseRecoverAmountMultiplier: 1
   DefenseDepleteAmountMultiplier: 2
+  Ignored: 0
   Motor: {fileID: 11400000, guid: 6a8249222a8d35b4fa1174299637f5bc, type: 2}
   AccelerationCurve:
     serializedVersion: 2
@@ -549,7 +548,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 55d5cbd818c36614fb72fe22ec22b5a0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 834df99741a131c478454be32899374a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

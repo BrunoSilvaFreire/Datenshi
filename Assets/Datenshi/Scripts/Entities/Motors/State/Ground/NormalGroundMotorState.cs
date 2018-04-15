@@ -13,6 +13,11 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
             MovableEntity entity,
             MotorStateMachine<GroundMotorState> machine,
             ref CollisionStatus collStatus) {
+            ExecuteState(entity, machine, ref collStatus);
+        }
+
+        public static void ExecuteState(MovableEntity entity, MotorStateMachine<GroundMotorState> machine,
+            ref CollisionStatus collStatus) {
             var config = (GroundMotorConfig) entity.Config;
 
             var vel = entity.Velocity;
@@ -67,12 +72,12 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
             entity.Velocity = vel;
         }
 
-        private bool IsRunningTowardsWall(RaycastHit2D? down, CollisionStatus collStatus, int xDir) {
+        private static bool IsRunningTowardsWall(RaycastHit2D? down, CollisionStatus collStatus, int xDir) {
             return (!down.HasValue || !down.Value) && (collStatus.Left || collStatus.Right) &&
                    collStatus.HorizontalCollisionDir == xDir;
         }
 
-        public bool CheckSlope(
+        public static bool CheckSlope(
             MovableEntity entity,
             ref CollisionStatus collStatus,
             ref Vector2 vel,
@@ -148,6 +153,7 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
                         return;
                     }
                 }
+
                 var pressingDefend = provider.GetDefend();
                 entity.Defending = pressingDefend;
 

@@ -69,7 +69,7 @@ namespace Datenshi.Scripts.Entities {
         public EntityAnimatorUpdater AnimatorUpdater;
 
         [TitleGroup(GeneralGroup)]
-        public EntityRenderer Renderer;
+        public ColorizableRenderer Renderer;
 
         [TitleGroup(GeneralGroup)]
         public EntityMiscController MiscController;

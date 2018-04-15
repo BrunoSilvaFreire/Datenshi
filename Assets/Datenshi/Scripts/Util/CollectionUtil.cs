@@ -35,6 +35,10 @@ namespace Datenshi.Scripts.Util {
             return collection.Count == 1;
         }
 
+        public static bool IsEmpty<K, V>(this Dictionary<K, V> dictionary) {
+            return dictionary.Count <= 0;
+        }
+
         public static List<T> GetAllOrPut<T>(
             this ICollection<T> collection,
             Func<T, bool> predicate,

@@ -186,7 +186,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1305366514425428}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -41, y: 10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -401,9 +401,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d8cf396134c4b9a8db2f709756695b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Renderers: []
-  Entity: {fileID: 114375869463437830}
-  DefaultOverrideColor: {r: 1, g: 0, b: 0, a: 1}
+  Renderers:
+  - {fileID: 212393075467143052}
 --- !u!114 &114329637442189670
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -473,6 +472,7 @@ MonoBehaviour:
   MinDefenseRequired: 0.1
   DefenseRecoverAmountMultiplier: 1
   DefenseDepleteAmountMultiplier: 2
+  Ignored: 0
 --- !u!114 &114455291569509230
 MonoBehaviour:
   m_ObjectHideFlags: 1

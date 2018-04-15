@@ -330,7 +330,7 @@ namespace Datenshi.Scripts.Entities {
             Target.AnimatorUpdater = value;
         }
 
-        public void SetRenderer(EntityRenderer value) {
+        public void SetRenderer(ColorizableRenderer value) {
             if (Target == null) {
                 return;
             }

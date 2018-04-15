@@ -24,6 +24,7 @@ namespace Datenshi.Scripts.Combat.Attacks {
             if (window != null) {
                 window.Available = true;
             }
+
             foreach (var hit in Physics2D.OverlapBoxAll(hb.Center, hb.Size, 0, GameResources.Instance.EntitiesMask)) {
                 var d = hit.GetComponentInParent<Defendable>();
                 if (d != null && d.CanPoorlyDefend(entity)) {
@@ -31,19 +32,27 @@ namespace Datenshi.Scripts.Combat.Attacks {
                     if (w) {
                         w.AttackDamage = damage;
                     }
+
                     d.PoorlyDefend(entity);
                 }
+
                 if (entity.GetVariable(Blocked)) {
                     entity.SetVariable(Blocked, false);
                     return;
                 }
+
                 var e = hit.GetComponentInParent<LivingEntity>();
+                if (e != null && e.Ignored) {
+                    continue;
+                }
+
                 if (e == null || e == entity || e.Relationship == entity.Relationship) {
                     continue;
                 }
 
                 e.Damage(entity, damage);
             }
+
             if (window != null) {
                 window.Available = false;
             }

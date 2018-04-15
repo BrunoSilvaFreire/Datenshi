@@ -1,5 +1,8 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using Datenshi.Scripts.UI;
+using Datenshi.Scripts.Util;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -21,16 +24,13 @@ namespace Datenshi.Scripts.Tutorial {
         public Vector2 DefaultSize;
         public Vector2 Padding;
 
-        [ShowInInspector]
-        private uint inContact;
-
         private void Start() {
             SnapHide();
         }
 
         protected override void SnapShow() {
             CanvasGroup.alpha = 1;
-            RectTransform.sizeDelta = (last != null ? last.Size : DefaultSize) + Padding;
+            RectTransform.sizeDelta = (current != null ? current.Size : DefaultSize) + Padding;
         }
 
         protected override void SnapHide() {
@@ -38,25 +38,28 @@ namespace Datenshi.Scripts.Tutorial {
             RectTransform.sizeDelta = Vector2.zero;
         }
 
-        protected override void OnShow() {
-            StartCoroutine(ShowTutorial());
-        }
+        protected override void OnShow() { }
 
         protected override void OnHide() {
-            StartCoroutine(HideTutoral());
+            hideRoutine = StartCoroutine(HideTutoral());
         }
 
         private IEnumerator HideTutoral() {
-            yield return ClearLast();
-            if (last != null) {
-                Destroy(last.gameObject);
+            if (showRoutine != null) {
+                StopCoroutine(showRoutine);
             }
+
+            if (current != null) {
+                yield return StartCoroutine(Clear(current));
+            }
+
             yield return SetSizeAndAlpha(Vector2.zero, 0);
+            hideRoutine = null;
         }
 
         private RectTransform RectTransform {
             get {
-                return ((RectTransform) transform);
+                return (RectTransform) transform;
             }
         }
 
@@ -68,45 +71,72 @@ namespace Datenshi.Scripts.Tutorial {
             yield return new WaitForSeconds(SizeChangeDuration);
         }
 
-        public void Show(UITutorial uiTutorial) {
-            inContact++;
-            toReplace = uiTutorial;
+        [ShowInInspector]
+        private readonly List<TutorialTrigger> knownTutorials = new List<TutorialTrigger>();
+
+        private TutorialTrigger currentTrigger;
+        private UITutorial current;
+        private Coroutine hideRoutine;
+        private Coroutine showRoutine;
+
+        public void Show(TutorialTrigger tutorialTrigger) {
             if (!Showing) {
                 Showing = true;
-            } else {
-                StartCoroutine(ShowTutorial());
+            }
+
+            knownTutorials.Add(tutorialTrigger);
+            showRoutine = StartCoroutine(ShowTutorial(tutorialTrigger));
+        }
+
+
+        private IEnumerator ShowTutorial(TutorialTrigger tutorialTrigger, bool destroy = false) {
+            if (hideRoutine != null) {
+                StopCoroutine(hideRoutine);
+            }
+
+            if (current != null) {
+                yield return StartCoroutine(Clear(current, destroy));
+            }
+
+            var tut = Instantiate(tutorialTrigger.TutorialPrefab, Holder);
+            tut.SnapShowing(false);
+            yield return SetSizeAndAlpha(tut.Size, 1);
+            tut.Showing = true;
+            currentTrigger = tutorialTrigger;
+            current = tut;
+            showRoutine = null;
+        }
+
+
+        private IEnumerator Clear(UITutorial obj, bool destroy = true) {
+            if (obj == null) {
+                yield break;
+            }
+
+            if (obj == current) {
+                current = null;
+                currentTrigger = null;
+            }
+
+            obj.Showing = false;
+            yield return new WaitForSeconds(obj.FadeDuration);
+            if (destroy) {
+                Destroy(obj.gameObject);
             }
         }
 
-
-        private UITutorial last;
-        private UITutorial toReplace;
-
-        private IEnumerator ShowTutorial() {
-            if (toReplace == null) {
-                yield return SetSizeAndAlpha(last != null ? last.Size : DefaultSize, 1);
-            } else {
-                if (last != null) {
-                    yield return ClearLast();
-                }
-                yield return SetSizeAndAlpha(toReplace.Size, 1);
-                var tut = Instantiate(toReplace, Holder);
-                tut.SnapShowing(false);
-                tut.Showing = true;
-                last = tut;
+        public void Deregister(TutorialTrigger id) {
+            knownTutorials.Remove(id);
+            if (id != currentTrigger) {
+                return;
             }
-        }
 
-
-        private IEnumerator ClearLast() {
-            last.Showing = false;
-            yield return new WaitForSeconds(last.FadeDuration);
-        }
-
-        public void Deregister(UITutorial uiTutorialPrefab) {
-            inContact--;
-            if (inContact == 0) {
+            current.DOKill();
+            if (knownTutorials.Count == 0) {
                 Hide();
+            } else {
+                var toReplace = knownTutorials.Last();
+                showRoutine = StartCoroutine(ShowTutorial(toReplace, true));
             }
         }
     }

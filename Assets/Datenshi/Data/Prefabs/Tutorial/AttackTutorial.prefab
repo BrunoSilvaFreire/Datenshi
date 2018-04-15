@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 95999305554586034}
   - component: {fileID: 212599726792382032}
   - component: {fileID: 114250747729243666}
+  - component: {fileID: 114670073755738084}
   m_Layer: 5
   m_Name: Sprite
   m_TagString: Untagged
@@ -141,6 +142,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderer: {fileID: 212599726792382032}
   LayoutPriority: 0
+--- !u!114 &114670073755738084
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1977925502202644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5050bb8a95647b08557e195ed96545a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EntityAudioSource: {fileID: 0}
+  StepSounds: []
+  Container: {fileID: 0}
+  minPitch: 0
+  maxPitch: 0
 --- !u!114 &114685441784328398
 MonoBehaviour:
   m_ObjectHideFlags: 1

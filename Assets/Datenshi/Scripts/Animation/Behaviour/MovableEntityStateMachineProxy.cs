@@ -16,6 +16,10 @@ namespace Datenshi.Scripts.Animation.Behaviour {
         public UnityEvent OnExit;
 
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+            if (Target == null) {
+                Target = animator.GetComponentInParent<MovableEntity>();
+            }
+
             OnEnter.Invoke();
         }
 
@@ -205,7 +209,7 @@ namespace Datenshi.Scripts.Animation.Behaviour {
             Target.AnimatorUpdater = value;
         }
 
-        public void SetRenderer(EntityRenderer value) {
+        public void SetRenderer(ColorizableRenderer value) {
             Target.Renderer = value;
         }
 

@@ -21,9 +21,14 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
 
         public void Shoot(LivingEntity shooter, Vector2 direction) {
             owner = shooter;
+            owner.OnKilled.AddListener(OnKilled);
             velocity = direction;
             velocity.Normalize();
             velocity *= Speed;
+        }
+
+        private void OnKilled() {
+            Destroy(gameObject);
         }
 
         private void Update() {
@@ -41,6 +46,10 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
             }
 
             var e = col.GetComponentInParent<LivingEntity>();
+            if (e != null && e.Ignored) {
+                return;
+            }
+
             if (e != null && e != owner && e.Relationship != owner.Relationship) {
                 e.Damage(e, Damage);
             }

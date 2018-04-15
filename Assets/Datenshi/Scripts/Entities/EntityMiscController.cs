@@ -41,12 +41,20 @@ namespace Datenshi.Scripts.Entities {
         }
 
         public void PlayStepSound() {
+            if (EntityAudioSource == null) {
+                return;
+            }
+
             var randomStep = StepSounds.RandomElement();
             EntityAudioSource.pitch = Random.Range(minPitch, maxPitch);
             EntityAudioSource.PlayOneShot(randomStep);
         }
 
         public void PlayAudioOneShot(AudioClip clip) {
+            if (EntityAudioSource == null) {
+                return;
+            }
+
             EntityAudioSource.pitch = 1;
             EntityAudioSource.PlayOneShot(clip);
         }
