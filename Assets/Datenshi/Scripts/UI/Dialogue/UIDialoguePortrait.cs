@@ -19,15 +19,14 @@ namespace Datenshi.Scripts.UI.Dialogue {
 
         private Vector2 GetAppearPos(AppearanceMode mode) {
             var rect = Image.rectTransform;
-            var pos = rect.sizeDelta.x;
+            var width = rect.sizeDelta.x;
             var offset = mode.Offset;
-            pos *= Mathf.Abs(rect.localScale.x);
-            if (mode.Left)
-                return new Vector2(pos / 2 + offset, VerticalOffset);
-            pos *= -1;
-            offset *= -1;
-
-            return new Vector2(pos / 2 + offset, VerticalOffset);
+            width *= Mathf.Abs(rect.localScale.x);
+            if (mode.Left) {
+                return new Vector2(width / 2 + offset, VerticalOffset);
+            } else {
+                return new Vector2(-width / 2 - offset, VerticalOffset);
+            }
         }
 
         private Vector2 GetHidePos(AppearanceMode mode) {
@@ -73,6 +72,7 @@ namespace Datenshi.Scripts.UI.Dialogue {
             if (!SpriteFacesLeft) {
                 left = !left;
             }
+
             if (left) {
                 if (scale.x < 0) {
                     scale.x *= -1;

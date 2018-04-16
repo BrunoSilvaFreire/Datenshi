@@ -37,14 +37,16 @@ namespace Datenshi.Scripts.AI {
                 return;
             }
 
-            path = AStar.CalculatePath(
+            AStar.CalculatePath(
                 navmesh.GetNodeAtWorld(Entity.GroundPosition),
                 navmesh.GetNodeAtWorld(Target),
                 navmesh,
-                Entity);
-            if (path != null) {
-                currentLink = path.Last();
-            }
+                Entity, p => {
+                    path = p;
+                    if (p != null) {
+                        currentLink = p.Last();
+                    }
+                });
         }
 
 #if UNITY_EDITOR

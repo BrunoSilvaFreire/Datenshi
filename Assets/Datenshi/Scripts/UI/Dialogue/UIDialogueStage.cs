@@ -70,21 +70,31 @@ namespace Datenshi.Scripts.UI.Dialogue {
 
         public IEnumerator PlayDialogue(Cutscenes.Dialogue.Dialogue dialogue) {
             var speeches = dialogue.Speeches;
+            Debug.Log("Playing dialogue " + dialogue);
             foreach (var speech in speeches) {
                 var character = speech.Character;
+                Debug.Log("Playing speech " + speech + " for " + character);
                 CharacterLabel.text = character.Alias;
                 foreach (var line in speech.Lines) {
+                    Debug.Log("Playing line " + line);
+
                     var portrait = GetPortrait(character);
-                    var rectTransform = ((RectTransform) portrait.transform);
+                    var rectTransform = (RectTransform) portrait.transform;
                     var pos = rectTransform.position;
                     pos.y = rectTransform.rect.yMax + IndicatorYOffset;
                     Indicator.rectTransform.position = pos;
                     if (line.Move) {
                         portrait.Appear(line.AppearanceMode);
                     }
+
                     yield return Narrator.TypeTextCharByChar(line.Text);
                 }
             }
+
+            foreach (var portrait in portraits) {
+                Destroy(portrait.gameObject);
+            }
+            portraits.Clear();
         }
 
         private UIDialoguePortrait GetPortrait(Character.Character character) {
@@ -93,6 +103,7 @@ namespace Datenshi.Scripts.UI.Dialogue {
                     return portrait;
                 }
             }
+
             return AddPortrait(character);
         }
     }

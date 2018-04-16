@@ -3,6 +3,7 @@ using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Entities.Input;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Profiling;
 
 namespace Datenshi.Scripts.AI {
     public abstract class AIAgent : MonoBehaviour {
@@ -17,7 +18,9 @@ namespace Datenshi.Scripts.AI {
             if (timeSinceLastRegen < TimePerRegen) {
                 timeSinceLastRegen += Time.deltaTime;
             } else if (CanReload()) {
+                Profiler.BeginSample("Path Reload @ " + GetType().Name);
                 ReloadPath();
+                Profiler.EndSample();
                 timeSinceLastRegen = 0;
             }
         }

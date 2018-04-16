@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using Datenshi.Scripts.Game;
 using Datenshi.Scripts.Util.Singleton;
+using Shiroi.Cutscenes;
 using Sirenix.OdinInspector;
 
 namespace Datenshi.Scripts.Missions {
@@ -28,7 +29,7 @@ namespace Datenshi.Scripts.Missions {
         }
 
         private IEnumerator DoMissionStart(Mission mission, MissionTracker currentTracker) {
-            var player = Singletons.Instance.CutscenePlayer;
+            var player = CutscenePlayer.Instance;
             var start = mission.OnStart;
             if (start != null) {
                 yield return player.YieldPlay(start);

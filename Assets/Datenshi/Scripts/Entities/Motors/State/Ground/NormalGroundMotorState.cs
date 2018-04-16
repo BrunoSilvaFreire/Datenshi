@@ -1,4 +1,5 @@
 ﻿using System;
+using Datenshi.Scripts.Entities.Input;
 using Datenshi.Scripts.Game;
 using Datenshi.Scripts.Util;
 using UnityEngine;
@@ -22,10 +23,12 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
 
             var vel = entity.Velocity;
             int xDir;
-            ProcessInputs(ref vel, entity, machine, collStatus, out xDir);
+            var provider = entity.InputProvider;
+            ProcessInputs(ref vel, provider, entity, machine, collStatus, out xDir);
             vel.y += GameResources.Instance.Gravity * entity.GravityScale * Time.deltaTime;
 
             var maxSpeed = entity.MaxSpeed;
+
             if (collStatus.Down) {
                 vel.x = Mathf.Clamp(vel.x, -maxSpeed, maxSpeed);
             }
@@ -127,33 +130,26 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
 
         public static void ProcessInputs(
             ref Vector2 vel,
+            InputProvider provider,
             MovableEntity entity,
             MotorStateMachine<GroundMotorState> machine,
             CollisionStatus collisionStatus) {
             int x;
-            ProcessInputs(ref vel, entity, machine, collisionStatus, out x);
+            ProcessInputs(ref vel, provider, entity, machine, collisionStatus, out x);
         }
 
         public static void ProcessInputs(
             ref Vector2 vel,
+            InputProvider provider,
             MovableEntity entity,
             MotorStateMachine<GroundMotorState> machine,
             CollisionStatus collisionStatus,
             out int inputDir) {
-            var provider = entity.InputProvider;
             var hasProvider = provider != null;
             var xInput = hasProvider ? provider.GetHorizontal() : 0;
             var config = ((GroundMotorConfig) entity.Config);
             inputDir = Math.Sign(xInput);
             if (hasProvider) {
-                if (provider.GetDash()) {
-                    var lastTimeDash = entity.GetVariable(DashGroundMotorState.DashStart);
-                    if (Time.time - lastTimeDash > config.DashCooldown) {
-                        machine.CurrentState = DashGroundMotorState.Instance;
-                        return;
-                    }
-                }
-
                 var pressingDefend = provider.GetDefend();
                 entity.Defending = pressingDefend;
 

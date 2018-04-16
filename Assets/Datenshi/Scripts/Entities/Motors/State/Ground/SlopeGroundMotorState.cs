@@ -17,7 +17,8 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
             MotorStateMachine<GroundMotorState> machine,
             ref CollisionStatus collStatus) {
             var vel = entity.Velocity;
-            NormalGroundMotorState.ProcessInputs(ref vel, entity, machine, collStatus);
+            var provider = entity.InputProvider;
+            NormalGroundMotorState.ProcessInputs(ref vel, provider, entity, machine, collStatus);
             vel.y += GameResources.Instance.Gravity * entity.GravityScale * Time.deltaTime;
             var maxSpeed = entity.MaxSpeed;
             vel.x = Mathf.Clamp(vel.x, -maxSpeed, maxSpeed);
@@ -60,7 +61,6 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
                     // apply the slopeModifier to slow our movement up the slope
                     if (vel.x < 0) {
                         //if was stopped, apply extra vel
-                        var provider = entity.InputProvider;
                         var hasProvider = provider != null;
                         var xInput = hasProvider ? provider.GetHorizontal() : 0;
                         if (hasProvider && provider.GetWalk()) {
@@ -69,6 +69,7 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
 
                         vel.x += entity.AccelerationCurve.Evaluate(entity.SpeedPercent) * xInput;
                     }
+
                     var angleRad = angle * Mathf.Deg2Rad;
                     vel.x *= slopeModifier;
                     var max = maxSpeed * Mathf.Abs(Mathf.Cos(angleRad));
@@ -129,11 +130,13 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
                     newPos.y += yDifference;
                     entity.transform.position = newPos;
                 }
-                vel.y = 0;       
+
+                vel.y = 0;
                 entity.SetVariable(GroundedLastFrame, false);
             } else {
                 entity.SetVariable(GroundedLastFrame, true);
             }
+
             machine.CurrentState = NormalGroundMotorState.Instance;
         }
 

@@ -8,24 +8,30 @@ using UnityEngine;
 namespace Datenshi.Scripts.AI.Behaviour {
     [CreateAssetMenu(menuName = "Datenshi/AI/States/Patrolling")]
     public class PatrollingState : BehaviourState {
-        public enum StartDirection {
-            Left,
-            Right
-        }
-
         public static readonly Variable<bool> Left = new Variable<bool>("entity.ai.goingLeft", true);
 
         public static readonly Variable<float> Distance = new Variable<float>("entity.ai.state.patrolling.distance", 0);
 
-        public const float WalkDistance = 5;
+        public float WalkDistance = 5;
+        public float MinRequiredDistance = 30;
         public BehaviourState OnSawEnemy;
         public float SightRadius = 10F;
 
         public override void Execute(AIStateInputProvider provider, Entity en) {
+            var playerEntity = PlayerController.Instance.CurrentEntity;
+            if (playerEntity == null) {
+                return;
+            }
+
             var entity = en as MovableEntity;
             if (entity == null) {
                 return;
             }
+
+            if (Vector2.Distance(playerEntity.transform.position, entity.transform.position) > MinRequiredDistance) {
+                return;
+            }
+
             provider.Walk = true;
             var left = entity.GetVariable(Left);
             provider.Horizontal = left ? -1 : 1;

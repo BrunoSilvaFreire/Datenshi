@@ -1,5 +1,5 @@
 ﻿using Sirenix.OdinInspector;
-#if UNITY_EDITOR    
+#if UNITY_EDITOR
 using UnityEditor;
 #endif
 using UnityEngine;
@@ -9,7 +9,7 @@ namespace Datenshi.Scripts.UI {
         [ShowInInspector]
         public bool Showing {
             get {
-                return showing;
+                return overrideShowing ? overrideShowingValue : showing;
             }
             set {
                 if (value == showing) {
@@ -21,11 +21,41 @@ namespace Datenshi.Scripts.UI {
                     return;
                 }
 #endif
-                if (value) {
-                    Show();
-                } else {
-                    Hide();
+                showing = value;
+                if (!overrideShowing) {
+                    UpdateState();
                 }
+            }
+        }
+
+        private bool overrideShowing;
+        private bool overrideShowingValue;
+
+        public void Override(bool value) {
+            if (!overrideShowing) {
+                overrideShowing = true;
+            }
+
+            overrideShowingValue = value;
+            if (overrideShowingValue != showing) {
+                UpdateState();
+            }
+        }
+
+        public void ReleaseOverride() {
+            overrideShowing = false;
+            if (overrideShowingValue == Showing) {
+                return;
+            }
+
+            UpdateState();
+        }
+
+        private void UpdateState() {
+            if (Showing) {
+                Show();
+            } else {
+                Hide();
             }
         }
 
@@ -42,12 +72,16 @@ namespace Datenshi.Scripts.UI {
 
         public void Show() {
             showing = true;
-            OnShow();
+            if (!overrideShowing) {
+                OnShow();
+            }
         }
 
         public void Hide() {
             showing = false;
-            OnHide();
+            if (!overrideShowing) {
+                OnHide();
+            }
         }
 
         protected abstract void SnapShow();

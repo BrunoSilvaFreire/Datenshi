@@ -2,12 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Datenshi.Scripts.Util.Singleton;
 using Shiroi.Cutscenes.Futures;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace Shiroi.Cutscenes {
-    public class CutscenePlayer : MonoBehaviour, IExposedPropertyTable {
+    public class CutscenePlayer : Singleton<CutscenePlayer>, IExposedPropertyTable {
         //Futures
         private Dictionary<int, Object> providedFutures = new Dictionary<int, Object>();
 
@@ -21,6 +22,7 @@ namespace Shiroi.Cutscenes {
             if (TryGetFuture(reference, out future)) {
                 return (T) future;
             }
+
             return null;
         }
 
@@ -29,13 +31,16 @@ namespace Shiroi.Cutscenes {
             if (TryGetFuture(reference, out future)) {
                 return (T) future;
             }
+
             return null;
         }
+
         public Object RequestFuture(int reference) {
             Object future;
             if (TryGetFuture(reference, out future)) {
                 return future;
             }
+
             return null;
         }
 
@@ -45,6 +50,7 @@ namespace Shiroi.Cutscenes {
                 future = providedFutures[id];
                 return true;
             }
+
             future = null;
             return false;
         }
@@ -54,6 +60,7 @@ namespace Shiroi.Cutscenes {
                 future = providedFutures[id];
                 return true;
             }
+
             future = null;
             return false;
         }
@@ -72,7 +79,9 @@ namespace Shiroi.Cutscenes {
         private List<SceneReference> references = new List<SceneReference>();
 
         public List<SceneReference> References {
-            get { return references; }
+            get {
+                return references;
+            }
         }
 
         public Object GetReferenceValue(PropertyName id, out bool idValid) {
@@ -88,6 +97,7 @@ namespace Shiroi.Cutscenes {
                 if (value == null) {
                     return;
                 }
+
                 reference = new SceneReference(id.GetHashCode(), value);
                 references.Add(reference);
             }
@@ -97,8 +107,10 @@ namespace Shiroi.Cutscenes {
                 if (reference.TotalUses <= 0) {
                     ClearReferenceValue(id);
                 }
+
                 return;
             }
+
             reference.TotalUses++;
 #endif
             reference.Object = value;
@@ -113,6 +125,7 @@ namespace Shiroi.Cutscenes {
             if (!references.Contains(reference)) {
                 return;
             }
+
             references.Remove(reference);
         }
 

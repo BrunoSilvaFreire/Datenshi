@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace Datenshi.Scripts.Game {
     public class Singletons : Singleton<Singletons> {
-        public CutscenePlayer CutscenePlayer;
         public AudioLowPassFilter LowPassFilter;
     }
 }

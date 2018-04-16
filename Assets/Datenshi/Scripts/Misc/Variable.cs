@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace Datenshi.Scripts.Misc {
-    public class Variable : IComparable<Variable> {
+    public class Variable : IEquatable<Variable>, IComparable<Variable> {
         public Variable(string key) {
             Key = key;
         }
@@ -17,16 +17,11 @@ namespace Datenshi.Scripts.Misc {
             return ReferenceEquals(null, other) ? 1 : string.Compare(Key, other.Key, StringComparison.Ordinal);
         }
 
-        protected bool Equals(Variable other) {
-            return string.Equals(Key, other.Key);
-        }
 
         public override bool Equals(object obj) {
-            if (ReferenceEquals(null, obj))
-                return false;
-            if (ReferenceEquals(this, obj))
-                return true;
-            return obj.GetType() == GetType() && Equals((Variable) obj);
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            return Equals((Variable) obj);
         }
 
         public override int GetHashCode() {
@@ -37,14 +32,21 @@ namespace Datenshi.Scripts.Misc {
             if (a == null && b == null) {
                 return true;
             }
+
             if (a == null || b == null) {
                 return false;
             }
+
             return a.Key == b.Key;
         }
 
         public static bool operator !=(Variable a, Variable b) {
             return !(a == b);
+        }
+
+        public bool Equals(Variable other) {
+            if (ReferenceEquals(null, other)) return false;
+            return ReferenceEquals(this, other) || string.Equals(Key, other.Key);
         }
     }
 

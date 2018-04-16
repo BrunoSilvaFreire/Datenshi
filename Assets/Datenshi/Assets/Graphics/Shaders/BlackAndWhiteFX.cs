@@ -15,11 +15,13 @@ namespace Datenshi.Assets.Graphics.Shaders {
         public float Amount {
             get {
                 EnsureMaterial();
-                return material.GetFloat(PropertyName);
+                return material != null ? material.GetFloat(PropertyName) : 0;
             }
             set {
                 EnsureMaterial();
-                material.SetFloat(PropertyName, value);
+                if (material != null) {
+                    material.SetFloat(PropertyName, value);
+                }
             }
         }
 
@@ -27,11 +29,13 @@ namespace Datenshi.Assets.Graphics.Shaders {
         public float DarkenAmount {
             get {
                 EnsureMaterial();
-                return material.GetFloat(DarkenPropertyName);
+                return material != null ? material.GetFloat(DarkenPropertyName) : 0;
             }
             set {
                 EnsureMaterial();
-                material.SetFloat(DarkenPropertyName, value);
+                if (material != null) {
+                    material.SetFloat(DarkenPropertyName, value);
+                }
             }
         }
 
@@ -41,6 +45,11 @@ namespace Datenshi.Assets.Graphics.Shaders {
             }
 
             var shader = Shader.Find(ShaderName);
+            if (shader == null) {
+                Debug.LogWarningFormat("Couldn't find shader '{0}' for black and white effect", ShaderName);
+                return;
+            }
+
             material = new Material(shader) {
                 hideFlags = HideFlags.DontSave
             };
@@ -56,7 +65,9 @@ namespace Datenshi.Assets.Graphics.Shaders {
 
         private void OnRenderImage(RenderTexture source, RenderTexture destination) {
             EnsureMaterial();
-            UnityEngine.Graphics.Blit(source, destination, material);
+            if (material != null) {
+                UnityEngine.Graphics.Blit(source, destination, material);
+            }
         }
     }
 }

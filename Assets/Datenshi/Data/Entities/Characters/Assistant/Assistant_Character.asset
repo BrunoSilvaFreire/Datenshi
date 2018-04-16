@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca91f30ec55e4c448da724e9f1f13f16, type: 3}
   m_Name: Assistant_Character
   m_EditorClassIdentifier: 
-  Alias: 
+  Alias: Luna
   SignatureColor: {r: 0.4852941, g: 0.68191177, b: 1, a: 1}
-  DialoguePortraitPrefab: {fileID: 0}
+  DialoguePortraitPrefab: {fileID: 114274692591344122, guid: 52b1537f2aa742a409a2568940c65026,
+    type: 2}

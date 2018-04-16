@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Datenshi.Scripts.AI.Pathfinding {
     [Serializable]
-    public sealed class Node {
+    public sealed class Node : IEquatable<Node> {
         public static readonly Node Invalid = new Node(Vector2Int.zero, NodeType.Invalid);
 
         [SerializeField, ReadOnly]
@@ -108,6 +108,23 @@ namespace Datenshi.Scripts.AI.Pathfinding {
 
         public override string ToString() {
             return string.Format("Node(Position: {0}, Type: {1})", position, type);
+        }
+
+
+        public bool Equals(Node other) {
+            if (ReferenceEquals(null, other)) return false;
+            return ReferenceEquals(this, other) || position.Equals(other.position);
+        }
+
+        public override bool Equals(object obj) {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            var node = obj as Node;
+            return node != null && Equals(node);
+        }
+
+        public override int GetHashCode() {
+            return position.GetHashCode();
         }
     }
 

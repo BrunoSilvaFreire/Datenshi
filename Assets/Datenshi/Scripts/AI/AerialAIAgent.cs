@@ -46,8 +46,12 @@ namespace Datenshi.Scripts.AI {
 
             var origin = navmesh.GetNodeAtWorld(entityPos);
             var target = navmesh.GetNodeAtWorld(Target);
-            var tempPath = AStar.CalculatePathAerial(origin, target, navmesh, Entity);
-            path = tempPath == null ? null : (from node in tempPath select node.Position).ToList();
+            AStar.CalculatePathAerial(origin, target, navmesh, Entity,
+                tempPath => {
+                    path = tempPath == null ? null : (from node in tempPath select node.Position).ToList(); 
+                    
+                }
+            );
         }
 #if UNITY_EDITOR
 

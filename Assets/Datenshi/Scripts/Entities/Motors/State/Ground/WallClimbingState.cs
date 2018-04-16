@@ -31,7 +31,6 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
             if (inputDir != wallDir) {
                 var sinceLeft = entity.GetVariable(SecondsSinceLeaveWall);
                 var margin = config.OffWallTimeMargin;
-                Debug.Log("Since left = " + sinceLeft + " / " + margin);
                 if (sinceLeft >= margin) {
                     entity.SetVariable(SecondsSinceLeaveWall, 0);
                     machine.SetState(entity, ref collStatus, NormalGroundMotorState.Instance);
@@ -41,13 +40,11 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
                 if (provider.GetJumpDown()) {
                     vel.y = entity.YForce;
                     vel.x = -wallDir * config.WallClimbCounterForce;
-                    Debug.Log("Jumping @ " + vel);
                     entity.Velocity = vel;
                     entity.SetVariable(SecondsSinceLeaveWall, 0);
                     machine.SetState(entity, ref collStatus, NormalGroundMotorState.Instance);
                     ;
                 } else {
-                    Debug.Log("Not jumping");
                     sinceLeft += Time.deltaTime;
                     entity.SetVariable(SecondsSinceLeaveWall, sinceLeft);
                     NormalGroundMotorState.ExecuteState(entity, machine, ref collStatus);
