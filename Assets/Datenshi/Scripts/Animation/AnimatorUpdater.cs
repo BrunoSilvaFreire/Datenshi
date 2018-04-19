@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Profiling;
 
 namespace Datenshi.Scripts.Animation {
     public abstract class EntityAnimatorUpdater : AnimatorUpdater {
@@ -12,10 +13,12 @@ namespace Datenshi.Scripts.Animation {
 
     public abstract class AnimatorUpdater : MonoBehaviour {
         [SerializeField]
-        protected Animator Animator;
+        public Animator Animator;
 
         private void LateUpdate() {
+            Profiler.BeginSample("Updating " + name + " @ " + GetType().Name);
             UpdateAnimator(Animator);
+            Profiler.EndSample();
         }
 
         protected abstract void UpdateAnimator(Animator anim);

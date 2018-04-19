@@ -8,6 +8,7 @@ namespace Datenshi.Scripts.Entities {
         public AudioSource EntityAudioSource;
         public AudioClip[] StepSounds;
         public GhostingContainer Container;
+        public Animator Animator;
 
         [SerializeField, HideInInspector]
         private float minPitch;
@@ -40,6 +41,22 @@ namespace Datenshi.Scripts.Entities {
             maxPitch = Mathf.Max(a, b);
         }
 
+        public void SetEntityAudioSourcePitch(float pitch) {
+            if (EntityAudioSource == null) {
+                return;
+            }
+
+            EntityAudioSource.pitch = pitch;
+        }
+
+        public void SetEntityAudioSourcePitchParameter(string parameterName) {
+            if (EntityAudioSource == null || Animator == null) {
+                return;
+            }
+
+            EntityAudioSource.pitch = Animator.GetFloat(parameterName);
+        }
+
         public void PlayStepSound() {
             if (EntityAudioSource == null) {
                 return;
@@ -54,6 +71,7 @@ namespace Datenshi.Scripts.Entities {
             if (EntityAudioSource == null) {
                 return;
             }
+
 
             EntityAudioSource.pitch = 1;
             EntityAudioSource.PlayOneShot(clip);

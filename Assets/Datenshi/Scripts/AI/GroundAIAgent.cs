@@ -90,16 +90,20 @@ namespace Datenshi.Scripts.AI {
             currentLink.Execute(entity, provider, navmesh);
         }
 
-        public override Vector2 GetFavourablePosition(RangedAttackStrategy state, LivingEntity target) {
+        public override Vector2 GetFavourablePosition(AttackStrategy s, LivingEntity target) {
             var movableEntity = target as MovableEntity;
             Vector2 pos;
+
             if (movableEntity != null) {
                 pos = movableEntity.GroundPosition;
             } else {
                 pos = target.transform.position;
             }
+            var state = s as RangedAttackStrategy;
+            if (state != null) {
+                pos.x += state.MinDistance * Math.Sign(Entity.GroundPosition.x - pos.x);
+            }
 
-            pos.x += state.MinDistance * Math.Sign(Entity.GroundPosition.x - pos.x);
             return pos;
         }
     }

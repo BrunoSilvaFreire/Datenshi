@@ -1,6 +1,11 @@
 ﻿using System;
+using System.Linq;
 using Datenshi.Scripts.Entities;
-using Datenshi.Scripts.Util;
+using JetBrains.Annotations;
+using Sirenix.OdinInspector;
+#if UNITY_EDITOR
+using UnityEditor.Animations;
+#endif
 using UnityEngine;
 
 namespace Datenshi.Scripts.Animation {
@@ -25,7 +30,45 @@ namespace Datenshi.Scripts.Animation {
         public string StunKey = "Stunned";
         public MovableEntity Entity;
         public SpriteRenderer Renderer;
+#if UNITY_EDITOR
+        [ShowInInspector, UsedImplicitly]
+        public void CreateParameters() {
+            AddParameter(SpeedPercentKey, AnimatorControllerParameterType.Float);
+            AddParameter(SpeedRawKey, AnimatorControllerParameterType.Float);
+            AddParameter(GroundedKey, AnimatorControllerParameterType.Bool);
+            AddParameter(YSpeedKey, AnimatorControllerParameterType.Float);
+            AddParameter(AttackKey, AnimatorControllerParameterType.Trigger);
+            AddParameter(DamagedKey, AnimatorControllerParameterType.Trigger);
+            AddParameter(StoppingKey, AnimatorControllerParameterType.Bool);
+            AddParameter(AbsInputVerticalKey, AnimatorControllerParameterType.Float);
+            AddParameter(AbsInputHorizontalKey, AnimatorControllerParameterType.Float);
+            AddParameter(InputVerticalKey, AnimatorControllerParameterType.Float);
+            AddParameter(InputHorizontalKey, AnimatorControllerParameterType.Float);
+            AddParameter(LastDamageKey, AnimatorControllerParameterType.Int);
+            AddParameter(BecameGroundedKey, AnimatorControllerParameterType.Trigger);
+            AddParameter(BecameAiredKey, AnimatorControllerParameterType.Trigger);
+            AddParameter(DefendKey, AnimatorControllerParameterType.Bool);
+            AddParameter(DeflectKey, AnimatorControllerParameterType.Trigger);
+            AddParameter(CounterKey, AnimatorControllerParameterType.Trigger);
+            AddParameter(StunKey, AnimatorControllerParameterType.Bool);
+        }
 
+        public void AddParameter(string parameter, AnimatorControllerParameterType type) {
+            var c = Animator.runtimeAnimatorController as AnimatorController;
+            if (c == null) {
+                return;
+            }
+
+            if (c.parameters.Any(controllerParameter => controllerParameter.name == parameter)) {
+                return;
+            }
+
+            c.AddParameter(new AnimatorControllerParameter {
+                name = parameter,
+                type = type
+            });
+        }
+#endif
         private void Awake() {
             Entity.OnDamaged.AddListener(OnDamaged);
         }
@@ -43,45 +86,45 @@ namespace Datenshi.Scripts.Animation {
             var provider = Entity.InputProvider;
             if (provider != null) {
                 var inputDir = Math.Sign(provider.GetHorizontal());
-                anim.AttemptSetBool(StoppingKey, inputDir == -velDir);
+                anim.SetBool(StoppingKey, inputDir == -velDir);
                 var v = provider.GetVertical();
                 var h = provider.GetHorizontal();
-                anim.AttemptSetFloat(InputVerticalKey, v);
-                anim.AttemptSetFloat(InputHorizontalKey, h);
-                anim.AttemptSetFloat(AbsInputVerticalKey, Mathf.Abs(v));
-                anim.AttemptSetFloat(AbsInputHorizontalKey, Mathf.Abs(h));
+                anim.SetFloat(InputVerticalKey, v);
+                anim.SetFloat(InputHorizontalKey, h);
+                anim.SetFloat(AbsInputVerticalKey, Mathf.Abs(v));
+                anim.SetFloat(AbsInputHorizontalKey, Mathf.Abs(h));
             }
 
-            anim.AttemptSetBool(StunKey, Entity.Stunned);
-            anim.AttemptSetFloat(YSpeedKey, vel.y);
-            anim.AttemptSetFloat(SpeedRawKey, speed);
-            anim.AttemptSetFloat(SpeedPercentKey, percentSpeed);
+            anim.SetBool(StunKey, Entity.Stunned);
+            anim.SetFloat(YSpeedKey, vel.y);
+            anim.SetFloat(SpeedRawKey, speed);
+            anim.SetFloat(SpeedPercentKey, percentSpeed);
             var grounded = Entity.CollisionStatus.Down;
             var wasGrounded = anim.GetBool(GroundedKey);
             if (wasGrounded != grounded) {
-                anim.AttemptSetTrigger(grounded ? BecameGroundedKey : BecameAiredKey);
+                anim.SetTrigger(grounded ? BecameGroundedKey : BecameAiredKey);
             }
 
-            anim.AttemptSetBool(GroundedKey, grounded);
+            anim.SetBool(GroundedKey, grounded);
 
 
             Renderer.flipX = Entity.CurrentDirection.X == -1;
         }
 
         public override void TriggerAttack() {
-            Animator.AttemptSetTrigger(AttackKey);
+            Animator.SetTrigger(AttackKey);
         }
 
         public override void SetDefend(bool defend) {
-            Animator.AttemptSetBool(DefendKey, defend);
+            Animator.SetBool(DefendKey, defend);
         }
 
         public override void TriggerDeflect() {
-            Animator.AttemptSetTrigger(DeflectKey);
+            Animator.SetTrigger(DeflectKey);
         }
 
         public override void TriggerCounter() {
-            Animator.AttemptSetTrigger(CounterKey);
+            Animator.SetTrigger(CounterKey);
         }
     }
 }

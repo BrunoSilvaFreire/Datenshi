@@ -14,14 +14,14 @@ MonoBehaviour:
   debugViews:
     m_Enabled: 1
     m_Settings:
-      mode: 5
+      mode: 0
       depth:
-        scale: 1
+        scale: 0.618
       motionVectors:
-        sourceOpacity: 1
-        motionImageOpacity: 0
+        sourceOpacity: 0.396
+        motionImageOpacity: 0.207
         motionImageAmplitude: 16
-        motionVectorsOpacity: 1
+        motionVectorsOpacity: 0.916
         motionVectorsResolution: 24
         motionVectorsAmplitude: 64
   fog:
@@ -79,9 +79,9 @@ MonoBehaviour:
   motionBlur:
     m_Enabled: 0
     m_Settings:
-      shutterAngle: 270
+      shutterAngle: 277
       sampleCount: 10
-      frameBlending: 0
+      frameBlending: 0.224
   eyeAdaptation:
     m_Enabled: 0
     m_Settings:
@@ -100,10 +100,10 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       bloom:
-        intensity: 0.8
+        intensity: 0.91
         threshold: 1
-        softKnee: 0.9
-        radius: 7
+        softKnee: 1
+        radius: 4.33
         antiFlicker: 1
       lensDirt:
         texture: {fileID: 0}

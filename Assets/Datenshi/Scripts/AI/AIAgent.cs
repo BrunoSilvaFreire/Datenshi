@@ -31,6 +31,6 @@ namespace Datenshi.Scripts.AI {
 
         public abstract void Execute(MovableEntity entity, AIStateInputProvider provider);
 
-        public abstract Vector2 GetFavourablePosition(RangedAttackStrategy state, LivingEntity target);
+        public abstract Vector2 GetFavourablePosition(AttackStrategy state, LivingEntity target);
     }
 }

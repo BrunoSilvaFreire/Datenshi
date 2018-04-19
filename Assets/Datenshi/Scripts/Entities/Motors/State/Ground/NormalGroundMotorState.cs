@@ -150,6 +150,14 @@ namespace Datenshi.Scripts.Entities.Motors.State.Ground {
             var config = ((GroundMotorConfig) entity.Config);
             inputDir = Math.Sign(xInput);
             if (hasProvider) {
+                if (provider.GetDash()) {
+                    var lastTimeDash = entity.GetVariable(DashGroundMotorState.DashStart);
+                    if (Time.time - lastTimeDash > config.DashCooldown) {
+                        machine.CurrentState = DashGroundMotorState.Instance;
+                        return;
+                    }
+                }
+
                 var pressingDefend = provider.GetDefend();
                 entity.Defending = pressingDefend;
 

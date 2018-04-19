@@ -17,6 +17,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.Interact();
         }
 
@@ -24,6 +25,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.Damage(entity, damage);
         }
 
@@ -31,6 +33,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.Stun(duration);
         }
 
@@ -38,6 +41,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.ExecuteAttack(attack);
         }
 
@@ -45,6 +49,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.SetInvulnerable(seconds);
         }
 
@@ -52,6 +57,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.Kill();
         }
 
@@ -59,6 +65,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.Heal(healthAmount);
         }
 #if UNITY_EDITOR
@@ -67,6 +74,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.SnapToFloor();
         }
 #endif
@@ -75,6 +83,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.RevokeOwnership();
         }
 
@@ -82,6 +91,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.MovementStateMachine = value;
         }
 
@@ -89,6 +99,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.Motor = value;
         }
 
@@ -96,6 +107,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.AccelerationCurve = value;
         }
 
@@ -103,6 +115,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.AIAgent = value;
         }
 
@@ -110,6 +123,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.Velocity = value;
         }
 
@@ -117,6 +131,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.SkinWidth = value;
         }
 
@@ -124,6 +139,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.MaxSpeed = value;
         }
 
@@ -131,6 +147,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.YForce = value;
         }
 
@@ -138,6 +155,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.SpeedMultiplier = value;
         }
 
@@ -145,6 +163,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.GravityScale = value;
         }
 
@@ -152,6 +171,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.InteractionController = value;
         }
 
@@ -159,6 +179,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.ApplyVelocity = value;
         }
 
@@ -166,6 +187,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.DamageGivesKnockback = value;
         }
 
@@ -173,6 +195,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.DamageKnockbackMin = value;
         }
 
@@ -180,6 +203,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.DamageKnockbackStrenght = value;
         }
 
@@ -187,6 +211,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.KnockbackLiftoff = value;
         }
 
@@ -194,6 +219,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.ExternalForces = value;
         }
 
@@ -201,6 +227,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.ExternalForcesDeacceleration = value;
         }
 
@@ -208,13 +235,23 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.DamageInvulnerability = value;
+        }
+
+        public void SetDamageInvulnerability(int value) {
+            if (Target == null) {
+                return;
+            }
+
+            Target.DamageInvulnerability = value == 1;
         }
 
         public void SetDamageInvulnerabilityDuration(float value) {
             if (Target == null) {
                 return;
             }
+
             Target.DamageInvulnerabilityDuration = value;
         }
 
@@ -222,6 +259,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.Relationship = value;
         }
 
@@ -229,6 +267,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.DefaultAttackStrategy = value;
         }
 
@@ -236,6 +275,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.OnDamaged = value;
         }
 
@@ -243,6 +283,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.OnAttack = value;
         }
 
@@ -250,6 +291,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.OnHealthChanged = value;
         }
 
@@ -257,6 +299,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.DamageGivesStun = value;
         }
 
@@ -264,6 +307,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.DamageStunMin = value;
         }
 
@@ -271,6 +315,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.DamageStunDuration = value;
         }
 
@@ -278,6 +323,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.OnKilled = value;
         }
 
@@ -285,6 +331,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.DefaultAttackHitbox = value;
         }
 
@@ -292,6 +339,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.FocusMaxTime = value;
         }
 
@@ -299,6 +347,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.MinDefenseRequired = value;
         }
 
@@ -306,6 +355,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.DefenseRecoverAmountMultiplier = value;
         }
 
@@ -313,6 +363,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.DefenseDepleteAmountMultiplier = value;
         }
 
@@ -320,6 +371,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.Hitbox = value;
         }
 
@@ -327,6 +379,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.AnimatorUpdater = value;
         }
 
@@ -334,6 +387,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.Renderer = value;
         }
 
@@ -341,6 +395,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.MiscController = value;
         }
 
@@ -348,6 +403,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.Character = value;
         }
 
@@ -355,6 +411,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.CurrentDirection = value;
         }
 
@@ -362,6 +419,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.Config = value;
         }
 
@@ -369,6 +427,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.FocusTimeLeft = value;
         }
 
@@ -376,6 +435,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.Defending = value;
         }
 
@@ -383,6 +443,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.MaxHealth = value;
         }
 
@@ -390,6 +451,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.HealthPercentage = value;
         }
 
@@ -397,6 +459,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.Invulnerable = value;
         }
 
@@ -404,6 +467,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.useGUILayout = value;
         }
 #if UNITY_EDITOR
@@ -412,6 +476,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.runInEditMode = value;
         }
 #endif
@@ -420,6 +485,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.enabled = value;
         }
 
@@ -427,6 +493,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.tag = value;
         }
 
@@ -434,6 +501,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.name = value;
         }
 
@@ -441,6 +509,7 @@ namespace Datenshi.Scripts.Entities {
             if (Target == null) {
                 return;
             }
+
             Target.hideFlags = value;
         }
     }

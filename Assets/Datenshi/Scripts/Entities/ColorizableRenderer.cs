@@ -7,15 +7,19 @@ namespace Datenshi.Scripts.Entities {
     [Serializable]
     public sealed class ColorizableRendererEvent : UnityEvent<ColorizableRenderer> { }
 
+    [ExecuteInEditMode]
     public class ColorizableRenderer : MonoBehaviour {
         public const string OverrideAmountKey = "_OverrideAmount";
+        public const string ColorKey = "_Color";
         public SpriteRenderer[] Renderers;
 
-        private float overrideAmount;
-
         private MaterialPropertyBlock block;
-        public static readonly ColorizableRendererEvent ColorizableRendererEnabledEvent = new ColorizableRendererEvent();
-        public static readonly ColorizableRendererEvent ColorizableRendererDisabledEvent = new ColorizableRendererEvent();
+
+        public static readonly ColorizableRendererEvent
+            ColorizableRendererEnabledEvent = new ColorizableRendererEvent();
+
+        public static readonly ColorizableRendererEvent ColorizableRendererDisabledEvent =
+            new ColorizableRendererEvent();
 
         private void Awake() {
             ColorizableRendererEnabledEvent.Invoke(this);
@@ -25,24 +29,19 @@ namespace Datenshi.Scripts.Entities {
             ColorizableRendererDisabledEvent.Invoke(this);
         }
 
-        [ShowInInspector]
-        public float ColorOverrideAmount {
-            get {
-                return overrideAmount;
+        private void Update() {
+            if (block == null) {
+                block = new MaterialPropertyBlock();
             }
-            set {
-                overrideAmount = value;
-                if (block == null) {
-                    block = new MaterialPropertyBlock();
-                }
 
-                foreach (var renderer in Renderers) {
-                    renderer.GetPropertyBlock(block);
-                    block.SetFloat(OverrideAmountKey, value);
-
-                    renderer.SetPropertyBlock(block);
-                }
+            foreach (var r in Renderers) {
+                r.GetPropertyBlock(block);
+                block.SetFloat(OverrideAmountKey, ColorOverrideAmount);
+                block.SetColor(ColorKey, r.color);
+                r.SetPropertyBlock(block);
             }
         }
+
+        public float ColorOverrideAmount;
     }
 }

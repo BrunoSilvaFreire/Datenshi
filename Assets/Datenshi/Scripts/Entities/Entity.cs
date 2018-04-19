@@ -6,6 +6,7 @@ using Datenshi.Scripts.Entities.Motors;
 using Datenshi.Scripts.Game;
 using Datenshi.Scripts.Misc;
 using Datenshi.Scripts.Util;
+using Datenshi.Scripts.World.Rooms;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
@@ -30,6 +31,7 @@ namespace Datenshi.Scripts.Entities {
         public static readonly EntityEvent EntityDisabledEvent = new EntityEvent();
         public const string MiscGroup = "Misc";
         public const string GeneralGroup = "General";
+        public Room EntityRoom;
 
         /// <summary>
         /// O provedor a partir de qual essa entidade está recebendo input.
@@ -143,6 +145,12 @@ namespace Datenshi.Scripts.Entities {
 
         private void OnDisable() {
             EntityDisabledEvent.Invoke(this);
+        }
+
+        private void Awake() {
+            if (EntityRoom != null) {
+                EntityRoom.RegisterEntity(this);
+            }
         }
     }
 

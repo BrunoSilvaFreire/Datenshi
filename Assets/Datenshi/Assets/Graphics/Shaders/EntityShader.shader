@@ -1,6 +1,7 @@
 ﻿Shader "Datenshi/EntityShader" {
 	Properties {
-		_Color ("Color", Color) = (1,1,1,1)
+	    [PerRendererData]
+		_Color ("Main Color", Color) = (1,1,1,1)
 		_OverrideColor ("OverrideColor", Color) = (1,1,1,1)
 		_OccludeColor ("OccludeColor", Color) = (1,1,1,1)
 		_OccludeAmount ("OccludeAmount", Range(0, 1)) = 0
@@ -8,7 +9,8 @@
 		_DrawOcclusion("Draw Occlusion", Float) = 1
 		[PerRendererData] 
 		_OverrideAmount ("OverrideAmount", Range(0, 1)) = 0
-		[PerRendererData] _MainTex ("Albedo (RGB)", 2D) = "white" {}
+		[PerRendererData]
+		_MainTex ("Albedo (RGB)", 2D) = "white" {}
 		_NormalMap("Normal Map", 2D) = "white" {}
 	}
 	SubShader {

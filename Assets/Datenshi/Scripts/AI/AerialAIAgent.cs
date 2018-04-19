@@ -108,7 +108,7 @@ namespace Datenshi.Scripts.AI {
             return;
         }
 
-        public override Vector2 GetFavourablePosition(RangedAttackStrategy state, LivingEntity target) {
+        public override Vector2 GetFavourablePosition(AttackStrategy state, LivingEntity target) {
             var pos = Entity.transform.position;
             var targetPos = target.transform.position;
             var x = targetPos.x + Math.Sign(pos.x - targetPos.x) *
