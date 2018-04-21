@@ -31,7 +31,7 @@ namespace Datenshi.Scripts.Entities {
         public AnimationCurve AccelerationCurve = AnimationCurve.Linear(0, 0.1F, 1, 1);
 
         [TitleGroup(MovementGroup)]
-        public AIAgent AIAgent;
+        public AINavigator AINavigator;
 
         [NonSerialized, ShowInInspector, ReadOnly, TitleGroup(MovementGroup)]
         public Vector2 Velocity;

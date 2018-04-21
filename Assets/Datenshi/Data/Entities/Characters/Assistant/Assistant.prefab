@@ -36,9 +36,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4461864418205264}
   - component: {fileID: 114780413426065572}
-  - component: {fileID: 114381367308069954}
   - component: {fileID: 114440101032258150}
-  - component: {fileID: 114178326798342546}
+  - component: {fileID: 114667567613424530}
   m_Layer: 13
   m_Name: Assistant
   m_TagString: Untagged
@@ -72,6 +71,7 @@ GameObject:
   - component: {fileID: 114614107811536760}
   - component: {fileID: 114191588702390292}
   - component: {fileID: 61144858099315544}
+  - component: {fileID: 114494627069423118}
   m_Layer: 13
   m_Name: Assistant_Managers
   m_TagString: Untagged
@@ -289,7 +289,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1161872236998306}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -148.9, y: 10, z: 0}
+  m_LocalPosition: {x: -150.9, y: 10.1, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 4050120435013016}
@@ -422,19 +422,6 @@ MonoBehaviour:
   Holder: {fileID: 224281683103040180}
   DefaultSize: {x: 60, y: 30}
   Padding: {x: 10, y: 10}
---- !u!114 &114178326798342546
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1161872236998306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab20b263cd41487189e0e5f28ee98524, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entity: {fileID: 0}
-  Assistant: {fileID: 114780413426065572}
 --- !u!114 &114191588702390292
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -447,21 +434,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hitbox: {fileID: 61144858099315544}
---- !u!114 &114381367308069954
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1161872236998306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbd1d9ce47dd44ffab3ef38f9cd20c4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Target: {x: -21.59, y: -10.3}
-  TimePerRegen: 0.25
-  Entity: {fileID: 114780413426065572}
-  MinimumHeightAdvantage: 3
 --- !u!114 &114440101032258150
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -483,6 +455,21 @@ MonoBehaviour:
   Dash: 0
   Submit: 0
   Defend: 0
+--- !u!114 &114494627069423118
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1254036451178688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbd1d9ce47dd44ffab3ef38f9cd20c4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {x: -21.59, y: -10.3}
+  TimePerRegen: 0.25
+  Entity: {fileID: 114780413426065572}
+  MinimumHeightAdvantage: 3
 --- !u!114 &114614107811536760
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -497,8 +484,22 @@ MonoBehaviour:
   EntityAudioSource: {fileID: 0}
   StepSounds: []
   Container: {fileID: 0}
+  Animator: {fileID: 0}
   minPitch: 0
   maxPitch: 0
+--- !u!114 &114667567613424530
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1161872236998306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27085a92b9704409800951664c28e63f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Assistant: {fileID: 114780413426065572}
+  MaxDistance: 10
 --- !u!114 &114776280883289884
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -514,6 +515,7 @@ MonoBehaviour:
   - {fileID: 212179752502103442}
   - {fileID: 212382617750680600}
   - {fileID: 212187792993308444}
+  ColorOverrideAmount: 0
 --- !u!114 &114780413426065572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -525,6 +527,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4d4c506b7d14716a950885bed3aaf01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EntityRoom: {fileID: 0}
   inputProvider: {fileID: 0}
   Hitbox: {fileID: 61613949157056576}
   AnimatorUpdater: {fileID: 0}
@@ -590,7 +593,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  AIAgent: {fileID: 114381367308069954}
+  AINavigator: {fileID: 114494627069423118}
   SkinWidth: 0.1
   MaxSpeed: 10
   YForce: 5
@@ -937,7 +940,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 3}
-  m_SizeDelta: {x: 70, y: 40}
+  m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &225181532533837968
 CanvasGroup:

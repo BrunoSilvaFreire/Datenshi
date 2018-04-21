@@ -1,7 +1,7 @@
-﻿using Datenshi.Scripts.Combat.Attacks;
+﻿using Datenshi.Input;
+using Datenshi.Scripts.Combat.Attacks;
 using Datenshi.Scripts.Combat.Strategies;
 using Datenshi.Scripts.Entities;
-using Datenshi.Scripts.Entities.Input;
 using Datenshi.Scripts.Game;
 using Datenshi.Scripts.Util;
 using UnityEngine;

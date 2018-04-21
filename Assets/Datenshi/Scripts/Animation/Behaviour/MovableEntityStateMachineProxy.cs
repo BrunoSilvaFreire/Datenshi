@@ -5,6 +5,7 @@ using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Entities.Motors;
 using Datenshi.Scripts.Entities.Motors.State;
 using Datenshi.Scripts.Interaction;
+using Datenshi.Scripts.Misc;
 using Datenshi.Scripts.Util;
 using UnityEngine;
 using UnityEngine.Events;
@@ -77,8 +78,8 @@ namespace Datenshi.Scripts.Animation.Behaviour {
             Target.AccelerationCurve = value;
         }
 
-        public void SetAIAgent(AIAgent value) {
-            Target.AIAgent = value;
+        public void SetAIAgent(AINavigator value) {
+            Target.AINavigator = value;
         }
 
         public void SetVelocity(Vector2 value) {

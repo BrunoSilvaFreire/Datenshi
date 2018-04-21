@@ -1,5 +1,5 @@
-﻿using Datenshi.Scripts.Entities;
-using Datenshi.Scripts.Entities.Input;
+﻿using Datenshi.Input;
+using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Game;
 using Datenshi.Scripts.Misc;
 using Datenshi.Scripts.Util;

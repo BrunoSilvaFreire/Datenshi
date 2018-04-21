@@ -188,7 +188,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1896484453590728}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -87.4, y: 7.9, z: 0}
+  m_LocalPosition: {x: 115.89, y: 2.86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4654424630026524}
@@ -436,6 +436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4d4c506b7d14716a950885bed3aaf01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EntityRoom: {fileID: 0}
   inputProvider: {fileID: 0}
   Hitbox: {fileID: 61269217306511274}
   AnimatorUpdater: {fileID: 114708593015091422}
@@ -482,6 +483,7 @@ MonoBehaviour:
   MinDefenseRequired: 0.1
   DefenseRecoverAmountMultiplier: 1
   DefenseDepleteAmountMultiplier: 2
+  Ignored: 0
   Motor: {fileID: 11400000, guid: cc5b22130f7e9c74da83c3d12dc02dac, type: 2}
   AccelerationCurve:
     serializedVersion: 2
@@ -501,7 +503,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  AIAgent: {fileID: 114743229920002802}
+  AINavigator: {fileID: 114743229920002802}
   SkinWidth: 0.05
   MaxSpeed: 8
   YForce: 24
@@ -570,6 +572,7 @@ MonoBehaviour:
   WallClimbGravityScale: 3
   WallClimbCounterForce: 5
   JumpCutGravityModifier: 1
+  OffWallTimeMargin: 0.3
 --- !u!114 &114435865946197590
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -732,8 +735,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderers:
   - {fileID: 212669247791164156}
-  Entity: {fileID: 114281234270348236}
-  DefaultOverrideColor: {r: 1, g: 1, b: 1, a: 1}
+  ColorOverrideAmount: 0
 --- !u!114 &114932899101906818
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -750,6 +752,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0d698d1a7710d324ca7105a558bd815c, type: 3}
   - {fileID: 8300000, guid: 474a231c1ad41e34dbbde24b175af1ee, type: 3}
   Container: {fileID: 0}
+  Animator: {fileID: 0}
   minPitch: 0.9
   maxPitch: 1.1
 --- !u!212 &212669247791164156

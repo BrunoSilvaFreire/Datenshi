@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using Datenshi.Scripts.AI.Pathfinding;
 using Datenshi.Scripts.AI.Pathfinding.Links;
 using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Game;
-using Datenshi.Scripts.Misc;
+using Unity.Collections;
+using Unity.Jobs;
 using UnityEngine;
+using UnityEngine.Profiling;
 
 namespace Datenshi.Scripts.Util {
     public static class AStar {
@@ -114,7 +115,7 @@ namespace Datenshi.Scripts.Util {
         }
 
 
-        public static void CalculatePathAerial(Node from, Node to, Navmesh navMesh, MovableEntity entity,
+        public static void CalculatePathAerial(Node from, Node to, Navmesh navMesh, string entity,
             Action<List<Node>> action) {
             var fromP = navMesh.WorldPosCenter(from);
             var toP = navMesh.WorldPosCenter(to);
@@ -165,6 +166,7 @@ namespace Datenshi.Scripts.Util {
                     var current = openSet.MinBy(node => fScore.GetOrPut(node, () => float.PositiveInfinity));
                     if (Equals(current, to)) {
                         action(ReconstructAerial(cameFrom, current));
+                        Profiler.EndThreadProfiling();
                         return;
                     }
 

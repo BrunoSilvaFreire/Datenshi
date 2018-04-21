@@ -19,9 +19,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4058186533410472}
-  - component: {fileID: 114048294525163814}
-  - component: {fileID: 114060116681418080}
   - component: {fileID: 114787055024945158}
+  - component: {fileID: 114048294525163814}
   m_Layer: 12
   m_Name: TeleportingEnemy
   m_TagString: Untagged
@@ -44,6 +43,22 @@ GameObject:
   - component: {fileID: 114433011763001340}
   m_Layer: 12
   m_Name: Enemy_UI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1247194317141098
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4353090292968304}
+  - component: {fileID: 114721705990648840}
+  m_Layer: 12
+  m_Name: TeleportingEnemy_Managers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,9 +150,23 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4967164661867740}
+  - {fileID: 4353090292968304}
   - {fileID: 224672507563359624}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4353090292968304
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1247194317141098}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4058186533410472}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4967164661867740
 Transform:
@@ -352,7 +381,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  AIAgent: {fileID: 114060116681418080}
+  AINavigator: {fileID: 114721705990648840}
   SkinWidth: 0.1
   MaxSpeed: 5
   YForce: 5
@@ -366,21 +395,6 @@ MonoBehaviour:
   KnockbackLiftoff: 3
   ExternalForces: {x: 0, y: 0}
   ExternalForcesDeacceleration: 0.1
---- !u!114 &114060116681418080
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1067808238723220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbd1d9ce47dd44ffab3ef38f9cd20c4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Target: {x: 46.14, y: 13}
-  TimePerRegen: 1
-  Entity: {fileID: 114048294525163814}
-  MinimumHeightAdvantage: 5
 --- !u!114 &114078691670389536
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -579,6 +593,21 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114721705990648840
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1247194317141098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbd1d9ce47dd44ffab3ef38f9cd20c4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {x: 46.14, y: 13}
+  TimePerRegen: 1
+  Entity: {fileID: 114048294525163814}
+  MinimumHeightAdvantage: 5
 --- !u!114 &114787055024945158
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -742,7 +771,7 @@ RectTransform:
   m_Children:
   - {fileID: 224923850712268820}
   m_Father: {fileID: 4058186533410472}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

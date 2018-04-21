@@ -1,5 +1,5 @@
-﻿using Datenshi.Scripts.Entities;
-using Datenshi.Scripts.Entities.Input;
+﻿using Datenshi.Input;
+using Datenshi.Scripts.Entities;
 using UnityEngine;
 
 namespace Datenshi.Scripts.AI.Behaviour {
@@ -10,7 +10,7 @@ namespace Datenshi.Scripts.AI.Behaviour {
             if (entity == null) {
                 return;
             }
-            var agent = entity.AIAgent;
+            var agent = entity.AINavigator;
             if (agent != null) {
                 agent.Execute(entity, provider);
             }

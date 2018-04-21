@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Datenshi.Input;
 using Datenshi.Scripts.Animation;
-using Datenshi.Scripts.Entities.Input;
 using Datenshi.Scripts.Entities.Motors;
 using Datenshi.Scripts.Game;
 using Datenshi.Scripts.Misc;
@@ -135,6 +135,12 @@ namespace Datenshi.Scripts.Entities {
             transform.position = raycast.point + new Vector2(0, bounds.Size.y / 2);
         }
 #endif
+        public Vector2 Center {
+            get {
+                return Hitbox != null ? Hitbox.bounds.center : transform.position;
+            }
+        }
+
         public void RevokeOwnership() {
             inputProvider = null;
         }

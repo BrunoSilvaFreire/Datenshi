@@ -1,5 +1,5 @@
-﻿using Datenshi.Scripts.Entities;
-using Datenshi.Scripts.Entities.Input;
+﻿using Datenshi.Input;
+using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Misc;
 using UnityEngine;
 
@@ -27,7 +27,7 @@ namespace Datenshi.Scripts.Combat.Strategies {
 
             if (Vector2.Distance(entity.transform.position, targetPos) > MinDistance) {
                 provider.Attack = false;
-                var agent = entity.AIAgent;
+                var agent = entity.AINavigator;
                 agent.Target = targetPos;
                 agent.Execute(entity, provider);
                 return;

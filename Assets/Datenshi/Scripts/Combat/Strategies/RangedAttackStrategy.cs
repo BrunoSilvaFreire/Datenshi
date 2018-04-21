@@ -1,6 +1,6 @@
 ﻿using System;
+using Datenshi.Input;
 using Datenshi.Scripts.Entities;
-using Datenshi.Scripts.Entities.Input;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Combat.Strategies {
@@ -23,10 +23,10 @@ namespace Datenshi.Scripts.Combat.Strategies {
             }
             var entityPos = entity.GroundPosition;
             var xDir = Math.Sign(entityPos.x - targetEntityPos.x);
-            var targetPos = entity.AIAgent.GetFavourablePosition(this, target);
+            var targetPos = entity.AINavigator.GetFavourablePosition(this, target);
             if (Vector2.Distance(entityPos, targetPos) > Threshold) {
                 provider.Attack = false;
-                var agent = entity.AIAgent;
+                var agent = entity.AINavigator;
                 agent.Target = targetPos;
                 agent.Execute(entity, provider);
                 return;

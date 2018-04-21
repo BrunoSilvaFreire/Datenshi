@@ -1,7 +1,7 @@
 ﻿using System;
 using Datenshi.Assets.Graphics.Shaders;
+using Datenshi.Input;
 using Datenshi.Scripts.Entities;
-using Datenshi.Scripts.Entities.Input;
 using Datenshi.Scripts.Misc;
 using Datenshi.Scripts.Util.Singleton;
 using DG.Tweening;
@@ -16,7 +16,7 @@ namespace Datenshi.Scripts.Game {
     public class PlayerController : Singleton<PlayerController> {
         public PlayerInputProvider Player;
 
-        [SerializeField, HideInInspector]
+        [SerializeField]
         private Entity currentEntity;
 
         [ShowInInspector]

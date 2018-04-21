@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
+using Datenshi.Input;
 using Datenshi.Scripts.Entities;
-using Datenshi.Scripts.Entities.Input;
 using Datenshi.Scripts.Misc;
 using UnityEngine;
 
@@ -33,10 +33,8 @@ namespace Datenshi.Scripts.Combat.Strategies {
 
             var entityPos = entity.transform.position;
             var xDir = Math.Sign(entityPos.x - targetEntityPos.x);
-            var targetPos = entity.AIAgent.GetFavourablePosition(this, target);
+            var targetPos = entity.AINavigator.GetFavourablePosition(this, target);
             var distance = Vector2.Distance(entityPos, targetPos);
-            Debug.LogFormat("Distance from {0} {1} to {2} {3} = {4} / {5}", entity, entityPos, target, targetEntityPos,
-                distance, TeleportThreshold);
             if (distance < TeleportThreshold) {
                 var newPos = entityPos;
                 var teleportDir = xDir * TeleportDistance;
@@ -52,7 +50,7 @@ namespace Datenshi.Scripts.Combat.Strategies {
 
             if (distance > MinDistance) {
                 provider.Attack = false;
-                var agent = entity.AIAgent;
+                var agent = entity.AINavigator;
                 agent.Target = targetPos;
                 agent.Execute(entity, provider);
                 return;
