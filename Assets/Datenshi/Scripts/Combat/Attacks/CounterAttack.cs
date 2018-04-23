@@ -20,7 +20,7 @@ namespace Datenshi.Scripts.Combat.Attacks {
             DebugUtil.DrawBounds2D(new Bounds(entity.transform.position, Vector3.one), Color.cyan);
             var success = false;
             foreach (var coll in hit) {
-                var d = coll.GetComponent<Defendable>();
+                var d = coll.GetComponent<IDefendable>();
                 if (d == null || !d.CanDefend(entity)) {
                     continue;
                 }

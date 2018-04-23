@@ -1,0 +1,14 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d62a9c86c5840ba844b30e8d3993727, type: 3}
+  m_Name: LightEnemy_Summon
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 114033980492965672, guid: 38c5661d2639dbf489c34bbb85e9e290, type: 2}

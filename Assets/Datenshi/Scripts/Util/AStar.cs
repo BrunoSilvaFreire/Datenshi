@@ -5,8 +5,6 @@ using Datenshi.Scripts.AI.Pathfinding;
 using Datenshi.Scripts.AI.Pathfinding.Links;
 using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Game;
-using Unity.Collections;
-using Unity.Jobs;
 using UnityEngine;
 using UnityEngine.Profiling;
 

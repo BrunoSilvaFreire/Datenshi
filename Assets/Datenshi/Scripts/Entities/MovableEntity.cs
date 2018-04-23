@@ -127,10 +127,6 @@ namespace Datenshi.Scripts.Entities {
             Motor.Terminate(this);
         }
 
-        private void Reset() {
-            Motor = GetComponent<Motor>();
-        }
-
         private void LateUpdate() {
             if (Motor == null) {
                 return;

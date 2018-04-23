@@ -26,10 +26,10 @@ namespace Datenshi.Scripts.Combat.Attacks {
             }
 
             foreach (var hit in Physics2D.OverlapBoxAll(hb.Center, hb.Size, 0, GameResources.Instance.EntitiesMask)) {
-                var d = hit.GetComponentInParent<Defendable>();
+                var d = hit.GetComponentInParent<IDefendable>();
                 if (d != null && d.CanPoorlyDefend(entity)) {
                     var w = d as HitboxAttackCounterWindow;
-                    if (w) {
+                    if (w != null) {
                         w.AttackDamage = damage;
                     }
 

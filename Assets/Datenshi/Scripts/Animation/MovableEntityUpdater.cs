@@ -31,7 +31,7 @@ namespace Datenshi.Scripts.Animation {
         public MovableEntity Entity;
         public SpriteRenderer Renderer;
 #if UNITY_EDITOR
-        [ShowInInspector, UsedImplicitly]
+        [ShowInInspector, UsedImplicitly, Button]
         public void CreateParameters() {
             AddParameter(SpeedPercentKey, AnimatorControllerParameterType.Float);
             AddParameter(SpeedRawKey, AnimatorControllerParameterType.Float);

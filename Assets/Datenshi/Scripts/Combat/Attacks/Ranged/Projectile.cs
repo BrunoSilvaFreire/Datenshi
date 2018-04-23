@@ -1,14 +1,12 @@
 ﻿using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Game;
 using Datenshi.Scripts.Interaction;
+using Datenshi.Scripts.Misc;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Combat.Attacks.Ranged {
-    public class Projectile : Defendable {
-        [ShowInInspector, ReadOnly]
-        private LivingEntity owner;
-
+    public class Projectile : Ownable, IDefendable {
         [ShowInInspector, ReadOnly]
         private Vector2 velocity;
 
@@ -20,8 +18,8 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
         }
 
         public void Shoot(LivingEntity shooter, Vector2 direction) {
-            owner = shooter;
-            owner.OnKilled.AddListener(OnKilled);
+            Owner = shooter;
+            Owner.OnKilled.AddListener(OnKilled);
             velocity = direction;
             velocity.Normalize();
             velocity *= Speed;
@@ -32,7 +30,7 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
         }
 
         private void Update() {
-            if (owner == null) {
+            if (Owner == null) {
                 return;
             }
 
@@ -50,38 +48,38 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
                 return;
             }
 
-            if (e != null && e != owner && e.Relationship != owner.Relationship) {
+            if (e != null && e != Owner && e.Relationship != Owner.Relationship) {
                 e.Damage(e, Damage);
             }
 
-            if (e == null || e.Relationship != owner.Relationship) {
+            if (e == null || e.Relationship != Owner.Relationship) {
                 Destroy(gameObject);
             }
         }
 
-        public override bool CanDefend(LivingEntity entity) {
-            return owner != null && owner.Relationship != entity.Relationship;
+        public bool CanDefend(LivingEntity entity) {
+            return Owner != null && Owner.Relationship != entity.Relationship;
         }
 
-        public override void Defend(LivingEntity entity) {
-            velocity = owner.transform.position - entity.transform.position;
+        public void Defend(LivingEntity entity) {
+            velocity = Owner.transform.position - entity.transform.position;
             velocity.Normalize();
             velocity *= GameResources.Instance.DeflectSpeed;
 
-            owner = entity;
+            Owner = entity;
         }
 
-        public override bool CanPoorlyDefend(LivingEntity entity) {
+        public bool CanPoorlyDefend(LivingEntity entity) {
             return true;
         }
 
         public float MaxAngle;
 
-        public override void PoorlyDefend(LivingEntity entity) {
+        public void PoorlyDefend(LivingEntity entity) {
             var angle = Random.value * MaxAngle - MaxAngle / 2 + Angle(velocity);
             velocity = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle));
             velocity *= GameResources.Instance.DeflectSpeed;
-            owner = entity;
+            Owner = entity;
         }
 
         public static float Angle(Vector2 vec) {
@@ -92,7 +90,7 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
             return Mathf.Atan2(vec.x, vec.y) * Mathf.Rad2Deg;
         }
 
-        public override DefenseType GetDefenseType() {
+        public DefenseType GetDefenseType() {
             return DefenseType.Deflect;
         }
     }

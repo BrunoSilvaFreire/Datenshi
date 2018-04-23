@@ -1,6 +1,7 @@
 ﻿using System;
 using Datenshi.Input;
 using Datenshi.Scripts.Entities;
+using Datenshi.Scripts.Misc;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Combat.Strategies {
@@ -8,6 +9,10 @@ namespace Datenshi.Scripts.Combat.Strategies {
     public class RangedAttackStrategy : AttackStrategy {
         public float MinDistance = 5F;
         public float Threshold = 1F;
+        public float MinDelayBetweenAttacks = 2;
+
+        public static readonly Variable<float> LastAttack =
+            new Variable<float>("entity.ai.combat.strategy.ranged.lastAttack", 0);
 
         public override void Execute(AIStateInputProvider provider, LivingEntity e, LivingEntity target) {
             var entity = e as MovableEntity;
@@ -23,14 +28,25 @@ namespace Datenshi.Scripts.Combat.Strategies {
             }
             var entityPos = entity.GroundPosition;
             var xDir = Math.Sign(entityPos.x - targetEntityPos.x);
-            var targetPos = entity.AINavigator.GetFavourablePosition(this, target);
-            if (Vector2.Distance(entityPos, targetPos) > Threshold) {
-                provider.Attack = false;
-                var agent = entity.AINavigator;
+            var agent = entity.AINavigator;
+            var targetPos = agent.GetFavourablePosition(this, target);
+            if (Vector2.Distance(entityPos, targetPos) > MinDistance + Threshold) {
                 agent.Target = targetPos;
                 agent.Execute(entity, provider);
+                provider.Attack = false;
+                Debug.Log("Too distant");
                 return;
             }
+            var lastAttack = target.GetVariable(LastAttack);
+            var time = Time.time;
+            if (time - lastAttack < MinDelayBetweenAttacks) {
+                provider.Attack = false;
+                Debug.Log("Too early for new attack" + (time - lastAttack) + " / " + MinDelayBetweenAttacks);
+                return;
+            }
+
+            target.SetVariable(LastAttack, time);
+            Debug.Log("Attacking");
             entity.CurrentDirection.X = -xDir;
             provider.Horizontal = 0;
             provider.Walk = true;

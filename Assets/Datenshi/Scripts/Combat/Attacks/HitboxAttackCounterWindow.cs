@@ -1,31 +1,33 @@
 ﻿using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Interaction;
+using UnityEngine;
 
 namespace Datenshi.Scripts.Combat.Attacks {
-    public class HitboxAttackCounterWindow : Defendable {
+    public class HitboxAttackCounterWindow : MonoBehaviour, IDefendable {
         public LivingEntity Entity;
         public bool Available;
         public uint AttackDamage;
         public float StunDuration;
-        public override bool CanDefend(LivingEntity entity) {
+
+        public bool CanDefend(LivingEntity entity) {
             return Available;
         }
 
-        public override void Defend(LivingEntity entity) {
+        public void Defend(LivingEntity entity) {
             Entity.Damage(entity, AttackDamage);
             Entity.Stun(StunDuration);
             PoorlyDefend(entity);
         }
 
-        public override bool CanPoorlyDefend(LivingEntity entity) {
+        public bool CanPoorlyDefend(LivingEntity entity) {
             return Available;
         }
 
-        public override void PoorlyDefend(LivingEntity entity) {
+        public void PoorlyDefend(LivingEntity entity) {
             entity.SetVariable(AbstractHitboxAttack.Blocked, true);
         }
 
-        public override DefenseType GetDefenseType() {
+        public DefenseType GetDefenseType() {
             return DefenseType.Counter;
         }
     }

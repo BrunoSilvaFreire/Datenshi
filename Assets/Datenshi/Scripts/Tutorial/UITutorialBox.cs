@@ -51,6 +51,9 @@ namespace Datenshi.Scripts.Tutorial {
         }
 
         public void Show(TutorialTrigger tutorialTrigger) {
+            if (knownTutorials.Contains(tutorialTrigger)) {
+                return;
+            }
             if (!Showing) {
                 Showing = true;
             }
@@ -64,33 +67,35 @@ namespace Datenshi.Scripts.Tutorial {
             if (id != currentTrigger) {
                 return;
             }
-
-            current.DOKill();
-            if (knownTutorials.Count == 0) {
+            if (knownTutorials.IsEmpty()) {
                 Hide();
             } else {
                 var toReplace = knownTutorials.Last();
-                showRoutine = StartCoroutine(ShowTutorial(toReplace, true));
+                showRoutine = StartCoroutine(ShowTutorial(toReplace));
             }
         }
 
         private IEnumerator HideTutoral() {
             if (showRoutine != null) {
-                StopCoroutine(showRoutine);
+                Stop(showRoutine);
             }
 
             if (current != null) {
-                yield return StartCoroutine(Clear(current));
+                yield return Clear(current);
             }
 
             yield return SetSizeAndAlpha(Vector2.zero, 0);
             hideRoutine = null;
         }
 
-
-        private IEnumerator SetSizeAndAlpha(Vector2 size, float alpha) {
+        private void Stop(Coroutine coroutine) {
             RectTransform.DOKill();
             CanvasGroup.DOKill();
+            StopCoroutine(coroutine);
+        }
+
+
+        private IEnumerator SetSizeAndAlpha(Vector2 size, float alpha) {
             RectTransform.DOSizeDelta(size + Padding, SizeChangeDuration, true);
             CanvasGroup.DOFade(alpha, SizeChangeDuration);
             yield return new WaitForSeconds(SizeChangeDuration);
@@ -104,13 +109,13 @@ namespace Datenshi.Scripts.Tutorial {
         private Coroutine hideRoutine;
         private Coroutine showRoutine;
 
-        private IEnumerator ShowTutorial(TutorialTrigger tutorialTrigger, bool destroy = false) {
+        private IEnumerator ShowTutorial(TutorialTrigger tutorialTrigger) {
             if (hideRoutine != null) {
-                StopCoroutine(hideRoutine);
+                Stop(hideRoutine);
             }
 
             if (current != null) {
-                yield return StartCoroutine(Clear(current, destroy));
+                yield return Clear(current);
             }
 
             var tut = Instantiate(tutorialTrigger.TutorialPrefab, Holder);
@@ -123,7 +128,7 @@ namespace Datenshi.Scripts.Tutorial {
         }
 
 
-        private IEnumerator Clear(UITutorial obj, bool destroy = true) {
+        private IEnumerator Clear(UITutorial obj) {
             if (obj == null) {
                 yield break;
             }
@@ -135,9 +140,7 @@ namespace Datenshi.Scripts.Tutorial {
 
             obj.Showing = false;
             yield return new WaitForSeconds(obj.FadeDuration);
-            if (destroy) {
-                Destroy(obj.gameObject);
-            }
+            Destroy(obj.gameObject);
         }
     }
 }

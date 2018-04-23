@@ -36,6 +36,7 @@ namespace Datenshi.Scripts.Combat.Strategies {
             var lastAttack = target.GetVariable(LastAttack);
             var time = Time.time;
             if (time - lastAttack < MinDelayBetweenAttacks) {
+                provider.Attack = false;
                 return;
             }
 

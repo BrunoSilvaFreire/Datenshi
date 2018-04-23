@@ -16,7 +16,7 @@ namespace Datenshi.Scripts.Game {
     public class PlayerController : Singleton<PlayerController> {
         public PlayerInputProvider Player;
 
-        [SerializeField]
+        [SerializeField, HideInInspector]
         private Entity currentEntity;
 
         [ShowInInspector]
@@ -52,7 +52,8 @@ namespace Datenshi.Scripts.Game {
             currentEntity.RevokeOwnership();
             currentEntity.RequestOwnership(Player);
             OnEntityChanged.Invoke(null, currentEntity);
-            tracker = new Tracker<ColorizableRenderer>(ColorizableRenderer.ColorizableRendererEnabledEvent,
+            tracker = new Tracker<ColorizableRenderer>(
+                ColorizableRenderer.ColorizableRendererEnabledEvent,
                 ColorizableRenderer.ColorizableRendererDisabledEvent);
         }
 

@@ -6,5 +6,13 @@ namespace Datenshi.Scripts.Animation {
         public void SpawnPrefab(GameObject prefab) {
             prefab.Clone(transform.position);
         }
+
+        public void PlayAudioOneShot(AudioClip clip) {
+            GetComponentInChildren<AudioSource>().PlayOneShot(clip);
+        }
+
+        public void DestroyObject() {
+            Destroy(gameObject);
+        }
     }
 }

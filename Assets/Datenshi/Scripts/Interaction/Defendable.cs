@@ -2,12 +2,12 @@
 using UnityEngine;
 
 namespace Datenshi.Scripts.Interaction {
-    public abstract class Defendable : MonoBehaviour {
-        public abstract bool CanDefend(LivingEntity entity);
-        public abstract void Defend(LivingEntity entity);
-        public abstract bool CanPoorlyDefend(LivingEntity entity);
-        public abstract void PoorlyDefend(LivingEntity entity);
-        public abstract DefenseType GetDefenseType();
+    public interface IDefendable {
+        bool CanDefend(LivingEntity entity);
+        void Defend(LivingEntity entity);
+        bool CanPoorlyDefend(LivingEntity entity);
+        void PoorlyDefend(LivingEntity entity);
+        DefenseType GetDefenseType();
     }
 
     public enum DefenseType {
