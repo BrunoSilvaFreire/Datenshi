@@ -146,7 +146,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1067808238723220}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11, y: 11.9, z: 0}
+  m_LocalPosition: {x: -73, y: 12.930855, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4967164661867740}
@@ -407,7 +407,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 95478124818091162}
-  Attack: {fileID: 11400000, guid: 2d34a434d80e42f49b7ee3f244637640, type: 2}
+  Attacks:
+  - {fileID: 11400000, guid: 2d34a434d80e42f49b7ee3f244637640, type: 2}
   Entity: {fileID: 114048294525163814}
 --- !u!114 &114079858820831974
 MonoBehaviour:

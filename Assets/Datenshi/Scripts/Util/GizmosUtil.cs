@@ -1,14 +1,13 @@
 ﻿using Datenshi.Scripts.Entities;
 #if UNITY_EDITOR
 using UnityEditor;
-    
 #endif
 using UnityEngine;
 
 namespace Datenshi.Scripts.Util {
     public static class HandlesUtil {
 #if UNITY_EDITOR
-        
+
         public static void DrawBox2DWire(Vector2 center, Vector2 size) {
             var halfWidth = size.x / 2;
             var halfHeight = size.y / 2;
@@ -43,8 +42,10 @@ namespace Datenshi.Scripts.Util {
             var topLeft = new Vector2(center.x - halfWidth, center.y + halfHeight);
             var bottomRight = new Vector2(center.x + halfWidth, center.y - halfHeight);
             var topRight = new Vector2(center.x + halfWidth, center.y + halfHeight);
-            Handles.DrawSolidRectangleWithOutline(new Vector3[] {bottomLeft, topLeft, topRight, bottomRight},
-                Color.white, Color.black);
+            Handles.DrawSolidRectangleWithOutline(
+                new Vector3[] {bottomLeft, topLeft, topRight, bottomRight},
+                Color.white,
+                Color.black);
         }
 
         public static void DrawBox2D(Vector2 center, Vector2 size, Color color) {
@@ -55,40 +56,61 @@ namespace Datenshi.Scripts.Util {
             var bottomRight = new Vector2(center.x + halfWidth, center.y - halfHeight);
             var topRight = new Vector2(center.x + halfWidth, center.y + halfHeight);
             Handles.color = color;
-            Handles.DrawSolidRectangleWithOutline(new Vector3[] {bottomLeft, topLeft, topRight, bottomRight},
-                Color.white, Color.clear);
+            Handles.DrawSolidRectangleWithOutline(
+                new Vector3[] {bottomLeft, topLeft, topRight, bottomRight},
+                Color.white,
+                Color.clear);
         }
 
         public static void DrawRay(Vector2 pos, Vector2 dir) {
             Handles.DrawLine(pos, pos + dir);
         }
 
-        public static void ArrowGizmo(Vector3 pos, Vector3 direction, float arrowHeadLength = 0.25f,
+        public static void ArrowGizmo(
+            Vector3 pos,
+            Vector3 direction,
+            float arrowHeadLength = 0.25f,
             float arrowHeadAngle = 20.0f) {
             Gizmos.DrawLine(pos, pos + direction);
             DrawArrowEnd(true, pos, direction, Handles.color, arrowHeadLength, arrowHeadAngle);
         }
 
-        public static void ArrowGizmo(Vector3 pos, Vector3 direction, Color color, float arrowHeadLength = 0.25f,
+        public static void ArrowGizmo(
+            Vector3 pos,
+            Vector3 direction,
+            Color color,
+            float arrowHeadLength = 0.25f,
             float arrowHeadAngle = 20.0f) {
             Gizmos.DrawLine(pos, pos + direction);
             DrawArrowEnd(true, pos, direction, color, arrowHeadLength, arrowHeadAngle);
         }
 
-        public static void ArrowDebug(Vector3 pos, Vector3 direction, float arrowHeadLength = 0.25f,
+        public static void ArrowDebug(
+            Vector3 pos,
+            Vector3 direction,
+            float arrowHeadLength = 0.25f,
             float arrowHeadAngle = 20.0f) {
             Debug.DrawRay(pos, direction);
             DrawArrowEnd(false, pos, direction, Handles.color, arrowHeadLength, arrowHeadAngle);
         }
 
-        public static void ArrowDebug(Vector3 pos, Vector3 direction, Color color, float arrowHeadLength = 0.25f,
+        public static void ArrowDebug(
+            Vector3 pos,
+            Vector3 direction,
+            Color color,
+            float arrowHeadLength = 0.25f,
             float arrowHeadAngle = 20.0f) {
             Debug.DrawRay(pos, direction, color);
             DrawArrowEnd(false, pos, direction, color, arrowHeadLength, arrowHeadAngle);
         }
 
-        private static void DrawArrowEnd(bool gizmos, Vector3 pos, Vector3 direction, Color color,
-            float arrowHeadLength = 0.25f, float arrowHeadAngle = 20.0f) {
+        private static void DrawArrowEnd(
+            bool gizmos,
+            Vector3 pos,
+            Vector3 direction,
+            Color color,
+            float arrowHeadLength = 0.25f,
+            float arrowHeadAngle = 20.0f) {
             var right = Quaternion.LookRotation(direction) * Quaternion.Euler(arrowHeadAngle, 0, 0) * Vector3.back;
             var left = Quaternion.LookRotation(direction) * Quaternion.Euler(-arrowHeadAngle, 0, 0) * Vector3.back;
             var up = Quaternion.LookRotation(direction) * Quaternion.Euler(0, arrowHeadAngle, 0) * Vector3.back;
@@ -151,6 +173,65 @@ namespace Datenshi.Scripts.Util {
         public static void DrawBounds2D(Bounds2D bounds, Color color) {
             DrawBox2DWire(bounds.Center, bounds.Size, color);
         }
+
+        public const uint CirclesVertices = 24;
+
+        public static void DrawWireCircle2D(Vector2 entityPos, float minDistance, Color color) {
+            var verts = new Vector2[CirclesVertices];
+            for (uint i = 0; i < CirclesVertices; i++) {
+                var pos = (float) i / CirclesVertices * 6.283185F;
+                var x = Mathf.Sin(pos) * minDistance;
+                var y = Mathf.Cos(pos) * minDistance;
+                var vert = entityPos;
+                vert.x += x;
+                vert.y += y;
+                verts[i] = vert;
+            }
+
+            DrawArray(verts, color, true);
+        }
+
+        private static void DrawArray(Vector2[] path, Color color, bool close = false) {
+            var max = path.Length - 1;
+            for (var i = 0; i < max; i++) {
+                var first = path[i];
+                var second = path[i + 1];
+                Debug.DrawLine(first, second, color);
+            }
+
+            if (close) {
+                Debug.DrawLine(path[0], path[path.Length - 1], color);
+            }
+        }
+
+        private static readonly GUIStyle LabelStyle = new GUIStyle {
+            normal = {
+                background = Texture2D.blackTexture,
+                textColor = Color.white
+            }
+        };
+
+        public static void DrawLabel(Vector3 pos, string s) {
+#if UNITY_EDITOR
+            if (Event.current.type != EventType.Repaint) {
+                return;
+            }
+            var restoreColor = GUI.color;
+
+
+            var view = SceneView.currentDrawingSceneView;
+            var screenPos = view.camera.WorldToScreenPoint(pos);
+
+            if (screenPos.y < 0 || screenPos.y > Screen.height || screenPos.x < 0 || screenPos.x > Screen.width || screenPos.z < 0) {
+                GUI.color = restoreColor;
+                return;
+            }
+
+            var size = LabelStyle.CalcSize(new GUIContent(s));
+            GUI.Label(new Rect(screenPos.x - (size.x / 2), -screenPos.y + view.position.height + 4, size.x, size.y), s, LabelStyle);
+            GUI.color = restoreColor;
+#endif
+        }
     }
 
     public static class GizmosUtil {
@@ -186,32 +267,51 @@ namespace Datenshi.Scripts.Util {
             Gizmos.DrawLine(pos, pos + dir);
         }
 
-        public static void ArrowGizmo(Vector3 pos, Vector3 direction, float arrowHeadLength = 0.25f,
+        public static void ArrowGizmo(
+            Vector3 pos,
+            Vector3 direction,
+            float arrowHeadLength = 0.25f,
             float arrowHeadAngle = 20.0f) {
             Gizmos.DrawLine(pos, pos + direction);
             DrawArrowEnd(true, pos, direction, Gizmos.color, arrowHeadLength, arrowHeadAngle);
         }
 
-        public static void ArrowGizmo(Vector3 pos, Vector3 direction, Color color, float arrowHeadLength = 0.25f,
+        public static void ArrowGizmo(
+            Vector3 pos,
+            Vector3 direction,
+            Color color,
+            float arrowHeadLength = 0.25f,
             float arrowHeadAngle = 20.0f) {
             Gizmos.DrawLine(pos, pos + direction);
             DrawArrowEnd(true, pos, direction, color, arrowHeadLength, arrowHeadAngle);
         }
 
-        public static void ArrowDebug(Vector3 pos, Vector3 direction, float arrowHeadLength = 0.25f,
+        public static void ArrowDebug(
+            Vector3 pos,
+            Vector3 direction,
+            float arrowHeadLength = 0.25f,
             float arrowHeadAngle = 20.0f) {
             Debug.DrawRay(pos, direction);
             DrawArrowEnd(false, pos, direction, Gizmos.color, arrowHeadLength, arrowHeadAngle);
         }
 
-        public static void ArrowDebug(Vector3 pos, Vector3 direction, Color color, float arrowHeadLength = 0.25f,
+        public static void ArrowDebug(
+            Vector3 pos,
+            Vector3 direction,
+            Color color,
+            float arrowHeadLength = 0.25f,
             float arrowHeadAngle = 20.0f) {
             Debug.DrawRay(pos, direction, color);
             DrawArrowEnd(false, pos, direction, color, arrowHeadLength, arrowHeadAngle);
         }
 
-        private static void DrawArrowEnd(bool gizmos, Vector3 pos, Vector3 direction, Color color,
-            float arrowHeadLength = 0.25f, float arrowHeadAngle = 20.0f) {
+        private static void DrawArrowEnd(
+            bool gizmos,
+            Vector3 pos,
+            Vector3 direction,
+            Color color,
+            float arrowHeadLength = 0.25f,
+            float arrowHeadAngle = 20.0f) {
             var right = Quaternion.LookRotation(direction) * Quaternion.Euler(arrowHeadAngle, 0, 0) * Vector3.back;
             var left = Quaternion.LookRotation(direction) * Quaternion.Euler(-arrowHeadAngle, 0, 0) * Vector3.back;
             var up = Quaternion.LookRotation(direction) * Quaternion.Euler(0, arrowHeadAngle, 0) * Vector3.back;

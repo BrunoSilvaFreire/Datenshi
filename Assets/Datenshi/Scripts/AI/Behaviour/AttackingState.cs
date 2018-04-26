@@ -1,4 +1,5 @@
 ﻿using Datenshi.Input;
+using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Misc;
 using UnityEngine;
@@ -6,7 +7,6 @@ using UnityEngine;
 namespace Datenshi.Scripts.AI.Behaviour {
     [CreateAssetMenu(menuName = "Datenshi/AI/States/Attacking")]
     public class AttackingState : BehaviourState {
-        public static readonly Variable<LivingEntity> EntityTarget = new Variable<LivingEntity>("entity.ai.target", null);
         public BehaviourState OnTargetLost;
         public BehaviourState OnEntityKilled;
 
@@ -15,7 +15,7 @@ namespace Datenshi.Scripts.AI.Behaviour {
             if (entity == null) {
                 return;
             }
-            var target = entity.GetVariable(EntityTarget);
+            var target = entity.GetVariable(CombatVariables.EntityTarget);
             if (target == null && OnTargetLost != null) {
                 provider.CurrentState = OnTargetLost;
                 return;

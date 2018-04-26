@@ -10,7 +10,7 @@ namespace Datenshi.Scripts.Misc {
     public class ColorizableRenderer : MonoBehaviour {
         public const string OverrideAmountKey = "_OverrideAmount";
         public const string ColorKey = "_Color";
-        public SpriteRenderer[] Renderers;
+        public Renderer[] Renderers;
 
         private MaterialPropertyBlock block;
 
@@ -37,9 +37,22 @@ namespace Datenshi.Scripts.Misc {
                 if (r == null) {
                     continue;
                 }
+
                 r.GetPropertyBlock(block);
+                Color color;
+                var spriteRenderer = r as SpriteRenderer;
+                if (spriteRenderer != null) {
+                    color = spriteRenderer.color;
+                } else if (r is LineRenderer) {
+                    color = ((LineRenderer) r).endColor;
+                } else if (r is TrailRenderer) {
+                    color = ((TrailRenderer) r).endColor;
+                } else {
+                    continue;
+                }
+
                 block.SetFloat(OverrideAmountKey, ColorOverrideAmount);
-                block.SetColor(ColorKey, r.color);
+                block.SetColor(ColorKey, color);
                 r.SetPropertyBlock(block);
             }
         }

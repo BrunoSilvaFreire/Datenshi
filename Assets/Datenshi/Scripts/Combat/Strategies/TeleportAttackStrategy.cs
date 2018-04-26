@@ -18,23 +18,25 @@ namespace Datenshi.Scripts.Combat.Strategies {
         public static readonly Variable<bool> Teleporting =
             new Variable<bool>("entity.combat.strategy.teleport.teleporting", false);
 
-        public override void Execute(AIStateInputProvider provider, LivingEntity e, LivingEntity target) {
-            var entity = e as MovableEntity;
-            if (entity == null) {
-                return;
-            }
-
+        public override void Execute(AIStateInputProvider provider, LivingEntity entity, LivingEntity target) {
             if (entity.GetVariable(Teleporting)) {
                 provider.Reset();
                 return;
             }
 
-            Vector2 targetEntityPos = target.transform.position;
-
-            var entityPos = entity.transform.position;
-            var xDir = Math.Sign(entityPos.x - targetEntityPos.x);
-            var targetPos = entity.AINavigator.GetFavourablePosition(this, target);
-            var distance = Vector2.Distance(entityPos, targetPos);
+            var entityPos = entity.Center;
+            var movable = entity as MovableEntity;
+            var navigator = movable == null ? null : movable.AINavigator;
+            var targetCenter = target.Center;
+            var targetPos = navigator == null ? targetCenter : navigator.GetFavourablePosition(this, target);
+#if UNITY_EDITOR
+            var thresholdPoint = targetCenter - entityPos;
+            thresholdPoint.Normalize();
+            thresholdPoint *= TeleportThreshold;
+            thresholdPoint += entityPos;
+#endif
+            var xDir = Math.Sign(entityPos.x - targetPos.x);
+            var distance = Vector2.Distance(entityPos, targetCenter);
             if (distance < TeleportThreshold) {
                 var newPos = entityPos;
                 var teleportDir = xDir * TeleportDistance;
@@ -49,13 +51,23 @@ namespace Datenshi.Scripts.Combat.Strategies {
             }
 
             if (distance > MinDistance) {
+#if UNITY_EDITOR
+                Debug.DrawLine(entityPos, targetPos, Color.yellow);
+                Debug.DrawLine(entityPos, thresholdPoint, Color.magenta);
+#endif
                 provider.Attack = false;
-                var agent = entity.AINavigator;
-                agent.Target = targetPos;
-                agent.Execute(entity, provider);
+                if (navigator == null) {
+                    return;
+                }
+
+                navigator.Target = targetPos;
+                navigator.Execute(movable, provider);
+
                 return;
             }
 
+            Debug.DrawLine(entityPos, targetPos, Color.green);
+            Debug.DrawLine(entityPos, thresholdPoint, Color.magenta);
             entity.CurrentDirection.X = -xDir;
             provider.Horizontal = 0;
             provider.Walk = true;
@@ -63,22 +75,28 @@ namespace Datenshi.Scripts.Combat.Strategies {
             provider.Attack = true;
         }
 
-        private IEnumerator Teleport(MovableEntity entity, Vector2 pos) {
+        private IEnumerator Teleport(LivingEntity entity, Vector2 pos) {
             entity.SetVariable(Teleporting, true);
             entity.Invulnerable = true;
-            Debug.Log("Teleport begin");
             var updater = entity.AnimatorUpdater.Animator;
             updater.SetTrigger(StartTeleportKey);
             yield return new WaitForSeconds(TeleportDuration);
             entity.transform.position = pos;
             updater.SetTrigger(EndTeleportKey);
-            Debug.Log("Teleport end");
             entity.Invulnerable = false;
             entity.SetVariable(Teleporting, false);
         }
 
         public override float GetMinimumDistance(LivingEntity entity, LivingEntity target) {
             return MinDistance;
+        }
+
+        public override float GetCost(LivingEntity entity, LivingEntity target) {
+            return 0;
+        }
+
+        public override float GetEffectiveness(LivingEntity entity, LivingEntity target) {
+            return MinDistance - Vector2.Distance(entity.Center, target.Center);
         }
     }
 }

@@ -22,7 +22,7 @@ namespace Datenshi.Scripts.Tutorial {
 
         private void OnTriggerEnter2D(Collider2D other) {
             var controller = PlayerController.Instance;
-            if (other.GetComponentInParent<Entity>() != controller.CurrentEntity) {
+            if (other.isTrigger || other.GetComponentInParent<Entity>() != controller.CurrentEntity) {
                 return;
             }
 
@@ -31,7 +31,7 @@ namespace Datenshi.Scripts.Tutorial {
 
         private void OnTriggerExit2D(Collider2D other) {
             var controller = PlayerController.Instance;
-            if (other.GetComponentInParent<Entity>() != controller.CurrentEntity) {
+            if (other.isTrigger || other.GetComponentInParent<Entity>() != controller.CurrentEntity) {
                 return;
             }
 

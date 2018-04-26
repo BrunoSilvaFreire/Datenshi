@@ -47,19 +47,19 @@ namespace Datenshi.Scripts.Tutorial {
         protected override void OnShow() { }
 
         protected override void OnHide() {
-            hideRoutine = StartCoroutine(HideTutoral());
+            StartCoroutine(HideTutoral());
         }
 
         public void Show(TutorialTrigger tutorialTrigger) {
-            if (knownTutorials.Contains(tutorialTrigger)) {
-                return;
-            }
             if (!Showing) {
                 Showing = true;
             }
 
-            knownTutorials.Add(tutorialTrigger);
-            showRoutine = StartCoroutine(ShowTutorial(tutorialTrigger));
+            if (!knownTutorials.Contains(tutorialTrigger)) {
+                knownTutorials.Add(tutorialTrigger);
+            }
+
+            StartCoroutine(ShowTutorial(tutorialTrigger));
         }
 
         public void Deregister(TutorialTrigger id) {
@@ -67,31 +67,34 @@ namespace Datenshi.Scripts.Tutorial {
             if (id != currentTrigger) {
                 return;
             }
+
             if (knownTutorials.IsEmpty()) {
                 Hide();
             } else {
                 var toReplace = knownTutorials.Last();
-                showRoutine = StartCoroutine(ShowTutorial(toReplace));
+                StartCoroutine(ShowTutorial(toReplace));
             }
         }
 
         private IEnumerator HideTutoral() {
-            if (showRoutine != null) {
-                Stop(showRoutine);
-            }
-
+            hideScheduled = true;
             if (current != null) {
                 yield return Clear(current);
             }
 
-            yield return SetSizeAndAlpha(Vector2.zero, 0);
-            hideRoutine = null;
+            if (showScheduled) {
+                showScheduled = false;
+                Kill();
+            }
+
+            if (hideScheduled) {
+                yield return SetSizeAndAlpha(Vector2.zero, 0);
+            }
         }
 
-        private void Stop(Coroutine coroutine) {
+        private void Kill() {
             RectTransform.DOKill();
             CanvasGroup.DOKill();
-            StopCoroutine(coroutine);
         }
 
 
@@ -106,12 +109,14 @@ namespace Datenshi.Scripts.Tutorial {
 
         private TutorialTrigger currentTrigger;
         private UITutorial current;
-        private Coroutine hideRoutine;
-        private Coroutine showRoutine;
+        private bool showScheduled;
+        private bool hideScheduled;
 
         private IEnumerator ShowTutorial(TutorialTrigger tutorialTrigger) {
-            if (hideRoutine != null) {
-                Stop(hideRoutine);
+            showScheduled = true;
+            if (hideScheduled) {
+                hideScheduled = false;
+                Kill();
             }
 
             if (current != null) {
@@ -120,11 +125,14 @@ namespace Datenshi.Scripts.Tutorial {
 
             var tut = Instantiate(tutorialTrigger.TutorialPrefab, Holder);
             tut.SnapShowing(false);
-            yield return SetSizeAndAlpha(tut.Size, 1);
+            if (showScheduled) {
+                yield return SetSizeAndAlpha(tut.Size, 1);
+            }
+
+            showScheduled = false;
             tut.Showing = true;
             currentTrigger = tutorialTrigger;
             current = tut;
-            showRoutine = null;
         }
 
 

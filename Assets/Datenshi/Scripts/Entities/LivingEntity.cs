@@ -334,5 +334,9 @@ namespace Datenshi.Scripts.Entities {
                 Stun(DamageStunDuration);
             }
         }
+
+        public bool ShouldAttack(LivingEntity en) {
+            return en != null && !en.Ignored && Relationship != en.Relationship;
+        }
     }
 }

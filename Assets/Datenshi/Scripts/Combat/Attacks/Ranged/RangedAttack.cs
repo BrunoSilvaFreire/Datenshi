@@ -46,7 +46,7 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
             var offset = (Vector3) Offset;
             offset.x *= entity.CurrentDirection.X;
             var startPos = entity.transform.position + offset;
-            var target = entity.GetVariable(AttackingState.EntityTarget);
+            var target = entity.GetVariable(CombatVariables.EntityTarget);
             var proj = Prefab.Clone(startPos);
             if (Aim) {
                 proj.Shoot(entity, target);

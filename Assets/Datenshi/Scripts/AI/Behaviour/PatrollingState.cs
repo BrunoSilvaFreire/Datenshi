@@ -1,4 +1,5 @@
 ﻿using Datenshi.Input;
+using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Game;
 using Datenshi.Scripts.Misc;
@@ -51,12 +52,12 @@ namespace Datenshi.Scripts.AI.Behaviour {
                 SightRadius,
                 GameResources.Instance.EntitiesMask)) {
                 var e = hit.GetComponentInParent<LivingEntity>();
-                if (e == null || e == entity || !e.IsEnemy(entity)) {
+                if (!entity.ShouldAttack(e)) {
                     continue;
                 }
 
                 provider.CurrentState = OnSawEnemy;
-                entity.SetVariable(AttackingState.EntityTarget, e);
+                entity.SetVariable(CombatVariables.EntityTarget, e);
                 return;
             }
         }

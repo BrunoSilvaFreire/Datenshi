@@ -115,6 +115,10 @@ namespace Datenshi.Scripts.Animation {
             Animator.SetTrigger(AttackKey);
         }
 
+        public override void TriggerAttack(string attack) {
+            Animator.SetTrigger(attack);
+        }
+
         public override void SetDefend(bool defend) {
             Animator.SetBool(DefendKey, defend);
         }

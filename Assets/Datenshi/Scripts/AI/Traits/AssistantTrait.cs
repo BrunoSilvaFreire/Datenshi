@@ -22,8 +22,9 @@ namespace Datenshi.Scripts.AI.Traits {
                 return;
             }
 
-            if (Vector2.Distance(e.Center, Assistant.Center) > MaxDistance) {
-                Assistant.transform.position = e.transform.position;
+            var ePos = e.Center;
+            if (Vector2.Distance(ePos, Assistant.Center) > MaxDistance) {
+                Assistant.transform.position = ePos;
             }
         }
     }

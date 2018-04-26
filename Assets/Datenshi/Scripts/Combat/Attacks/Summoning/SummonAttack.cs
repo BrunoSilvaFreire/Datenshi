@@ -9,7 +9,7 @@ namespace Datenshi.Scripts.Combat.Attacks.Summoning {
         public Summonable Prefab;
 
         public override void Execute(LivingEntity entity) {
-            var target = entity.GetVariable(AttackingState.EntityTarget);
+            var target = entity.GetVariable(CombatVariables.EntityTarget);
             var pos = target.transform.position;
             var proj = Prefab.Clone(pos);
             proj.Summon(entity, pos);
