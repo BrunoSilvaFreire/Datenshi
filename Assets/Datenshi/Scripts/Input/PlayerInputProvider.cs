@@ -5,10 +5,11 @@ using Rewired;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
+
 #if UNITY_EDITOR
 #endif
 
-namespace Datenshi.Input {
+namespace Datenshi.Scripts.Input {
     public class PlayerInputProvider : InputProvider {
         [SerializeField, HideInInspector]
         private uint playerID;
@@ -188,6 +189,10 @@ namespace Datenshi.Input {
             }
 #endif
             return Fetch(player => player.GetButtonDown(Actions.Submit));
+        }
+
+        public override void DrawGizmos(Entity entity) {
+            
         }
     }
 }

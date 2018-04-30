@@ -1,6 +1,6 @@
 ﻿using System;
-using Datenshi.Input;
 using Datenshi.Scripts.Game;
+using Datenshi.Scripts.Input;
 using Datenshi.Scripts.Util;
 using UnityEngine;
 

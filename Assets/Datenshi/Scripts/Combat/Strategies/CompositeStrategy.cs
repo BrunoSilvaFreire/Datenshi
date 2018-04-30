@@ -1,6 +1,7 @@
 ﻿using System.Linq;
-using Datenshi.Input;
+using Datenshi.Scripts.Debugging;
 using Datenshi.Scripts.Entities;
+using Datenshi.Scripts.Input;
 using Datenshi.Scripts.Util;
 using UnityEngine;
 
@@ -9,11 +10,9 @@ namespace Datenshi.Scripts.Combat.Strategies {
     public class CompositeStrategy : AttackStrategy {
         public AttackStrategy[] Strategies;
 
-        public override void Execute(AIStateInputProvider provider, LivingEntity entity, LivingEntity target) {
+        public override void Execute(AIStateInputProvider provider, LivingEntity entity, LivingEntity target, DebugInfo info) {
             var s = Strategies.MinBy(strategy => strategy.GetCost(entity, target) - strategy.GetEffectiveness(entity, target));
-
-            Debug.Log("Current Strategy = " + s);
-            s.Execute(provider, entity, target);
+            s.Execute(provider, entity, target, info);
         }
 
         public override float GetMinimumDistance(LivingEntity entity, LivingEntity target) {
@@ -26,6 +25,10 @@ namespace Datenshi.Scripts.Combat.Strategies {
 
         public override float GetEffectiveness(LivingEntity entity, LivingEntity target) {
             return Strategies.Max(strategy => strategy.GetEffectiveness(entity, target));
+        }
+
+        public override string GetTitle() {
+            return "Composite Strategy";
         }
     }
 }

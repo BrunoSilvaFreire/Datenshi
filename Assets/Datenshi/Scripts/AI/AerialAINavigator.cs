@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Datenshi.Input;
 using Datenshi.Scripts.AI.Pathfinding;
 using Datenshi.Scripts.Combat.Strategies;
 using Datenshi.Scripts.Entities;
+using Datenshi.Scripts.Input;
 using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
 #if UNITY_EDITOR

@@ -13,3 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MinDistance: 5
   Threshold: 2
+  MinDelayBetweenAttacks: 2
+  Attack: Attack

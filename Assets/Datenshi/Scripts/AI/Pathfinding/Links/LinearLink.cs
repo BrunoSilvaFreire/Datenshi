@@ -1,6 +1,6 @@
 ﻿using System;
-using Datenshi.Input;
 using Datenshi.Scripts.Entities;
+using Datenshi.Scripts.Input;
 using Sirenix.OdinInspector;
 using UnityEngine;
 

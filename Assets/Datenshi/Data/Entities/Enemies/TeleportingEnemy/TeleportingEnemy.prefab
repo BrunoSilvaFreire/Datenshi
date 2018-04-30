@@ -57,6 +57,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4353090292968304}
   - component: {fileID: 114721705990648840}
+  - component: {fileID: 114704962546502634}
   m_Layer: 12
   m_Name: TeleportingEnemy_Managers
   m_TagString: Untagged
@@ -329,7 +330,7 @@ MonoBehaviour:
   DamageInvulnerability: 0
   DamageInvulnerabilityDuration: 3
   Relationship: 2
-  DefaultAttackStrategy: {fileID: 11400000, guid: 770feed83d3dead4ca1454d4c9e50350,
+  DefaultAttackStrategy: {fileID: 11400000, guid: 5347f78cc5ad1fc48bce658eaced1e5a,
     type: 2}
   OnDamaged:
     m_PersistentCalls:
@@ -594,6 +595,28 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114704962546502634
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1247194317141098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 846b1ad3ba2a4738a9e4654f5d1606d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  provider: {fileID: 114787055024945158}
+  Entity: {fileID: 114048294525163814}
+  MinDistance: 10
+  TeleportDistance: 10
+  TeleportThreshold: 5
+  TeleportCloseDuration: 0.25
+  TeleportShotDuration: 1
+  TeleportIfClose: 1
+  TeleportIfWasShot: 1
+  StartTeleportKey: TeleportBegin
+  EndTeleportKey: TeleportEnd
 --- !u!114 &114721705990648840
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -622,6 +645,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentState: {fileID: 11400000, guid: a57fcb18cd616724d8b7e1c95d5b9ac2, type: 2}
   Entity: {fileID: 114048294525163814}
+  trait: {fileID: 114704962546502634}
   Horizontal: 0
   Vertical: 0
   Jump: 0
@@ -630,6 +654,7 @@ MonoBehaviour:
   Dash: 0
   Submit: 0
   Defend: 0
+  ExecuteState: 1
 --- !u!114 &114929924000885474
 MonoBehaviour:
   m_ObjectHideFlags: 1

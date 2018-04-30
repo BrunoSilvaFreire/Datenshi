@@ -2,35 +2,50 @@
 using Datenshi.Scripts.Game;
 using Datenshi.Scripts.Interaction;
 using Datenshi.Scripts.Misc;
+using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Datenshi.Scripts.Combat.Attacks.Ranged {
+    public class ProjectileShotEvent : UnityEvent<Projectile, LivingEntity, LivingEntity> {
+        public static readonly ProjectileShotEvent Instance = new ProjectileShotEvent();
+        private ProjectileShotEvent() { }
+    }
+
     public class Projectile : Ownable, IDefendable {
         [ShowInInspector, ReadOnly]
         private Vector2 velocity;
 
         public float Speed;
+        public float DestroyDelay = 2;
         public uint Damage;
+        public GameObject SpawnOnHit;
+        public AudioClip Clip;
+        public AudioSource Source;
+        public GameObject[] ToDecouple;
+        public GameObject OnDefended;
+        private bool wasShot;
 
         public void Shoot(LivingEntity shooter, LivingEntity target) {
             Shoot(shooter, target.Hitbox.bounds.center - transform.position);
+            ProjectileShotEvent.Instance.Invoke(this, shooter, target);
         }
 
         public void Shoot(LivingEntity shooter, Vector2 direction) {
             Owner = shooter;
-            Owner.OnKilled.AddListener(OnKilled);
+            wasShot = true;
             velocity = direction;
             velocity.Normalize();
             velocity *= Speed;
-        }
 
-        private void OnKilled() {
-            Destroy(gameObject);
+            if (Source != null && Clip != null) {
+                Source.PlayOneShot(Clip);
+            }
         }
 
         private void Update() {
-            if (Owner == null) {
+            if (!wasShot) {
                 return;
             }
 
@@ -44,17 +59,29 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
             }
 
             var e = col.GetComponentInParent<LivingEntity>();
-            if (e != null && e.Ignored) {
-                return;
+            if (e != null) {
+                if (e.Ignored) {
+                    return;
+                }
+
+                if (Owner.ShouldAttack(e)) {
+                    e.Damage(e, Damage);
+                } else {
+                    return;
+                }
             }
 
-            if (e != null && e != Owner && e.Relationship != Owner.Relationship) {
-                e.Damage(e, Damage);
+            Hit();
+        }
+
+        private void Hit() {
+            foreach (var obj in ToDecouple) {
+                obj.transform.parent = null;
+                Destroy(obj, DestroyDelay);
             }
 
-            if (e == null || e.Relationship != Owner.Relationship) {
-                Destroy(gameObject);
-            }
+            SpawnOnHit.Clone(transform.position);
+            Destroy(gameObject);
         }
 
         public bool CanDefend(LivingEntity entity) {
@@ -67,6 +94,9 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
             velocity *= GameResources.Instance.DeflectSpeed;
 
             Owner = entity;
+            if (OnDefended != null) {
+                OnDefended.Clone(transform.position);
+            }
         }
 
         public bool CanPoorlyDefend(LivingEntity entity) {

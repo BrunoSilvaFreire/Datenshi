@@ -1,6 +1,6 @@
 ﻿using System;
-using Datenshi.Input;
 using Datenshi.Scripts.Entities;
+using Datenshi.Scripts.Input;
 using Datenshi.Scripts.Util.Gravity;
 using Sirenix.OdinInspector;
 #if UNITY_EDITOR

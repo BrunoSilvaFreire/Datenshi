@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Linq;
 using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Util;
+using JetBrains.Annotations;
+using Sirenix.OdinInspector;
+using UnityEditor.Animations;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Animation {
@@ -18,6 +22,40 @@ namespace Datenshi.Scripts.Animation {
         public string StunKey = "Stunned";
         public LivingEntity Entity;
         public SpriteRenderer Renderer;
+#if UNITY_EDITOR
+
+        [ShowInInspector, UsedImplicitly, Button]
+        public void CreateParameters() {
+            AddParameter(AttackKey, AnimatorControllerParameterType.Trigger);
+            AddParameter(DamagedKey, AnimatorControllerParameterType.Trigger);
+            AddParameter(AbsInputVerticalKey, AnimatorControllerParameterType.Float);
+            AddParameter(AbsInputHorizontalKey, AnimatorControllerParameterType.Float);
+            AddParameter(InputVerticalKey, AnimatorControllerParameterType.Float);
+            AddParameter(InputHorizontalKey, AnimatorControllerParameterType.Float);
+            AddParameter(LastDamageKey, AnimatorControllerParameterType.Int);
+            AddParameter(DefendKey, AnimatorControllerParameterType.Bool);
+            AddParameter(DeflectKey, AnimatorControllerParameterType.Trigger);
+            AddParameter(CounterKey, AnimatorControllerParameterType.Trigger);
+            AddParameter(StunKey, AnimatorControllerParameterType.Bool);
+        }
+
+        public void AddParameter(string parameter, AnimatorControllerParameterType type) {
+            var c = Animator.runtimeAnimatorController as AnimatorController;
+            if (c == null) {
+                return;
+            }
+
+            if (c.parameters.Any(controllerParameter => controllerParameter.name == parameter)) {
+                return;
+            }
+
+            c.AddParameter(
+                new AnimatorControllerParameter {
+                    name = parameter,
+                    type = type
+                });
+        }
+#endif
 
         private void Awake() {
             Entity.OnDamaged.AddListener(OnDamaged);
@@ -34,18 +72,18 @@ namespace Datenshi.Scripts.Animation {
                 var inputDir = Math.Sign(provider.GetHorizontal());
                 var v = provider.GetVertical();
                 var h = provider.GetHorizontal();
-                anim.AttemptSetFloat(InputVerticalKey, v);
-                anim.AttemptSetFloat(InputHorizontalKey, h);
-                anim.AttemptSetFloat(AbsInputVerticalKey, Mathf.Abs(v));
-                anim.AttemptSetFloat(AbsInputHorizontalKey, Mathf.Abs(h));
+                anim.SetFloat(InputVerticalKey, v);
+                anim.SetFloat(InputHorizontalKey, h);
+                anim.SetFloat(AbsInputVerticalKey, Mathf.Abs(v));
+                anim.SetFloat(AbsInputHorizontalKey, Mathf.Abs(h));
             }
 
-            anim.AttemptSetBool(StunKey, Entity.Stunned);
+            anim.SetBool(StunKey, Entity.Stunned);
             Renderer.flipX = Entity.CurrentDirection.X == -1;
         }
 
         public override void TriggerAttack() {
-            Animator.AttemptSetTrigger(AttackKey);
+            Animator.SetTrigger(AttackKey);
         }
 
         public override void TriggerAttack(string attack) {
@@ -53,15 +91,15 @@ namespace Datenshi.Scripts.Animation {
         }
 
         public override void SetDefend(bool defend) {
-            Animator.AttemptSetBool(DefendKey, defend);
+            Animator.SetBool(DefendKey, defend);
         }
 
         public override void TriggerDeflect() {
-            Animator.AttemptSetTrigger(DeflectKey);
+            Animator.SetTrigger(DeflectKey);
         }
 
         public override void TriggerCounter() {
-            Animator.AttemptSetTrigger(CounterKey);
+            Animator.SetTrigger(CounterKey);
         }
     }
 }

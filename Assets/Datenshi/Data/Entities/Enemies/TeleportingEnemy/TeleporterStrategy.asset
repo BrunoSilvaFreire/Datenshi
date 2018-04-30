@@ -8,12 +8,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50efdd29ba90440bbcefe0e53d03f6ba, type: 3}
-  m_Name: TeleportStrategy
+  m_Script: {fileID: 11500000, guid: 9fafc12c387548b5b328a3e57dc8d957, type: 3}
+  m_Name: TeleporterStrategy
   m_EditorClassIdentifier: 
-  MinDistance: 10
-  TeleportDistance: 10
-  TeleportThreshold: 5
-  TeleportDuration: 0.5
-  StartTeleportKey: TeleportBegin
-  EndTeleportKey: TeleportEnd
+  MinDistance: 5
+  Threshold: 1
+  MinDelayBetweenAttacks: 2
+  Attack: Attack

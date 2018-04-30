@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Datenshi.Scripts.Entities;
+using UnityEngine;
 
-namespace Datenshi.Input {
+namespace Datenshi.Scripts.Input {
     /// <summary>
     /// Representa uma fonte de input. Seja um player, ou AI.
     /// </summary>
@@ -30,5 +31,6 @@ namespace Datenshi.Input {
         public abstract bool GetDash();
         public abstract bool GetDefend();
         public abstract bool GetSubmit();
+        public abstract void DrawGizmos(Entity entity);
     }
 }

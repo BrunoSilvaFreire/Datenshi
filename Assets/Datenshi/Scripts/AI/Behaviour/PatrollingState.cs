@@ -1,7 +1,8 @@
-﻿using Datenshi.Input;
-using Datenshi.Scripts.Combat;
+﻿using Datenshi.Scripts.Combat;
+using Datenshi.Scripts.Debugging;
 using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Game;
+using Datenshi.Scripts.Input;
 using Datenshi.Scripts.Misc;
 using Datenshi.Scripts.Util;
 using UnityEngine;
@@ -18,7 +19,7 @@ namespace Datenshi.Scripts.AI.Behaviour {
         public BehaviourState OnSawEnemy;
         public float SightRadius = 10F;
 
-        public override void Execute(AIStateInputProvider provider, Entity en) {
+        public override void Execute(AIStateInputProvider provider, Entity en, DebugInfo info) {
             var playerEntity = PlayerController.Instance.CurrentEntity;
             if (playerEntity == null) {
                 return;
@@ -60,6 +61,14 @@ namespace Datenshi.Scripts.AI.Behaviour {
                 entity.SetVariable(CombatVariables.EntityTarget, e);
                 return;
             }
+        }
+
+        public override void DrawGizmos(AIStateInputProvider provider, Entity entity, DebugInfo info) {
+            CombatDebug.DrawCombatInfo(entity, info);
+        }
+
+        public override string GetTitle() {
+            return "Patrolling State";
         }
     }
 }

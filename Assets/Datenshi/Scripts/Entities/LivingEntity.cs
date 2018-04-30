@@ -338,5 +338,9 @@ namespace Datenshi.Scripts.Entities {
         public bool ShouldAttack(LivingEntity en) {
             return en != null && !en.Ignored && Relationship != en.Relationship;
         }
+
+        private void Reset() {
+            DefaultAttackStrategy = EmptyStrategy.Instance;
+        }
     }
 }

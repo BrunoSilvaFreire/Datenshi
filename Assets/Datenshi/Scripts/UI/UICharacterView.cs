@@ -1,6 +1,6 @@
-﻿using Datenshi.Input;
-using Datenshi.Scripts.Character;
+﻿using Datenshi.Scripts.Character;
 using Datenshi.Scripts.Entities;
+using Datenshi.Scripts.Input;
 using Datenshi.Scripts.Util;
 using DG.Tweening;
 using UnityEngine;

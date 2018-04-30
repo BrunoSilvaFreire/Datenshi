@@ -1,7 +1,7 @@
 ﻿using System;
 using Datenshi.Assets.Graphics.Shaders;
-using Datenshi.Input;
 using Datenshi.Scripts.Entities;
+using Datenshi.Scripts.Input;
 using Datenshi.Scripts.Misc;
 using Datenshi.Scripts.Util.Singleton;
 using DG.Tweening;

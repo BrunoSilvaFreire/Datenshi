@@ -7,7 +7,7 @@
 // need to regenerate this list.
 // </auto-generated>
 
-namespace Datenshi.Input {
+namespace Datenshi.Scripts.Input {
     public static partial class Actions {
         // Default
         [Rewired.Dev.ActionIdFieldInfo(categoryName = "Default", friendlyName = "XAxis")]

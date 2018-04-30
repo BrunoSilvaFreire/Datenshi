@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Datenshi.Input;
 using Datenshi.Scripts.Animation;
 using Datenshi.Scripts.Entities.Motors;
 using Datenshi.Scripts.Game;
+using Datenshi.Scripts.Input;
 using Datenshi.Scripts.Misc;
 using Datenshi.Scripts.Util;
 using Datenshi.Scripts.World.Rooms;
@@ -135,6 +135,7 @@ namespace Datenshi.Scripts.Entities {
             transform.position = raycast.point + new Vector2(0, bounds.Size.y / 2);
         }
 #endif
+
         public Vector2 Center {
             get {
                 return Hitbox != null ? Hitbox.bounds.center : transform.position;
@@ -157,6 +158,14 @@ namespace Datenshi.Scripts.Entities {
             if (EntityRoom != null) {
                 EntityRoom.RegisterEntity(this);
             }
+        }
+
+        private void OnDrawGizmos() {
+            if (InputProvider == null) {
+                return;
+            }
+
+            InputProvider.DrawGizmos(this);
         }
     }
 

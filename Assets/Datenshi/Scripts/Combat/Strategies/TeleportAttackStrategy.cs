@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections;
-using Datenshi.Input;
+using Datenshi.Scripts.Debugging;
 using Datenshi.Scripts.Entities;
+using Datenshi.Scripts.Input;
 using Datenshi.Scripts.Misc;
 using UnityEngine;
 
@@ -14,11 +15,12 @@ namespace Datenshi.Scripts.Combat.Strategies {
         public float TeleportDuration = 5;
         public string StartTeleportKey = "TeleportBegin";
         public string EndTeleportKey = "TeleportEnd";
+        public bool TeleportIfClose;
 
         public static readonly Variable<bool> Teleporting =
             new Variable<bool>("entity.combat.strategy.teleport.teleporting", false);
 
-        public override void Execute(AIStateInputProvider provider, LivingEntity entity, LivingEntity target) {
+        public override void Execute(AIStateInputProvider provider, LivingEntity entity, LivingEntity target, DebugInfo info) {
             if (entity.GetVariable(Teleporting)) {
                 provider.Reset();
                 return;
@@ -37,7 +39,7 @@ namespace Datenshi.Scripts.Combat.Strategies {
 #endif
             var xDir = Math.Sign(entityPos.x - targetPos.x);
             var distance = Vector2.Distance(entityPos, targetCenter);
-            if (distance < TeleportThreshold) {
+            if (TeleportIfClose && distance < TeleportThreshold) {
                 var newPos = entityPos;
                 var teleportDir = xDir * TeleportDistance;
                 newPos.x += teleportDir;
@@ -97,6 +99,10 @@ namespace Datenshi.Scripts.Combat.Strategies {
 
         public override float GetEffectiveness(LivingEntity entity, LivingEntity target) {
             return MinDistance - Vector2.Distance(entity.Center, target.Center);
+        }
+
+        public override string GetTitle() {
+            return "Teleport Strategy";
         }
     }
 }

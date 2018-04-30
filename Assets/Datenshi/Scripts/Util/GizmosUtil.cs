@@ -211,26 +211,22 @@ namespace Datenshi.Scripts.Util {
             }
         };
 
+        public const float LineHeight = 0.2F;
+
         public static void DrawLabel(Vector3 pos, string s) {
 #if UNITY_EDITOR
             if (Event.current.type != EventType.Repaint) {
                 return;
             }
-            var restoreColor = GUI.color;
 
-
-            var view = SceneView.currentDrawingSceneView;
-            var screenPos = view.camera.WorldToScreenPoint(pos);
-
-            if (screenPos.y < 0 || screenPos.y > Screen.height || screenPos.x < 0 || screenPos.x > Screen.width || screenPos.z < 0) {
-                GUI.color = restoreColor;
-                return;
-            }
-
-            var size = LabelStyle.CalcSize(new GUIContent(s));
-            GUI.Label(new Rect(screenPos.x - (size.x / 2), -screenPos.y + view.position.height + 4, size.x, size.y), s, LabelStyle);
-            GUI.color = restoreColor;
+            Handles.Label(pos, s, LabelStyle);
 #endif
+        }
+
+        public static void DrawLabel(Vector2 pos, string s, uint currentLine) {
+            pos.y -= currentLine * LineHeight;
+            DrawLabel(pos, s);
+            ;
         }
     }
 

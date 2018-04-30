@@ -1,6 +1,7 @@
-﻿using Datenshi.Input;
+﻿using Datenshi.Scripts.Debugging;
 using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Game;
+using Datenshi.Scripts.Input;
 using Datenshi.Scripts.Util;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ namespace Datenshi.Scripts.AI.Behaviour {
     public class SentryState : BehaviourState {
         public float SightRadius = 10;
 
-        public override void Execute(AIStateInputProvider provider, Entity entity) {
+        public override void Execute(AIStateInputProvider provider, Entity entity, DebugInfo info) {
             var e = entity as LivingEntity;
             if (e == null) {
                 return;
@@ -20,13 +21,21 @@ namespace Datenshi.Scripts.AI.Behaviour {
 
             foreach (var hit in Physics2D.OverlapCircleAll(pos, SightRadius, GameResources.Instance.EntitiesMask)) {
                 var en = hit.GetComponentInParent<LivingEntity>();
-                if (!e.ShouldAttack(en) ) {
+                if (!e.ShouldAttack(en)) {
                     continue;
                 }
 
-                e.DefaultAttackStrategy.Execute(provider, e, en);
+                e.DefaultAttackStrategy.Execute(provider, e, en, info);
                 return;
             }
+        }
+
+        public override void DrawGizmos(AIStateInputProvider provider, Entity entity, DebugInfo info) {
+            CombatDebug.DrawCombatInfo(entity, info);
+        }
+
+        public override string GetTitle() {
+            return "Sentry State";
         }
     }
 }

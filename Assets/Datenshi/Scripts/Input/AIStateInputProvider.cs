@@ -1,19 +1,25 @@
 ﻿using Datenshi.Scripts.AI.Behaviour;
 using Datenshi.Scripts.AI.Traits;
+using Datenshi.Scripts.Debugging;
 using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Game;
-using Sirenix.OdinInspector;
+using Datenshi.Scripts.Util;
+using UnityEditor;
+using UnityEngine;
 
-namespace Datenshi.Input {
+namespace Datenshi.Scripts.Input {
     public class AIStateInputProvider : InputProvider {
         public BehaviourState CurrentState;
 
         public Entity Entity;
 
-        [ShowInInspector]
+        [SerializeField]
+        private Trait trait;
+
         public Trait Trait {
-            get;
-            private set;
+            get {
+                return trait;
+            }
         }
 
         public float Horizontal;
@@ -24,6 +30,8 @@ namespace Datenshi.Input {
         public bool Dash;
         public bool Submit;
         public bool Defend;
+        public bool ExecuteState = true;
+
 
         public override float GetHorizontal() {
             return Fetch(Horizontal);
@@ -65,10 +73,42 @@ namespace Datenshi.Input {
             return Fetch(Submit);
         }
 
+        private readonly DebugInfo info = new DebugInfo();
+        private const float XOffset = 0.2F;
+
+        public override void DrawGizmos(Entity entity) {
+            info.Clear();
+            info.CurrentDebugabble = CurrentState;
+            CurrentState.DrawGizmos(this, entity, info);
+            uint currentLine = 0;
+            var pos = entity.Center;
+            pos.y += entity.Hitbox.bounds.size.y / 2;
+            var messages = info.Messages;
+            var totalMessages = messages.Count;
+            foreach (var pair in info.Messages) {
+                totalMessages += pair.Value.Count + 1;
+            }
+
+            pos.y += totalMessages * DebugUtil.LineHeight;
+            foreach (var pair in info.Messages) {
+                DebugUtil.DrawLabel(pos, pair.Key.GetTitle(), currentLine);
+                currentLine++;
+                pos.x += XOffset;
+                foreach (var s in pair.Value) {
+                    DebugUtil.DrawLabel(pos, s, currentLine);
+                    currentLine++;
+                }
+
+                pos.x -= XOffset;
+            }
+        }
+
         private void Start() {
             Entity.RevokeOwnership();
             Entity.RequestOwnership(this);
-            Trait = GetComponentInParent<Trait>();
+            if (trait == null) {
+                trait = GetComponentInChildren<Trait>();
+            }
         }
 
         private void Update() {
@@ -76,7 +116,10 @@ namespace Datenshi.Input {
                 return;
             }
 
-            CurrentState.Execute(this, Entity);
+            if (ExecuteState) {
+                CurrentState.Execute(this, Entity, info);
+            }
+
             if (Trait != null) {
                 Trait.Execute();
             }

@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: -645759843, guid: a4865f1ab4504ed8a368670db22f409c, type: 3}
   m_Name: GeneralDrawerConfig
   m_EditorClassIdentifier: 
-  showMonoScriptInEditor: 1
+  showMonoScriptInEditor: 0
   expandFoldoutByDefault: 1
   hideFoldoutWhileEmpty: 1
   openListsByDefault: 1
@@ -20,7 +20,7 @@ MonoBehaviour:
   hidePagingWhileCollapsed: 1
   hidePagingWhileOnlyOnePage: 1
   showExpandButton: 1
-  quaternionDrawMode: 0
+  quaternionDrawMode: 2
   showPrefabModificationsDisabledMessage: 1
   maxRecursiveDrawDepth: 10
   showIndexLabels: 0

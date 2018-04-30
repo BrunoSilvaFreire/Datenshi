@@ -1,6 +1,6 @@
-﻿using Datenshi.Input;
-using Datenshi.Scripts.Combat.Strategies;
+﻿using Datenshi.Scripts.Combat.Strategies;
 using Datenshi.Scripts.Entities;
+using Datenshi.Scripts.Input;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Profiling;

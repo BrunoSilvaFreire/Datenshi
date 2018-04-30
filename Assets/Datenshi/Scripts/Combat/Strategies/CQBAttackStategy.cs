@@ -1,6 +1,7 @@
-﻿using Datenshi.Input;
-using Datenshi.Scripts.AI.Behaviour;
+﻿using Datenshi.Scripts.AI.Behaviour;
+using Datenshi.Scripts.Debugging;
 using Datenshi.Scripts.Entities;
+using Datenshi.Scripts.Input;
 using Datenshi.Scripts.Misc;
 using Datenshi.Scripts.Util;
 using UnityEngine;
@@ -12,7 +13,7 @@ namespace Datenshi.Scripts.Combat.Strategies {
         public float MinDelayBetweenAttacks = 1F;
         public string Attack = "attack";
 
-        public override void Execute(AIStateInputProvider provider, LivingEntity e, LivingEntity target) {
+        public override void Execute(AIStateInputProvider provider, LivingEntity e, LivingEntity target, DebugInfo info) {
             var entityPos = e.Center;
             var targetPos = target.Center;
             DebugUtil.DrawWireCircle2D(entityPos, MinDistance, Color.magenta);
@@ -69,6 +70,10 @@ namespace Datenshi.Scripts.Combat.Strategies {
 
         public override float GetEffectiveness(LivingEntity entity, LivingEntity target) {
             return MinDistance - Vector2.Distance(entity.Center, target.Center);
+        }
+
+        public override string GetTitle() {
+            return "CQB Strategy";
         }
     }
 }
