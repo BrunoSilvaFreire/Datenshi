@@ -11,10 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 1137305049, guid: a4865f1ab4504ed8a368670db22f409c, type: 3}
   m_Name: InspectorConfig
   m_EditorClassIdentifier: 
-  enableOdinInInspector: 0
-  defaultEditorBehaviour: 8
+  enableOdinInInspector: 1
+  defaultEditorBehaviour: 9
   processMouseMoveInInspector: 1
   drawingConfig:
-    configs:
-    - DrawnTypeName: Datenshi.Scripts.Entities.MovableEntity, Assembly-CSharp
-      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    configs: []
