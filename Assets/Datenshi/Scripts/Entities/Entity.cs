@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Datenshi.Scripts.Animation;
-using Datenshi.Scripts.Entities.Motors;
-using Datenshi.Scripts.Game;
+using Datenshi.Scripts.Data;
+using Datenshi.Scripts.Graphics;
 using Datenshi.Scripts.Input;
-using Datenshi.Scripts.Misc;
 using Datenshi.Scripts.Util;
 using Datenshi.Scripts.World.Rooms;
 using Sirenix.OdinInspector;
@@ -13,7 +11,7 @@ using UnityEngine.Events;
 
 namespace Datenshi.Scripts.Entities {
     [Serializable]
-    public sealed class EntityInputProviderChangedEvent : UnityEvent<Entity, InputProvider> {
+    public sealed class EntityInputProviderChangedEvent : UnityEvent<Entity, DatenshiInputProvider> {
         public static readonly EntityInputProviderChangedEvent Instance = new EntityInputProviderChangedEvent();
         private EntityInputProviderChangedEvent() { }
     }
@@ -21,12 +19,11 @@ namespace Datenshi.Scripts.Entities {
     [Serializable]
     public sealed class EntityEvent : UnityEvent<Entity> { }
 
-    /// <inheritdoc />
     /// <summary>
     /// Classe base de todas as entidades.
     /// Qualquer objeto que tenha um comportamento no jogo é considerado uma entidade.
     /// </summary>
-    public class Entity : MonoBehaviour {
+    public class Entity : MonoBehaviour, IColorizable, IRoomMember, IInputReceiver {
         public static readonly EntityEvent EntityEnabledEvent = new EntityEvent();
         public static readonly EntityEvent EntityDisabledEvent = new EntityEvent();
         public const string MiscGroup = "Misc";
@@ -37,14 +34,14 @@ namespace Datenshi.Scripts.Entities {
         /// O provedor a partir de qual essa entidade está recebendo input.
         /// </summary>
         [TitleGroup(MiscGroup, "Informações que não se encaixam em outros lugares aparecem aqui"), ShowInInspector]
-        public InputProvider InputProvider {
+        public DatenshiInputProvider InputProvider {
             get {
                 return inputProvider;
             }
         }
 
         [SerializeField, HideInInspector]
-        private InputProvider inputProvider;
+        private DatenshiInputProvider inputProvider;
 
         public bool IsOwned {
             get {
@@ -52,7 +49,7 @@ namespace Datenshi.Scripts.Entities {
             }
         }
 
-        public bool RequestOwnership(InputProvider provider) {
+        public bool RequestOwnership(DatenshiInputProvider provider) {
             if (IsOwned) {
                 return false;
             }
@@ -61,28 +58,32 @@ namespace Datenshi.Scripts.Entities {
             return true;
         }
 
-        /// <summary>
-        /// A hitbox desta entidade
-        /// </summary>
-        [TitleGroup(GeneralGroup)]
-        public Collider2D Hitbox;
 
-        [TitleGroup(GeneralGroup)]
-        public EntityAnimatorUpdater AnimatorUpdater;
+        [TitleGroup(GeneralGroup), SerializeField]
+        private ColorizableRenderer colorizableRenderer;
 
-        [TitleGroup(GeneralGroup)]
-        public ColorizableRenderer Renderer;
+        public ColorizableRenderer ColorizableRenderer {
+            get {
+                return colorizableRenderer;
+            }
+        }
 
-        [TitleGroup(GeneralGroup)]
         public EntityMiscController MiscController;
 
         [TitleGroup(GeneralGroup)]
         public Character.Character Character;
 
         [TitleGroup(MiscGroup)]
-        public Direction CurrentDirection;
+        protected Direction Direction;
 
-        public MotorConfig Config;
+        [SerializeField]
+        private UnityEvent onDestroyed;
+
+        public UnityEvent OnDestroyed {
+            get {
+                return onDestroyed;
+            }
+        }
 
         [ShowInInspector, ReadOnly, TitleGroup(MiscGroup)]
         private List<VariableValue> variables = new List<VariableValue>();
@@ -116,31 +117,7 @@ namespace Datenshi.Scripts.Entities {
 
             return variable.DefaultValue;
         }
-#if UNITY_EDITOR
-        [Button]
-        public void SnapToFloor() {
-            var bounds = (Bounds2D) Hitbox.bounds;
-            var centerX = bounds.Center.x;
-            var y = bounds.Min.y;
-            var origin = new Vector2(centerX, y);
-            var raycast = Physics2D.Raycast(
-                origin,
-                Vector2.down,
-                float.PositiveInfinity,
-                GameResources.Instance.WorldMask);
-            if (!raycast) {
-                return;
-            }
 
-            transform.position = raycast.point + new Vector2(0, bounds.Size.y / 2);
-        }
-#endif
-
-        public Vector2 Center {
-            get {
-                return Hitbox != null ? Hitbox.bounds.center : transform.position;
-            }
-        }
 
         public void RevokeOwnership() {
             inputProvider = null;
@@ -164,8 +141,6 @@ namespace Datenshi.Scripts.Entities {
             if (InputProvider == null) {
                 return;
             }
-
-            InputProvider.DrawGizmos(this);
         }
     }
 

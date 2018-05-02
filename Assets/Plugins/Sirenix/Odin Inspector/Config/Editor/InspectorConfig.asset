@@ -15,4 +15,135 @@ MonoBehaviour:
   defaultEditorBehaviour: 9
   processMouseMoveInInspector: 1
   drawingConfig:
-    configs: []
+    configs:
+    - DrawnTypeName: Datenshi.Scripts.Entities.Entity, Datenshi-Entities
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Entities.EntityMiscController, Datenshi-Entities
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Entities.EntityProxy, Datenshi-Entities
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Entities.LivingEntity, Datenshi-Entities
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Entities.LivingEntityProxy, Datenshi-Entities
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Entities.MovableEntity, Datenshi-Entities
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Entities.MovableEntityProxy, Datenshi-Entities
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Entities.Animation.DebugRangedUpdater, Datenshi-Entities
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Entities.Animation.LivingEntityUpdater, Datenshi-Entities
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Entities.Animation.MovableEntityStateMachineProxy,
+        Datenshi-Entities
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Entities.Animation.MovableEntityUpdater, Datenshi-Entities
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.AI.AerialAINavigator, Datenshi-AI
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.AI.AIStateInputProvider, Datenshi-AI
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.AI.GroundAINavigator, Datenshi-AI
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.AI.Behaviour.FollowingState, Datenshi-AI
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.AI.Behaviour.MovingState, Datenshi-AI
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Animation.AnimationUtil, Datenshi-Animation
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Animation.Behaviour.ChargeTimeDelayer, Datenshi-Animation
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Animation.Behaviour.SetVariable, Datenshi-Animation
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Character.Character, Datenshi-Characters
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Character.CharacterPortrait, Datenshi-Characters
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Character.PlayableCharacter, Datenshi-Characters
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Combat.Attacks.CounterAttack, Datenshi-Combat
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Combat.Attacks.HitboxAttack, Datenshi-Combat
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Combat.Attacks.HitboxAttackCounterWindow, Datenshi-Combat
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Combat.Attacks.RepeatedHitboxAttack, Datenshi-Combat
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Combat.Attacks.Ranged.Projectile, Datenshi-Combat
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Combat.Attacks.Ranged.RangedAttack, Datenshi-Combat
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Combat.Attacks.Summoning.Summonable, Datenshi-Combat
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Combat.Attacks.Summoning.SummonAttack, Datenshi-Combat
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Combat.Behaviour.AttackingState, Datenshi-Combat
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Combat.Behaviour.PatrollingState, Datenshi-Combat
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Combat.Behaviour.SentryState, Datenshi-Combat
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Combat.Strategies.CompositeStrategy, Datenshi-Combat
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Combat.Strategies.CQBAttackStategy, Datenshi-Combat
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Combat.Strategies.EmptyStrategy, Datenshi-Combat
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Combat.Strategies.RangedAttackStrategy, Datenshi-Combat
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Cutscenes.Dialogue.Dialogue, Datenshi-Cutscenes
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Data.GameResources, Datenshi-Data
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Data.RuntimeResources, Datenshi-Data
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Game.GameController, Datenshi-Game
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Game.PlayerController, Datenshi-Game
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Game.PlayerInputProvider, Datenshi-Game
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Game.Singletons, Datenshi-Game
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Graphics.BlackAndWhiteFX, Datenshi-Graphics
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Graphics.ColorizableRenderer, Datenshi-Graphics
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.UI.SpriteGraphic, Datenshi-UI
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.UI.UIPlayerView, Datenshi-UI
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.UI.UIResources, Datenshi-UI
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.UI.Dialogue.UIDialogueBox, Datenshi-UI
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.UI.Dialogue.UIDialoguePortrait, Datenshi-UI
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.UI.Dialogue.UIDialogueStage, Datenshi-UI
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.UI.Layout.ChildLayoutFitter, Datenshi-UI
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.UI.Misc.UIBlackBarView, Datenshi-UI
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.UI.Misc.UIDashElement, Datenshi-UI
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.UI.Misc.UIDefenseElement, Datenshi-UI
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.UI.Misc.UIEntityHealthElemnt, Datenshi-UI
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.UI.Misc.UIPlayerHealthElement, Datenshi-UI
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.UI.Narrator.Narrator, Datenshi-UI
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.UI.Stealth.UIInteractableElementView, Datenshi-UI
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Util.CollisionListener, Datenshi-Utilities
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Util.Dispatcher, Datenshi-Utilities
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.World.Area, Datenshi-World
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.World.WorldManager, Datenshi-World
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.World.Rooms.Room, Datenshi-World
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor

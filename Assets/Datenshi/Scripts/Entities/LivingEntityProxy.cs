@@ -1,9 +1,6 @@
 using UnityEngine;
-using Datenshi.Scripts.Animation;
 using Datenshi.Scripts.Combat.Attacks;
 using Datenshi.Scripts.Combat.Strategies;
-using Datenshi.Scripts.Entities.Motors;
-using Datenshi.Scripts.Misc;
 using Datenshi.Scripts.Util;
 using UnityEngine.Events;
 
@@ -34,11 +31,6 @@ namespace Datenshi.Scripts.Entities {
         public void Damage(LivingEntity entity, uint damage) {
             Target.Damage(entity, damage);
         }
-#if UNITY_EDITOR
-        public void SnapToFloor() {
-            Target.SnapToFloor();
-        }
-#endif
 
         public void RevokeOwnership() {
             Target.RevokeOwnership();
@@ -50,10 +42,6 @@ namespace Datenshi.Scripts.Entities {
 
         public void SetDamageInvulnerabilityDuration(float value) {
             Target.DamageInvulnerabilityDuration = value;
-        }
-
-        public void SetRelationship(EntityRelationship value) {
-            Target.Relationship = value;
         }
 
         public void SetDefaultAttackStrategy(AttackStrategy value) {
@@ -88,10 +76,6 @@ namespace Datenshi.Scripts.Entities {
             Target.OnKilled = value;
         }
 
-        public void SetDefaultAttackHitbox(Bounds2D value) {
-            Target.DefaultAttackHitbox = value;
-        }
-
         public void SetFocusMaxTime(float value) {
             Target.FocusMaxTime = value;
         }
@@ -108,18 +92,6 @@ namespace Datenshi.Scripts.Entities {
             Target.DefenseDepleteAmountMultiplier = value;
         }
 
-        public void SetHitbox(Collider2D value) {
-            Target.Hitbox = value;
-        }
-
-        public void SetAnimatorUpdater(EntityAnimatorUpdater value) {
-            Target.AnimatorUpdater = value;
-        }
-
-        public void SetRenderer(ColorizableRenderer value) {
-            Target.Renderer = value;
-        }
-
         public void SetMiscController(EntityMiscController value) {
             Target.MiscController = value;
         }
@@ -132,17 +104,10 @@ namespace Datenshi.Scripts.Entities {
             Target.CurrentDirection = value;
         }
 
-        public void SetConfig(MotorConfig value) {
-            Target.Config = value;
-        }
-
         public void SetFocusTimeLeft(float value) {
             Target.FocusTimeLeft = value;
         }
 
-        public void SetDefending(bool value) {
-            Target.Defending = value;
-        }
 
         public void SetMaxHealth(uint value) {
             Target.MaxHealth = value;

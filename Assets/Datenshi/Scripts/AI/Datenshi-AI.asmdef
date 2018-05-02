@@ -1,0 +1,11 @@
+{
+    "name": "Datenshi-AI",
+    "references": [
+        "Datenshi-Utilities",
+        "Datenshi-Data",
+        "Datenshi-Movement",
+        "Datenshi-Input"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": []
+}

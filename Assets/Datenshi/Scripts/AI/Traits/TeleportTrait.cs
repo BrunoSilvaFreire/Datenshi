@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections;
-using Datenshi.Scripts.Combat;
-using Datenshi.Scripts.Combat.Attacks.Ranged;
-using Datenshi.Scripts.Entities;
-using Datenshi.Scripts.Input;
 using UnityEngine;
 
 namespace Datenshi.Scripts.AI.Traits {
-    public class TeleportTrait : Trait {
+    //TODO fix
+/*    public class TeleportTrait : Trait {
         private bool teleporting;
         public AIStateInputProvider provider;
-        public LivingEntity Entity;
+        public LivingINavigable INavigable;
         public float MinDistance = 5F;
         public float TeleportDistance = 7;
         public float TeleportThreshold = 2F;
@@ -28,21 +25,21 @@ namespace Datenshi.Scripts.AI.Traits {
             }
         }
 
-        private void OnShot(Projectile arg0, LivingEntity arg1, LivingEntity arg2) {
-            if (arg2 == Entity) {
-                StartCoroutine(Teleport(Entity.transform.position, TeleportShotDuration));
+        private void OnShot(Projectile arg0, LivingINavigable arg1, LivingINavigable arg2) {
+            if (arg2 == INavigable) {
+                StartCoroutine(Teleport(INavigable.transform.position, TeleportShotDuration));
             }
         }
 
         private IEnumerator Teleport(Vector2 pos, float duration) {
             teleporting = true;
-            Entity.Invulnerable = true;
-            var updater = Entity.AnimatorUpdater.Animator;
+            INavigable.Invulnerable = true;
+            var updater = INavigable.AnimatorUpdater.Animator;
             updater.SetTrigger(StartTeleportKey);
             yield return new WaitForSeconds(duration);
-            Entity.transform.position = pos;
+            INavigable.transform.position = pos;
             updater.SetTrigger(EndTeleportKey);
-            Entity.Invulnerable = false;
+            INavigable.Invulnerable = false;
             teleporting = false;
         }
 
@@ -53,16 +50,16 @@ namespace Datenshi.Scripts.AI.Traits {
                 return;
             }
 
-            var entityPos = Entity.Center;
-            var movable = Entity as MovableEntity;
+            var entityPos = INavigable.Center;
+            var movable = INavigable as MovableINavigable;
             var navigator = movable == null ? null : movable.AINavigator;
-            var target = Entity.GetVariable(CombatVariables.EntityTarget);
+            var target = INavigable.GetVariable(CombatVariables.INavigableTarget);
             if (target == null) {
                 return;
             }
 
             var targetCenter = target.Center;
-            var targetPos = navigator == null ? targetCenter : navigator.GetFavourablePosition(Entity.DefaultAttackStrategy, target);
+            var targetPos = navigator == null ? targetCenter : navigator.GetFavourablePosition(INavigable.DefaultAttackStrategy, target);
 #if UNITY_EDITOR
             var thresholdPoint = targetCenter - entityPos;
             thresholdPoint.Normalize();
@@ -77,14 +74,14 @@ namespace Datenshi.Scripts.AI.Traits {
                 var newPos = entityPos;
                 var teleportDir = xDir * TeleportDistance;
                 newPos.x += teleportDir;
-                var room = Entity.EntityRoom;
+                var room = INavigable.INavigableRoom;
                 if (room != null && room.IsOutInBounds(newPos)) {
                     newPos.x -= 2 * teleportDir;
                 }
 
-                Entity.StartCoroutine(Teleport(newPos, TeleportCloseDuration));
+                INavigable.StartCoroutine(Teleport(newPos, TeleportCloseDuration));
                 return;
             }
         }
-    }
+    }*/
 }

@@ -1,0 +1,13 @@
+{
+    "name": "Datenshi-Movement-States",
+    "references": [
+        "Datenshi-Movement",
+        "Datenshi-Combat",
+        "Datenshi-Data",
+        "Datenshi-Input",
+        "Datenshi-Utilities",
+        "Datenshi-Animation"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": []
+}

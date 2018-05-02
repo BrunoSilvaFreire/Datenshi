@@ -1,7 +1,6 @@
 ﻿using System;
-using Datenshi.Assets.Graphics.Shaders;
 using Datenshi.Scripts.Entities;
-using Datenshi.Scripts.Input;
+using Datenshi.Scripts.Graphics;
 using Datenshi.Scripts.Misc;
 using Datenshi.Scripts.Util.Singleton;
 using DG.Tweening;
@@ -22,7 +21,7 @@ namespace Datenshi.Scripts.Game {
         [ShowInInspector]
         private Tracker<ColorizableRenderer> tracker;
 
-        public BlackAndWhiteFX[] Fxs;
+        public BlackAndWhiteFX Fx;
         public float LowCutoff = 440;
         public float DefendOverrideAmount = 1;
         public float DefendOverrideDuration = 0.5F;
@@ -67,14 +66,16 @@ namespace Datenshi.Scripts.Game {
             }
 
             var l = currentEntity as LivingEntity;
-            var currentDefending = l != null && l.Defending;
-            if (currentDefending != defending) {
-                defending = currentDefending;
-                if (defending) {
-                    ShowDefend();
-                } else {
-                    HideDefend();
-                }
+            var currentDefending = l != null && l.Focusing;
+            if (currentDefending == defending) {
+                return;
+            }
+
+            defending = currentDefending;
+            if (defending) {
+                ShowDefend();
+            } else {
+                HideDefend();
             }
         }
 
@@ -101,11 +102,8 @@ namespace Datenshi.Scripts.Game {
         }
 
         private void SetFX(float x) {
-            foreach (var fx in Fxs) {
-                var fx1 = fx;
-                fx1.DOKill();
-                DOTween.To(() => fx1.Amount, value => fx1.Amount = value, x, DefendOverrideDuration);
-            }
+            Fx.DOKill();
+            DOTween.To(() => Fx.Amount, value => Fx.Amount = value, x, DefendOverrideDuration);
         }
 
         private void SetColorOverride(float i) {
@@ -118,11 +116,11 @@ namespace Datenshi.Scripts.Game {
             }
         }
 
-        private void SetColorOverride(ColorizableRenderer renderer, float i) {
-            renderer.DOKill();
+        private void SetColorOverride(ColorizableRenderer r, float i) {
+            r.DOKill();
             DOTween.To(
-                () => renderer.ColorOverrideAmount,
-                value => renderer.ColorOverrideAmount = value,
+                () => r.ColorOverrideAmount,
+                value => r.ColorOverrideAmount = value,
                 i,
                 DefendOverrideDuration);
         }

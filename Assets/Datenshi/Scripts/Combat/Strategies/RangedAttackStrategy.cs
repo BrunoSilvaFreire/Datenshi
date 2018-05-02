@@ -1,8 +1,6 @@
 ﻿using System;
-using Datenshi.Scripts.AI.Behaviour;
-using Datenshi.Scripts.Debugging;
-using Datenshi.Scripts.Entities;
-using Datenshi.Scripts.Input;
+using Datenshi.Scripts.AI;
+using Datenshi.Scripts.Data;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Combat.Strategies {
@@ -14,44 +12,28 @@ namespace Datenshi.Scripts.Combat.Strategies {
         public string Attack = "Attack";
 
 
-        public override void Execute(AIStateInputProvider provider, LivingEntity e, LivingEntity target, DebugInfo info) {
+        public override void Execute(AIStateInputProvider provider, ICombatant e, ICombatant target) {
             var targetEntityPos = target.Center;
             var entityPos = e.Center;
             var xDir = Math.Sign(entityPos.x - targetEntityPos.x);
-            var mEntity = e as MovableEntity;
+            var mEntity = e as IMovableCombatant;
             var agent = mEntity == null ? null : mEntity.AINavigator;
-            var targetPos = agent == null ? target.Center : agent.GetFavourablePosition(this, target);
+            var targetPos = agent == null ? target.Center : agent.GetFavourablePosition(mEntity);
             var distance = Vector2.Distance(entityPos, targetPos);
-#if UNITY_EDITOR
-            var msg = "Distance to target: " + distance + " (" + GetStateInfo(distance) + ")";
-            Debug.Log(msg);
-            info.AddInfo(msg);
-#endif
+
             if (distance > MinDistance + Threshold) {
                 provider.Attack = false;
-#if UNITY_EDITOR
-                Debug.DrawLine(entityPos, targetPos, Color.red);
-                var targetMsg = "target: " + targetPos;
-#endif
                 if (agent != null) {
                     agent.Target = targetPos;
                     agent.Execute(mEntity, provider);
-#if UNITY_EDITOR
-                    targetMsg += string.Format(" (Navigator: {0})", agent);
-#endif
                 }
-#if UNITY_EDITOR
-                info.AddInfo(targetMsg);
-#endif
+
                 return;
             }
 
             var lastAttack = e.GetVariable(CombatVariables.LastAttack);
             var time = Time.time;
             var delay = time - lastAttack;
-#if UNITY_EDITOR
-            info.AddInfo("Delay: " + delay + "/" + MinDelayBetweenAttacks);
-#endif
             if (delay < MinDelayBetweenAttacks) {
                 provider.Attack = false;
 #if UNITY_EDITOR
@@ -59,12 +41,11 @@ namespace Datenshi.Scripts.Combat.Strategies {
 #endif
                 return;
             }
-#if UNITY_EDITOR
-            Debug.DrawLine(entityPos, targetPos, Color.green);
-#endif
-            info.AddInfo("Attack: " + Attack);
+
             e.SetVariable(CombatVariables.LastAttack, time);
-            e.CurrentDirection.X = -xDir;
+            var dir = e.CurrentDirection;
+            dir.X = -xDir;
+            e.CurrentDirection = dir;
             provider.Horizontal = 0;
             provider.Walk = true;
             provider.Jump = false;
@@ -83,11 +64,11 @@ namespace Datenshi.Scripts.Combat.Strategies {
             return "Close";
         }
 
-        public override float GetMinimumDistance(LivingEntity entity, LivingEntity target) {
+        public override float GetMinimumDistance(ICombatant entity, ICombatant target) {
             return MinDistance;
         }
 
-        public override float GetCost(LivingEntity entity, LivingEntity target) {
+        public override float GetCost(ICombatant entity, ICombatant target) {
             var dist = Vector2.Distance(entity.Center, target.Center);
             if (dist < MinDistance) {
                 return 0;
@@ -96,7 +77,7 @@ namespace Datenshi.Scripts.Combat.Strategies {
             return dist;
         }
 
-        public override float GetEffectiveness(LivingEntity entity, LivingEntity target) {
+        public override float GetEffectiveness(ICombatant entity, ICombatant target) {
             return Vector2.Distance(entity.Center, target.Center) - Threshold;
         }
 

@@ -1,6 +1,4 @@
-﻿using Datenshi.Scripts.Misc;
-using Datenshi.Scripts.Util.Singleton;
-using Shiroi.Cutscenes;
+﻿using Datenshi.Scripts.Util.Singleton;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Game {

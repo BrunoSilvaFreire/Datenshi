@@ -1,8 +1,7 @@
-﻿using Datenshi.Scripts.Entities;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Datenshi.Scripts.Combat.Attacks {
     public abstract class Attack : ScriptableObject {
-        public abstract void Execute(LivingEntity entity);
+        public abstract void Execute(ICombatant entity);
     }
 }

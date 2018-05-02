@@ -1,4 +1,5 @@
 ﻿using System;
+using Datenshi.Scripts.Character;
 using Datenshi.Scripts.UI.Dialogue;
 using Shiroi.Serialization;
 

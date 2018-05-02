@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using Datenshi.Scripts.Misc;
+using Datenshi.Scripts.Util;
 using Shiroi.Cutscenes;
 using Shiroi.Cutscenes.Tokens;
 using UnityEngine;

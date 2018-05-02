@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using Datenshi.Scripts.Character;
 using Datenshi.Scripts.UI.Dialogue;
 using Shiroi.Cutscenes;
 using Shiroi.Cutscenes.Editor;
@@ -18,9 +19,9 @@ namespace Datenshi.Scripts.Cutscenes.Editor {
             CutsceneEditor editor,
             CutscenePlayer player,
             Cutscene cutscene,
-            UnityEngine.Rect rect,
+            Rect rect,
             int tokenIndex,
-            UnityEngine.GUIContent name,
+            GUIContent name,
             AppearanceMode value,
             Type valueType,
             FieldInfo fieldInfo,

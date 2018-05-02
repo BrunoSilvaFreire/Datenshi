@@ -1,5 +1,5 @@
 ﻿using Datenshi.Scripts.AI.Behaviour;
-using Datenshi.Scripts.Entities;
+using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Misc;
 using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
@@ -36,23 +36,24 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
             }
         }
 
-        public override void Execute(LivingEntity entity) {
+        public override void Execute(ICombatant entity) {
             var lastFire = entity.GetVariable(LastFire);
             var time = Time.time;
             if (!(time - lastFire > TimeDelay)) {
                 return;
             }
 
-            var offset = (Vector3) Offset;
+            var offset = Offset;
             offset.x *= entity.CurrentDirection.X;
-            var startPos = entity.transform.position + offset;
-            var target = entity.GetVariable(CombatVariables.EntityTarget);
+            var startPos = entity.Center + offset;
+            var target = entity.GetVariable(CombatVariables.AttackTarget);
             var proj = Prefab.Clone(startPos);
             if (Aim) {
                 proj.Shoot(entity, target);
             } else {
                 proj.Shoot(entity, RawDir ? entity.CurrentDirection : entity.InputProvider.GetInputVector());
             }
+
             entity.SetVariable(LastFire, time);
         }
     }

@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Datenshi.Scripts.AI.Pathfinding;
 using Datenshi.Scripts.AI.Pathfinding.Links;
-using Datenshi.Scripts.Combat.Strategies;
-using Datenshi.Scripts.Entities;
-using Datenshi.Scripts.Input;
 using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -18,13 +15,13 @@ namespace Datenshi.Scripts.AI {
         [ShowInInspector, ReadOnly]
         private Link currentLink;
 
-        public MovableEntity Entity;
+        public INavigable Navigable;
 
         [ShowInInspector, ReadOnly]
         private Navmesh navmesh;
 
         protected override bool CanReload() {
-            return Entity.CollisionStatus.Down;
+            return Navigable.CollisionStatus.Down;
         }
 
         private void Start() {
@@ -38,10 +35,11 @@ namespace Datenshi.Scripts.AI {
             }
 
             AStar.CalculatePath(
-                navmesh.GetNodeAtWorld(Entity.GroundPosition),
+                navmesh.GetNodeAtWorld(Navigable.GroundPosition),
                 navmesh.GetNodeAtWorld(Target),
                 navmesh,
-                Entity, p => {
+                Navigable,
+                p => {
                     path = p;
                     if (p != null) {
                         currentLink = p.Last();
@@ -64,7 +62,7 @@ namespace Datenshi.Scripts.AI {
 #endif
 
 
-        public override void Execute(MovableEntity entity, AIStateInputProvider provider) {
+        public override void Execute(INavigable entity, AIStateInputProvider provider) {
             if (currentLink == null) {
                 return;
             }
@@ -90,20 +88,22 @@ namespace Datenshi.Scripts.AI {
             currentLink.Execute(entity, provider, navmesh);
         }
 
-        public override Vector2 GetFavourablePosition(AttackStrategy s, LivingEntity target) {
-            var movableEntity = target as MovableEntity;
-            Vector2 pos;
-
-            if (movableEntity != null) {
-                pos = movableEntity.GroundPosition;
+        public override Vector2 GetFavourablePosition(INavigable target) {
+            var pos = target.GroundPosition;
+            /*
+             TODO Fix
+            if (target != null) {
+                pos = target.GroundPosition;
             } else {
                 pos = target.transform.position;
             }
+
             var state = s as RangedAttackStrategy;
             if (state != null) {
-                pos.x += state.MinDistance * Math.Sign(Entity.GroundPosition.x - pos.x);
+                pos.x += state.MinDistance * Math.Sign(INavigable.GroundPosition.x - pos.x);
             }
 
+             */
             return pos;
         }
     }

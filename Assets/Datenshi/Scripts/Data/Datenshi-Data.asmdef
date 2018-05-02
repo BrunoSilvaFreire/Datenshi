@@ -1,0 +1,8 @@
+{
+    "name": "Datenshi-Data",
+    "references": [
+        "Datenshi-Utilities"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": []
+}

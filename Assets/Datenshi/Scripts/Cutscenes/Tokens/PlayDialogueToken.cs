@@ -10,10 +10,12 @@ namespace Datenshi.Scripts.Cutscenes.Tokens {
 
         public IEnumerator Execute(CutscenePlayer player) {
             var stage = UIDialogueStage.Instance;
-            yield return stage.PlayDialogue(Dialogue);
+            //TODO fix
+            //yield return stage.PlayDialogue(Dialogue);
             if (CloseOnFinish) {
                 stage.Showing = false;
             }
+            yield break;
         }
     }
 }

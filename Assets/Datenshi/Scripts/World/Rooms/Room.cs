@@ -1,12 +1,17 @@
 ﻿using System.Collections.Generic;
-using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Util;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Datenshi.Scripts.World.Rooms {
+    public interface IRoomMember {
+        UnityEvent OnDestroyed {
+            get;
+        }
+    }
+
     public class Room : MonoBehaviour {
-        private List<Entity> entities = new List<Entity>();
+        private List<IRoomMember> entities = new List<IRoomMember>();
         public Vector2 Size;
 
         public bool IsInBounds(Vector2 pos) {
@@ -30,24 +35,19 @@ namespace Datenshi.Scripts.World.Rooms {
             GizmosUtil.DrawBox2DWire(transform.position, Size, Color.magenta);
         }
 
-        public void RegisterEntity(Entity entity) {
+        public void RegisterEntity(IRoomMember entity) {
             if (entities.Contains(entity)) {
                 return;
             }
 
             entities.Add(entity);
-            ;
-            var l = entity as LivingEntity;
-            if (l == null) {
-                return;
-                ;
-            }
-
+            var e = entity.OnDestroyed;
             UnityAction action = null;
-            var e = l.OnKilled;
             action = () => {
                 entities.Remove(entity);
-                e.RemoveListener(action);
+                if (action != null) {
+                    e.RemoveListener(action);
+                }
             };
             e.AddListener(action);
         }

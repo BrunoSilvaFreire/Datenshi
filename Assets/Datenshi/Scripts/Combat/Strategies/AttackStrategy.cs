@@ -1,14 +1,12 @@
-﻿using Datenshi.Scripts.Debugging;
-using Datenshi.Scripts.Entities;
-using Datenshi.Scripts.Input;
+﻿using Datenshi.Scripts.AI;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Combat.Strategies {
-    public abstract class AttackStrategy : ScriptableObject, IDebugabble {
-        public abstract void Execute(AIStateInputProvider provider, LivingEntity entity, LivingEntity target, DebugInfo info);
-        public abstract float GetMinimumDistance(LivingEntity entity, LivingEntity target);
-        public abstract float GetCost(LivingEntity entity, LivingEntity target);
-        public abstract float GetEffectiveness(LivingEntity entity, LivingEntity target);
+    public abstract class AttackStrategy : ScriptableObject {
+        public abstract void Execute(AIStateInputProvider provider, ICombatant entity, ICombatant target);
+        public abstract float GetMinimumDistance(ICombatant entity, ICombatant target);
+        public abstract float GetCost(ICombatant entity, ICombatant target);
+        public abstract float GetEffectiveness(ICombatant entity, ICombatant target);
         public abstract string GetTitle();
     }
 }

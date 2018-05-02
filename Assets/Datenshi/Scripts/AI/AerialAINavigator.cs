@@ -2,23 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using Datenshi.Scripts.AI.Pathfinding;
-using Datenshi.Scripts.Combat.Strategies;
-using Datenshi.Scripts.Entities;
-using Datenshi.Scripts.Input;
 using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 using UnityEngine;
-using UnityEngine.Profiling;
 
 namespace Datenshi.Scripts.AI {
     public class AerialAINavigator : AINavigator {
         [ShowInInspector]
         private List<Vector2Int> path;
 
-        public MovableEntity Entity;
+        public INavigable Navigable;
         public float MinimumHeightAdvantage = 3;
 
         [ShowInInspector, ReadOnly]
@@ -40,18 +36,19 @@ namespace Datenshi.Scripts.AI {
 
         [Button]
         protected override void ReloadPath() {
-            var entityPos = Entity.transform.position;
+            var entityPos = Navigable.Center;
             if (navmesh.IsOutOfBounds(entityPos) || navmesh.IsOutOfBounds(Target)) {
                 return;
             }
 
             var origin = navmesh.GetNodeAtWorld(entityPos);
             var target = navmesh.GetNodeAtWorld(Target);
-            AStar.CalculatePathAerial(origin, target, navmesh, Entity.name,
-                tempPath => {
-                    path = tempPath == null ? null : (from node in tempPath select node.Position).ToList(); 
-                    
-                }
+            AStar.CalculatePathAerial(
+                origin,
+                target,
+                navmesh,
+                Navigable.ToString(),
+                tempPath => { path = tempPath == null ? null : (from node in tempPath select node.Position).ToList(); }
             );
         }
 #if UNITY_EDITOR
@@ -81,13 +78,13 @@ namespace Datenshi.Scripts.AI {
         }
 #endif
 
-        public override void Execute(MovableEntity entity, AIStateInputProvider provider) {
+        public override void Execute(INavigable entity, AIStateInputProvider provider) {
             if (path == null) {
                 return;
             }
 
             Vector2 dir;
-            var entityPos = entity.transform.position;
+            var entityPos = entity.Center;
             var currentNode = navmesh.GetNodeAtWorld(entityPos).Position;
             var lastIndex = path.Count - 1;
             var targetNode = path[lastIndex];
@@ -109,11 +106,10 @@ namespace Datenshi.Scripts.AI {
             return;
         }
 
-        public override Vector2 GetFavourablePosition(AttackStrategy state, LivingEntity target) {
-            var pos = Entity.transform.position;
-            var targetPos = target.transform.position;
-            var x = targetPos.x + Math.Sign(pos.x - targetPos.x) *
-                    Entity.DefaultAttackStrategy.GetMinimumDistance(Entity, target);
+        public override Vector2 GetFavourablePosition(INavigable target) {
+            var pos = Navigable.Center;
+            var targetPos = target.Center;
+            var x = targetPos.x + Math.Sign(pos.x - targetPos.x);
             float y;
             if (pos.y - targetPos.y > MinimumHeightAdvantage) {
                 y = targetPos.y + MinimumHeightAdvantage;

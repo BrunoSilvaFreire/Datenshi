@@ -1,5 +1,5 @@
 ﻿using Datenshi.Scripts.AI.Behaviour;
-using Datenshi.Scripts.Entities;
+using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Util;
 using UnityEngine;
 
@@ -8,9 +8,9 @@ namespace Datenshi.Scripts.Combat.Attacks.Summoning {
     public class SummonAttack : Attack {
         public Summonable Prefab;
 
-        public override void Execute(LivingEntity entity) {
-            var target = entity.GetVariable(CombatVariables.EntityTarget);
-            var pos = target.transform.position;
+        public override void Execute(ICombatant entity) {
+            var target = entity.GetVariable(CombatVariables.AttackTarget);
+            var pos = target.Center;
             var proj = Prefab.Clone(pos);
             proj.Summon(entity, pos);
         }

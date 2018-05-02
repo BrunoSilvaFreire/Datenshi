@@ -1,7 +1,5 @@
 ﻿using System.Linq;
-using Datenshi.Scripts.Debugging;
-using Datenshi.Scripts.Entities;
-using Datenshi.Scripts.Input;
+using Datenshi.Scripts.AI;
 using Datenshi.Scripts.Util;
 using UnityEngine;
 
@@ -10,20 +8,20 @@ namespace Datenshi.Scripts.Combat.Strategies {
     public class CompositeStrategy : AttackStrategy {
         public AttackStrategy[] Strategies;
 
-        public override void Execute(AIStateInputProvider provider, LivingEntity entity, LivingEntity target, DebugInfo info) {
+        public override void Execute(AIStateInputProvider provider, ICombatant entity, ICombatant target) {
             var s = Strategies.MinBy(strategy => strategy.GetCost(entity, target) - strategy.GetEffectiveness(entity, target));
-            s.Execute(provider, entity, target, info);
+            s.Execute(provider, entity, target);
         }
 
-        public override float GetMinimumDistance(LivingEntity entity, LivingEntity target) {
+        public override float GetMinimumDistance(ICombatant entity, ICombatant target) {
             return Strategies.Min(strategy => strategy.GetMinimumDistance(entity, target));
         }
 
-        public override float GetCost(LivingEntity entity, LivingEntity target) {
+        public override float GetCost(ICombatant entity, ICombatant target) {
             return Strategies.Min(strategy => strategy.GetCost(entity, target));
         }
 
-        public override float GetEffectiveness(LivingEntity entity, LivingEntity target) {
+        public override float GetEffectiveness(ICombatant entity, ICombatant target) {
             return Strategies.Max(strategy => strategy.GetEffectiveness(entity, target));
         }
 

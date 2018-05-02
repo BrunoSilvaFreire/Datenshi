@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Datenshi.Scripts.Cutscenes.Serialization;
 using Shiroi.Cutscenes.Futures;
 using Shiroi.Cutscenes.Serialization;
 using Shiroi.Cutscenes.Util;
@@ -77,7 +76,7 @@ namespace Shiroi.Serialization {
             RegisterSerializer(new BoundsSerializer());
             RegisterSerializer(new BoundsIntSerializer());
             RegisterSerializer(new LayerMaskSerializer());
-            RegisterSerializer(new AppearanceModeSerializer());
+            //RegisterSerializer(new AppearanceModeSerializer());
 
         }
 

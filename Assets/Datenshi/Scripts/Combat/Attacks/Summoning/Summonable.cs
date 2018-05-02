@@ -1,9 +1,8 @@
-﻿using Datenshi.Scripts.Entities;
-using Datenshi.Scripts.Misc;
+﻿using Datenshi.Scripts.Data;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Combat.Attacks.Summoning {
-    public class Summonable : Ownable {
+    public class Summonable : Ownable<ICombatant> {
         protected void ExecuteProxiedAttack(Attack attack) {
             if (Owner == null) {
                 return;
@@ -12,7 +11,7 @@ namespace Datenshi.Scripts.Combat.Attacks.Summoning {
             Owner.ExecuteAttack(attack);
         }
 
-        public void Summon(LivingEntity entity, Vector2 position) {
+        public void Summon(ICombatant entity, Vector2 position) {
             Owner = entity;
             transform.position = position;
         }

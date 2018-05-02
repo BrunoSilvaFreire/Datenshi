@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections;
-using Datenshi.Scripts.Game;
+﻿using System.Collections;
+using Datenshi.Scripts.Data;
 using Shiroi.Cutscenes;
 using Shiroi.Cutscenes.Tokens;
 
@@ -17,10 +16,10 @@ namespace Datenshi.Scripts.Cutscenes.Tokens {
 
         public IEnumerator Execute(CutscenePlayer player) {
             if (Target == AcceptInputTarget.AIOnly || Target == AcceptInputTarget.All) {
-                RuntimeVariables.Instance.AllowAIInput = AcceptInput;
+                RuntimeResources.Instance.AllowAIInput = AcceptInput;
             }
             if (Target == AcceptInputTarget.PlayerOnly || Target == AcceptInputTarget.All) {
-                RuntimeVariables.Instance.AllowPlayerInput = AcceptInput;
+                RuntimeResources.Instance.AllowPlayerInput = AcceptInput;
             }
             yield break;
         }

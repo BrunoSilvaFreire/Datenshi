@@ -6,7 +6,7 @@ namespace Datenshi.Scripts.Util.Singleton {
 
         public static T Instance {
             get {
-                return instance ?? (instance = Load());
+                return instance ? instance : (instance = Load());
             }
         }
 

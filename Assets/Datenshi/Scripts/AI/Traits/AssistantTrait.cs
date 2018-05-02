@@ -1,23 +1,23 @@
 ﻿using Datenshi.Scripts.AI.Behaviour;
-using Datenshi.Scripts.Entities;
-using Datenshi.Scripts.Game;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace Datenshi.Scripts.AI.Traits {
-    public class AssistantTrait : Trait {
-        public MovableEntity Assistant;
+    //TODO Fix
+/*    public class AssistantTrait : Trait {
+        public INavigable Assistant;
         public float MaxDistance = 10;
         private void Start() {
-            Assistant.SetVariable(FollowingState.EntityTarget, PlayerController.Instance.CurrentEntity);
-            PlayerController.Instance.OnEntityChanged.AddListener(OnChanged);
+            Assistant.SetVariable(FollowingState NavigableTarget, PlayerController.Instance.CurrentINavigable);
+            PlayerController.Instance.OnINavigableChanged.AddListener(OnChanged);
         }
 
-        private void OnChanged(Entity arg0, Entity arg1) {
-            Assistant.SetVariable(FollowingState.EntityTarget, arg1);
+        private void OnChanged(INavigable arg0, INavigable arg1) {
+            Assistant.SetVariable(FollowingState.FollowTarget, arg1);
         }
 
         public override void Execute() {
-            var e = PlayerController.Instance.CurrentEntity;
+            var e = PlayerController.Instance.CurrentINavigable;
             if (e == null) {
                 return;
             }
@@ -27,5 +27,5 @@ namespace Datenshi.Scripts.AI.Traits {
                 Assistant.transform.position = ePos;
             }
         }
-    }
+    }*/
 }

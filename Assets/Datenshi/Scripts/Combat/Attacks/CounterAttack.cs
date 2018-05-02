@@ -1,8 +1,5 @@
 ﻿using System;
-using Datenshi.Scripts.Entities;
-using Datenshi.Scripts.Game;
-using Datenshi.Scripts.Interaction;
-using Datenshi.Scripts.Util;
+using Datenshi.Scripts.Data;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Combat.Attacks {
@@ -10,14 +7,12 @@ namespace Datenshi.Scripts.Combat.Attacks {
     public class CounterAttack : Attack {
         public float DefenseRegain = 1.5F;
 
-        public override void Execute(LivingEntity entity) {
+        public override void Execute(ICombatant entity) {
             var updater = entity.AnimatorUpdater;
-            var hb = entity.DefaultAttackHitbox;
+            var hb = entity.DefenseHitbox;
             hb.Center.x *= entity.CurrentDirection.X;
-            hb.Center += (Vector2) entity.transform.position;
+            hb.Center += (Vector2) entity.Center;
             var hit = Physics2D.OverlapBoxAll(hb.Center, hb.Size, 0, GameResources.Instance.EntitiesMask);
-            DebugUtil.DrawBounds2D(hb, Color.cyan);
-            DebugUtil.DrawBounds2D(new Bounds(entity.transform.position, Vector3.one), Color.cyan);
             var success = false;
             foreach (var coll in hit) {
                 var d = coll.GetComponent<IDefendable>();

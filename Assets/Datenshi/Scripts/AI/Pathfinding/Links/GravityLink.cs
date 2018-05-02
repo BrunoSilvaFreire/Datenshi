@@ -1,12 +1,11 @@
 ﻿using System;
-using Datenshi.Scripts.Entities;
-using Datenshi.Scripts.Input;
-using Datenshi.Scripts.Util.Gravity;
+using Datenshi.Scripts.Combat.Gravity;
 using Sirenix.OdinInspector;
 #if UNITY_EDITOR
-    using UnityEditor;
+using UnityEditor;
 #endif
 using UnityEngine;
+using UPM.Motors.Config;
 
 namespace Datenshi.Scripts.AI.Pathfinding.Links {
     [Serializable]
@@ -65,6 +64,16 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links {
             return destination;
         }
 
+        public override bool CanMakeIt(INavigable entity) {
+            var m = entity.MotorConfig;
+            var b = true;
+            var config = m as GroundMotorConfig;
+            if (config != null) {
+                b = config.JumpForce > requiredForce.y;
+            }
+            return entity.MaxSpeed > requiredForce.x && b;
+        }
+
         public override int GetOrigin() {
             return origin;
         }
@@ -93,7 +102,7 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links {
         }
 #endif
 
-        public override void Execute(MovableEntity entity, AIStateInputProvider provider, Navmesh navmesh) {
+        public override void Execute(INavigable entity, AIStateInputProvider provider, Navmesh navmesh) {
             var pos = entity.GroundPosition;
             var direction = Math.Sign(requiredForce.x);
             var originPos = navmesh.WorldPosCenter((uint) origin);
@@ -105,10 +114,6 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links {
             } else if (entity.CollisionStatus.Down) {
                 entity.Velocity = requiredForce;
             }
-        }
-
-        public override bool CanMakeIt(MovableEntity entity) {
-            return entity.MaxSpeed > requiredForce.x && entity.YForce > requiredForce.y;
         }
     }
 }

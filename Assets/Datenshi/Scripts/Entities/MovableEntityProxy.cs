@@ -1,26 +1,13 @@
 using UnityEngine;
 using Datenshi.Scripts.AI;
-using Datenshi.Scripts.Animation;
 using Datenshi.Scripts.Combat.Attacks;
 using Datenshi.Scripts.Combat.Strategies;
-using Datenshi.Scripts.Entities.Motors;
-using Datenshi.Scripts.Entities.Motors.State;
-using Datenshi.Scripts.Interaction;
-using Datenshi.Scripts.Misc;
 using Datenshi.Scripts.Util;
 using UnityEngine.Events;
 
 namespace Datenshi.Scripts.Entities {
     public class MovableEntityProxy : MonoBehaviour {
         public MovableEntity Target;
-
-        public void Interact() {
-            if (Target == null) {
-                return;
-            }
-
-            Target.Interact();
-        }
 
         public void Damage(LivingEntity entity, uint damage) {
             if (Target == null) {
@@ -69,16 +56,6 @@ namespace Datenshi.Scripts.Entities {
 
             Target.Heal(healthAmount);
         }
-#if UNITY_EDITOR
-
-        public void SnapToFloor() {
-            if (Target == null) {
-                return;
-            }
-
-            Target.SnapToFloor();
-        }
-#endif
 
         public void RevokeOwnership() {
             if (Target == null) {
@@ -86,30 +63,6 @@ namespace Datenshi.Scripts.Entities {
             }
 
             Target.RevokeOwnership();
-        }
-
-        public void SetMovementStateMachine(MotorStateMachine value) {
-            if (Target == null) {
-                return;
-            }
-
-            Target.MovementStateMachine = value;
-        }
-
-        public void SetMotor(Motor value) {
-            if (Target == null) {
-                return;
-            }
-
-            Target.Motor = value;
-        }
-
-        public void SetAccelerationCurve(AnimationCurve value) {
-            if (Target == null) {
-                return;
-            }
-
-            Target.AccelerationCurve = value;
         }
 
         public void SetAIAgent(AINavigator value) {
@@ -136,14 +89,6 @@ namespace Datenshi.Scripts.Entities {
             Target.SkinWidth = value;
         }
 
-        public void SetMaxSpeed(float value) {
-            if (Target == null) {
-                return;
-            }
-
-            Target.MaxSpeed = value;
-        }
-
         public void SetYForce(float value) {
             if (Target == null) {
                 return;
@@ -160,21 +105,6 @@ namespace Datenshi.Scripts.Entities {
             Target.SpeedMultiplier = value;
         }
 
-        public void SetGravityScale(float value) {
-            if (Target == null) {
-                return;
-            }
-
-            Target.GravityScale = value;
-        }
-
-        public void SetInteractionController(InteractionController value) {
-            if (Target == null) {
-                return;
-            }
-
-            Target.InteractionController = value;
-        }
 
         public void SetApplyVelocity(bool value) {
             if (Target == null) {
@@ -256,14 +186,6 @@ namespace Datenshi.Scripts.Entities {
             Target.DamageInvulnerabilityDuration = value;
         }
 
-        public void SetRelationship(EntityRelationship value) {
-            if (Target == null) {
-                return;
-            }
-
-            Target.Relationship = value;
-        }
-
         public void SetDefaultAttackStrategy(AttackStrategy value) {
             if (Target == null) {
                 return;
@@ -328,14 +250,6 @@ namespace Datenshi.Scripts.Entities {
             Target.OnKilled = value;
         }
 
-        public void SetDefaultAttackHitbox(Bounds2D value) {
-            if (Target == null) {
-                return;
-            }
-
-            Target.DefaultAttackHitbox = value;
-        }
-
         public void SetFocusMaxTime(float value) {
             if (Target == null) {
                 return;
@@ -368,30 +282,6 @@ namespace Datenshi.Scripts.Entities {
             Target.DefenseDepleteAmountMultiplier = value;
         }
 
-        public void SetHitbox(Collider2D value) {
-            if (Target == null) {
-                return;
-            }
-
-            Target.Hitbox = value;
-        }
-
-        public void SetAnimatorUpdater(EntityAnimatorUpdater value) {
-            if (Target == null) {
-                return;
-            }
-
-            Target.AnimatorUpdater = value;
-        }
-
-        public void SetRenderer(ColorizableRenderer value) {
-            if (Target == null) {
-                return;
-            }
-
-            Target.Renderer = value;
-        }
-
         public void SetMiscController(EntityMiscController value) {
             if (Target == null) {
                 return;
@@ -416,14 +306,6 @@ namespace Datenshi.Scripts.Entities {
             Target.CurrentDirection = value;
         }
 
-        public void SetConfig(MotorConfig value) {
-            if (Target == null) {
-                return;
-            }
-
-            Target.Config = value;
-        }
-
         public void SetFocusTimeLeft(float value) {
             if (Target == null) {
                 return;
@@ -432,13 +314,6 @@ namespace Datenshi.Scripts.Entities {
             Target.FocusTimeLeft = value;
         }
 
-        public void SetDefending(bool value) {
-            if (Target == null) {
-                return;
-            }
-
-            Target.Defending = value;
-        }
 
         public void SetMaxHealth(uint value) {
             if (Target == null) {

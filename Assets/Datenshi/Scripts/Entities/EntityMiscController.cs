@@ -1,5 +1,4 @@
-﻿using Datenshi.Scripts.Misc.Ghosting;
-using Datenshi.Scripts.Util;
+﻿using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -7,7 +6,6 @@ namespace Datenshi.Scripts.Entities {
     public class EntityMiscController : MonoBehaviour {
         public AudioSource EntityAudioSource;
         public AudioClip[] StepSounds;
-        public GhostingContainer Container;
         public Animator Animator;
 
         [SerializeField, HideInInspector]

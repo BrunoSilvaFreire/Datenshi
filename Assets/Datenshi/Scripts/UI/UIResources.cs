@@ -5,7 +5,6 @@ using UnityEngine;
 namespace Datenshi.Scripts.UI {
     [CreateAssetMenu(menuName = "Datenshi/Resources/UIResources")]
     public class UIResources : SingletonScriptableObject<UIResources> {
-        public UICharacterView CharacterViewPrefab;
         public UIPlayerView PlayerViewPrefab;
         public UIDialogueBox DialogueBoxPrefab;
     }

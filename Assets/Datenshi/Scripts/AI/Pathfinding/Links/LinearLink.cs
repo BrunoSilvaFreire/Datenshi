@@ -1,6 +1,4 @@
 ﻿using System;
-using Datenshi.Scripts.Entities;
-using Datenshi.Scripts.Input;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -30,7 +28,7 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links {
             return (int) origin;
         }
 #if UNITY_EDITOR
-        
+
         public override bool DrawOnlyOnMouseOver() {
             return false;
         }
@@ -42,11 +40,11 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links {
         }
 #endif
 
-        public override void Execute(MovableEntity entity, AIStateInputProvider provider, Navmesh navmesh) {
+        public override void Execute(INavigable entity, AIStateInputProvider provider, Navmesh navmesh) {
             provider.Horizontal = Math.Sign((int) destination - origin);
         }
 
-        public override bool CanMakeIt(MovableEntity entity) {
+        public override bool CanMakeIt(INavigable entity) {
             return true;
         }
     }

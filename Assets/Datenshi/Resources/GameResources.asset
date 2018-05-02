@@ -8,14 +8,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f523d91e619b4062b58fadf52e5ea84f, type: 3}
+  m_Script: {fileID: 11500000, guid: 48271be19f9146f4aa0fa6f81144a0b5, type: 3}
   m_Name: GameResources
   m_EditorClassIdentifier: 
   WorldMask:
     serializedVersion: 2
-    m_Bits: 2560
-  CharacterCameraPrefab: {fileID: 20756155145847792, guid: 43ce321bec897ca41857d4901bdcfd3b,
-    type: 2}
+    m_Bits: 512
+  CharacterCameraPrefab: {fileID: 0}
   EntitiesMask:
     serializedVersion: 2
     m_Bits: 14336
@@ -24,9 +23,8 @@ MonoBehaviour:
   MinPrecision: 1
   MaxPrecision: 100
   DefaultPrecision: 0.5
-  HackLineRendererPrefab: {fileID: 120488013179541072, guid: 60e63c61042c5e14aa06fa9d2707b8cb,
-    type: 2}
-  DeflectSpeed: 50
+  HackLineRendererPrefab: {fileID: 0}
+  DeflectSpeed: 20
   DeflectDamageMultiply: 3
   InteractableMask:
     serializedVersion: 2

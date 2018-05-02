@@ -1,7 +1,4 @@
-﻿using Datenshi.Scripts.Combat.Strategies;
-using Datenshi.Scripts.Entities;
-using Datenshi.Scripts.Input;
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Profiling;
 
@@ -29,8 +26,8 @@ namespace Datenshi.Scripts.AI {
 
         protected abstract void ReloadPath();
 
-        public abstract void Execute(MovableEntity entity, AIStateInputProvider provider);
+        public abstract void Execute(INavigable navigable, AIStateInputProvider provider);
 
-        public abstract Vector2 GetFavourablePosition(AttackStrategy state, LivingEntity target);
+        public abstract Vector2 GetFavourablePosition(INavigable target);
     }
 }

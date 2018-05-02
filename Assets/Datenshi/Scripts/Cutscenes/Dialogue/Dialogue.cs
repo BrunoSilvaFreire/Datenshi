@@ -1,5 +1,5 @@
 ﻿using System;
-using Datenshi.Scripts.UI.Dialogue;
+using Datenshi.Scripts.Character;
 using Sirenix.OdinInspector;
 using UnityEngine;
 

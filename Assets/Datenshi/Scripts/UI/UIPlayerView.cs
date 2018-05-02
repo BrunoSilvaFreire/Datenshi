@@ -1,8 +1,7 @@
 ﻿using Datenshi.Scripts.Entities;
-using Datenshi.Scripts.Game;
 using UnityEngine;
 using UnityEngine.UI;
-
+using Datenshi.Scripts.Game;
 namespace Datenshi.Scripts.UI {
     public class UIPlayerView : UIDefaultColoredElement {
         public Text CharacterNameLabel;
@@ -12,7 +11,7 @@ namespace Datenshi.Scripts.UI {
             Player.OnEntityChanged.AddListener(OnChanged);
         }
 
-        private void OnChanged(Entity arg0, Entity entity) {
+        private void OnChanged(Entity arg1, Entity entity1) {
             UpdateColors();
         }
 

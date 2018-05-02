@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Datenshi.Scripts.Character;
 using Datenshi.Scripts.UI.Misc;
-using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,7 +12,7 @@ namespace Datenshi.Scripts.UI.Dialogue {
 
         public static UIDialogueStage Instance {
             get {
-                return instance ?? (instance = Load());
+                return instance ? instance : (instance = Load());
             }
         }
 
@@ -30,7 +30,9 @@ namespace Datenshi.Scripts.UI.Dialogue {
         private readonly List<UIDialoguePortrait> portraits = new List<UIDialoguePortrait>();
 
         public UIDialoguePortrait AddPortrait(Character.Character character) {
-            var portrait = character.DialoguePortraitPrefab.Clone(transform);
+            //todo fix
+            //character.Portrait.Clone(transform)
+            var portrait = (UIDialoguePortrait) null;
             var rect = (RectTransform) portrait.transform;
             rect.anchorMin = Vector2.zero;
             rect.anchorMax = Vector2.right;
@@ -68,7 +70,7 @@ namespace Datenshi.Scripts.UI.Dialogue {
         }
 
 
-        public IEnumerator PlayDialogue(Cutscenes.Dialogue.Dialogue dialogue) {
+        /*public IEnumerator PlayDialogue(Cutscenes.Dialogue.Dialogue dialogue) {
             var speeches = dialogue.Speeches;
             Debug.Log("Playing dialogue " + dialogue);
             foreach (var speech in speeches) {
@@ -96,6 +98,7 @@ namespace Datenshi.Scripts.UI.Dialogue {
             }
             portraits.Clear();
         }
+*/
 
         private UIDialoguePortrait GetPortrait(Character.Character character) {
             foreach (var portrait in portraits) {

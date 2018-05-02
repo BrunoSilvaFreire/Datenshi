@@ -1,4 +1,5 @@
 ﻿using System;
+using Datenshi.Scripts.Character;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -6,12 +7,11 @@ using UnityEngine.UI;
 
 namespace Datenshi.Scripts.UI.Dialogue {
     public class UIDialoguePortrait : UIElement {
-        public Character.Character Character;
         public Image Image;
         public float VerticalOffset;
         public AppearanceMode Last;
         public bool SpriteFacesLeft;
-
+        public Character.Character Character;
         public void Appear(AppearanceMode mode) {
             Last = mode;
             Showing = true;
@@ -87,27 +87,4 @@ namespace Datenshi.Scripts.UI.Dialogue {
         }
     }
 
-    [Serializable]
-    public struct AppearanceMode {
-        public float Duration;
-        public float Offset;
-        public bool Left;
-        public AppearanceMode(float duration, float offset, bool left) {
-            Duration = duration;
-            Offset = offset;
-            Left = left;
-        }
-#if UNITY_EDITOR
-
-        [ShowInInspector]
-        public bool Right {
-            get {
-                return !Left;
-            }
-            set {
-                Left = !value;
-            }
-        }
-#endif
-    }
 }

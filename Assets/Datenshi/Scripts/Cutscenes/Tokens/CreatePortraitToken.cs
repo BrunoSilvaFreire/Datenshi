@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Datenshi.Scripts.Character;
 using Datenshi.Scripts.UI.Dialogue;
 using Shiroi.Cutscenes;
 using Shiroi.Cutscenes.Futures;

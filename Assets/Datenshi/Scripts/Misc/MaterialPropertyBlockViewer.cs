@@ -1,4 +1,5 @@
-﻿using Sirenix.OdinInspector;
+﻿using Datenshi.Scripts.Graphics;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Misc {

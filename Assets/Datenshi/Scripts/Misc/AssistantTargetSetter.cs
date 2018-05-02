@@ -1,5 +1,6 @@
 ﻿using Datenshi.Scripts.AI.Behaviour;
 using Datenshi.Scripts.Combat;
+using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Entities;
 using Sirenix.OdinInspector;
 #if UNITY_EDITOR
@@ -23,14 +24,14 @@ namespace Datenshi.Scripts.Misc {
                 entity = value;
 #if UNITY_EDITOR
                 if (EditorApplication.isPlaying) {
-                    Assistant.SetVariable(CombatVariables.EntityTarget, entity);
+                    Assistant.SetVariable(CombatVariables.AttackTarget, entity);
                 }
 #endif
             }
         }
 
         private void Start() {
-            Assistant.SetVariable(CombatVariables.EntityTarget, entity);
+            Assistant.SetVariable(CombatVariables.AttackTarget, entity);
         }
     }
 }

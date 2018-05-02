@@ -1,24 +1,22 @@
 ﻿using System;
 using System.Collections;
+using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Combat.Attacks;
 using Datenshi.Scripts.Combat.Strategies;
+using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
+using UPM.Motors;
+using UPM.Util;
 #if UNITY_EDITOR
 using UnityEditor;
 
 #endif
 
 namespace Datenshi.Scripts.Entities {
-    public enum EntityRelationship {
-        Ally,
-        Neutral,
-        Enemy
-    }
-
     [Serializable]
-    public class EntityDamagedEvent : UnityEvent<LivingEntity, uint> { }
+    public class EntityDamagedEvent : UnityEvent<ICombatant, uint> { }
 
     [Serializable]
     public class EntityAttackEvent : UnityEvent<Attack> { }
@@ -26,7 +24,7 @@ namespace Datenshi.Scripts.Entities {
     /// <summary>
     /// Uma entidade que tem vida, vida máxima, e pode ser morta.
     /// </summary>
-    public class LivingEntity : Entity {
+    public class LivingEntity : Entity, ICombatant {
         public const string HealthGroup = "Health";
         public const string CombatGroup = "Combat";
 
@@ -47,7 +45,7 @@ namespace Datenshi.Scripts.Entities {
         public float DamageInvulnerabilityDuration = 3;
 
         [TitleGroup(CombatGroup, "Informações sobre o combat desta LivingEntity")]
-        public EntityRelationship Relationship;
+        private CombatRelationship relationship;
 
         [TitleGroup(CombatGroup, "Informações sobre o combat desta LivingEntity")]
         public AttackStrategy DefaultAttackStrategy;
@@ -63,6 +61,21 @@ namespace Datenshi.Scripts.Entities {
 
         [TitleGroup(CombatGroup)]
         public bool DamageGivesStun;
+
+        [SerializeField]
+        private Collider2D hitbox;
+
+        public Collider2D Hitbox {
+            get {
+                return hitbox;
+            }
+        }
+
+        public bool CanFocus {
+            get {
+                return FocusTimeLeft > MinDefenseRequired;
+            }
+        }
 
         [TitleGroup(CombatGroup)]
         public bool Stunned {
@@ -81,38 +94,51 @@ namespace Datenshi.Scripts.Entities {
         [ShowIf("DamageGivesStun"), TitleGroup(CombatGroup), ReadOnly]
         private float totalStunTimeLeft;
 
-        public Bounds2D DefaultAttackHitbox;
+        [SerializeField]
+        private Bounds2D defenseHitbox;
+
         public float FocusMaxTime = 2;
-        private bool defending;
+
+        private bool focusing;
+
         public float MinDefenseRequired = 0.1F;
         public float DefenseRecoverAmountMultiplier = 1;
         public float DefenseDepleteAmountMultiplier = 2;
+
+        [SerializeField]
+        private CombatantAnimatorUpdater updater;
+
+        public CombatantAnimatorUpdater AnimatorUpdater {
+            get {
+                return updater;
+            }
+        }
+
+        public AttackStrategy AttackStrategy {
+            get {
+                return DefaultAttackStrategy;
+            }
+        }
 
         public float FocusTimeLeft {
             get;
             set;
         }
 
-        public bool Defending {
+        public bool Focusing {
             get {
-                return defending;
+                return focusing;
             }
             set {
-                if (Defending == value) {
+                if (focusing == value) {
                     return;
                 }
 
-                if (value && !CanDefend) {
+                if (value && !CanFocus) {
                     return;
                 }
 
-                defending = value;
-            }
-        }
-
-        public bool CanDefend {
-            get {
-                return FocusTimeLeft > MinDefenseRequired;
+                focusing = value;
             }
         }
 
@@ -124,9 +150,9 @@ namespace Datenshi.Scripts.Entities {
                 }
             }
 
-            if (Defending) {
+            if (focusing) {
                 if (FocusTimeLeft <= 0) {
-                    Defending = false;
+                    focusing = false;
                 } else {
                     FocusTimeLeft -= Time.deltaTime * DefenseDepleteAmountMultiplier;
                 }
@@ -139,15 +165,11 @@ namespace Datenshi.Scripts.Entities {
                 }
             }
 
-            var updater = AnimatorUpdater;
             if (updater == null) {
                 return;
             }
 
-            updater.SetDefend(Defending);
-            if (InputProvider.GetAttack()) {
-                updater.TriggerAttack();
-            }
+            updater.SetDefend(focusing);
         }
 
         public void Stun(float duration) {
@@ -233,7 +255,8 @@ namespace Datenshi.Scripts.Entities {
             }
         }
 
-        public bool Ignored;
+        [SerializeField]
+        private bool ignored;
 
         [ShowInInspector, TitleGroup(HealthGroup)]
         public bool Invulnerable {
@@ -277,7 +300,7 @@ namespace Datenshi.Scripts.Entities {
         }
 
         public bool IsEnemy(LivingEntity entity) {
-            if (Relationship == EntityRelationship.Neutral || entity.Relationship == EntityRelationship.Neutral) {
+            if (Relationship == CombatRelationship.Neutral || entity.Relationship == CombatRelationship.Neutral) {
                 return false;
             }
 
@@ -286,13 +309,13 @@ namespace Datenshi.Scripts.Entities {
 
         public bool IsNeutral {
             get {
-                return Relationship == EntityRelationship.Neutral;
+                return Relationship == CombatRelationship.Neutral;
             }
         }
 
         public bool IsAlly {
             get {
-                return Relationship == EntityRelationship.Ally;
+                return Relationship == CombatRelationship.Ally;
             }
         }
 
@@ -313,12 +336,12 @@ namespace Datenshi.Scripts.Entities {
             Health += healthAmount;
         }
 
-        public virtual void Damage(LivingEntity entity, uint damage) {
+        public virtual void Damage(ICombatant entity, uint damage) {
             if (Invulnerable || Ignored) {
                 return;
             }
 
-            Debug.Log(name + " damaged by " + entity.name + " @ " + damage);
+            Debug.Log(name + " damaged by " + entity + " @ " + damage);
             if (damage >= health) {
                 Kill();
                 return;
@@ -335,12 +358,72 @@ namespace Datenshi.Scripts.Entities {
             }
         }
 
-        public bool ShouldAttack(LivingEntity en) {
-            return en != null && !en.Ignored && Relationship != en.Relationship;
+        public Direction CurrentDirection {
+            get {
+                return Direction;
+            }
+            set {
+                Direction = value;
+            }
+        }
+
+        public GameObject GameObject {
+            get {
+                return gameObject;
+            }
+        }
+
+        public bool Ignored {
+            get {
+                return ignored;
+            }
+            set {
+                ignored = value;
+            }
+        }
+
+        public Bounds2D DefenseHitbox {
+            get {
+                return defenseHitbox;
+            }
+        }
+
+        public CombatRelationship Relationship {
+            get {
+                return relationship;
+            }
         }
 
         private void Reset() {
             DefaultAttackStrategy = EmptyStrategy.Instance;
+        }
+
+        public Transform Transform {
+            get {
+                return transform;
+            }
+        }
+
+
+        public Vector2 Center {
+            get {
+                var m = this as IMovable;
+                if (m != null) {
+                    var hb = m.Hitbox;
+                    return hb != null ? hb.bounds.center : transform.position;
+                }
+
+                return transform.position;
+            }
+        }
+
+
+        public Vector2 GroundPosition {
+            get {
+                var pos = Center;
+                pos.y -= hitbox.bounds.size.y / 2;
+                return pos;
+            }
         }
     }
 }

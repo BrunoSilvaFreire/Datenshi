@@ -1,0 +1,17 @@
+{
+    "name": "Datenshi-UI",
+    "references": [
+        "Datenshi-Entities",
+        "Datenshi-Game",
+        "Datenshi-Characters",
+        "Datenshi-Utilities",
+        "Datenshi-Input",
+        "Datenshi-Graphics",
+        "Datenshi-World",
+        "Datenshi-Combat",
+        "Datenshi-Movement",
+        "Datenshi-Data"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": []
+}

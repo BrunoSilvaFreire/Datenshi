@@ -69,7 +69,7 @@ Material:
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
-    - _OccludeAmount: 0.95
+    - _OccludeAmount: 1
     - _OcclusionStrength: 1
     - _OverrideAmount: 0
     - _Parallax: 0.02

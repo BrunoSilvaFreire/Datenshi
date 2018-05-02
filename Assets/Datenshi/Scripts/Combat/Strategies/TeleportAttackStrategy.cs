@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections;
-using Datenshi.Scripts.Debugging;
-using Datenshi.Scripts.Entities;
-using Datenshi.Scripts.Input;
-using Datenshi.Scripts.Misc;
+using Datenshi.Scripts.AI;
+using Datenshi.Scripts.Data;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Combat.Strategies {
-    [CreateAssetMenu(menuName = "Datenshi/AI/Combat/Strategy/TeleportAttackStrategy")]
+    /*[CreateAssetMenu(menuName = "Datenshi/AI/Combat/Strategy/TeleportAttackStrategy")]
     public class TeleportAttackStrategy : AttackStrategy {
         public float MinDistance = 5F;
         public float TeleportDistance = 7;
@@ -20,14 +18,14 @@ namespace Datenshi.Scripts.Combat.Strategies {
         public static readonly Variable<bool> Teleporting =
             new Variable<bool>("entity.combat.strategy.teleport.teleporting", false);
 
-        public override void Execute(AIStateInputProvider provider, LivingEntity entity, LivingEntity target, DebugInfo info) {
+        public override void Execute(AIStateInputProvider provider, ICombatant entity, ICombatant target) {
             if (entity.GetVariable(Teleporting)) {
                 provider.Reset();
                 return;
             }
 
             var entityPos = entity.Center;
-            var movable = entity as MovableEntity;
+            var movable = entity as IMovableCombatant;
             var navigator = movable == null ? null : movable.AINavigator;
             var targetCenter = target.Center;
             var targetPos = navigator == null ? targetCenter : navigator.GetFavourablePosition(this, target);
@@ -77,7 +75,7 @@ namespace Datenshi.Scripts.Combat.Strategies {
             provider.Attack = true;
         }
 
-        private IEnumerator Teleport(LivingEntity entity, Vector2 pos) {
+        private IEnumerator Teleport(ICombatant entity, Vector2 pos) {
             entity.SetVariable(Teleporting, true);
             entity.Invulnerable = true;
             var updater = entity.AnimatorUpdater.Animator;
@@ -89,20 +87,20 @@ namespace Datenshi.Scripts.Combat.Strategies {
             entity.SetVariable(Teleporting, false);
         }
 
-        public override float GetMinimumDistance(LivingEntity entity, LivingEntity target) {
+        public override float GetMinimumDistance(ICombatant entity, ICombatant target) {
             return MinDistance;
         }
 
-        public override float GetCost(LivingEntity entity, LivingEntity target) {
+        public override float GetCost(ICombatant entity, ICombatant target) {
             return 0;
         }
 
-        public override float GetEffectiveness(LivingEntity entity, LivingEntity target) {
+        public override float GetEffectiveness(ICombatant entity, ICombatant target) {
             return MinDistance - Vector2.Distance(entity.Center, target.Center);
         }
 
         public override string GetTitle() {
             return "Teleport Strategy";
         }
-    }
+    }*/
 }

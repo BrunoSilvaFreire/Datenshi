@@ -1,0 +1,8 @@
+{
+    "name": "Datenshi-Animation",
+    "references": [
+        "Datenshi-Utilities"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": []
+}

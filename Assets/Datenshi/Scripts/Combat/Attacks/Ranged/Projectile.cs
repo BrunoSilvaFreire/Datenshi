@@ -1,19 +1,16 @@
-﻿using Datenshi.Scripts.Entities;
-using Datenshi.Scripts.Game;
-using Datenshi.Scripts.Interaction;
-using Datenshi.Scripts.Misc;
+﻿using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Datenshi.Scripts.Combat.Attacks.Ranged {
-    public class ProjectileShotEvent : UnityEvent<Projectile, LivingEntity, LivingEntity> {
+    public class ProjectileShotEvent : UnityEvent<Projectile, ICombatant, ICombatant> {
         public static readonly ProjectileShotEvent Instance = new ProjectileShotEvent();
         private ProjectileShotEvent() { }
     }
 
-    public class Projectile : Ownable, IDefendable {
+    public class Projectile : Ownable<ICombatant>, IDefendable {
         [ShowInInspector, ReadOnly]
         private Vector2 velocity;
 
@@ -27,12 +24,12 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
         public GameObject OnDefended;
         private bool wasShot;
 
-        public void Shoot(LivingEntity shooter, LivingEntity target) {
-            Shoot(shooter, target.Hitbox.bounds.center - transform.position);
+        public void Shoot(ICombatant shooter, ICombatant target) {
+            Shoot(shooter, target.Center - (Vector2) transform.position);
             ProjectileShotEvent.Instance.Invoke(this, shooter, target);
         }
 
-        public void Shoot(LivingEntity shooter, Vector2 direction) {
+        public void Shoot(ICombatant shooter, Vector2 direction) {
             Owner = shooter;
             wasShot = true;
             velocity = direction;
@@ -58,7 +55,7 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
                 return;
             }
 
-            var e = col.GetComponentInParent<LivingEntity>();
+            var e = col.GetComponentInParent<ICombatant>();
             if (e != null) {
                 if (e.Ignored) {
                     return;
@@ -84,12 +81,12 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
             Destroy(gameObject);
         }
 
-        public bool CanDefend(LivingEntity entity) {
+        public bool CanDefend(ICombatant entity) {
             return Owner != null && Owner.Relationship != entity.Relationship;
         }
 
-        public void Defend(LivingEntity entity) {
-            velocity = Owner.transform.position - entity.transform.position;
+        public void Defend(ICombatant entity) {
+            velocity = Owner.Center - (Vector2) transform.position;
             velocity.Normalize();
             velocity *= GameResources.Instance.DeflectSpeed;
 
@@ -99,13 +96,13 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
             }
         }
 
-        public bool CanPoorlyDefend(LivingEntity entity) {
+        public bool CanPoorlyDefend(ICombatant entity) {
             return true;
         }
 
         public float MaxAngle;
 
-        public void PoorlyDefend(LivingEntity entity) {
+        public void PoorlyDefend(ICombatant entity) {
             var angle = Random.value * MaxAngle - MaxAngle / 2 + Angle(velocity);
             velocity = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle));
             velocity *= GameResources.Instance.DeflectSpeed;

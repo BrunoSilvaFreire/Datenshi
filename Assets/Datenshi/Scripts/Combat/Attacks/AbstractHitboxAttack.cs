@@ -1,9 +1,7 @@
-﻿using Datenshi.Scripts.Entities;
-using Datenshi.Scripts.Game;
-using Datenshi.Scripts.Interaction;
-using Datenshi.Scripts.Misc;
+﻿using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Util;
 using UnityEngine;
+using UPM.Util;
 
 namespace Datenshi.Scripts.Combat.Attacks {
     public abstract class AbstractHitboxAttack : Attack {
@@ -11,16 +9,16 @@ namespace Datenshi.Scripts.Combat.Attacks {
         private static readonly Color HitboxColor = Color.green;
         public Bounds2D Hitbox;
 
-        protected void DoAttack(LivingEntity entity, uint damage) {
+        protected void DoAttack(ICombatant entity, uint damage) {
             var hb = Hitbox;
             var xDir = entity.CurrentDirection.X;
             if (xDir != 0) {
                 hb.Center.x *= xDir;
             }
 
-            hb.Center += (Vector2) entity.transform.position;
+            hb.Center += (Vector2) entity.Center;
             DebugUtil.DrawBox2DWire(hb.Center, hb.Size, HitboxColor);
-            var window = entity.GetComponentInChildren<HitboxAttackCounterWindow>();
+            var window = entity.Transform.gameObject.GetComponentInChildren<HitboxAttackCounterWindow>();
             if (window != null) {
                 window.Available = true;
             }
@@ -41,7 +39,7 @@ namespace Datenshi.Scripts.Combat.Attacks {
                     return;
                 }
 
-                var e = hit.GetComponentInParent<LivingEntity>();
+                var e = hit.GetComponentInParent<ICombatant>();
                 if (e != null && e.Ignored) {
                     continue;
                 }

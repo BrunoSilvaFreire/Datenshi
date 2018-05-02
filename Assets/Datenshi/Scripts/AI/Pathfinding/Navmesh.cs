@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Datenshi.Scripts.Game;
+using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
 using Sirenix.Utilities;
@@ -306,7 +306,5 @@ namespace Datenshi.Scripts.AI.Pathfinding {
 
             return aPos.x > bPos.x ? Direction.Left : Direction.Right;
         }
-
-      
     }
 }
