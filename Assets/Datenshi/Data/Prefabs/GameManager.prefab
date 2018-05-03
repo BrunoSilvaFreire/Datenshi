@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4684762203838862}
   - component: {fileID: 114768722281328916}
   - component: {fileID: 114307400237462824}
+  - component: {fileID: 114356770075859052}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -2046,6 +2047,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LowPassFilter: {fileID: 169510841923897916}
+--- !u!114 &114356770075859052
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1053354331161910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -638047543, guid: 7b817efb21dc8f2479c7e2ea4ea2c602, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updateInterval: 0
+  updateIntervalSeconds: 0
+  executionsPerTick: 0
+  maxTaskExecutionsPerTick: 100
 --- !u!114 &114395347815125932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2308,7 +2324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 114616410759440890}
   currentEntity: {fileID: 0}
-  Fxs: []
+  Fx: {fileID: 0}
   LowCutoff: 440
   DefendOverrideAmount: 1
   DefendOverrideDuration: 0.5

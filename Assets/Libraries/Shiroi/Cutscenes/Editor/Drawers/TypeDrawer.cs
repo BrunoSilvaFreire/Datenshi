@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Reflection;
-using NUnit.Compatibility;
 using UnityEngine;
 
 namespace Shiroi.Cutscenes.Editor.Drawers {
