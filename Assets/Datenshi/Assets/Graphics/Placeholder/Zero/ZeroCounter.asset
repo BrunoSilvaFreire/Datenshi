@@ -11,3 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b19ac02cb141388d9d3a1698f2ccc8, type: 3}
   m_Name: ZeroCounter
   m_EditorClassIdentifier: 
+  DefenseRegain: 1.5
+  Particle: {fileID: 0}

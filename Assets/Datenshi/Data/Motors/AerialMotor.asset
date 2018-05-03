@@ -8,10 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fafc12c387548b5b328a3e57dc8d957, type: 3}
-  m_Name: RangedCombatStrategy
+  m_Script: {fileID: -1897822287, guid: 88302a2f9af1bee4e9d3a5343deb85c6, type: 3}
+  m_Name: AerialMotor
   m_EditorClassIdentifier: 
-  MinDistance: 3
-  Threshold: 2
-  MinDelayBetweenAttacks: 2
-  Attack: FlyingAttack
+  CollisionMask:
+    serializedVersion: 2
+    m_Bits: 512

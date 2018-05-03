@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Datenshi.Scripts.AI.Pathfinding;
 using Datenshi.Scripts.AI.Pathfinding.Links;
+using Datenshi.Scripts.Movement;
 using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -88,22 +89,16 @@ namespace Datenshi.Scripts.AI {
             currentLink.Execute(entity, provider, navmesh);
         }
 
-        public override Vector2 GetFavourablePosition(INavigable target) {
-            var pos = target.GroundPosition;
-            /*
-             TODO Fix
-            if (target != null) {
-                pos = target.GroundPosition;
-            } else {
-                pos = target.transform.position;
-            }
+        public override Vector2 GetFavourablePosition(ILocatable target) {
+            var pos = target.Center;
+/*
 
             var state = s as RangedAttackStrategy;
             if (state != null) {
                 pos.x += state.MinDistance * Math.Sign(INavigable.GroundPosition.x - pos.x);
             }
+*/
 
-             */
             return pos;
         }
     }

@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4771867798509986}
   - component: {fileID: 212103069438078220}
   - component: {fileID: 114982153197254372}
-  - component: {fileID: 114231982897294666}
   - component: {fileID: 61365715950996962}
+  - component: {fileID: 114172385113881182}
   m_Layer: 12
   m_Name: FlyingEnemy_Body
   m_TagString: Untagged
@@ -39,6 +39,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4771805614391478}
   - component: {fileID: 114274888876389472}
+  - component: {fileID: 114588087339853652}
   m_Layer: 12
   m_Name: FlyingEnemy_Managers
   m_TagString: Untagged
@@ -168,7 +169,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1937221428638260}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 30.02, y: 13.91, z: 0}
+  m_LocalPosition: {x: 175.87, y: 42.71, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4771867798509986}
@@ -242,9 +243,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Target: {x: 46.14, y: 13}
   TimePerRegen: 1
-  Entity: {fileID: 114965521512533436}
-  MinimumHeightAdvantage: 5
---- !u!114 &114231982897294666
+  navigable: {fileID: 114965521512533436}
+  Navigable:
+    Object: {fileID: 114965521512533436}
+  MinimumHeightAdvantage: 2
+  MinimumFavourableDistance: 5
+--- !u!114 &114172385113881182
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -252,11 +256,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1381250477737146}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d8cf396134c4b9a8db2f709756695b9, type: 3}
+  m_Script: {fileID: 11500000, guid: a509e2442300205479ade85b569934a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Renderers:
   - {fileID: 212103069438078220}
+  ColorOverrideAmount: 0
 --- !u!114 &114272136902398876
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -291,7 +296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EntityAudioSource: {fileID: 0}
   StepSounds: []
-  Container: {fileID: 0}
+  Animator: {fileID: 0}
   minPitch: 0
   maxPitch: 0
 --- !u!114 &114501099945876970
@@ -337,6 +342,52 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114588087339853652
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1419835648531760}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d7b55c7ecdb49a4a89fa5e6f9022861, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startWhenEnabled: 1
+  pauseWhenDisabled: 0
+  restartWhenComplete: 0
+  logTaskChanges: 0
+  group: 0
+  resetValuesOnRestart: 0
+  externalBehavior: {fileID: 0}
+  mBehaviorSource:
+    behaviorName: Main
+    behaviorDescription: 
+    mTaskData:
+      types:
+      - BehaviorDesigner.Runtime.Tasks.EntryTask
+      - BehaviorDesigner.Runtime.Tasks.Selector
+      - BehaviorDesigner.Runtime.Tasks.Sequence
+      - Datenshi.Scripts.Behaviours.Tasks.CloseToCombatTarget
+      - Datenshi.Scripts.Behaviours.Tasks.TriggerAttack
+      - Datenshi.Scripts.Behaviours.Tasks.NavigateToTarget
+      parentIndex: ffffffff0000000001000000020000000200000001000000
+      startIndex: 0d00000017000000220000002d0000003d00000049000000
+      variableStartIndex: 0000000009000000
+      JSONSerialization: 
+      fieldSerializationData:
+        typeName: []
+        fieldNameHash: f9be55564aaa52567707a10437503fe1109ba337e95d407fe21c96d5330893d56065e183f9be55564aaa52567707a104f0e462282944782b951203e811c37978c4a37522ae07a096e44d14616fd219c3a5f3b63149269a1caac4f9012944782b951203e811c37978c4a37522ae07a096e44d14616fd219c3a5f3b63149269a1caac4f9018690b4b22944782b951203e811c37978c4a37522ae07a096e44d14616fd219c3a5f3b63149269a1caac4f9018690b4b22944782b951203e811c37978c4a37522ae07a096e44d14616fd219c3a5f3b63149269a1caac4f9017dbc53d6ff92f180f85147d7493d44d7769a92856bac7ebb2944782b951203e811c37978c4a37522ae07a096e44d14616fd219c3a5f3b63149269a1caac4f90181caaf987dbc53d62944782b951203e811c37978c4a37522ae07a096e44d14616fd219c3a5f3b63149269a1caac4f901ff92f180f85147d7493d44d7983e3463de6f2464
+        startIndex: 0000000001000000020000000300000003000000040000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b0000001c0000001d0000001e0000001f000000200000002100000022000000230000002400000025000000260000002700000028000000290000002a0000002b0000002c0000002d0000002e0000002f00000030000000310000003200000033000000340000003500000036000000360000003700000038000000390000003a0000003b0000003c0000003d0000003e0000003f000000400000004100000042000000430000004400000045000000460000004700000048000000490000004a0000004b0000004c0000004d0000004e0000004f0000005000000050000000510000005200000053000000
+        dataPosition: 000000002e00000034000000350000004400000079000000790000007a000000a2000000a6000000a7000000ab000000af000000b4000000b5000000b6000000be000000be000000bf000000c0000000c4000000c8000000cc000000d4000000d5000000d6000000de000000de000000df000000e0000000e4000000e8000000ec000000f0000000ff000000000100000101000009010000090100000a0100000b0100000f01000013010000170100001b0100003101000032010000330100003b0100003b0100003c0100003d0100004101000045010000490100007e0100007e0100007f01000083010000870100009501000096010000970100009f0100009f010000a0010000a1010000a5010000a9010000af010000b3010000b7010000c9010000ca010000cb010000d3010000d3010000d4010000d5010000d9010000dd010000120200001202000016020000
+        unityObjects:
+        - {fileID: 0}
+        - {fileID: 114965521512533436}
+        - {fileID: 114965521512533436}
+        - {fileID: 114041232848013094}
+        byteData: 4265686176696f7244657369676e65722e52756e74696d652e53686172656447656e657269635661726961626c6554617267657401536861726564436f6d626174616e74446174656e7368692e536372697074732e4265686176696f7572732e5661726961626c65732e536861726564436f6d626174616e74014265686176696f7244657369676e65722e52756e74696d652e5368617265645472616e73666f726d54657374010000000000000000456e7472790100c842144300000943000000000000000000000100000053656c6563746f720100000090c09085f44200000000000000000000000000000200000041747461636b20496620436c6f736501006621b3c258c8fe42000000000000000000000000000003000000436c6f736520546f20436f6d62617420546172676574010058c8c2c2e84de7420000000000000000000001000000446174656e7368692e536372697074732e4265686176696f7572732e5661726961626c65732e536861726564436f6d626174616e74010000c04004000000547269676765722041747461636b01004e6f82428885f0420000000000000000000041747461636b02000000050000004e6176696761746520546f2054617267657400002c9723439c7c0b4300000000000000000000446174656e7368692e536372697074732e4265686176696f7572732e5661726961626c65732e536861726564436f6d626174616e74030000000000c040
+        byteDataArray: 4265686176696f7244657369676e65722e52756e74696d652e53686172656447656e657269635661726961626c6554617267657401536861726564436f6d626174616e74446174656e7368692e536372697074732e4265686176696f7572732e5661726961626c65732e536861726564436f6d626174616e74014265686176696f7244657369676e65722e52756e74696d652e5368617265645472616e73666f726d54657374010000000000000000456e7472790100c842144300000943000000000000000000000100000053656c6563746f720100000090c09085f44200000000000000000000000000000200000041747461636b20496620436c6f736501006621b3c258c8fe42000000000000000000000000000003000000436c6f736520546f20436f6d62617420546172676574010058c8c2c2e84de7420000000000000000000001000000446174656e7368692e536372697074732e4265686176696f7572732e5661726961626c65732e536861726564436f6d626174616e74010000c04004000000547269676765722041747461636b01004e6f82428885f0420000000000000000000041747461636b02000000050000004e6176696761746520546f2054617267657400002c9723439c7c0b4300000000000000000000446174656e7368692e536372697074732e4265686176696f7572732e5661726961626c65732e536861726564436f6d626174616e74030000000000c040
+      Version: 1.5.12
 --- !u!114 &114597155879094654
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -376,7 +427,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentState: {fileID: 11400000, guid: a57fcb18cd616724d8b7e1c95d5b9ac2, type: 2}
-  Entity: {fileID: 114965521512533436}
+  Navigable:
+    Object: {fileID: 114965521512533436}
+  trait: {fileID: 0}
   Horizontal: 0
   Vertical: 0
   Jump: 0
@@ -385,6 +438,7 @@ MonoBehaviour:
   Dash: 0
   Submit: 0
   Defend: 0
+  ExecuteState: 1
 --- !u!114 &114858352237912876
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -420,31 +474,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4d4c506b7d14716a950885bed3aaf01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EntityRoom: {fileID: 0}
   inputProvider: {fileID: 0}
-  Hitbox: {fileID: 61365715950996962}
-  AnimatorUpdater: {fileID: 114982153197254372}
-  Renderer: {fileID: 114231982897294666}
+  colorizableRenderer: {fileID: 114172385113881182}
   MiscController: {fileID: 114274888876389472}
   Character: {fileID: 0}
-  CurrentDirection: {}
-  Config: {fileID: 0}
+  onDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   health: 20
   maxHealth: 20
   invulnerable: 0
   DamageInvulnerability: 0
   DamageInvulnerabilityDuration: 3
-  Relationship: 2
+  relationship: 2
   DefaultAttackStrategy: {fileID: 11400000, guid: 5347f78cc5ad1fc48bce658eaced1e5a,
     type: 2}
   OnDamaged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Datenshi.Scripts.Entities.EntityDamagedEvent, Assembly-CSharp, Version=0.0.0.0,
+    m_TypeName: Datenshi.Scripts.Entities.EntityDamagedEvent, Datenshi-Entities, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   OnAttack:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Datenshi.Scripts.Entities.EntityAttackEvent, Assembly-CSharp, Version=0.0.0.0,
+    m_TypeName: Datenshi.Scripts.Entities.EntityAttackEvent, Datenshi-Entities, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   OnHealthChanged:
     m_PersistentCalls:
@@ -452,6 +508,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   DamageGivesStun: 0
+  hitbox: {fileID: 61365715950996962}
   DamageStunMin: 10
   DamageStunDuration: 1
   OnKilled:
@@ -459,40 +516,45 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  DefaultAttackHitbox:
+  defenseHitbox:
     Center: {x: 0, y: 0}
     Size: {x: 0, y: 0}
   FocusMaxTime: 2
   MinDefenseRequired: 0.1
   DefenseRecoverAmountMultiplier: 1
   DefenseDepleteAmountMultiplier: 2
-  Ignored: 0
-  Motor: {fileID: 11400000, guid: 6a8249222a8d35b4fa1174299637f5bc, type: 2}
-  AccelerationCurve:
+  updater: {fileID: 114982153197254372}
+  ignored: 0
+  motor: {fileID: 11400000, guid: 86ff67f763aa58f44883b61f198a88ce, type: 2}
+  accelerationCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
-    - serializedVersion: 2
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 1
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 0
-  AIAgent: {fileID: 114041232848013094}
+    m_RotationOrder: 4
+  aiNavigator: {fileID: 114041232848013094}
   SkinWidth: 0.1
-  MaxSpeed: 5
+  maxSpeed: 10
   YForce: 5
-  SpeedMultiplier: 1
-  GravityScale: 1
-  InteractionController: {fileID: 0}
+  speedMultiplier: 1
   ApplyVelocity: 1
   DamageGivesKnockback: 0
   DamageKnockbackMin: 10
@@ -500,6 +562,15 @@ MonoBehaviour:
   KnockbackLiftoff: 3
   ExternalForces: {x: 0, y: 0}
   ExternalForcesDeacceleration: 0.1
+  inset: 0.05
+  horizontalRaycasts: 3
+  verticalRaycasts: 3
+  motorConfig: {fileID: 0}
+  collisionStatus:
+    Up: 0
+    Down: 0
+    Left: 0
+    Right: 0
 --- !u!114 &114982153197254372
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -512,7 +583,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 0}
-  Attack: {fileID: 11400000, guid: 2d34a434d80e42f49b7ee3f244637640, type: 2}
+  Attacks:
+  - {fileID: 11400000, guid: 2d34a434d80e42f49b7ee3f244637640, type: 2}
   Entity: {fileID: 114965521512533436}
 --- !u!212 &212103069438078220
 SpriteRenderer:
@@ -527,6 +599,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 7ecaa590cace8ac41af787c467c16109, type: 2}
   m_StaticBatchInfo:

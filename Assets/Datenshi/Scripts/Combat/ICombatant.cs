@@ -86,9 +86,4 @@ namespace Datenshi.Scripts.Combat {
         void ExecuteAttack(Attack attack);
     }
 
-    public interface IMovableCombatant : ICombatant, INavigable {
-        AINavigator AINavigator {
-            get;
-        }
-    }
 }

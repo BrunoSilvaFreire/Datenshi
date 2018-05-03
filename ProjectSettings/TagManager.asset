@@ -15,13 +15,13 @@ TagManager:
   - 
   - Background
   - World
-  - Interactables
+  - 
   - EntitiesNeutral
-  - EntitiesEnemy
   - EntitiesFriendly
+  - EntitiesEnemy
   - Foreground
   - WorldUI
-  - 
+  - Cameras
   - 
   - 
   - 

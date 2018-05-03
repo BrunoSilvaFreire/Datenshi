@@ -16,7 +16,7 @@ namespace Datenshi.Scripts.Combat.Strategies {
             DebugUtil.DrawWireCircle2D(entityPos, MinDistance, Color.magenta);
             if (Vector2.Distance(entityPos, targetPos) > MinDistance) {
                 provider.Attack = false;
-                var movableEntity = e as IMovableCombatant;
+                var movableEntity = e as INavigable;
 #if UNITY_EDITOR
                 Debug.DrawLine(entityPos, targetPos, Color.red);
 #endif

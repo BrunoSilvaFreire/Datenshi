@@ -16,18 +16,24 @@ namespace Datenshi.Scripts.Combat.Strategies {
             var targetEntityPos = target.Center;
             var entityPos = e.Center;
             var xDir = Math.Sign(entityPos.x - targetEntityPos.x);
-            var mEntity = e as IMovableCombatant;
+            var mEntity = e as INavigable;
             var agent = mEntity == null ? null : mEntity.AINavigator;
-            var targetPos = agent == null ? target.Center : agent.GetFavourablePosition(mEntity);
+            var targetPos = agent == null ? target.Center : agent.GetFavourablePosition(target);
             var distance = Vector2.Distance(entityPos, targetPos);
 
             if (distance > MinDistance + Threshold) {
+
                 provider.Attack = false;
+                var c = Color.red;
                 if (agent != null) {
+
+                    c = Color.magenta;
                     agent.Target = targetPos;
                     agent.Execute(mEntity, provider);
                 }
-
+#if UNITY_EDITOR
+                Debug.DrawLine(entityPos, targetPos, c);
+#endif
                 return;
             }
 

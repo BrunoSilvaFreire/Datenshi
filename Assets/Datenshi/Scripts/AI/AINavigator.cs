@@ -1,4 +1,5 @@
-﻿using Sirenix.OdinInspector;
+﻿using Datenshi.Scripts.Movement;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Profiling;
 
@@ -28,6 +29,6 @@ namespace Datenshi.Scripts.AI {
 
         public abstract void Execute(INavigable navigable, AIStateInputProvider provider);
 
-        public abstract Vector2 GetFavourablePosition(INavigable target);
+        public abstract Vector2 GetFavourablePosition(ILocatable target);
     }
 }

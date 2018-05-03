@@ -44,7 +44,7 @@ namespace Datenshi.Scripts.Entities {
         [ShowIf("DamageInvulnerability")]
         public float DamageInvulnerabilityDuration = 3;
 
-        [TitleGroup(CombatGroup, "Informações sobre o combat desta LivingEntity")]
+        [TitleGroup(CombatGroup, "Informações sobre o combat desta LivingEntity"), SerializeField]
         private CombatRelationship relationship;
 
         [TitleGroup(CombatGroup, "Informações sobre o combat desta LivingEntity")]
@@ -384,7 +384,10 @@ namespace Datenshi.Scripts.Entities {
 
         public Bounds2D DefenseHitbox {
             get {
-                return defenseHitbox;
+                var hb = defenseHitbox;
+                hb.Center.x *= CurrentDirection.X;
+                hb.Center += Center;
+                return hb;
             }
         }
 
@@ -424,6 +427,10 @@ namespace Datenshi.Scripts.Entities {
                 pos.y -= hitbox.bounds.size.y / 2;
                 return pos;
             }
+        }
+
+        private void OnDrawGizmosSelected() {
+            DebugUtil.DrawBounds2D(DefenseHitbox, Color.magenta);
         }
     }
 }

@@ -2,23 +2,36 @@
 using System.Collections.Generic;
 using System.Linq;
 using Datenshi.Scripts.AI.Pathfinding;
+using Datenshi.Scripts.Movement;
 using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Datenshi.Scripts.AI {
+    [Serializable]
+    public class SerializableNavigable : SerializableInterface<INavigable> { }
+
     public class AerialAINavigator : AINavigator {
         [ShowInInspector]
         private List<Vector2Int> path;
 
-        public INavigable Navigable;
+
+        [SerializeField, HideInInspector]
+        private Object navigable;
+
+        [ShowInInspector]
+        public SerializableNavigable Navigable;
+
         public float MinimumHeightAdvantage = 3;
 
         [ShowInInspector, ReadOnly]
         private Navmesh navmesh;
+
+        public float MinimumFavourableDistance = 10;
 
         private void Start() {
             navmesh = FindObjectOfType<Navmesh>();
@@ -36,7 +49,7 @@ namespace Datenshi.Scripts.AI {
 
         [Button]
         protected override void ReloadPath() {
-            var entityPos = Navigable.Center;
+            var entityPos = Navigable.Value.Center;
             if (navmesh.IsOutOfBounds(entityPos) || navmesh.IsOutOfBounds(Target)) {
                 return;
             }
@@ -54,7 +67,7 @@ namespace Datenshi.Scripts.AI {
 #if UNITY_EDITOR
 
         private void OnDrawGizmos() {
-            Gizmos.color = Color.yellow;
+            Gizmos.color = Color.cyan;
             Gizmos.DrawWireSphere(Target, 1);
             if (path == null) {
                 return;
@@ -106,10 +119,10 @@ namespace Datenshi.Scripts.AI {
             return;
         }
 
-        public override Vector2 GetFavourablePosition(INavigable target) {
-            var pos = Navigable.Center;
+        public override Vector2 GetFavourablePosition(ILocatable target) {
+            var pos = Navigable.Value.Center;
             var targetPos = target.Center;
-            var x = targetPos.x + Math.Sign(pos.x - targetPos.x);
+            var x = targetPos.x + Math.Sign(pos.x - targetPos.x) * MinimumFavourableDistance;
             float y;
             if (pos.y - targetPos.y > MinimumHeightAdvantage) {
                 y = targetPos.y + MinimumHeightAdvantage;

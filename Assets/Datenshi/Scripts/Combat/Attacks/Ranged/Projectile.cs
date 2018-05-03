@@ -19,6 +19,7 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
         public uint Damage;
         public GameObject SpawnOnHit;
         public AudioClip Clip;
+        public AudioClip Defense;
         public AudioSource Source;
         public GameObject[] ToDecouple;
         public GameObject OnDefended;
@@ -77,7 +78,10 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
                 Destroy(obj, DestroyDelay);
             }
 
-            SpawnOnHit.Clone(transform.position);
+            if (SpawnOnHit != null) {
+                SpawnOnHit.Clone(transform.position);
+            }
+
             Destroy(gameObject);
         }
 
@@ -91,9 +95,7 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
             velocity *= GameResources.Instance.DeflectSpeed;
 
             Owner = entity;
-            if (OnDefended != null) {
-                OnDefended.Clone(transform.position);
-            }
+            PlayDefendFX();
         }
 
         public bool CanPoorlyDefend(ICombatant entity) {
@@ -107,6 +109,17 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
             velocity = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle));
             velocity *= GameResources.Instance.DeflectSpeed;
             Owner = entity;
+            PlayDefendFX();
+        }
+
+        private void PlayDefendFX() {
+            if (OnDefended != null) {
+                OnDefended.Clone(transform.position);
+            }
+
+            if (Defense != null) {
+                Source.PlayOneShot(Defense);
+            }
         }
 
         public static float Angle(Vector2 vec) {

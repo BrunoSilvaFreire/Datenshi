@@ -8,7 +8,7 @@ namespace Datenshi.Scripts.AI {
     public class AIStateInputProvider : DatenshiInputProvider {
         public BehaviourState CurrentState;
 
-        public INavigable Navigable;
+        public SerializableNavigable Navigable;
 
         [SerializeField]
         private Trait trait;
@@ -103,8 +103,8 @@ namespace Datenshi.Scripts.AI {
         }
 
         private void Start() {
-            //Navigable.RevokeOwnership();
-            //Navigable.RequestOwnership(this);
+            Navigable.Value.RevokeOwnership();
+            Navigable.Value.RequestOwnership(this);
             if (trait == null) {
                 trait = GetComponentInChildren<Trait>();
             }
@@ -116,11 +116,17 @@ namespace Datenshi.Scripts.AI {
             }
 
             if (ExecuteState) {
-                CurrentState.Execute(this, Navigable);
+                CurrentState.Execute(this, Navigable.Value);
             }
 
             if (Trait != null) {
                 Trait.Execute();
+            }
+        }
+
+        private void OnDrawGizmos() {
+            if (ExecuteState) {
+                CurrentState.DrawGizmos(this, Navigable.Value);
             }
         }
 

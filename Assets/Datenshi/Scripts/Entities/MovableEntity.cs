@@ -18,7 +18,7 @@ namespace Datenshi.Scripts.Entities {
     /// <br />
     /// A maneira com que ela se move depende de seu <see cref="F:Datenshi.Scripts.Entities.MovableEntity.Motor" />.
     /// </summary>
-    public class MovableEntity : LivingEntity, IDatenshiMovable {
+    public class MovableEntity : LivingEntity, INavigable {
         public const string MovementGroup = "Movement";
 
         /// <summary>
@@ -30,8 +30,18 @@ namespace Datenshi.Scripts.Entities {
         [TitleGroup(MovementGroup), SerializeField]
         private AnimationCurve accelerationCurve = AnimationCurve.Constant(0, 1, 1);
 
-        [TitleGroup(MovementGroup)]
-        public AINavigator AINavigator;
+        [SerializeField, HideInInspector]
+        private AINavigator aiNavigator;
+
+        [ShowInInspector, TitleGroup(MovementGroup)]
+        public AINavigator AINavigator {
+            get {
+                return aiNavigator;
+            }
+            set {
+                aiNavigator = value;
+            }
+        }
 
 
         [TitleGroup(MovementGroup)]
@@ -201,7 +211,8 @@ namespace Datenshi.Scripts.Entities {
         private void FixedUpdate() {
             Move();
             if (ExternalForces.magnitude > 0.1) {
-                ExternalForcesBehaviour.Check(this, ref ExternalForces, ref collisionStatus, GameResources.Instance.WorldMask);
+                ExternalForcesBehaviour.Check(this, ref ExternalForces, ref collisionStatus,
+                    GameResources.Instance.WorldMask);
                 ExternalForces = Vector2.Lerp(ExternalForces, Vector2.zero, ExternalForcesDeacceleration);
                 transform.position += (Vector3) ExternalForces;
             }

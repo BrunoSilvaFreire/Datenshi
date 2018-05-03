@@ -28,12 +28,14 @@ namespace Datenshi.Scripts.Movement.States {
         }
 
 
-        public override void Move(IMovable user, ref Vector2 velocity, ref CollisionStatus collisionStatus, StateMotorMachine machine, StateMotorConfig config1, LayerMask collisionMask) {
+        public override void Move(IMovable user, ref Vector2 velocity, ref CollisionStatus collisionStatus,
+            StateMotorMachine machine, StateMotorConfig config1, LayerMask collisionMask) {
             var gravity = GameResources.Instance.Gravity;
             ExecuteState(user, machine, ref velocity, ref collisionStatus, collisionMask, gravity, OnHitWallAir);
         }
 
-        public static void ExecuteState(IMovable user, StateMotorMachine machine, ref Vector2 velocity, ref CollisionStatus collisionStatus, LayerMask collisionMask, float gravity, State onHitAir) {
+        public static void ExecuteState(IMovable user, StateMotorMachine machine, ref Vector2 velocity,
+            ref CollisionStatus collisionStatus, LayerMask collisionMask, float gravity, State onHitAir) {
             var config = user.GetMotorConfig<GroundMotorConfig>();
             if (config == null) {
                 UPMDebug.LogWarning("Expected GroundMotorConfig for GroundedState @ " + user);
@@ -47,6 +49,8 @@ namespace Datenshi.Scripts.Movement.States {
             if (u != null) {
                 max *= u.SpeedMultiplier;
             }
+
+            Debug.Log("Max = " + max);
             velocity.x = Mathf.Clamp(velocity.x, -max, max);
             GroundedBehaviour.Check(user, ref velocity, ref collisionStatus, collisionMask);
             if (velocity.y < 0 && IsRunningTowardsWall(SlopeCheck.LastHit, collisionStatus, dir)) {
@@ -59,7 +63,8 @@ namespace Datenshi.Scripts.Movement.States {
                    collStatus.HorizontalCollisionDir == xDir;
         }
 
-        private static void ProcessInputs(IMovable user, GroundMotorConfig config, ref Vector2 velocity, ref CollisionStatus collisionStatus, float gravity, out int dir) {
+        private static void ProcessInputs(IMovable user, GroundMotorConfig config, ref Vector2 velocity,
+            ref CollisionStatus collisionStatus, float gravity, out int dir) {
             var provider = user.InputProvider as DatenshiInputProvider;
             var hasProvider = provider != null;
             var xInput = hasProvider ? provider.GetHorizontal() : 0;

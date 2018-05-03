@@ -11,5 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 530d1d1a164c41ae8935644ffd2ed2ce, type: 3}
   m_Name: PatrolState
   m_EditorClassIdentifier: 
+  WalkDistance: 20
+  MinRequiredDistance: 30
   OnSawEnemy: {fileID: 11400000, guid: b8e12e30b9712904baba4a5a308b3799, type: 2}
-  SightRadius: 10
+  SightRadius: 15
