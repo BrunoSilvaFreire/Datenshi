@@ -10,4 +10,7 @@ namespace Datenshi.Scripts.Behaviours.Variables {
 
     [Serializable]
     public class SharedLivingEntity : SharedVariable<LivingEntity> { }
+
+    [Serializable]
+    public class SharedMovableEntity : SharedVariable<MovableEntity> { }
 }

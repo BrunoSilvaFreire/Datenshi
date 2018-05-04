@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Datenshi.Scripts.Behaviours.Tasks {
     public class CloseToCombatTarget : Conditional {
         public LivingEntity Entity;
-        public SharedLivingEntity Target;
+        public SharedCombatant Target;
         public float Distance;
 
         public override TaskStatus OnUpdate() {

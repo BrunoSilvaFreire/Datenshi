@@ -49,8 +49,6 @@ namespace Datenshi.Scripts.Movement.States {
             if (u != null) {
                 max *= u.SpeedMultiplier;
             }
-
-            Debug.Log("Max = " + max);
             velocity.x = Mathf.Clamp(velocity.x, -max, max);
             GroundedBehaviour.Check(user, ref velocity, ref collisionStatus, collisionMask);
             if (velocity.y < 0 && IsRunningTowardsWall(SlopeCheck.LastHit, collisionStatus, dir)) {

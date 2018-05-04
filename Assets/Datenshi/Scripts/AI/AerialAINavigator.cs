@@ -96,27 +96,19 @@ namespace Datenshi.Scripts.AI {
                 return;
             }
 
-            Vector2 dir;
             var entityPos = entity.Center;
             var currentNode = navmesh.GetNodeAtWorld(entityPos).Position;
             var lastIndex = path.Count - 1;
             var targetNode = path[lastIndex];
-            if (path.Count < 2) {
-                // Is not between last 2 points
-                dir = targetNode - currentNode;
-            } else {
-                if (currentNode == targetNode) {
-                    path.RemoveAt(lastIndex);
-                    targetNode = path[path.Count - 1];
-                }
-
-                dir = targetNode - currentNode;
-                dir.Normalize();
+            var targetPos = (Vector2) navmesh.Grid.GetCellCenterWorld(targetNode.ToVector3());
+            if (currentNode == targetNode) {
+                path.RemoveAt(lastIndex);
+                targetNode = path[path.Count - 1];
+                targetPos = navmesh.Grid.GetCellCenterWorld(targetNode.ToVector3());
             }
-
+            var dir = targetPos - entityPos;
             provider.Horizontal = dir.x;
             provider.Vertical = dir.y;
-            return;
         }
 
         public override Vector2 GetFavourablePosition(ILocatable target) {
