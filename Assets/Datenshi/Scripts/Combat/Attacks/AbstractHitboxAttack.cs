@@ -1,5 +1,6 @@
 ﻿using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Util;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UPM.Util;
 
@@ -8,6 +9,19 @@ namespace Datenshi.Scripts.Combat.Attacks {
         public static readonly Variable<bool> Blocked = new Variable<bool>("entity.combat.cqb.blocked", true);
         private static readonly Color HitboxColor = Color.green;
         public Bounds2D Hitbox;
+#if UNITY_EDITOR
+
+        [ShowInInspector]
+        public Collider2D CopyFrom {
+            get {
+                return null;
+            }
+            set {
+                Hitbox.Center = value.offset;
+                Hitbox.Size = value.bounds.size;
+            }
+        }
+#endif
 
         protected void DoAttack(ICombatant entity, uint damage) {
             var hb = Hitbox;
@@ -16,7 +30,7 @@ namespace Datenshi.Scripts.Combat.Attacks {
                 hb.Center.x *= xDir;
             }
 
-            hb.Center += (Vector2) entity.Center;
+            hb.Center += (Vector2) entity.Transform.position;
             DebugUtil.DrawBox2DWire(hb.Center, hb.Size, HitboxColor);
             var window = entity.Transform.gameObject.GetComponentInChildren<HitboxAttackCounterWindow>();
             if (window != null) {

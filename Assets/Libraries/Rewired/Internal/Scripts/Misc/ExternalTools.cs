@@ -55,7 +55,6 @@
 namespace Rewired.Utils {
 
     using UnityEngine;
-    using System.Collections;
     using System.Collections.Generic;
     using Rewired.Utils.Interfaces;
 

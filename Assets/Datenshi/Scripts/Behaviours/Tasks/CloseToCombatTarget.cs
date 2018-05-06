@@ -1,7 +1,7 @@
-﻿using BehaviorDesigner.Runtime;
-using BehaviorDesigner.Runtime.Tasks;
+﻿using BehaviorDesigner.Runtime.Tasks;
 using Datenshi.Scripts.Behaviours.Variables;
 using Datenshi.Scripts.Entities;
+using Datenshi.Scripts.Util;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Behaviours.Tasks {
@@ -16,8 +16,12 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
                 return TaskStatus.Failure;
             }
 
-            var d = Vector2.Distance(Entity.transform.position, target.Center);
+            var d = Vector2.Distance(Entity.Center, target.Center);
             return d > Distance ? TaskStatus.Failure : TaskStatus.Success;
+        }
+
+        public override void OnDrawGizmos() {
+            DebugUtil.DrawWireCircle2D(Entity.Center, Distance, Color.magenta);
         }
     }
 }

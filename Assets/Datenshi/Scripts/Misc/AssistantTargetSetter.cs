@@ -1,6 +1,4 @@
-﻿using Datenshi.Scripts.AI.Behaviour;
-using Datenshi.Scripts.Combat;
-using Datenshi.Scripts.Data;
+﻿using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Entities;
 using Sirenix.OdinInspector;
 #if UNITY_EDITOR

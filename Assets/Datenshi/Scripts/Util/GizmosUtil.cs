@@ -176,12 +176,12 @@ namespace Datenshi.Scripts.Util {
 
         public const uint CirclesVertices = 24;
 
-        public static void DrawWireCircle2D(Vector2 entityPos, float minDistance, Color color) {
+        public static void DrawWireCircle2D(Vector2 entityPos, float radius, Color color) {
             var verts = new Vector2[CirclesVertices];
             for (uint i = 0; i < CirclesVertices; i++) {
                 var pos = (float) i / CirclesVertices * 6.283185F;
-                var x = Mathf.Sin(pos) * minDistance;
-                var y = Mathf.Cos(pos) * minDistance;
+                var x = Mathf.Sin(pos) * radius;
+                var y = Mathf.Cos(pos) * radius;
                 var vert = entityPos;
                 vert.x += x;
                 vert.y += y;

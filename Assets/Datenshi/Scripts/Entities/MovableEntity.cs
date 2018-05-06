@@ -1,5 +1,4 @@
-﻿using System;
-using Datenshi.Scripts.AI;
+﻿using Datenshi.Scripts.AI;
 using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Movement;
@@ -18,7 +17,7 @@ namespace Datenshi.Scripts.Entities {
     /// <br />
     /// A maneira com que ela se move depende de seu <see cref="F:Datenshi.Scripts.Entities.MovableEntity.Motor" />.
     /// </summary>
-    public class MovableEntity : LivingEntity, INavigable {
+    public class MovableEntity : LivingEntity, INavigable, IDatenshiMovable {
         public const string MovementGroup = "Movement";
 
         /// <summary>
@@ -181,6 +180,15 @@ namespace Datenshi.Scripts.Entities {
             }
         }
 
+        public Direction Direction {
+            get {
+                return direction;
+            }
+            set {
+                direction = value;
+            }
+        }
+
         [ShowInInspector, TitleGroup(MovementGroup, "Informações sobre a maneira de locomoção desta entidade")]
         public Motor Motor {
             get {
@@ -220,13 +228,16 @@ namespace Datenshi.Scripts.Entities {
             var newDirection = Direction.FromVector(Velocity);
             var xDir = newDirection.X;
             var yDir = newDirection.Y;
+            var dir = Direction;
             if (xDir != 0 && Direction.X != xDir) {
-                Direction.X = xDir;
+                dir.X = xDir;
             }
 
             if (yDir != 0 && Direction.Y != yDir) {
-                Direction.Y = yDir;
+                dir.Y = yDir;
             }
+
+            Direction = dir;
         }
 
         [SerializeField, HideInInspector]

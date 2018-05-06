@@ -8,20 +8,29 @@ namespace Datenshi.Scripts.World.Rooms {
         UnityEvent OnDestroyed {
             get;
         }
+
+        Room Room {
+            get;
+        }
+
+        bool RequestRoomMembership(Room room);
     }
 
     public class Room : MonoBehaviour {
-        private List<IRoomMember> entities = new List<IRoomMember>();
-        public Vector2 Size;
+        private readonly List<IRoomMember> members = new List<IRoomMember>();
+        public Collider2D Area;
+
+        public IEnumerable<IRoomMember> Members => members;
 
         public bool IsInBounds(Vector2 pos) {
             return !IsOutInBounds(pos);
         }
 
         public bool IsOutInBounds(Vector2 pos) {
+            var size = Area.bounds.size;
             var center = transform.position;
-            var halfWidth = Size.x / 2;
-            var halfHeigth = Size.y / 2;
+            var halfWidth = size.x / 2;
+            var halfHeigth = size.y / 2;
             var minX = center.x - halfWidth;
             var maxX = center.x + halfWidth;
             var minY = center.y - halfHeigth;
@@ -31,25 +40,33 @@ namespace Datenshi.Scripts.World.Rooms {
             return posX > maxX || posX < minX || posY > maxY || posY < minY;
         }
 
-        private void OnDrawGizmos() {
-            GizmosUtil.DrawBox2DWire(transform.position, Size, Color.magenta);
+        private void Awake() {
+            foreach (var member in GetComponentsInChildren<IRoomMember>()) {
+                if (members.Contains(member)) {
+                    continue;
+                }
+
+                member.RequestRoomMembership(this);
+                members.Add(member);
+                var e = member.OnDestroyed;
+                UnityAction action = null;
+                action = () => {
+                    members.Remove(member);
+                    if (action != null) {
+                        e.RemoveListener(action);
+                    }
+                };
+                e.AddListener(action);
+            }
         }
 
-        public void RegisterEntity(IRoomMember entity) {
-            if (entities.Contains(entity)) {
+        private void OnDrawGizmos() {
+            if (Area == null) {
                 return;
             }
 
-            entities.Add(entity);
-            var e = entity.OnDestroyed;
-            UnityAction action = null;
-            action = () => {
-                entities.Remove(entity);
-                if (action != null) {
-                    e.RemoveListener(action);
-                }
-            };
-            e.AddListener(action);
+            GizmosUtil.DrawBounds2D(Area.bounds, Color.magenta);
         }
+
     }
 }

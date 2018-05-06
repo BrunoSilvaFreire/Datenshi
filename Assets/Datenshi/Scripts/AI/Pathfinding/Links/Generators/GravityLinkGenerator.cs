@@ -3,6 +3,7 @@
 using UnityEditor;
 #endif
 using UnityEngine;
+using UPM.Util;
 
 namespace Datenshi.Scripts.AI.Pathfinding.Links.Generators {
     public sealed class GravityLinkGenerator : LinkGenerator {
@@ -10,11 +11,13 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links.Generators {
         public int JumpDivisions = 5;
         public float Speed = 10F;
         public float Jump = 10F;
+        public Vector2 ReferenceBounds;
 
         public override IEnumerable<Link> Generate(Node node, Navmesh navmesh, Vector2 nodeWorldPos, float precision) {
             if (!node.IsWalkable) {
                 yield break;
             }
+
             var ySize = navmesh.Grid.cellSize.y / 2;
             var start = nodeWorldPos;
             start.y -= ySize - 0.1F;
@@ -32,7 +35,7 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links.Generators {
             }
         }
 
-        public static IEnumerable<Link> DoGenerateLinks(
+        public IEnumerable<Link> DoGenerateLinks(
             Node node,
             Navmesh navmesh,
             Vector2 nodeWorldPos,
@@ -66,18 +69,20 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links.Generators {
             JumpDivisions = EditorGUILayout.IntField("JumpDivisions", JumpDivisions);
             Speed = EditorGUILayout.FloatField("Speed", Speed);
             Jump = EditorGUILayout.FloatField("Jump", Jump);
+            ReferenceBounds = EditorGUILayout.Vector2Field("Boxcast", ReferenceBounds);
         }
 #endif
 
 
-        public static bool DoTryGetLink(
+        public bool DoTryGetLink(
             Navmesh navmesh,
             Node node,
             Vector2 nodeWorldPos,
             Vector2 direction,
             float precision,
             out GravityLink link) {
-            link = new GravityLink(navmesh.GetNodeIndex(node), navmesh, nodeWorldPos, direction, precision);
+            link = new GravityLink(navmesh.GetNodeIndex(node), navmesh, nodeWorldPos, direction, ReferenceBounds,
+                precision);
             if (link.IsDefined && navmesh.GetNode(link.Destination).IsWalkable) {
                 return !navmesh.IsOnSamePlatform(node, link.Destination);
             }

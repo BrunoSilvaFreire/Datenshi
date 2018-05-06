@@ -6,8 +6,6 @@ namespace Sirenix.Serialization.Internal
     using UnityEditor;
     using UnityEditor.Build;
     using System.IO;
-    using System;
-
 #if UNITY_2018_1_OR_NEWER
 
     using UnityEditor.Build.Reporting;

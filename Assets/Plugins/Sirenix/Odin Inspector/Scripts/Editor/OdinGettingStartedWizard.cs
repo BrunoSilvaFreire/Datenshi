@@ -2,7 +2,6 @@
 {
     using Sirenix.OdinInspector;
     using Sirenix.OdinInspector.Editor;
-    using Sirenix.Serialization;
     using Sirenix.Utilities;
     using Sirenix.Utilities.Editor;
     using System;
@@ -11,7 +10,6 @@
     using System.Linq;
     using UnityEditor;
     using UnityEngine;
-    using UnityEngine.Serialization;
 
     [HideMonoScript]
     public class OdinGettingStartedWizard : ScriptableObject

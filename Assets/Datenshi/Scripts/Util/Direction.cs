@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using Sirenix.OdinInspector;
-using Sirenix.Utilities;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Util {
@@ -24,7 +23,14 @@ namespace Datenshi.Scripts.Util {
             UpLeft, UpRight, DownLeft, DownRight
         };
 
-        public static readonly Direction[] All = LinqExtensions.Append(AllNonZero, Zero).ToArray();
+        public static readonly Direction[] All = LoadAll();
+
+        private static Direction[] LoadAll() {
+            var a = new Direction[9];
+            Array.Copy(AllNonZero, a, 8);
+            a[0] = Zero;
+            return a;
+        }
 
 
         public int CompareTo(Direction other) {
@@ -71,6 +77,9 @@ namespace Datenshi.Scripts.Util {
             return left.CompareTo(right) >= 0;
         }
 
+        public static Direction operator -(Direction d) {
+            return new Direction(-d.X, -d.Y);
+        }
         public bool Equals(Direction other) {
             return X.Equals(other.X) && Y.Equals(other.Y);
         }
@@ -115,6 +124,10 @@ namespace Datenshi.Scripts.Util {
 
             public static implicit operator int(DirectionValue val) {
                 return val.value;
+            }
+
+            public static DirectionValue FromVector(float val) {
+                return FromVector(val, 0);
             }
 
             public static DirectionValue FromVector(float val, float limit) {
@@ -209,6 +222,7 @@ namespace Datenshi.Scripts.Util {
             if (x > 0) {
                 return Right;
             }
+
             return x < 0 ? Left : Zero;
         }
 
@@ -216,6 +230,7 @@ namespace Datenshi.Scripts.Util {
             if (x > 0) {
                 return Right;
             }
+
             return x < 0 ? Left : Zero;
         }
     }

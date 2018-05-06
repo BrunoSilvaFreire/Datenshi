@@ -5,7 +5,13 @@
                 return false;
             }
 
-            return !target.Ignored && combatant.Relationship != target.Relationship;
+            var cr = combatant.Relationship;
+            var tr = target.Relationship;
+            if (cr == CombatRelationship.Neutral || tr == CombatRelationship.Neutral) {
+                return false;
+            }
+
+            return !target.Ignored && cr != tr;
         }
     }
 }

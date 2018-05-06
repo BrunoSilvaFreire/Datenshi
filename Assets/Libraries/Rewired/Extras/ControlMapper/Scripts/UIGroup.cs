@@ -7,9 +7,6 @@ namespace Rewired.UI.ControlMapper {
 
     using UnityEngine;
     using UnityEngine.UI;
-    using System.Collections.Generic;
-    using System.Collections;
-    using Rewired;
 
     [AddComponentMenu("")]
     public class UIGroup : MonoBehaviour {

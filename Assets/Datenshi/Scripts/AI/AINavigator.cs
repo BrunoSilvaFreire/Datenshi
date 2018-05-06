@@ -5,7 +5,8 @@ using UnityEngine.Profiling;
 
 namespace Datenshi.Scripts.AI {
     public abstract class AINavigator : MonoBehaviour {
-        public Vector2 Target;
+        public abstract Vector2 SetTarget(Vector2 target);
+        public abstract Vector2 GetTarget();
 
         [ShowInInspector, ReadOnly]
         private float timeSinceLastRegen;
@@ -27,7 +28,7 @@ namespace Datenshi.Scripts.AI {
 
         protected abstract void ReloadPath();
 
-        public abstract void Execute(INavigable navigable, AIStateInputProvider provider);
+        public abstract void Execute(INavigable navigable, DummyInputProvider provider);
 
         public abstract Vector2 GetFavourablePosition(ILocatable target);
     }

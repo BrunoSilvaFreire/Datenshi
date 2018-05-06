@@ -11,43 +11,16 @@ MonoBehaviour:
   m_Script: {fileID: 1137305049, guid: a4865f1ab4504ed8a368670db22f409c, type: 3}
   m_Name: InspectorConfig
   m_EditorClassIdentifier: 
-  enableOdinInInspector: 1
-  defaultEditorBehaviour: 9
+  enableOdinInInspector: 0
+  defaultEditorBehaviour: 11
   processMouseMoveInInspector: 1
   drawingConfig:
     configs:
-    - DrawnTypeName: Datenshi.Scripts.Entities.Entity, Datenshi-Entities
-      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
-    - DrawnTypeName: Datenshi.Scripts.Entities.EntityMiscController, Datenshi-Entities
-      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
-    - DrawnTypeName: Datenshi.Scripts.Entities.EntityProxy, Datenshi-Entities
-      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
-    - DrawnTypeName: Datenshi.Scripts.Entities.LivingEntity, Datenshi-Entities
-      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
-    - DrawnTypeName: Datenshi.Scripts.Entities.LivingEntityProxy, Datenshi-Entities
-      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
-    - DrawnTypeName: Datenshi.Scripts.Entities.MovableEntity, Datenshi-Entities
-      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
-    - DrawnTypeName: Datenshi.Scripts.Entities.MovableEntityProxy, Datenshi-Entities
-      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
-    - DrawnTypeName: Datenshi.Scripts.Entities.Animation.DebugRangedUpdater, Datenshi-Entities
-      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
-    - DrawnTypeName: Datenshi.Scripts.Entities.Animation.LivingEntityUpdater, Datenshi-Entities
-      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
-    - DrawnTypeName: Datenshi.Scripts.Entities.Animation.MovableEntityStateMachineProxy,
-        Datenshi-Entities
-      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
-    - DrawnTypeName: Datenshi.Scripts.Entities.Animation.MovableEntityUpdater, Datenshi-Entities
-      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
     - DrawnTypeName: Datenshi.Scripts.AI.AerialAINavigator, Datenshi-AI
       EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
-    - DrawnTypeName: Datenshi.Scripts.AI.AIStateInputProvider, Datenshi-AI
+    - DrawnTypeName: Datenshi.Scripts.AI.DummyInputProvider, Datenshi-AI
       EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
     - DrawnTypeName: Datenshi.Scripts.AI.GroundAINavigator, Datenshi-AI
-      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
-    - DrawnTypeName: Datenshi.Scripts.AI.Behaviour.FollowingState, Datenshi-AI
-      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
-    - DrawnTypeName: Datenshi.Scripts.AI.Behaviour.MovingState, Datenshi-AI
       EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
     - DrawnTypeName: Datenshi.Scripts.Animation.AnimationUtil, Datenshi-Animation
       EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
@@ -77,12 +50,6 @@ MonoBehaviour:
       EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
     - DrawnTypeName: Datenshi.Scripts.Combat.Attacks.Summoning.SummonAttack, Datenshi-Combat
       EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
-    - DrawnTypeName: Datenshi.Scripts.Combat.Behaviour.AttackingState, Datenshi-Combat
-      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
-    - DrawnTypeName: Datenshi.Scripts.Combat.Behaviour.PatrollingState, Datenshi-Combat
-      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
-    - DrawnTypeName: Datenshi.Scripts.Combat.Behaviour.SentryState, Datenshi-Combat
-      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
     - DrawnTypeName: Datenshi.Scripts.Combat.Strategies.CompositeStrategy, Datenshi-Combat
       EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
     - DrawnTypeName: Datenshi.Scripts.Combat.Strategies.CQBAttackStategy, Datenshi-Combat
@@ -97,6 +64,29 @@ MonoBehaviour:
       EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
     - DrawnTypeName: Datenshi.Scripts.Data.RuntimeResources, Datenshi-Data
       EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Entities.Entity, Datenshi-Entities
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Entities.EntityMiscController, Datenshi-Entities
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Entities.EntityProxy, Datenshi-Entities
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Entities.LivingEntity, Datenshi-Entities
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Entities.LivingEntityProxy, Datenshi-Entities
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Entities.MovableEntity, Datenshi-Entities
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Entities.MovableEntityProxy, Datenshi-Entities
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Entities.Animation.DebugRangedUpdater, Datenshi-Entities
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Entities.Animation.LivingEntityUpdater, Datenshi-Entities
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Entities.Animation.MovableEntityStateMachineProxy,
+        Datenshi-Entities
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Entities.Animation.MovableEntityUpdater, Datenshi-Entities
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
     - DrawnTypeName: Datenshi.Scripts.Game.GameController, Datenshi-Game
       EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
     - DrawnTypeName: Datenshi.Scripts.Game.PlayerController, Datenshi-Game
@@ -108,6 +98,10 @@ MonoBehaviour:
     - DrawnTypeName: Datenshi.Scripts.Graphics.BlackAndWhiteFX, Datenshi-Graphics
       EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
     - DrawnTypeName: Datenshi.Scripts.Graphics.ColorizableRenderer, Datenshi-Graphics
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Movement.States.GroundedState, Datenshi-Movement-States
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Datenshi.Scripts.Movement.States.WallClimbState, Datenshi-Movement-States
       EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
     - DrawnTypeName: Datenshi.Scripts.UI.SpriteGraphic, Datenshi-UI
       EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
@@ -124,8 +118,6 @@ MonoBehaviour:
     - DrawnTypeName: Datenshi.Scripts.UI.Layout.ChildLayoutFitter, Datenshi-UI
       EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
     - DrawnTypeName: Datenshi.Scripts.UI.Misc.UIBlackBarView, Datenshi-UI
-      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
-    - DrawnTypeName: Datenshi.Scripts.UI.Misc.UIDashElement, Datenshi-UI
       EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
     - DrawnTypeName: Datenshi.Scripts.UI.Misc.UIDefenseElement, Datenshi-UI
       EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor

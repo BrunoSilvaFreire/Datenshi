@@ -11,7 +11,6 @@ namespace Rewired.UI.ControlMapper {
     using UnityEngine.Events;
     using System.Collections.Generic;
     using System.Collections;
-    using Rewired;
 
     [AddComponentMenu("")]
     [RequireComponent(typeof(CanvasGroup))]

@@ -6,10 +6,8 @@
 namespace Rewired.UI.ControlMapper {
 
     using UnityEngine;
-    using UnityEngine.UI;
     using System.Collections.Generic;
-    using Rewired;
-    
+
     public partial class ControlMapper {
 
         private class WindowManager {

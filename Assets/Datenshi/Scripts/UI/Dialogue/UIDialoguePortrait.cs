@@ -1,7 +1,5 @@
-﻿using System;
-using Datenshi.Scripts.Character;
+﻿using Datenshi.Scripts.Character;
 using DG.Tweening;
-using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 

@@ -14,7 +14,7 @@ MonoBehaviour:
   DefaultState: {fileID: 114222677318753670}
   CollisionMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 2560
 --- !u!114 &114222677318753670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26,7 +26,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac75bd2ef0994f4ca151da8a1f4e8114, type: 3}
   m_Name: GroundedState
   m_EditorClassIdentifier: 
-  OnHitWallAir: {fileID: 114308803090730658}
+  WallClimbState: {fileID: 114308803090730658}
+  ExtraWallClimbLengthCheck: 30
 --- !u!114 &114308803090730658
 MonoBehaviour:
   m_ObjectHideFlags: 0

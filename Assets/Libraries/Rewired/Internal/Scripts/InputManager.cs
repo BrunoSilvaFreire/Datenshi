@@ -6,7 +6,6 @@
 namespace Rewired {
 
     using UnityEngine;
-    using System.Collections.Generic;
     using Rewired.Platforms;
     using Rewired.Utils;
     using Rewired.Utils.Interfaces;

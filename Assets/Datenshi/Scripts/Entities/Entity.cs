@@ -28,7 +28,19 @@ namespace Datenshi.Scripts.Entities {
         public static readonly EntityEvent EntityDisabledEvent = new EntityEvent();
         public const string MiscGroup = "Misc";
         public const string GeneralGroup = "General";
-        public Room EntityRoom;
+
+        public Room Room {
+            get;
+            private set;
+        }
+
+        public bool RequestRoomMembership(Room r) {
+            if (Room) {
+                return false;
+            }
+            Room = r;
+            return true;
+        }
 
         /// <summary>
         /// O provedor a partir de qual essa entidade está recebendo input.
@@ -74,8 +86,10 @@ namespace Datenshi.Scripts.Entities {
         public Character.Character Character;
 
         [TitleGroup(MiscGroup)]
-        protected Direction Direction;
+        protected Direction direction;
 
+       
+        
         [SerializeField]
         private UnityEvent onDestroyed;
 
@@ -129,12 +143,6 @@ namespace Datenshi.Scripts.Entities {
 
         private void OnDisable() {
             EntityDisabledEvent.Invoke(this);
-        }
-
-        private void Awake() {
-            if (EntityRoom != null) {
-                EntityRoom.RegisterEntity(this);
-            }
         }
 
         private void OnDrawGizmos() {

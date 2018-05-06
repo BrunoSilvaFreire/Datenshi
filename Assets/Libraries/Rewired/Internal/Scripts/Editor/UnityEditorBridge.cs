@@ -5,15 +5,10 @@
 #pragma warning disable 0414
 
 namespace Rewired.Editor {
+            using UnityEditor;
+            using Rewired.Platforms;
 
-    using UnityEngine;
-    using UnityEditor;
-    using System.IO;
-    using Rewired;
-    using Rewired.Platforms;
-    using Rewired.Utils;
-
-    [InitializeOnLoad]
+            [InitializeOnLoad]
     [System.ComponentModel.Browsable(false)]
     [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
     public static class UnityEditorBridge {

@@ -8,7 +8,6 @@ namespace Rewired.UI.ControlMapper {
     using UnityEngine;
     using UnityEngine.UI;
     using System.Collections;
-    using Rewired;
 
     /// <summary>
     /// Hides ScrollRect scrollbars based on the dimensions of the content.

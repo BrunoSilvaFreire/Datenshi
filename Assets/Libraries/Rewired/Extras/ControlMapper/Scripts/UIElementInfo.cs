@@ -8,8 +8,6 @@ namespace Rewired.UI.ControlMapper {
     using UnityEngine;
     using UnityEngine.UI;
     using UnityEngine.EventSystems;
-    using System.Collections;
-    using Rewired;
 
     [AddComponentMenu("")]
     public abstract class UIElementInfo : MonoBehaviour, ISelectHandler {

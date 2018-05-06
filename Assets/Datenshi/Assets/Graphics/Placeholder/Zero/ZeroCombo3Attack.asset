@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: ZeroCombo3Attack
   m_EditorClassIdentifier: 
   Hitbox:
-    Center: {x: 1.4418507, y: 1.4952614}
-    Size: {x: 2.2697792, y: 3.5717072}
+    Center: {x: 0.8476181, y: 1.7214122}
+    Size: {x: 3.859146, y: 3.4651384}
   Damage: 10

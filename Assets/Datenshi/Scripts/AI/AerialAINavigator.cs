@@ -47,18 +47,27 @@ namespace Datenshi.Scripts.AI {
             }
         }
 
+        private Vector2 target;
+        public override Vector2 SetTarget(Vector2 target) {
+            return this.target = target;
+        }
+
+        public override Vector2 GetTarget() {
+            return target;
+        }
+
         [Button]
         protected override void ReloadPath() {
             var entityPos = Navigable.Value.Center;
-            if (navmesh.IsOutOfBounds(entityPos) || navmesh.IsOutOfBounds(Target)) {
+            if (navmesh.IsOutOfBounds(entityPos) || navmesh.IsOutOfBounds(target)) {
                 return;
             }
 
             var origin = navmesh.GetNodeAtWorld(entityPos);
-            var target = navmesh.GetNodeAtWorld(Target);
+            var t = navmesh.GetNodeAtWorld(target);
             AStar.CalculatePathAerial(
                 origin,
-                target,
+                t,
                 navmesh,
                 Navigable.ToString(),
                 tempPath => { path = tempPath == null ? null : (from node in tempPath select node.Position).ToList(); }
@@ -68,7 +77,7 @@ namespace Datenshi.Scripts.AI {
 
         private void OnDrawGizmos() {
             Gizmos.color = Color.cyan;
-            Gizmos.DrawWireSphere(Target, 1);
+            Gizmos.DrawWireSphere(target, 1);
             if (path == null) {
                 return;
             }
@@ -91,21 +100,34 @@ namespace Datenshi.Scripts.AI {
         }
 #endif
 
-        public override void Execute(INavigable entity, AIStateInputProvider provider) {
-            if (path == null) {
+        public override void Execute(INavigable entity, DummyInputProvider provider) {
+            if (path.IsNullOrEmpty()) {
+                provider.Reset();
                 return;
             }
 
             var entityPos = entity.Center;
             var currentNode = navmesh.GetNodeAtWorld(entityPos).Position;
-            var lastIndex = path.Count - 1;
+            int lastIndex;
+            if (path.Count == 1) {
+                lastIndex = 0;
+            } else {
+                lastIndex = path.Count - 1;
+            }
+
             var targetNode = path[lastIndex];
             var targetPos = (Vector2) navmesh.Grid.GetCellCenterWorld(targetNode.ToVector3());
             if (currentNode == targetNode) {
                 path.RemoveAt(lastIndex);
+                if (path.IsEmpty()) {
+                    provider.Reset();
+                    return;
+                }
+
                 targetNode = path[path.Count - 1];
                 targetPos = navmesh.Grid.GetCellCenterWorld(targetNode.ToVector3());
             }
+
             var dir = targetPos - entityPos;
             provider.Horizontal = dir.x;
             provider.Vertical = dir.y;
@@ -115,13 +137,7 @@ namespace Datenshi.Scripts.AI {
             var pos = Navigable.Value.Center;
             var targetPos = target.Center;
             var x = targetPos.x + Math.Sign(pos.x - targetPos.x) * MinimumFavourableDistance;
-            float y;
-            if (pos.y - targetPos.y > MinimumHeightAdvantage) {
-                y = targetPos.y + MinimumHeightAdvantage;
-            } else {
-                y = targetPos.y + MinimumHeightAdvantage;
-            }
-
+            var y = targetPos.y + MinimumHeightAdvantage;
             return new Vector2(x, y);
         }
     }

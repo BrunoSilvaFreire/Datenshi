@@ -2,7 +2,6 @@
 using BehaviorDesigner.Runtime;
 using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Entities;
-using UnityEngine;
 
 namespace Datenshi.Scripts.Behaviours.Variables {
     [Serializable]

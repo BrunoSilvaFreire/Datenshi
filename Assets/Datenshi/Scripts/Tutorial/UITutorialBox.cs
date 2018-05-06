@@ -13,7 +13,7 @@ namespace Datenshi.Scripts.Tutorial {
 
         public static UITutorialBox Instance {
             get {
-                return instance ?? (instance = FindObjectOfType<UITutorialBox>());
+                return instance ? instance : (instance = FindObjectOfType<UITutorialBox>());
             }
         }
 
@@ -23,7 +23,7 @@ namespace Datenshi.Scripts.Tutorial {
         public RectTransform Holder;
         public Vector2 DefaultSize;
         public Vector2 Padding;
-
+        public float YOffset = .25F;
         private RectTransform RectTransform {
             get {
                 return (RectTransform) transform;
@@ -99,6 +99,7 @@ namespace Datenshi.Scripts.Tutorial {
 
 
         private IEnumerator SetSizeAndAlpha(Vector2 size, float alpha) {
+            RectTransform.DOAnchorPosY(size.y / 2 * transform.localScale.y + YOffset, SizeChangeDuration);
             RectTransform.DOSizeDelta(size + Padding, SizeChangeDuration, true);
             CanvasGroup.DOFade(alpha, SizeChangeDuration);
             yield return new WaitForSeconds(SizeChangeDuration);

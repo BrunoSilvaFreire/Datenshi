@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Runtime.InteropServices.ComTypes;
+using BehaviorDesigner.Runtime;
 using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Input;
+using Datenshi.Scripts.Movement.Config;
+using Datenshi.Scripts.Util;
 using UnityEngine;
 using UPM;
 using UPM.Motors;
@@ -12,16 +16,31 @@ using UPM.Util;
 
 namespace Datenshi.Scripts.Movement.States {
     public class GroundedState : State {
-        public State OnHitWallAir;
+        public WallClimbState WallClimbState;
+        public float ExtraWallClimbLengthCheck = .5F;
+
         public static readonly VerticalPhysicsCheck VerticalVelocityCheck = new VerticalPhysicsCheck();
         public static readonly HorizontalPhysicsCheck HorizontalVelocityCheck = new HorizontalPhysicsCheck();
         public static readonly VerticalPhysicsCheck SlopeCheck = new VerticalPhysicsCheck(SlopeCheckProvider);
+
 
         public static readonly PhysicsBehaviour GroundedBehaviour = new PhysicsBehaviour(
             VerticalVelocityCheck,
             HorizontalVelocityCheck,
             SlopeCheck
         );
+
+        // Wall check
+        private int wallClimbExtraCheckDir = 0;
+        private readonly HorizontalPhysicsCheck wallClimbExtraCheck;
+
+        public GroundedState() {
+            wallClimbExtraCheck = new HorizontalPhysicsCheck(WallClimbExtraChecker);
+        }
+
+        private Vector2 WallClimbExtraChecker(IMovable movable) {
+            return Vector2.right * wallClimbExtraCheckDir * ExtraWallClimbLengthCheck;
+        }
 
         private static Vector2 SlopeCheckProvider(IMovable arg) {
             return Vector2.down * Time.fixedDeltaTime;
@@ -31,28 +50,37 @@ namespace Datenshi.Scripts.Movement.States {
         public override void Move(IMovable user, ref Vector2 velocity, ref CollisionStatus collisionStatus,
             StateMotorMachine machine, StateMotorConfig config1, LayerMask collisionMask) {
             var gravity = GameResources.Instance.Gravity;
-            ExecuteState(user, machine, ref velocity, ref collisionStatus, collisionMask, gravity, OnHitWallAir);
+            ExecuteState(user, machine, ref velocity, ref collisionStatus, collisionMask, gravity, WallClimbState);
         }
 
-        public static void ExecuteState(IMovable user, StateMotorMachine machine, ref Vector2 velocity,
-            ref CollisionStatus collisionStatus, LayerMask collisionMask, float gravity, State onHitAir) {
-            var config = user.GetMotorConfig<GroundMotorConfig>();
+        public void ExecuteState(IMovable u, StateMotorMachine machine, ref Vector2 velocity,
+            ref CollisionStatus collisionStatus, LayerMask collisionMask, float gravity,
+            WallClimbState wallClimbState) {
+            var user = u as IDatenshiMovable;
+            if (user == null) {
+                return;
+            }
+
+            var config = user.GetMotorConfig<DatenshiGroundConfig>();
             if (config == null) {
-                UPMDebug.LogWarning("Expected GroundMotorConfig for GroundedState @ " + user);
+                UPMDebug.LogWarning("Expected DatenshiGroundConfig for GroundedState @ " + user);
                 return;
             }
 
             int dir;
-            ProcessInputs(user, config, ref velocity, ref collisionStatus, gravity, out dir);
+            var bounds = (Bounds2D) user.Hitbox.bounds;
+            var shrinkedBounds = bounds;
+            shrinkedBounds.Expand(user.Inset * -2);
+            ProcessInputs(user, config, ref velocity, ref collisionStatus, gravity, out dir, collisionMask, bounds,
+                shrinkedBounds, wallClimbState);
+
             var max = user.MaxSpeed;
-            var u = user as IDatenshiMovable;
-            if (u != null) {
-                max *= u.SpeedMultiplier;
-            }
+            max *= user.SpeedMultiplier;
+
             velocity.x = Mathf.Clamp(velocity.x, -max, max);
             GroundedBehaviour.Check(user, ref velocity, ref collisionStatus, collisionMask);
             if (velocity.y < 0 && IsRunningTowardsWall(SlopeCheck.LastHit, collisionStatus, dir)) {
-                machine.State = onHitAir;
+                machine.State = wallClimbState;
             }
         }
 
@@ -61,13 +89,20 @@ namespace Datenshi.Scripts.Movement.States {
                    collStatus.HorizontalCollisionDir == xDir;
         }
 
-        private static void ProcessInputs(IMovable user, GroundMotorConfig config, ref Vector2 velocity,
-            ref CollisionStatus collisionStatus, float gravity, out int dir) {
+        private void ProcessInputs(IDatenshiMovable user, DatenshiGroundConfig config, ref Vector2 velocity,
+            ref CollisionStatus collisionStatus, float gravity, out int dir, LayerMask collisionMask, Bounds2D bounds,
+            Bounds2D shrinkedBounds, WallClimbState wallClimbState) {
             var provider = user.InputProvider as DatenshiInputProvider;
             var hasProvider = provider != null;
             var xInput = hasProvider ? provider.GetHorizontal() : 0;
+            var d = user.Direction;
+            var newX = Direction.DirectionValue.FromVector(xInput);
+            if (newX != Direction.DirectionValue.Zero) {
+                d.X = newX;
+            }
+
+            user.Direction = d;
             dir = Math.Sign(xInput);
-            var inputDir = Math.Sign(xInput);
             var jump = hasProvider && provider.GetJump();
             var combatant = user as ICombatant;
             if (combatant != null) {
@@ -77,11 +112,44 @@ namespace Datenshi.Scripts.Movement.States {
                 }
             }
 
-            if (collisionStatus.Down) {
-                if (jump) {
+            if (jump) {
+                if (collisionStatus.Down) {
                     velocity.y = config.JumpForce;
+                } else {
+                    var jumpDown = provider.GetJumpDown();
+                    if (jumpDown) {
+                        var a = user.GroundPosition;
+                        var b = a;
+                        b.y -= config.RejumpLength;
+                        var c = Physics2D.Linecast(a, b, collisionMask);
+#if UNITY_EDITOR
+                        Debug.DrawLine(a, b, c ? Color.green : Color.red);
+#endif
+                        if (c) {
+                            //Succeded jump call
+                            velocity.y = config.JumpForce;
+                        } else if (dir != 0) {
+                            // Check for wall climb call
+                            var valid = false;
+                            var vel = velocity;
+                            DoExtraWallClimbCheck(1, user, ref vel, ref collisionStatus, collisionMask, bounds,
+                                shrinkedBounds, config, wallClimbState);
+                            valid = wallClimbExtraCheck.LastHit.HasValue;
+                            if (!valid) {
+                                DoExtraWallClimbCheck(-1, user, ref vel, ref collisionStatus, collisionMask, bounds,
+                                    shrinkedBounds, config, wallClimbState);
+                                valid = wallClimbExtraCheck.LastHit.HasValue;
+                            }
+
+                            if (valid) {
+                                velocity = vel;
+                            }
+                        }
+                    }
                 }
-            } else {
+            }
+
+            if (!collisionStatus.Down) {
                 var g = gravity * config.GravityScale * Time.fixedDeltaTime;
                 if (velocity.y > 0 && !jump) {
                     g *= config.JumpCutGravityModifier;
@@ -94,10 +162,10 @@ namespace Datenshi.Scripts.Movement.States {
             var curve = user.AccelerationCurve;
             var speedPercent = user.SpeedPercent;
             var rawAcceleration = curve.Evaluate(speedPercent);
-            var acceleration = rawAcceleration * inputDir;
+            var acceleration = rawAcceleration * dir;
             var maxSpeed = user.MaxSpeed * Mathf.Abs(xInput);
             var speed = Mathf.Abs(velocity.x);
-            if (velDir == 0 || velDir == inputDir && inputDir != 0) {
+            if (velDir == 0 || velDir == dir && dir != 0) {
                 //Accelerating
                 if (speed < maxSpeed) {
                     velocity.x += acceleration;
@@ -109,7 +177,7 @@ namespace Datenshi.Scripts.Movement.States {
             var deacceleration = curve.Evaluate(1 - speedPercent);
             if (Mathf.Abs(xInput) > 0) {
                 //Changing direction, Double deacceleration
-                velocity.x += deacceleration * inputDir * 2;
+                velocity.x += deacceleration * dir * 2;
                 return;
             }
 
@@ -119,6 +187,20 @@ namespace Datenshi.Scripts.Movement.States {
             } else {
                 velocity.x += deacceleration * -velDir;
             }
+        }
+
+        private void DoExtraWallClimbCheck(int dir, IMovable user, ref Vector2 velocity,
+            ref CollisionStatus collisionStatus, LayerMask collisionMask, Bounds2D bounds, Bounds2D shrinkedBounds,
+            DatenshiGroundConfig config, WallClimbState wallClimbState) {
+            var csCopy = collisionStatus;
+            wallClimbExtraCheckDir = dir;
+            wallClimbExtraCheck.Check(user, ref velocity, ref csCopy, collisionMask, bounds, shrinkedBounds);
+            if (!wallClimbExtraCheck.LastHit.HasValue) {
+                return;
+            }
+
+            collisionStatus = csCopy;
+            wallClimbState.DoWallClimb(ref velocity, config, dir);
         }
     }
 }

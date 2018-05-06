@@ -7,9 +7,7 @@ namespace Rewired.UI.ControlMapper {
 
     using UnityEngine;
     using UnityEditor;
-    using System.Collections;
     using System.Collections.Generic;
-    using System.Text.RegularExpressions;
     using Rewired;
     using Rewired.Data;
     using Rewired.Utils;

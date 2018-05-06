@@ -7,11 +7,6 @@ namespace Rewired.UI.ControlMapper {
 
     using UnityEngine;
     using UnityEngine.UI;
-    using UnityEngine.Events;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Reflection;
-    using Rewired;
 
     public static class UITools {
 

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class RotateObject : MonoBehaviour {
 	public bool rotate=true;

@@ -2,7 +2,6 @@
 using System.Collections;
 using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Combat.Attacks;
-using Datenshi.Scripts.Combat.Strategies;
 using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -46,9 +45,6 @@ namespace Datenshi.Scripts.Entities {
 
         [TitleGroup(CombatGroup, "Informações sobre o combat desta LivingEntity"), SerializeField]
         private CombatRelationship relationship;
-
-        [TitleGroup(CombatGroup, "Informações sobre o combat desta LivingEntity")]
-        public AttackStrategy DefaultAttackStrategy;
 
         [TitleGroup(CombatGroup)]
         public EntityDamagedEvent OnDamaged;
@@ -111,12 +107,6 @@ namespace Datenshi.Scripts.Entities {
         public CombatantAnimatorUpdater AnimatorUpdater {
             get {
                 return updater;
-            }
-        }
-
-        public AttackStrategy AttackStrategy {
-            get {
-                return DefaultAttackStrategy;
             }
         }
 
@@ -245,7 +235,7 @@ namespace Datenshi.Scripts.Entities {
         /// <br/>
         /// Qualquer tentativa de mudar este valor delega a chamada para <see cref="Health"/>. 
         /// </summary>
-        [ShowInInspector, TitleGroup(HealthGroup)]
+        [ShowInInspector, TitleGroup(HealthGroup), ProgressBar(0, 1), PropertyRange(0, 1)]
         public float HealthPercentage {
             get {
                 return (float) Health / MaxHealth;
@@ -360,10 +350,10 @@ namespace Datenshi.Scripts.Entities {
 
         public Direction CurrentDirection {
             get {
-                return Direction;
+                return direction;
             }
             set {
-                Direction = value;
+                direction = value;
             }
         }
 
@@ -386,7 +376,7 @@ namespace Datenshi.Scripts.Entities {
             get {
                 var hb = defenseHitbox;
                 hb.Center.x *= CurrentDirection.X;
-                hb.Center += Center;
+                hb.Center += (Vector2) transform.position;
                 return hb;
             }
         }
@@ -395,10 +385,6 @@ namespace Datenshi.Scripts.Entities {
             get {
                 return relationship;
             }
-        }
-
-        private void Reset() {
-            DefaultAttackStrategy = EmptyStrategy.Instance;
         }
 
         public Transform Transform {

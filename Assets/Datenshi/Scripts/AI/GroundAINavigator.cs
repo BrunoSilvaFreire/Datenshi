@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Datenshi.Scripts.AI.Pathfinding;
 using Datenshi.Scripts.AI.Pathfinding.Links;
 using Datenshi.Scripts.Movement;
 using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
+using UnityEditor;
 using UnityEngine;
 
 namespace Datenshi.Scripts.AI {
@@ -16,13 +16,53 @@ namespace Datenshi.Scripts.AI {
         [ShowInInspector, ReadOnly]
         private Link currentLink;
 
-        public INavigable Navigable;
+        public SerializableNavigable Navigable;
+        public byte MaxTargetRepositionTries = 20;
 
         [ShowInInspector, ReadOnly]
         private Navmesh navmesh;
 
+        private Vector2 target;
+
+        public override Vector2 SetTarget(Vector2 t) {
+            var node = navmesh.GetNodeAtWorld(t);
+            if (!node.IsWalkable) {
+                return target = FindWalkable(node);
+            }
+
+            return target = t;
+        }
+
+        private bool GetValidWalkable(Node node, Direction.DirectionValue dir, byte offset, out Node newNode) {
+            var pos = node.Position;
+            pos.y += dir * offset;
+            newNode = navmesh.GetNode(pos);
+
+            return newNode != null && newNode.IsWalkable;
+        }
+
+        private bool GetValidWalkable(Node node, byte offset, out Node newNode) {
+            return GetValidWalkable(node, Direction.DirectionValue.Backward, offset, out newNode) ||
+                   GetValidWalkable(node, Direction.DirectionValue.Foward, offset, out newNode);
+        }
+
+        private Vector2 FindWalkable(Node node) {
+            for (byte currentTry = 1; currentTry <= MaxTargetRepositionTries; currentTry++) {
+                Node result;
+                if (GetValidWalkable(node, currentTry, out result)) {
+                    return navmesh.WorldPosCenter(result);
+                }
+            }
+
+            return Vector2.zero;
+        }
+
+        public override Vector2 GetTarget() {
+            return target;
+        }
+
         protected override bool CanReload() {
-            return Navigable.CollisionStatus.Down;
+            return Navigable.Value.CollisionStatus.Down;
         }
 
         private void Start() {
@@ -35,11 +75,12 @@ namespace Datenshi.Scripts.AI {
                 return;
             }
 
+            var e = Navigable.Value;
             AStar.CalculatePath(
-                navmesh.GetNodeAtWorld(Navigable.GroundPosition),
-                navmesh.GetNodeAtWorld(Target),
+                navmesh.GetNodeAtWorld(e.GroundPosition),
+                navmesh.GetNodeAtWorld(target),
                 navmesh,
-                Navigable,
+                e,
                 p => {
                     path = p;
                     if (p != null) {
@@ -50,25 +91,25 @@ namespace Datenshi.Scripts.AI {
 
 #if UNITY_EDITOR
         private void OnDrawGizmos() {
-            Gizmos.DrawWireSphere(Target, 1);
+            Gizmos.DrawWireSphere(target, 1);
             if (path == null) {
                 return;
             }
 
-            Gizmos.color = Color.magenta;
             foreach (var link in path) {
+                Handles.color = link == currentLink ? Color.red : Color.cyan;
                 link.DrawGizmos(navmesh, (uint) link.GetOrigin(), 10F, false);
             }
         }
 #endif
 
 
-        public override void Execute(INavigable entity, AIStateInputProvider provider) {
+        public override void Execute(INavigable entity, DummyInputProvider provider) {
             if (currentLink == null) {
                 return;
             }
 
-            if (navmesh.GetNodeAtWorld(entity.GroundPosition) == navmesh.GetNode(currentLink.GetDestination())) {
+            if (Equals(navmesh.GetNodeAtWorld(entity.GroundPosition), navmesh.GetNode(currentLink.GetDestination()))) {
                 if (path == null) {
                     currentLink = null;
                     return;

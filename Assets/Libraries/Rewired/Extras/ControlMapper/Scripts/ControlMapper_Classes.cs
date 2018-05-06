@@ -8,9 +8,7 @@ namespace Rewired.UI.ControlMapper {
     using UnityEngine;
     using UnityEngine.UI;
     using UnityEngine.EventSystems;
-    using System;
     using System.Collections.Generic;
-    using System.Collections.ObjectModel;
     using Rewired;
     using Rewired.Utils;
 

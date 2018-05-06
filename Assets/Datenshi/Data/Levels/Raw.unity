@@ -1,0 +1,5891 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!29 &1
+OcclusionCullingSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_OcclusionBakeSettings:
+    smallestOccluder: 5
+    smallestHole: 0.25
+    backfaceThreshold: 100
+  m_SceneGUID: 00000000000000000000000000000000
+  m_OcclusionCullingData: {fileID: 0}
+--- !u!104 &2
+RenderSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 9
+  m_Fog: 0
+  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_FogMode: 3
+  m_FogDensity: 0.01
+  m_LinearFogStart: 0
+  m_LinearFogEnd: 300
+  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
+  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
+  m_AmbientIntensity: 1
+  m_AmbientMode: 3
+  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SkyboxMaterial: {fileID: 0}
+  m_HaloStrength: 0.5
+  m_FlareStrength: 1
+  m_FlareFadeSpeed: 3
+  m_HaloTexture: {fileID: 0}
+  m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
+  m_DefaultReflectionMode: 0
+  m_DefaultReflectionResolution: 128
+  m_ReflectionBounces: 1
+  m_ReflectionIntensity: 1
+  m_CustomReflection: {fileID: 0}
+  m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_UseRadianceAmbientProbe: 0
+--- !u!157 &3
+LightmapSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 11
+  m_GIWorkflowMode: 1
+  m_GISettings:
+    serializedVersion: 2
+    m_BounceScale: 1
+    m_IndirectOutputScale: 1
+    m_AlbedoBoost: 1
+    m_TemporalCoherenceThreshold: 1
+    m_EnvironmentLightingMode: 0
+    m_EnableBakedLightmaps: 0
+    m_EnableRealtimeLightmaps: 0
+  m_LightmapEditorSettings:
+    serializedVersion: 10
+    m_Resolution: 2
+    m_BakeResolution: 40
+    m_AtlasSize: 1024
+    m_AO: 0
+    m_AOMaxDistance: 1
+    m_CompAOExponent: 1
+    m_CompAOExponentDirect: 0
+    m_Padding: 2
+    m_LightmapParameters: {fileID: 0}
+    m_LightmapsBakeMode: 1
+    m_TextureCompression: 1
+    m_FinalGather: 0
+    m_FinalGatherFiltering: 1
+    m_FinalGatherRayCount: 256
+    m_ReflectionCompression: 2
+    m_MixedBakeMode: 2
+    m_BakeBackend: 1
+    m_PVRSampling: 1
+    m_PVRDirectSampleCount: 32
+    m_PVRSampleCount: 500
+    m_PVRBounces: 2
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
+    m_PVRFilteringMode: 1
+    m_PVRCulling: 1
+    m_PVRFilteringGaussRadiusDirect: 1
+    m_PVRFilteringGaussRadiusIndirect: 5
+    m_PVRFilteringGaussRadiusAO: 2
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ShowResolutionOverlay: 1
+  m_LightingDataAsset: {fileID: 0}
+  m_UseShadowmask: 1
+--- !u!196 &4
+NavMeshSettings:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_BuildSettings:
+    serializedVersion: 2
+    agentTypeID: 0
+    agentRadius: 0.5
+    agentHeight: 2
+    agentSlope: 45
+    agentClimb: 0.4
+    ledgeDropHeight: 0
+    maxJumpAcrossDistance: 0
+    minRegionArea: 2
+    manualCellSize: 0
+    cellSize: 0.16666667
+    manualTileSize: 0
+    tileSize: 256
+    accuratePlacement: 0
+    debug:
+      m_Flags: 0
+  m_NavMeshData: {fileID: 0}
+--- !u!1001 &29472986
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 4.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 6.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114048294525163814, guid: 12b2a51748dd866449fea909132b3b07,
+        type: 2}
+      propertyPath: inputProvider
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1067808238723220, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_Name
+      value: TeleportingEnemy (4)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+  m_IsPrefabParent: 0
+--- !u!114 &119892713 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114281234270348236, guid: caa3a78c8297c6d4aa61f045aba5e5b4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1479307169}
+  m_Script: {fileID: 11500000, guid: d4d4c506b7d14716a950885bed3aaf01, type: 3}
+--- !u!4 &119892714 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4644533255977216, guid: caa3a78c8297c6d4aa61f045aba5e5b4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1479307169}
+--- !u!1 &128951553
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1559014622253016, guid: 293e7333ecb6bc54ca4c938d7335d9b2,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 128951555}
+  - component: {fileID: 128951554}
+  m_Layer: 0
+  m_Name: InputManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &128951554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114144755126138384, guid: 293e7333ecb6bc54ca4c938d7335d9b2,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 128951553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 581b3e3c96df0ef42aef16b63b27b87f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dontDestroyOnLoad: 1
+  _userData:
+    configVars:
+      updateLoop: 1
+      alwaysUseUnityInput: 0
+      windowsStandalonePrimaryInputSource: 0
+      osx_primaryInputSource: 0
+      linux_primaryInputSource: 0
+      windowsUWP_primaryInputSource: 0
+      xboxOne_primaryInputSource: 0
+      ps4_primaryInputSource: 0
+      webGL_primaryInputSource: 0
+      useXInput: 1
+      useNativeMouse: 1
+      useEnhancedDeviceSupport: 1
+      windowsStandalone_useSteamRawInputControllerWorkaround: 0
+      osxStandalone_useEnhancedDeviceSupport: 1
+      android_supportUnknownGamepads: 1
+      ps4_assignJoysticksByPS4JoyId: 1
+      useSteamControllerSupport: 1
+      platformVars_windowsStandalone:
+        disableKeyboard: 0
+        ignoreInputWhenAppNotInFocus: 1
+        useNativeKeyboard: 1
+        joystickRefreshRate: 240
+      platformVars_linuxStandalone:
+        disableKeyboard: 0
+        ignoreInputWhenAppNotInFocus: 1
+      platformVars_osxStandalone:
+        disableKeyboard: 0
+        ignoreInputWhenAppNotInFocus: 1
+      platformVars_windows8Store:
+        disableKeyboard: 0
+        ignoreInputWhenAppNotInFocus: 1
+      platformVars_windowsUWP:
+        disableKeyboard: 0
+        ignoreInputWhenAppNotInFocus: 1
+        useGamepadAPI: 1
+        useHIDAPI: 1
+      platformVars_iOS:
+        disableKeyboard: 0
+        ignoreInputWhenAppNotInFocus: 1
+      platformVars_tvOS:
+        disableKeyboard: 0
+        ignoreInputWhenAppNotInFocus: 1
+      platformVars_android:
+        disableKeyboard: 0
+        ignoreInputWhenAppNotInFocus: 1
+      platformVars_ps3:
+        disableKeyboard: 0
+        ignoreInputWhenAppNotInFocus: 1
+      platformVars_ps4:
+        disableKeyboard: 0
+        ignoreInputWhenAppNotInFocus: 1
+      platformVars_psVita:
+        disableKeyboard: 0
+        ignoreInputWhenAppNotInFocus: 1
+      platformVars_xbox360:
+        disableKeyboard: 0
+        ignoreInputWhenAppNotInFocus: 1
+      platformVars_xboxOne:
+        disableKeyboard: 0
+        ignoreInputWhenAppNotInFocus: 1
+      platformVars_wii:
+        disableKeyboard: 0
+        ignoreInputWhenAppNotInFocus: 1
+      platformVars_wiiu:
+        disableKeyboard: 0
+        ignoreInputWhenAppNotInFocus: 1
+      platformVars_switch:
+        disableKeyboard: 0
+        ignoreInputWhenAppNotInFocus: 1
+      platformVars_webGL:
+        disableKeyboard: 0
+        ignoreInputWhenAppNotInFocus: 1
+      maxJoysticksPerPlayer: 1
+      autoAssignJoysticks: 1
+      assignJoysticksToPlayingPlayersOnly: 0
+      distributeJoysticksEvenly: 1
+      reassignJoystickToPreviousOwnerOnReconnect: 1
+      defaultJoystickAxis2DDeadZoneType: 1
+      force4WayHats: 0
+      deferControllerConnectedEventsOnStart: 0
+      editorSettings:
+        exportConsts_useParentClass: 0
+        exportConsts_parentClassName: RewiredConsts
+        exportConsts_useNamespace: 1
+        exportConsts_namespace: Datenshi.Input.Constants
+        exportConsts_actions: 1
+        exportConsts_actionsClassName: Actions
+        exportConsts_actionsIncludeActionCategory: 0
+        exportConsts_actionsCreateClassesForActionCategories: 0
+        exportConsts_mapCategories: 1
+        exportConsts_mapCategoriesClassName: Categories
+        exportConsts_layouts: 1
+        exportConsts_layoutsClassName: Layouts
+        exportConsts_players: 1
+        exportConsts_playersClassName: Players
+        exportConsts_customControllers: 1
+        exportConsts_customControllersClassName: CustomController
+        exportConsts_customControllersAxesClassName: Axis
+        exportConsts_customControllersButtonsClassName: Button
+        exportConsts_allCapsConstantNames: 0
+    players:
+    - _id: 9999999
+      _name: System
+      _descriptiveName: System
+      _startPlaying: 1
+      _defaultJoystickMaps: []
+      _defaultMouseMaps: []
+      _defaultKeyboardMaps: []
+      _defaultCustomControllerMaps: []
+      _startingCustomControllers: []
+      _assignMouseOnStart: 1
+      _assignKeyboardOnStart: 1
+      _excludeFromControllerAutoAssignment: 1
+    - _id: 2
+      _name: Player1
+      _descriptiveName: Player1
+      _startPlaying: 1
+      _defaultJoystickMaps:
+      - _enabled: 1
+        _categoryId: 0
+        _layoutId: 0
+      _defaultMouseMaps: []
+      _defaultKeyboardMaps:
+      - _enabled: 1
+        _categoryId: 0
+        _layoutId: 0
+      _defaultCustomControllerMaps: []
+      _startingCustomControllers: []
+      _assignMouseOnStart: 1
+      _assignKeyboardOnStart: 1
+      _excludeFromControllerAutoAssignment: 0
+    actions:
+    - _id: 0
+      _name: Horizontal
+      _type: 0
+      _descriptiveName: XAxis
+      _positiveDescriptiveName: Left
+      _negativeDescriptiveName: Right
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 0
+    - _id: 1
+      _name: Vertical
+      _type: 0
+      _descriptiveName: YAxis
+      _positiveDescriptiveName: Up
+      _negativeDescriptiveName: Down
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 0
+    - _id: 2
+      _name: Jump
+      _type: 1
+      _descriptiveName: Jump
+      _positiveDescriptiveName: 
+      _negativeDescriptiveName: 
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 0
+    - _id: 5
+      _name: Attack
+      _type: 1
+      _descriptiveName: Attack
+      _positiveDescriptiveName: 
+      _negativeDescriptiveName: 
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 0
+    - _id: 6
+      _name: Walk
+      _type: 1
+      _descriptiveName: Walk
+      _positiveDescriptiveName: 
+      _negativeDescriptiveName: 
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 0
+    - _id: 7
+      _name: Dash
+      _type: 1
+      _descriptiveName: Dash
+      _positiveDescriptiveName: 
+      _negativeDescriptiveName: 
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 0
+    - _id: 8
+      _name: Defend
+      _type: 1
+      _descriptiveName: Defend
+      _positiveDescriptiveName: 
+      _negativeDescriptiveName: 
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 0
+    - _id: 9
+      _name: Submit
+      _type: 1
+      _descriptiveName: Submit
+      _positiveDescriptiveName: 
+      _negativeDescriptiveName: 
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 0
+    - _id: 10
+      _name: Cancel
+      _type: 1
+      _descriptiveName: Cancel
+      _positiveDescriptiveName: 
+      _negativeDescriptiveName: 
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 0
+    - _id: 11
+      _name: UIHorizontal
+      _type: 1
+      _descriptiveName: UIHorizontal
+      _positiveDescriptiveName: 
+      _negativeDescriptiveName: 
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 0
+    - _id: 12
+      _name: UIVertical
+      _type: 1
+      _descriptiveName: UIVertical
+      _positiveDescriptiveName: 
+      _negativeDescriptiveName: 
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 0
+    actionCategories:
+    - _name: Default
+      _descriptiveName: Gameplay
+      _tag: 
+      _id: 0
+      _userAssignable: 1
+    actionCategoryMap:
+      list:
+      - categoryId: 0
+        actionIds: 00000000010000000200000006000000050000000700000008000000090000000a0000000b0000000c000000
+    inputBehaviors:
+    - _id: 0
+      _name: Default
+      _joystickAxisSensitivity: 1
+      _digitalAxisSimulation: 1
+      _digitalAxisSnap: 1
+      _digitalAxisInstantReverse: 0
+      _digitalAxisGravity: 30
+      _digitalAxisSensitivity: 30
+      _mouseXYAxisMode: 0
+      _mouseOtherAxisMode: 0
+      _mouseXYAxisSensitivity: 1
+      _mouseXYAxisDeltaCalc: 0
+      _mouseOtherAxisSensitivity: 1
+      _customControllerAxisSensitivity: 1
+      _buttonDoublePressSpeed: 0.3
+      _buttonShortPressTime: 0.25
+      _buttonShortPressExpiresIn: 0
+      _buttonLongPressTime: 1
+      _buttonLongPressExpiresIn: 0
+      _buttonDeadZone: 0.5
+      _buttonDownBuffer: 0
+      _buttonRepeatRate: 30
+      _buttonRepeatDelay: 0
+    mapCategories:
+    - _name: Default
+      _descriptiveName: Default
+      _tag: 
+      _id: 0
+      _userAssignable: 1
+      _checkConflictsWithAllCategories: 1
+      _checkConflictsCategoryIds: 
+    joystickLayouts:
+    - _name: Default
+      _descriptiveName: Default
+      _id: 0
+    keyboardLayouts:
+    - _name: Default
+      _descriptiveName: Default
+      _id: 0
+    mouseLayouts:
+    - _name: Default
+      _descriptiveName: Default
+      _id: 0
+    customControllerLayouts:
+    - _name: Default
+      _descriptiveName: Default
+      _id: 0
+    joystickMaps:
+    - id: 1
+      categoryId: 0
+      layoutId: 0
+      name: 
+      hardwareGuidString: 83b427e4-086f-47f3-bb06-be266abd1ca5
+      customControllerUid: 0
+      actionElementMaps:
+      - _actionCategoryId: 0
+        _actionId: 0
+        _elementType: 0
+        _elementIdentifierId: 0
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 1
+        _elementType: 0
+        _elementIdentifierId: 1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 5
+        _elementType: 1
+        _elementIdentifierId: 7
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 7
+        _elementType: 1
+        _elementIdentifierId: 5
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 2
+        _elementType: 1
+        _elementIdentifierId: 4
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 9
+        _elementType: 1
+        _elementIdentifierId: 7
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 10
+        _elementType: 1
+        _elementIdentifierId: 5
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 8
+        _elementType: 1
+        _elementIdentifierId: 10
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 12
+        _elementType: 1
+        _elementIdentifierId: 19
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 12
+        _elementType: 1
+        _elementIdentifierId: 21
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 1
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 11
+        _elementType: 1
+        _elementIdentifierId: 20
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 1
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 11
+        _elementType: 1
+        _elementIdentifierId: 22
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+    keyboardMaps:
+    - id: 0
+      categoryId: 0
+      layoutId: 0
+      name: 
+      hardwareGuidString: 
+      customControllerUid: 0
+      actionElementMaps:
+      - _actionCategoryId: 0
+        _actionId: 2
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 32
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 1
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 119
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 0
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 1
+        _keyboardKeyCode: 97
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 1
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 1
+        _keyboardKeyCode: 115
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 0
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 100
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 8
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 304
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 5
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 106
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 7
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 107
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 6
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 306
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 9
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 13
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 10
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 27
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 11
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 275
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 11
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 1
+        _keyboardKeyCode: 276
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 12
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 273
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 12
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 1
+        _keyboardKeyCode: 274
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 1
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 273
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 1
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 1
+        _keyboardKeyCode: 274
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 0
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 1
+        _keyboardKeyCode: 276
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 0
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 275
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 2
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 122
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 5
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 120
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 7
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 99
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+    mouseMaps: []
+    customControllerMaps: []
+    customControllers: []
+    playerIdCounter: 4
+    actionIdCounter: 15
+    actionCategoryIdCounter: 3
+    inputBehaviorIdCounter: 1
+    mapCategoryIdCounter: 1
+    joystickLayoutIdCounter: 1
+    keyboardLayoutIdCounter: 2
+    mouseLayoutIdCounter: 1
+    customControllerLayoutIdCounter: 1
+    joystickMapIdCounter: 2
+    keyboardMapIdCounter: 2
+    mouseMapIdCounter: 0
+    customControllerMapIdCounter: 0
+    customControllerIdCounter: 0
+  _controllerDataFiles: {fileID: 11400000, guid: d21d2b20df8369642b76aafbb2576ba7,
+    type: 2}
+--- !u!4 &128951555
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4894624296538230, guid: 293e7333ecb6bc54ca4c938d7335d9b2,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 128951553}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &154576442
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 154576446}
+  - component: {fileID: 154576445}
+  - component: {fileID: 154576444}
+  - component: {fileID: 154576443}
+  m_Layer: 9
+  m_Name: Cube (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &154576443
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 154576442}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!23 &154576444
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 154576442}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &154576445
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 154576442}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &154576446
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 154576442}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 23.5, y: 2.5, z: 0}
+  m_LocalScale: {x: 25, y: 5, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &238697345
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 238697348}
+  - component: {fileID: 238697347}
+  - component: {fileID: 238697346}
+  - component: {fileID: 238697350}
+  - component: {fileID: 238697349}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &238697346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 238697345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4abd8a13a4e84155a6044764073ce348, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 238697347}
+  currentEntity: {fileID: 119892713}
+  Fx: {fileID: 0}
+  LowCutoff: 440
+  DefendOverrideAmount: 1
+  DefendOverrideDuration: 0.5
+  OnEntityChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Datenshi.Scripts.Game.PlayerEntityChangedEvent, Datenshi-Game, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &238697347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 238697345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ea78cbfe4884ac297d21f8e46c4143d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerID: 0
+  DebugInput: 0
+  x: 0
+  y: 0
+  Jump: 0
+  Attack: 0
+  Walk: 0
+  Dash: 0
+  Submit: 0
+  Defend: 0
+  Controller: {fileID: 238697346}
+--- !u!4 &238697348
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 238697345}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.0262856, y: -1.7478458, z: -0.10125468}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &238697349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 238697345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5109c3f890a54b0697bb84dd548fb1ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LowPassFilter: {fileID: 0}
+--- !u!114 &238697350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 238697345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 124fbd05a3264c44ea4b9799d9204d81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AllowPlayerInput: 1
+  AllowAIInput: 1
+--- !u!1001 &426028905
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 10.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 9.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114048294525163814, guid: 12b2a51748dd866449fea909132b3b07,
+        type: 2}
+      propertyPath: inputProvider
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1067808238723220, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_Name
+      value: TeleportingEnemy (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &439030695
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -11.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 7.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114048294525163814, guid: 12b2a51748dd866449fea909132b3b07,
+        type: 2}
+      propertyPath: inputProvider
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1067808238723220, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_Name
+      value: TeleportingEnemy (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1 &662441419
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 662441422}
+  - component: {fileID: 662441421}
+  - component: {fileID: 662441420}
+  m_Layer: 0
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &662441420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 662441419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45cc2d84fb7b42f787202d7309351aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodes:
+  - position: {x: -27, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -26, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -25, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -24, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -23, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -22, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -21, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -20, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -19, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -18, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -17, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -16, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -15, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -14, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -13, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -12, y: -1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -11, y: -1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -10, y: -1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -9, y: -1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -8, y: -1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -7, y: -1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -6, y: -1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -5, y: -1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -4, y: -1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -3, y: -1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -2, y: -1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -1, y: -1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 0, y: -1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 1, y: -1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 2, y: -1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 3, y: -1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 4, y: -1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 5, y: -1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 6, y: -1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 7, y: -1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 8, y: -1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 9, y: -1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 10, y: -1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 11, y: -1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 12, y: -1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 13, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 14, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 15, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 16, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 17, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 18, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 19, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 20, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 21, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 22, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 23, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 24, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 25, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 26, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 27, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 28, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 29, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 30, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 31, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 32, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 33, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 34, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 35, y: -1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -27, y: 0}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -26, y: 0}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -25, y: 0}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -24, y: 0}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -23, y: 0}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -22, y: 0}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -21, y: 0}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -20, y: 0}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -19, y: 0}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -18, y: 0}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -17, y: 0}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -16, y: 0}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -15, y: 0}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -14, y: 0}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -13, y: 0}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -12, y: 0}
+    type: 4
+    linearLinks:
+    - destination: 79
+      origin: 78
+    gravityLinks: []
+  - position: {x: -11, y: 0}
+    type: 3
+    linearLinks:
+    - destination: 78
+      origin: 79
+    - destination: 80
+      origin: 79
+    gravityLinks: []
+  - position: {x: -10, y: 0}
+    type: 3
+    linearLinks:
+    - destination: 79
+      origin: 80
+    - destination: 81
+      origin: 80
+    gravityLinks: []
+  - position: {x: -9, y: 0}
+    type: 3
+    linearLinks:
+    - destination: 80
+      origin: 81
+    - destination: 82
+      origin: 81
+    gravityLinks: []
+  - position: {x: -8, y: 0}
+    type: 3
+    linearLinks:
+    - destination: 81
+      origin: 82
+    - destination: 83
+      origin: 82
+    gravityLinks: []
+  - position: {x: -7, y: 0}
+    type: 3
+    linearLinks:
+    - destination: 82
+      origin: 83
+    - destination: 84
+      origin: 83
+    gravityLinks: []
+  - position: {x: -6, y: 0}
+    type: 3
+    linearLinks:
+    - destination: 83
+      origin: 84
+    - destination: 85
+      origin: 84
+    gravityLinks: []
+  - position: {x: -5, y: 0}
+    type: 3
+    linearLinks:
+    - destination: 84
+      origin: 85
+    - destination: 86
+      origin: 85
+    gravityLinks: []
+  - position: {x: -4, y: 0}
+    type: 3
+    linearLinks:
+    - destination: 85
+      origin: 86
+    - destination: 87
+      origin: 86
+    gravityLinks: []
+  - position: {x: -3, y: 0}
+    type: 3
+    linearLinks:
+    - destination: 86
+      origin: 87
+    - destination: 88
+      origin: 87
+    gravityLinks: []
+  - position: {x: -2, y: 0}
+    type: 3
+    linearLinks:
+    - destination: 87
+      origin: 88
+    - destination: 89
+      origin: 88
+    gravityLinks: []
+  - position: {x: -1, y: 0}
+    type: 3
+    linearLinks:
+    - destination: 88
+      origin: 89
+    - destination: 90
+      origin: 89
+    gravityLinks: []
+  - position: {x: 0, y: 0}
+    type: 3
+    linearLinks:
+    - destination: 89
+      origin: 90
+    - destination: 91
+      origin: 90
+    gravityLinks: []
+  - position: {x: 1, y: 0}
+    type: 3
+    linearLinks:
+    - destination: 90
+      origin: 91
+    - destination: 92
+      origin: 91
+    gravityLinks: []
+  - position: {x: 2, y: 0}
+    type: 3
+    linearLinks:
+    - destination: 91
+      origin: 92
+    - destination: 93
+      origin: 92
+    gravityLinks: []
+  - position: {x: 3, y: 0}
+    type: 3
+    linearLinks:
+    - destination: 92
+      origin: 93
+    - destination: 94
+      origin: 93
+    gravityLinks: []
+  - position: {x: 4, y: 0}
+    type: 3
+    linearLinks:
+    - destination: 93
+      origin: 94
+    - destination: 95
+      origin: 94
+    gravityLinks: []
+  - position: {x: 5, y: 0}
+    type: 3
+    linearLinks:
+    - destination: 94
+      origin: 95
+    - destination: 96
+      origin: 95
+    gravityLinks: []
+  - position: {x: 6, y: 0}
+    type: 3
+    linearLinks:
+    - destination: 95
+      origin: 96
+    - destination: 97
+      origin: 96
+    gravityLinks: []
+  - position: {x: 7, y: 0}
+    type: 3
+    linearLinks:
+    - destination: 96
+      origin: 97
+    - destination: 98
+      origin: 97
+    gravityLinks: []
+  - position: {x: 8, y: 0}
+    type: 3
+    linearLinks:
+    - destination: 97
+      origin: 98
+    - destination: 99
+      origin: 98
+    gravityLinks: []
+  - position: {x: 9, y: 0}
+    type: 3
+    linearLinks:
+    - destination: 98
+      origin: 99
+    - destination: 100
+      origin: 99
+    gravityLinks: []
+  - position: {x: 10, y: 0}
+    type: 5
+    linearLinks:
+    - destination: 99
+      origin: 100
+    gravityLinks: []
+  - position: {x: 11, y: 0}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 12, y: 0}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 13, y: 0}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 14, y: 0}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 15, y: 0}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 16, y: 0}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 17, y: 0}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 18, y: 0}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 19, y: 0}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 20, y: 0}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 21, y: 0}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 22, y: 0}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 23, y: 0}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 24, y: 0}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 25, y: 0}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 26, y: 0}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 27, y: 0}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 28, y: 0}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 29, y: 0}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 30, y: 0}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 31, y: 0}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 32, y: 0}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 33, y: 0}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 34, y: 0}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 35, y: 0}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -27, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -26, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -25, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -24, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -23, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -22, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -21, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -20, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -19, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -18, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -17, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -16, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -15, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -14, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -13, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -12, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -11, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -10, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -9, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -8, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -7, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -6, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -5, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -4, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -3, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -2, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -1, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 0, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 1, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 2, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 3, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 4, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 5, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 6, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 7, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 8, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 9, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 10, y: 1}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 11, y: 1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 12, y: 1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 13, y: 1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 14, y: 1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 15, y: 1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 16, y: 1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 17, y: 1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 18, y: 1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 19, y: 1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 20, y: 1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 21, y: 1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 22, y: 1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 23, y: 1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 24, y: 1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 25, y: 1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 26, y: 1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 27, y: 1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 28, y: 1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 29, y: 1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 30, y: 1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 31, y: 1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 32, y: 1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 33, y: 1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 34, y: 1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 35, y: 1}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -27, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -26, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -25, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -24, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -23, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -22, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -21, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -20, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -19, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -18, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -17, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -16, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -15, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -14, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -13, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -12, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -11, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -10, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -9, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -8, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -7, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -6, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -5, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -4, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -3, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -2, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -1, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 0, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 1, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 2, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 3, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 4, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 5, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 6, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 7, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 8, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 9, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 10, y: 2}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 11, y: 2}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 12, y: 2}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 13, y: 2}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 14, y: 2}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 15, y: 2}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 16, y: 2}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 17, y: 2}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 18, y: 2}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 19, y: 2}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 20, y: 2}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 21, y: 2}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 22, y: 2}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 23, y: 2}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 24, y: 2}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 25, y: 2}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 26, y: 2}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 27, y: 2}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 28, y: 2}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 29, y: 2}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 30, y: 2}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 31, y: 2}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 32, y: 2}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 33, y: 2}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 34, y: 2}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 35, y: 2}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -27, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -26, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -25, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -24, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -23, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -22, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -21, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -20, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -19, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -18, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -17, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -16, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -15, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -14, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -13, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -12, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -11, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -10, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -9, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -8, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -7, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -6, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -5, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -4, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -3, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -2, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -1, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 0, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 1, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 2, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 3, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 4, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 5, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 6, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 7, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 8, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 9, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 10, y: 3}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 11, y: 3}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 12, y: 3}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 13, y: 3}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 14, y: 3}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 15, y: 3}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 16, y: 3}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 17, y: 3}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 18, y: 3}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 19, y: 3}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 20, y: 3}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 21, y: 3}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 22, y: 3}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 23, y: 3}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 24, y: 3}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 25, y: 3}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 26, y: 3}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 27, y: 3}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 28, y: 3}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 29, y: 3}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 30, y: 3}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 31, y: 3}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 32, y: 3}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 33, y: 3}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 34, y: 3}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 35, y: 3}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -27, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -26, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -25, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -24, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -23, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -22, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -21, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -20, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -19, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -18, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -17, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -16, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -15, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -14, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -13, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -12, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -11, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -10, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -9, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -8, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -7, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -6, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -5, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -4, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -3, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -2, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -1, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 0, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 1, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 2, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 3, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 4, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 5, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 6, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 7, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 8, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 9, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 10, y: 4}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 11, y: 4}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 12, y: 4}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 13, y: 4}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 14, y: 4}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 15, y: 4}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 16, y: 4}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 17, y: 4}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 18, y: 4}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 19, y: 4}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 20, y: 4}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 21, y: 4}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 22, y: 4}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 23, y: 4}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 24, y: 4}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 25, y: 4}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 26, y: 4}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 27, y: 4}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 28, y: 4}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 29, y: 4}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 30, y: 4}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 31, y: 4}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 32, y: 4}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 33, y: 4}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 34, y: 4}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 35, y: 4}
+    type: 2
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -27, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -26, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -25, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -24, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -23, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -22, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -21, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -20, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -19, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -18, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -17, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -16, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -15, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -14, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -13, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -12, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -11, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -10, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -9, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -8, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -7, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -6, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -5, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -4, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -3, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -2, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -1, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 0, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 1, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 2, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 3, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 4, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 5, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 6, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 7, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 8, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 9, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 10, y: 5}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 11, y: 5}
+    type: 4
+    linearLinks:
+    - destination: 417
+      origin: 416
+    gravityLinks: []
+  - position: {x: 12, y: 5}
+    type: 3
+    linearLinks:
+    - destination: 416
+      origin: 417
+    - destination: 418
+      origin: 417
+    gravityLinks: []
+  - position: {x: 13, y: 5}
+    type: 3
+    linearLinks:
+    - destination: 417
+      origin: 418
+    - destination: 419
+      origin: 418
+    gravityLinks: []
+  - position: {x: 14, y: 5}
+    type: 3
+    linearLinks:
+    - destination: 418
+      origin: 419
+    - destination: 420
+      origin: 419
+    gravityLinks: []
+  - position: {x: 15, y: 5}
+    type: 3
+    linearLinks:
+    - destination: 419
+      origin: 420
+    - destination: 421
+      origin: 420
+    gravityLinks: []
+  - position: {x: 16, y: 5}
+    type: 3
+    linearLinks:
+    - destination: 420
+      origin: 421
+    - destination: 422
+      origin: 421
+    gravityLinks: []
+  - position: {x: 17, y: 5}
+    type: 3
+    linearLinks:
+    - destination: 421
+      origin: 422
+    - destination: 423
+      origin: 422
+    gravityLinks: []
+  - position: {x: 18, y: 5}
+    type: 3
+    linearLinks:
+    - destination: 422
+      origin: 423
+    - destination: 424
+      origin: 423
+    gravityLinks: []
+  - position: {x: 19, y: 5}
+    type: 3
+    linearLinks:
+    - destination: 423
+      origin: 424
+    - destination: 425
+      origin: 424
+    gravityLinks: []
+  - position: {x: 20, y: 5}
+    type: 3
+    linearLinks:
+    - destination: 424
+      origin: 425
+    - destination: 426
+      origin: 425
+    gravityLinks: []
+  - position: {x: 21, y: 5}
+    type: 3
+    linearLinks:
+    - destination: 425
+      origin: 426
+    - destination: 427
+      origin: 426
+    gravityLinks: []
+  - position: {x: 22, y: 5}
+    type: 3
+    linearLinks:
+    - destination: 426
+      origin: 427
+    - destination: 428
+      origin: 427
+    gravityLinks: []
+  - position: {x: 23, y: 5}
+    type: 3
+    linearLinks:
+    - destination: 427
+      origin: 428
+    - destination: 429
+      origin: 428
+    gravityLinks: []
+  - position: {x: 24, y: 5}
+    type: 3
+    linearLinks:
+    - destination: 428
+      origin: 429
+    - destination: 430
+      origin: 429
+    gravityLinks: []
+  - position: {x: 25, y: 5}
+    type: 3
+    linearLinks:
+    - destination: 429
+      origin: 430
+    - destination: 431
+      origin: 430
+    gravityLinks: []
+  - position: {x: 26, y: 5}
+    type: 3
+    linearLinks:
+    - destination: 430
+      origin: 431
+    - destination: 432
+      origin: 431
+    gravityLinks: []
+  - position: {x: 27, y: 5}
+    type: 3
+    linearLinks:
+    - destination: 431
+      origin: 432
+    - destination: 433
+      origin: 432
+    gravityLinks: []
+  - position: {x: 28, y: 5}
+    type: 3
+    linearLinks:
+    - destination: 432
+      origin: 433
+    - destination: 434
+      origin: 433
+    gravityLinks: []
+  - position: {x: 29, y: 5}
+    type: 3
+    linearLinks:
+    - destination: 433
+      origin: 434
+    - destination: 435
+      origin: 434
+    gravityLinks: []
+  - position: {x: 30, y: 5}
+    type: 3
+    linearLinks:
+    - destination: 434
+      origin: 435
+    - destination: 436
+      origin: 435
+    gravityLinks: []
+  - position: {x: 31, y: 5}
+    type: 3
+    linearLinks:
+    - destination: 435
+      origin: 436
+    - destination: 437
+      origin: 436
+    gravityLinks: []
+  - position: {x: 32, y: 5}
+    type: 3
+    linearLinks:
+    - destination: 436
+      origin: 437
+    - destination: 438
+      origin: 437
+    gravityLinks: []
+  - position: {x: 33, y: 5}
+    type: 3
+    linearLinks:
+    - destination: 437
+      origin: 438
+    - destination: 439
+      origin: 438
+    gravityLinks: []
+  - position: {x: 34, y: 5}
+    type: 3
+    linearLinks:
+    - destination: 438
+      origin: 439
+    - destination: 440
+      origin: 439
+    gravityLinks: []
+  - position: {x: 35, y: 5}
+    type: 5
+    linearLinks:
+    - destination: 439
+      origin: 440
+    gravityLinks: []
+  - position: {x: -27, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -26, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -25, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -24, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -23, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -22, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -21, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -20, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -19, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -18, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -17, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -16, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -15, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -14, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -13, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -12, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -11, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -10, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -9, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -8, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -7, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -6, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -5, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -4, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -3, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -2, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -1, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 0, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 1, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 2, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 3, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 4, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 5, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 6, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 7, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 8, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 9, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 10, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 11, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 12, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 13, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 14, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 15, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 16, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 17, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 18, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 19, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 20, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 21, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 22, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 23, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 24, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 25, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 26, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 27, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 28, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 29, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 30, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 31, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 32, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 33, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 34, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 35, y: 6}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -27, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -26, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -25, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -24, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -23, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -22, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -21, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -20, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -19, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -18, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -17, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -16, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -15, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -14, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -13, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -12, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -11, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -10, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -9, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -8, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -7, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -6, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -5, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -4, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -3, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -2, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -1, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 0, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 1, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 2, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 3, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 4, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 5, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 6, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 7, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 8, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 9, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 10, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 11, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 12, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 13, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 14, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 15, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 16, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 17, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 18, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 19, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 20, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 21, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 22, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 23, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 24, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 25, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 26, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 27, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 28, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 29, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 30, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 31, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 32, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 33, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 34, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 35, y: 7}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -27, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -26, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -25, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -24, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -23, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -22, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -21, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -20, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -19, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -18, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -17, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -16, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -15, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -14, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -13, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -12, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -11, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -10, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -9, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -8, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -7, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -6, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -5, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -4, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -3, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -2, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -1, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 0, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 1, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 2, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 3, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 4, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 5, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 6, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 7, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 8, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 9, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 10, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 11, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 12, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 13, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 14, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 15, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 16, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 17, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 18, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 19, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 20, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 21, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 22, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 23, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 24, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 25, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 26, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 27, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 28, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 29, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 30, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 31, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 32, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 33, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 34, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 35, y: 8}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -27, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -26, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -25, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -24, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -23, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -22, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -21, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -20, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -19, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -18, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -17, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -16, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -15, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -14, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -13, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -12, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -11, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -10, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -9, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -8, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -7, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -6, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -5, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -4, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -3, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -2, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -1, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 0, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 1, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 2, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 3, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 4, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 5, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 6, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 7, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 8, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 9, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 10, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 11, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 12, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 13, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 14, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 15, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 16, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 17, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 18, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 19, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 20, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 21, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 22, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 23, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 24, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 25, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 26, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 27, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 28, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 29, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 30, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 31, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 32, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 33, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 34, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 35, y: 9}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -27, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -26, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -25, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -24, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -23, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -22, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -21, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -20, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -19, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -18, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -17, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -16, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -15, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -14, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -13, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -12, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -11, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -10, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -9, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -8, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -7, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -6, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -5, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -4, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -3, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -2, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -1, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 0, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 1, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 2, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 3, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 4, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 5, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 6, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 7, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 8, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 9, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 10, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 11, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 12, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 13, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 14, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 15, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 16, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 17, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 18, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 19, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 20, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 21, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 22, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 23, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 24, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 25, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 26, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 27, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 28, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 29, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 30, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 31, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 32, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 33, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 34, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 35, y: 10}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -27, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -26, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -25, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -24, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -23, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -22, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -21, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -20, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -19, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -18, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -17, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -16, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -15, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -14, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -13, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -12, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -11, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -10, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -9, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -8, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -7, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -6, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -5, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -4, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -3, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -2, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -1, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 0, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 1, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 2, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 3, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 4, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 5, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 6, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 7, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 8, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 9, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 10, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 11, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 12, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 13, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 14, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 15, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 16, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 17, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 18, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 19, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 20, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 21, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 22, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 23, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 24, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 25, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 26, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 27, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 28, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 29, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 30, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 31, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 32, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 33, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 34, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 35, y: 11}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -27, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -26, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -25, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -24, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -23, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -22, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -21, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -20, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -19, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -18, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -17, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -16, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -15, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -14, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -13, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -12, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -11, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -10, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -9, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -8, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -7, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -6, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -5, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -4, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -3, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -2, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -1, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 0, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 1, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 2, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 3, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 4, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 5, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 6, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 7, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 8, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 9, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 10, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 11, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 12, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 13, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 14, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 15, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 16, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 17, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 18, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 19, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 20, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 21, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 22, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 23, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 24, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 25, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 26, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 27, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 28, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 29, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 30, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 31, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 32, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 33, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 34, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 35, y: 12}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -27, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -26, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -25, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -24, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -23, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -22, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -21, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -20, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -19, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -18, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -17, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -16, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -15, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -14, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -13, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -12, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -11, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -10, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -9, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -8, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -7, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -6, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -5, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -4, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -3, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -2, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -1, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 0, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 1, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 2, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 3, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 4, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 5, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 6, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 7, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 8, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 9, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 10, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 11, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 12, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 13, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 14, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 15, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 16, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 17, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 18, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 19, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 20, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 21, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 22, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 23, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 24, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 25, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 26, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 27, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 28, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 29, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 30, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 31, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 32, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 33, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 34, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 35, y: 13}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -27, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -26, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -25, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -24, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -23, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -22, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -21, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -20, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -19, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -18, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -17, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -16, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -15, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -14, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -13, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -12, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -11, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -10, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -9, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -8, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -7, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -6, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -5, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -4, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -3, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -2, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: -1, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 0, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 1, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 2, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 3, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 4, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 5, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 6, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 7, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 8, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 9, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 10, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 11, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 12, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 13, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 14, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 15, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 16, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 17, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 18, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 19, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 20, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 21, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 22, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 23, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 24, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 25, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 26, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 27, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 28, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 29, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 30, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 31, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 32, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 33, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 34, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  - position: {x: 35, y: 14}
+    type: 1
+    linearLinks: []
+    gravityLinks: []
+  min: {x: -27, y: -1}
+  max: {x: 35, y: 14}
+  Grid: {fileID: 662441421}
+  LayerMask:
+    serializedVersion: 2
+    m_Bits: 512
+--- !u!156049354 &662441421
+Grid:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 662441419}
+  m_Enabled: 1
+  m_CellSize: {x: 1, y: 1, z: 1}
+  m_CellGap: {x: 0, y: 0, z: 0}
+  m_CellLayout: 0
+  m_CellSwizzle: 0
+--- !u!4 &662441422
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 662441419}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.11041097}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &730453503
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 730453507}
+  - component: {fileID: 730453506}
+  - component: {fileID: 730453505}
+  - component: {fileID: 730453504}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!81 &730453504
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 730453503}
+  m_Enabled: 1
+--- !u!124 &730453505
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 730453503}
+  m_Enabled: 1
+--- !u!20 &730453506
+Camera:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 730453503}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!4 &730453507
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 730453503}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -17.32}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 119892714}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &732058151
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 732058155}
+  - component: {fileID: 732058154}
+  - component: {fileID: 732058153}
+  - component: {fileID: 732058152}
+  m_Layer: 9
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &732058152
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 732058151}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!23 &732058153
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 732058151}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &732058154
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 732058151}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &732058155
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 732058151}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5, y: -0.5, z: 0}
+  m_LocalScale: {x: 25, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &830411099
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 830411101}
+  - component: {fileID: 830411100}
+  m_Layer: 0
+  m_Name: Directional Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!108 &830411100
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 830411099}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1
+  m_Range: 10
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+--- !u!4 &830411101
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 830411099}
+  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalPosition: {x: 0.4199592, y: 3.1341782, z: -0.35668355}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1001 &916333729
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 8.038747
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.7845273
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114048294525163814, guid: 12b2a51748dd866449fea909132b3b07,
+        type: 2}
+      propertyPath: inputProvider
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &1479307169
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4644533255977216, guid: caa3a78c8297c6d4aa61f045aba5e5b4, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4644533255977216, guid: caa3a78c8297c6d4aa61f045aba5e5b4, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 4644533255977216, guid: caa3a78c8297c6d4aa61f045aba5e5b4, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4644533255977216, guid: caa3a78c8297c6d4aa61f045aba5e5b4, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4644533255977216, guid: caa3a78c8297c6d4aa61f045aba5e5b4, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4644533255977216, guid: caa3a78c8297c6d4aa61f045aba5e5b4, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4644533255977216, guid: caa3a78c8297c6d4aa61f045aba5e5b4, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4644533255977216, guid: caa3a78c8297c6d4aa61f045aba5e5b4, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114281234270348236, guid: caa3a78c8297c6d4aa61f045aba5e5b4,
+        type: 2}
+      propertyPath: inputProvider
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114281234270348236, guid: caa3a78c8297c6d4aa61f045aba5e5b4,
+        type: 2}
+      propertyPath: invulnerable
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: caa3a78c8297c6d4aa61f045aba5e5b4, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &1927363072
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -3.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 10.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058186533410472, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 114048294525163814, guid: 12b2a51748dd866449fea909132b3b07,
+        type: 2}
+      propertyPath: inputProvider
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1067808238723220, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+      propertyPath: m_Name
+      value: TeleportingEnemy (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 12b2a51748dd866449fea909132b3b07, type: 2}
+  m_IsPrefabParent: 0

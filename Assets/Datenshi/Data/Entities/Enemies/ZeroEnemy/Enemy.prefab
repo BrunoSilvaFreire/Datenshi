@@ -86,8 +86,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4217494877118616}
-  - component: {fileID: 114297920940230108}
   - component: {fileID: 114708593015091422}
+  - component: {fileID: 114309230044429526}
+  - component: {fileID: 114276707588090476}
   m_Layer: 12
   m_Name: Hikari_Managers
   m_TagString: Untagged
@@ -145,9 +146,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4644533255977216}
+  - component: {fileID: 114277036908319746}
   - component: {fileID: 114281234270348236}
-  - component: {fileID: 114743229920002802}
-  - component: {fileID: 114100418287594798}
+  - component: {fileID: 114447165197201082}
   m_Layer: 12
   m_Name: Enemy
   m_TagString: Untagged
@@ -188,7 +189,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1896484453590728}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 115.89, y: 2.86, z: 0}
+  m_LocalPosition: {x: -100.33, y: 9.58, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4654424630026524}
@@ -285,54 +286,69 @@ AudioSource:
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
-    - serializedVersion: 2
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 1
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   panLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
@@ -353,27 +369,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114100418287594798
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1896484453590728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10275570aeb5478989d015bf3362c9bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentState: {fileID: 11400000, guid: a57fcb18cd616724d8b7e1c95d5b9ac2, type: 2}
-  Entity: {fileID: 114281234270348236}
-  Horizontal: 0
-  Vertical: 0
-  Jump: 0
-  Attack: 0
-  Walk: 0
-  Dash: 0
-  Submit: 0
-  Defend: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114167975072496122
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -425,6 +421,81 @@ MonoBehaviour:
   SubHealthDelay: 1
   SubHealthAnimationDuration: 1
   Entity: {fileID: 114281234270348236}
+--- !u!114 &114276707588090476
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1511377753782900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d7b55c7ecdb49a4a89fa5e6f9022861, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startWhenEnabled: 1
+  pauseWhenDisabled: 0
+  restartWhenComplete: 1
+  logTaskChanges: 0
+  group: 0
+  resetValuesOnRestart: 0
+  externalBehavior: {fileID: 0}
+  mBehaviorSource:
+    behaviorName: Main
+    behaviorDescription: 
+    mTaskData:
+      types:
+      - BehaviorDesigner.Runtime.Tasks.EntryTask
+      - BehaviorDesigner.Runtime.Tasks.Selector
+      - BehaviorDesigner.Runtime.Tasks.Sequence
+      - Datenshi.Scripts.Behaviours.Tasks.HasCombatTarget
+      - Datenshi.Scripts.Behaviours.Tasks.StayCloseToTarget
+      - Datenshi.Scripts.Behaviours.Tasks.SetInput
+      - BehaviorDesigner.Runtime.Tasks.Wait
+      - Datenshi.Scripts.Behaviours.Tasks.TriggerAttack
+      - BehaviorDesigner.Runtime.Tasks.Sequence
+      - Datenshi.Scripts.Behaviours.Tasks.CloseToCamera
+      - Datenshi.Scripts.Behaviours.Tasks.PatrolTask
+      parentIndex: ffffffff00000000010000000200000002000000020000000200000002000000010000000800000008000000
+      startIndex: 030000000d000000180000002300000031000000460000005900000073000000840000008f0000009b000000
+      variableStartIndex: 00000000
+      JSONSerialization: 
+      fieldSerializationData:
+        typeName: []
+        fieldNameHash: f9be55564aaa52567707a1042944782b951203e811c37978c4a37522ae07a096e44d14616fd219c3a5f3b63149269a1caac4f9012944782b951203e811c37978c4a37522ae07a096e44d14616fd219c3a5f3b63149269a1caac4f9018690b4b22944782b951203e811c37978c4a37522ae07a096e44d14616fd219c3a5f3b63149269a1caac4f9018690b4b22944782b951203e811c37978c4a37522ae07a096e44d14616fd219c3a5f3b63149269a1caac4f901ff92f180f85147d7493d44d7769a92852944782b951203e811c37978c4a37522ae07a096e44d14616fd219c3a5f3b63149269a1caac4f901ab66e3565784e655ff92f180f85147d7493d44d7769a9285983e3463f4c756bcde6f2464dea54a448e7d9d0f2944782b951203e811c37978c4a37522ae07a096e44d14616fd219c3a5f3b63149269a1caac4f901b23b83ccda3a607eec870934f690b6bd503982f2912ebcbd5a8cb3bd208b3f11be15c7f62944782b951203e811c37978c4a37522ae07a096e44d14616fd219c3a5f3b63149269a1caac4f901598f7293524ec8e9a339c5e973825867956c6dd48e2bc32adf16c02a81a8551003ac852ffc6adb854d56d8851d9f6b0315ab852f0e6adb855f55d8852f9e6b032944782b951203e811c37978c4a37522ae07a096e44d14616fd219c3a5f3b63149269a1caac4f90181caaf987dbc53d6ff92f180f85147d7493d44d7769a9285eb027a7f2944782b951203e811c37978c4a37522ae07a096e44d14616fd219c3a5f3b63149269a1caac4f9018690b4b22944782b951203e811c37978c4a37522ae07a096e44d14616fd219c3a5f3b63149269a1caac4f901cee070884b10db1a2944782b951203e811c37978c4a37522ae07a096e44d14616fd219c3a5f3b63149269a1caac4f901ab66e3565784e655e63892552e136855ff92f180f85147d7493d44d7769a9285f4c756bcd455bbe6370f51e24b48a4b7afc8c5bd
+        startIndex: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b0000001c0000001d0000001e0000001f000000200000002100000022000000230000002400000025000000260000002700000028000000290000002a0000002b0000002c0000002d0000002d0000002e0000002f000000300000003100000032000000330000003400000035000000360000003700000038000000390000003a0000003b0000003c0000003c0000003d0000003e0000003f000000400000004100000042000000430000004400000045000000460000004700000048000000490000004a0000004b0000004c0000004d0000004e0000004f000000500000005100000052000000530000005400000055000000560000005700000058000000590000005a0000005b0000005c0000005d0000005e0000005f000000600000006100000061000000620000006300000064000000640000006500000066000000670000006700000068000000690000006a0000006a0000006b0000006c0000006d0000006e0000006f00000070000000710000007200000073000000740000007500000076000000770000007800000079000000790000007a0000007b0000007c0000007d0000007e0000007f000000800000008100000082000000830000008400000085000000860000008700000088000000890000008a0000008b0000008c0000008d0000008e0000008f000000900000009100000092000000930000009400000095000000960000009700000098000000990000009a0000009b0000009c0000009d0000009e0000009f000000a0000000a1000000a2000000a2000000a3000000a4000000a5000000a6000000a7000000a8000000a9000000
+        dataPosition: 00000000350000004100000042000000460000004b0000004c0000004d000000550000005500000056000000570000005b0000005f000000630000007300000074000000750000007d0000007d0000007e0000007f00000083000000870000008b0000008f0000009e0000009f000000a0000000a8000000d2000000d3000000d4000000d8000000dc000000e0000000e4000000f5000000f6000000f7000000ff000000ff000000000100000101000005010000090100003e0100004a0100004b0100004f0100006301000064010000650100006d0100006d0100006e0100006f01000073010000770100007d01000086010000bb010000c7010000c8010000cc010000d0010000d4010000d8010000dc010000e0010000e9010000ea010000eb010000f3010000f3010000f4010000f5010000f9010000fd0100000102000005020000090200000a0200000b0200000c0200000d0200000e0200000f0200001302000017020000180200001902000021020000210200002202000023020000270200002b0200004f0200004f020000530200007602000076020000770200009b0200009b0200009f020000c3020000c3020000c7020000cb020000d9020000da020000db020000e3020000e3020000e4020000e5020000e9020000ed020000f3020000f70200002c03000038030000390300003d03000041030000490300004a0300004b030000530300008f030000900300009103000095030000990300009d030000a1030000b0030000b1030000b2030000ba030000ba030000bb030000bc030000c0030000c4030000c8030000cc030000d0030000db030000dc030000dd030000e5030000e5030000e6030000e7030000eb030000ef030000fb030000060400000a04000012040000470400005304000054040000580400005c0400006004000064040000
+        unityObjects:
+        - {fileID: 114309230044429526}
+        - {fileID: 114281234270348236}
+        - {fileID: 114277036908319746}
+        - {fileID: 114277036908319746}
+        - {fileID: 114281234270348236}
+        - {fileID: 4644533255977216}
+        - {fileID: 114281234270348236}
+        byteData: 446174656e7368692e536372697074732e4265686176696f7572732e5661726961626c65732e536861726564436f6d626174616e74436f6d6261745461726765740100000000456e7472790100bb7420433ce48843000000000000000000000100000041747461636b206f7220506174726f6c0100000000000000344300000000000000000000000000000200000041747461636b20496620436c6f73650100dc9562c394d34d4349662069742068617320612074617267657420736574206279207468650a706174726f6c20737461746500000000000000000000030000000300000048617320436f6d626174205461726765740100da01a3c39e74354300000000000000000000446174656e7368692e536372697074732e4265686176696f7572732e5661726961626c65732e536861726564436f6d626174616e74436f6d62617454617267657401040000005374617920436c6f736520546f205461726765740100f8ae66c382368d43000000000000020000005461726765744e6176696761746f72446174656e7368692e536372697074732e4265686176696f7572732e5661726961626c65732e536861726564436f6d626174616e74436f6d626174546172676574010000000001000000000000400000003f020000000500000053657420496e7075740100881686c278c848430000000000000000000003000000000000000000000000000000000006000000576169740100f0d21f4278c84343000000000000000000004265686176696f7244657369676e65722e52756e74696d652e536861726564466c6f61740000803e4265686176696f7244657369676e65722e52756e74696d652e536861726564426f6f6c004265686176696f7244657369676e65722e52756e74696d652e536861726564466c6f61740000803f4265686176696f7244657369676e65722e52756e74696d652e536861726564466c6f61740000803f07000000547269676765722041747461636b0100b5ff2243d00949430000000000000000000041747461636b04000000446174656e7368692e536372697074732e4265686176696f7572732e5661726961626c65732e536861726564436f6d626174616e74436f6d626174546172676574010000803e0800000053657175656e63650100346b6e438d032c434d616b657320656e7469747920706174726f6c206f6e6c79200a6966206974277320636c6f736520656e6f75676820746f207468652063616d657261000000000000000000000100000009000000436c6f736520546f2043616d6572610100c54f98c2d5a90c43000000000000000000000000f041050000000a000000506174726f6c205461736b01000000a042bc8620430000000000000400000057616c6b44697374616e636553696768745261646975736c65667464697374616e6365446174656e7368692e536372697074732e4265686176696f7572732e5661726961626c65732e536861726564436f6d626174616e74436f6d62617454617267657401060000000000a041000020410000000000
+        byteDataArray: 
+      Version: 1.5.12
+--- !u!114 &114277036908319746
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1896484453590728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a978da312924a1798fcaa18d3398ae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Entity:
+    Object: {fileID: 114281234270348236}
+  Horizontal: 0
+  Vertical: 0
+  Jump: 0
+  Attack: 0
+  Walk: 0
+  Dash: 0
+  Submit: 0
+  Defend: 0
 --- !u!114 &114281234270348236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -438,30 +509,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EntityRoom: {fileID: 0}
   inputProvider: {fileID: 0}
-  Hitbox: {fileID: 61269217306511274}
-  AnimatorUpdater: {fileID: 114708593015091422}
-  Renderer: {fileID: 114868846459615602}
+  colorizableRenderer: {fileID: 114868846459615602}
   MiscController: {fileID: 114932899101906818}
   Character: {fileID: 0}
-  CurrentDirection: {}
-  Config: {fileID: 114297920940230108}
+  onDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   health: 30
   maxHealth: 30
   invulnerable: 0
   DamageInvulnerability: 0
   DamageInvulnerabilityDuration: 3
-  Relationship: 2
+  relationship: 2
   DefaultAttackStrategy: {fileID: 11400000, guid: be298e003d0b04d478a52f0ad9eaacf5,
     type: 2}
   OnDamaged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Datenshi.Scripts.Entities.EntityDamagedEvent, Assembly-CSharp, Version=0.0.0.0,
+    m_TypeName: Datenshi.Scripts.Entities.EntityDamagedEvent, Datenshi-Entities, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   OnAttack:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Datenshi.Scripts.Entities.EntityAttackEvent, Assembly-CSharp, Version=0.0.0.0,
+    m_TypeName: Datenshi.Scripts.Entities.EntityAttackEvent, Datenshi-Entities, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   OnHealthChanged:
     m_PersistentCalls:
@@ -469,6 +541,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   DamageGivesStun: 1
+  hitbox: {fileID: 61269217306511274}
   DamageStunMin: 0
   DamageStunDuration: 0.25
   OnKilled:
@@ -476,40 +549,45 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  DefaultAttackHitbox:
+  defenseHitbox:
     Center: {x: 0, y: 0}
     Size: {x: 0, y: 0}
   FocusMaxTime: 2
   MinDefenseRequired: 0.1
   DefenseRecoverAmountMultiplier: 1
   DefenseDepleteAmountMultiplier: 2
-  Ignored: 0
-  Motor: {fileID: 11400000, guid: cc5b22130f7e9c74da83c3d12dc02dac, type: 2}
-  AccelerationCurve:
+  updater: {fileID: 114708593015091422}
+  ignored: 0
+  motor: {fileID: 11400000, guid: 0168b5d2959ddfb48ab36cda52203830, type: 2}
+  accelerationCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
-      value: 2
+      value: 1
       inSlope: 0
       outSlope: 0
-      tangentMode: 136
-    - serializedVersion: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
       time: 1
       value: 1
       inSlope: 0
       outSlope: 0
-      tangentMode: 136
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 0
-  AINavigator: {fileID: 114743229920002802}
+    m_RotationOrder: 4
+  aiNavigator: {fileID: 114309230044429526}
   SkinWidth: 0.05
-  MaxSpeed: 8
+  maxSpeed: 10
   YForce: 24
-  SpeedMultiplier: 1
-  GravityScale: 1
-  InteractionController: {fileID: 0}
+  speedMultiplier: 1
   ApplyVelocity: 1
   DamageGivesKnockback: 0
   DamageKnockbackMin: 10
@@ -517,7 +595,16 @@ MonoBehaviour:
   KnockbackLiftoff: 0
   ExternalForces: {x: 0, y: 0}
   ExternalForcesDeacceleration: 0.25
---- !u!114 &114297920940230108
+  inset: 0.05
+  horizontalRaycasts: 3
+  verticalRaycasts: 3
+  motorConfig: {fileID: 114447165197201082}
+  collisionStatus:
+    Up: 0
+    Down: 0
+    Left: 0
+    Right: 0
+--- !u!114 &114309230044429526
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -525,54 +612,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1511377753782900}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02981cca6d434ec5b336e590e36aae3b, type: 3}
+  m_Script: {fileID: 11500000, guid: 60470e8b15474141a271c12f22c3d450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DashDuration: 0.1
-  DashDistance: 4
-  DashCooldown: 3
-  MaxAngle: 60
-  SlopeGroundCheckLength: 10
-  SlopeSpeedMultiplier:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 45
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
-    - serializedVersion: 2
-      time: 90
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  AirControlSlope:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0.5
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  WallClimbGravityScale: 3
-  WallClimbCounterForce: 5
-  JumpCutGravityModifier: 1
-  OffWallTimeMargin: 0.3
+  Target: {x: 0, y: 0}
+  TimePerRegen: 0.25
+  Navigable:
+    Object: {fileID: 114281234270348236}
 --- !u!114 &114435865946197590
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -600,6 +646,25 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114447165197201082
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1896484453590728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8c1b42848df47ed9713e663f8c465fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  user: {fileID: 114281234270348236}
+  MaxAngle: 45
+  GravityScale: 1
+  JumpForce: 24
+  JumpCutGravityModifier: 1
+  OffWallTimeMargin: 0.3
+  WallClimbCounterForce: 10
+  RejumpLength: 0.3
 --- !u!114 &114477171769105754
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -681,20 +746,6 @@ MonoBehaviour:
   StunKey: Stunned
   Entity: {fileID: 114281234270348236}
   Renderer: {fileID: 212669247791164156}
---- !u!114 &114743229920002802
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1896484453590728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60470e8b15474141a271c12f22c3d450, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Target: {x: 0, y: 0}
-  TimePerRegen: 1
-  Entity: {fileID: 114281234270348236}
 --- !u!114 &114864337436595098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -730,7 +781,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1730045920672700}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d8cf396134c4b9a8db2f709756695b9, type: 3}
+  m_Script: {fileID: 11500000, guid: a509e2442300205479ade85b569934a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Renderers:
@@ -751,8 +802,7 @@ MonoBehaviour:
   StepSounds:
   - {fileID: 8300000, guid: 0d698d1a7710d324ca7105a558bd815c, type: 3}
   - {fileID: 8300000, guid: 474a231c1ad41e34dbbde24b175af1ee, type: 3}
-  Container: {fileID: 0}
-  Animator: {fileID: 0}
+  Animator: {fileID: 95469618760616704}
   minPitch: 0.9
   maxPitch: 1.1
 --- !u!212 &212669247791164156
@@ -768,6 +818,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 7ecaa590cace8ac41af787c467c16109, type: 2}
   m_StaticBatchInfo:

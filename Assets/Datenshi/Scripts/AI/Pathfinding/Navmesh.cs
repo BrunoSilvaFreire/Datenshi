@@ -3,7 +3,6 @@ using System.Linq;
 using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
-using Sirenix.Utilities;
 using UnityEngine;
 
 namespace Datenshi.Scripts.AI.Pathfinding {

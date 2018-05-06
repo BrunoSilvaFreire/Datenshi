@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Cinemachine;
+﻿using Cinemachine;
 using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Game;
 using UnityEngine;

@@ -1,4 +1,5 @@
-﻿using BehaviorDesigner.Runtime.Tasks;
+﻿using System.Collections;
+using BehaviorDesigner.Runtime.Tasks;
 using Datenshi.Scripts.AI;
 using Datenshi.Scripts.Behaviours.Variables;
 using Datenshi.Scripts.Combat;
@@ -14,31 +15,47 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
     public class PatrolTask : Action {
         public SharedCombatant Target;
         public MovableEntity Entity;
-        public float MinRequiredDistance = 20;
         public float WalkDistance = 5;
         public float SightRadius;
-        private float distance;
+        public float WaitTime = 1;
+        public float CloseThreshold = 1;
         private bool left;
+        private bool waiting;
+        private Vector2 targetPos;
+
 
         public override TaskStatus OnUpdate() {
             if (Target.Value != null) {
                 return TaskStatus.Success;
             }
 
-            var m = Camera.main;
+
             var provider = Entity.InputProvider as DummyInputProvider;
-            if (provider == null || Vector2.Distance(Entity.Center, m.transform.position) > MinRequiredDistance) {
+            if (provider == null) {
                 return TaskStatus.Failure;
             }
 
-            provider.Walk = true;
-            provider.Horizontal = left ? -1 : 1;
-            if (distance > WalkDistance) {
-                distance = 0;
-                left = !left;
-            } else {
-                distance += Mathf.Abs(Entity.Velocity.x * Time.deltaTime);
+            if (waiting) {
+                provider.Reset();
+                return TaskStatus.Running;
             }
+
+            provider.Walk = true;
+            var xInput = left ? -1 : 1;
+            provider.Horizontal = xInput;
+            var nav = Entity.AINavigator;
+            var d = Vector2.Distance(Entity.GroundPosition, targetPos);
+            if (d < CloseThreshold || Entity.CollisionStatus.HorizontalCollisionDir != 0) {
+                targetPos = Entity.GroundPosition;
+                targetPos.x += (left ? -1 : 1) * WalkDistance;
+                targetPos = nav.SetTarget(targetPos);
+
+                left = !left;
+                StartCoroutine(WaitInvert());
+                return TaskStatus.Running;
+            }
+
+            nav.Execute(Entity, provider);
 
             foreach (var hit in Physics2D.OverlapCircleAll(
                 Entity.Center,
@@ -56,14 +73,14 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
             return TaskStatus.Running;
         }
 
+        private IEnumerator WaitInvert() {
+            waiting = true;
+            yield return new WaitForSeconds(WaitTime);
+            waiting = false;
+        }
+
         public override void OnDrawGizmos() {
-            var m = Camera.main;
-            var a = Entity.Center;
-            var b = m.transform.position;
-            var d = Vector2.Distance(a, b);
-            var c = d > MinRequiredDistance ? Color.red : Color.green;
-            DebugUtil.DrawBox2DWire(Entity.Center, new Vector2(SightRadius, SightRadius), Color.green);
-            Debug.DrawLine(a, b, c);
+            DebugUtil.DrawWireCircle2D(Entity.Center, SightRadius, Color.green);
         }
     }
 }

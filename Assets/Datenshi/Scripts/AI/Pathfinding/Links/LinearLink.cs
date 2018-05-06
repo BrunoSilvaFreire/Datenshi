@@ -40,7 +40,7 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links {
         }
 #endif
 
-        public override void Execute(INavigable entity, AIStateInputProvider provider, Navmesh navmesh) {
+        public override void Execute(INavigable entity, DummyInputProvider provider, Navmesh navmesh) {
             provider.Horizontal = Math.Sign((int) destination - origin);
         }
 

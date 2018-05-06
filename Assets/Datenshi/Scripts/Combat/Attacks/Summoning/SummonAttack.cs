@@ -1,6 +1,4 @@
-﻿using Datenshi.Scripts.AI.Behaviour;
-using Datenshi.Scripts.Data;
-using Datenshi.Scripts.Util;
+﻿using Datenshi.Scripts.Util;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Combat.Attacks.Summoning {

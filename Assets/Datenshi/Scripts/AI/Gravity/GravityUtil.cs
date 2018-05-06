@@ -16,15 +16,18 @@ namespace Datenshi.Scripts.Combat.Gravity {
         public static List<Vector2> CalculatePath(
             Vector2 pos,
             Vector2 initialSpeed,
+            Vector2 boxcastSize,
             Navmesh tileMap,
             out Node finalNode
         ) {
-            return CalculatePath(pos, initialSpeed, tileMap, out finalNode, GameResources.Instance.DefaultPrecision);
+            return CalculatePath(pos, initialSpeed, boxcastSize, tileMap, out finalNode,
+                GameResources.Instance.DefaultPrecision);
         }
 
         public static List<Vector2> CalculatePath(
             Vector2 pos,
             Vector2 initialSpeed,
+            Vector2 boxcastSize,
             Navmesh tileMap,
             out Node finalNode,
             float precision) {
@@ -34,7 +37,6 @@ namespace Datenshi.Scripts.Combat.Gravity {
                 return CollectionUtil.EmptyList<Vector2>();
             }
 
-            var boxcastSize = tileMap.BoxcastSize;
             var timeIncrementation = 1 / precision;
             var mask = tileMap.LayerMask;
             var list = new List<Vector2>();

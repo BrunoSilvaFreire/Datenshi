@@ -7,8 +7,6 @@ namespace Rewired.UI.ControlMapper {
 
     using UnityEngine;
     using UnityEngine.UI;
-    using System.Collections.Generic;
-    using Rewired;
 
     [System.Serializable]
     public class ThemeSettings : ScriptableObject {

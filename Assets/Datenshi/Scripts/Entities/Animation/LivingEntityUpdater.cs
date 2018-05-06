@@ -3,8 +3,10 @@ using System.Linq;
 using Datenshi.Scripts.Combat;
 using JetBrains.Annotations;
 using Sirenix.OdinInspector;
-using UnityEditor.Animations;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor.Animations;
+#endif
 
 namespace Datenshi.Scripts.Entities.Animation {
     public class LivingEntityUpdater : CombatantAnimatorUpdater {

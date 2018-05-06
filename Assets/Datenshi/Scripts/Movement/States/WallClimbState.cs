@@ -1,5 +1,4 @@
 ﻿using System;
-using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Input;
 using Datenshi.Scripts.Movement.Config;
@@ -12,9 +11,10 @@ using UPM.Physics;
 
 namespace Datenshi.Scripts.Movement.States {
     public class WallClimbState : State {
-        private static readonly Variable<float> SecondsSinceLeaveWall = new Variable<float>("user.motor.wall.leftWallFor", 0);
+        private static readonly Variable<float> SecondsSinceLeaveWall =
+            new Variable<float>("user.motor.wall.leftWallFor", 0);
 
-        public State NormalState;
+        public GroundedState NormalState;
         public float SlideSpeed;
         public static readonly VerticalPhysicsCheck VerticalVelocityCheck = new VerticalPhysicsCheck();
         public static readonly HorizontalPhysicsCheck HorizontalVelocityCheck = new HorizontalPhysicsCheck();
@@ -24,13 +24,19 @@ namespace Datenshi.Scripts.Movement.States {
             VerticalVelocityCheck
         );
 
-        public override void Move(IMovable user, ref Vector2 vel, ref CollisionStatus collStatus, StateMotorMachine machine, StateMotorConfig c, LayerMask collisionMask) {
+        public void DoWallClimb(ref Vector2 vel, DatenshiGroundConfig config, int inputDir) {
+            vel.y = config.JumpForce;
+            vel.x = -inputDir * config.WallClimbCounterForce;
+        }
+
+        public override void Move(IMovable user, ref Vector2 vel, ref CollisionStatus collStatus,
+            StateMotorMachine machine, StateMotorConfig c, LayerMask collisionMask) {
             var config = c as DatenshiGroundConfig;
             var provider = user.InputProvider as DatenshiInputProvider;
             var holder = user as IVariableHolder;
             if (provider == null || holder == null || config == null) {
                 machine.State = NormalState;
-                Debug.LogError("Need these 3 to not be null in wall climb state:" + provider + " || " + holder + " || " + config);
+                Debug.LogErrorFormat("Need these 3 to not be null in wall climb state: {0} || {1} || {2}", provider, holder, config);
                 return;
             }
 
@@ -58,7 +64,7 @@ namespace Datenshi.Scripts.Movement.States {
                     sinceLeft += Time.deltaTime;
                     holder.SetVariable(SecondsSinceLeaveWall, sinceLeft);
                     var gravity = GameResources.Instance.Gravity;
-                    GroundedState.ExecuteState(user, machine, ref vel, ref collStatus, collisionMask, gravity, this);
+                    NormalState.ExecuteState(user, machine, ref vel, ref collStatus, collisionMask, gravity, this);
                 }
 
                 return;
@@ -88,8 +94,7 @@ namespace Datenshi.Scripts.Movement.States {
                 collStatus.HorizontalCollisionDir == inputDir) {
                 //Sliding down
                 if (provider.GetJumpDown()) {
-                    vel.y = config.JumpForce;
-                    vel.x = -inputDir * config.WallClimbCounterForce;
+                    DoWallClimb(ref vel, config, inputDir);
                     machine.State = NormalState;
                 } else {
                     vel.y = SlideSpeed * Time.fixedDeltaTime;

@@ -7,7 +7,6 @@ namespace Rewired.UI.ControlMapper {
 
     using UnityEngine;
     using UnityEngine.UI;
-    using System.Collections;
 
     /// <summary>
     /// Adjusts the scale based on the current screen aspect ratio to try to fit the content sensibly.

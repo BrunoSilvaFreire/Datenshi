@@ -28,4 +28,4 @@ MonoBehaviour:
   DeflectDamageMultiply: 3
   InteractableMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 0

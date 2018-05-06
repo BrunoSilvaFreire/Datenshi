@@ -17,7 +17,7 @@ namespace Datenshi.Scripts.Util {
         }
 
 
-        [SerializeField, HideInInspector]
+        [SerializeField, ReadOnly]
         private Object Object;
     }
 }

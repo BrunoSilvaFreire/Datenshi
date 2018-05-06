@@ -9,9 +9,7 @@ namespace Rewired.UI.ControlMapper {
     using UnityEngine.UI;
     using UnityEngine.EventSystems;
     using UnityEngine.Events;
-    using System.Collections.Generic;
     using System.Collections;
-    using Rewired;
 
     /// <summary>
     /// Overrides auto-navigation in Selectable because it's inadequate for selectables inside a scroll rect

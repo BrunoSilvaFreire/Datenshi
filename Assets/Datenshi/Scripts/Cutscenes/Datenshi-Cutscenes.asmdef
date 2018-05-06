@@ -2,11 +2,12 @@
     "name": "Datenshi-Cutscenes",
     "references": [
         "Datenshi-Characters",
-        "Shiroi",
         "Datenshi-Utilities",
         "Datenshi-Data",
         "Datenshi-UI"
     ],
+    "optionalUnityReferences": [],
     "includePlatforms": [],
-    "excludePlatforms": []
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
 }

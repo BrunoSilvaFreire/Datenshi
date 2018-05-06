@@ -6,10 +6,7 @@
 namespace Rewired.UI.ControlMapper {
 
     using UnityEngine;
-    using System.Collections;
     using System.Collections.Generic;
-    using System.Text.RegularExpressions;
-    using Rewired;
 
     public class LanguageData : ScriptableObject {
 

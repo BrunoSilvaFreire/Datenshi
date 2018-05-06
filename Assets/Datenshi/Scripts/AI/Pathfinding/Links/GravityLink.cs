@@ -10,8 +10,6 @@ using UPM.Motors.Config;
 namespace Datenshi.Scripts.AI.Pathfinding.Links {
     [Serializable]
     public class GravityLink : Link {
-        public static readonly Color GizmosColor = Color.white;
-
         [SerializeField, ReadOnly]
         private int destination;
 
@@ -21,6 +19,7 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links {
         [SerializeField]
         private Vector2 requiredForce;
 
+        private Vector2 colliderSize;
 
         public int Destination {
             get {
@@ -35,9 +34,11 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links {
             Navmesh navmesh,
             Vector2 initialPosition,
             Vector2 initialVelocity,
+            Vector2 boxcastSize,
             float precision) {
             this.origin = origin;
-            loadedPath = new GravityPath(initialPosition, initialVelocity, navmesh, precision);
+            colliderSize = boxcastSize;
+            loadedPath = new GravityPath(initialPosition, initialVelocity, boxcastSize, navmesh, precision);
             var end = loadedPath.FinalNode;
             if (end != null) {
                 destination = navmesh.GetNodeIndex(end);
@@ -71,7 +72,13 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links {
             if (config != null) {
                 b = config.JumpForce > requiredForce.y;
             }
+
             return entity.MaxSpeed > requiredForce.x && b;
+        }
+
+        private bool CanFit(INavigable entity) {
+            var size = entity.Hitbox.bounds.size;
+            return size.x < colliderSize.x && size.y < colliderSize.y;
         }
 
         public override int GetOrigin() {
@@ -88,11 +95,10 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links {
         public override void DrawGizmos(Navmesh navmesh, uint originNodeIndex, float precision, bool precisionChanged) {
             if (precisionChanged || loadedPath == null) {
                 var initPos = navmesh.WorldPosCenter(originNodeIndex);
-                loadedPath = new GravityPath(initPos, RequiredForce, navmesh, precision);
+                loadedPath = new GravityPath(initPos, RequiredForce, colliderSize, navmesh, precision);
             }
 
             var path = loadedPath.GetPath(navmesh, precision);
-            Handles.color = GizmosColor;
             for (var i = 1; i < path.Length; i++) {
                 var point = path[i];
                 var previous = path[i - 1];
@@ -102,7 +108,7 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links {
         }
 #endif
 
-        public override void Execute(INavigable entity, AIStateInputProvider provider, Navmesh navmesh) {
+        public override void Execute(INavigable entity, DummyInputProvider provider, Navmesh navmesh) {
             var pos = entity.GroundPosition;
             var direction = Math.Sign(requiredForce.x);
             var originPos = navmesh.WorldPosCenter((uint) origin);
@@ -113,6 +119,7 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links {
                 provider.Horizontal = direction;
             } else if (entity.CollisionStatus.Down) {
                 entity.Velocity = requiredForce;
+                provider.Reset();
             }
         }
     }

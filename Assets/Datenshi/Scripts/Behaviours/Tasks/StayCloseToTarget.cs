@@ -1,6 +1,7 @@
 ﻿using BehaviorDesigner.Runtime.Tasks;
 using Datenshi.Scripts.AI;
 using Datenshi.Scripts.Behaviours.Variables;
+using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Util;
 using UnityEngine;
 
@@ -8,35 +9,46 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
     public class StayCloseToTarget : Action {
         public SharedCombatant Target;
         public AINavigator Navigator;
+        public MovableEntity Entity;
         public float DistanceThreshold;
+        public float AllowedMargin;
+        public DummyInputProvider InputProvider;
 
         public override TaskStatus OnUpdate() {
-            var t = Target.Value;
+            var t = Target.Value as LivingEntity;
             if (t == null) {
                 return TaskStatus.Failure;
             }
 
-            var targetPos = t.Center;
-            Navigator.Target = targetPos;
-            return Vector2.Distance(targetPos, Navigator.transform.position) < DistanceThreshold
-                ? TaskStatus.Success
-                : TaskStatus.Running;
+            var targetPos = Navigator.GetFavourablePosition(t);
+            var d = Vector2.Distance(targetPos, Entity.Center);
+            if (d < AllowedMargin) {
+                var p = (DummyInputProvider) Entity.InputProvider;
+                p.Reset();
+                return TaskStatus.Success;
+            }
+
+            Navigator.SetTarget(targetPos);
+            Navigator.Execute(Entity, InputProvider);
+            return d < DistanceThreshold ? TaskStatus.Success : TaskStatus.Running;
         }
 
         public override void OnDrawGizmos() {
-            var t = Target.Value;
+            var t = Target.Value as LivingEntity;
             if (t == null) {
                 return;
             }
 
             var targetPos = t.Center;
-            Navigator.Target = targetPos;
-            Debug.DrawLine(targetPos, Navigator.transform.position);
+            var b = Navigator.transform.position;
             var dist = Vector2.Distance(targetPos, Navigator.transform.position);
+            var c = dist > DistanceThreshold ? Color.red : Color.green;
             var msg = string.Format("Distance {0}-{1}: {2}/{3}", Navigator.name, t.AnimatorUpdater.gameObject.name,
                 dist,
                 DistanceThreshold);
             DebugUtil.DrawLabel(targetPos, msg);
+            Debug.DrawLine(targetPos, b, c);
+            DebugUtil.DrawWireCircle2D(b, DistanceThreshold, c);
         }
     }
 }

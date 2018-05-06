@@ -7,7 +7,6 @@ namespace Rewired.Editor {
 
     using UnityEngine;
     using UnityEditor;
-    using Rewired;
     using Rewired.Data;
 
     [System.ComponentModel.Browsable(false)]

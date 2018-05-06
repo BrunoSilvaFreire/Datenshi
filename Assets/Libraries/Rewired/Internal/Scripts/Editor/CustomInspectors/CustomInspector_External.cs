@@ -4,11 +4,6 @@
 #pragma warning disable 0649
 
 namespace Rewired.Editor {
-
-    using UnityEngine;
-    using UnityEditor;
-    using Rewired;
-
     [System.ComponentModel.Browsable(false)]
     [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
     public abstract class CustomInspector_External : UnityEditor.Editor {

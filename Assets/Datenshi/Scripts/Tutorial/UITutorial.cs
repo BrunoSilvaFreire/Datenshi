@@ -1,5 +1,4 @@
-﻿using System;
-using Datenshi.Scripts.UI;
+﻿using Datenshi.Scripts.UI;
 using DG.Tweening;
 using UnityEngine;
 

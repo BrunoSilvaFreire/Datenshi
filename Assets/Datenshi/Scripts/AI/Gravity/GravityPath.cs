@@ -28,9 +28,12 @@ namespace Datenshi.Scripts.Combat.Gravity {
 
         private Vector2[] path;
         private Node finalNode;
+        private readonly Vector2 boxcastSize;
 
-        public GravityPath(Vector2 initialPosition, Vector2 initialVelocity, Navmesh navmesh, float precision) : this(
+        public GravityPath(Vector2 initialPosition, Vector2 initialVelocity, Vector2 boxcastSize, Navmesh navmesh,
+            float precision) : this(
             initialPosition, initialVelocity) {
+            this.boxcastSize = boxcastSize;
             Calculate(navmesh, precision);
         }
 
@@ -43,7 +46,8 @@ namespace Datenshi.Scripts.Combat.Gravity {
         }
 
         public void Calculate(Navmesh navmesh, float precision) {
-            path = GravityUtil.CalculatePath(InitialPosition, InitialVelocity, navmesh, out finalNode, precision)
+            path = GravityUtil.CalculatePath(InitialPosition, InitialVelocity, boxcastSize, navmesh, out finalNode,
+                    precision)
                 .ToArray();
         }
     }

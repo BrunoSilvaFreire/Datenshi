@@ -1,9 +1,7 @@
 /// Credit David Gileadi
 /// Sourced from - https://bitbucket.org/UnityUIExtensions/unity-ui-extensions/pull-requests/12
 
-using System;
 using System.Collections;
-using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 namespace UnityEngine.UI.Extensions

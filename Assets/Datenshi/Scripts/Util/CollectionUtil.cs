@@ -95,6 +95,14 @@ namespace Datenshi.Scripts.Util {
             return Enumerable.Empty<T>().ToList();
         }
 
+        public static bool IsNullOrEmpty<T>(this IList<T> list) {
+            if (list != null) {
+                return list.Count == 0;
+            }
+
+            return true;
+        }
+
         public static E RandomElement<E>(this IList<E> list) {
             return list.RandomElement(new Random());
         }

@@ -1,12 +1,9 @@
 ﻿using Datenshi.Scripts.AI;
 using Datenshi.Scripts.Combat.Attacks;
-using Datenshi.Scripts.Combat.Strategies;
-using Datenshi.Scripts.Graphics;
 using Datenshi.Scripts.Util;
 using UnityEngine;
 using UnityEngine.Events;
 using UPM.Motors;
-using UPM.Util;
 
 namespace Datenshi.Scripts.Entities.Animation {
     public class MovableEntityStateMachineProxy : StateMachineBehaviour {
@@ -116,10 +113,6 @@ namespace Datenshi.Scripts.Entities.Animation {
 
         public void SetDamageInvulnerabilityDuration(float value) {
             Target.DamageInvulnerabilityDuration = value;
-        }
-
-        public void SetDefaultAttackStrategy(AttackStrategy value) {
-            Target.DefaultAttackStrategy = value;
         }
 
         public void SetOnDamaged(EntityDamagedEvent value) {

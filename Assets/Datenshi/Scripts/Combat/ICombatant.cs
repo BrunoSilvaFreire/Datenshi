@@ -1,10 +1,7 @@
-﻿using Datenshi.Scripts.AI;
-using Datenshi.Scripts.Combat.Attacks;
-using Datenshi.Scripts.Combat.Strategies;
+﻿using Datenshi.Scripts.Combat.Attacks;
 using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Input;
 using Datenshi.Scripts.Util;
-using UnityEngine;
 using UPM.Util;
 using Datenshi.Scripts.Movement;
 
@@ -54,9 +51,6 @@ namespace Datenshi.Scripts.Combat {
             get;
         }
 
-        AttackStrategy AttackStrategy {
-            get;
-        }
 
         float FocusTimeLeft {
             get;

@@ -11,8 +11,11 @@
         "Datenshi-World",
         "Datenshi-Animation",
         "Datenshi-AI",
-        "BehaviourDesigner"
+        "BehaviourDesigner",
+        "Datenshi-Game"
     ],
+    "optionalUnityReferences": [],
     "includePlatforms": [],
-    "excludePlatforms": []
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
 }

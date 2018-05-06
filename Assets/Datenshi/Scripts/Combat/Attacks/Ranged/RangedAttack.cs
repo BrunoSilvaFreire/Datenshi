@@ -1,6 +1,4 @@
-﻿using Datenshi.Scripts.AI.Behaviour;
-using Datenshi.Scripts.Data;
-using Datenshi.Scripts.Misc;
+﻿using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -48,7 +46,7 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
             var startPos = entity.Center + offset;
             var target = entity.GetVariable(CombatVariables.AttackTarget);
             var proj = Prefab.Clone(startPos);
-            if (Aim) {
+            if (Aim && target != null) {
                 proj.Shoot(entity, target);
             } else {
                 proj.Shoot(entity, RawDir ? entity.CurrentDirection : entity.InputProvider.GetInputVector());

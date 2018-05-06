@@ -36,8 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4461864418205264}
   - component: {fileID: 114780413426065572}
-  - component: {fileID: 114440101032258150}
-  - component: {fileID: 114667567613424530}
+  - component: {fileID: 114947386492686304}
   m_Layer: 13
   m_Name: Assistant
   m_TagString: Untagged
@@ -69,9 +68,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4266180329229568}
   - component: {fileID: 114614107811536760}
-  - component: {fileID: 114191588702390292}
-  - component: {fileID: 61144858099315544}
   - component: {fileID: 114494627069423118}
+  - component: {fileID: 114169876328857036}
   m_Layer: 13
   m_Name: Assistant_Managers
   m_TagString: Untagged
@@ -188,7 +186,6 @@ GameObject:
   - component: {fileID: 4050120435013016}
   - component: {fileID: 212187792993308444}
   - component: {fileID: 61613949157056576}
-  - component: {fileID: 114776280883289884}
   m_Layer: 13
   m_Name: Body
   m_TagString: Untagged
@@ -288,8 +285,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1161872236998306}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -150.9, y: 10.1, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -152.15, y: 8.98, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 4050120435013016}
@@ -339,31 +336,6 @@ Transform:
   m_Father: {fileID: 4050120435013016}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61144858099315544
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1254036451178688}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3, y: 3}
-  m_EdgeRadius: 0
 --- !u!61 &61613949157056576
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -406,6 +378,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114009047173664732
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -422,7 +395,8 @@ MonoBehaviour:
   Holder: {fileID: 224281683103040180}
   DefaultSize: {x: 60, y: 30}
   Padding: {x: 10, y: 10}
---- !u!114 &114191588702390292
+  YOffset: 1.5
+--- !u!114 &114169876328857036
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -430,31 +404,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 1254036451178688}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de28747d891c4ede845f3f58db2c6a2c, type: 3}
+  m_Script: {fileID: 11500000, guid: 8d7b55c7ecdb49a4a89fa5e6f9022861, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hitbox: {fileID: 61144858099315544}
---- !u!114 &114440101032258150
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1161872236998306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10275570aeb5478989d015bf3362c9bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentState: {fileID: 11400000, guid: c764a18a3a7edf4459d5a5fa1c53a8a5, type: 2}
-  Entity: {fileID: 114780413426065572}
-  Horizontal: 0
-  Vertical: 0
-  Jump: 0
-  Attack: 0
-  Walk: 0
-  Dash: 0
-  Submit: 0
-  Defend: 0
+  startWhenEnabled: 1
+  pauseWhenDisabled: 0
+  restartWhenComplete: 0
+  logTaskChanges: 0
+  group: 0
+  resetValuesOnRestart: 0
+  externalBehavior: {fileID: 0}
+  mBehaviorSource:
+    behaviorName: Behavior
+    behaviorDescription: 
+    mTaskData:
+      types:
+      - BehaviorDesigner.Runtime.Tasks.EntryTask
+      - BehaviorDesigner.Runtime.Tasks.Sequence
+      - Datenshi.Scripts.Behaviours.Tasks.GetCurrentEntity
+      - Datenshi.Scripts.Behaviours.Tasks.Follow
+      parentIndex: ffffffff000000000100000001000000
+      startIndex: 030000000d0000001800000026000000
+      variableStartIndex: 00000000
+      JSONSerialization: 
+      fieldSerializationData:
+        typeName: []
+        fieldNameHash: f9be55564aaa52567707a1042944782b951203e811c37978c4a37522ae07a096e44d14616fd219c3a5f3b63149269a1caac4f9012944782b951203e811c37978c4a37522ae07a096e44d14616fd219c3a5f3b63149269a1caac4f9018690b4b22944782b951203e811c37978c4a37522ae07a096e44d14616fd219c3a5f3b63149269a1caac4f901f075b53fe9340b963a200896677d56442944782b951203e811c37978c4a37522ae07a096e44d14616fd219c3a5f3b63149269a1caac4f901983e3463f075b53fe9340b963a200896677d5644f4c756bc68418f42
+        startIndex: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b0000001c0000001d0000001e0000001f00000020000000210000002200000022000000230000002400000025000000260000002700000028000000290000002a0000002b0000002c0000002d0000002e0000002f000000300000003000000031000000320000003300000034000000
+        dataPosition: 00000000380000003e0000003f0000004300000048000000490000004a00000052000000520000005300000054000000580000005c0000006000000068000000690000006a00000072000000720000007300000074000000780000007c0000008000000084000000960000009700000098000000a0000000a0000000a1000000a2000000a6000000aa000000e2000000e8000000e9000000ed000000f3000000f4000000f5000000fd000000fd000000fe000000ff00000003010000070100000b01000043010000490100004a0100004e010000
+        unityObjects:
+        - {fileID: 114494627069423118}
+        - {fileID: 114780413426065572}
+        byteData: 446174656e7368692e536372697074732e4265686176696f7572732e5661726961626c65732e5368617265644c6976696e67456e746974795461726765740100000000456e7472790100a00059c2adf80543000000000000000000000100000053657175656e6365010070ebff3f5271c3420000000000000000000000000000020000004765742043757272656e7420456e7469747901008ac07ac248d1d14200000000000000000000446174656e7368692e536372697074732e4265686176696f7572732e5661726961626c65732e5368617265644c6976696e67456e746974795461726765740103000000466f6c6c6f770100000070420000c8420000000000000000000000000000446174656e7368692e536372697074732e4265686176696f7572732e5661726961626c65732e5368617265644c6976696e67456e74697479546172676574010100000000000041
+        byteDataArray: 446174656e7368692e536372697074732e4265686176696f7572732e5661726961626c65732e5368617265644c6976696e67456e746974795461726765740100000000456e7472790100a00059c2adf80543000000000000000000000100000053657175656e6365010070ebff3f5271c3420000000000000000000000000000020000004765742043757272656e7420456e7469747901008ac07ac248d1d14200000000000000000000446174656e7368692e536372697074732e4265686176696f7572732e5661726961626c65732e5368617265644c6976696e67456e746974795461726765740103000000466f6c6c6f770100000070420000c8420000000000000000000000000000446174656e7368692e536372697074732e4265686176696f7572732e5661726961626c65732e5368617265644c6976696e67456e74697479546172676574010100000000000041
+      Version: 1.5.12
 --- !u!114 &114494627069423118
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -468,8 +451,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Target: {x: -21.59, y: -10.3}
   TimePerRegen: 0.25
-  Entity: {fileID: 114780413426065572}
-  MinimumHeightAdvantage: 3
+  navigable: {fileID: 0}
+  Navigable:
+    Object: {fileID: 114780413426065572}
+  MinimumHeightAdvantage: 0.25
+  MinimumFavourableDistance: 1
 --- !u!114 &114614107811536760
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -483,39 +469,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EntityAudioSource: {fileID: 0}
   StepSounds: []
-  Container: {fileID: 0}
   Animator: {fileID: 0}
   minPitch: 0
   maxPitch: 0
---- !u!114 &114667567613424530
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1161872236998306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27085a92b9704409800951664c28e63f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Assistant: {fileID: 114780413426065572}
-  MaxDistance: 10
---- !u!114 &114776280883289884
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1811113884575526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d8cf396134c4b9a8db2f709756695b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Renderers:
-  - {fileID: 212179752502103442}
-  - {fileID: 212382617750680600}
-  - {fileID: 212187792993308444}
-  ColorOverrideAmount: 0
 --- !u!114 &114780413426065572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -529,29 +485,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EntityRoom: {fileID: 0}
   inputProvider: {fileID: 0}
-  Hitbox: {fileID: 61613949157056576}
-  AnimatorUpdater: {fileID: 0}
-  Renderer: {fileID: 114776280883289884}
+  colorizableRenderer: {fileID: 0}
   MiscController: {fileID: 114614107811536760}
   Character: {fileID: 11400000, guid: 6c3cb2d9c454beb4a831605b3ff7faa4, type: 2}
-  CurrentDirection: {}
-  Config: {fileID: 0}
+  onDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   health: 10
   maxHealth: 10
   invulnerable: 1
   DamageInvulnerability: 1
   DamageInvulnerabilityDuration: 3
-  Relationship: 0
+  relationship: 0
   DefaultAttackStrategy: {fileID: 0}
   OnDamaged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Datenshi.Scripts.Entities.EntityDamagedEvent, Assembly-CSharp, Version=0.0.0.0,
+    m_TypeName: Datenshi.Scripts.Entities.EntityDamagedEvent, Datenshi-Entities, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   OnAttack:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Datenshi.Scripts.Entities.EntityAttackEvent, Assembly-CSharp, Version=0.0.0.0,
+    m_TypeName: Datenshi.Scripts.Entities.EntityAttackEvent, Datenshi-Entities, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   OnHealthChanged:
     m_PersistentCalls:
@@ -559,6 +516,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   DamageGivesStun: 0
+  hitbox: {fileID: 61613949157056576}
   DamageStunMin: 10
   DamageStunDuration: 1
   OnKilled:
@@ -566,40 +524,45 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  DefaultAttackHitbox:
+  defenseHitbox:
     Center: {x: 0, y: 0}
     Size: {x: 0, y: 0}
   FocusMaxTime: 2
   MinDefenseRequired: 0.1
   DefenseRecoverAmountMultiplier: 1
   DefenseDepleteAmountMultiplier: 2
-  Ignored: 1
-  Motor: {fileID: 11400000, guid: 6a8249222a8d35b4fa1174299637f5bc, type: 2}
-  AccelerationCurve:
+  updater: {fileID: 0}
+  ignored: 1
+  motor: {fileID: 11400000, guid: 86ff67f763aa58f44883b61f198a88ce, type: 2}
+  accelerationCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
-    - serializedVersion: 2
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
       time: 1
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 0
-  AINavigator: {fileID: 114494627069423118}
+    m_RotationOrder: 4
+  aiNavigator: {fileID: 114494627069423118}
   SkinWidth: 0.1
-  MaxSpeed: 10
+  maxSpeed: 10
   YForce: 5
-  SpeedMultiplier: 1
-  GravityScale: 1
-  InteractionController: {fileID: 114191588702390292}
+  speedMultiplier: 1
   ApplyVelocity: 1
   DamageGivesKnockback: 0
   DamageKnockbackMin: 10
@@ -607,6 +570,15 @@ MonoBehaviour:
   KnockbackLiftoff: 3
   ExternalForces: {x: 0, y: 0}
   ExternalForcesDeacceleration: 0.1
+  inset: 0.05
+  horizontalRaycasts: 3
+  verticalRaycasts: 3
+  motorConfig: {fileID: 0}
+  collisionStatus:
+    Up: 0
+    Down: 0
+    Left: 0
+    Right: 0
 --- !u!114 &114802042557677464
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -634,6 +606,27 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114947386492686304
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1161872236998306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a978da312924a1798fcaa18d3398ae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Entity:
+    Object: {fileID: 114780413426065572}
+  Horizontal: 0
+  Vertical: 0
+  Jump: 0
+  Attack: 0
+  Walk: 0
+  Dash: 0
+  Submit: 0
+  Defend: 0
 --- !u!212 &212164338281207992
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -647,6 +640,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -691,6 +685,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 4321bd8d4dab722488409eac2c62665a, type: 2}
   m_StaticBatchInfo:
@@ -735,6 +730,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 4321bd8d4dab722488409eac2c62665a, type: 2}
   m_StaticBatchInfo:
@@ -779,6 +775,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 4321bd8d4dab722488409eac2c62665a, type: 2}
   m_StaticBatchInfo:
@@ -823,6 +820,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -901,7 +899,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.0000009536743}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224630569739516678
@@ -939,7 +937,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 3}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &225181532533837968

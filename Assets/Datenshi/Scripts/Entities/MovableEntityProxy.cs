@@ -1,7 +1,6 @@
 using UnityEngine;
 using Datenshi.Scripts.AI;
 using Datenshi.Scripts.Combat.Attacks;
-using Datenshi.Scripts.Combat.Strategies;
 using Datenshi.Scripts.Util;
 using UnityEngine.Events;
 
@@ -184,14 +183,6 @@ namespace Datenshi.Scripts.Entities {
             }
 
             Target.DamageInvulnerabilityDuration = value;
-        }
-
-        public void SetDefaultAttackStrategy(AttackStrategy value) {
-            if (Target == null) {
-                return;
-            }
-
-            Target.DefaultAttackStrategy = value;
         }
 
         public void SetOnDamaged(EntityDamagedEvent value) {
