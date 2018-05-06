@@ -203,7 +203,7 @@ namespace Datenshi.Scripts.Entities {
         }
 
         public void ExecuteAttack(Attack attack) {
-            if (Stunned) {
+            if (Stunned || attack == null) {
                 return;
             }
 
