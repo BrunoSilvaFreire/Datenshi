@@ -570,23 +570,11 @@ namespace Rewired.UI.ControlMapper {
             }
         }
 
-        private int inputGridWidth {
-            get {
-                return _actionLabelWidth + (_showKeyboard ? _keyboardColMaxWidth : 0) + (_showMouse ? _mouseColMaxWidth : 0) + (_showControllers ? _controllerColMaxWidth : 0) + ((inputGridColumnCount - 1) * _inputColumnSpacing);
-            }
-        }
+        private int inputGridWidth => _actionLabelWidth + (_showKeyboard ? _keyboardColMaxWidth : 0) + (_showMouse ? _mouseColMaxWidth : 0) + (_showControllers ? _controllerColMaxWidth : 0) + ((inputGridColumnCount - 1) * _inputColumnSpacing);
 
-        private Player currentPlayer {
-            get {
-                return ReInput.players.GetPlayer(currentPlayerId);
-            }
-        }
+        private Player currentPlayer => ReInput.players.GetPlayer(currentPlayerId);
 
-        private InputCategory currentMapCategory {
-            get {
-                return ReInput.mapping.GetMapCategory(currentMapCategoryId);
-            }
-        }
+        private InputCategory currentMapCategory => ReInput.mapping.GetMapCategory(currentMapCategoryId);
 
         private MappingSet currentMappingSet {
             get {
@@ -598,17 +586,13 @@ namespace Rewired.UI.ControlMapper {
             }
         }
 
-        private Joystick currentJoystick { get { return ReInput.controllers.GetJoystick(currentJoystickId); } }
+        private Joystick currentJoystick => ReInput.controllers.GetJoystick(currentJoystickId);
 
-        private bool isJoystickSelected { get { return currentJoystickId >= 0; } }
+        private bool isJoystickSelected => currentJoystickId >= 0;
 
-        private GameObject currentUISelection { get { return EventSystem.current != null ? EventSystem.current.currentSelectedGameObject : null; } }
+        private GameObject currentUISelection => EventSystem.current != null ? EventSystem.current.currentSelectedGameObject : null;
 
-        private bool showSettings {
-            get {
-                return _showInputBehaviorSettings && _inputBehaviorSettings.Length > 0;
-            }
-        }
+        private bool showSettings => _showInputBehaviorSettings && _inputBehaviorSettings.Length > 0;
 
         private bool showMapCategories {
             get {

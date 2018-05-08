@@ -1,4 +1,5 @@
-﻿using Datenshi.Scripts.Combat.Attacks;
+﻿using System;
+using Datenshi.Scripts.Combat.Attacks;
 using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Input;
 using Datenshi.Scripts.Util;
@@ -11,6 +12,9 @@ namespace Datenshi.Scripts.Combat {
         Neutral,
         Enemy
     }
+
+    [Serializable]
+    public class SerializableCombatant : SerializableInterface<ICombatant> { }
 
     public interface ICombatant : ILocatable, IVariableHolder, IInputReceiver {
         uint MaxHealth {
@@ -79,5 +83,4 @@ namespace Datenshi.Scripts.Combat {
 
         void ExecuteAttack(Attack attack);
     }
-
 }

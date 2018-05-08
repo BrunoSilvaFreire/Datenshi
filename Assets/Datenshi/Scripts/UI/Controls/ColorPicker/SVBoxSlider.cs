@@ -15,13 +15,7 @@ namespace UnityEngine.UI.Extensions.ColorPicker
         private float lastH = -1;
         private bool listen = true;
 
-        public RectTransform RectTransform
-        {
-            get
-            {
-                return transform as RectTransform;
-            }
-        }
+        public RectTransform RectTransform => transform as RectTransform;
 
         private void Awake()
         {

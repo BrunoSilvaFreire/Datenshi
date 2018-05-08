@@ -16,10 +16,7 @@ namespace UnityEngine.UI.Extensions
 
         private bool isAClick;
 
-        public int CurrentPage
-        {
-            get { return scrollSnap.CurrentPage; }
-        }
+        public int CurrentPage => scrollSnap.CurrentPage;
 
         protected PaginationManager()
         { }

@@ -1,0 +1,16 @@
+{
+    "name": "Datenshi-Combat-UI",
+    "references": [
+        "Datenshi-Combat",
+        "Datenshi-Utilities",
+        "Datenshi-UI",
+        "Datenshi-Input",
+        "Datenshi-Data",
+        "Datenshi-Movement",
+        "Datenshi-Animation"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}

@@ -50,10 +50,7 @@ namespace UnityEngine.UI.Extensions
             set { cooldownSpeed = value; }
         }
 
-        public bool CooldownInEffect
-        {
-            get { return cooldownInEffect; }
-        }
+        public bool CooldownInEffect => cooldownInEffect;
 
         public bool CooldownActive
         {
@@ -67,20 +64,11 @@ namespace UnityEngine.UI.Extensions
             set { cooldownTimeElapsed = value; }
         }
 
-        public float CooldownTimeRemaining
-        {
-            get { return cooldownTimeRemaining; }
-        }
+        public float CooldownTimeRemaining => cooldownTimeRemaining;
 
-        public int CooldownPercentRemaining
-        {
-            get { return cooldownPercentRemaining; }
-        }
+        public int CooldownPercentRemaining => cooldownPercentRemaining;
 
-        public int CooldownPercentComplete
-        {
-            get { return cooldownPercentComplete; }
-        }
+        public int CooldownPercentComplete => cooldownPercentComplete;
 
         #endregion
 

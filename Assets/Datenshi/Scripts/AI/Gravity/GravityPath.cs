@@ -20,11 +20,7 @@ namespace Datenshi.Scripts.Combat.Gravity {
         }
 
         [CanBeNull]
-        public Node FinalNode {
-            get {
-                return finalNode;
-            }
-        }
+        public Node FinalNode => finalNode;
 
         private Vector2[] path;
         private Node finalNode;

@@ -109,69 +109,36 @@ namespace UnityEngine.UI.Extensions
         private bool lerpToContentRunning;
         private bool mSliding;
         private bool mLerping;
-        private bool contentIsHorizonalLayoutGroup
-        {
-            get
-            {
-                return contentTransform.GetComponent<HorizontalLayoutGroup>() != null;
-            }
-        }
+        private bool contentIsHorizonalLayoutGroup => contentTransform.GetComponent<HorizontalLayoutGroup>() != null;
 
         #region Public Info
         /// <summary>
         /// Returns if the SnapScroll is moving
         /// </summary>
-        public bool moving
-        {
-            get
-            {
-                return sliding || lerping;
-            }
-        }
+        public bool moving => sliding || lerping;
 
         /// <summary>
         /// Returns if the SnapScroll is moving because of a touch
         /// </summary>
-        public bool sliding
-        {
-            get
-            {
-                return mSliding;
-            }
-        }
+        public bool sliding => mSliding;
+
         /// <summary>
         /// Returns if the SnapScroll is moving programmatically
         /// </summary>
-        public bool lerping
-        {
-            get
-            {
-                return mLerping;
-            }
-        }
+        public bool lerping => mLerping;
 
         /// <summary>
         /// Returns the closest item's index
         /// *Note this is zero based, and based on position not child order
         /// </summary>
-        public int closestItemIndex
-        {
-            get
-            {
-                return contentPositions.IndexOf(FindClosestFrom(contentTransform.localPosition));
-            }
-        }
+        public int closestItemIndex => contentPositions.IndexOf(FindClosestFrom(contentTransform.localPosition));
+
         /// <summary>
         /// Returns the lerpTarget's index
         /// *Note this is zero-based, and based on position not child order
         /// </summary>
-        public int lerpTargetIndex
-        {
-            get
-            {
-                return contentPositions.IndexOf(lerpTarget);
-            }
-        }
+        public int lerpTargetIndex => contentPositions.IndexOf(lerpTarget);
+
         #endregion
 
         #region Setup

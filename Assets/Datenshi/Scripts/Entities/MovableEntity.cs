@@ -90,23 +90,11 @@ namespace Datenshi.Scripts.Entities {
             return motorConfig as C;
         }
 
-        public InputProvider InputProvider {
-            get {
-                return base.InputProvider;
-            }
-        }
+        public InputProvider InputProvider => base.InputProvider;
 
-        public AnimationCurve AccelerationCurve {
-            get {
-                return accelerationCurve;
-            }
-        }
+        public AnimationCurve AccelerationCurve => accelerationCurve;
 
-        public Collider2D Hitbox {
-            get {
-                return base.Hitbox;
-            }
-        }
+        public Collider2D Hitbox => base.Hitbox;
 
 
         [SerializeField]
@@ -118,35 +106,15 @@ namespace Datenshi.Scripts.Entities {
         [SerializeField]
         private byte verticalRaycasts = 3;
 
-        public float Inset {
-            get {
-                return inset;
-            }
-        }
+        public float Inset => inset;
 
-        public byte HorizontalRaycasts {
-            get {
-                return horizontalRaycasts;
-            }
-        }
+        public byte HorizontalRaycasts => horizontalRaycasts;
 
-        public byte VerticalRaycasts {
-            get {
-                return verticalRaycasts;
-            }
-        }
+        public byte VerticalRaycasts => verticalRaycasts;
 
-        public float MaxSpeed {
-            get {
-                return maxSpeed;
-            }
-        }
+        public float MaxSpeed => maxSpeed;
 
-        public Transform MovementTransform {
-            get {
-                return transform;
-            }
-        }
+        public Transform MovementTransform => transform;
 
 
         [ShowInInspector, ReadOnly, TitleGroup(MovementGroup)]
@@ -166,11 +134,7 @@ namespace Datenshi.Scripts.Entities {
         }
 
 
-        public float SpeedPercent {
-            get {
-                return Velocity.magnitude / MaxSpeed;
-            }
-        }
+        public float SpeedPercent => Velocity.magnitude / MaxSpeed;
 
         public Vector2 GroundPosition {
             get {
@@ -213,16 +177,17 @@ namespace Datenshi.Scripts.Entities {
 
         public void Move() {
             motor.Move(this);
-            MovementTransform.position += (Vector3) Velocity * Time.fixedDeltaTime;
+            MovementTransform.position += (Vector3) Velocity * Time.deltaTime;
         }
 
-        private void FixedUpdate() {
+        protected override void Update() {
+            base.Update();
             Move();
             if (ExternalForces.magnitude > 0.1) {
                 ExternalForcesBehaviour.Check(this, ref ExternalForces, ref collisionStatus,
                     GameResources.Instance.WorldMask);
                 ExternalForces = Vector2.Lerp(ExternalForces, Vector2.zero, ExternalForcesDeacceleration);
-                transform.position += (Vector3) ExternalForces;
+                transform.position += (Vector3) ExternalForces * Time.deltaTime;
             }
 
             var newDirection = Direction.FromVector(Velocity);

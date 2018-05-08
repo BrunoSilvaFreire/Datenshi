@@ -1,4 +1,5 @@
-﻿using Sirenix.OdinInspector;
+﻿using DG.Tweening;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Graphics {
@@ -34,6 +35,14 @@ namespace Datenshi.Scripts.Graphics {
 
         protected override string GetShaderName() {
             return ShaderName;
+        }
+
+        public void DOAmount(float amount, float duration) {
+            DOTween.To(() => Amount, value => Amount = value, amount, duration);
+        }
+
+        public void DODarkenAmount(float amount, float duration) {
+            DOTween.To(() => DarkenAmount, value => DarkenAmount = value, amount, duration);
         }
     }
 }

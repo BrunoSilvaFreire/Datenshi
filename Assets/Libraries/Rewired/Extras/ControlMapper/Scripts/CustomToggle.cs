@@ -42,7 +42,7 @@ namespace Rewired.UI.ControlMapper {
         public bool autoNavLeft { get { return _autoNavLeft; } set { _autoNavLeft = value; } }
         public bool autoNavRight { get { return _autoNavRight; } set { _autoNavRight = value; } }
 
-        private bool isDisabled { get { return !IsInteractable(); } }
+        private bool isDisabled => !IsInteractable();
         private bool isHighlightDisabled;
 
         // Events

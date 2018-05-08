@@ -265,8 +265,8 @@ namespace Rewired.UI.ControlMapper {
             private UIControlSet _controlSet;
             private Dictionary<int, PropertyType> idToProperty;
 
-            public InputBehavior inputBehavior { get { return _inputBehavior; } }
-            public UIControlSet controlSet { get { return _controlSet; } }
+            public InputBehavior inputBehavior => _inputBehavior;
+            public UIControlSet controlSet => _controlSet;
 
             private InputBehavior copyOfOriginal;
 

@@ -43,23 +43,11 @@ namespace UnityEngine.UI.Extensions
         [HideInInspector]
         [SerializeField]
         protected Vector2 oriCornerPosRatio = Vector2.one * -1;
-        public Vector2 OriCornerPosRatio
-        {
-            get
-            {
-                return oriCornerPosRatio;
-            }
-        }
+        public Vector2 OriCornerPosRatio => oriCornerPosRatio;
 
         #endregion
 
-        public Image UIImage
-        {
-            get
-            {
-                return (Image)uiGraphic;
-            }
-        }
+        public Image UIImage => (Image)uiGraphic;
 
         #region Configurations
 

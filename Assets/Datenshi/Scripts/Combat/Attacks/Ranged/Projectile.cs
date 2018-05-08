@@ -69,6 +69,7 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
                 }
             }
 
+            Debug.Log("Collided with " + other.gameObject);
             Hit();
         }
 
@@ -89,7 +90,7 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
             return Owner != null && Owner.Relationship != entity.Relationship;
         }
 
-        public void Defend(ICombatant entity) {
+        public void Defend(ICombatant entity, ref DamageInfo info) {
             velocity = Owner.Center - (Vector2) transform.position;
             velocity.Normalize();
             velocity *= GameResources.Instance.DeflectSpeed;
@@ -104,7 +105,7 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
 
         public float MaxAngle;
 
-        public void PoorlyDefend(ICombatant entity) {
+        public void PoorlyDefend(ICombatant entity, ref DamageInfo info) {
             var angle = Random.value * MaxAngle - MaxAngle / 2 + Angle(velocity);
             velocity = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle));
             velocity *= GameResources.Instance.DeflectSpeed;

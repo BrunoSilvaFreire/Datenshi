@@ -82,13 +82,13 @@ namespace Datenshi.Scripts.Game {
         private void HideDefend() {
             SetFilter(22000);
             SetColorOverride(0);
-            SetFX(0);
+            //SetFX(0);
         }
 
         private void ShowDefend() {
             SetFilter(LowCutoff);
             SetColorOverride(DefendOverrideAmount);
-            SetFX(1);
+            //SetFX(1);
         }
 
         private void SetFilter(float f) {
@@ -103,7 +103,7 @@ namespace Datenshi.Scripts.Game {
 
         private void SetFX(float x) {
             Fx.DOKill();
-            DOTween.To(() => Fx.Amount, value => Fx.Amount = value, x, DefendOverrideDuration);
+            Fx.DOAmount(x, DefendOverrideDuration);
         }
 
         private void SetColorOverride(float i) {

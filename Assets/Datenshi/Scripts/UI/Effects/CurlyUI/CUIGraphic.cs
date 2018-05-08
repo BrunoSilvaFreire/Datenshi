@@ -31,24 +31,12 @@ namespace UnityEngine.UI.Extensions
         [Tooltip("Set true to make the curve/morph to work. Set false to quickly see the original UI.")]
         [SerializeField]
         protected bool isCurved = true;
-        public bool IsCurved
-        {
-            get
-            {
-                return isCurved;
-            }
-        }
+        public bool IsCurved => isCurved;
 
         [Tooltip("Set true to dynamically change the curve according to the dynamic change of the UI layout")]
         [SerializeField]
         protected bool isLockWithRatio = true;
-        public bool IsLockWithRatio
-        {
-            get
-            {
-                return isLockWithRatio;
-            }
-        }
+        public bool IsLockWithRatio => isLockWithRatio;
 
         [Tooltip("Pick a higher resolution to improve the quality of the curved graphic.")]
         [SerializeField]
@@ -63,56 +51,27 @@ namespace UnityEngine.UI.Extensions
         #region Links
 
         protected RectTransform rectTrans;
-        public RectTransform RectTrans
-        {
-            get
-            {
-                return rectTrans;
-            }
-        }
+        public RectTransform RectTrans => rectTrans;
 
         [Tooltip("Put in the Graphic you want to curve/morph here.")]
         [SerializeField]
         protected Graphic uiGraphic;
-        public Graphic UIGraphic
-        {
-            get
-            {
-                return uiGraphic;
-            }
-        }
+        public Graphic UIGraphic => uiGraphic;
+
         [Tooltip("Put in the reference Graphic that will be used to tune the bezier curves. Think button image and text.")]
         [SerializeField]
         protected CUIGraphic refCUIGraphic;
-        public CUIGraphic RefCUIGraphic
-        {
-            get
-            {
-                return refCUIGraphic;
-            }
-        }
+        public CUIGraphic RefCUIGraphic => refCUIGraphic;
 
         [Tooltip("Do not touch this unless you are sure what you are doing. The curves are (re)generated automatically.")]
         [SerializeField]
         protected CUIBezierCurve[] refCurves;
-        public CUIBezierCurve[] RefCurves
-        {
-            get
-            {
-                return refCurves;
-            }
-        }
+        public CUIBezierCurve[] RefCurves => refCurves;
 
         [HideInInspector]
         [SerializeField]
         protected Vector3_Array2D[] refCurvesControlRatioPoints;
-        public Vector3_Array2D[] RefCurvesControlRatioPoints
-        {
-            get
-            {
-                return refCurvesControlRatioPoints;
-            }
-        }
+        public Vector3_Array2D[] RefCurvesControlRatioPoints => refCurvesControlRatioPoints;
 
 #if UNITY_EDITOR
 

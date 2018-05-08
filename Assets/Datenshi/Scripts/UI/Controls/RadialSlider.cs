@@ -93,10 +93,7 @@ namespace UnityEngine.UI.Extensions
             set { m_lerpCurve = value; m_lerpTime = LerpCurve[LerpCurve.length - 1].time; }
         }
 
-        public bool LerpInProgress
-        {
-            get { return lerpInProgress; }
-        }
+        public bool LerpInProgress => lerpInProgress;
 
         [Serializable]
         public class RadialSliderValueChangedEvent : UnityEvent<int> { }

@@ -16,11 +16,7 @@ namespace Datenshi.Scripts.UI.Layout {
             LayoutRebuilder.MarkLayoutForRebuild(transform as RectTransform);
         }
 #endif
-        private ILayoutElement Element {
-            get {
-                return Behaviour as ILayoutElement;
-            }
-        }
+        private ILayoutElement Element => Behaviour as ILayoutElement;
 
         private float Fetch(Func<ILayoutElement, float> func) {
             var e = Element;

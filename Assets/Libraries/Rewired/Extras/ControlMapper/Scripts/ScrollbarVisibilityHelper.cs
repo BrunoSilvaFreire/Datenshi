@@ -18,8 +18,8 @@ namespace Rewired.UI.ControlMapper {
 
         public ScrollRect scrollRect;
 
-        private Scrollbar hScrollBar { get { return scrollRect != null ? scrollRect.horizontalScrollbar : null; } }
-        private Scrollbar vScrollBar { get { return scrollRect != null ? scrollRect.verticalScrollbar : null; } }
+        private Scrollbar hScrollBar => scrollRect != null ? scrollRect.horizontalScrollbar : null;
+        private Scrollbar vScrollBar => scrollRect != null ? scrollRect.verticalScrollbar : null;
 
         // Used by component on ScrollRect that is used just for sending messages when its size changes
         private bool onlySendMessage;

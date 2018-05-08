@@ -97,7 +97,7 @@ namespace Datenshi.Scripts.Movement.States {
                     DoWallClimb(ref vel, config, inputDir);
                     machine.State = NormalState;
                 } else {
-                    vel.y = SlideSpeed * Time.fixedDeltaTime;
+                    vel.y = SlideSpeed * Time.deltaTime;
                 }
 
                 user.Velocity = vel;

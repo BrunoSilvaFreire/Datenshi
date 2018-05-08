@@ -100,9 +100,9 @@ namespace Rewired.Data {
         /// </summary>
         public string PlayerPrefsKeyPrefix { get { return playerPrefsKeyPrefix; } set { playerPrefsKeyPrefix = value; } }
 
-        private string playerPrefsKey_controllerAssignments { get { return string.Format("{0}_{1}", playerPrefsKeyPrefix, playerPrefsKeySuffix_controllerAssignments); } }
+        private string playerPrefsKey_controllerAssignments => string.Format("{0}_{1}", playerPrefsKeyPrefix, playerPrefsKeySuffix_controllerAssignments);
 
-        private bool loadControllerAssignments { get { return loadKeyboardAssignments || loadMouseAssignments || loadJoystickAssignments; } }
+        private bool loadControllerAssignments => loadKeyboardAssignments || loadMouseAssignments || loadJoystickAssignments;
 
         private bool allowImpreciseJoystickAssignmentMatching = true;
         private bool deferredJoystickAssignmentLoadPending;
@@ -1211,7 +1211,7 @@ namespace Rewired.Data {
 
             public PlayerInfo[] players;
 
-            public int playerCount { get { return players != null ? players.Length : 0; } }
+            public int playerCount => players != null ? players.Length : 0;
 
             public ControllerAssignmentSaveInfo() {
             }
@@ -1241,7 +1241,7 @@ namespace Rewired.Data {
                 public bool hasMouse;
                 public JoystickInfo[] joysticks;
 
-                public int joystickCount { get { return joysticks != null ? joysticks.Length : 0; } }
+                public int joystickCount => joysticks != null ? joysticks.Length : 0;
 
                 public int IndexOfJoystick(int joystickId) {
                     for(int i = 0; i < joystickCount; i++) {

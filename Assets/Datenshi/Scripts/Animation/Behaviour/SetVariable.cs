@@ -53,28 +53,12 @@ namespace Datenshi.Scripts.Animation.Behaviour {
         [ShowIf("IsFloat")]
         public float FloatValue;
 
-        public bool IsInt {
-            get {
-                return Type == AnimatorControllerParameterType.Int;
-            }
-        }
+        public bool IsInt => Type == AnimatorControllerParameterType.Int;
 
-        public bool IsFloat {
-            get {
-                return Type == AnimatorControllerParameterType.Float;
-            }
-        }
+        public bool IsFloat => Type == AnimatorControllerParameterType.Float;
 
-        public bool IsTrigger {
-            get {
-                return Type == AnimatorControllerParameterType.Trigger;
-            }
-        }
+        public bool IsTrigger => Type == AnimatorControllerParameterType.Trigger;
 
-        public bool IsBoolean {
-            get {
-                return Type == AnimatorControllerParameterType.Bool;
-            }
-        }
+        public bool IsBoolean => Type == AnimatorControllerParameterType.Bool;
     }
 }

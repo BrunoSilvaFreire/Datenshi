@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4058186533410472}
   - component: {fileID: 114048294525163814}
   - component: {fileID: 114860073340594278}
-  m_Layer: 12
+  m_Layer: 13
   m_Name: TeleportingEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 114244434151724684}
   - component: {fileID: 225845006051159698}
   - component: {fileID: 114433011763001340}
-  m_Layer: 12
+  m_Layer: 13
   m_Name: Enemy_UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 4353090292968304}
   - component: {fileID: 114721705990648840}
   - component: {fileID: 114385866453184816}
-  m_Layer: 12
+  m_Layer: 13
   m_Name: TeleportingEnemy_Managers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 224648400831243240}
   - component: {fileID: 222543683693924580}
   - component: {fileID: 114275196212251298}
-  m_Layer: 12
+  m_Layer: 13
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 224307206925302078}
   - component: {fileID: 222349546287782338}
   - component: {fileID: 114635531450201696}
-  m_Layer: 12
+  m_Layer: 13
   m_Name: HealthBarSub
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 224923850712268820}
   - component: {fileID: 222473362866592350}
   - component: {fileID: 114162560845781466}
-  m_Layer: 12
+  m_Layer: 13
   m_Name: HealthBarBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 82405948753093650}
   - component: {fileID: 114139188890499970}
   - component: {fileID: 114432740006126460}
-  m_Layer: 12
+  m_Layer: 13
   m_Name: TeleportingEnemy_Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1067808238723220}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -74.6, y: 14.3, z: 0}
+  m_LocalPosition: {x: -0.08000183, y: 2.5299997, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4967164661867740}
@@ -331,7 +331,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4d4c506b7d14716a950885bed3aaf01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EntityRoom: {fileID: 0}
   inputProvider: {fileID: 0}
   colorizableRenderer: {fileID: 114079858820831974}
   MiscController: {fileID: 114139188890499970}
@@ -347,8 +346,6 @@ MonoBehaviour:
   DamageInvulnerability: 0
   DamageInvulnerabilityDuration: 3
   relationship: 2
-  DefaultAttackStrategy: {fileID: 11400000, guid: 5347f78cc5ad1fc48bce658eaced1e5a,
-    type: 2}
   OnDamaged:
     m_PersistentCalls:
       m_Calls: []
@@ -694,7 +691,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbd1d9ce47dd44ffab3ef38f9cd20c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {x: 46.14, y: 13}
   TimePerRegen: 1
   navigable: {fileID: 0}
   Navigable:

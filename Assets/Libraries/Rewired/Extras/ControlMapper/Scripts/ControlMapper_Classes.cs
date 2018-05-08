@@ -137,8 +137,8 @@ namespace Rewired.UI.ControlMapper {
 
         private class GUIButton : GUIElement {
 
-            protected Button button { get { return selectable as Button; } }
-            public ButtonInfo buttonInfo { get { return uiElementInfo as ButtonInfo; } }
+            protected Button button => selectable as Button;
+            public ButtonInfo buttonInfo => uiElementInfo as ButtonInfo;
 
             public GUIButton(GameObject gameObject)
                 : base(gameObject) {
@@ -161,9 +161,9 @@ namespace Rewired.UI.ControlMapper {
 
         private class GUIInputField : GUIElement {
 
-            protected Button button { get { return selectable as Button; } }
-            public InputFieldInfo fieldInfo { get { return uiElementInfo as InputFieldInfo; } }
-            public bool hasToggle { get { return toggle != null; } }
+            protected Button button => selectable as Button;
+            public InputFieldInfo fieldInfo => uiElementInfo as InputFieldInfo;
+            public bool hasToggle => toggle != null;
             public GUIToggle toggle { get; private set; }
 
             public int actionElementMapId {
@@ -223,8 +223,8 @@ namespace Rewired.UI.ControlMapper {
 
         private class GUIToggle : GUIElement {
 
-            protected Toggle toggle { get { return selectable as Toggle; } }
-            public ToggleInfo toggleInfo { get { return uiElementInfo as ToggleInfo; } }
+            protected Toggle toggle => selectable as Toggle;
+            public ToggleInfo toggleInfo => uiElementInfo as ToggleInfo;
 
             public int actionElementMapId {
                 get {
@@ -387,8 +387,9 @@ namespace Rewired.UI.ControlMapper {
             private IList<int> _actionCategoryIdsReadOnly;
             private IList<int> _actionIdsReadOnly;
 
-            public int mapCategoryId { get { return _mapCategoryId; } }
-            public ActionListMode actionListMode { get { return _actionListMode; } }
+            public int mapCategoryId => _mapCategoryId;
+            public ActionListMode actionListMode => _actionListMode;
+
             public IList<int> actionCategoryIds {
                 get {
                     if(_actionCategoryIds == null) return null;
@@ -427,16 +428,12 @@ namespace Rewired.UI.ControlMapper {
 
             // Static
 
-            public static MappingSet Default {
-                get {
-                    return new MappingSet(
-                        0, // Default
-                        ActionListMode.ActionCategory,
-                        new int[1] { 0 }, // Default
-                        new int[0] // No individual actions
-                    );
-                }
-            }
+            public static MappingSet Default => new MappingSet(
+                0, // Default
+                ActionListMode.ActionCategory,
+                new int[1] { 0 }, // Default
+                new int[0] // No individual actions
+            );
 
             public enum ActionListMode {
                 ActionCategory = 0,
@@ -499,20 +496,21 @@ namespace Rewired.UI.ControlMapper {
             [Tooltip("Maximum value the user is allowed to set for this property.")]
             private float _mouseXYAxisSensitivityMax = 2.0f;
 
-            public int inputBehaviorId { get { return _inputBehaviorId; } }
-            public bool showJoystickAxisSensitivity { get { return _showJoystickAxisSensitivity; } }
-            public bool showMouseXYAxisSensitivity { get { return _showMouseXYAxisSensitivity; } }
-            public string labelLanguageKey { get { return _labelLanguageKey; } }
-            public string joystickAxisSensitivityLabelLanguageKey { get { return _joystickAxisSensitivityLabelLanguageKey; } }
-            public string mouseXYAxisSensitivityLabelLanguageKey { get { return _mouseXYAxisSensitivityLabelLanguageKey; } }
-            public Sprite joystickAxisSensitivityIcon { get { return _joystickAxisSensitivityIcon; } }
-            public Sprite mouseXYAxisSensitivityIcon { get { return _mouseXYAxisSensitivityIcon; } }
-            public float joystickAxisSensitivityMin { get { return _joystickAxisSensitivityMin; } }
-            public float joystickAxisSensitivityMax { get { return _joystickAxisSensitivityMax; } }
-            public float mouseXYAxisSensitivityMin { get { return _mouseXYAxisSensitivityMin; } }
-            public float mouseXYAxisSensitivityMax { get { return _mouseXYAxisSensitivityMax; } }
+            public int inputBehaviorId => _inputBehaviorId;
+            public bool showJoystickAxisSensitivity => _showJoystickAxisSensitivity;
+            public bool showMouseXYAxisSensitivity => _showMouseXYAxisSensitivity;
+            public string labelLanguageKey => _labelLanguageKey;
+            public string joystickAxisSensitivityLabelLanguageKey => _joystickAxisSensitivityLabelLanguageKey;
+            public string mouseXYAxisSensitivityLabelLanguageKey => _mouseXYAxisSensitivityLabelLanguageKey;
+            public Sprite joystickAxisSensitivityIcon => _joystickAxisSensitivityIcon;
+            public Sprite mouseXYAxisSensitivityIcon => _mouseXYAxisSensitivityIcon;
+            public float joystickAxisSensitivityMin => _joystickAxisSensitivityMin;
+            public float joystickAxisSensitivityMax => _joystickAxisSensitivityMax;
+            public float mouseXYAxisSensitivityMin => _mouseXYAxisSensitivityMin;
+            public float mouseXYAxisSensitivityMax => _mouseXYAxisSensitivityMax;
 
-            public bool isValid { get { return _inputBehaviorId >= 0 && (_showJoystickAxisSensitivity || _showMouseXYAxisSensitivity); } } // || _showMouseOtherAxisSensitivity); } }
+            public bool isValid // || _showMouseOtherAxisSensitivity); } }
+                => _inputBehaviorId >= 0 && (_showJoystickAxisSensitivity || _showMouseXYAxisSensitivity);
 
 
             public InputBehaviorSettings() {
@@ -554,21 +552,21 @@ namespace Rewired.UI.ControlMapper {
             [SerializeField]
             private GameObject _moveStickGraphic;
 
-            public GameObject button { get { return _button; } }
-            public GameObject fitButton { get { return _fitButton; } }
-            public GameObject inputGridLabel { get { return _inputGridLabel; } }
-            public GameObject inputGridHeaderLabel { get { return _inputGridHeaderLabel; } }
-            public GameObject inputGridFieldButton { get { return _inputGridFieldButton; } }
-            public GameObject inputGridFieldInvertToggle { get { return _inputGridFieldInvertToggle; } }
-            public GameObject window { get { return _window; } }
-            public GameObject windowTitleText { get { return _windowTitleText; } }
-            public GameObject windowContentText { get { return _windowContentText; } }
-            public GameObject fader { get { return _fader; } }
-            public GameObject calibrationWindow { get { return _calibrationWindow; } }
-            public GameObject inputBehaviorsWindow { get { return _inputBehaviorsWindow; } }
+            public GameObject button => _button;
+            public GameObject fitButton => _fitButton;
+            public GameObject inputGridLabel => _inputGridLabel;
+            public GameObject inputGridHeaderLabel => _inputGridHeaderLabel;
+            public GameObject inputGridFieldButton => _inputGridFieldButton;
+            public GameObject inputGridFieldInvertToggle => _inputGridFieldInvertToggle;
+            public GameObject window => _window;
+            public GameObject windowTitleText => _windowTitleText;
+            public GameObject windowContentText => _windowContentText;
+            public GameObject fader => _fader;
+            public GameObject calibrationWindow => _calibrationWindow;
+            public GameObject inputBehaviorsWindow => _inputBehaviorsWindow;
 
-            public GameObject centerStickGraphic { get { return _centerStickGraphic; } }
-            public GameObject moveStickGraphic { get { return _moveStickGraphic; } }
+            public GameObject centerStickGraphic => _centerStickGraphic;
+            public GameObject moveStickGraphic => _moveStickGraphic;
 
             public bool Check() {
                 if(
@@ -650,34 +648,34 @@ namespace Rewired.UI.ControlMapper {
             [SerializeField]
             private Image _mainBackgroundImage;
 
-            public Canvas canvas { get { return _canvas; } }
-            public CanvasGroup mainCanvasGroup { get { return _mainCanvasGroup; } }
-            public Transform mainContent { get { return _mainContent; } }
-            public Transform mainContentInner { get { return _mainContentInner; } }
-            public UIGroup playersGroup { get { return _playersGroup; } }
-            public Transform controllerGroup { get { return _controllerGroup; } }
-            public Transform controllerGroupLabelGroup { get { return _controllerGroupLabelGroup; } }
-            public UIGroup controllerSettingsGroup { get { return _controllerSettingsGroup; } }
-            public UIGroup assignedControllersGroup { get { return _assignedControllersGroup; } }
-            public Transform settingsAndMapCategoriesGroup { get { return _settingsAndMapCategoriesGroup; } }
-            public UIGroup settingsGroup { get { return _settingsGroup; } }
-            public UIGroup mapCategoriesGroup { get { return _mapCategoriesGroup; } }
-            public Transform inputGridGroup { get { return _inputGridGroup; } }
-            public Transform inputGridContainer { get { return _inputGridContainer; } }
-            public Transform inputGridHeadersGroup { get { return _inputGridHeadersGroup; } }
-            public Scrollbar inputGridVScrollbar { get { return _inputGridVScrollbar; } }
-            public ScrollRect inputGridScrollRect { get { return _inputGridScrollRect; } }
-            public Transform inputGridInnerGroup { get { return _inputGridInnerGroup; } }
-            public Text controllerNameLabel { get { return _controllerNameLabel; } }
-            public Button removeControllerButton { get { return _removeControllerButton; } }
-            public Button assignControllerButton { get { return _assignControllerButton; } }
-            public Button calibrateControllerButton { get { return _calibrateControllerButton; } }
-            public Button doneButton { get { return _doneButton; } }
-            public Button restoreDefaultsButton { get { return _restoreDefaultsButton; } }
-            public Selectable defaultSelection { get { return _defaultSelection; } }
-            public GameObject[] fixedSelectableUIElements { get { return _fixedSelectableUIElements; } }
+            public Canvas canvas => _canvas;
+            public CanvasGroup mainCanvasGroup => _mainCanvasGroup;
+            public Transform mainContent => _mainContent;
+            public Transform mainContentInner => _mainContentInner;
+            public UIGroup playersGroup => _playersGroup;
+            public Transform controllerGroup => _controllerGroup;
+            public Transform controllerGroupLabelGroup => _controllerGroupLabelGroup;
+            public UIGroup controllerSettingsGroup => _controllerSettingsGroup;
+            public UIGroup assignedControllersGroup => _assignedControllersGroup;
+            public Transform settingsAndMapCategoriesGroup => _settingsAndMapCategoriesGroup;
+            public UIGroup settingsGroup => _settingsGroup;
+            public UIGroup mapCategoriesGroup => _mapCategoriesGroup;
+            public Transform inputGridGroup => _inputGridGroup;
+            public Transform inputGridContainer => _inputGridContainer;
+            public Transform inputGridHeadersGroup => _inputGridHeadersGroup;
+            public Scrollbar inputGridVScrollbar => _inputGridVScrollbar;
+            public ScrollRect inputGridScrollRect => _inputGridScrollRect;
+            public Transform inputGridInnerGroup => _inputGridInnerGroup;
+            public Text controllerNameLabel => _controllerNameLabel;
+            public Button removeControllerButton => _removeControllerButton;
+            public Button assignControllerButton => _assignControllerButton;
+            public Button calibrateControllerButton => _calibrateControllerButton;
+            public Button doneButton => _doneButton;
+            public Button restoreDefaultsButton => _restoreDefaultsButton;
+            public Selectable defaultSelection => _defaultSelection;
+            public GameObject[] fixedSelectableUIElements => _fixedSelectableUIElements;
 
-            public Image mainBackgroundImage { get { return _mainBackgroundImage; } }
+            public Image mainBackgroundImage => _mainBackgroundImage;
 
             // Runtime references
 
@@ -730,8 +728,8 @@ namespace Rewired.UI.ControlMapper {
             private int _actionId;
             private AxisRange _axisRange;
 
-            public int actionId { get { return _actionId; } }
-            public AxisRange axisRange { get { return _axisRange; } }
+            public int actionId => _actionId;
+            public AxisRange axisRange => _axisRange;
 
             public InputActionSet(int actionId, AxisRange axisRange) {
                 this._actionId = actionId;
@@ -823,7 +821,7 @@ namespace Rewired.UI.ControlMapper {
             private Controller.Axis axis;
             private bool firstRun;
 
-            public bool isValid { get { return axis != null; } }
+            public bool isValid => axis != null;
 
             public AxisCalibrator(Joystick joystick, int axisIndex) {
                 this.data = new AxisCalibrationData();
@@ -867,21 +865,13 @@ namespace Rewired.UI.ControlMapper {
 
             private List<Entry> list;
 
-            public int Count {
-                get {
-                    return list.Count;
-                }
-            }
+            public int Count => list.Count;
 
             public IndexedDictionary() {
                 list = new List<Entry>();
             }
 
-            public TValue this[int index] {
-                get {
-                    return list[index].value;
-                }
-            }
+            public TValue this[int index] => list[index].value;
 
             public TValue Get(TKey key) {
                 int index = IndexOfKey(key);

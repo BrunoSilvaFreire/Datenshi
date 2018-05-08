@@ -275,11 +275,7 @@ namespace Datenshi.Scripts.UI.Narrator {
                 private set;
             }
 
-            public int Length {
-                get {
-                    return this.Text.Length;
-                }
-            }
+            public int Length => this.Text.Length;
 
             public string Text {
                 get {
@@ -291,11 +287,7 @@ namespace Datenshi.Scripts.UI.Narrator {
                 }
             }
 
-            public bool IsTag {
-                get {
-                    return this.Tag != null;
-                }
-            }
+            public bool IsTag => this.Tag != null;
         }
     }
 }

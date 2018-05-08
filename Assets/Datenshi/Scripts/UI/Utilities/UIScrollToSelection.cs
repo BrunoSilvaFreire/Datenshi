@@ -30,45 +30,26 @@ namespace UnityEngine.UI.Extensions
 
         //*** PROPERTIES ***//
         // REFERENCES
-        protected RectTransform LayoutListGroup
-        {
-            get { return TargetScrollRect != null ? TargetScrollRect.content : null; }
-        }
+        protected RectTransform LayoutListGroup => TargetScrollRect != null ? TargetScrollRect.content : null;
 
         // SETTINGS
-        protected ScrollType ScrollDirection
-        {
-            get { return scrollDirection; }
-        }
-        protected float ScrollSpeed
-        {
-            get { return scrollSpeed; }
-        }
+        protected ScrollType ScrollDirection => scrollDirection;
+
+        protected float ScrollSpeed => scrollSpeed;
 
         // INPUT
-        protected bool CancelScrollOnInput
-        {
-            get { return cancelScrollOnInput; }
-        }
-        protected List<KeyCode> CancelScrollKeycodes
-        {
-            get { return cancelScrollKeycodes; }
-        }
+        protected bool CancelScrollOnInput => cancelScrollOnInput;
+
+        protected List<KeyCode> CancelScrollKeycodes => cancelScrollKeycodes;
 
         // CACHED REFERENCES
         protected RectTransform ScrollWindow { get; set; }
         protected ScrollRect TargetScrollRect { get; set; }
 
         // SCROLLING
-        protected EventSystem CurrentEventSystem
-        {
-            get { return EventSystem.current; }
-        }
+        protected EventSystem CurrentEventSystem => EventSystem.current;
         protected GameObject LastCheckedGameObject { get; set; }
-        protected GameObject CurrentSelectedGameObject
-        {
-            get { return EventSystem.current.currentSelectedGameObject; }
-        }
+        protected GameObject CurrentSelectedGameObject => EventSystem.current.currentSelectedGameObject;
         protected RectTransform CurrentTargetRectTransform { get; set; }
         protected bool IsManualScrollingAvailable { get; set; }
 

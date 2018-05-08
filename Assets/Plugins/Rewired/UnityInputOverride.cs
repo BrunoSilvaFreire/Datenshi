@@ -55,31 +55,32 @@ public static class Input {
     /// Last measured linear acceleration of a device in three-dimensional space.(Read Only)
     /// </summary>
     /// <returns></returns>
-    public static Vector3 acceleration { get { return UnityEngine.Input.acceleration; } }
+    public static Vector3 acceleration => UnityEngine.Input.acceleration;
 
     /// <summary>
     /// Number of acceleration measurements which occurred during last frame.
     /// </summary>
     /// <returns></returns>
-    public static int accelerationEventCount { get { return UnityEngine.Input.accelerationEventCount; } }
+    public static int accelerationEventCount => UnityEngine.Input.accelerationEventCount;
+
     //
     /// <summary>
     /// Returns list of acceleration measurements which occurred during the last frame. (Read Only) (Allocates temporary variables).
     /// </summary>
     /// <returns></returns>
-    public static AccelerationEvent[] accelerationEvents { get { return UnityEngine.Input.accelerationEvents; } }
+    public static AccelerationEvent[] accelerationEvents => UnityEngine.Input.accelerationEvents;
 
     /// <summary>
     /// Is any key or mouse button currently held down? (Read Only)
     /// </summary>
     /// <returns></returns>
-    public static bool anyKey { get { return UnityEngine.Input.anyKey; } }
+    public static bool anyKey => UnityEngine.Input.anyKey;
 
     /// <summary>
     /// Returns true the first frame the user hits any key or mouse button. (Read Only)
     /// </summary>
     /// <returns></returns>
-    public static bool anyKeyDown { get { return UnityEngine.Input.anyKeyDown; } }
+    public static bool anyKeyDown => UnityEngine.Input.anyKeyDown;
 
     /// <summary>
     /// Should Back button quit the application? Only usable on Android, Windows Phone or Windows Tablets.
@@ -106,7 +107,7 @@ public static class Input {
     /// Property for accessing compass (handheld devices only). (Read Only)
     /// </summary>
     /// <returns></returns>
-    public static Compass compass { get { return UnityEngine.Input.compass; } }
+    public static Compass compass => UnityEngine.Input.compass;
 
     /// <summary>
     /// This property controls if input sensors should be compensated for screen orientation.
@@ -130,13 +131,13 @@ public static class Input {
     /// The current IME composition string being typed by the user.
     /// </summary>
     /// <returns></returns>
-    public static string compositionString { get { return UnityEngine.Input.compositionString; } }
+    public static string compositionString => UnityEngine.Input.compositionString;
 
     /// <summary>
     /// Device physical orientation as reported by OS. (Read Only)
     /// </summary>
     /// <returns></returns>
-    public static DeviceOrientation deviceOrientation { get { return UnityEngine.Input.deviceOrientation; } }
+    public static DeviceOrientation deviceOrientation => UnityEngine.Input.deviceOrientation;
 
     /// <summary>
     /// Property indicating whether keypresses are eaten by a textinput if it has focus (default true).
@@ -152,7 +153,7 @@ public static class Input {
     /// Returns default gyroscope.
     /// </summary>
     /// <returns></returns>
-    public static Gyroscope gyro { get { return UnityEngine.Input.gyro; } }
+    public static Gyroscope gyro => UnityEngine.Input.gyro;
 
     /// <summary>
     /// Controls enabling and disabling of IME input composition.
@@ -167,31 +168,33 @@ public static class Input {
     /// Does the user have an IME keyboard input source selected?
     /// </summary>
     /// <returns></returns>
-    public static bool imeIsSelected { get { return UnityEngine.Input.imeIsSelected; } }
+    public static bool imeIsSelected => UnityEngine.Input.imeIsSelected;
+
     //
     /// <summary>
     /// Returns the keyboard input entered this frame. (Read Only)
     /// </summary>
     /// <returns></returns>
-    public static string inputString { get { return UnityEngine.Input.inputString; } }
+    public static string inputString => UnityEngine.Input.inputString;
 
     [Obsolete("isGyroAvailable property is deprecated. Please use SystemInfo.supportsGyroscope instead.")]
-    public static bool isGyroAvailable { get { return UnityEngine.Input.isGyroAvailable; } }
+    public static bool isGyroAvailable => UnityEngine.Input.isGyroAvailable;
 
 #if !REWIRED_UNITY_INPUT_OVERRIDE_DISABLE_LOCATION_SERVICE
     /// <summary>
     /// Property for accessing device location (handheld devices only). (Read Only)
     /// </summary>
     /// <returns></returns>
-    public static LocationService location { get { return UnityEngine.Input.location; } }
+    public static LocationService location => UnityEngine.Input.location;
 #endif
 
     /// <summary>
     /// The current mouse position in pixel coordinates. (Read Only)
     /// </summary>
     /// <returns></returns>
-    public static Vector3 mousePosition { get { return UnityEngine.Input.mousePosition; } }
-    public static bool mousePresent { get { return UnityEngine.Input.mousePresent; } }
+    public static Vector3 mousePosition => UnityEngine.Input.mousePosition;
+
+    public static bool mousePresent => UnityEngine.Input.mousePresent;
 
     /// <summary>
     /// The current mouse scroll delta. (Read Only)
@@ -243,13 +246,13 @@ public static class Input {
     /// Number of touches. Guaranteed not to change throughout the frame. (Read Only)
     /// </summary>
     /// <returns></returns>
-    public static int touchCount { get { return UnityEngine.Input.touchCount; } }
+    public static int touchCount => UnityEngine.Input.touchCount;
 
     /// <summary>
     /// Returns list of objects representing status of all touches during last frame. (Read Only) (Allocates temporary variables).
     /// </summary>
     /// <returns></returns>
-    public static Touch[] touches { get { return UnityEngine.Input.touches; } }
+    public static Touch[] touches => UnityEngine.Input.touches;
 
     /// <summary>
     /// Bool value which let's users check if touch pressure is supported.

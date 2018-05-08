@@ -26,7 +26,7 @@ namespace Rewired.UI.ControlMapper {
             }
         }
 
-        public Transform content { get { return _content; } }
+        public Transform content => _content;
 
         public void SetLabelActive(bool state) {
             if(_label == null) return;

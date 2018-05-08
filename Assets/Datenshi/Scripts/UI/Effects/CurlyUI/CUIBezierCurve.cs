@@ -15,14 +15,7 @@ namespace UnityEngine.UI.Extensions
         [SerializeField]
         protected Vector3[] controlPoints;
 
-        public Vector3[] ControlPoints
-        {
-            get
-            {
-                return controlPoints;
-            }
-
-        }
+        public Vector3[] ControlPoints => controlPoints;
 
 #if UNITY_EDITOR
         /// <summary>

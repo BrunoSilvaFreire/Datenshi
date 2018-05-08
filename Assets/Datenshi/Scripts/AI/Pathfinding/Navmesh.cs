@@ -56,53 +56,21 @@ namespace Datenshi.Scripts.AI.Pathfinding {
             }
         }
 
-        public int YSize {
-            get {
-                return Max.y - Min.y + 1;
-            }
-        }
+        public int YSize => Max.y - Min.y + 1;
 
-        public int XSize {
-            get {
-                return Max.x - Min.x + 1;
-            }
-        }
+        public int XSize => Max.x - Min.x + 1;
 
-        public Vector2 Center {
-            get {
-                return (MinWorld + MaxWorld + Vector2.one) / 2;
-            }
-        }
+        public Vector2 Center => (MinWorld + MaxWorld + Vector2.one) / 2;
 
-        public Vector2 Size {
-            get {
-                return new Vector2(MaxWorld.x - MinWorld.x + 1, MaxWorld.y - MinWorld.y + 1);
-            }
-        }
+        public Vector2 Size => new Vector2(MaxWorld.x - MinWorld.x + 1, MaxWorld.y - MinWorld.y + 1);
 
-        public Vector2 MaxWorld {
-            get {
-                return Grid.CellToWorld(Max.ToVector3());
-            }
-        }
+        public Vector2 MaxWorld => Grid.CellToWorld(Max.ToVector3());
 
-        public Vector2 MinWorld {
-            get {
-                return Grid.CellToWorld(Min.ToVector3());
-            }
-        }
+        public Vector2 MinWorld => Grid.CellToWorld(Min.ToVector3());
 
-        public int TotalSize {
-            get {
-                return XSize * YSize;
-            }
-        }
+        public int TotalSize => XSize * YSize;
 
-        public Node[] Nodes {
-            get {
-                return nodes;
-            }
-        }
+        public Node[] Nodes => nodes;
 
         private void AssignMinMax(Vector2Int newMin, Vector2Int newMax) {
             min.x = Mathf.Min(newMin.x, newMax.x);
@@ -130,11 +98,7 @@ namespace Datenshi.Scripts.AI.Pathfinding {
             return new Node(pos, CheckNodeType(pos, BoxCastSize));
         }
 
-        public Node this[uint index] {
-            get {
-                return index >= nodes.Length ? Node.Invalid : nodes[index];
-            }
-        }
+        public Node this[uint index] => index >= nodes.Length ? Node.Invalid : nodes[index];
 
         public Vector2 GetWorldPosition(uint id, int z = 0) {
             var node = this[id];

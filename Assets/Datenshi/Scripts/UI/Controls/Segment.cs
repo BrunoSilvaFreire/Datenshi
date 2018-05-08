@@ -19,14 +19,9 @@ namespace UnityEngine.UI.Extensions
         internal int index;
         internal SegmentedControl segmentedControl;
 
-        internal bool leftmost
-        {
-            get { return index == 0; }
-        }
-        internal bool rightmost
-        {
-            get { return index == segmentedControl.segments.Length - 1; }
-        }
+        internal bool leftmost => index == 0;
+
+        internal bool rightmost => index == segmentedControl.segments.Length - 1;
 
         public bool selected
         {
@@ -34,10 +29,7 @@ namespace UnityEngine.UI.Extensions
             set { SetSelected(value); }
         }
 
-        internal Selectable button
-        {
-            get { return GetComponent<Selectable>(); }
-        }
+        internal Selectable button => GetComponent<Selectable>();
 
         internal Sprite cutSprite;
 

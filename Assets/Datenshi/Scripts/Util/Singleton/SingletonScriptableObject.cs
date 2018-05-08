@@ -8,11 +8,7 @@ namespace Datenshi.Scripts.Util.Singleton {
         private static readonly string Path = typeof(T).Name;
         private static T instance;
 
-        public static T Instance {
-            get {
-                return instance ?? (instance = Load());
-            }
-        }
+        public static T Instance => instance ?? (instance = Load());
 
         private static T Load() {
 #if UNITY_EDITOR

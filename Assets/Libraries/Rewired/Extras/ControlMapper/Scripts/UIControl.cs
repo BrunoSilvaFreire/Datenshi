@@ -16,7 +16,7 @@ namespace Rewired.UI.ControlMapper {
         private int _id;
         private bool _showTitle;
 
-        public int id { get { return _id; } }
+        public int id => _id;
 
 
         void Awake() {

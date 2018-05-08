@@ -9,11 +9,7 @@ namespace Datenshi.Scripts.UI.Dialogue {
     public class UIDialogueStage : UIMenu {
         private static UIDialogueStage instance;
 
-        public static UIDialogueStage Instance {
-            get {
-                return instance ? instance : (instance = Load());
-            }
-        }
+        public static UIDialogueStage Instance => instance ? instance : (instance = Load());
 
         private static UIDialogueStage Load() {
             return FindObjectOfType<UIDialogueStage>();

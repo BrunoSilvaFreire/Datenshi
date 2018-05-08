@@ -16,11 +16,7 @@ namespace Datenshi.Scripts.Data {
         public const string PrecisionConfigKey = "datenshi.navmesh.precision";
         public LineRenderer HackLineRendererPrefab;
 
-        public Vector2 NavmeshBoxcastDownsizeScale {
-            get {
-                return new Vector2(NavmeshBoxcastDownsizeValue, NavmeshBoxcastDownsizeValue);
-            }
-        }
+        public Vector2 NavmeshBoxcastDownsizeScale => new Vector2(NavmeshBoxcastDownsizeValue, NavmeshBoxcastDownsizeValue);
 
         public float DeflectSpeed = 20;
         public float DeflectDamageMultiply = 3;

@@ -46,20 +46,12 @@ namespace Datenshi.Scripts.Entities {
         /// O provedor a partir de qual essa entidade está recebendo input.
         /// </summary>
         [TitleGroup(MiscGroup, "Informações que não se encaixam em outros lugares aparecem aqui"), ShowInInspector]
-        public DatenshiInputProvider InputProvider {
-            get {
-                return inputProvider;
-            }
-        }
+        public DatenshiInputProvider InputProvider => inputProvider;
 
         [SerializeField, HideInInspector]
         private DatenshiInputProvider inputProvider;
 
-        public bool IsOwned {
-            get {
-                return inputProvider != null;
-            }
-        }
+        public bool IsOwned => inputProvider != null;
 
         public bool RequestOwnership(DatenshiInputProvider provider) {
             if (IsOwned) {
@@ -74,11 +66,7 @@ namespace Datenshi.Scripts.Entities {
         [TitleGroup(GeneralGroup), SerializeField]
         private ColorizableRenderer colorizableRenderer;
 
-        public ColorizableRenderer ColorizableRenderer {
-            get {
-                return colorizableRenderer;
-            }
-        }
+        public ColorizableRenderer ColorizableRenderer => colorizableRenderer;
 
         public EntityMiscController MiscController;
 
@@ -93,11 +81,7 @@ namespace Datenshi.Scripts.Entities {
         [SerializeField]
         private UnityEvent onDestroyed;
 
-        public UnityEvent OnDestroyed {
-            get {
-                return onDestroyed;
-            }
-        }
+        public UnityEvent OnDestroyed => onDestroyed;
 
         [ShowInInspector, ReadOnly, TitleGroup(MiscGroup)]
         private List<VariableValue> variables = new List<VariableValue>();
@@ -164,11 +148,7 @@ namespace Datenshi.Scripts.Entities {
             this.value = value;
         }
 
-        public string Key {
-            get {
-                return key;
-            }
-        }
+        public string Key => key;
 
         public object Value {
             get {

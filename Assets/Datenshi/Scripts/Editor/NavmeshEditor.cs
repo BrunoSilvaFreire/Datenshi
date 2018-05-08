@@ -22,16 +22,12 @@ namespace Datenshi.Scripts.Editor {
         private static GUIStyle style;
         private float visualizerPrecision;
 
-        private static GUIStyle Style {
-            get {
-                return style ?? (style = new GUIStyle {
-                    normal = {
-                        textColor = Color.white,
-                        background = Texture2D.blackTexture,
-                    },
-                });
-            }
-        }
+        private static GUIStyle Style => style ?? (style = new GUIStyle {
+            normal = {
+                textColor = Color.white,
+                background = Texture2D.blackTexture,
+            },
+        });
 
         private static Color GetColor(NodeType NodeType) {
             switch (NodeType) {

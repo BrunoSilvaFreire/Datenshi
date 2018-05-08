@@ -17,13 +17,7 @@ namespace UnityEngine.UI.Extensions.ColorPicker
 
         private RawImage image;
 
-        private RectTransform RectTransform
-        {
-            get
-            {
-                return transform as RectTransform;
-            }
-        }
+        private RectTransform RectTransform => transform as RectTransform;
 
         private void Awake()
         {

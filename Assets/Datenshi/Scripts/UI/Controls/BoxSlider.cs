@@ -118,7 +118,7 @@ namespace UnityEngine.UI.Extensions
         private DrivenRectTransformTracker m_Tracker;
 
         // Size of each step.
-        float StepSize { get { return WholeNumbers ? 1 : (MaxValue - MinValue) * 0.1f; } }
+        float StepSize => WholeNumbers ? 1 : (MaxValue - MinValue) * 0.1f;
 
         protected BoxSlider()
         { }

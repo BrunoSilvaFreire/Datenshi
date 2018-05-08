@@ -185,11 +185,7 @@ namespace Datenshi.Scripts.Tile {
 #if UNITY_EDITOR
     [CustomEditor(typeof(TerrainTile))]
     public class TerrainTileEditor : Editor {
-        private TerrainTile tile {
-            get {
-                return (target as TerrainTile);
-            }
-        }
+        private TerrainTile tile => (target as TerrainTile);
 
         public void OnEnable() {
             if (tile.m_Sprites == null || tile.m_Sprites.Length != 15) {

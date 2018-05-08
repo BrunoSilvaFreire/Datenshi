@@ -56,11 +56,7 @@ namespace Datenshi.Scripts.Tile.Editor {
 
     [CustomEditor(typeof(PrefabBrush))]
     public class PrefabBrushEditor : GridBrushEditorBase {
-        private PrefabBrush prefabBrush {
-            get {
-                return target as PrefabBrush;
-            }
-        }
+        private PrefabBrush prefabBrush => target as PrefabBrush;
 
         private SerializedProperty m_Prefabs;
         private SerializedObject m_SerializedObject;

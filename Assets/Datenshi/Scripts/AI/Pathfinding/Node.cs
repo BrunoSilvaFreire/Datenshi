@@ -40,59 +40,23 @@ namespace Datenshi.Scripts.AI.Pathfinding {
             this.type = type;
         }
 
-        public NodeType Type {
-            get {
-                return type;
-            }
-        }
+        public NodeType Type => type;
 
-        public Vector2Int Position {
-            get {
-                return position;
-            }
-        }
+        public Vector2Int Position => position;
 
-        public bool IsInvalid {
-            get {
-                return Type == NodeType.Invalid;
-            }
-        }
+        public bool IsInvalid => Type == NodeType.Invalid;
 
-        public bool IsValid {
-            get {
-                return !IsInvalid;
-            }
-        }
+        public bool IsValid => !IsInvalid;
 
-        public bool IsWalkable {
-            get {
-                return Type != NodeType.Invalid && Type != NodeType.Blocked && Type != NodeType.Empty;
-            }
-        }
+        public bool IsWalkable => Type != NodeType.Invalid && Type != NodeType.Blocked && Type != NodeType.Empty;
 
-        public bool IsEmpty {
-            get {
-                return Type != NodeType.Blocked;
-            }
-        }
+        public bool IsEmpty => Type != NodeType.Blocked;
 
-        public bool IsBlocked {
-            get {
-                return Type == NodeType.Blocked;
-            }
-        }
+        public bool IsBlocked => Type == NodeType.Blocked;
 
-        public int TotalLinearLinks {
-            get {
-                return linearLinks.Count;
-            }
-        }
+        public int TotalLinearLinks => linearLinks.Count;
 
-        public int TotalGravityLinks {
-            get {
-                return gravityLinks.Count;
-            }
-        }
+        public int TotalGravityLinks => gravityLinks.Count;
 
         public void AddLink(Link link) {
             var linearLink = link as LinearLink;

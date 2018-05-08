@@ -6,13 +6,7 @@ namespace UnityEngine.UI.Extensions
     [AddComponentMenu("UI/Extensions/Bound Tooltip/Tooltip Item")]
     public class BoundTooltipItem : MonoBehaviour
     {
-        public bool IsActive
-        {
-            get
-            {
-                return gameObject.activeSelf;
-            }
-        }
+        public bool IsActive => gameObject.activeSelf;
 
         public UnityEngine.UI.Text TooltipText;
         public Vector3 ToolTipOffset;

@@ -16,6 +16,7 @@ namespace Datenshi.Scripts.Combat.Attacks {
             DebugUtil.DrawBox2DWire(hb.Center, hb.Size, Color.green);
             var success = false;
             foreach (var coll in hit) {
+                var info = new DamageInfo(entity, 0);
                 var d = coll.GetComponent<IDefendable>();
                 if (d == null || !d.CanDefend(entity)) {
                     continue;
@@ -23,7 +24,7 @@ namespace Datenshi.Scripts.Combat.Attacks {
 
                 success = true;
                 DebugUtil.DrawBox2DWire(((MonoBehaviour) d).gameObject.transform.position, Vector2.one, Color.green);
-                d.Defend(entity);
+                d.Defend(entity, ref info);
                 if (Particle != null) {
                     Particle.Clone(coll.transform.position);
                 }

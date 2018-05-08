@@ -61,17 +61,11 @@ namespace Datenshi.Scripts.Entities {
         [SerializeField]
         private Collider2D hitbox;
 
-        public Collider2D Hitbox {
-            get {
-                return hitbox;
-            }
-        }
+        public Collider2D Hitbox => hitbox;
 
-        public bool CanFocus {
-            get {
-                return FocusTimeLeft > MinDefenseRequired;
-            }
-        }
+
+        [ShowInInspector, ReadOnly, TitleGroup(CombatGroup)]
+        public bool CanFocus => FocusTimeLeft > MinDefenseRequired;
 
         [TitleGroup(CombatGroup)]
         public bool Stunned {
@@ -95,26 +89,30 @@ namespace Datenshi.Scripts.Entities {
 
         public float FocusMaxTime = 2;
 
+        [ShowInInspector, ReadOnly, TitleGroup(CombatGroup)]
         private bool focusing;
 
+        [TitleGroup(CombatGroup)]
         public float MinDefenseRequired = 0.1F;
+
+        [TitleGroup(CombatGroup)]
         public float DefenseRecoverAmountMultiplier = 1;
+
+        [TitleGroup(CombatGroup)]
         public float DefenseDepleteAmountMultiplier = 2;
 
         [SerializeField]
         private CombatantAnimatorUpdater updater;
 
-        public CombatantAnimatorUpdater AnimatorUpdater {
-            get {
-                return updater;
-            }
-        }
+        public CombatantAnimatorUpdater AnimatorUpdater => updater;
 
+        [ShowInInspector, ReadOnly, TitleGroup(CombatGroup)]
         public float FocusTimeLeft {
             get;
             set;
         }
 
+        [ShowInInspector, ReadOnly, TitleGroup(CombatGroup)]
         public bool Focusing {
             get {
                 return focusing;
@@ -132,7 +130,7 @@ namespace Datenshi.Scripts.Entities {
             }
         }
 
-        private void Update() {
+        protected virtual void Update() {
             if (Stunned) {
                 totalStunTimeLeft -= Time.deltaTime;
                 if (totalStunTimeLeft < 0) {
@@ -263,11 +261,7 @@ namespace Datenshi.Scripts.Entities {
         private float invulnerabilitySecondsLeft;
 
         [ShowInInspector, TitleGroup(HealthGroup)]
-        public bool HasTemporaryInvulnerability {
-            get {
-                return invulnerabilityCoroutine != null;
-            }
-        }
+        public bool HasTemporaryInvulnerability => invulnerabilityCoroutine != null;
 
         private Coroutine invulnerabilityCoroutine;
 
@@ -297,23 +291,11 @@ namespace Datenshi.Scripts.Entities {
             return Relationship != entity.Relationship;
         }
 
-        public bool IsNeutral {
-            get {
-                return Relationship == CombatRelationship.Neutral;
-            }
-        }
+        public bool IsNeutral => Relationship == CombatRelationship.Neutral;
 
-        public bool IsAlly {
-            get {
-                return Relationship == CombatRelationship.Ally;
-            }
-        }
+        public bool IsAlly => Relationship == CombatRelationship.Ally;
 
-        public float FocusTimePercent {
-            get {
-                return FocusTimeLeft / FocusMaxTime;
-            }
-        }
+        public float FocusTimePercent => FocusTimeLeft / FocusMaxTime;
 
         public void Kill() {
             //TODO: Delegar efeitos de morte para um outro objeto
@@ -357,11 +339,7 @@ namespace Datenshi.Scripts.Entities {
             }
         }
 
-        public GameObject GameObject {
-            get {
-                return gameObject;
-            }
-        }
+        public GameObject GameObject => gameObject;
 
         public bool Ignored {
             get {
@@ -381,17 +359,9 @@ namespace Datenshi.Scripts.Entities {
             }
         }
 
-        public CombatRelationship Relationship {
-            get {
-                return relationship;
-            }
-        }
+        public CombatRelationship Relationship => relationship;
 
-        public Transform Transform {
-            get {
-                return transform;
-            }
-        }
+        public Transform Transform => transform;
 
 
         public Vector2 Center {

@@ -47,7 +47,7 @@
 				fixed4 col = tex2D(_MainTex, i.uv);
 				fixed4 bw = (col.r + col.g + col.b) / 3;
 				col = lerp(col, bw, _Amount);
-				col.rgb -= _DarkenAmount * _Amount;
+				col.rgb -= _DarkenAmount;
 				return col;
 			}
 			ENDCG

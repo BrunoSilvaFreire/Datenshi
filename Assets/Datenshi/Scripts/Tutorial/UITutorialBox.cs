@@ -11,11 +11,7 @@ namespace Datenshi.Scripts.Tutorial {
     public class UITutorialBox : UIElement {
         private static UITutorialBox instance;
 
-        public static UITutorialBox Instance {
-            get {
-                return instance ? instance : (instance = FindObjectOfType<UITutorialBox>());
-            }
-        }
+        public static UITutorialBox Instance => instance ? instance : (instance = FindObjectOfType<UITutorialBox>());
 
         public float SizeChangeDuration;
 
@@ -24,11 +20,7 @@ namespace Datenshi.Scripts.Tutorial {
         public Vector2 DefaultSize;
         public Vector2 Padding;
         public float YOffset = .25F;
-        private RectTransform RectTransform {
-            get {
-                return (RectTransform) transform;
-            }
-        }
+        private RectTransform RectTransform => (RectTransform) transform;
 
         private void Start() {
             SnapHide();

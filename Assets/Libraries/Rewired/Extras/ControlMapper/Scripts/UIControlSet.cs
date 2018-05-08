@@ -16,7 +16,7 @@ namespace Rewired.UI.ControlMapper {
         private Text title;
 
         private Dictionary<int, UIControl> _controls;
-        private Dictionary<int, UIControl> controls { get { return _controls ?? (_controls = new Dictionary<int, UIControl>()); } }
+        private Dictionary<int, UIControl> controls => _controls ?? (_controls = new Dictionary<int, UIControl>());
 
         public void SetTitle(string text) {
             if(title == null) return;

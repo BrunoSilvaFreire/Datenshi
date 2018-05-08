@@ -11,24 +11,13 @@ namespace Datenshi.Scripts.Misc {
         private MaterialPropertyBlock block;
 
         [ShowInInspector]
-        public Color Color {
-            get {
-                return block == null ? Color.magenta : block.GetColor("_Color");
-            }
-        }
+        public Color Color => block == null ? Color.magenta : block.GetColor("_Color");
 
         [ShowInInspector]
-        public Texture Texture {
-            get {
-                return block == null ? null : block.GetTexture("_MainTex");
-            }
-        }
+        public Texture Texture => block == null ? null : block.GetTexture("_MainTex");
 
-        public float OverrideAmount {
-            get {
-                return block == null ? -1 : block.GetFloat(ColorizableRenderer.OverrideAmountKey);
-            }
-        }
+        public float OverrideAmount => block == null ? -1 : block.GetFloat(ColorizableRenderer.OverrideAmountKey);
+
         private void OnValidate() {
             if (block == null) {
                 block = new MaterialPropertyBlock();

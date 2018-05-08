@@ -184,10 +184,10 @@ namespace Rewired.UI.ControlMapper {
             [SerializeField]
             protected CustomAnimationTriggers _animationTriggers;
 
-            public Selectable.Transition transition { get { return _transition; } }
-            public CustomColorBlock selectableColors { get { return _colors; } }
-            public CustomSpriteState spriteState { get { return _spriteState; } }
-            public CustomAnimationTriggers animationTriggers { get { return _animationTriggers; } }
+            public Selectable.Transition transition => _transition;
+            public CustomColorBlock selectableColors => _colors;
+            public CustomSpriteState spriteState => _spriteState;
+            public CustomAnimationTriggers animationTriggers => _animationTriggers;
 
             public virtual void Apply(Selectable item) {
                 Selectable.Transition transition = _transition;
@@ -225,7 +225,7 @@ namespace Rewired.UI.ControlMapper {
 
             [SerializeField]
             private ImageSettings _imageSettings;
-            public ImageSettings imageSettings { get { return _imageSettings; } }
+            public ImageSettings imageSettings => _imageSettings;
 
             public override void Apply(Selectable item) {
                 if(item == null) return;
@@ -245,9 +245,9 @@ namespace Rewired.UI.ControlMapper {
             [SerializeField]
             private ImageSettings _backgroundImageSettings;
 
-            public ImageSettings handleImageSettings { get { return _handleImageSettings; } }
-            public ImageSettings fillImageSettings { get { return _fillImageSettings; } }
-            public ImageSettings backgroundImageSettings { get { return _backgroundImageSettings; } }
+            public ImageSettings handleImageSettings => _handleImageSettings;
+            public ImageSettings fillImageSettings => _fillImageSettings;
+            public ImageSettings backgroundImageSettings => _backgroundImageSettings;
 
             private void Apply(Slider item) {
                 if(item == null) return;
@@ -279,8 +279,8 @@ namespace Rewired.UI.ControlMapper {
             [SerializeField]
             private ImageSettings _backgroundImageSettings;
 
-            public ImageSettings handle { get { return _handleImageSettings; } }
-            public ImageSettings background { get { return _backgroundImageSettings; } }
+            public ImageSettings handle => _handleImageSettings;
+            public ImageSettings background => _backgroundImageSettings;
 
             private void Apply(Scrollbar item) {
                 if(item == null) return;
@@ -319,16 +319,16 @@ namespace Rewired.UI.ControlMapper {
             [SerializeField]
             private int _fillOrigin;
 
-            public Color color { get { return _color; } }
-            public Sprite sprite { get { return _sprite; } }
-            public Material materal { get { return _materal; } }
-            public Image.Type type { get { return _type; } }
-            public bool preserveAspect { get { return _preserveAspect; } }
-            public bool fillCenter { get { return _fillCenter; } }
-            public Image.FillMethod fillMethod { get { return _fillMethod; } }
-            public float fillAmout { get { return _fillAmout; } }
-            public bool fillClockwise { get { return _fillClockwise; } }
-            public int fillOrigin { get { return _fillOrigin; } }
+            public Color color => _color;
+            public Sprite sprite => _sprite;
+            public Material materal => _materal;
+            public Image.Type type => _type;
+            public bool preserveAspect => _preserveAspect;
+            public bool fillCenter => _fillCenter;
+            public Image.FillMethod fillMethod => _fillMethod;
+            public float fillAmout => _fillAmout;
+            public bool fillClockwise => _fillClockwise;
+            public int fillOrigin => _fillOrigin;
 
             public virtual void CopyTo(Image image) {
                 if(image == null) return;
@@ -460,11 +460,11 @@ namespace Rewired.UI.ControlMapper {
             [SerializeField]
             private float _sizeMultiplier = 1.0f;
 
-            public Color color { get { return _color; } }
-            public Font font { get { return _font; } }
-            public FontStyleOverride style { get { return _style; } }
-            public float lineSpacing { get { return _lineSpacing; } }
-            public float sizeMultiplier { get { return _sizeMultiplier; } }
+            public Color color => _color;
+            public Font font => _font;
+            public FontStyleOverride style => _style;
+            public float lineSpacing => _lineSpacing;
+            public float sizeMultiplier => _sizeMultiplier;
         }
 
         private enum FontStyleOverride {

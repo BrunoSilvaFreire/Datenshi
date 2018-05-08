@@ -48,11 +48,7 @@ namespace Datenshi.Scripts.Tile {
 #if UNITY_EDITOR
     [CustomEditor(typeof(RandomTile))]
     public class RandomTileEditor : Editor {
-        private RandomTile tile {
-            get {
-                return target as RandomTile;
-            }
-        }
+        private RandomTile tile => target as RandomTile;
 
         public override void OnInspectorGUI() {
             EditorGUI.BeginChangeCheck();

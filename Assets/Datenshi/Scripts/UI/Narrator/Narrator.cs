@@ -47,31 +47,19 @@ namespace Datenshi.Scripts.UI.Narrator {
         /// Gets the PrintCompleted callback event.
         /// </summary>
         /// <value>The print completed callback event.</value>
-        public UnityEvent PrintCompleted {
-            get {
-                return printCompleted;
-            }
-        }
+        public UnityEvent PrintCompleted => printCompleted;
 
         /// <summary>
         /// Gets the CharacterPrinted event, which includes a string for the character that was printed.
         /// </summary>
         /// <value>The character printed event.</value>
-        public CharacterPrintedEvent CharacterPrinted {
-            get {
-                return characterPrinted;
-            }
-        }
+        public CharacterPrintedEvent CharacterPrinted => characterPrinted;
 
         /// <summary>
         /// Gets a value indicating whether this <see cref="Narrator"/> is currently printing text.
         /// </summary>
         /// <value><c>true</c> if printing; otherwise, <c>false</c>.</value>
-        public bool IsTyping {
-            get {
-                return typeTextCoroutine != null;
-            }
-        }
+        public bool IsTyping => typeTextCoroutine != null;
 
         private Text TextComponent {
             get {

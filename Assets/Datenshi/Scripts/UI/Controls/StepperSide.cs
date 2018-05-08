@@ -15,11 +15,11 @@ namespace UnityEngine.UI.Extensions
         IPointerDownHandler, IPointerUpHandler,
         ISelectHandler, IDeselectHandler
     {
-        Selectable button { get { return GetComponent<Selectable>(); } }
+        Selectable button => GetComponent<Selectable>();
 
-        Stepper stepper { get { return GetComponentInParent<Stepper>(); } }
+        Stepper stepper => GetComponentInParent<Stepper>();
 
-        bool leftmost { get { return button == stepper.sides[0]; } }
+        bool leftmost => button == stepper.sides[0];
 
         internal Sprite cutSprite;
 

@@ -21,7 +21,7 @@ namespace UnityEngine.UI.Extensions
         private Sprite m_OverrideSprite;
         public Sprite overrideSprite { get { return activeSprite; } set { if (SetPropertyUtility.SetClass(ref m_OverrideSprite, value)) GeneratedUVs(); SetAllDirty(); } }
 
-        protected Sprite activeSprite { get { return m_OverrideSprite != null ? m_OverrideSprite : sprite; } }
+        protected Sprite activeSprite => m_OverrideSprite != null ? m_OverrideSprite : sprite;
 
         // Not serialized until we support read-enabled sprites better.
         internal float m_EventAlphaThreshold = 1;
@@ -204,7 +204,7 @@ namespace UnityEngine.UI.Extensions
         public virtual void CalculateLayoutInputHorizontal() { }
         public virtual void CalculateLayoutInputVertical() { }
 
-        public virtual float minWidth { get { return 0; } }
+        public virtual float minWidth => 0;
 
         public virtual float preferredWidth
         {
@@ -216,9 +216,9 @@ namespace UnityEngine.UI.Extensions
             }
         }
 
-        public virtual float flexibleWidth { get { return -1; } }
+        public virtual float flexibleWidth => -1;
 
-        public virtual float minHeight { get { return 0; } }
+        public virtual float minHeight => 0;
 
         public virtual float preferredHeight
         {
@@ -230,9 +230,9 @@ namespace UnityEngine.UI.Extensions
             }
         }
 
-        public virtual float flexibleHeight { get { return -1; } }
+        public virtual float flexibleHeight => -1;
 
-        public virtual int layoutPriority { get { return 0; } }
+        public virtual int layoutPriority => 0;
 
         #endregion
 

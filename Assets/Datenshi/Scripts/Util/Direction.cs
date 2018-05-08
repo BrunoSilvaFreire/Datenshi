@@ -139,11 +139,7 @@ namespace Datenshi.Scripts.Util {
             }
         }
 
-        public float Angle {
-            get {
-                return Mathf.Acos(Mathf.Clamp(Vector2.Dot(Vector2.zero, this), -1f, 1f)) * 57.29578f;
-            }
-        }
+        public float Angle => Mathf.Acos(Mathf.Clamp(Vector2.Dot(Vector2.zero, this), -1f, 1f)) * 57.29578f;
 
 
         public override string ToString() {

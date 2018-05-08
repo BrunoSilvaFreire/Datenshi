@@ -27,17 +27,9 @@ namespace Datenshi.Scripts.UI {
             }
         }
 
-        public float preferredWidth {
-            get {
-                return minWidth;
-            }
-        }
+        public float preferredWidth => minWidth;
 
-        public float flexibleWidth {
-            get {
-                return 0;
-            }
-        }
+        public float flexibleWidth => 0;
 
         public float minHeight {
             get {
@@ -45,22 +37,10 @@ namespace Datenshi.Scripts.UI {
             }
         }
 
-        public float preferredHeight {
-            get {
-                return minHeight;
-            }
-        }
+        public float preferredHeight => minHeight;
 
-        public float flexibleHeight {
-            get {
-                return 0;
-            }
-        }
+        public float flexibleHeight => 0;
 
-        public int layoutPriority {
-            get {
-                return LayoutPriority;
-            }
-        }
+        public int layoutPriority => LayoutPriority;
     }
 }

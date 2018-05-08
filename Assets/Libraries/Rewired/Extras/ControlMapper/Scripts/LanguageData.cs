@@ -161,53 +161,54 @@ namespace Rewired.UI.ControlMapper {
             return customDict.ContainsKey(key);
         }
 
-        public string yes { get { return _yes; } }
-        public string no { get { return _no; } }
-        public string add { get { return _add; } }
-        public string replace { get { return _replace; } }
-        public string remove { get { return _remove; } }
-        public string cancel { get { return _cancel; } }
-        public string none { get { return _none; } }
-        public string okay { get { return _okay; } }
-        public string done { get { return _done; } }
-        public string default_ { get { return _default; } }  
-        public string assignControllerWindowTitle { get { return _assignControllerWindowTitle; } }
-        public string assignControllerWindowMessage { get { return _assignControllerWindowMessage; } }
-        public string controllerAssignmentConflictWindowTitle { get { return _controllerAssignmentConflictWindowTitle; } }
-        public string elementAssignmentPrePollingWindowMessage { get { return _elementAssignmentPrePollingWindowMessage; } }
-        public string elementAssignmentConflictWindowMessage { get { return _elementAssignmentConflictWindowMessage; } }
-        public string mouseAssignmentConflictWindowTitle { get { return _mouseAssignmentConflictWindowTitle; } }
-        public string calibrateControllerWindowTitle { get { return _calibrateControllerWindowTitle; } }
-        public string calibrateAxisStep1WindowTitle { get { return _calibrateAxisStep1WindowTitle; } }
-        public string calibrateAxisStep2WindowTitle { get { return _calibrateAxisStep2WindowTitle; } }
-        public string inputBehaviorSettingsWindowTitle { get { return _inputBehaviorSettingsWindowTitle; } }
-        public string restoreDefaultsWindowTitle { get { return _restoreDefaultsWindowTitle; } }
-        public string actionColumnLabel { get { return _actionColumnLabel; } }
-        public string keyboardColumnLabel { get { return _keyboardColumnLabel; } }
-        public string mouseColumnLabel { get { return _mouseColumnLabel; } }
-        public string controllerColumnLabel { get { return _controllerColumnLabel; } }
-        public string removeControllerButtonLabel { get { return _removeControllerButtonLabel; } }
-        public string calibrateControllerButtonLabel { get { return _calibrateControllerButtonLabel; } }
-        public string assignControllerButtonLabel { get { return _assignControllerButtonLabel; } }
-        public string inputBehaviorSettingsButtonLabel { get { return _inputBehaviorSettingsButtonLabel; } }
-        public string doneButtonLabel { get { return _doneButtonLabel; } }
-        public string restoreDefaultsButtonLabel { get { return _restoreDefaultsButtonLabel; } }
-        public string controllerSettingsGroupLabel { get { return _controllerSettingsGroupLabel; } }
-        public string playersGroupLabel { get { return _playersGroupLabel; } }
-        public string assignedControllersGroupLabel { get { return _assignedControllersGroupLabel; } }
-        public string settingsGroupLabel { get { return _settingsGroupLabel; } }
-        public string mapCategoriesGroupLabel { get { return _mapCategoriesGroupLabel; } }
+        public string yes => _yes;
+        public string no => _no;
+        public string add => _add;
+        public string replace => _replace;
+        public string remove => _remove;
+        public string cancel => _cancel;
+        public string none => _none;
+        public string okay => _okay;
+        public string done => _done;
+        public string default_ => _default;
+        public string assignControllerWindowTitle => _assignControllerWindowTitle;
+        public string assignControllerWindowMessage => _assignControllerWindowMessage;
+        public string controllerAssignmentConflictWindowTitle => _controllerAssignmentConflictWindowTitle;
+        public string elementAssignmentPrePollingWindowMessage => _elementAssignmentPrePollingWindowMessage;
+        public string elementAssignmentConflictWindowMessage => _elementAssignmentConflictWindowMessage;
+        public string mouseAssignmentConflictWindowTitle => _mouseAssignmentConflictWindowTitle;
+        public string calibrateControllerWindowTitle => _calibrateControllerWindowTitle;
+        public string calibrateAxisStep1WindowTitle => _calibrateAxisStep1WindowTitle;
+        public string calibrateAxisStep2WindowTitle => _calibrateAxisStep2WindowTitle;
+        public string inputBehaviorSettingsWindowTitle => _inputBehaviorSettingsWindowTitle;
+        public string restoreDefaultsWindowTitle => _restoreDefaultsWindowTitle;
+        public string actionColumnLabel => _actionColumnLabel;
+        public string keyboardColumnLabel => _keyboardColumnLabel;
+        public string mouseColumnLabel => _mouseColumnLabel;
+        public string controllerColumnLabel => _controllerColumnLabel;
+        public string removeControllerButtonLabel => _removeControllerButtonLabel;
+        public string calibrateControllerButtonLabel => _calibrateControllerButtonLabel;
+        public string assignControllerButtonLabel => _assignControllerButtonLabel;
+        public string inputBehaviorSettingsButtonLabel => _inputBehaviorSettingsButtonLabel;
+        public string doneButtonLabel => _doneButtonLabel;
+        public string restoreDefaultsButtonLabel => _restoreDefaultsButtonLabel;
+        public string controllerSettingsGroupLabel => _controllerSettingsGroupLabel;
+        public string playersGroupLabel => _playersGroupLabel;
+        public string assignedControllersGroupLabel => _assignedControllersGroupLabel;
+        public string settingsGroupLabel => _settingsGroupLabel;
+        public string mapCategoriesGroupLabel => _mapCategoriesGroupLabel;
+
         public string restoreDefaultsWindowMessage {
             get {
                 if(Rewired.ReInput.players.playerCount > 1) return _restoreDefaultsWindowMessage_multiPlayer;
                 else return _restoreDefaultsWindowMessage_onePlayer;
             }
         }
-        public string calibrateWindow_deadZoneSliderLabel { get { return _calibrateWindow_deadZoneSliderLabel; } }
-        public string calibrateWindow_zeroSliderLabel { get { return _calibrateWindow_zeroSliderLabel; } }
-        public string calibrateWindow_sensitivitySliderLabel { get { return _calibrateWindow_sensitivitySliderLabel; } }
-        public string calibrateWindow_invertToggleLabel { get { return _calibrateWindow_invertToggleLabel; } }
-        public string calibrateWindow_calibrateButtonLabel { get { return _calibrateWindow_calibrateButtonLabel; } }
+        public string calibrateWindow_deadZoneSliderLabel => _calibrateWindow_deadZoneSliderLabel;
+        public string calibrateWindow_zeroSliderLabel => _calibrateWindow_zeroSliderLabel;
+        public string calibrateWindow_sensitivitySliderLabel => _calibrateWindow_sensitivitySliderLabel;
+        public string calibrateWindow_invertToggleLabel => _calibrateWindow_invertToggleLabel;
+        public string calibrateWindow_calibrateButtonLabel => _calibrateWindow_calibrateButtonLabel;
 
         public string GetControllerAssignmentConflictWindowMessage(string joystickName, string otherPlayerName, string currentPlayerName) {
             return string.Format(_controllerAssignmentConflictWindowMessage, joystickName, otherPlayerName, currentPlayerName);

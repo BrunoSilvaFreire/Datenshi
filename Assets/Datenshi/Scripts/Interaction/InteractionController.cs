@@ -9,11 +9,7 @@ namespace Datenshi.Scripts.Interaction {
 
         public Collider2D Hitbox;
 
-        public IEnumerable<InteractableElement> ElementsInRange {
-            get {
-                return elementsInRange;
-            }
-        }
+        public IEnumerable<InteractableElement> ElementsInRange => elementsInRange;
 
         private void OnTriggerEnter2D(Collider2D other) {
             var e = other.GetComponentInParent<InteractableElement>();

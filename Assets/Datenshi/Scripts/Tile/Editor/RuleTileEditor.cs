@@ -84,11 +84,7 @@ namespace Datenshi.Scripts.Tile.Editor {
 
         private ReorderableList m_ReorderableList;
 
-        public RuleTile tile {
-            get {
-                return (target as RuleTile);
-            }
-        }
+        public RuleTile tile => (target as RuleTile);
 
         private Rect m_ListRect;
 

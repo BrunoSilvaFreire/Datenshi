@@ -21,11 +21,7 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links {
 
         private Vector2 colliderSize;
 
-        public int Destination {
-            get {
-                return destination;
-            }
-        }
+        public int Destination => destination;
 
         private GravityPath loadedPath;
 
@@ -49,17 +45,9 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links {
             requiredForce = initialVelocity;
         }
 
-        public Vector2 RequiredForce {
-            get {
-                return requiredForce;
-            }
-        }
+        public Vector2 RequiredForce => requiredForce;
 
-        public bool IsDefined {
-            get {
-                return destination > 0;
-            }
-        }
+        public bool IsDefined => destination > 0;
 
         public override int GetDestination() {
             return destination;

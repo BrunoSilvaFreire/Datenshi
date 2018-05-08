@@ -312,8 +312,8 @@ namespace Rewired.UI.ControlMapper {
                 private IndexedDictionary<int, ActionCategoryEntry> _actionCategoryList;
                 private float _columnHeight;
 
-                public List<ActionEntry> actionList { get { return _actionList; } }
-                public IndexedDictionary<int, ActionCategoryEntry> actionCategoryList { get { return _actionCategoryList; } }
+                public List<ActionEntry> actionList => _actionList;
+                public IndexedDictionary<int, ActionCategoryEntry> actionCategoryList => _actionCategoryList;
                 public float columnHeight { get { return _columnHeight; } set { _columnHeight = value; } }
 
                 public MapCategoryEntry() {

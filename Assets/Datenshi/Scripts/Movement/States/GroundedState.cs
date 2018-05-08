@@ -43,7 +43,7 @@ namespace Datenshi.Scripts.Movement.States {
         }
 
         private static Vector2 SlopeCheckProvider(IMovable arg) {
-            return Vector2.down * Time.fixedDeltaTime;
+            return Vector2.down * Time.deltaTime;
         }
 
 
@@ -150,7 +150,7 @@ namespace Datenshi.Scripts.Movement.States {
             }
 
             if (!collisionStatus.Down) {
-                var g = gravity * config.GravityScale * Time.fixedDeltaTime;
+                var g = gravity * config.GravityScale * Time.deltaTime;
                 if (velocity.y > 0 && !jump) {
                     g *= config.JumpCutGravityModifier;
                 }

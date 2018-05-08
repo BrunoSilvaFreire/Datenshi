@@ -31,13 +31,7 @@ namespace UnityEngine.UI.Extensions
         private ParticleSystem.MainModule mainModule;
 #endif
 
-        public override Texture mainTexture
-        {
-            get
-            {
-                return currentTexture;
-            }
-        }
+        public override Texture mainTexture => currentTexture;
 
         protected bool Initialize()
         {
