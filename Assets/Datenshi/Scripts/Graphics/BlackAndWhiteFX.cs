@@ -1,4 +1,6 @@
 ﻿using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -37,12 +39,12 @@ namespace Datenshi.Scripts.Graphics {
             return ShaderName;
         }
 
-        public void DOAmount(float amount, float duration) {
-            DOTween.To(() => Amount, value => Amount = value, amount, duration);
+        public TweenerCore<float, float, FloatOptions> DOAmount(float amount, float duration) {
+            return DOTween.To(() => Amount, value => Amount = value, amount, duration);
         }
 
-        public void DODarkenAmount(float amount, float duration) {
-            DOTween.To(() => DarkenAmount, value => DarkenAmount = value, amount, duration);
+        public TweenerCore<float, float, FloatOptions> DODarkenAmount(float amount, float duration) {
+            return DOTween.To(() => DarkenAmount, value => DarkenAmount = value, amount, duration);
         }
     }
 }

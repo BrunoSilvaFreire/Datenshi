@@ -21,6 +21,7 @@ namespace Datenshi.Scripts.Entities.Animation {
         public string DeflectKey = "Deflect";
         public string CounterKey = "Counter";
         public string StunKey = "Stunned";
+        public string DeadKey = "Dead";
         public LivingEntity Entity;
         public SpriteRenderer Renderer;
 #if UNITY_EDITOR
@@ -63,6 +64,7 @@ namespace Datenshi.Scripts.Entities.Animation {
         }
 
         private void OnDamaged(ICombatant combatant, uint arg1) {
+            Debug.Log("Damaged found");
             Animator.SetTrigger(DamagedKey);
             Animator.SetInteger(LastDamageKey, (int) arg1);
         }
@@ -95,12 +97,20 @@ namespace Datenshi.Scripts.Entities.Animation {
             Animator.SetBool(DefendKey, defend);
         }
 
+        public override void SetTrigger(string key) {
+            Animator.SetTrigger(key);
+        }
+
         public override void TriggerDeflect() {
             Animator.SetTrigger(DeflectKey);
         }
 
         public override void TriggerCounter() {
             Animator.SetTrigger(CounterKey);
+        }
+
+        public override void TriggerDeath() {
+            Animator.SetTrigger(DeadKey);
         }
     }
 }

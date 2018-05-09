@@ -2,13 +2,17 @@
 	Properties {
 	    [PerRendererData]
 		_Color ("Main Color", Color) = (1,1,1,1)
-		_OverrideColor ("OverrideColor", Color) = (1,1,1,1)
+		_OverrideColor ("Override Color", Color) = (1,1,1,1)
+		[PerRendererData] 
+		_OverrideAmount ("Override Amount", Range(0, 1)) = 0
+		[PerRendererData]
+		_AlternativeOverrideColor ("Alternative Override Color", Color) = (1,1,1,1)
+		[PerRendererData] 
+		_AlternativeOverrideAmount ("Alternative Override Amount", Range(0, 1)) = 0
 		_OccludeColor ("OccludeColor", Color) = (1,1,1,1)
 		_OccludeAmount ("OccludeAmount", Range(0, 1)) = 0
 		[Toggle]
 		_DrawOcclusion("Draw Occlusion", Float) = 1
-		[PerRendererData] 
-		_OverrideAmount ("OverrideAmount", Range(0, 1)) = 0
 		[PerRendererData]
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
 		_NormalMap("Normal Map", 2D) = "white" {}
@@ -78,13 +82,17 @@
 		fixed4 _Color;
 		fixed4 _OverrideColor;
         fixed _OverrideAmount;
+        fixed4 _AlternativeOverrideColor;
+        fixed _AlternativeOverrideAmount;
         
 
 		void surf (Input IN, inout SurfaceOutputStandard o) {
-			fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
+			fixed4 textureColor = tex2D (_MainTex, IN.uv_MainTex) * _Color;
 			
-			o.Alpha = c.a;
-			o.Albedo = lerp(c.rgb, _OverrideColor.rgb, _OverrideAmount); 
+			o.Alpha = textureColor.a;
+			fixed3 c = lerp(textureColor.rgb, _OverrideColor.rgb, _OverrideAmount);
+			c = lerp(c.rgb, _AlternativeOverrideColor.rgb, _AlternativeOverrideAmount);
+			o.Albedo = c;
 			//o.Normal = UnpackNormal(tex2D(_NormalMap, IN.uv_MainTex));
 				o.Normal = fixed3(0,0,1);
 

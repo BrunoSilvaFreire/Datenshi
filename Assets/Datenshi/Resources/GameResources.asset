@@ -17,7 +17,7 @@ MonoBehaviour:
   CharacterCameraPrefab: {fileID: 0}
   EntitiesMask:
     serializedVersion: 2
-    m_Bits: 14336
+    m_Bits: 145408
   Gravity: -78.48
   NavmeshBoxcastDownsizeValue: 0.1
   MinPrecision: 1

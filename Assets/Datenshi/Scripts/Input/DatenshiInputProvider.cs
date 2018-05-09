@@ -21,10 +21,9 @@ namespace Datenshi.Scripts.Input {
 
         public abstract bool GetAttack();
 
-        public abstract bool GetWalk();
-
         public abstract bool GetDash();
         public abstract bool GetDefend();
         public abstract bool GetSubmit();
+
     }
 }

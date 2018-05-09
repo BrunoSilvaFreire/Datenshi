@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Util;
 using UnityEngine;
@@ -8,8 +9,23 @@ namespace Datenshi.Scripts.Combat.Attacks {
     public class CounterAttack : Attack {
         public float DefenseRegain = 1.5F;
         public ParticleSystem Particle;
+        public byte Frames = 5;
 
         public override void Execute(ICombatant entity) {
+            entity.AnimatorUpdater.StartCoroutine(DoAttack(entity));
+        }
+
+        private IEnumerator DoAttack(ICombatant entity) {
+            for (byte i = 0; i < Frames; i++) {
+                if (ExecuteAttack(entity)) {
+                    yield break;
+                }
+
+                yield return null;
+            }
+        }
+
+        private bool ExecuteAttack(ICombatant entity) {
             var updater = entity.AnimatorUpdater;
             var hb = entity.DefenseHitbox;
             var hit = Physics2D.OverlapBoxAll(hb.Center, hb.Size, 0, GameResources.Instance.EntitiesMask);
@@ -48,6 +64,8 @@ namespace Datenshi.Scripts.Combat.Attacks {
             if (success) {
                 entity.FocusTimeLeft += DefenseRegain;
             }
+
+            return success;
         }
     }
 }

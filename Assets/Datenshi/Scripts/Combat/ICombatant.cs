@@ -61,6 +61,10 @@ namespace Datenshi.Scripts.Combat {
             set;
         }
 
+        bool Dead {
+            get;
+        }
+
         bool Focusing {
             get;
             set;

@@ -1,9 +1,15 @@
 ﻿using System;
+using Datenshi.Scripts.Audio;
+using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Entities;
+using Datenshi.Scripts.Game.Time;
 using Datenshi.Scripts.Graphics;
 using Datenshi.Scripts.Misc;
+using Datenshi.Scripts.Util;
 using Datenshi.Scripts.Util.Singleton;
 using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
@@ -22,11 +28,20 @@ namespace Datenshi.Scripts.Game {
         private Tracker<ColorizableRenderer> tracker;
 
         public BlackAndWhiteFX Fx;
+        public AnalogGlitch DamageGlitch;
+        public float DamageGlitchAmount = 1;
+        public float DamageColorDriftAmount = 1;
+        public float DamageDarkenAmount = 1;
+        public float DamageHorizontalShakeAmount = 1;
+        public float DamageDarkenDuration = 1;
         public float LowCutoff = 440;
         public float DefendOverrideAmount = 1;
+        public float DamageGlitchDuration = .25F;
+        public float DamageCutoff = 5000;
+        public float DamageLowfilterDefault = 0;
         public float DefendOverrideDuration = 0.5F;
         public PlayerEntityChangedEvent OnEntityChanged;
-
+        public AudioFX[] DamageAudio;
         [ShowInInspector]
         public Entity CurrentEntity {
             get {
@@ -43,6 +58,11 @@ namespace Datenshi.Scripts.Game {
             }
         }
 
+        private TweenerCore<float, float, FloatOptions> glitchTweener;
+        private TweenerCore<float, float, FloatOptions> colorTweener;
+        private TweenerCore<float, float, FloatOptions> shakeTweener;
+        private TweenerCore<float, float, FloatOptions> darkenTweener;
+
         private void Start() {
             if (currentEntity.InputProvider == Player) {
                 return;
@@ -51,13 +71,59 @@ namespace Datenshi.Scripts.Game {
             currentEntity.RevokeOwnership();
             currentEntity.RequestOwnership(Player);
             OnEntityChanged.Invoke(null, currentEntity);
+            GlobalEntityDamagedEvent.Instance.AddListener(OnEntityDamaged);
             tracker = new Tracker<ColorizableRenderer>(
                 ColorizableRenderer.ColorizableRendererEnabledEvent,
                 ColorizableRenderer.ColorizableRendererDisabledEvent);
         }
 
+        private void OnEntityDamaged(ICombatant damaged, ICombatant damager, uint arg2) {
+            if (!Equals(damager, currentEntity) && !Equals(damaged, currentEntity)) {
+                return;
+            }
+
+            if (Equals(damaged, currentEntity)) {
+                AudioManager.Instance.ImpactLowFilter(DamageLowfilterDefault, DamageCutoff, DamageDarkenDuration);
+                AudioManager.Instance.PlayFX(DamageAudio.RandomElement());
+                DamageGlitch.ScanLineJitter = DamageGlitchAmount;
+                DamageGlitch.ColorDrift = DamageColorDriftAmount;
+                DamageGlitch.HorizontalShake = DamageHorizontalShakeAmount;
+                Fx.Amount = DamageDarkenAmount;
+
+                ResetGlitch();
+                ResetDarken();
+
+                glitchTweener = DamageGlitch.DOScanLineJitter(0, DamageGlitchDuration);
+                colorTweener = DamageGlitch.DOColorDrift(0, DamageGlitchDuration);
+                shakeTweener = DamageGlitch.DOHorizontalShake(0, DamageGlitchDuration);
+                darkenTweener = Fx.DOAmount(0, DamageDarkenDuration);
+
+                glitchTweener.OnComplete(ResetGlitch);
+                colorTweener.OnComplete(ResetGlitch);
+                shakeTweener.OnComplete(ResetGlitch);
+                darkenTweener.OnComplete(ResetDarken);
+            }
+
+            TimeController.Instance.ImpactFrame();
+        }
+
+        private void ResetGlitch() {
+            glitchTweener?.Kill();
+            colorTweener?.Kill();
+            shakeTweener?.Kill();
+            glitchTweener = null;
+            colorTweener = null;
+            shakeTweener = null;
+        }
+
+        private void ResetDarken() {
+            darkenTweener?.Kill();
+            darkenTweener = null;
+        }
+
         [ShowInInspector]
         private bool defending;
+
 
         private void Update() {
             var p = Player;
@@ -92,13 +158,9 @@ namespace Datenshi.Scripts.Game {
         }
 
         private void SetFilter(float f) {
-            var filter = Singletons.Instance.LowPassFilter;
+            var filter = AudioManager.Instance.LowPassFilter;
             filter.DOKill();
-            DOTween.To(
-                () => filter.cutoffFrequency,
-                value => filter.cutoffFrequency = value,
-                f,
-                DefendOverrideDuration);
+            filter.DOFrequency(f, DefendOverrideDuration);
         }
 
         private void SetFX(float x) {

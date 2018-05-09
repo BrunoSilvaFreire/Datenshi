@@ -14,13 +14,10 @@ namespace Datenshi.Scripts.Data {
         public float MaxPrecision = 100;
         public float DefaultPrecision = 0.5F;
         public const string PrecisionConfigKey = "datenshi.navmesh.precision";
-        public LineRenderer HackLineRendererPrefab;
 
         public Vector2 NavmeshBoxcastDownsizeScale => new Vector2(NavmeshBoxcastDownsizeValue, NavmeshBoxcastDownsizeValue);
 
         public float DeflectSpeed = 20;
         public float DeflectDamageMultiply = 3;
-
-        public LayerMask InteractableMask;
     }
 }

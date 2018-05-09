@@ -116,6 +116,11 @@ namespace Datenshi.Scripts.Entities {
 
         public Transform MovementTransform => transform;
 
+        [TitleGroup(CombatGroup)]
+        public bool StunRemovesVelocity;
+
+        [TitleGroup(CombatGroup), ShowIf("StunRemovesVelocity")]
+        public float StunVelocityDampen = 1;
 
         [ShowInInspector, ReadOnly, TitleGroup(MovementGroup)]
         public Vector2 Velocity {
@@ -182,13 +187,12 @@ namespace Datenshi.Scripts.Entities {
 
         protected override void Update() {
             base.Update();
-            Move();
             if (ExternalForces.magnitude > 0.1) {
-                ExternalForcesBehaviour.Check(this, ref ExternalForces, ref collisionStatus,
-                    GameResources.Instance.WorldMask);
                 ExternalForces = Vector2.Lerp(ExternalForces, Vector2.zero, ExternalForcesDeacceleration);
-                transform.position += (Vector3) ExternalForces * Time.deltaTime;
+                Velocity += ExternalForces * Time.deltaTime;
             }
+
+            Move();
 
             var newDirection = Direction.FromVector(Velocity);
             var xDir = newDirection.X;
@@ -233,10 +237,14 @@ namespace Datenshi.Scripts.Entities {
             }
         }
 
-        private static readonly VerticalPhysicsCheck VerticalCheck = new VerticalPhysicsCheck();
-        private static readonly HorizontalPhysicsCheck Check = new HorizontalPhysicsCheck();
-        private static readonly PhysicsBehaviour ExternalForcesBehaviour = new PhysicsBehaviour(VerticalCheck, Check);
+        public override void Stun(float duration) {
+            base.Stun(duration);
+            if (Invulnerable || !StunRemovesVelocity) {
+                return;
+            }
 
+            Velocity *= 1 - StunVelocityDampen;
+        }
 
         public override void Damage(ICombatant entity, uint damage) {
             base.Damage(entity, damage);

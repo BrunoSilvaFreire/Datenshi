@@ -7,31 +7,40 @@
 // need to regenerate this list.
 // </auto-generated>
 
+using System;
+using Datenshi.Scripts.Util;
 namespace Datenshi.Scripts.Input {
-    public static partial class Actions {
+    public enum Actions : int{
         // Default
-        [Rewired.Dev.ActionIdFieldInfo(categoryName = "Default", friendlyName = "XAxis")]
-        public const int Horizontal = 0;
-        [Rewired.Dev.ActionIdFieldInfo(categoryName = "Default", friendlyName = "YAxis")]
-        public const int Vertical = 1;
-        [Rewired.Dev.ActionIdFieldInfo(categoryName = "Default", friendlyName = "Jump")]
-        public const int Jump = 2;
-        [Rewired.Dev.ActionIdFieldInfo(categoryName = "Default", friendlyName = "Walk")]
-        public const int Walk = 6;
-        [Rewired.Dev.ActionIdFieldInfo(categoryName = "Default", friendlyName = "Attack")]
-        public const int Attack = 5;
-        [Rewired.Dev.ActionIdFieldInfo(categoryName = "Default", friendlyName = "Dash")]
-        public const int Dash = 7;
-        [Rewired.Dev.ActionIdFieldInfo(categoryName = "Default", friendlyName = "Defend")]
-        public const int Defend = 8;
-        [Rewired.Dev.ActionIdFieldInfo(categoryName = "Default", friendlyName = "Submit")]
-        public const int Submit = 9;
-        [Rewired.Dev.ActionIdFieldInfo(categoryName = "Default", friendlyName = "Cancel")]
-        public const int Cancel = 10;
-        [Rewired.Dev.ActionIdFieldInfo(categoryName = "Default", friendlyName = "UIHorizontal")]
-        public const int UIHorizontal = 11;
-        [Rewired.Dev.ActionIdFieldInfo(categoryName = "Default", friendlyName = "UIVertical")]
-        public const int UIVertical = 12;
+         Horizontal = 0,
+         Vertical = 1,
+         Jump = 2,
+         Attack = 5,
+         Dash = 7,
+         Defend = 8,
+         Submit = 9,
+         Cancel = 10,
+         UIHorizontal = 11,
+         UIVertical = 12
+    }
+
+    public static class ActionsExtensions {
+        public static int GetMask(this Actions action) {
+            return 1 << (int) action;
+        }
+
+        public static readonly Actions[] GamePlayActions = {
+            Actions.Horizontal, 
+            Actions.Vertical,
+            Actions.Jump,
+            Actions.Attack,
+            Actions.Defend,
+            Actions.Dash
+            
+        };
+        public static Actions GetRandomGameplayAction() {
+            return GamePlayActions.RandomElement();
+        }
     }
     public static partial class Categories {
         public const int Default = 0;

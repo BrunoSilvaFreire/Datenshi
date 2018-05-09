@@ -1,8 +1,11 @@
 {
     "name": "Datenshi-Animation",
     "references": [
-        "Datenshi-Utilities"
+        "Datenshi-Utilities",
+        "Datenshi-Audio"
     ],
+    "optionalUnityReferences": [],
     "includePlatforms": [],
-    "excludePlatforms": []
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
 }

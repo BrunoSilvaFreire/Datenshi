@@ -8,8 +8,11 @@
         "Datenshi-Graphics",
         "Datenshi-World",
         "Datenshi-Combat",
-        "Datenshi-Movement"
+        "Datenshi-Movement",
+        "Datenshi-Audio"
     ],
+    "optionalUnityReferences": [],
     "includePlatforms": [],
-    "excludePlatforms": []
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
 }

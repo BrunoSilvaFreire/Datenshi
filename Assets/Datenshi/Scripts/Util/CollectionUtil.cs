@@ -103,19 +103,26 @@ namespace Datenshi.Scripts.Util {
             return true;
         }
 
-        public static E RandomElement<E>(this IList<E> list) {
-            return list.RandomElement(new Random());
-        }
+        public static E RandomElement<E>(this ICollection<E> list) {
+            var i = (int) UnityEngine.Random.value * list.Count;
+            var j = 0;
+            foreach (var e in list) {
+                if (j == i) {
+                    return e;
+                }
 
-        public static E RandomElement<E>(this IList<E> list, Random random) {
-            return list[random.Next(list.Count)];
-        }
-
-        public static E FirstOrAdd<E>(this IList<E> list, Func<E, bool> selector, Func<E> creator) {
-            var f = list.FirstOrDefault(selector);
-            if (f == null) {
-                f = creator();
+                j++;
             }
+
+            return default(E);
+        }
+
+        public static E RandomElement<E>(this IList<E> list) {
+            return list[(int) (UnityEngine.Random.value * list.Count)];
+        }
+
+        public static E FirstOrAdd<E>(this IEnumerable<E> list, Func<E, bool> selector, Func<E> creator) where E : class {
+            var f = list.FirstOrDefault(selector) ?? creator();
 
             return f;
         }

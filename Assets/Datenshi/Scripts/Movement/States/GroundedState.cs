@@ -47,14 +47,24 @@ namespace Datenshi.Scripts.Movement.States {
         }
 
 
-        public override void Move(IMovable user, ref Vector2 velocity, ref CollisionStatus collisionStatus,
-            StateMotorMachine machine, StateMotorConfig config1, LayerMask collisionMask) {
+        public override void Move(
+            IMovable user,
+            ref Vector2 velocity,
+            ref CollisionStatus collisionStatus,
+            StateMotorMachine machine,
+            StateMotorConfig config1,
+            LayerMask collisionMask) {
             var gravity = GameResources.Instance.Gravity;
             ExecuteState(user, machine, ref velocity, ref collisionStatus, collisionMask, gravity, WallClimbState);
         }
 
-        public void ExecuteState(IMovable u, StateMotorMachine machine, ref Vector2 velocity,
-            ref CollisionStatus collisionStatus, LayerMask collisionMask, float gravity,
+        public void ExecuteState(
+            IMovable u,
+            StateMotorMachine machine,
+            ref Vector2 velocity,
+            ref CollisionStatus collisionStatus,
+            LayerMask collisionMask,
+            float gravity,
             WallClimbState wallClimbState) {
             var user = u as IDatenshiMovable;
             if (user == null) {
@@ -71,14 +81,24 @@ namespace Datenshi.Scripts.Movement.States {
             var bounds = (Bounds2D) user.Hitbox.bounds;
             var shrinkedBounds = bounds;
             shrinkedBounds.Expand(user.Inset * -2);
-            ProcessInputs(user, config, ref velocity, ref collisionStatus, gravity, out dir, collisionMask, bounds,
-                shrinkedBounds, wallClimbState);
+            ProcessInputs(
+                user,
+                config,
+                ref velocity,
+                ref collisionStatus,
+                gravity,
+                out dir,
+                collisionMask,
+                bounds,
+                shrinkedBounds,
+                wallClimbState);
 
             var max = user.MaxSpeed;
             max *= user.SpeedMultiplier;
 
             velocity.x = Mathf.Clamp(velocity.x, -max, max);
             GroundedBehaviour.Check(user, ref velocity, ref collisionStatus, collisionMask);
+            var v = VerticalVelocityCheck.LastHit;
             if (velocity.y < 0 && IsRunningTowardsWall(SlopeCheck.LastHit, collisionStatus, dir)) {
                 machine.State = wallClimbState;
             }
@@ -89,9 +109,17 @@ namespace Datenshi.Scripts.Movement.States {
                    collStatus.HorizontalCollisionDir == xDir;
         }
 
-        private void ProcessInputs(IDatenshiMovable user, DatenshiGroundConfig config, ref Vector2 velocity,
-            ref CollisionStatus collisionStatus, float gravity, out int dir, LayerMask collisionMask, Bounds2D bounds,
-            Bounds2D shrinkedBounds, WallClimbState wallClimbState) {
+        private void ProcessInputs(
+            IDatenshiMovable user,
+            DatenshiGroundConfig config,
+            ref Vector2 velocity,
+            ref CollisionStatus collisionStatus,
+            float gravity,
+            out int dir,
+            LayerMask collisionMask,
+            Bounds2D bounds,
+            Bounds2D shrinkedBounds,
+            WallClimbState wallClimbState) {
             var provider = user.InputProvider as DatenshiInputProvider;
             var hasProvider = provider != null;
             var xInput = hasProvider ? provider.GetHorizontal() : 0;
@@ -132,12 +160,28 @@ namespace Datenshi.Scripts.Movement.States {
                             // Check for wall climb call
                             var valid = false;
                             var vel = velocity;
-                            DoExtraWallClimbCheck(1, user, ref vel, ref collisionStatus, collisionMask, bounds,
-                                shrinkedBounds, config, wallClimbState);
+                            DoExtraWallClimbCheck(
+                                1,
+                                user,
+                                ref vel,
+                                ref collisionStatus,
+                                collisionMask,
+                                bounds,
+                                shrinkedBounds,
+                                config,
+                                wallClimbState);
                             valid = wallClimbExtraCheck.LastHit.HasValue;
                             if (!valid) {
-                                DoExtraWallClimbCheck(-1, user, ref vel, ref collisionStatus, collisionMask, bounds,
-                                    shrinkedBounds, config, wallClimbState);
+                                DoExtraWallClimbCheck(
+                                    -1,
+                                    user,
+                                    ref vel,
+                                    ref collisionStatus,
+                                    collisionMask,
+                                    bounds,
+                                    shrinkedBounds,
+                                    config,
+                                    wallClimbState);
                                 valid = wallClimbExtraCheck.LastHit.HasValue;
                             }
 
@@ -189,9 +233,16 @@ namespace Datenshi.Scripts.Movement.States {
             }
         }
 
-        private void DoExtraWallClimbCheck(int dir, IMovable user, ref Vector2 velocity,
-            ref CollisionStatus collisionStatus, LayerMask collisionMask, Bounds2D bounds, Bounds2D shrinkedBounds,
-            DatenshiGroundConfig config, WallClimbState wallClimbState) {
+        private void DoExtraWallClimbCheck(
+            int dir,
+            IMovable user,
+            ref Vector2 velocity,
+            ref CollisionStatus collisionStatus,
+            LayerMask collisionMask,
+            Bounds2D bounds,
+            Bounds2D shrinkedBounds,
+            DatenshiGroundConfig config,
+            WallClimbState wallClimbState) {
             var csCopy = collisionStatus;
             wallClimbExtraCheckDir = dir;
             wallClimbExtraCheck.Check(user, ref velocity, ref csCopy, collisionMask, bounds, shrinkedBounds);

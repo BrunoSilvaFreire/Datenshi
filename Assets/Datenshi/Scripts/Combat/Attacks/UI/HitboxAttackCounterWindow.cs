@@ -1,5 +1,7 @@
 ﻿using Datenshi.Scripts.Input;
 using Datenshi.Scripts.UI.Misc;
+using Datenshi.Scripts.Util;
+using Rewired;
 using Rewired.Utils.Libraries.TinyJson;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -19,11 +21,12 @@ namespace Datenshi.Scripts.Combat.Attacks.UI {
             }
         }
 
-        public float TimeDuration = 0.1F;
         public Vector2 Offset;
         public UIQuickTimeEventElement QTEElementPrefab;
-        public string StartQuickTimeKey = "Hold";
-        public string CounterKey = "Counter";
+
+        public string CounterStartKey = "CounterStart";
+        public string CounterExitKey = "CounterExit";
+        public string CounterSuccessKey = "CounterSucess";
 
         public bool CanDefend(ICombatant entity) {
             return available;
@@ -31,9 +34,24 @@ namespace Datenshi.Scripts.Combat.Attacks.UI {
 
         public void Defend(ICombatant entity, ref DamageInfo info) {
             info.Canceled = true;
-            UnityAction onSucess = delegate { };
-            var e = new QuickTimeEventExecutor(this, TimeDuration, Offset, entity);
-            e.Execute(onSucess, null, Actions.Attack, QTEElementPrefab);
+            var updater = entity.AnimatorUpdater;
+            UnityAction onSucess = delegate {
+                available = false;
+                updater.SetTrigger(CounterSuccessKey);
+                GetComponentInParent<ICombatant>().Kill();
+            };
+            UnityAction onFailure = delegate { updater.SetTrigger(CounterExitKey); };
+            updater.SetTrigger(CounterStartKey);
+            var action = ActionsExtensions.GetRandomGameplayAction();
+            var a = ReInput.mapping.GetAction((int) action);
+            var inverted = false;
+            if (a.type == InputActionType.Axis) {
+                inverted = RandomUtil.NextBool();
+            }
+
+            Debug.Log($"Using action {a.name} @ {inverted} ({action}/{(int) action})");
+            var qte = QTEElementPrefab.Clone(entity.Center + Offset);
+            qte.Play(entity.InputProvider, (int) action, inverted, onSucess, onFailure);
         }
 
 

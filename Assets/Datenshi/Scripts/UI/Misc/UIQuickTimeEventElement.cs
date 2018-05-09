@@ -1,12 +1,20 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using Datenshi.Scripts.Audio;
 using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Game;
+using Datenshi.Scripts.Game.Time;
+using Datenshi.Scripts.Input;
+using Datenshi.Scripts.UI.Input;
 using Datenshi.Scripts.Util;
+using DG.Tweening;
+using Rewired;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI.Extensions;
 using UPM.Input;
+using Object = UnityEngine.Object;
 
 namespace Datenshi.Scripts.UI.Misc {
     public interface IQuickTimeEventController {
@@ -16,95 +24,26 @@ namespace Datenshi.Scripts.UI.Misc {
         }
     }
 
-    public class QuickTimeEventExecutor {
-        public QuickTimeEventExecutor(IQuickTimeEventController controller, float timeScale, Vector2 uiOffset,
-            ICombatant executor) {
-            Controller = controller;
-            TimeScale = timeScale;
-            UIOffset = uiOffset;
-            Executor = executor;
-        }
-
-        private IQuickTimeEventController Controller {
-            get;
-        }
-
-        private Dispatcher Dispatcher {
-            get;
-            set;
-        }
-
-        private float TimeScale {
-            get;
-            set;
-        }
-
-        private Vector2 UIOffset {
-            get;
-        }
-
-        private ICombatant Executor {
-            get;
-        }
-
-        private float InitScale {
-            get;
-            set;
-        }
-
-        public void Execute(UnityAction onSuccess, UnityAction onFailed, int action, UIQuickTimeEventElement prefab) {
-            Controller.Available = false;
-            Dispatcher = Executor.Transform.GetOrAddComponent<Dispatcher>();
-            Element = prefab.Clone(Executor.Transform.position + (Vector3) UIOffset);
-            InitScale = Time.timeScale;
-            Time.timeScale = TimeScale;
-            Element.SnapShowing(false);
-            Element.Show();
-            Element.Play(delegate {
-                onFailed?.Invoke();
-                Reset(false);
-            }, true);
-            Dispatcher.StartCoroutine(WaitQTE(Executor.InputProvider, action, onSuccess));
-        }
-
-        private IEnumerator WaitQTE(InputProvider provider, int action, UnityAction onSuccess) {
-            yield return null;
-            while (Element.Counting) {
-                if (provider.GetButtonDown(action)) {
-                    onSuccess();
-                    Reset(true);
-
-                    yield break;
-                }
-
-                yield return null;
-            }
-        }
-
-        private void Reset(bool sucess) {
-            Time.timeScale = InitScale;
-            Controller.Available = true;
-            Object.Destroy(Dispatcher);
-            Element.ResetCounter(sucess);
-        }
-
-        public UIQuickTimeEventElement Element {
-            get;
-            private set;
-        }
-    }
-
     public class UIQuickTimeEventElement : UIInputDisplay {
-        public UnityEvent OnTimeEnded;
+        public UnityAction OnFailed;
+        public UnityAction OnSucess;
+        public InputIconDatabase IconDatabase;
         public UICircle CompletionCircle;
         public Color SuccessColor;
         public Sprite SucessSprite;
         public float TotalTime;
         public float DarkenAmount;
         public float DarkenDuration;
+        public float FinishStayDuration;
+        public float LowPass = 400;
+        public float NormalPass = 22000;
 
         [ShowInInspector, Sirenix.OdinInspector.ReadOnly]
         private float currentTime;
+
+        private DatenshiInputProvider receiver;
+        private int action;
+        private bool inverted;
 
         public bool Counting {
             get;
@@ -112,30 +51,95 @@ namespace Datenshi.Scripts.UI.Misc {
         }
 
 
-        public void ResetCounter(bool success = false, bool play = false) {
-            Counting = false;
+        public void ResetCounter(bool success = false) {
             currentTime = 0;
-            OnTimeEnded.RemoveAllListeners();
-            if (success) {
-                Sprite = SucessSprite;
-                CompletionCircle.Progress = 1;
-                CompletionCircle.ProgressColor = SuccessColor;
+            SetFrequency(NormalPass);
+            if (!success) {
+                return;
             }
 
-            if (play) {
-                Play();
+            Image.transform.rotation = Quaternion.identity;
+            Sprite = SucessSprite;
+            CompletionCircle.Progress = 1;
+            CompletionCircle.ProgressColor = SuccessColor;
+        }
+
+        private void SetFrequency(float f) {
+            var filter = AudioManager.Instance.LowPassFilter;
+            filter.DOKill();
+            filter.DOFrequency(f, DarkenDuration);
+        }
+
+        public void Play(DatenshiInputProvider r, int a, bool inv, UnityAction onSucess, UnityAction onFailed) {
+            var i = IconDatabase.GetIconFor(a);
+            if (i == null) {
+                Debug.Log("Icon is null for action " + a);
+                return;
+            }
+
+            receiver = r;
+            action = a;
+            inverted = inv;
+            OnSucess = onSucess;
+            OnFailed = onFailed;
+            ResetCounter();
+
+            i.Setup(this, inv);
+            SetFrequency(LowPass);
+            PlayerController.Instance.Fx.DODarkenAmount(DarkenAmount, DarkenDuration);
+            Counting = true;
+            StartCoroutine(WaitForInput());
+        }
+
+        private IEnumerator WaitForInput() {
+            yield return null;
+            var selector = GetSelector(action);
+            while (Counting) {
+                if (selector(receiver, action, inverted)) {
+                    Debug.Log("Selector" + selector + " return true for " + action + " @ " + inverted);
+                    yield return null;
+                    Finish(true);
+                    yield break;
+                }
+
+                yield return null;
             }
         }
 
-        public void Play(UnityAction action = null, bool reset = false) {
-            if (reset) {
-                ResetCounter();
+        public delegate bool InputChecker(InputProvider provider, int action, bool inverted);
+
+        public static readonly InputChecker ButtonChecker = InputButtonChecker;
+
+
+        private static bool InputButtonChecker(InputProvider provider, int i, bool inverted) {
+            var b = provider.GetButtonDown(i);
+            var r = inverted ? !b : b;
+            Debug.Log($"Amount @ {i} = {b} @ {inverted} = {r}");
+            return r;
+        }
+
+        public static readonly InputChecker AxisChecker = InputAxisChecker;
+        public const float AxisLimit = .5F;
+
+        private static bool InputAxisChecker(InputProvider provider, int i, bool inverted) {
+            var amount = provider.GetAxis(i);
+            if (inverted) {
+                return amount < -AxisLimit;
             }
 
-            Counting = true;
-            PlayerController.Instance.Fx.DODarkenAmount(DarkenAmount, DarkenDuration);
-            if (action != null) {
-                OnTimeEnded.AddListener(action);
+            return amount > AxisLimit;
+        }
+
+
+        private InputChecker GetSelector(int i) {
+            var a = ReInput.mapping.GetAction(action);
+            switch (a.type) {
+                case InputActionType.Axis:
+                    return AxisChecker;
+                case InputActionType.Button:
+                    return ButtonChecker;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
 
@@ -145,7 +149,7 @@ namespace Datenshi.Scripts.UI.Misc {
             }
 
             if (currentTime >= TotalTime) {
-                Finish();
+                Finish(false);
                 return;
             }
 
@@ -154,21 +158,25 @@ namespace Datenshi.Scripts.UI.Misc {
             CompletionCircle.SetProgress(p);
         }
 
-        public void Stop() {
-            StartCoroutine(DoStop());
-        }
 
-        private IEnumerator DoStop() {
+        private IEnumerator DoStop(bool success) {
             PlayerController.Instance.Fx.DODarkenAmount(0, DarkenDuration);
+            ResetCounter(success);
+            yield return new WaitForSeconds(FinishStayDuration);
             Hide();
-            ResetCounter();
-            yield return new WaitForSeconds(FadeDuration);
+            yield return new WaitForSeconds(HideDuration);
             Destroy(gameObject);
         }
 
-        private void Finish() {
-            OnTimeEnded.Invoke();
-            Stop();
+        public void Finish(bool success) {
+            Counting = false;
+            if (success) {
+                OnSucess();
+            } else {
+                OnFailed();
+            }
+
+            StartCoroutine(DoStop(success));
         }
     }
 }

@@ -15,10 +15,14 @@ namespace Datenshi.Scripts.Graphics {
     [ExecuteInEditMode]
     public class ColorizableRenderer : MonoBehaviour {
         public const string OverrideAmountKey = "_OverrideAmount";
+        public const string AlternativeOverrideColorKey = "_AlternativeOverrideColor";
+        public const string AlternativeOverrideAmountKey = "_AlternativeOverrideAmount";
         public const string ColorKey = "_Color";
         public Renderer[] Renderers;
-
         private MaterialPropertyBlock block;
+        public float ColorOverrideAmount;
+        public Color AlternativeOverrideColor = Color.white;
+        public float AlternativeColorOverrideAmount;
 
         public static readonly ColorizableRendererEvent
             ColorizableRendererEnabledEvent = new ColorizableRendererEvent();
@@ -59,10 +63,10 @@ namespace Datenshi.Scripts.Graphics {
 
                 block.SetFloat(OverrideAmountKey, ColorOverrideAmount);
                 block.SetColor(ColorKey, color);
+                block.SetColor(AlternativeOverrideColorKey, AlternativeOverrideColor);
+                block.SetFloat(AlternativeOverrideAmountKey, AlternativeColorOverrideAmount);
                 r.SetPropertyBlock(block);
             }
         }
-
-        public float ColorOverrideAmount;
     }
 }

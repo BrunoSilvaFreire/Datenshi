@@ -141,7 +141,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Group: {fileID: 225426400998426844}
-  FadeDuration: 0.1
+  ShowDuration: 0.1
+  HideDuration: 0.1
   ShowAmount: 1
   HideAmount: 0
   TextField: {fileID: 114907163770011108}
@@ -158,29 +159,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Group: {fileID: 225241439808597894}
-  FadeDuration: 0.05
+  ShowDuration: 0.05
+  HideDuration: 0.2
   ShowAmount: 1
   HideAmount: 0
   TextField: {fileID: 114907163770011108}
   Image: {fileID: 114991479946349100}
-  OnTimeEnded:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+  IconDatabase: {fileID: 11400000, guid: 05f4db373d779c344938b174eed984a2, type: 2}
   CompletionCircle: {fileID: 114989131150235398}
   SuccessColor: {r: 0, g: 0.9019608, b: 0.4627451, a: 1}
   SucessSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-  TotalTime: 0.5
+  TotalTime: 1
   DarkenAmount: 0.25
   DarkenDuration: 0.05
+  FinishStayDuration: 0.25
+  LowPass: 400
+  NormalPass: 22000
 --- !u!114 &114907163770011108
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1592032187373042}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -277,7 +278,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1628404550963686}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -379,7 +380,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -152, y: 12.3}
+  m_AnchoredPosition: {x: -154.38795, y: 12.428751}
   m_SizeDelta: {x: 500, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224437148408968578

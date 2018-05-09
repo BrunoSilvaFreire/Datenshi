@@ -1,3 +1,10 @@
-﻿{
-	"name": "Datenshi-Input"
+{
+    "name": "Datenshi-Input",
+    "references": [
+        "Datenshi-Utilities"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
 }

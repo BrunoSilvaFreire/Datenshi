@@ -1,0 +1,10 @@
+{
+    "name": "Datenshi-Audio",
+    "references": [
+        "Datenshi-Utilities"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}

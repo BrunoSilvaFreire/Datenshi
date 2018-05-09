@@ -17,6 +17,11 @@ namespace Datenshi.Scripts.Entities {
     [Serializable]
     public class EntityDamagedEvent : UnityEvent<ICombatant, uint> { }
 
+    public class GlobalEntityDamagedEvent : UnityEvent<ICombatant, ICombatant, uint> {
+        public static readonly GlobalEntityDamagedEvent Instance = new GlobalEntityDamagedEvent();
+        private GlobalEntityDamagedEvent() { }
+    }
+
     [Serializable]
     public class EntityAttackEvent : UnityEvent<Attack> { }
 
@@ -112,12 +117,20 @@ namespace Datenshi.Scripts.Entities {
             set;
         }
 
+        private bool canReDefend;
+        private bool defendingLastFrame;
+        public bool Dead => health == 0;
+
         [ShowInInspector, ReadOnly, TitleGroup(CombatGroup)]
         public bool Focusing {
             get {
                 return focusing;
             }
             set {
+                if (!focusing && value && !canReDefend) {
+                    return;
+                }
+
                 if (focusing == value) {
                     return;
                 }
@@ -153,6 +166,20 @@ namespace Datenshi.Scripts.Entities {
                 }
             }
 
+            var p = InputProvider;
+            if (p != null) {
+                var pressingDefend = p.GetDefend();
+                if (!Focusing) {
+                    if (!canReDefend) {
+                        canReDefend = !pressingDefend;
+                    }
+                } else if (defendingLastFrame && !CanFocus) {
+                    canReDefend = false;
+                }
+            }
+
+            defendingLastFrame = Focusing;
+
             if (updater == null) {
                 return;
             }
@@ -160,7 +187,7 @@ namespace Datenshi.Scripts.Entities {
             updater.SetDefend(focusing);
         }
 
-        public void Stun(float duration) {
+        public virtual void Stun(float duration) {
             if (Invulnerable) {
                 return;
             }
@@ -298,10 +325,12 @@ namespace Datenshi.Scripts.Entities {
         public float FocusTimePercent => FocusTimeLeft / FocusMaxTime;
 
         public void Kill() {
-            //TODO: Delegar efeitos de morte para um outro objeto
+            if (Dead) {
+                return;
+            }
             health = 0;
             OnKilled.Invoke();
-            Destroy(gameObject);
+            updater.TriggerDeath();
         }
 
         public void Heal(uint healthAmount) {
@@ -309,7 +338,7 @@ namespace Datenshi.Scripts.Entities {
         }
 
         public virtual void Damage(ICombatant entity, uint damage) {
-            if (Invulnerable || Ignored) {
+            if (Invulnerable || Ignored || Dead) {
                 return;
             }
 
@@ -320,6 +349,7 @@ namespace Datenshi.Scripts.Entities {
             }
 
             OnDamaged.Invoke(entity, damage);
+            GlobalEntityDamagedEvent.Instance.Invoke(this, entity, damage);
             Health -= damage;
             if (DamageInvulnerability) {
                 SetInvulnerable(DamageInvulnerabilityDuration);

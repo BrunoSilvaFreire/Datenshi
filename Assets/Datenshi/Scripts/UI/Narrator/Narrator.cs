@@ -130,12 +130,13 @@ namespace Datenshi.Scripts.UI.Narrator {
                     ? typedText.Delay
                     : GetPrintDelayForCharacter(typedText.LastPrintedChar);
                 yield return new WaitForSeconds(delay);
-                if (InputUtil.GetAnyPlayerButtonDown(Actions.Attack)) {
+                if (InputUtil.GetAnyPlayerButtonDown((int) Actions.Attack)) {
                     Skip();
                 }
             } while (!typedText.IsComplete);
+
             if (WaitForInput) {
-                while (!InputUtil.GetAnyPlayerButtonDown(Actions.Attack)) {
+                while (!InputUtil.GetAnyPlayerButtonDown((int) Actions.Attack)) {
                     yield return null;
                 }
             }

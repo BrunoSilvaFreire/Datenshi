@@ -13,7 +13,7 @@ namespace Datenshi.Scripts.Combat {
                 return false;
             }
 
-            return !target.Ignored && !Equals(cr, tr);
+            return !target.Dead && !target.Ignored && !Equals(cr, tr);
         }
     }
 }

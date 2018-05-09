@@ -13,3 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefenseRegain: 1.5
   Particle: {fileID: 0}
+  Frames: 5

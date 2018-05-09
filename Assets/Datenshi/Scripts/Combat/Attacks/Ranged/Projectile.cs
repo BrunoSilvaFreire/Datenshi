@@ -92,11 +92,16 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
 
         public void Defend(ICombatant entity, ref DamageInfo info) {
             velocity = Owner.Center - (Vector2) transform.position;
-            velocity.Normalize();
-            velocity *= GameResources.Instance.DeflectSpeed;
-
+            Modify();
             Owner = entity;
             PlayDefendFX();
+        }
+
+        private void Modify() {
+            velocity.Normalize();
+            var g = GameResources.Instance;
+            velocity *= g.DeflectSpeed;
+            Damage = (uint) (Damage * g.DeflectDamageMultiply);
         }
 
         public bool CanPoorlyDefend(ICombatant entity) {
@@ -108,7 +113,7 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
         public void PoorlyDefend(ICombatant entity, ref DamageInfo info) {
             var angle = Random.value * MaxAngle - MaxAngle / 2 + Angle(velocity);
             velocity = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle));
-            velocity *= GameResources.Instance.DeflectSpeed;
+            Modify();
             Owner = entity;
             PlayDefendFX();
         }

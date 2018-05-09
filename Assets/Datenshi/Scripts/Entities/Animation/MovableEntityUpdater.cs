@@ -28,6 +28,7 @@ namespace Datenshi.Scripts.Entities.Animation {
         public string CounterKey = "Counter";
         public string BecameAiredKey = "BecameAired";
         public string StunKey = "Stunned";
+        public string DeadKey = "Dead";
         public MovableEntity Entity;
         public SpriteRenderer Renderer;
 #if UNITY_EDITOR
@@ -51,6 +52,7 @@ namespace Datenshi.Scripts.Entities.Animation {
             AddParameter(DeflectKey, AnimatorControllerParameterType.Trigger);
             AddParameter(CounterKey, AnimatorControllerParameterType.Trigger);
             AddParameter(StunKey, AnimatorControllerParameterType.Bool);
+            AddParameter(DeadKey, AnimatorControllerParameterType.Trigger);
         }
 
         public void AddParameter(string parameter, AnimatorControllerParameterType type) {
@@ -70,11 +72,12 @@ namespace Datenshi.Scripts.Entities.Animation {
                 });
         }
 #endif
-        private void Awake() {
+        private void Start() {
             Entity.OnDamaged.AddListener(OnDamaged);
         }
 
         private void OnDamaged(ICombatant combatant, uint arg1) {
+            Debug.Log("on damaged called");
             Animator.SetTrigger(DamagedKey);
             Animator.SetInteger(LastDamageKey, (int) arg1);
         }
@@ -124,12 +127,20 @@ namespace Datenshi.Scripts.Entities.Animation {
             Animator.SetBool(DefendKey, defend);
         }
 
+        public override void SetTrigger(string key) {
+            Animator.SetTrigger(key);
+        }
+
         public override void TriggerDeflect() {
             Animator.SetTrigger(DeflectKey);
         }
 
         public override void TriggerCounter() {
             Animator.SetTrigger(CounterKey);
+        }
+
+        public override void TriggerDeath() {
+            Animator.SetTrigger(DeadKey);
         }
     }
 }

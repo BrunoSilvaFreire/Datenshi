@@ -12,9 +12,7 @@ namespace Datenshi.Scripts.Game {
         [SerializeField, HideInInspector]
         private uint playerID;
 
-        [ShowInInspector, ReadOnly]
-        private Player currentPlayer;
-
+      
         [ShowInInspector]
         public uint PlayerID {
             get {
@@ -30,6 +28,8 @@ namespace Datenshi.Scripts.Game {
                 ReloadPlayer();
             }
         }
+        [ShowInInspector, ReadOnly]
+        private Player currentPlayer;
 
         private void ReloadPlayer() {
             currentPlayer = ReInput.players.GetPlayer((int) playerID);
@@ -85,7 +85,7 @@ namespace Datenshi.Scripts.Game {
                 return x;
             }
 #endif
-            return Fetch(player => player.GetAxis(Actions.Horizontal));
+            return Fetch(player => player.GetAxis((int) Actions.Horizontal));
         }
 
         public override float GetVertical() {
@@ -94,7 +94,7 @@ namespace Datenshi.Scripts.Game {
                 return y;
             }
 #endif
-            return Fetch(player => player.GetAxis(Actions.Vertical));
+            return Fetch(player => player.GetAxis((int) Actions.Vertical));
         }
 
 
@@ -136,7 +136,7 @@ namespace Datenshi.Scripts.Game {
                 return Jump;
             }
 #endif
-            return Fetch(player => player.GetButton(Actions.Jump));
+            return Fetch(player => player.GetButton((int) Actions.Jump));
         }
 
         public override bool GetJumpDown() {
@@ -145,7 +145,7 @@ namespace Datenshi.Scripts.Game {
                 return Jump;
             }
 #endif
-            return Fetch(player => player.GetButtonDown(Actions.Jump));
+            return Fetch(player => player.GetButtonDown((int) Actions.Jump));
         }
 
         public override bool GetAttack() {
@@ -154,17 +154,9 @@ namespace Datenshi.Scripts.Game {
                 return Attack;
             }
 #endif
-            return Fetch(player => player.GetButtonDown(Actions.Attack));
+            return Fetch(player => player.GetButtonDown((int) Actions.Attack));
         }
 
-        public override bool GetWalk() {
-#if UNITY_EDITOR
-            if (DebugInput) {
-                return Walk;
-            }
-#endif
-            return Fetch(player => player.GetButtonDown(Actions.Walk));
-        }
 
         public override bool GetDash() {
 #if UNITY_EDITOR
@@ -172,34 +164,9 @@ namespace Datenshi.Scripts.Game {
                 return Dash;
             }
 #endif
-            return Fetch(player => player.GetButtonDown(Actions.Dash));
+            return Fetch(player => player.GetButtonDown((int) Actions.Dash));
         }
 
-        private bool wasDefending;
-        private bool canReDefend;
-        private bool pressingDefend;
-        public PlayerController Controller;
-        private bool defendingLastFrame;
-
-        private void Update() {
-            pressingDefend = Fetch(player => player.GetButton(Actions.Defend));
-            var e = Controller.CurrentEntity as LivingEntity;
-            if (e != null) {
-                var entityDefending = e.Focusing;
-                if (!entityDefending) {
-                    if (!canReDefend) {
-                        canReDefend = !pressingDefend;
-                    }
-                } else if (defendingLastFrame && !e.CanFocus) {
-                    canReDefend = false;
-                }
-
-                defendingLastFrame = e.Focusing;
-            } else {
-                canReDefend = true;
-                defendingLastFrame = false;
-            }
-        }
 
         public override bool GetDefend() {
 #if UNITY_EDITOR
@@ -207,11 +174,8 @@ namespace Datenshi.Scripts.Game {
                 return Defend;
             }
 #endif
-            if (!canReDefend) {
-                return false;
-            }
 
-            return pressingDefend;
+            return Fetch(player => player.GetButton((int) Actions.Defend));
         }
 
         public override bool GetSubmit() {
@@ -220,7 +184,8 @@ namespace Datenshi.Scripts.Game {
                 return Submit;
             }
 #endif
-            return Fetch(player => player.GetButtonDown(Actions.Submit));
+            return Fetch(player => player.GetButtonDown((int) Actions.Submit));
         }
+
     }
 }

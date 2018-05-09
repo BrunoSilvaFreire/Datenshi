@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 224212615065394158}
   - component: {fileID: 223365635693979324}
   - component: {fileID: 114830695099148092}
-  m_Layer: 13
+  m_Layer: 12
   m_Name: Hikari_UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4238075283980382}
   - component: {fileID: 82719858962506280}
-  m_Layer: 13
+  m_Layer: 12
   m_Name: Hikari_AudioSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 50431390151862010}
   - component: {fileID: 61748871178828850}
   - component: {fileID: 114290058960585102}
-  m_Layer: 13
+  m_Layer: 12
   m_Name: Hikari_Managers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 114208383758668344}
   - component: {fileID: 114145229240122820}
   - component: {fileID: 225644137986384646}
-  m_Layer: 13
+  m_Layer: 12
   m_Name: HealthBarBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,8 @@ GameObject:
   - component: {fileID: 114508554076039628}
   - component: {fileID: 114661486031546108}
   - component: {fileID: 50677276716509710}
-  m_Layer: 13
+  - component: {fileID: 114072093961651280}
+  m_Layer: 12
   m_Name: Hikari_Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +116,7 @@ GameObject:
   - component: {fileID: 224879705427687924}
   - component: {fileID: 222100617629343748}
   - component: {fileID: 114736612258530324}
-  m_Layer: 13
+  m_Layer: 12
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4644533255977216}
   - component: {fileID: 114281234270348236}
-  m_Layer: 13
+  m_Layer: 12
   m_Name: Hikari
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +163,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4644533255977216}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4644533255977216
 Transform:
@@ -171,12 +172,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1896484453590728}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -151.5, y: 8.2, z: 0}
+  m_LocalPosition: {x: -114.38, y: 8.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4217494877118616}
-  - {fileID: 4654424630026524}
   - {fileID: 4238075283980382}
+  - {fileID: 4654424630026524}
   - {fileID: 224212615065394158}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -192,7 +193,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4644533255977216}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50431390151862010
 Rigidbody2D:
@@ -249,9 +250,9 @@ BoxCollider2D:
   m_Offset: {x: 0.082754135, y: 0.9677377}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.34415585, y: 0}
-    oldSize: {x: 3.2083333, y: 1.9166666}
-    newSize: {x: 0.72, y: 0.72}
+    pivot: {x: 0.45348838, y: 0}
+    oldSize: {x: 1.7916666, y: 1.9583334}
+    newSize: {x: 1.7916666, y: 1.9583334}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -397,6 +398,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114072093961651280
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1730045920672700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89263d77506a43768924e12b34b5fe75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Source: {fileID: 82719858962506280}
 --- !u!114 &114145229240122820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -455,7 +468,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4d4c506b7d14716a950885bed3aaf01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EntityRoom: {fileID: 0}
   inputProvider: {fileID: 0}
   colorizableRenderer: {fileID: 114868846459615602}
   MiscController: {fileID: 114661486031546108}
@@ -471,7 +483,6 @@ MonoBehaviour:
   DamageInvulnerability: 0
   DamageInvulnerabilityDuration: 3
   relationship: 0
-  DefaultAttackStrategy: {fileID: 0}
   OnDamaged:
     m_PersistentCalls:
       m_Calls: []
@@ -490,7 +501,7 @@ MonoBehaviour:
   DamageGivesStun: 1
   hitbox: {fileID: 61269217306511274}
   DamageStunMin: 1
-  DamageStunDuration: 0.1
+  DamageStunDuration: 0.25
   OnKilled:
     m_PersistentCalls:
       m_Calls: []
@@ -536,15 +547,17 @@ MonoBehaviour:
   YForce: 24
   speedMultiplier: 1
   ApplyVelocity: 1
-  DamageGivesKnockback: 1
+  DamageGivesKnockback: 0
   DamageKnockbackMin: 1
-  DamageKnockbackStrenght: 0.5
+  DamageKnockbackStrenght: 5
   KnockbackLiftoff: 0.1
   ExternalForces: {x: 0, y: 0}
   ExternalForcesDeacceleration: 0.1
   inset: 0.05
   horizontalRaycasts: 3
   verticalRaycasts: 3
+  StunRemovesVelocity: 1
+  StunVelocityDampen: 1
   motorConfig: {fileID: 114780792753230052}
   collisionStatus:
     Up: 0
@@ -623,6 +636,7 @@ MonoBehaviour:
   CounterKey: Counter
   BecameAiredKey: BecameAerial
   StunKey: Stunned
+  DeadKey: Dead
   Entity: {fileID: 114281234270348236}
   Renderer: {fileID: 212669247791164156}
 --- !u!114 &114736612258530324
@@ -741,12 +755,12 @@ SpriteRenderer:
   m_SortingLayerID: 388240983
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300050, guid: 326e1d76241ffd747b86ec475e8e23a6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 326e1d76241ffd747b86ec475e8e23a6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.72, y: 0.72}
+  m_Size: {x: 1.7916666, y: 1.9583334}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -817,7 +831,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

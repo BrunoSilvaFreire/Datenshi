@@ -89,10 +89,6 @@ namespace Datenshi.Scripts.AI {
             return Fetch(Attack);
         }
 
-        public override bool GetWalk() {
-            return Fetch(Walk);
-        }
-
         public override bool GetDash() {
             return Fetch(Dash);
         }
