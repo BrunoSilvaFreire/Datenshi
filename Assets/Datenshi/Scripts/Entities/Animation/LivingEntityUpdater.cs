@@ -22,6 +22,7 @@ namespace Datenshi.Scripts.Entities.Animation {
         public string CounterKey = "Counter";
         public string StunKey = "Stunned";
         public string DeadKey = "Dead";
+        public string SpawnKey = "Spawn";
         public LivingEntity Entity;
         public SpriteRenderer Renderer;
 #if UNITY_EDITOR
@@ -111,6 +112,10 @@ namespace Datenshi.Scripts.Entities.Animation {
 
         public override void TriggerDeath() {
             Animator.SetTrigger(DeadKey);
+        }
+
+        public override void TriggerSpawn() {
+            Animator.SetTrigger(SpawnKey);
         }
     }
 }

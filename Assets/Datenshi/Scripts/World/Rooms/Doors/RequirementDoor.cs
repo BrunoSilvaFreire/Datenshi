@@ -1,31 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Datenshi.Scripts.Entities;
+﻿using System.Collections.Generic;
+using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Util;
-using Datenshi.Scripts.World.Rooms;
 using Sirenix.OdinInspector;
-using UnityEngine;
 using UnityEngine.Events;
 
-namespace Datenshi.Scripts.Misc {
-    public class RequirementDoor : MonoBehaviour, IRoomMember {
-        public SpriteRenderer[] Renderers;
-        public Color CompletedColor;
-        public AudioSource Source;
-        public AudioClip Clip;
-        public Collider2D Collider;
-
+namespace Datenshi.Scripts.World.Rooms.Doors {
+    public class RequirementDoor : Door {
         [ShowInInspector, ReadOnly]
-        private List<LivingEntity> deadRequired;
-
-        [SerializeField]
-        private UnityEvent onDestroyed;
-
+        private List<ICombatant> deadRequired;
 
         private void Start() {
-            deadRequired = new List<LivingEntity>();
+            deadRequired = new List<ICombatant>();
             foreach (var member in Room.Members) {
-                var entity = member as LivingEntity;
+                var entity = member as ICombatant;
                 if (entity == null) {
                     continue;
                 }
@@ -43,38 +30,7 @@ namespace Datenshi.Scripts.Misc {
                 return;
             }
 
-            StartCoroutine(Open());
-        }
-
-        private IEnumerator Open() {
-            yield return new WaitForSeconds(1);
-            foreach (var renderer in Renderers) {
-                renderer.color = CompletedColor;
-            }
-
-            Source.PlayOneShot(Clip);
-            yield return new WaitForSeconds(1);
-            foreach (var renderer in Renderers) {
-                Destroy(renderer.gameObject);
-            }
-
-            Destroy(Collider.gameObject);
-        }
-
-        public UnityEvent OnDestroyed => onDestroyed;
-
-        public Room Room {
-            get;
-            private set;
-        }
-
-        public bool RequestRoomMembership(Room room) {
-            if (Room) {
-                return false;
-            }
-
-            Room = room;
-            return true;
+            Open();
         }
     }
 }

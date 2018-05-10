@@ -1,11 +1,15 @@
 ﻿using System;
+using System.Linq;
 using Datenshi.Scripts.Combat;
+using Datenshi.Scripts.Entities;
+using Datenshi.Scripts.Game;
 using Datenshi.Scripts.Util;
+using Datenshi.Scripts.World.Rooms.Doors;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Datenshi.Scripts.World.Rooms.Misc {
+namespace Datenshi.Scripts.World.Rooms.Game {
     public class Spawner : AbstractRoomMember {
         public enum SpawnMode {
             Random,
@@ -20,8 +24,14 @@ namespace Datenshi.Scripts.World.Rooms.Misc {
         }
 
         private void OnEnter(Collider2D arg0) {
-            var e = arg0.GetComponentInChildren<Entity>();
-            if () { }
+            if (playing) {
+                return;
+            }
+
+            var e = arg0.GetComponentInParent<Entity>();
+            if (e == PlayerController.Instance.CurrentEntity) {
+                Begin();
+            }
         }
 
         [ShowIf(nameof(IsPredefinedLocation))]
@@ -29,33 +39,70 @@ namespace Datenshi.Scripts.World.Rooms.Misc {
 
         public bool IsRandom => Mode == SpawnMode.Random;
         public bool IsPredefinedLocation => Mode == SpawnMode.PredefinedLocation;
-        private byte current;
-        private float lastSpawnTime;
+        private sbyte currentGroup;
+        private float lastTimeMark;
+        private bool playing;
+        private bool countdownStarted;
+        public Door ToOpen;
 
         private void Update() {
-            if (CurrentGroup.IsTimeBased) {
-                var now = Time.time;
-                if (now - lastSpawnTime > CurrentGroup.SecondsDelay) {
-                    Spawn();
-                    return;
-                }
+            if (!playing) {
+                return;
             }
 
-            if (CurrentGroup.IsWaitForPrevious && current > 0) { }
+            if (currentGroup >= Wave.TotalGroups && !CurrentGroup.HasAnyAlive) {
+                playing = false;
+                if (ToOpen) {
+                    ToOpen.Open();
+                }
+
+                return;
+            }
+
+            if (CurrentGroup.IsTimeBased) {
+                if (CurrentGroup.HasDelayPassed(lastTimeMark)) {
+                    Spawn();
+                }
+
+                return;
+            }
+
+            if (CurrentGroup.IsWaitForPrevious && currentGroup > 0) {
+                if (!countdownStarted) {
+                    if (CurrentGroup.HasAnyAlive) {
+                        return;
+                    }
+
+                    countdownStarted = true;
+                    lastTimeMark = Time.time;
+                }
+
+                if (!CurrentGroup.HasDelayPassed(lastTimeMark)) {
+                    return;
+                }
+
+                Spawn();
+                countdownStarted = false;
+            }
+        }
+
+        public void Begin() {
+            playing = true;
+            currentGroup = -1;
+            Spawn();
         }
 
         public void Spawn() {
+            currentGroup++;
             CurrentGroup.Spawn(this);
-            current++;
-            lastSpawnTime = Time.time;
-            if (current < Wave.TotalGroups - 1 && NextGroup.IsSimultaneous) {
+            lastTimeMark = Time.time;
+            if (currentGroup < Wave.TotalGroups - 1 && NextGroup.IsSimultaneous) {
                 Spawn();
             }
         }
 
-        public WaveGroup CurrentGroup => Wave.Groups[current];
-        public WaveGroup LastGroup => Wave.Groups[current - 1];
-        public WaveGroup NextGroup => Wave.Groups[current + 1];
+        public WaveGroup CurrentGroup => Wave.Groups[currentGroup];
+        public WaveGroup NextGroup => Wave.Groups[currentGroup + 1];
 
         public Vector2 GetSpawnLocation() {
             switch (Mode) {
@@ -87,7 +134,7 @@ namespace Datenshi.Scripts.World.Rooms.Misc {
             var h = Room.Height;
             var xIncrement = (Random.value * w) - w / 2;
             var yIncrement = Random.value * h - h / 2;
-            var pos = Room.Area.offset;
+            var pos = (Vector2) Room.transform.position + Room.Area.offset;
             pos.x += xIncrement;
             pos.y += yIncrement;
             return pos;
@@ -125,7 +172,18 @@ namespace Datenshi.Scripts.World.Rooms.Misc {
             private set;
         }
 
-        [ShowIf(nameof(IsTimeBased))]
+        public bool HasAnyAlive {
+            get {
+                if (Spawned == null) {
+                    return true;
+                }
+
+                var combatants = from o in Spawned where o != null select o.GetComponent<ICombatant>();
+                return combatants.Any(c => !c.Dead);
+            }
+        }
+
+        [HideIf(nameof(IsSimultaneous))]
         public float SecondsDelay;
 
         public void Spawn(Spawner spawner) {
@@ -137,6 +195,10 @@ namespace Datenshi.Scripts.World.Rooms.Misc {
                 c?.AnimatorUpdater.TriggerSpawn();
                 Spawned[i] = obj;
             }
+        }
+
+        public bool HasDelayPassed(float lastTimeMark) {
+            return Time.time - lastTimeMark > SecondsDelay;
         }
     }
 }

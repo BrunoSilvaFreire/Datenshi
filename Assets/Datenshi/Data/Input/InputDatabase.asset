@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Name: InputDatabase
   m_EditorClassIdentifier: 
   Icons:
-  - {fileID: 114057613858324028}
-  - {fileID: 114655636185812884}
-  - {fileID: 114927240788419348}
-  - {fileID: 114806111899744368}
-  - {fileID: 114166612664497218}
-  - {fileID: 114183733409804006}
-  - {fileID: 114923828666911702}
-  - {fileID: 114835411370459060}
-  - {fileID: 114612752522418534}
-  - {fileID: 114039922291227478}
---- !u!114 &114039922291227478
+  - {fileID: 114050704311502648}
+  - {fileID: 114745192192384730}
+  - {fileID: 114696745397014252}
+  - {fileID: 114697338043306942}
+  - {fileID: 114764537888088094}
+  - {fileID: 114823761552280100}
+  - {fileID: 114121982378172980}
+  - {fileID: 114915864590235740}
+  - {fileID: 114977082766190254}
+  - {fileID: 114189940697655344}
+--- !u!114 &114050704311502648
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -30,15 +30,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: Horizontal
-  m_EditorClassIdentifier: Datenshi-UI:Datenshi.Scripts.UI.Input:SpriteInputIcon
-  ActionId: 0
-  Sprite: {fileID: 21300000, guid: 50ecc33110c52704aa2d4211db9271c9, type: 3}
-  Rotation: 0
-  InvertedRotationAmount: 90
-  InvertedRotationMultiplier: 2
---- !u!114 &114057613858324028
+  m_Script: {fileID: 11500000, guid: 632a6216fa3b45be8bb4269ef36842fc, type: 3}
+  m_Name: UIVertical
+  m_EditorClassIdentifier: 
+  ActionId: 12
+  Text: UIVertical
+--- !u!114 &114121982378172980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 632a6216fa3b45be8bb4269ef36842fc, type: 3}
+  m_Name: Attack
+  m_EditorClassIdentifier: 
+  ActionId: 5
+  Text: J
+--- !u!114 &114189940697655344
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -51,7 +61,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ActionId: 2
   Text: Space
---- !u!114 &114166612664497218
+--- !u!114 &114696745397014252
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -59,12 +69,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 632a6216fa3b45be8bb4269ef36842fc, type: 3}
+  m_Name: Cancel
+  m_EditorClassIdentifier: 
+  ActionId: 10
+  Text: Esc
+--- !u!114 &114697338043306942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 632a6216fa3b45be8bb4269ef36842fc, type: 3}
   m_Name: Submit
-  m_EditorClassIdentifier: Datenshi-UI:Datenshi.Scripts.UI.Input:TextInputIcon
+  m_EditorClassIdentifier: 
   ActionId: 9
   Text: Enter
---- !u!114 &114183733409804006
+--- !u!114 &114745192192384730
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -72,12 +95,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 632a6216fa3b45be8bb4269ef36842fc, type: 3}
+  m_Name: UIHorizontal
+  m_EditorClassIdentifier: 
+  ActionId: 11
+  Text: UIHorizontal
+--- !u!114 &114764537888088094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 632a6216fa3b45be8bb4269ef36842fc, type: 3}
   m_Name: Defend
-  m_EditorClassIdentifier: Datenshi-UI:Datenshi.Scripts.UI.Input:TextInputIcon
+  m_EditorClassIdentifier: 
   ActionId: 8
   Text: LShift
---- !u!114 &114612752522418534
+--- !u!114 &114823761552280100
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -85,15 +121,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 632a6216fa3b45be8bb4269ef36842fc, type: 3}
+  m_Name: Dash
+  m_EditorClassIdentifier: 
+  ActionId: 7
+  Text: K
+--- !u!114 &114915864590235740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f537140661b34903ba9807430c0bd59e, type: 3}
   m_Name: Vertical
-  m_EditorClassIdentifier: Datenshi-UI:Datenshi.Scripts.UI.Input:SpriteInputIcon
+  m_EditorClassIdentifier: 
   ActionId: 1
   Sprite: {fileID: 21300000, guid: 50ecc33110c52704aa2d4211db9271c9, type: 3}
   Rotation: 90
   InvertedRotationAmount: 90
   InvertedRotationMultiplier: 2
---- !u!114 &114655636185812884
+--- !u!114 &114977082766190254
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -101,60 +150,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: UIVertical
-  m_EditorClassIdentifier: Datenshi-UI:Datenshi.Scripts.UI.Input:TextInputIcon
-  ActionId: 12
-  Text: UIVertical
---- !u!114 &114806111899744368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: Cancel
-  m_EditorClassIdentifier: Datenshi-UI:Datenshi.Scripts.UI.Input:TextInputIcon
-  ActionId: 10
-  Text: Esc
---- !u!114 &114835411370459060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: Attack
-  m_EditorClassIdentifier: Datenshi-UI:Datenshi.Scripts.UI.Input:TextInputIcon
-  ActionId: 5
-  Text: J
---- !u!114 &114923828666911702
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: Dash
-  m_EditorClassIdentifier: Datenshi-UI:Datenshi.Scripts.UI.Input:TextInputIcon
-  ActionId: 7
-  Text: K
---- !u!114 &114927240788419348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: UIHorizontal
-  m_EditorClassIdentifier: Datenshi-UI:Datenshi.Scripts.UI.Input:TextInputIcon
-  ActionId: 11
-  Text: UIHorizontal
+  m_Script: {fileID: 11500000, guid: f537140661b34903ba9807430c0bd59e, type: 3}
+  m_Name: Horizontal
+  m_EditorClassIdentifier: 
+  ActionId: 0
+  Sprite: {fileID: 21300000, guid: 50ecc33110c52704aa2d4211db9271c9, type: 3}
+  Rotation: 0
+  InvertedRotationAmount: 90
+  InvertedRotationMultiplier: 2

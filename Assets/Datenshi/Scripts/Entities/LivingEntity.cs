@@ -84,7 +84,10 @@ namespace Datenshi.Scripts.Entities {
         [ShowIf("DamageGivesStun"), TitleGroup(CombatGroup)]
         public float DamageStunDuration = 1;
 
-        public UnityEvent OnKilled;
+        [SerializeField]
+        private UnityEvent onKilled;
+
+        public UnityEvent OnKilled => onKilled;
 
         [ShowIf("DamageGivesStun"), TitleGroup(CombatGroup), ReadOnly]
         private float totalStunTimeLeft;
@@ -328,8 +331,9 @@ namespace Datenshi.Scripts.Entities {
             if (Dead) {
                 return;
             }
+
             health = 0;
-            OnKilled.Invoke();
+            onKilled.Invoke();
             updater.TriggerDeath();
         }
 
@@ -342,14 +346,17 @@ namespace Datenshi.Scripts.Entities {
                 return;
             }
 
-            Debug.Log(name + " damaged by " + entity + " @ " + damage);
             if (damage >= health) {
+                Debug.Log($"<color=#FF0000><b>{name} killed by {entity} @ {damage}</b></color>");
                 Kill();
                 return;
             }
 
+            Debug.Log($"<color=#FF0000>{name} damaged by {entity} @ {damage}</color>");
+
             OnDamaged.Invoke(entity, damage);
             GlobalEntityDamagedEvent.Instance.Invoke(this, entity, damage);
+            this.ColorizableRenderer.ImpactColor();
             Health -= damage;
             if (DamageInvulnerability) {
                 SetInvulnerable(DamageInvulnerabilityDuration);

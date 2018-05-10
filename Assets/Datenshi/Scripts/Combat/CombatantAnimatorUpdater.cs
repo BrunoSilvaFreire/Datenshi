@@ -12,5 +12,6 @@ namespace Datenshi.Scripts.Combat {
         public abstract void TriggerCounter();
 
         public abstract void TriggerDeath();
+        public abstract void TriggerSpawn();
     }
 }

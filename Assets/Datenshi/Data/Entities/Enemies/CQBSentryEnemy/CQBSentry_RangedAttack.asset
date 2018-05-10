@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: CQBSentry_RangedAttack
   m_EditorClassIdentifier: 
   Prefab: {fileID: 114702364624681138, guid: e7562f9b88783db42b1dc7a877e5d580, type: 2}
-  TimeDelay: 1
+  TimeDelay: 0.2
   Offset: {x: 0, y: 0}
   Aim: 1
   RawDir: 1

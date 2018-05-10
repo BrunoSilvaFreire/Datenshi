@@ -233,14 +233,6 @@ namespace Datenshi.Scripts.Entities {
             Target.DamageStunDuration = value;
         }
 
-        public void SetOnKilled(UnityEvent value) {
-            if (Target == null) {
-                return;
-            }
-
-            Target.OnKilled = value;
-        }
-
         public void SetFocusMaxTime(float value) {
             if (Target == null) {
                 return;

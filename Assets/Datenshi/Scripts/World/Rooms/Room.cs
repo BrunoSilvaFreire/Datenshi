@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Datenshi.Scripts.Util;
 using UnityEngine;
 using UnityEngine.Events;
@@ -16,11 +17,18 @@ namespace Datenshi.Scripts.World.Rooms {
         bool RequestRoomMembership(Room room);
     }
 
+    [Serializable]
+    public class RoomCollisionEvent : UnityEvent<Collider2D> { }
+
     public class Room : MonoBehaviour {
         private readonly List<IRoomMember> members = new List<IRoomMember>();
-        public Collider2D Area;
-
+        public BoxCollider2D Area;
         public IEnumerable<IRoomMember> Members => members;
+
+        public float Width => Area.size.x;
+        public float Height => Area.size.y;
+        public RoomCollisionEvent OnObjectEnter;
+        public RoomCollisionEvent OnObjectExit;
 
         public bool IsInBounds(Vector2 pos) {
             return !IsOutInBounds(pos);
@@ -68,5 +76,12 @@ namespace Datenshi.Scripts.World.Rooms {
             GizmosUtil.DrawBounds2D(Area.bounds, Color.magenta);
         }
 
+        private void OnTriggerEnter2D(Collider2D other) {
+            OnObjectEnter.Invoke(other);
+        }
+
+        private void OnTriggerExit2D(Collider2D other) {
+            OnObjectExit.Invoke(other);
+        }
     }
 }

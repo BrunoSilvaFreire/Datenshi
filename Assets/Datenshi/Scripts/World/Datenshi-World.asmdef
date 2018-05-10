@@ -1,8 +1,15 @@
 {
     "name": "Datenshi-World",
     "references": [
-        "Datenshi-Utilities"
+        "Datenshi-Utilities",
+        "Datenshi-Combat",
+        "Datenshi-Animation",
+        "Datenshi-Input",
+        "Datenshi-Data",
+        "Datenshi-Movement"
     ],
+    "optionalUnityReferences": [],
     "includePlatforms": [],
-    "excludePlatforms": []
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
 }

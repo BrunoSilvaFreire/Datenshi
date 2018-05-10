@@ -26,8 +26,11 @@ namespace Datenshi.Scripts.Entities.Animation {
         public override void TriggerDeflect() { }
 
         public override void TriggerCounter() { }
+
         public override void TriggerDeath() {
             Destroy(Entity.gameObject);
         }
+
+        public override void TriggerSpawn() { }
     }
 }

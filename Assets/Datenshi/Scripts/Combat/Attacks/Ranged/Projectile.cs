@@ -68,8 +68,6 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
                     return;
                 }
             }
-
-            Debug.Log("Collided with " + other.gameObject);
             Hit();
         }
 

@@ -22,6 +22,7 @@ namespace Datenshi.Scripts.UI.Misc {
             get;
             set;
         }
+
     }
 
     public class UIQuickTimeEventElement : UIInputDisplay {

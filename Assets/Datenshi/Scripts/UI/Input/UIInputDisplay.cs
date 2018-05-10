@@ -2,7 +2,6 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
-using UPM.Input;
 
 namespace Datenshi.Scripts.UI.Input {
     public class UIInputDisplay : UIElement {

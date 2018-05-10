@@ -29,19 +29,24 @@ namespace Datenshi.Scripts.Game {
 
         public BlackAndWhiteFX Fx;
         public AnalogGlitch DamageGlitch;
+
+        public float DamageDarkenAmount = 1;
+        public float DamageDarkenDuration = 1;
+
         public float DamageGlitchAmount = 1;
         public float DamageColorDriftAmount = 1;
-        public float DamageDarkenAmount = 1;
         public float DamageHorizontalShakeAmount = 1;
-        public float DamageDarkenDuration = 1;
-        public float LowCutoff = 440;
-        public float DefendOverrideAmount = 1;
+
+
         public float DamageGlitchDuration = .25F;
         public float DamageCutoff = 5000;
         public float DamageLowfilterDefault = 0;
+        public float LowCutoff = 440;
+        public float DefendOverrideAmount = 1;
         public float DefendOverrideDuration = 0.5F;
         public PlayerEntityChangedEvent OnEntityChanged;
         public AudioFX[] DamageAudio;
+
         [ShowInInspector]
         public Entity CurrentEntity {
             get {
@@ -64,13 +69,13 @@ namespace Datenshi.Scripts.Game {
         private TweenerCore<float, float, FloatOptions> darkenTweener;
 
         private void Start() {
-            if (currentEntity.InputProvider == Player) {
-                return;
+            ResetGlitch();
+            if (currentEntity.InputProvider != Player) {
+                currentEntity.RevokeOwnership();
+                currentEntity.RequestOwnership(Player);
+                OnEntityChanged.Invoke(null, currentEntity);
             }
 
-            currentEntity.RevokeOwnership();
-            currentEntity.RequestOwnership(Player);
-            OnEntityChanged.Invoke(null, currentEntity);
             GlobalEntityDamagedEvent.Instance.AddListener(OnEntityDamaged);
             tracker = new Tracker<ColorizableRenderer>(
                 ColorizableRenderer.ColorizableRendererEnabledEvent,
@@ -83,15 +88,16 @@ namespace Datenshi.Scripts.Game {
             }
 
             if (Equals(damaged, currentEntity)) {
+                ResetDarken();
+                ResetGlitch();
                 AudioManager.Instance.ImpactLowFilter(DamageLowfilterDefault, DamageCutoff, DamageDarkenDuration);
                 AudioManager.Instance.PlayFX(DamageAudio.RandomElement());
+                DamageGlitch.enabled = true;
                 DamageGlitch.ScanLineJitter = DamageGlitchAmount;
                 DamageGlitch.ColorDrift = DamageColorDriftAmount;
                 DamageGlitch.HorizontalShake = DamageHorizontalShakeAmount;
                 Fx.Amount = DamageDarkenAmount;
 
-                ResetGlitch();
-                ResetDarken();
 
                 glitchTweener = DamageGlitch.DOScanLineJitter(0, DamageGlitchDuration);
                 colorTweener = DamageGlitch.DOColorDrift(0, DamageGlitchDuration);
@@ -114,6 +120,10 @@ namespace Datenshi.Scripts.Game {
             glitchTweener = null;
             colorTweener = null;
             shakeTweener = null;
+            DamageGlitch.ScanLineJitter = 0;
+            DamageGlitch.ColorDrift = 0;
+            DamageGlitch.HorizontalShake = 0;
+            DamageGlitch.enabled = false;
         }
 
         private void ResetDarken() {

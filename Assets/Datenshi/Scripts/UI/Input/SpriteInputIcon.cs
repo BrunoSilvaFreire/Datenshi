@@ -1,7 +1,4 @@
-﻿using Datenshi.Scripts.UI.Misc;
-using Datenshi.Scripts.Util;
-using Sirenix.OdinInspector;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Datenshi.Scripts.UI.Input {
     public class SpriteInputIcon : InputIcon {

@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using Datenshi.Scripts.Util;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Datenshi.Scripts.World.Rooms.Doors {
-    public abstract class Door : AbstractRoomMember {
+    public class Door : AbstractRoomMember {
         public SpriteRenderer[] Renderers;
         public Color OpenColor;
         public Color CloseColor;
@@ -13,39 +14,54 @@ namespace Datenshi.Scripts.World.Rooms.Doors {
         public Collider2D Collider;
         private Coroutine openRoutine;
         private Coroutine closeRoutine;
+        public bool DoDoorDelay = true;
 
-        public void Open() {
-            CoroutineUtil.ReplaceCoroutine(ref openRoutine, this, DoOpen());
+        [ShowIf(nameof(DoDoorDelay))]
+        public float DoorDelay = 1;
+
+        public void Open(bool silent = false) {
+            CoroutineUtil.ReplaceCoroutine(ref openRoutine, this, DoOpen(silent));
         }
 
-        public void Close() {
-            CoroutineUtil.ReplaceCoroutine(ref closeRoutine, this, DoClose());
+        public void Close(bool silent = false) {
+            CoroutineUtil.ReplaceCoroutine(ref closeRoutine, this, DoClose(silent));
         }
 
-        private IEnumerator DoOpen() {
-            yield return new WaitForSeconds(1);
+        private IEnumerator DoOpen(bool silent) {
+            if (!silent && DoDoorDelay) {
+                yield return new WaitForSeconds(DoorDelay);
+            }
+
             foreach (var r in Renderers) {
                 r.color = OpenColor;
             }
 
-            Source.PlayOneShot(OpenClip);
-            yield return new WaitForSeconds(1);
-            foreach (var r in Renderers) {
-                Destroy(r.gameObject);
+            if (!silent) {
+                Source.PlayOneShot(OpenClip);
+                yield return new WaitForSeconds(1);
             }
 
-            Destroy(Collider.gameObject);
+            foreach (var r in Renderers) {
+                r.gameObject.SetActive(false);
+            }
+            Collider.gameObject.SetActive(false);
             openRoutine = null;
         }
 
-        private IEnumerator DoClose() {
-            yield return new WaitForSeconds(1);
+        private IEnumerator DoClose(bool silent) {
+            if (!silent && DoDoorDelay) {
+                yield return new WaitForSeconds(DoorDelay);
+            }
+
             foreach (var r in Renderers) {
                 r.color = CloseColor;
             }
 
-            Source.PlayOneShot(CloseClip);
-            yield return new WaitForSeconds(1);
+            if (!silent) {
+                Source.PlayOneShot(CloseClip);
+                yield return new WaitForSeconds(1);
+            }
+
             foreach (var r in Renderers) {
                 r.gameObject.SetActive(false);
             }

@@ -3,7 +3,7 @@ using Datenshi.Scripts.Interaction;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Misc {
-    public class Spawner : InteractableElement {
+    public class DebugSpawner : InteractableElement {
         public GameObject Prefab;
         public Transform Center;
         public float Radius;

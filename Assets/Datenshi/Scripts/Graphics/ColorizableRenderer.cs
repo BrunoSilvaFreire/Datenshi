@@ -1,4 +1,5 @@
 ﻿using System;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -23,6 +24,7 @@ namespace Datenshi.Scripts.Graphics {
         public float ColorOverrideAmount;
         public Color AlternativeOverrideColor = Color.white;
         public float AlternativeColorOverrideAmount;
+        public float DamageImpactDuration = 1;
 
         public static readonly ColorizableRendererEvent
             ColorizableRendererEnabledEvent = new ColorizableRendererEvent();
@@ -36,6 +38,30 @@ namespace Datenshi.Scripts.Graphics {
 
         private void OnDisable() {
             ColorizableRendererDisabledEvent.Invoke(this);
+        }
+
+        private Tweener impactTweener;
+
+        public void ImpactColor() {
+            ImpactColor(DamageImpactDuration, Color.white);
+        }
+
+        public void ImpactColor(float duration) {
+            ImpactColor(duration, Color.white);
+        }
+
+
+        public void ImpactColor(float duration, Color color) {
+            Debug.Log("Doing impact " + duration + " @ " + color);
+            AlternativeColorOverrideAmount = 1;
+            AlternativeOverrideColor = color;
+            DOAlternativeColorOverrideAmount(0, duration);
+        }
+
+        public void DOAlternativeColorOverrideAmount(float v, float duration) {
+            impactTweener?.Kill();
+            impactTweener = DOTween.To(() => AlternativeColorOverrideAmount,
+                value => AlternativeColorOverrideAmount = value, v, duration);
         }
 
         private void Update() {

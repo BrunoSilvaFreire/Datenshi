@@ -244,6 +244,9 @@ MonoBehaviour:
   Renderers:
   - {fileID: 212103069438078220}
   ColorOverrideAmount: 0
+  AlternativeOverrideColor: {r: 1, g: 1, b: 1, a: 1}
+  AlternativeColorOverrideAmount: 0
+  DamageImpactDuration: 1
 --- !u!114 &114272136902398876
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -292,7 +295,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbd1d9ce47dd44ffab3ef38f9cd20c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {x: 46.14, y: 13}
   TimePerRegen: 1
   navigable: {fileID: 114965521512533436}
   Navigable:
@@ -476,7 +478,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4d4c506b7d14716a950885bed3aaf01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EntityRoom: {fileID: 0}
   inputProvider: {fileID: 0}
   colorizableRenderer: {fileID: 114172385113881182}
   MiscController: {fileID: 114274888876389472}
@@ -492,8 +493,6 @@ MonoBehaviour:
   DamageInvulnerability: 0
   DamageInvulnerabilityDuration: 3
   relationship: 2
-  DefaultAttackStrategy: {fileID: 11400000, guid: 5347f78cc5ad1fc48bce658eaced1e5a,
-    type: 2}
   OnDamaged:
     m_PersistentCalls:
       m_Calls: []
@@ -513,7 +512,7 @@ MonoBehaviour:
   hitbox: {fileID: 61365715950996962}
   DamageStunMin: 10
   DamageStunDuration: 1
-  OnKilled:
+  onKilled:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
@@ -567,6 +566,8 @@ MonoBehaviour:
   inset: 0.05
   horizontalRaycasts: 3
   verticalRaycasts: 3
+  StunRemovesVelocity: 0
+  StunVelocityDampen: 1
   motorConfig: {fileID: 0}
   collisionStatus:
     Up: 0

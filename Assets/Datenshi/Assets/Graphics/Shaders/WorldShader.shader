@@ -8,8 +8,9 @@
 		LOD 200
         ZWrite On
         Cull Off
+        Tags {"Queue" = "Geometry"}
 		CGPROGRAM
-		#pragma surface surf Standard fullforwardshadows
+		#pragma surface surf Standard fullforwardshadows alpha:fade
 		#pragma target 3.0
 
 		sampler2D _MainTex;

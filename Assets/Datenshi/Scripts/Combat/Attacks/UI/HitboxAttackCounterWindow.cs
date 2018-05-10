@@ -8,6 +8,12 @@ using UnityEngine;
 using UnityEngine.Events;
 
 namespace Datenshi.Scripts.Combat.Attacks.UI {
+    [SerializeField]
+    public class CounterEvent : UnityEvent<ICombatant> {
+        public static readonly CounterEvent Instance = new CounterEvent();
+        private CounterEvent() { }
+    }
+
     public class HitboxAttackCounterWindow : MonoBehaviour, IQuickTimeEventController, IDefendable {
         [SerializeField]
         private bool available;
@@ -19,6 +25,14 @@ namespace Datenshi.Scripts.Combat.Attacks.UI {
             set {
                 available = value;
             }
+        }
+
+        public void EnableCounterWindow() {
+            Available = true;
+        }
+
+        public void DisableCounterWindow() {
+            Available = false;
         }
 
         public Vector2 Offset;
@@ -35,10 +49,15 @@ namespace Datenshi.Scripts.Combat.Attacks.UI {
         public void Defend(ICombatant entity, ref DamageInfo info) {
             info.Canceled = true;
             var updater = entity.AnimatorUpdater;
+            var c = GetComponentInParent<ICombatant>();
+            if (c == null) {
+                return;
+            }
+
             UnityAction onSucess = delegate {
                 available = false;
                 updater.SetTrigger(CounterSuccessKey);
-                GetComponentInParent<ICombatant>().Kill();
+                c.Kill();
             };
             UnityAction onFailure = delegate { updater.SetTrigger(CounterExitKey); };
             updater.SetTrigger(CounterStartKey);
@@ -49,8 +68,9 @@ namespace Datenshi.Scripts.Combat.Attacks.UI {
                 inverted = RandomUtil.NextBool();
             }
 
-            Debug.Log($"Using action {a.name} @ {inverted} ({action}/{(int) action})");
+            CounterEvent.Instance.Invoke(c);
             var qte = QTEElementPrefab.Clone(entity.Center + Offset);
+
             qte.Play(entity.InputProvider, (int) action, inverted, onSucess, onFailure);
         }
 

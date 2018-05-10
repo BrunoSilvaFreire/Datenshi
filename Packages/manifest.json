@@ -5,6 +5,7 @@
     "com.unity.ads": "exclude",
     "com.unity.purchasing": "exclude",
     "com.unity.analytics": "exclude",
-    "com.unity.standardevents": "exclude"
+    "com.unity.standardevents": "exclude",
+    "com.unity.render-pipelines.core": "1.1.5-preview"
   }
 }

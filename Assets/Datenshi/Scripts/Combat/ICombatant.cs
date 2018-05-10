@@ -5,6 +5,7 @@ using Datenshi.Scripts.Input;
 using Datenshi.Scripts.Util;
 using UPM.Util;
 using Datenshi.Scripts.Movement;
+using UnityEngine.Events;
 
 namespace Datenshi.Scripts.Combat {
     public enum CombatRelationship {
@@ -86,5 +87,9 @@ namespace Datenshi.Scripts.Combat {
         void Stun(float duration);
 
         void ExecuteAttack(Attack attack);
+
+        UnityEvent OnKilled {
+            get;
+        }
     }
 }

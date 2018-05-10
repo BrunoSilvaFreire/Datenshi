@@ -1,7 +1,7 @@
-﻿using Datenshi.Scripts.Util;
+﻿using Datenshi.Scripts.World.Rooms.Doors;
 using UnityEngine;
 
-namespace Datenshi.Scripts.World.Rooms.Doors {
+namespace Datenshi.Scripts.World.Rooms.Game {
     public class TrapDoor : Door {
         [SerializeField]
         private Spawner spawner;
@@ -15,7 +15,7 @@ namespace Datenshi.Scripts.World.Rooms.Doors {
                 Destroy(this);
                 return;
             }
-            
+            Open(true);
             
         }
     }

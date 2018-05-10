@@ -6,6 +6,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor.Animations;
+
 #endif
 
 namespace Datenshi.Scripts.Entities.Animation {
@@ -29,6 +30,7 @@ namespace Datenshi.Scripts.Entities.Animation {
         public string BecameAiredKey = "BecameAired";
         public string StunKey = "Stunned";
         public string DeadKey = "Dead";
+        public string SpawnKey = "Spawn";
         public MovableEntity Entity;
         public SpriteRenderer Renderer;
 #if UNITY_EDITOR
@@ -53,6 +55,7 @@ namespace Datenshi.Scripts.Entities.Animation {
             AddParameter(CounterKey, AnimatorControllerParameterType.Trigger);
             AddParameter(StunKey, AnimatorControllerParameterType.Bool);
             AddParameter(DeadKey, AnimatorControllerParameterType.Trigger);
+            AddParameter(SpawnKey, AnimatorControllerParameterType.Trigger);
         }
 
         public void AddParameter(string parameter, AnimatorControllerParameterType type) {
@@ -141,6 +144,10 @@ namespace Datenshi.Scripts.Entities.Animation {
 
         public override void TriggerDeath() {
             Animator.SetTrigger(DeadKey);
+        }
+
+        public override void TriggerSpawn() {
+            Animator.SetTrigger(SpawnKey);
         }
     }
 }
