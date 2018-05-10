@@ -1,11 +1,10 @@
 ﻿using Cinemachine;
 using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Game;
-using Datenshi.Scripts.World;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Cinemachine {
-    public class CinemachineRoom : AbstractRoomMember {
+    public class CinemachineRoom : MonoBehaviour {
         public CinemachineVirtualCameraBase Camera;
         public int EnterPriority = 15;
         public int ExitPriority;
