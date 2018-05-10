@@ -4,14 +4,9 @@
         _Amount ("Amount", Float) = 1
         _Color ("Color", Color) = (1,0,0,0)
     }
-    SubShader
-    {
-     Tags { "Queue"="Transparent" "RenderType"="Transparent" "IgnoreProjector"="True" }
-
-        ZWrite Off 
-        Blend SrcAlpha OneMinusSrcAlpha
-
-
+    SubShader {
+        // No culling or depth
+        Cull Off ZWrite Off ZTest Always
         Pass
         {
             CGPROGRAM

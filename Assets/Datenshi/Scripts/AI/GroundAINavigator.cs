@@ -131,16 +131,11 @@ namespace Datenshi.Scripts.AI {
         }
 
         public override Vector2 GetFavourablePosition(ILocatable target) {
-            var pos = target.Center;
-/*
+            return target.Center;
+        }
 
-            var state = s as RangedAttackStrategy;
-            if (state != null) {
-                pos.x += state.MinDistance * Math.Sign(INavigable.GroundPosition.x - pos.x);
-            }
-*/
-
-            return pos;
+        public override Vector2 GetFavourablePosition(Vector2 targetPos) {
+            return targetPos;
         }
     }
 }

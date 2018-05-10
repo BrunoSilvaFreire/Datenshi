@@ -4,6 +4,7 @@ using Datenshi.Scripts.Audio;
 using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Game;
 using Datenshi.Scripts.Game.Time;
+using Datenshi.Scripts.Graphics;
 using Datenshi.Scripts.Input;
 using Datenshi.Scripts.UI.Input;
 using Datenshi.Scripts.Util;
@@ -87,7 +88,7 @@ namespace Datenshi.Scripts.UI.Misc {
 
             i.Setup(this, inv);
             SetFrequency(LowPass);
-            PlayerController.Instance.Fx.DODarkenAmount(DarkenAmount, DarkenDuration);
+            GraphicsSingleton.Instance.BlackAndWhite.DODarkenAmount(DarkenAmount, DarkenDuration);
             Counting = true;
             StartCoroutine(WaitForInput());
         }
@@ -161,7 +162,7 @@ namespace Datenshi.Scripts.UI.Misc {
 
 
         private IEnumerator DoStop(bool success) {
-            PlayerController.Instance.Fx.DODarkenAmount(0, DarkenDuration);
+            GraphicsSingleton.Instance.BlackAndWhite.DODarkenAmount(0, DarkenDuration);
             ResetCounter(success);
             yield return new WaitForSeconds(FinishStayDuration);
             Hide();

@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using Datenshi.Scripts.Util.Singleton;
 using DG.Tweening;
 using DG.Tweening.Core;
@@ -50,27 +49,12 @@ namespace Datenshi.Scripts.Game.Time {
         private static readonly DOSetter<float> Setter = TimeSetter;
         internal Slowdown CurrentSlowdown;
 
-        
         private static float TimeGetter() {
             return UnityEngine.Time.timeScale;
         }
 
         private static void TimeSetter(float scale) {
             UnityEngine.Time.timeScale = scale;
-        }
-
-        public void Reset() {
-            currentTween?.Kill();
-            currentTween = null;
-        }
-
-        public void ImpactFrame() {
-            ImpactFrame(DefaultImpactDuration);
-        }
-
-        public void ImpactFrame(float duration) {
-            UnityEngine.Time.timeScale = DefaultImpactFrameScale;
-            DOTime(DefaultTimeScale, duration);
         }
 
         public Slowdown Slowdown(float duration) {
@@ -90,6 +74,20 @@ namespace Datenshi.Scripts.Game.Time {
             if (slowdown.IsActive) {
                 slowdown.Stop();
             }
+        }
+
+        public void Reset() {
+            currentTween?.Kill();
+            currentTween = null;
+        }
+
+        public void ImpactFrame() {
+            ImpactFrame(DefaultImpactDuration);
+        }
+
+        public void ImpactFrame(float duration) {
+            UnityEngine.Time.timeScale = DefaultImpactFrameScale;
+            DOTime(DefaultTimeScale, duration);
         }
 
         private void DOTime(float scale, float duration) {

@@ -76,6 +76,8 @@ GameObject:
   - component: {fileID: 95775906599597910}
   - component: {fileID: 212136105140792762}
   - component: {fileID: 114216263960669200}
+  - component: {fileID: 114115221975006392}
+  - component: {fileID: 114305872721169344}
   m_Layer: 5
   m_Name: Sprite
   m_TagString: Untagged
@@ -100,6 +102,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114115221975006392
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1981663665573276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1424380507e04e4bb106b9825b73eadf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 95775906599597910}
 --- !u!114 &114216263960669200
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -112,6 +127,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
+--- !u!114 &114305872721169344
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1981663665573276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5050bb8a95647b08557e195ed96545a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EntityAudioSource: {fileID: 0}
+  StepSounds: []
+  Animator: {fileID: 0}
+  minPitch: 0
+  maxPitch: 0
 --- !u!114 &114398412363569638
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -222,6 +253,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:

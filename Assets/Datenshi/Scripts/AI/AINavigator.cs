@@ -31,5 +31,6 @@ namespace Datenshi.Scripts.AI {
         public abstract void Execute(INavigable navigable, DummyInputProvider provider);
 
         public abstract Vector2 GetFavourablePosition(ILocatable target);
+        public abstract Vector2 GetFavourablePosition(Vector2 targetPos);
     }
 }

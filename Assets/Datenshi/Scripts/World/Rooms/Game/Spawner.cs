@@ -1,12 +1,15 @@
 ﻿using System;
+using System.Collections;
 using System.Linq;
 using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Game;
+using Datenshi.Scripts.Graphics;
 using Datenshi.Scripts.Util;
 using Datenshi.Scripts.World.Rooms.Doors;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 namespace Datenshi.Scripts.World.Rooms.Game {
@@ -24,34 +27,73 @@ namespace Datenshi.Scripts.World.Rooms.Game {
         }
 
         private void OnEnter(Collider2D arg0) {
-            if (playing) {
+            if (started) {
                 return;
             }
 
             var e = arg0.GetComponentInParent<Entity>();
             if (e == PlayerController.Instance.CurrentEntity) {
+                started = true;
                 Begin();
             }
         }
+
+        private bool started;
 
         [ShowIf(nameof(IsPredefinedLocation))]
         public Vector2[] Locations;
 
         public bool IsRandom => Mode == SpawnMode.Random;
         public bool IsPredefinedLocation => Mode == SpawnMode.PredefinedLocation;
+
+        [ShowInInspector, ReadOnly]
         private sbyte currentGroup;
+
+        [ShowInInspector, ReadOnly]
         private float lastTimeMark;
+
+        [ShowInInspector, ReadOnly]
         private bool playing;
+
+        [ShowInInspector, ReadOnly]
         private bool countdownStarted;
+
         public Door ToOpen;
+        public bool PlayWarning;
+        public byte SyrenCounts;
+        public AudioClip SyrenClip;
+        public AudioSource Source;
+        public Color SyrenColor;
+        public float SyrenColorAmount = .5F;
+
+        private void PlaySyren() {
+            StartCoroutine(DoSyren());
+        }
+
+        private IEnumerator DoSyren() {
+            var clipLength = SyrenClip.length;
+            var clipLengthHalf = clipLength / 2;
+            var fx = GraphicsSingleton.Instance.OverrideColor;
+            fx.Color = SyrenColor;
+            for (byte i = 0; i < SyrenCounts; i++) {
+                Source.PlayOneShot(SyrenClip);
+                fx.DOAmount(SyrenColorAmount, clipLengthHalf);
+                yield return new WaitForSeconds(clipLengthHalf);
+                fx.DOAmount(0, clipLengthHalf);
+                yield return new WaitForSeconds(clipLengthHalf);
+            }
+
+            DoBegin();
+        }
 
         private void Update() {
             if (!playing) {
                 return;
             }
 
-            if (currentGroup >= Wave.TotalGroups && !CurrentGroup.HasAnyAlive) {
+            if (currentGroup >= Wave.TotalGroups - 1 && !CurrentGroup.HasAnyAlive) {
                 playing = false;
+                OnWaveCompleted.Invoke();
                 if (ToOpen) {
                     ToOpen.Open();
                 }
@@ -67,7 +109,7 @@ namespace Datenshi.Scripts.World.Rooms.Game {
                 return;
             }
 
-            if (CurrentGroup.IsWaitForPrevious && currentGroup > 0) {
+            if (CurrentGroup.IsWaitForPrevious && currentGroup >= 0) {
                 if (!countdownStarted) {
                     if (CurrentGroup.HasAnyAlive) {
                         return;
@@ -87,12 +129,22 @@ namespace Datenshi.Scripts.World.Rooms.Game {
         }
 
         public void Begin() {
+            if (PlayWarning) {
+                PlaySyren();
+            } else {
+                DoBegin();
+            }
+        }
+
+        private void DoBegin() {
+            Debug.Log("Begining");
             playing = true;
             currentGroup = -1;
             Spawn();
         }
 
         public void Spawn() {
+            Debug.Log("Spawning");
             currentGroup++;
             CurrentGroup.Spawn(this);
             lastTimeMark = Time.time;
@@ -103,6 +155,9 @@ namespace Datenshi.Scripts.World.Rooms.Game {
 
         public WaveGroup CurrentGroup => Wave.Groups[currentGroup];
         public WaveGroup NextGroup => Wave.Groups[currentGroup + 1];
+        public WaveGroup LastGroup => Wave.Groups[currentGroup - 1];
+
+        public UnityEvent OnWaveCompleted;
 
         public Vector2 GetSpawnLocation() {
             switch (Mode) {

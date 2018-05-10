@@ -83,5 +83,16 @@ namespace Datenshi.Scripts.World.Rooms {
         private void OnTriggerExit2D(Collider2D other) {
             OnObjectExit.Invoke(other);
         }
+
+        public T FindMember<T>() where T : class {
+            foreach (var m in members) {
+                var t = m as T;
+                if (t != null) {
+                    return t;
+                }
+            }
+
+            return default(T);
+        }
     }
 }

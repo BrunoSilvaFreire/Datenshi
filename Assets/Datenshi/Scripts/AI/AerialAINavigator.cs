@@ -48,6 +48,7 @@ namespace Datenshi.Scripts.AI {
         }
 
         private Vector2 target;
+
         public override Vector2 SetTarget(Vector2 target) {
             return this.target = target;
         }
@@ -134,8 +135,11 @@ namespace Datenshi.Scripts.AI {
         }
 
         public override Vector2 GetFavourablePosition(ILocatable target) {
+            return GetFavourablePosition(target.Center);
+        }
+
+        public override Vector2 GetFavourablePosition(Vector2 targetPos) {
             var pos = Navigable.Value.Center;
-            var targetPos = target.Center;
             var x = targetPos.x + Math.Sign(pos.x - targetPos.x) * MinimumFavourableDistance;
             var y = targetPos.y + MinimumHeightAdvantage;
             return new Vector2(x, y);

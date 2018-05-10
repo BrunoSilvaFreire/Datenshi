@@ -59,14 +59,13 @@ namespace Datenshi.Scripts.World.Rooms.Doors {
 
             if (!silent) {
                 Source.PlayOneShot(CloseClip);
-                yield return new WaitForSeconds(1);
             }
 
             foreach (var r in Renderers) {
-                r.gameObject.SetActive(false);
+                r.gameObject.SetActive(true);
             }
 
-            Collider.gameObject.SetActive(false);
+            Collider.gameObject.SetActive(true);
             closeRoutine = null;
         }
     }

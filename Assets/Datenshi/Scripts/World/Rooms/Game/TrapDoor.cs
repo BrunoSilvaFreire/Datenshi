@@ -1,4 +1,10 @@
-﻿using Datenshi.Scripts.World.Rooms.Doors;
+﻿using System.Collections.Generic;
+using Datenshi.Scripts.Combat;
+using Datenshi.Scripts.Entities;
+using Datenshi.Scripts.Game;
+using Datenshi.Scripts.Util;
+using Datenshi.Scripts.World.Rooms.Doors;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Datenshi.Scripts.World.Rooms.Game {
@@ -6,17 +12,59 @@ namespace Datenshi.Scripts.World.Rooms.Game {
         [SerializeField]
         private Spawner spawner;
 
+        private bool closed;
+        private bool spawnerOk;
+        private bool roomOk;
+
+        [ShowInInspector, ReadOnly]
+        private List<ICombatant> deadRequired;
+
         private void Start() {
-            if (spawner == null) {
-                spawner = Room.GetComponentInChildren<Spawner>();
+            deadRequired = new List<ICombatant>();
+            foreach (var member in Room.Members) {
+                var entity = member as ICombatant;
+                if (entity == null) {
+                    continue;
+                }
+
+                deadRequired.Add(entity);
+                entity.OnKilled.AddListener(() => {
+                    deadRequired.Remove(entity);
+                    roomOk = deadRequired.IsEmpty();
+                    CheckOpen();
+                });
             }
 
-            if (spawner == null) {
-                Destroy(this);
+            Open(true);
+            Room.OnObjectEnter.AddListener(OnEnter);
+        }
+
+
+        private void OnCompleted() {
+            spawnerOk = true;
+            CheckOpen();
+        }
+
+        private void CheckOpen() {
+            if (spawnerOk && roomOk) {
+                Open();
+            }
+        }
+
+        private void OnEnter(Collider2D arg0) {
+            if (closed) {
                 return;
             }
-            Open(true);
-            
+
+            var e = arg0.GetComponentInParent<Entity>();
+            if (e != PlayerController.Instance.CurrentEntity) {
+                return;
+            }
+
+            closed = true;
+            Close();
+            Room.OnObjectExit.RemoveListener(OnEnter);
+            spawner.OnWaveCompleted.AddListener(OnCompleted);
         }
     }
 }

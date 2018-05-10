@@ -1,3 +1,10 @@
-﻿{
-	"name": "Datenshi-Graphics"
+{
+    "name": "Datenshi-Graphics",
+    "references": [
+        "Datenshi-Utilities"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
 }

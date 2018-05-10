@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212641452300643556}
   - component: {fileID: 61003637113409036}
   - component: {fileID: 114801817241539232}
+  - component: {fileID: 114078533787864128}
   m_Layer: 11
   m_Name: Box_Body
   m_TagString: Untagged
@@ -223,6 +224,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114078533787864128
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1118109947866482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1424380507e04e4bb106b9825b73eadf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 0}
 --- !u!114 &114359879434342010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -234,7 +247,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e28638e43dd44173a3f9dd6a75254b57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EntityRoom: {fileID: 0}
   inputProvider: {fileID: 0}
   colorizableRenderer: {fileID: 114801817241539232}
   MiscController: {fileID: 114587283753027586}
@@ -250,7 +262,6 @@ MonoBehaviour:
   DamageInvulnerability: 0
   DamageInvulnerabilityDuration: 3
   relationship: 1
-  DefaultAttackStrategy: {fileID: 0}
   OnDamaged:
     m_PersistentCalls:
       m_Calls: []
@@ -270,7 +281,7 @@ MonoBehaviour:
   hitbox: {fileID: 61003637113409036}
   DamageStunMin: 10
   DamageStunDuration: 1
-  OnKilled:
+  onKilled:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
@@ -282,7 +293,7 @@ MonoBehaviour:
   MinDefenseRequired: 0.1
   DefenseRecoverAmountMultiplier: 1
   DefenseDepleteAmountMultiplier: 2
-  updater: {fileID: 0}
+  updater: {fileID: 114078533787864128}
   ignored: 0
 --- !u!114 &114587283753027586
 MonoBehaviour:
@@ -314,6 +325,9 @@ MonoBehaviour:
   Renderers:
   - {fileID: 212641452300643556}
   ColorOverrideAmount: 0
+  AlternativeOverrideColor: {r: 1, g: 1, b: 1, a: 1}
+  AlternativeColorOverrideAmount: 0
+  DamageImpactDuration: 1
 --- !u!212 &212641452300643556
 SpriteRenderer:
   m_ObjectHideFlags: 1

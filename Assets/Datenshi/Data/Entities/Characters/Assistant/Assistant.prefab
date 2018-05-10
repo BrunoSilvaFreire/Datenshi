@@ -35,8 +35,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4461864418205264}
-  - component: {fileID: 114780413426065572}
   - component: {fileID: 114947386492686304}
+  - component: {fileID: 114780413426065572}
   m_Layer: 13
   m_Name: Assistant
   m_TagString: Untagged
@@ -186,6 +186,7 @@ GameObject:
   - component: {fileID: 4050120435013016}
   - component: {fileID: 212187792993308444}
   - component: {fileID: 61613949157056576}
+  - component: {fileID: 114108903000714726}
   m_Layer: 13
   m_Name: Body
   m_TagString: Untagged
@@ -391,11 +392,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SizeChangeDuration: 0.25
+  OnEnteredArea:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Datenshi.Scripts.Tutorial.UITutorialBoxEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnShowTutorial:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Datenshi.Scripts.Tutorial.UITutorialBoxEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnHideTutorial:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Datenshi.Scripts.Tutorial.UITutorialBoxEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnLeftArea:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Datenshi.Scripts.Tutorial.UITutorialBoxEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   CanvasGroup: {fileID: 225855562172936322}
   Holder: {fileID: 224281683103040180}
   DefaultSize: {x: 60, y: 30}
   Padding: {x: 10, y: 10}
   YOffset: 1.5
+--- !u!114 &114108903000714726
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1811113884575526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1424380507e04e4bb106b9825b73eadf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 95114752024199850}
 --- !u!114 &114169876328857036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -449,7 +482,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbd1d9ce47dd44ffab3ef38f9cd20c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {x: -21.59, y: -10.3}
   TimePerRegen: 0.25
   navigable: {fileID: 0}
   Navigable:
@@ -483,7 +515,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4d4c506b7d14716a950885bed3aaf01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EntityRoom: {fileID: 0}
   inputProvider: {fileID: 0}
   colorizableRenderer: {fileID: 0}
   MiscController: {fileID: 114614107811536760}
@@ -499,7 +530,6 @@ MonoBehaviour:
   DamageInvulnerability: 1
   DamageInvulnerabilityDuration: 3
   relationship: 0
-  DefaultAttackStrategy: {fileID: 0}
   OnDamaged:
     m_PersistentCalls:
       m_Calls: []
@@ -519,7 +549,7 @@ MonoBehaviour:
   hitbox: {fileID: 61613949157056576}
   DamageStunMin: 10
   DamageStunDuration: 1
-  OnKilled:
+  onKilled:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
@@ -531,7 +561,7 @@ MonoBehaviour:
   MinDefenseRequired: 0.1
   DefenseRecoverAmountMultiplier: 1
   DefenseDepleteAmountMultiplier: 2
-  updater: {fileID: 0}
+  updater: {fileID: 114108903000714726}
   ignored: 1
   motor: {fileID: 11400000, guid: 86ff67f763aa58f44883b61f198a88ce, type: 2}
   accelerationCurve:
@@ -573,6 +603,8 @@ MonoBehaviour:
   inset: 0.05
   horizontalRaycasts: 3
   verticalRaycasts: 3
+  StunRemovesVelocity: 0
+  StunVelocityDampen: 1
   motorConfig: {fileID: 0}
   collisionStatus:
     Up: 0
@@ -938,7 +970,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 90, y: 90}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &225181532533837968
 CanvasGroup:
@@ -958,7 +990,7 @@ CanvasGroup:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1290363064113680}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0

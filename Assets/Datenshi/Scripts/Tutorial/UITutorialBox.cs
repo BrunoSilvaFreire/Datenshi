@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Datenshi.Scripts.UI;
@@ -6,15 +7,22 @@ using Datenshi.Scripts.Util;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Datenshi.Scripts.Tutorial {
+    [Serializable]
+    public class UITutorialBoxEvent : UnityEvent<TutorialTrigger> { }
+
     public class UITutorialBox : UIElement {
         private static UITutorialBox instance;
 
         public static UITutorialBox Instance => instance ? instance : (instance = FindObjectOfType<UITutorialBox>());
 
         public float SizeChangeDuration;
-
+        public UITutorialBoxEvent OnEnteredArea;
+        public UITutorialBoxEvent OnShowTutorial;
+        public UITutorialBoxEvent OnHideTutorial;
+        public UITutorialBoxEvent OnLeftArea;
         public CanvasGroup CanvasGroup;
         public RectTransform Holder;
         public Vector2 DefaultSize;
@@ -43,6 +51,7 @@ namespace Datenshi.Scripts.Tutorial {
         }
 
         public void Show(TutorialTrigger tutorialTrigger) {
+            OnEnteredArea.Invoke(tutorialTrigger);
             if (!Showing) {
                 Showing = true;
             }
@@ -56,6 +65,7 @@ namespace Datenshi.Scripts.Tutorial {
 
         public void Deregister(TutorialTrigger id) {
             knownTutorials.Remove(id);
+            OnLeftArea.Invoke(id);
             if (id != currentTrigger) {
                 return;
             }
@@ -116,6 +126,7 @@ namespace Datenshi.Scripts.Tutorial {
                 yield return Clear(current);
             }
 
+            OnShowTutorial.Invoke(tutorialTrigger);
             var tut = Instantiate(tutorialTrigger.TutorialPrefab, Holder);
             tut.SnapShowing(false);
             if (showScheduled) {
@@ -134,6 +145,7 @@ namespace Datenshi.Scripts.Tutorial {
                 yield break;
             }
 
+            OnHideTutorial.Invoke(currentTrigger);
             if (obj == current) {
                 current = null;
                 currentTrigger = null;

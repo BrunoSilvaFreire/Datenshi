@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 114302158536859372}
   - component: {fileID: 114789984461104486}
   - component: {fileID: 114916294093923682}
+  - component: {fileID: 114346783993537730}
   m_Layer: 16
   m_Name: Camera
   m_TagString: MainCamera
@@ -234,6 +235,7 @@ GameObject:
   - component: {fileID: 114274413633592604}
   - component: {fileID: 114818207654441168}
   - component: {fileID: 114011135646057376}
+  - component: {fileID: 114040670184502158}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -408,7 +410,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1328608604676546}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -337.78, y: -23.91618, z: -9.87113}
+  m_LocalPosition: {x: -336.78, y: -24.00618, z: -9.87113}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4768774366305818}
@@ -530,7 +532,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1792401617246154}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -337.78, y: -23.91618, z: -9.87113}
+  m_LocalPosition: {x: -336.78, y: -24.00618, z: -9.87113}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4727608061611176}
@@ -604,7 +606,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1820342329192474}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -337.78, y: -26.1, z: 10.12887}
+  m_LocalPosition: {x: -336.78, y: -26.19, z: 10.12887}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4633032197183884}
@@ -771,7 +773,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b5573dd00c7d8964bbdf376f63ba1730, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1056,7 +1058,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c3dbe13b104a35f45a37f7ce8f161087, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1174,6 +1176,20 @@ MonoBehaviour:
   DefaultImpactFrameScale: 0.25
   DefaultImpactDuration: 0.3
   TimeChangeDuration: 1
+--- !u!114 &114040670184502158
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1407682067551924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0075b3b9a8dc4f06bccd6f779f53e389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BlackAndWhite: {fileID: 114789984461104486}
+  OverrideColor: {fileID: 114346783993537730}
+  Glitch: {fileID: 114916294093923682}
 --- !u!114 &114085977230786278
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1486,6 +1502,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 114627651355056388}
+--- !u!114 &114346783993537730
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1328608604676546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3a938392ce9428d8886b8493f3f88f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Material: {fileID: 0}
 --- !u!114 &114479122888574508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1883,8 +1911,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 114711143589959862}
   currentEntity: {fileID: 114627651355056388}
-  Fx: {fileID: 114789984461104486}
-  DamageGlitch: {fileID: 114916294093923682}
   DamageDarkenAmount: 1
   DamageDarkenDuration: 2
   DamageGlitchAmount: 1

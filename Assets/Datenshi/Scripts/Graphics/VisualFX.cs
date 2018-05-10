@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace Datenshi.Scripts.Graphics {
     public abstract class StandaloneVisualFX : VisualFX {
-        [SerializeField, HideInInspector]
+        [SerializeField, ReadOnly]
         protected Material Material;
 
         public override Material GetMaterial() {
@@ -27,7 +28,11 @@ namespace Datenshi.Scripts.Graphics {
         public abstract Material GetMaterial();
 
         private void OnRenderImage(RenderTexture source, RenderTexture destination) {
-            UnityEngine.Graphics.Blit(source, destination, GetMaterial());
+            var m = GetMaterial();
+            if (m == null) {
+                return;
+            }
+            UnityEngine.Graphics.Blit(source, destination, m);
         }
     }
 }
