@@ -1,23 +1,17 @@
 ﻿using Datenshi.Scripts.Entities;
+using UnityEngine;
 
 namespace Datenshi.Scripts.UI.Misc {
     public class UIDefenseElement : UIMaxedCharacterBarElement {
-/*        protected override void UpdateBar(Image defenseBar, Entity e) {
-            var entity = e as LivingEntity;
-            if (entity == null) {
-                return;
-            }
+        public bool UseCustomColor;
+        public Color CustomColor;
+        protected override bool HasColorAvailable() {
+            return UseCustomColor || base.HasColorAvailable();
+        }
 
-            if (entity.Defending) {
-                if (!Showing) {
-                    Show();
-                }
-            } else {
-                if (entity.FocusTimeLeft >= entity.FocusMaxTime && Showing) {
-                    Hide();
-                }
-            }
-        }*/
+        protected override Color GetAvailableColor() {
+            return UseCustomColor ? CustomColor : base.GetAvailableColor();
+        }
 
         protected override float GetPercentage(Entity entity) {
             var e = entity as LivingEntity;

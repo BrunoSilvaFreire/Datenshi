@@ -10,17 +10,16 @@ namespace Datenshi.Scripts.UI.Misc {
         public Image SubHealthBar;
         public float SubHealthDelay = 1;
         public float SubHealthAnimationDuration = 1;
+        public bool HideAfterDuration;
 
         protected virtual void Start() {
-            SnapHide();
+            if (HideAfterDuration) {
+                SnapHide();
+            }
         }
 
 
         private Coroutine currentRoutine;
-
-        private void OnDamaged() {
-            UpdateBar();
-        }
 
         protected abstract LivingEntity GetEntity();
 
@@ -33,12 +32,16 @@ namespace Datenshi.Scripts.UI.Misc {
             if (currentRoutine != null) {
                 StopCoroutine(currentRoutine);
             }
+
             UpdateColors();
             currentRoutine = StartCoroutine(DamageEffect(f));
         }
 
         private IEnumerator DamageEffect(float amount) {
-            SnapShow();
+            if (HideAfterDuration) {
+                SnapShow();
+            }
+
             SubHealthBar.DOComplete();
             CanvasGroup.DOComplete();
             var currentFill = HealthBar.fillAmount;
@@ -54,7 +57,10 @@ namespace Datenshi.Scripts.UI.Misc {
                 yield return new WaitForSeconds(SubHealthAnimationDuration);
             }
 
-            Hide();
+            if (HideAfterDuration) {
+                Hide();
+            }
+
             currentRoutine = null;
         }
 

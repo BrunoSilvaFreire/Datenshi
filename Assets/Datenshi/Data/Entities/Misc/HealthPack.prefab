@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4791134707153932}
   - component: {fileID: 108118672965792694}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4256675428054584}
   - component: {fileID: 114771025160555298}
   - component: {fileID: 61763441257224222}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HealthPack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,8 @@ GameObject:
   - component: {fileID: 4787730459315856}
   - component: {fileID: 212744682910750084}
   - component: {fileID: 95958290064922670}
-  m_Layer: 0
+  - component: {fileID: 114616439352673106}
+  m_Layer: 11
   m_Name: HelathPack_Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +72,7 @@ GameObject:
   - component: {fileID: 4642863884478428}
   - component: {fileID: 198387433536392530}
   - component: {fileID: 199438564815505398}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,7 +143,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -212,6 +213,18 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114616439352673106
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1387763941090452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89263d77506a43768924e12b34b5fe75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Source: {fileID: 0}
 --- !u!114 &114771025160555298
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -224,7 +237,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: 1
+  CollectedKey: Collected
+  Animator: {fileID: 95958290064922670}
   HealthAmount: 20
+  ToInstantiate: {fileID: 198942432234417188, guid: 705f1dd454f8f9a4d9b09ceca2f3cd52,
+    type: 2}
 --- !u!198 &198387433536392530
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -236,7 +253,7 @@ ParticleSystem:
   simulationSpeed: 1
   stopAction: 0
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1

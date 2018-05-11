@@ -8,7 +8,7 @@ namespace Datenshi.Scripts.UI.Misc {
 
         protected override void Start() {
             Player.OnEntityChanged.AddListener(OnChanged);
-            SnapHide();
+            base.Start();
         }
 
 

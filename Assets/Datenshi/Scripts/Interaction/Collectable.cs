@@ -11,14 +11,27 @@ namespace Datenshi.Scripts.Interaction {
         }
 
         public CollectTarget Target = CollectTarget.Player;
+        public string CollectedKey = "Collected";
+        public Animator Animator;
+        private bool collected;
 
         private void OnCollisionEnter2D(Collision2D other) {
+            if (collected) {
+                return;
+            }
+
             var e = other.collider.GetComponentInParent<MovableEntity>();
             if (e == null) {
                 return;
             }
+            collected = true;
 
             Collect(e);
+            if (Animator != null) {
+                Animator.SetTrigger(CollectedKey);
+                return;
+            }
+
             Destroy(gameObject);
         }
 
