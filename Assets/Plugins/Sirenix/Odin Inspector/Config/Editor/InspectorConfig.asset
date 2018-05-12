@@ -16,12 +16,6 @@ MonoBehaviour:
   processMouseMoveInInspector: 1
   drawingConfig:
     configs:
-    - DrawnTypeName: Datenshi.Scripts.AI.AerialAINavigator, Datenshi-AI
-      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
-    - DrawnTypeName: Datenshi.Scripts.AI.DummyInputProvider, Datenshi-AI
-      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
-    - DrawnTypeName: Datenshi.Scripts.AI.GroundAINavigator, Datenshi-AI
-      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
     - DrawnTypeName: Datenshi.Scripts.Animation.AnimationUtil, Datenshi-Animation
       EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
     - DrawnTypeName: Datenshi.Scripts.Animation.Behaviour.ChargeTimeDelayer, Datenshi-Animation

@@ -1,5 +1,5 @@
 ﻿using System;
-using Datenshi.Scripts.Character;
+using Shiroi.Cutscenes;
 using Sirenix.OdinInspector;
 using UnityEngine;
 

@@ -12,35 +12,28 @@ MonoBehaviour:
   m_Name: PrologueCutscene
   m_EditorClassIdentifier: 
   tokens:
-  - TokenType: Datenshi.Scripts.Cutscenes.Tokens.ShowUIToken
+  - TokenType: Datenshi.Scripts.Cutscenes.Tokens.AcceptInputToken
     TokenData:
       Booleans:
-      - key: Show
-        value: 1
-      Ints: []
+      - key: AcceptInput
+        value: 0
+      Ints:
+      - key: Target
+        value: 2
       Floats: []
       Strings: []
       Objects: []
       UnityObjects: []
       Arrays: []
-  - TokenType: Datenshi.Scripts.Cutscenes.Tokens.DialogueStageToken
+  - TokenType: Shiroi.Cutscenes.Tokens.WaitForSecondsToken
     TokenData:
       Booleans:
-      - key: Show
-        value: 1
-      Ints: []
-      Floats: []
-      Strings: []
-      Objects: []
-      UnityObjects: []
-      Arrays: []
-  - TokenType: Datenshi.Scripts.Cutscenes.Tokens.ShowUIToken
-    TokenData:
-      Booleans:
-      - key: Show
+      - key: Realtime
         value: 0
       Ints: []
-      Floats: []
+      Floats:
+      - key: Duration
+        value: 2
       Strings: []
       Objects: []
       UnityObjects: []
@@ -56,7 +49,31 @@ MonoBehaviour:
       Objects: []
       UnityObjects:
       - key: Dialogue
-        value: {fileID: 11400000, guid: 10a8adb2abe14b646865f6d877517fb0, type: 2}
+        value: {fileID: 11400000, guid: 9ba334841f6444e4f8179a0e94064fc3, type: 2}
+      Arrays: []
+  - TokenType: Datenshi.Scripts.Cutscenes.Tokens.DialogueStageToken
+    TokenData:
+      Booleans:
+      - key: Show
+        value: 1
+      Ints: []
+      Floats: []
+      Strings: []
+      Objects: []
+      UnityObjects: []
+      Arrays: []
+  - TokenType: Datenshi.Scripts.Cutscenes.Tokens.AcceptInputToken
+    TokenData:
+      Booleans:
+      - key: AcceptInput
+        value: 1
+      Ints:
+      - key: Target
+        value: 2
+      Floats: []
+      Strings: []
+      Objects: []
+      UnityObjects: []
       Arrays: []
   FutureManager:
     futures: []

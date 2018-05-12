@@ -4,7 +4,8 @@
         "Datenshi-Characters",
         "Datenshi-Utilities",
         "Datenshi-Data",
-        "Datenshi-UI"
+        "Datenshi-UI",
+        "ShiroiCutscenes"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],

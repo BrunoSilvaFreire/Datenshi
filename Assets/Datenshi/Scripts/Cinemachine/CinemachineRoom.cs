@@ -10,13 +10,18 @@ namespace Datenshi.Scripts.Cinemachine {
         public int EnterPriority = 15;
         public int ExitPriority;
 
-        private void OnTriggerEnter2D(Collider2D other) {
+        private void Start() {
+            Room.OnObjectEnter.AddListener(OnEnter);
+            Room.OnObjectExit.AddListener(OnExit);
+        }
+
+        private void OnEnter(Collider2D other) {
             if (other.GetComponentInParent<Entity>() == PlayerController.Instance.CurrentEntity) {
                 Camera.Priority = EnterPriority;
             }
         }
 
-        private void OnTriggerExit2D(Collider2D other) {
+        private void OnExit(Collider2D other) {
             if (other.GetComponentInParent<Entity>() == PlayerController.Instance.CurrentEntity) {
                 Camera.Priority = ExitPriority;
             }

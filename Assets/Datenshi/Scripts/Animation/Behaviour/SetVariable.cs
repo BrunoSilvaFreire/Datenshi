@@ -13,7 +13,7 @@ namespace Datenshi.Scripts.Animation.Behaviour {
             }
         }
 
-        private void OnStateExit(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex) {
+        public override void OnStateExit(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex) {
             foreach (var setVariableAction in OnExit) {
                 Execute(setVariableAction, animator);
             }
@@ -44,13 +44,13 @@ namespace Datenshi.Scripts.Animation.Behaviour {
         public string ParameterName;
         public AnimatorControllerParameterType Type;
 
-        [ShowIf("IsInt")]
+        [ShowIf(nameof(IsInt))]
         public int IntValue;
 
-        [ShowIf("IsBoolean")]
+        [ShowIf(nameof(IsBoolean))]
         public bool BoolValue;
 
-        [ShowIf("IsFloat")]
+        [ShowIf(nameof(IsTrigger))]
         public float FloatValue;
 
         public bool IsInt => Type == AnimatorControllerParameterType.Int;

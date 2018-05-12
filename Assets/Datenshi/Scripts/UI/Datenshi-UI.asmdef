@@ -11,7 +11,8 @@
         "Datenshi-Combat",
         "Datenshi-Movement",
         "Datenshi-Data",
-        "Datenshi-Audio"
+        "Datenshi-Audio",
+        "ShiroiCutscenes"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],

@@ -2,9 +2,15 @@
 using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 using UPM.Util;
 
 namespace Datenshi.Scripts.Combat.Attacks {
+    public class HitboxAttackExecutedEvent : UnityEvent<ICombatant, uint, Collider2D[]> {
+        public static readonly HitboxAttackExecutedEvent Instance = new HitboxAttackExecutedEvent();
+        private HitboxAttackExecutedEvent() { }
+    }
+
     public abstract class AbstractHitboxAttack : Attack {
         public static readonly Variable<bool> Blocked = new Variable<bool>("entity.combat.cqb.blocked", true);
         private static readonly Color HitboxColor = Color.green;
@@ -33,7 +39,9 @@ namespace Datenshi.Scripts.Combat.Attacks {
             hb.Center += (Vector2) entity.Transform.position;
             DebugUtil.DrawBox2DWire(hb.Center, hb.Size, HitboxColor);
             var success = false;
-            foreach (var hit in Physics2D.OverlapBoxAll(hb.Center, hb.Size, 0, GameResources.Instance.EntitiesMask)) {
+            var found = Physics2D.OverlapBoxAll(hb.Center, hb.Size, 0, GameResources.Instance.EntitiesMask);
+            HitboxAttackExecutedEvent.Instance.Invoke(entity, damage, found);
+            foreach (var hit in found) {
                 var info = new DamageInfo(entity, damage);
                 var d = hit.GetComponentInParent<IDefendable>();
                 if (d != null && d.CanPoorlyDefend(entity)) {
