@@ -1,4 +1,5 @@
-﻿using Datenshi.Scripts.UI;
+﻿using Datenshi.Scripts.Character;
+using Datenshi.Scripts.UI;
 using DG.Tweening;
 using Shiroi.Cutscenes;
 using UnityEngine;
@@ -11,6 +12,7 @@ namespace Datenshi.Scripts.Cutscenes.Dialogue.UI {
         public AppearanceMode Last;
         public bool SpriteFacesLeft;
         public Character.Character Character;
+
         public void Appear(AppearanceMode mode) {
             Last = mode;
             Showing = true;
@@ -67,6 +69,11 @@ namespace Datenshi.Scripts.Cutscenes.Dialogue.UI {
             rect.anchorMin = pos;
             rect.anchorMax = pos;
             var scale = rect.localScale;
+            UpdateScale(ref scale, Last.Left);
+            rect.localScale = scale;
+        }
+
+        private void UpdateScale(ref Vector3 scale, bool lastLeft) {
             var left = Last.Left;
             if (!SpriteFacesLeft) {
                 left = !left;
@@ -81,9 +88,15 @@ namespace Datenshi.Scripts.Cutscenes.Dialogue.UI {
                     scale.x *= -1;
                 }
             }
+        }
 
-            rect.localScale = scale;
+        public void Load(CharacterPortrait portrait) {
+            Image.sprite = portrait.Image;
+            var s = (Vector3) portrait.Scale;
+            UpdateScale(ref s, portrait.SpriteFacesLeft);
+            Image.rectTransform.localScale = s;
+            Image.SetNativeSize();
+            VerticalOffset = portrait.VerticalOffset;
         }
     }
-
 }

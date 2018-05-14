@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Name: PrologueCutscene
   m_EditorClassIdentifier: 
   tokens:
-  - TokenType: Datenshi.Scripts.Cutscenes.Tokens.AcceptInputToken
+  - TokenType: Datenshi.Scripts.Cutscenes.Tokens.AcceptInputToken, Datenshi-Cutscenes,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
     TokenData:
       Booleans:
       - key: AcceptInput
@@ -25,20 +26,20 @@ MonoBehaviour:
       Objects: []
       UnityObjects: []
       Arrays: []
-  - TokenType: Shiroi.Cutscenes.Tokens.WaitForSecondsToken
+  - TokenType: Datenshi.Scripts.Cutscenes.Tokens.DialogueStageToken, Datenshi-Cutscenes,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
     TokenData:
       Booleans:
-      - key: Realtime
-        value: 0
+      - key: Show
+        value: 1
       Ints: []
-      Floats:
-      - key: Duration
-        value: 2
+      Floats: []
       Strings: []
       Objects: []
       UnityObjects: []
       Arrays: []
-  - TokenType: Datenshi.Scripts.Cutscenes.Tokens.PlayDialogueToken
+  - TokenType: Datenshi.Scripts.Cutscenes.Tokens.PlayDialogueToken, Datenshi-Cutscenes,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
     TokenData:
       Booleans:
       - key: CloseOnFinish
@@ -51,7 +52,52 @@ MonoBehaviour:
       - key: Dialogue
         value: {fileID: 11400000, guid: 9ba334841f6444e4f8179a0e94064fc3, type: 2}
       Arrays: []
-  - TokenType: Datenshi.Scripts.Cutscenes.Tokens.DialogueStageToken
+  - TokenType: Shiroi.Cutscenes.Tokens.WaitForSecondsToken, ShiroiCutscenes, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    TokenData:
+      Booleans:
+      - key: Realtime
+        value: 0
+      Ints: []
+      Floats:
+      - key: Duration
+        value: 2
+      Strings: []
+      Objects: []
+      UnityObjects: []
+      Arrays: []
+  - TokenType: Datenshi.Scripts.Cutscenes.Tokens.PlayAudioOnPlayerToken, Datenshi-Cutscenes,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    TokenData:
+      Booleans:
+      - key: DeleteOnFinish
+        value: 0
+      - key: Wait
+        value: 0
+      Ints: []
+      Floats: []
+      Strings: []
+      Objects: []
+      UnityObjects:
+      - key: AudioClip
+        value: {fileID: 8300000, guid: ae8e9bce772a0854b8986f5f4a0c6d23, type: 3}
+      Arrays: []
+  - TokenType: Shiroi.Cutscenes.Tokens.WaitForSecondsToken, ShiroiCutscenes, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    TokenData:
+      Booleans:
+      - key: Realtime
+        value: 0
+      Ints: []
+      Floats:
+      - key: Duration
+        value: 2
+      Strings: []
+      Objects: []
+      UnityObjects: []
+      Arrays: []
+  - TokenType: Datenshi.Scripts.Cutscenes.Tokens.DialogueStageToken, Datenshi-Cutscenes,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
     TokenData:
       Booleans:
       - key: Show
@@ -62,7 +108,22 @@ MonoBehaviour:
       Objects: []
       UnityObjects: []
       Arrays: []
-  - TokenType: Datenshi.Scripts.Cutscenes.Tokens.AcceptInputToken
+  - TokenType: Datenshi.Scripts.Cutscenes.Tokens.PlayDialogueToken, Datenshi-Cutscenes,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    TokenData:
+      Booleans:
+      - key: CloseOnFinish
+        value: 1
+      Ints: []
+      Floats: []
+      Strings: []
+      Objects: []
+      UnityObjects:
+      - key: Dialogue
+        value: {fileID: 11400000, guid: 41e22645d67ab1f43ae89d0435c3b67b, type: 2}
+      Arrays: []
+  - TokenType: Datenshi.Scripts.Cutscenes.Tokens.AcceptInputToken, Datenshi-Cutscenes,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
     TokenData:
       Booleans:
       - key: AcceptInput

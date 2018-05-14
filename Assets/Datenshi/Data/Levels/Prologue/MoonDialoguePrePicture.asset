@@ -11,10 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd4a0fd22918454a9c1c90b96b9a170a, type: 3}
   m_Name: MoonDialoguePrePicture
   m_EditorClassIdentifier: 
+  Target: 1
   Speeches:
   - Character: {fileID: 11400000, guid: 8a2ea0deeae62114f97ad13a532bdf1b, type: 2}
     Lines:
-    - Text: The moon is so pretty today huh
+    - Text: Quite the view, don't you agree?
       Move: 1
       AppearanceMode:
         Duration: 0.5

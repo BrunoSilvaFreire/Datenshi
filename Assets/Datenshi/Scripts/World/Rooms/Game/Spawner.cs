@@ -41,7 +41,7 @@ namespace Datenshi.Scripts.World.Rooms.Game {
         private bool started;
 
         [ShowIf(nameof(IsPredefinedLocation))]
-        public Vector2[] Locations;
+        public Vector2[] Locations = new Vector2[0];
 
         public bool IsRandom => Mode == SpawnMode.Random;
         public bool IsPredefinedLocation => Mode == SpawnMode.PredefinedLocation;
@@ -174,6 +174,7 @@ namespace Datenshi.Scripts.World.Rooms.Game {
             if (!IsRandom) {
                 return;
             }
+
 
             foreach (var location in Locations) {
                 GizmosUtil.DrawBox2DWire(location, Vector2.one, Color.red);

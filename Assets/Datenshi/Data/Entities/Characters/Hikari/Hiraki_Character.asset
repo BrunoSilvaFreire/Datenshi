@@ -13,6 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Alias: Hikari
   SignatureColor: {r: 0.31142685, g: 1, b: 0.254902, a: 1}
-  DialoguePortraitPrefab: {fileID: 114840371308095040, guid: a4774fb45fa04a349b9e4cbdc322ad69,
-    type: 2}
+  Portrait: {fileID: 11400000, guid: 59ad56690db32c745a092cc2aae53bd1, type: 2}
+  SpeechClip: {fileID: 8300000, guid: 94b893c2a1446164e8f18bbbb7dac4b1, type: 3}
   CharacterScreen: {fileID: 8400000, guid: 6d8666327460cce409bdb972cac62e92, type: 2}

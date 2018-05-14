@@ -81,7 +81,7 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: Dead
-    m_Type: 9
+    m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -258,6 +258,9 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: Stunned
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Dead
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102784301078760770}
@@ -441,13 +444,13 @@ AnimatorStateMachine:
     m_Position: {x: 240, y: 0, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102784301078760770}
-    m_Position: {x: 480, y: 72, z: 0}
+    m_Position: {x: 480, y: 96, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102708523143096426}
     m_Position: {x: 248.10242, y: 106.28114, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102548894341440760}
-    m_Position: {x: 283.10242, y: 171.28114, z: 0}
+    m_Position: {x: 264, y: 180, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102896367416098434}
     m_Position: {x: 684, y: 36, z: 0}

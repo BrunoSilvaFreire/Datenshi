@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Datenshi.Scripts.Entities {
     public class EntityMiscController : MonoBehaviour {
+        public Canvas EntityCanvas;
         public AudioSource EntityAudioSource;
         public AudioClip[] StepSounds;
         public Animator Animator;

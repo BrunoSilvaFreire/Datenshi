@@ -61,10 +61,17 @@ namespace Datenshi.Scripts.Cutscenes.Tokens {
 
     public class PlayDialogueToken : IToken {
         public Dialogue.Dialogue Dialogue;
+
+        public enum DialogueTarget {
+            Main,
+            World
+        }
+
+        public DialogueTarget Target;
         public bool CloseOnFinish;
 
         public IEnumerator Execute(CutscenePlayer player) {
-            var stage = UIDialogueStage.Instance;
+            var stage = UIMainDialogueStage.Instance;
             //TODO fix
             yield return stage.PlayDialogue(Dialogue);
             if (CloseOnFinish) {

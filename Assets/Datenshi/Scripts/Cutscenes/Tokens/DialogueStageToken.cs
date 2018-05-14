@@ -8,7 +8,7 @@ namespace Datenshi.Scripts.Cutscenes.Tokens {
         public bool Show;
 
         public IEnumerator Execute(CutscenePlayer player) {
-            UIDialogueStage.Instance.Showing = Show;
+            UIMainDialogueStage.Instance.Showing = Show;
             yield break;
         }
     }

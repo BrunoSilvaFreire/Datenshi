@@ -23,9 +23,5 @@ MonoBehaviour:
   MinPrecision: 1
   MaxPrecision: 100
   DefaultPrecision: 0.5
-  HackLineRendererPrefab: {fileID: 0}
-  DeflectSpeed: 50
+  DeflectSpeed: 100
   DeflectDamageMultiply: 3
-  InteractableMask:
-    serializedVersion: 2
-    m_Bits: 0

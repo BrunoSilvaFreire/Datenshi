@@ -38,6 +38,7 @@ namespace Datenshi.Scripts.Entities {
             if (Room) {
                 return false;
             }
+
             Room = r;
             return true;
         }
@@ -76,8 +77,7 @@ namespace Datenshi.Scripts.Entities {
         [TitleGroup(MiscGroup)]
         protected Direction direction;
 
-       
-        
+
         [SerializeField]
         private UnityEvent onDestroyed;
 

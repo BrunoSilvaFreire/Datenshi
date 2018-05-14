@@ -297,18 +297,14 @@ namespace Datenshi.Scripts.Entities {
 
         public void SetInvulnerable(float seconds) {
             invulnerabilitySecondsLeft += seconds;
-            if (invulnerabilityCoroutine == null) {
-                invulnerabilityCoroutine = StartCoroutine(InvulnerabilityCoroutine());
-            }
+            CoroutineUtil.ReplaceCoroutine(ref invulnerabilityCoroutine, this, InvulnerabilityCoroutine());
         }
 
         private IEnumerator InvulnerabilityCoroutine() {
             invulnerable = true;
-            while (invulnerabilitySecondsLeft >= 0) {
-                invulnerabilitySecondsLeft -= Time.deltaTime;
-                yield return null;
-            }
-
+            Debug.Log($"<color=#FFFF00>Entity {name} became invulnerable for {invulnerabilitySecondsLeft}</color>");
+            yield return new WaitForSeconds(invulnerabilitySecondsLeft);
+            Debug.Log($"<color=#FFFF00>Entity {name} is no longer invulnerable</color>");
             invulnerabilityCoroutine = null;
             Invulnerable = false;
         }

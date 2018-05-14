@@ -31,7 +31,7 @@ namespace Shiroi.Cutscenes.Serialization {
         }
 
         public static SerializedToken From(IToken loadedToken) {
-            var typeName = loadedToken.GetType().FullName;
+            var typeName = loadedToken.GetType().AssemblyQualifiedName;
             var obj = SerializedObject.From(loadedToken);
             return new SerializedToken(typeName, obj);
         }

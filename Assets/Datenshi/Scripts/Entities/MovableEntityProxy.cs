@@ -8,6 +8,22 @@ namespace Datenshi.Scripts.Entities {
     public class MovableEntityProxy : MonoBehaviour {
         public MovableEntity Target;
 
+        public void AddXImpulse(float force) {
+            if (Target == null) {
+                return;
+            }
+
+            Target.ExternalForces += new Vector2(Target.Direction.X * force, 0);
+        }
+
+        public void AddYImpulse(float force) {
+            if (Target == null) {
+                return;
+            }
+
+            Target.ExternalForces += new Vector2(0, Target.Direction.Y * force);
+        }
+
         public void Damage(LivingEntity entity, uint damage) {
             if (Target == null) {
                 return;

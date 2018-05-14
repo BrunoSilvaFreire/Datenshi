@@ -13,5 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Alias: Luna
   SignatureColor: {r: 0.4852941, g: 0.68191177, b: 1, a: 1}
-  DialoguePortraitPrefab: {fileID: 114274692591344122, guid: 52b1537f2aa742a409a2568940c65026,
-    type: 2}
+  Portrait: {fileID: 11400000, guid: 40ad1a08998b8064cbcdf7f713897468, type: 2}
+  SpeechClip: {fileID: 8300000, guid: 2a1d4bbf7e844e047a06a0e718d48fc5, type: 3}

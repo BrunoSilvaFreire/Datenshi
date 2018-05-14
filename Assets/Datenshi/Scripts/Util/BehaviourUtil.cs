@@ -5,6 +5,8 @@ using UnityEngine;
 
 namespace Datenshi.Scripts.Util {
     public static class BehaviourUtil {
+        public static T Clone<T>(this T obj) where T : Object => Object.Instantiate(obj);
+
         public static T Clone<T>(this T obj, Vector3 transform) where T : Object {
             return Clone(obj, transform, Quaternion.identity);
         }
@@ -26,7 +28,9 @@ namespace Datenshi.Scripts.Util {
             return f ? f : obj.AddComponent<T>();
         }
 
-        public static TweenerCore<Vector2, Vector2, VectorOptions> DOPosition(this Transform transform, Vector2 target,
+        public static TweenerCore<Vector2, Vector2, VectorOptions> DOPosition(
+            this Transform transform,
+            Vector2 target,
             float duration) {
             return DOTween.To(() => (Vector2) transform.position, v => transform.position = v, target, duration);
         }
