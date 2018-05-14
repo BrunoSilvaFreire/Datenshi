@@ -124,6 +124,7 @@ namespace Datenshi.Scripts.Cutscenes.Dialogue.UI {
             var generator = new TypedTextGenerator();
             TypedTextGenerator.TypedText typedText;
             var printedCharCount = 0;
+            var cancel = false;
             do {
                 typedText = generator.GetTypedTextAt(text, printedCharCount);
                 TextComponent.text = typedText.TextToPrint;
@@ -134,13 +135,24 @@ namespace Datenshi.Scripts.Cutscenes.Dialogue.UI {
                 var delay = typedText.Delay > 0
                     ? typedText.Delay
                     : GetPrintDelayForCharacter(typedText.LastPrintedChar);
-                yield return new WaitForSeconds(delay);
+                var currentTime = delay;
+                while (currentTime > 0) {
+                    if (InputUtil.GetAnyPlayerButtonDown((int) Actions.Attack)) {
+                        TextComponent.text = generator.GetCompletedText(text).TextToPrint;
+                        yield return null;
+                        cancel = true;
+                    }
+
+                    currentTime -= Time.deltaTime;
+                    yield return null;
+                }
+
                 if (clip != null) {
                     AudioSource.PlayOneShot(clip);
                 }
 
-                if (InputUtil.GetAnyPlayerButtonDown((int) Actions.Attack)) {
-                    Skip();
+                if (cancel) {
+                    break;
                 }
             } while (!typedText.IsComplete);
 
@@ -152,6 +164,7 @@ namespace Datenshi.Scripts.Cutscenes.Dialogue.UI {
 
             typeTextCoroutine = null;
             OnTypewritingComplete();
+            yield return null;
         }
 
         private float GetPrintDelayForCharacter(char characterToPrint) {

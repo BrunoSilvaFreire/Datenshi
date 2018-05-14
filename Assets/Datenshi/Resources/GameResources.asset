@@ -23,5 +23,5 @@ MonoBehaviour:
   MinPrecision: 1
   MaxPrecision: 100
   DefaultPrecision: 0.5
-  DeflectSpeed: 100
+  DeflectSpeed: 50
   DeflectDamageMultiply: 3

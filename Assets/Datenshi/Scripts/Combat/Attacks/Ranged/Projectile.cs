@@ -109,11 +109,13 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
         public float MaxAngle;
 
         public void PoorlyDefend(ICombatant entity, ref DamageInfo info) {
-            var angle = Random.value * MaxAngle - MaxAngle / 2 + Angle(velocity);
-            velocity = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle));
-            Modify();
-            Owner = entity;
+            // TODO: Maybe come back
+            //var angle = Random.value * MaxAngle - MaxAngle / 2 + Angle(velocity);
+            //velocity = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle));
+            //Owner = entity;
+            //Modify();
             PlayDefendFX();
+            Destroy(gameObject);
         }
 
         private void PlayDefendFX() {

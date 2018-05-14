@@ -52,7 +52,6 @@ namespace Datenshi.Scripts.Graphics {
 
 
         public void ImpactColor(float duration, Color color) {
-            Debug.Log("Doing impact " + duration + " @ " + color);
             AlternativeColorOverrideAmount = 1;
             AlternativeOverrideColor = color;
             DOAlternativeColorOverrideAmount(0, duration);

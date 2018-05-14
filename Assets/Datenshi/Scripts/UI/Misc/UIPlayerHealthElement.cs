@@ -1,14 +1,13 @@
 ﻿using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Game;
+using UnityEngine;
 
 namespace Datenshi.Scripts.UI.Misc {
     public class UIPlayerHealthElement : UIHealthElement {
-        
         public PlayerController Player;
 
-        protected override void Start() {
+        private void Awake() {
             Player.OnEntityChanged.AddListener(OnChanged);
-            base.Start();
         }
 
 
@@ -17,10 +16,12 @@ namespace Datenshi.Scripts.UI.Misc {
             if (oldLiving != null) {
                 oldLiving.OnHealthChanged.RemoveListener(OnDamaged);
             }
+
             var newLiving = newEntity as LivingEntity;
             if (newLiving != null) {
                 newLiving.OnHealthChanged.AddListener(OnDamaged);
             }
+
             UpdateBar();
         }
 
@@ -32,6 +33,5 @@ namespace Datenshi.Scripts.UI.Misc {
         protected override LivingEntity GetEntity() {
             return Player.CurrentEntity as LivingEntity;
         }
-
     }
 }

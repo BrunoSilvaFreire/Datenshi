@@ -80,7 +80,6 @@ namespace Datenshi.Scripts.Entities.Animation {
         }
 
         private void OnDamaged(ICombatant combatant, uint arg1) {
-            Debug.Log("on damaged called");
             Animator.SetTrigger(DamagedKey);
             Animator.SetInteger(LastDamageKey, (int) arg1);
         }

@@ -327,7 +327,7 @@ namespace Datenshi.Scripts.Entities {
             if (Dead) {
                 return;
             }
-
+            OnHealthChanged.Invoke();
             health = 0;
             onKilled.Invoke();
             updater.TriggerDeath();
@@ -335,6 +335,7 @@ namespace Datenshi.Scripts.Entities {
 
         public void Heal(uint healthAmount) {
             Health += healthAmount;
+            OnHealthChanged.Invoke();
         }
 
         public virtual void Damage(ICombatant entity, uint damage) {
@@ -351,8 +352,9 @@ namespace Datenshi.Scripts.Entities {
             Debug.Log($"<color=#FF0000>{name} damaged by {entity} @ {damage}</color>");
 
             OnDamaged.Invoke(entity, damage);
+            OnHealthChanged.Invoke();
             GlobalEntityDamagedEvent.Instance.Invoke(this, entity, damage);
-            this.ColorizableRenderer.ImpactColor();
+            ColorizableRenderer.ImpactColor();
             Health -= damage;
             if (DamageInvulnerability) {
                 SetInvulnerable(DamageInvulnerabilityDuration);
