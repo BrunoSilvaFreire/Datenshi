@@ -88,7 +88,7 @@ AnimationClip:
     functionName: SetSpeedMultiplier
     data: 
     objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
+    floatParameter: 0.5
     intParameter: 0
     messageOptions: 0
   - time: 0
@@ -104,6 +104,13 @@ AnimationClip:
     data: 
     objectReferenceParameter: {fileID: 8300000, guid: dbb0cbff2f6d74041a295ba24a0d3a30,
       type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.13333334
+    functionName: SetSpeedMultiplier
+    data: 
+    objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0

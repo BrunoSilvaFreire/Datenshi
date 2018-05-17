@@ -13,12 +13,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tokens:
   - {fileID: 114780235289417606}
+  - {fileID: 114695181596267188}
+  - {fileID: 114363713963586780}
   - {fileID: 114875511087294292}
   - {fileID: 114716756800798584}
   - {fileID: 114845710480687066}
   - {fileID: 114673919176119736}
   FutureManager:
     futures: []
+--- !u!114 &114363713963586780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1967645408, guid: 03fe207ae5b0c9040a227147e429c73e, type: 3}
+  m_Name: WaitForSecondsToken
+  m_EditorClassIdentifier: 
+  Duration: 1
+  Realtime: 0
 --- !u!114 &114673919176119736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34,6 +49,18 @@ MonoBehaviour:
     exposedName: -468364
     defaultValue: {fileID: 0}
   PlayableAsset: {fileID: 11400000, guid: 486b7df09e02ff941bcd6ebf7abf24f6, type: 2}
+--- !u!114 &114695181596267188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da95cee843944eb2999b14a10be0592a, type: 3}
+  m_Name: SetCurtainsDisplayToken
+  m_EditorClassIdentifier: 
+  Reveal: 1
 --- !u!114 &114716756800798584
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -98,7 +98,6 @@ namespace Datenshi.Scripts.Movement.States {
 
             velocity.x = Mathf.Clamp(velocity.x, -max, max);
             GroundedBehaviour.Check(user, ref velocity, ref collisionStatus, collisionMask);
-            var v = VerticalVelocityCheck.LastHit;
             if (velocity.y < 0 && IsRunningTowardsWall(SlopeCheck.LastHit, collisionStatus, dir)) {
                 machine.State = wallClimbState;
             }
@@ -123,13 +122,15 @@ namespace Datenshi.Scripts.Movement.States {
             var provider = user.InputProvider as DatenshiInputProvider;
             var hasProvider = provider != null;
             var xInput = hasProvider ? provider.GetHorizontal() : 0;
+            /*
+            // Let's leave this away for now
             var d = user.Direction;
             var newX = Direction.DirectionValue.FromVector(xInput);
             if (newX != Direction.DirectionValue.Zero) {
                 d.X = newX;
             }
 
-            user.Direction = d;
+            user.Direction = d;*/
             dir = Math.Sign(xInput);
             var jump = hasProvider && provider.GetJump();
             var combatant = user as ICombatant;

@@ -74,6 +74,7 @@ namespace Datenshi.Scripts.Game {
                 OnEntityChanged.Invoke(null, currentEntity);
             }
 
+            GameState.RestartState();
             GlobalEntityDamagedEvent.Instance.AddListener(OnEntityDamaged);
             tracker = new Tracker<ColorizableRenderer>(
                 ColorizableRenderer.ColorizableRendererEnabledEvent,
