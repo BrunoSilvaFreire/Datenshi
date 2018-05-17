@@ -133,3 +133,23 @@ MonoBehaviour:
       EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
     - DrawnTypeName: Datenshi.Scripts.World.Rooms.Room, Datenshi-World
       EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: Shiroi.Cutscenes.Tokens.DebugTextToken, ShiroiCutscenes-Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Shiroi.Cutscenes.Tokens.DeleteToken, ShiroiCutscenes-Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Shiroi.Cutscenes.Tokens.ExecuteCutsceneToken, ShiroiCutscenes-Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Shiroi.Cutscenes.Tokens.PlayTimelineToken, ShiroiCutscenes-Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Shiroi.Cutscenes.Tokens.SetParentToken, ShiroiCutscenes-Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Shiroi.Cutscenes.Tokens.SpawnPrefabToken, ShiroiCutscenes-Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Shiroi.Cutscenes.Tokens.WaitForSecondsToken, ShiroiCutscenes-Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Shiroi.Cutscenes.Triggers.Collision2DCutsceneTrigger, ShiroiCutscenes-Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Shiroi.Cutscenes.Triggers.Collision3DCutsceneTrigger, ShiroiCutscenes-Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Shiroi.Cutscenes.Triggers.StartCutsceneTrigger, ShiroiCutscenes-Runtime
+      EditorTypeName: 

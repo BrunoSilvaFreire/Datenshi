@@ -11,7 +11,6 @@ using UnityEngine.UI;
 
 namespace Datenshi.Scripts.Cutscenes.Dialogue.UI {
     public class UIMainDialogueStage : UIDialogueStage<UIMainDialogueStage> {
-
         public float IndicatorYOffset;
         public Image Indicator;
         public Text CharacterLabel;
@@ -65,6 +64,7 @@ namespace Datenshi.Scripts.Cutscenes.Dialogue.UI {
         protected override IEnumerator DoPlayDialogue(Dialogue dialogue) {
             var speeches = dialogue.Speeches;
             foreach (var speech in speeches) {
+                Debug.Log($"Playing speech {speech}");
                 var character = speech.Character;
                 CharacterLabel.text = character.Alias;
                 var portrait = GetPortrait(character);
@@ -77,6 +77,7 @@ namespace Datenshi.Scripts.Cutscenes.Dialogue.UI {
 
 
                 foreach (var line in speech.Lines) {
+                    Debug.Log($"Playing line {line}");
                     if (line.Move) {
                         portrait.Appear(line.AppearanceMode);
                     }

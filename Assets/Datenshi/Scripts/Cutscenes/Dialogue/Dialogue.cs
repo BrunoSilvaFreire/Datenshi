@@ -1,12 +1,10 @@
 ﻿using System;
-using Shiroi.Cutscenes;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Cutscenes.Dialogue {
     [CreateAssetMenu(menuName = "Datenshi/Cutscenes/Dialogue")]
     public class Dialogue : ScriptableObject {
-   
         public DialogueSpeech[] Speeches;
     }
 

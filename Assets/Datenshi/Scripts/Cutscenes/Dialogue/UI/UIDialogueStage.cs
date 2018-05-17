@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Datenshi.Scripts.UI;
+using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace Datenshi.Scripts.Cutscenes.Dialogue.UI {
@@ -20,6 +21,7 @@ namespace Datenshi.Scripts.Cutscenes.Dialogue.UI {
             }
 
             CurrentDialogue = dialogue;
+            Debug.Log("Playing ");
             yield return DoPlayDialogue(dialogue);
             CurrentDialogue = null;
         }

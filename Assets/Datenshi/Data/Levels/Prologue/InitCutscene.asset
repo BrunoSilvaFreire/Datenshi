@@ -8,63 +8,85 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0439e1c9b6f54debb8acbb620a3a83c, type: 3}
+  m_Script: {fileID: -1696403387, guid: 03fe207ae5b0c9040a227147e429c73e, type: 3}
   m_Name: InitCutscene
   m_EditorClassIdentifier: 
   tokens:
-  - TokenType: Datenshi.Scripts.Cutscenes.Tokens.AcceptInputToken, Datenshi-Cutscenes,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-    TokenData:
-      Booleans:
-      - key: AcceptInput
-        value: 0
-      Ints:
-      - key: Target
-        value: 2
-      Floats: []
-      Strings: []
-      Objects: []
-      UnityObjects: []
-      Arrays: []
-  - TokenType: Datenshi.Scripts.Cutscenes.Tokens.DialogueStageToken, Datenshi-Cutscenes,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-    TokenData:
-      Booleans:
-      - key: Show
-        value: 1
-      Ints: []
-      Floats: []
-      Strings: []
-      Objects: []
-      UnityObjects: []
-      Arrays: []
-  - TokenType: Datenshi.Scripts.Cutscenes.Tokens.PlayDialogueToken, Datenshi-Cutscenes,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-    TokenData:
-      Booleans:
-      - key: CloseOnFinish
-        value: 1
-      Ints: []
-      Floats: []
-      Strings: []
-      Objects: []
-      UnityObjects:
-      - key: Dialogue
-        value: {fileID: 11400000, guid: 5b5e080f9de9ea24aac8f5c592e3d6da, type: 2}
-      Arrays: []
-  - TokenType: Datenshi.Scripts.Cutscenes.Tokens.AcceptInputToken, Datenshi-Cutscenes,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-    TokenData:
-      Booleans:
-      - key: AcceptInput
-        value: 1
-      Ints:
-      - key: Target
-        value: 2
-      Floats: []
-      Strings: []
-      Objects: []
-      UnityObjects: []
-      Arrays: []
+  - {fileID: 114780235289417606}
+  - {fileID: 114875511087294292}
+  - {fileID: 114716756800798584}
+  - {fileID: 114845710480687066}
+  - {fileID: 114673919176119736}
   FutureManager:
     futures: []
+--- !u!114 &114673919176119736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 191773417, guid: 03fe207ae5b0c9040a227147e429c73e, type: 3}
+  m_Name: PlayTimelineToken
+  m_EditorClassIdentifier: 
+  Director:
+    exposedName: -468364
+    defaultValue: {fileID: 0}
+  PlayableAsset: {fileID: 11400000, guid: 486b7df09e02ff941bcd6ebf7abf24f6, type: 2}
+--- !u!114 &114716756800798584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c15f703cb0b4a8a821fccfecf4d294b, type: 3}
+  m_Name: AcceptInputToken
+  m_EditorClassIdentifier: 
+  AcceptInput: 1
+  Target: 2
+--- !u!114 &114780235289417606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c15f703cb0b4a8a821fccfecf4d294b, type: 3}
+  m_Name: AcceptInputToken
+  m_EditorClassIdentifier: 
+  AcceptInput: 0
+  Target: 2
+--- !u!114 &114845710480687066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1330792292, guid: 03fe207ae5b0c9040a227147e429c73e, type: 3}
+  m_Name: SetGameObjectActiveToken
+  m_EditorClassIdentifier: 
+  Target:
+    exposedName: 24190
+    defaultValue: {fileID: 0}
+  Active: 1
+--- !u!114 &114875511087294292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f621b16fcb744fd4a85946f24e8d7485, type: 3}
+  m_Name: PlayDialogueToken
+  m_EditorClassIdentifier: 
+  Dialogue: {fileID: 11400000, guid: 5b5e080f9de9ea24aac8f5c592e3d6da, type: 2}
+  Target: 0
+  OpenOnStart: 1
+  CloseOnFinish: 1
