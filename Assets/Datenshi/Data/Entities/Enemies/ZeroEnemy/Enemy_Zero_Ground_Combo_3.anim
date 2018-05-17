@@ -757,7 +757,7 @@ AnimationClip:
     functionName: SetInvulnerable
     data: 
     objectReferenceParameter: {fileID: 0}
-    floatParameter: 2
+    floatParameter: 1.3333334
     intParameter: 0
     messageOptions: 0
   - time: 0
@@ -783,10 +783,10 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 1.5666667
-    functionName: AddYImpulse
+    functionName: AddXImpulse
     data: 
     objectReferenceParameter: {fileID: 0}
-    floatParameter: 5
+    floatParameter: 10
     intParameter: 0
     messageOptions: 0
   - time: 1.5666667
@@ -797,21 +797,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.5666667
-    functionName: AddXImpulse
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 10
-    intParameter: 0
-    messageOptions: 0
-  - time: 1.8333334
-    functionName: SetSpeedMultiplier
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 1
-    intParameter: 0
-    messageOptions: 0
-  - time: 1.8333334
+  - time: 2.3333333
     functionName: ExecuteAttack
     data: 
     objectReferenceParameter: {fileID: 11400000, guid: 38fa50deb6014f54f9e091eea237eaa8,
@@ -819,7 +805,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.8333334
+  - time: 2.3333333
     functionName: DisableCounterWindow
     data: 
     objectReferenceParameter: {fileID: 0}

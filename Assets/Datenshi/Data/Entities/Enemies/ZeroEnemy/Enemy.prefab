@@ -221,7 +221,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1896484453590728}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -95.84, y: 9.02, z: 0}
+  m_LocalPosition: {x: 11.9024515, y: 19.163826, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4654424630026524}
@@ -471,6 +471,7 @@ MonoBehaviour:
   SubHealthBar: {fileID: 114435865946197590}
   SubHealthDelay: 1
   SubHealthAnimationDuration: 1
+  HideAfterDuration: 0
   Entity: {fileID: 114281234270348236}
 --- !u!114 &114276707588090476
 MonoBehaviour:
@@ -858,6 +859,8 @@ MonoBehaviour:
   AlternativeOverrideColor: {r: 1, g: 1, b: 1, a: 1}
   AlternativeColorOverrideAmount: 0
   DamageImpactDuration: 1
+  Outline: 0
+  OutlineColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &114932899101906818
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -869,6 +872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5050bb8a95647b08557e195ed96545a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EntityCanvas: {fileID: 0}
   EntityAudioSource: {fileID: 82719858962506280}
   StepSounds:
   - {fileID: 8300000, guid: 0d698d1a7710d324ca7105a558bd815c, type: 3}

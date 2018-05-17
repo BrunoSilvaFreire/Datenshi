@@ -24,6 +24,7 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
         public GameObject[] ToDecouple;
         public GameObject OnDefended;
         private bool wasShot;
+        private bool ownerDestroyed;
 
         public void Shoot(ICombatant shooter, ICombatant target) {
             Shoot(shooter, target.Center - (Vector2) transform.position);
@@ -32,6 +33,7 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
 
         public void Shoot(ICombatant shooter, Vector2 direction) {
             Owner = shooter;
+            Owner.OnKilled.AddListener(OnOwnerKilled);
             wasShot = true;
             velocity = direction;
             velocity.Normalize();
@@ -40,6 +42,11 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
             if (Source != null && Clip != null) {
                 Source.PlayOneShot(Clip);
             }
+        }
+
+        private void OnOwnerKilled() {
+            ownerDestroyed = true;
+            Owner.OnKilled.RemoveListener(OnOwnerKilled);
         }
 
         private void Update() {
@@ -68,6 +75,7 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
                     return;
                 }
             }
+
             Hit();
         }
 
@@ -89,7 +97,12 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
         }
 
         public void Defend(ICombatant entity, ref DamageInfo info) {
-            velocity = Owner.Center - (Vector2) transform.position;
+            if (ownerDestroyed) {
+                velocity = -velocity;
+            } else {
+                velocity = Owner.Center - (Vector2) transform.position;
+            }
+
             Modify();
             Owner = entity;
             PlayDefendFX();

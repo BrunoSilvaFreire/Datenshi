@@ -1,7 +1,9 @@
 ﻿using System;
 using DG.Tweening;
+using Shiroi.Cutscenes.Util;
 using UnityEngine;
 using UnityEngine.Events;
+using ColorUtil = Datenshi.Scripts.Util.ColorUtil;
 
 namespace Datenshi.Scripts.Graphics {
     [Serializable]
@@ -16,6 +18,8 @@ namespace Datenshi.Scripts.Graphics {
     [ExecuteInEditMode]
     public class ColorizableRenderer : MonoBehaviour {
         public const string OverrideAmountKey = "_OverrideAmount";
+        public const string OutlineKey = "_Outline";
+        public const string OutlineColorKey = "_OutlineColor";
         public const string AlternativeOverrideColorKey = "_AlternativeOverrideColor";
         public const string AlternativeOverrideAmountKey = "_AlternativeOverrideAmount";
         public const string ColorKey = "_Color";
@@ -25,6 +29,8 @@ namespace Datenshi.Scripts.Graphics {
         public Color AlternativeOverrideColor = Color.white;
         public float AlternativeColorOverrideAmount;
         public float DamageImpactDuration = 1;
+        public bool Outline;
+        public Color OutlineColor = Color.red;
 
         public static readonly ColorizableRendererEvent
             ColorizableRendererEnabledEvent = new ColorizableRendererEvent();
@@ -50,7 +56,6 @@ namespace Datenshi.Scripts.Graphics {
             ImpactColor(duration, Color.white);
         }
 
-
         public void ImpactColor(float duration, Color color) {
             AlternativeColorOverrideAmount = 1;
             AlternativeOverrideColor = color;
@@ -67,7 +72,6 @@ namespace Datenshi.Scripts.Graphics {
             if (block == null) {
                 block = new MaterialPropertyBlock();
             }
-
             foreach (var r in Renderers) {
                 if (r == null) {
                     continue;
@@ -86,6 +90,8 @@ namespace Datenshi.Scripts.Graphics {
                     continue;
                 }
 
+                block.SetColor(OutlineColorKey, OutlineColor);
+                block.SetFloat(OutlineKey, Outline ? 1 : 0);
                 block.SetFloat(OverrideAmountKey, ColorOverrideAmount);
                 block.SetColor(ColorKey, color);
                 block.SetColor(AlternativeOverrideColorKey, AlternativeOverrideColor);

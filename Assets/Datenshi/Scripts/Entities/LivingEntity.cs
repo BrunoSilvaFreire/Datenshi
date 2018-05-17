@@ -147,6 +147,10 @@ namespace Datenshi.Scripts.Entities {
         }
 
         protected virtual void Update() {
+            if (ColorizableRenderer != null) {
+                ColorizableRenderer.Outline = IsInvulnerable;
+            }
+
             if (Stunned) {
                 totalStunTimeLeft -= Time.deltaTime;
                 if (totalStunTimeLeft < 0) {
@@ -189,6 +193,8 @@ namespace Datenshi.Scripts.Entities {
 
             updater.SetDefend(focusing);
         }
+
+        public bool IsInvulnerable => Invulnerable || HasTemporaryInvulnerability;
 
         public virtual void Stun(float duration) {
             if (Invulnerable) {
@@ -303,10 +309,15 @@ namespace Datenshi.Scripts.Entities {
         private IEnumerator InvulnerabilityCoroutine() {
             invulnerable = true;
             Debug.Log($"<color=#FFFF00>Entity {name} became invulnerable for {invulnerabilitySecondsLeft}</color>");
-            yield return new WaitForSeconds(invulnerabilitySecondsLeft);
+            while (invulnerabilitySecondsLeft > 0) {
+                invulnerabilitySecondsLeft -= Time.deltaTime;
+                yield return null;
+            }
+
             Debug.Log($"<color=#FFFF00>Entity {name} is no longer invulnerable</color>");
             invulnerabilityCoroutine = null;
             Invulnerable = false;
+            invulnerabilitySecondsLeft = 0;
         }
 
         public bool IsEnemy(LivingEntity entity) {
@@ -327,6 +338,7 @@ namespace Datenshi.Scripts.Entities {
             if (Dead) {
                 return;
             }
+
             OnHealthChanged.Invoke();
             health = 0;
             onKilled.Invoke();

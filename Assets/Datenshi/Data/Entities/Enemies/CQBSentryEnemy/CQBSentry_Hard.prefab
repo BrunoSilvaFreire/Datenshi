@@ -439,7 +439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.2627451, b: 0.43529415, a: 1}
+  m_Color: {r: 1, g: 0.41176468, b: 0.41176468, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -487,7 +487,7 @@ MonoBehaviour:
   defaultColor: 0
   currentLevel: 0
   currentXP: 0
-  saturation: 0
+  saturation: 150
   CanvasGroup: {fileID: 225236270109131072}
   CanvasGroupShowAmount: 1
   CanvasGroupHideAmount: 0

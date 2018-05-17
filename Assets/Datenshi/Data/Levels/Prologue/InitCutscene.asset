@@ -60,7 +60,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da95cee843944eb2999b14a10be0592a, type: 3}
   m_Name: SetCurtainsDisplayToken
   m_EditorClassIdentifier: 
-  Reveal: 1
+  Reveal: 0
+  WaitDuration: 1
 --- !u!114 &114716756800798584
 MonoBehaviour:
   m_ObjectHideFlags: 0

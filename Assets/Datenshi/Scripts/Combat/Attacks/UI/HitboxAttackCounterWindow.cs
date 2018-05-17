@@ -43,10 +43,11 @@ namespace Datenshi.Scripts.Combat.Attacks.UI {
         public string CounterSuccessKey = "CounterSucess";
 
         public bool CanDefend(ICombatant entity) {
-            return available;
+            return available && entity != GetComponentInParent<ICombatant>();
         }
 
         public void Defend(ICombatant entity, ref DamageInfo info) {
+            Debug.Log("Defending agains " + entity);
             info.Canceled = true;
             var updater = entity.AnimatorUpdater;
             var c = GetComponentInParent<ICombatant>();

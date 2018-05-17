@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Datenshi.Scripts.Cutscenes.Tokens {
     public class SetCurtainsDisplayToken : Token {
         public bool Reveal;
-
+        public float WaitDuration = 1;
         public override IEnumerator Execute(CutscenePlayer player) {
             var curtains = UICurtainsElement.Instance;
             if (Reveal) {
@@ -16,7 +16,7 @@ namespace Datenshi.Scripts.Cutscenes.Tokens {
                 curtains.Conceal();
             }
 
-            yield return new WaitForSeconds(curtains.FadeDuration);
+            yield return new WaitForSeconds(WaitDuration);
         }
     }
 }

@@ -1,23 +1,26 @@
 ﻿using Datenshi.Scripts.Util;
 using DG.Tweening;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Datenshi.Scripts.UI.Misc {
     public class UICurtainsElement : UIElement {
         private static UICurtainsElement instance;
 
-        public static UICurtainsElement Instance => instance == null ? (instance = FindObjectOfType<UICurtainsElement>()) : instance;
+        public static UICurtainsElement Instance
+            => instance == null ? (instance = FindObjectOfType<UICurtainsElement>()) : instance;
+
         public Image Curtain;
-        public float FadeDuration = .5F;
+        public float FadeDuration = 2F;
 
         public void Reveal() {
             SnapHide();
-            Showing = true;
+            Show();
         }
 
         public void Conceal() {
             SnapShow();
-            Showing = false;
+            Hide();
         }
 
         protected override void SnapShow() {
