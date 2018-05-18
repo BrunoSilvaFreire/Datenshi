@@ -33,6 +33,7 @@ namespace Datenshi.Scripts.Movement.States {
         // Wall check
         private int wallClimbExtraCheckDir = 0;
         private readonly HorizontalPhysicsCheck wallClimbExtraCheck;
+        public State DashState;
 
         public GroundedState() {
             wallClimbExtraCheck = new HorizontalPhysicsCheck(WallClimbExtraChecker);
@@ -77,6 +78,10 @@ namespace Datenshi.Scripts.Movement.States {
                 return;
             }
 
+            if (CheckStateChange(user, config, machine)) {
+                return;
+            }
+
             int dir;
             var bounds = (Bounds2D) user.Hitbox.bounds;
             var shrinkedBounds = bounds;
@@ -101,6 +106,21 @@ namespace Datenshi.Scripts.Movement.States {
             if (velocity.y < 0 && IsRunningTowardsWall(SlopeCheck.LastHit, collisionStatus, dir)) {
                 machine.State = wallClimbState;
             }
+        }
+
+        private bool CheckStateChange(IDatenshiMovable user, DatenshiGroundConfig c, StateMotorMachine machine) {
+            if (user.CollisionStatus.Down) {
+                if (!c.DashEllegible) {
+                    c.DashEllegible = true;
+                }
+            }
+
+            if (c.DashEllegible && user.InputProvider.GetButtonDown((int) Actions.Dash)) {
+                machine.State = DashState;
+                return true;
+            }
+
+            return false;
         }
 
         private static bool IsRunningTowardsWall(RaycastHit2D? down, CollisionStatus collStatus, int xDir) {

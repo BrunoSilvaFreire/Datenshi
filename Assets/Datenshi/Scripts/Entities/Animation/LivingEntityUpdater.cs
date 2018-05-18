@@ -117,5 +117,9 @@ namespace Datenshi.Scripts.Entities.Animation {
         public override void TriggerSpawn() {
             Animator.SetTrigger(SpawnKey);
         }
+
+        public override void SetBool(string key, bool value) {
+            Animator.SetBool(key, value);
+        }
     }
 }

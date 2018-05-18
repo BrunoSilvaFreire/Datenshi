@@ -1,4 +1,5 @@
-﻿using Datenshi.Scripts.Util;
+﻿using Datenshi.Scripts.Entities.Misc.Ghosting;
+using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ namespace Datenshi.Scripts.Entities {
         public AudioSource EntityAudioSource;
         public AudioClip[] StepSounds;
         public Animator Animator;
+        public GhostingContainer GhostingContainer;
 
         [SerializeField, HideInInspector]
         private float minPitch;

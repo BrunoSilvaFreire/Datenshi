@@ -13,5 +13,6 @@ namespace Datenshi.Scripts.Combat {
 
         public abstract void TriggerDeath();
         public abstract void TriggerSpawn();
+        public abstract void SetBool(string key, bool p1);
     }
 }

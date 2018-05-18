@@ -6,8 +6,14 @@
         "Datenshi-Data",
         "Datenshi-Input",
         "Datenshi-Utilities",
-        "Datenshi-Animation"
+        "Datenshi-Animation",
+        "Datenshi-Entities",
+        "Datenshi-Graphics",
+        "Datenshi-World",
+        "Datenshi-AI"
     ],
+    "optionalUnityReferences": [],
     "includePlatforms": [],
-    "excludePlatforms": []
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
 }

@@ -1,4 +1,5 @@
-﻿using UPM.Motors.Config;
+﻿using UnityEngine;
+using UPM.Motors.Config;
 
 namespace Datenshi.Scripts.Movement.Config {
     public class DatenshiGroundConfig : GroundMotorConfig {
@@ -11,7 +12,20 @@ namespace Datenshi.Scripts.Movement.Config {
             set;
         }
 
-        public bool IssuedJumpCall {
+        public float CurrentDashDuration {
+            get;
+            private set;
+        }
+
+        public void AddDashDuration() {
+            CurrentDashDuration += Time.deltaTime;
+        }
+
+        public void ResetDash() {
+            CurrentDashDuration = 0;
+        }
+
+        public bool DashEllegible {
             get;
             set;
         }

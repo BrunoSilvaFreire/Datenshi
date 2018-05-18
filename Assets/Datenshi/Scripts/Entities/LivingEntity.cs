@@ -31,7 +31,7 @@ namespace Datenshi.Scripts.Entities {
     public class LivingEntity : Entity, ICombatant {
         public const string HealthGroup = "Health";
         public const string CombatGroup = "Combat";
-
+        public static readonly Color HitboxColor = new Color(0f, 1f, 0f, 0.5f);
 
         [SerializeField, HideInInspector]
         private uint health;
@@ -432,8 +432,10 @@ namespace Datenshi.Scripts.Entities {
             }
         }
 
-        private void OnDrawGizmosSelected() {
-            DebugUtil.DrawBounds2D(DefenseHitbox, Color.magenta);
+        private void OnDrawGizmos() {
+            var b = Hitbox.bounds;
+            Gizmos.color = Color.green;
+            Gizmos.DrawCube(b.center, b.size);
         }
     }
 }
