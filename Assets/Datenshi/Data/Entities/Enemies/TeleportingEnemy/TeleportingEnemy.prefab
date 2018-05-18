@@ -147,7 +147,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1067808238723220}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.08000183, y: 2.5299997, z: 0}
+  m_LocalPosition: {x: -10.242108, y: 9.7837105, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4967164661867740}
@@ -444,6 +444,8 @@ MonoBehaviour:
   AlternativeOverrideColor: {r: 1, g: 1, b: 1, a: 1}
   AlternativeColorOverrideAmount: 0
   DamageImpactDuration: 1
+  Outline: 0
+  OutlineColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &114139188890499970
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -459,6 +461,7 @@ MonoBehaviour:
   EntityAudioSource: {fileID: 82405948753093650}
   StepSounds: []
   Animator: {fileID: 95478124818091162}
+  GhostingContainer: {fileID: 0}
   minPitch: 0
   maxPitch: 0
 --- !u!114 &114162560845781466

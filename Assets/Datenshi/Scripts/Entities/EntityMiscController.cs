@@ -37,6 +37,8 @@ namespace Datenshi.Scripts.Entities {
             }
         }
 
+        public SpriteRenderer MainSpriteRenderer;
+
         private void SetMinMax(float a, float b) {
             minPitch = Mathf.Min(a, b);
             maxPitch = Mathf.Max(a, b);

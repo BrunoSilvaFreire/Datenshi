@@ -109,7 +109,7 @@ namespace Datenshi.Scripts.Movement.States {
         }
 
         private bool CheckStateChange(IDatenshiMovable user, DatenshiGroundConfig c, StateMotorMachine machine) {
-            if (user.CollisionStatus.Down) {
+            if (user.CollisionStatus.HasAny()) {
                 if (!c.DashEllegible) {
                     c.DashEllegible = true;
                 }

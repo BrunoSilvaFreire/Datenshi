@@ -5,6 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Datenshi/Data/Levels/Prologue/Prologue.unity
     guid: d01f4f48bf5cfc24e99a9780039e3613
+  - enabled: 1
+    path: Assets/Datenshi/Data/Levels/Raw.unity
+    guid: d0320adc33f0740459585cf0a909769b
+  m_configObjects: {}

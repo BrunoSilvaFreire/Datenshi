@@ -15,7 +15,10 @@ namespace Datenshi.Scripts.Misc {
         protected override void Execute(MovableEntity e) {
             var pos = Center.position;
             pos.x += Random.value * Radius * (Random.value > 0.5 ? 1 : -1);
-            Instantiate(Prefab, pos, Quaternion.identity);
+            var entity = Instantiate(Prefab, pos, Quaternion.identity).GetComponent<LivingEntity>();
+            if (entity != null) {
+                e.AnimatorUpdater.TriggerSpawn();
+            }
         }
     }
 }

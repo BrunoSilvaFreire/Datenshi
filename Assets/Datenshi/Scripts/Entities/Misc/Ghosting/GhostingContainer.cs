@@ -10,42 +10,49 @@ namespace Datenshi.Scripts.Entities.Misc.Ghosting {
     public class GhostingContainer : MonoBehaviour {
         public float SpawnRate;
         public bool Spawning;
-
-        [SerializeField, HideInInspector]
-        private byte totalSprites;
-
-        public GhostingSprite GhostPrefab;
-        private List<GhostingSprite> spritesPool = new List<GhostingSprite>();
+        public GhostPool Pool;
         private float lastSpawn;
+        public MovableEntity Entity;
 
-        [ShowInInspector]
-        public byte TotalSprites {
-            get {
-                return totalSprites;
-            }
-            set {
-                totalSprites = value;
-            }
-        }
+        [ShowInInspector, ReadOnly]
+        private readonly List<GhostingSprite> usedSprites = new List<GhostingSprite>();
+
+        private readonly List<GhostingSprite> toRemove = new List<GhostingSprite>();
+
 
         private void Update() {
-            var now = Time.time;
-            var delay = now - lastSpawn;
-            if (delay >= SpawnRate) {
-                Spawn();
+            if (Spawning) {
+                var now = Time.time;
+                var delay = now - lastSpawn;
+                if (delay >= SpawnRate) {
+                    Spawn();
+                }
+            }
+
+            toRemove.Clear();
+            foreach (var sprite in usedSprites) {
+                sprite.TimeLeft -= Time.deltaTime;
+                if (sprite.TimeLeft < 0) {
+                    toRemove.Add(sprite);
+                }
+            }
+
+            foreach (var s in toRemove) {
+                usedSprites.Remove(s);
+                Pool.Return(s);
             }
         }
 
         private void Spawn() {
             lastSpawn = Time.time;
-            var g = GetGhost();
+            var g = Pool.Get();
             if (g == null) {
-                
+                Debug.LogWarning("Didn't get a ghost from the pool!");
+                return;
             }
-        }
 
-        private GhostingSprite GetGhost() {
-            throw new System.NotImplementedException();
+            g.Setup(Entity);
+            usedSprites.Add(g);
         }
     }
 }

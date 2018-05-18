@@ -18,7 +18,7 @@ Shader "Datenshi/EntityShader" {
 		[PerRendererData]
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
 		_NormalMap("Normal Map", 2D) = "white" {}
-		[Toggle]
+		_OutlineWidth("Outline Width", Float) = 0.1
 		[PerRendererData]
     	_Outline("Outline", Int) = 0
 		[PerRendererData]
@@ -140,7 +140,7 @@ Shader "Datenshi/EntityShader" {
             fixed4 _Color;
             int _Outline;
             fixed4 _OutlineColor;
-
+            float _OutlineWidth;
             v2f vert(appdata_t IN)
             {
                 v2f OUT;
@@ -169,10 +169,12 @@ Shader "Datenshi/EntityShader" {
                 // If outline is enabled and there is a pixel, try to draw an outline.
                 if (c.a > 0) {
                     // Get the neighbouring four pixels.
-                    fixed4 pixelUp = tex2D(_MainTex, IN.texcoord + fixed2(0, _MainTex_TexelSize.y));
-                    fixed4 pixelDown = tex2D(_MainTex, IN.texcoord - fixed2(0, _MainTex_TexelSize.y));
-                    fixed4 pixelRight = tex2D(_MainTex, IN.texcoord + fixed2(_MainTex_TexelSize.x, 0));
-                    fixed4 pixelLeft = tex2D(_MainTex, IN.texcoord - fixed2(_MainTex_TexelSize.x, 0));
+                    fixed2 yOffset = fixed2(0, _OutlineWidth * _MainTex_TexelSize.y);
+                    fixed2 xOffset = fixed2(_OutlineWidth * _MainTex_TexelSize.x, 0);
+                    fixed4 pixelUp = tex2D(_MainTex, IN.texcoord + yOffset);
+                    fixed4 pixelDown = tex2D(_MainTex, IN.texcoord - yOffset);
+                    fixed4 pixelRight = tex2D(_MainTex, IN.texcoord + xOffset);
+                    fixed4 pixelLeft = tex2D(_MainTex, IN.texcoord - xOffset);
 
                     // If one of the neighbouring pixels is invisible, we render an outline.
                     if (pixelUp.a * pixelDown.a * pixelRight.a * pixelLeft.a <= 0) {

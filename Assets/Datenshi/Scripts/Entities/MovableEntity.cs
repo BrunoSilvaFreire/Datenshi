@@ -209,6 +209,7 @@ namespace Datenshi.Scripts.Entities {
             Direction = dir;
         }
 
+
         [SerializeField, HideInInspector]
         private MotorConfig motorConfig;
 

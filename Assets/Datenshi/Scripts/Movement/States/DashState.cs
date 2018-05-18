@@ -13,7 +13,10 @@ using UPM.Physics;
 namespace Datenshi.Scripts.Movement.States {
     public class DashState : State {
         public static readonly Variable<bool> Dashing = new Variable<bool>("entity.motors.states.dash.dashing", false);
-        public static readonly Variable<float> Duration = new Variable<float>("entity.motors.states.dash.dashDuration", 0);
+
+        public static readonly Variable<float> Duration =
+            new Variable<float>("entity.motors.states.dash.dashDuration", 0);
+
         public static readonly VerticalPhysicsCheck VerticalVelocityCheck = new VerticalPhysicsCheck();
         public static readonly HorizontalPhysicsCheck HorizontalVelocityCheck = new HorizontalPhysicsCheck();
 
@@ -28,7 +31,8 @@ namespace Datenshi.Scripts.Movement.States {
         public State DefaultState;
         public string DashAnimatorKey = "Dashing";
 
-        public override void Move(IMovable user, ref Vector2 velocity, ref CollisionStatus collisionStatus, StateMotorMachine machine, StateMotorConfig config, LayerMask collisionMask) {
+        public override void Move(IMovable user, ref Vector2 velocity, ref CollisionStatus collisionStatus,
+            StateMotorMachine machine, StateMotorConfig config, LayerMask collisionMask) {
             var entity = user as MovableEntity;
             if (entity == null) {
                 return;
@@ -44,6 +48,7 @@ namespace Datenshi.Scripts.Movement.States {
             c.DashEllegible = false;
 
             var speed = DashDistance / DashDuration;
+            var provider = user.InputProvider;
             if (!entity.GetVariable(Dashing)) {
                 if (g != null) {
                     g.Spawning = true;
@@ -51,14 +56,15 @@ namespace Datenshi.Scripts.Movement.States {
 
                 entity.AnimatorUpdater.SetBool(DashAnimatorKey, true);
                 entity.SetVariable(Dashing, true);
-                velocity = new Vector2(entity.CurrentDirection.X * speed, 0);
+                var dir = Math.Sign(provider.GetHorizontal());
+                velocity = new Vector2(dir * speed, 0);
             }
 
             c.AddDashDuration();
             var duration = c.CurrentDashDuration;
             DashBehaviour.Check(user, ref velocity, ref collisionStatus, collisionMask);
-            Debug.Log("Duration = " + duration + " / " + DashDuration);
-            if (!HorizontalVelocityCheck.LastHit.HasValue && user.InputProvider.GetButton((int) Actions.Dash) && duration < DashDuration) {
+            if (!HorizontalVelocityCheck.LastHit.HasValue && provider.GetButton((int) Actions.Dash) &&
+                duration < DashDuration) {
                 return;
             }
 

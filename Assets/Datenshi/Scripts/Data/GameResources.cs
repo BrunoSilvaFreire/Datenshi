@@ -5,8 +5,9 @@ namespace Datenshi.Scripts.Data {
     [CreateAssetMenu(menuName = "Datenshi/Resources/GameResources")]
     public class GameResources : SingletonScriptableObject<GameResources> {
         public LayerMask WorldMask;
-        public Camera CharacterCameraPrefab;
         public LayerMask EntitiesMask;
+        public LayerMask InteractableMask;
+        public Camera CharacterCameraPrefab;
         public float Gravity = -19.62F;
         public float NavmeshBoxcastDownsizeValue = 0.1F;
 

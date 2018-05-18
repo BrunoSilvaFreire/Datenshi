@@ -118,6 +118,7 @@ GameObject:
   - component: {fileID: 114090341149897628}
   - component: {fileID: 50552077151313048}
   - component: {fileID: 114968744023714134}
+  - component: {fileID: 114049724287705444}
   m_Layer: 12
   m_Name: Hikari_Body
   m_TagString: Untagged
@@ -902,7 +903,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1328608604676546}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -171.76, y: -15.67618, z: -9.87113}
+  m_LocalPosition: {x: -201.76, y: -23.67618, z: -9.87113}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4768774366305818}
@@ -1024,7 +1025,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1792401617246154}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -171.76, y: -15.67618, z: -9.87113}
+  m_LocalPosition: {x: -201.76, y: -23.67618, z: -9.87113}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4727608061611176}
@@ -1099,7 +1100,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1820342329192474}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -171.76, y: -17.86, z: 10.12887}
+  m_LocalPosition: {x: -201.76, y: -25.86, z: 10.12887}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4633032197183884}
@@ -1891,6 +1892,22 @@ MonoBehaviour:
   BlackAndWhite: {fileID: 114789984461104486}
   OverrideColor: {fileID: 114346783993537730}
   Glitch: {fileID: 114916294093923682}
+--- !u!114 &114049724287705444
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1099001174755420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d76c7fa0c2b4b489beefdc95b59cf0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpawnRate: 0
+  Spawning: 0
+  totalSprites: 0
+  Pool: {fileID: 0}
+  Entity: {fileID: 0}
 --- !u!114 &114067906443348532
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2007,8 +2024,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0d698d1a7710d324ca7105a558bd815c, type: 3}
   - {fileID: 8300000, guid: 474a231c1ad41e34dbbde24b175af1ee, type: 3}
   Animator: {fileID: 95851931819171008}
+  GhostingContainer: {fileID: 114049724287705444}
   minPitch: 0.9
   maxPitch: 1.1
+  MainSpriteRenderer: {fileID: 212031095587044070}
 --- !u!114 &114091782671717320
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2171,7 +2190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de28747d891c4ede845f3f58db2c6a2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hitbox: {fileID: 0}
+  Entity: {fileID: 114627651355056388}
 --- !u!114 &114210747537232694
 MonoBehaviour:
   m_ObjectHideFlags: 1

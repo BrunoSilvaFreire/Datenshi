@@ -15,7 +15,7 @@ TagManager:
   - 
   - Background
   - World
-  - 
+  - InteractionLayer
   - EntitiesNeutral
   - EntitiesFriendly
   - EntitiesEnemy

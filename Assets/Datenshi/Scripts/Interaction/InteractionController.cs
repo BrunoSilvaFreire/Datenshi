@@ -1,4 +1,7 @@
 ﻿using System.Collections.Generic;
+using Datenshi.Scripts.Data;
+using Datenshi.Scripts.Entities;
+using Datenshi.Scripts.Input;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -7,9 +10,20 @@ namespace Datenshi.Scripts.Interaction {
         [ShowInInspector]
         protected readonly List<InteractableElement> elementsInRange = new List<InteractableElement>();
 
-        public Collider2D Hitbox;
-
+        public MovableEntity Entity;
         public IEnumerable<InteractableElement> ElementsInRange => elementsInRange;
+
+        private void Update() {
+            if (Entity.InputProvider.GetButtonDown((int) Actions.Submit)) {
+                Interact();
+            }
+        }
+
+        private void Interact() {
+            foreach (var element in elementsInRange) {
+                element.Interact(Entity);
+            }
+        }
 
         private void OnTriggerEnter2D(Collider2D other) {
             var e = other.GetComponentInParent<InteractableElement>();

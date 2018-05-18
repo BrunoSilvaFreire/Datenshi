@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using UPM;
 
 namespace Datenshi.Scripts.Util {
     public class CollisionListener : MonoBehaviour {
@@ -24,6 +25,10 @@ namespace Datenshi.Scripts.Util {
 
         public static void RemoveTriggerListener(this Collider2D collider2D, UnityAction action) {
             collider2D.GetOrAddComponent<CollisionListener>().Trigger -= action;
+        }
+
+        public static bool HasAny(this CollisionStatus status) {
+            return status.Down || status.Up || status.Left || status.Right;
         }
     }
 }
