@@ -481,14 +481,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 20
   DestroyDelay: 2
-  Damage: 5
   SpawnOnHit: {fileID: 0}
   Clip: {fileID: 8300000, guid: 916ba4edb087ca3458636968c07116a2, type: 3}
   Defense: {fileID: 8300000, guid: 0c1778d509be49f499ab341ec111e598, type: 3}
   Source: {fileID: 82135607480659624}
   ToDecouple:
   - {fileID: 1596813178275472}
-  OnDefended: {fileID: 1091636395010358, guid: cae7a7f79f37a934ab16d127427eef8c, type: 2}
+  OnDefended: {fileID: 0}
   MaxAngle: 200
 --- !u!212 &212048958984898380
 SpriteRenderer:

@@ -14,6 +14,8 @@ namespace Datenshi.Scripts.Combat.Attacks {
     public abstract class AbstractHitboxAttack : Attack {
         public static readonly Variable<bool> Blocked = new Variable<bool>("entity.combat.cqb.blocked", true);
         private static readonly Color HitboxColor = Color.green;
+        public ParticleSystem Particle;
+
         public Bounds2D Hitbox;
 #if UNITY_EDITOR
 
@@ -66,6 +68,9 @@ namespace Datenshi.Scripts.Combat.Attacks {
                 if (!info.Canceled) {
                     success = true;
                     e.Damage(entity, this);
+                    if (Particle != null) {
+                        Particle.Clone(e.Center);
+                    }
                 }
             }
 

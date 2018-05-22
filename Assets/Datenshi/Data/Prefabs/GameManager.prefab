@@ -2018,8 +2018,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultTimeScale: 1
   DefaultSlowdownScale: 1
-  DefaultImpactFrameScale: 0.25
-  DefaultImpactDuration: 0.3
+  DefaultImpactFrameScale: 0
+  DefaultImpactDuration: 0.15
   TimeChangeDuration: 1
 --- !u!114 &114040670184502158
 MonoBehaviour:
@@ -2817,6 +2817,10 @@ MonoBehaviour:
   LevelUpKey: LevelUp
   LevelDownKey: LevelDown
   RankXPGainedTransitionDuration: 0
+  DamageFadeDuration: 0
+  DamageResizeDuration: 0
+  DamageLabel: {fileID: 0}
+  DamageTransform: {fileID: 0}
 --- !u!114 &114409370074475276
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5322,8 +5326,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 150, y: 0}
-  m_SizeDelta: {x: 280, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224227300595802486
 RectTransform:
@@ -5437,8 +5441,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 150, y: 0}
-  m_SizeDelta: {x: 280, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224410649331857658
 RectTransform:
@@ -5817,7 +5821,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 150, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224810626281703760

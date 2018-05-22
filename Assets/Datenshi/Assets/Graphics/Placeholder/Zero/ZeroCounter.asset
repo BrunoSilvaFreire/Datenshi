@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: ZeroCounter
   m_EditorClassIdentifier: 
   DefenseRegain: 1.5
-  Particle: {fileID: 0}
+  Particle: {fileID: 198445748007662224, guid: cae7a7f79f37a934ab16d127427eef8c, type: 2}
   Frames: 5

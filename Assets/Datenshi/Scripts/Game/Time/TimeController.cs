@@ -92,9 +92,7 @@ namespace Datenshi.Scripts.Game.Time {
 
         private void DOTime(float scale, float duration) {
             Reset();
-            currentTween = DOTween.To(Getter, Setter, scale, duration);
-            currentTween.timeScale = 1;
-            currentTween.OnComplete(Reset);
+            currentTween = DOTween.To(Getter, Setter, scale, duration).SetUpdate(true).OnComplete(Reset);
         }
 
         public void ResetTime() {

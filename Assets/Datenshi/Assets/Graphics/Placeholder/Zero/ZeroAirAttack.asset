@@ -11,7 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec3032e461cc4bb595938d01c9d95415, type: 3}
   m_Name: ZeroAirAttack
   m_EditorClassIdentifier: 
+  Particle: {fileID: 198445748007662224, guid: f6a6161f05bfe784eb4d6f44c6d05aad, type: 2}
   Hitbox:
     Center: {x: 1.5612926, y: 1.5643916}
     Size: {x: 2.5086632, y: 3.7099676}
   Damage: 15
+  Frames: 5
