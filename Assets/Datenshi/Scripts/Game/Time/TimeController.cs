@@ -86,8 +86,7 @@ namespace Datenshi.Scripts.Game.Time {
         }
 
         public void ImpactFrame(float duration) {
-            UnityEngine.Time.timeScale = DefaultImpactFrameScale;
-            DOTime(DefaultTimeScale, duration);
+            ImpactFrame(DefaultImpactFrameScale, duration);
         }
 
         private void DOTime(float scale, float duration) {
@@ -97,6 +96,11 @@ namespace Datenshi.Scripts.Game.Time {
 
         public void ResetTime() {
             DOTime(DefaultTimeScale, TimeChangeDuration);
+        }
+
+        public void ImpactFrame(float timeScale, float duration) {
+            UnityEngine.Time.timeScale = timeScale;
+            DOTime(DefaultTimeScale, duration);
         }
     }
 }

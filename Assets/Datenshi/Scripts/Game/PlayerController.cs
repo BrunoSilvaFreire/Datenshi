@@ -44,9 +44,7 @@ namespace Datenshi.Scripts.Game {
 
 
         public float DamageGlitchDuration = .25F;
-        public float DamageCutoff = 5000;
-        public float DamageLowfilterDefault = 0;
-        public float LowCutoff = 440;
+        
         public float DefendOverrideAmount = 1;
         public float DefendOverrideDuration = 0.5F;
         public PlayerEntityChangedEvent OnEntityChanged;
@@ -72,7 +70,6 @@ namespace Datenshi.Scripts.Game {
         private TweenerCore<float, float, FloatOptions> glitchTweener;
         private TweenerCore<float, float, FloatOptions> colorTweener;
         private TweenerCore<float, float, FloatOptions> shakeTweener;
-        private TweenerCore<float, float, FloatOptions> darkenTweener;
 
         private void Start() {
             ResetGlitch();
@@ -103,26 +100,22 @@ namespace Datenshi.Scripts.Game {
                 var graphics = GraphicsSingleton.Instance;
                 var damageGlitch = graphics.Glitch;
                 var bnw = graphics.BlackAndWhite;
-                ResetDarken();
                 ResetGlitch();
-                AudioManager.Instance.ImpactLowFilter(DamageLowfilterDefault, DamageCutoff, DamageDarkenDuration);
                 AudioManager.Instance.PlayFX(DamageAudio.RandomElement());
                 damageGlitch.enabled = true;
                 damageGlitch.ScanLineJitter = DamageGlitchAmount;
                 damageGlitch.ColorDrift = DamageColorDriftAmount;
                 damageGlitch.HorizontalShake = DamageHorizontalShakeAmount;
-                bnw.Amount = DamageDarkenAmount;
 
 
                 glitchTweener = damageGlitch.DOScanLineJitter(0, DamageGlitchDuration);
                 colorTweener = damageGlitch.DOColorDrift(0, DamageGlitchDuration);
                 shakeTweener = damageGlitch.DOHorizontalShake(0, DamageGlitchDuration);
-                darkenTweener = bnw.DOAmount(0, DamageDarkenDuration);
+                bnw.DoDarkenImpact(DamageDarkenAmount, DamageDarkenDuration);
 
                 glitchTweener.OnComplete(ResetGlitch);
                 colorTweener.OnComplete(ResetGlitch);
                 shakeTweener.OnComplete(ResetGlitch);
-                darkenTweener.OnComplete(ResetDarken);
             }
 
             TimeController.Instance.ImpactFrame();
@@ -143,8 +136,6 @@ namespace Datenshi.Scripts.Game {
             }
 
             var xpToWin = GameResources.Instance.RankXPGraph.Evaluate(timesReused);
-            Debug.Log("Attack " + attack + " executed winning " + xpToWin + " with " + timesReused + " times used");
-
             if (xpToWin <= 0) {
                 return;
             }
@@ -169,17 +160,12 @@ namespace Datenshi.Scripts.Game {
             damageGlitch.enabled = false;
         }
 
-        private void ResetDarken() {
-            darkenTweener?.Kill();
-            darkenTweener = null;
-        }
-
-        [ShowInInspector]
-        private bool defending;
+        //private bool defending;
 
 
         private void Update() {
             UpdateRank();
+            /*
             var p = Player;
             if (p == null) {
                 return;
@@ -196,7 +182,7 @@ namespace Datenshi.Scripts.Game {
                 ShowDefend();
             } else {
                 HideDefend();
-            }
+            }*/
         }
 
         private void UpdateRank() {
@@ -215,12 +201,10 @@ namespace Datenshi.Scripts.Game {
         }
 
         private void HideDefend() {
-            SetFilter(22000);
             SetColorOverride(0);
         }
 
         private void ShowDefend() {
-            SetFilter(LowCutoff);
             SetColorOverride(DefendOverrideAmount);
         }
 

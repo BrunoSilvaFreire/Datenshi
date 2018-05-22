@@ -5,6 +5,7 @@ using Datenshi.Scripts.Input;
 using Datenshi.Scripts.Util;
 using UPM.Util;
 using Datenshi.Scripts.Movement;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Datenshi.Scripts.Combat {
@@ -49,6 +50,9 @@ namespace Datenshi.Scripts.Combat {
             get;
         }
 
+        Collider2D Hitbox {
+            get;
+        }
         CombatRelationship Relationship {
             get;
         }

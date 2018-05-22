@@ -39,6 +39,18 @@ namespace Datenshi.Scripts.Graphics {
             return ShaderName;
         }
 
+        public void DoAmountImpact(float amount, float duration) {
+            this.DOKill();
+            Amount = amount;
+            DOAmount(0, duration);
+        }
+        public void DoDarkenImpact(float amount, float duration) {
+            
+            this.DOKill();
+            Amount = amount;
+            DOAmount(0, duration);
+        }
+
         public TweenerCore<float, float, FloatOptions> DOAmount(float amount, float duration) {
             return DOTween.To(() => Amount, value => Amount = value, amount, duration);
         }

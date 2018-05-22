@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Runtime.InteropServices.ComTypes;
-using BehaviorDesigner.Runtime;
 using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Input;
@@ -99,9 +97,11 @@ namespace Datenshi.Scripts.Movement.States {
                 wallClimbState);
 
             var max = user.MaxSpeed;
-            max *= user.SpeedMultiplier;
-
+            if (collisionStatus.Down) {
+                max *= user.SpeedMultiplier;                
+            }
             velocity.x = Mathf.Clamp(velocity.x, -max, max);
+
             GroundedBehaviour.Check(user, ref velocity, ref collisionStatus, collisionMask);
             if (velocity.y < 0 && IsRunningTowardsWall(SlopeCheck.LastHit, collisionStatus, dir)) {
                 machine.State = wallClimbState;

@@ -35,14 +35,12 @@ namespace Datenshi.Scripts.Game.Rank {
                 if (CurrentLevel > RankLevel.F && value < 0) {
                     var required = GameResources.Instance.GetRequiredXP((byte) (CurrentLevel - 1));
                     CurrentLevel--;
-                    Debug.Log($"Leveled down @ {CurrentLevel} vs {value} xp = {required - value} / {required}");
                     XP = required + value;
                     return;
                 }
 
                 if (value >= requiredXP) {
                     LevelUp((int) (value / requiredXP));
-                    Debug.Log("Leveled up @ " + CurrentLevel);
                     xp = value % requiredXP;
                     return;
                 }

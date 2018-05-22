@@ -1,5 +1,5 @@
 ﻿using Datenshi.Scripts.Combat;
-using Datenshi.Scripts.Combat.Attacks.UI;
+using Datenshi.Scripts.Combat.Game;
 using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Game;
 using UnityEngine;
