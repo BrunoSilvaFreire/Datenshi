@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using Datenshi.Scripts.Util;
-using DG.Tweening;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Datenshi.Scripts.Entities.Misc.Ghosting {
     public class GhostingSprite : MonoBehaviour {

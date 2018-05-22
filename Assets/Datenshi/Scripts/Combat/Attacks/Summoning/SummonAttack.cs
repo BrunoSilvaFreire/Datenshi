@@ -12,5 +12,9 @@ namespace Datenshi.Scripts.Combat.Attacks.Summoning {
             var proj = Prefab.Clone(pos);
             proj.Summon(entity, pos);
         }
+
+        public override uint GetDamage(ICombatant livingEntity) {
+            return 0;
+        }
     }
 }

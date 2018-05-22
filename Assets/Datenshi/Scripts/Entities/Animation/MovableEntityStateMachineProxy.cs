@@ -23,10 +23,6 @@ namespace Datenshi.Scripts.Entities.Animation {
             OnExit.Invoke();
         }
 
-        public void Damage(LivingEntity entity, uint damage) {
-            Target.Damage(entity, damage);
-        }
-
         public void Stun(float duration) {
             Target.Stun(duration);
         }

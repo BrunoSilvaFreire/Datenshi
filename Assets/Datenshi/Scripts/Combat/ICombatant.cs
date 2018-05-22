@@ -18,6 +18,8 @@ namespace Datenshi.Scripts.Combat {
     public class SerializableCombatant : SerializableInterface<ICombatant> { }
 
     public interface ICombatant : ILocatable, IVariableHolder, IInputReceiver {
+        uint Damage(ICombatant damageDealer, Attack attack, float multiplier = 1);
+
         uint MaxHealth {
             get;
             set;
@@ -32,7 +34,6 @@ namespace Datenshi.Scripts.Combat {
 
         void Heal(uint healthAmount);
 
-        void Damage(ICombatant damageDealer, uint damage);
 
         Direction CurrentDirection {
             get;

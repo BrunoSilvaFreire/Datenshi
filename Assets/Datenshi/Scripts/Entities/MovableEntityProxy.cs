@@ -23,15 +23,6 @@ namespace Datenshi.Scripts.Entities {
 
             Target.ExternalForces += new Vector2(0, Target.Direction.Y * force);
         }
-
-        public void Damage(LivingEntity entity, uint damage) {
-            if (Target == null) {
-                return;
-            }
-
-            Target.Damage(entity, damage);
-        }
-
         public void Stun(float duration) {
             if (Target == null) {
                 return;

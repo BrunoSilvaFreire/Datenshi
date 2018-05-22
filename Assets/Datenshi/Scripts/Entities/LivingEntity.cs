@@ -17,10 +17,11 @@ namespace Datenshi.Scripts.Entities {
     [Serializable]
     public class EntityDamagedEvent : UnityEvent<ICombatant, uint> { }
 
-    public class GlobalEntityDamagedEvent : UnityEvent<ICombatant, ICombatant, uint> {
+    public class GlobalEntityDamagedEvent : UnityEvent<ICombatant, ICombatant, Attack, uint> {
         public static readonly GlobalEntityDamagedEvent Instance = new GlobalEntityDamagedEvent();
         private GlobalEntityDamagedEvent() { }
     }
+
 
     [Serializable]
     public class EntityAttackEvent : UnityEvent<Attack> { }
@@ -350,22 +351,23 @@ namespace Datenshi.Scripts.Entities {
             OnHealthChanged.Invoke();
         }
 
-        public virtual void Damage(ICombatant entity, uint damage) {
+        public virtual uint Damage(ICombatant entity, Attack attack, float multiplier = 1) {
             if (Invulnerable || Ignored || Dead) {
-                return;
+                return 0;
             }
 
+            var damage = (uint) (attack.GetDamage(this) * multiplier);
+            GlobalEntityDamagedEvent.Instance.Invoke(this, entity, attack, damage);
             if (damage >= health) {
                 Debug.Log($"<color=#FF0000><b>{name} killed by {entity} @ {damage}</b></color>");
                 Kill();
-                return;
+                return health;
             }
 
             Debug.Log($"<color=#FF0000>{name} damaged by {entity} @ {damage}</color>");
 
             OnDamaged.Invoke(entity, damage);
             OnHealthChanged.Invoke();
-            GlobalEntityDamagedEvent.Instance.Invoke(this, entity, damage);
             ColorizableRenderer.ImpactColor();
             Health -= damage;
             if (DamageInvulnerability) {
@@ -375,6 +377,8 @@ namespace Datenshi.Scripts.Entities {
             if (DamageGivesStun && damage >= DamageStunMin) {
                 Stun(DamageStunDuration);
             }
+
+            return damage;
         }
 
         public Direction CurrentDirection {

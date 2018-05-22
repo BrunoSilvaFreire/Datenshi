@@ -12,6 +12,10 @@ namespace Datenshi.Scripts.Combat.Attacks {
             entity.AnimatorUpdater.StartCoroutine(DoRepeatedAttack(entity));
         }
 
+        public override uint GetDamage(ICombatant livingEntity) {
+            return DamagePerAttack;
+        }
+
         private IEnumerator DoRepeatedAttack(ICombatant entity) {
             for (uint i = 0; i < TotalAttacks; i++) {
                 DoAttack(entity, DamagePerAttack);

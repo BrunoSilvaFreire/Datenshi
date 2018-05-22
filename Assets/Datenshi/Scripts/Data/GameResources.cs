@@ -8,6 +8,9 @@ namespace Datenshi.Scripts.Data {
         public LayerMask EntitiesMask;
         public LayerMask InteractableMask;
         public Camera CharacterCameraPrefab;
+        public AnimationCurve RankDamageGraph = AnimationCurve.Linear(0, 1, 1, 45);
+        public AnimationCurve RankRequiredXPGraph = AnimationCurve.Linear(0, 1, 1, 45);
+        public AnimationCurve RankXPGraph = AnimationCurve.EaseInOut(0, 1, 3, 0);
         public float Gravity = -19.62F;
         public float NavmeshBoxcastDownsizeValue = 0.1F;
 
@@ -20,5 +23,9 @@ namespace Datenshi.Scripts.Data {
 
         public float DeflectSpeed = 20;
         public float DeflectDamageMultiply = 3;
+
+        public float GetRequiredXP(byte level) {
+            return RankRequiredXPGraph.Evaluate(level);
+        }
     }
 }

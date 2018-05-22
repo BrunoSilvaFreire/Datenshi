@@ -65,7 +65,7 @@ namespace Datenshi.Scripts.Combat.Attacks {
 
                 if (!info.Canceled) {
                     success = true;
-                    e.Damage(entity, damage);
+                    e.Damage(entity, this);
                 }
             }
 

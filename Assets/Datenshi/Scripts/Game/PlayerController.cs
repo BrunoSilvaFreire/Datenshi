@@ -1,7 +1,10 @@
 ﻿using System;
 using Datenshi.Scripts.Audio;
 using Datenshi.Scripts.Combat;
+using Datenshi.Scripts.Combat.Attacks;
+using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Entities;
+using Datenshi.Scripts.Game.Rank;
 using Datenshi.Scripts.Game.Time;
 using Datenshi.Scripts.Graphics;
 using Datenshi.Scripts.Misc;
@@ -18,6 +21,9 @@ namespace Datenshi.Scripts.Game {
     [Serializable]
     public class PlayerEntityChangedEvent : UnityEvent<Entity, Entity> { }
 
+    [Serializable]
+    public class PlayerRankXPGainedEvent : UnityEvent<float> { }
+
     public class PlayerController : Singleton<PlayerController> {
         public PlayerInputProvider Player;
 
@@ -27,6 +33,7 @@ namespace Datenshi.Scripts.Game {
         [ShowInInspector]
         private Tracker<ColorizableRenderer> tracker;
 
+        public Rank.Rank Rank;
 
         public float DamageDarkenAmount = 1;
         public float DamageDarkenDuration = 1;
@@ -43,6 +50,7 @@ namespace Datenshi.Scripts.Game {
         public float DefendOverrideAmount = 1;
         public float DefendOverrideDuration = 0.5F;
         public PlayerEntityChangedEvent OnEntityChanged;
+        public PlayerRankXPGainedEvent PlayerRankXPGainedEvent;
         public AudioFX[] DamageAudio;
 
         [ShowInInspector]
@@ -76,12 +84,17 @@ namespace Datenshi.Scripts.Game {
 
             GameState.RestartState();
             GlobalEntityDamagedEvent.Instance.AddListener(OnEntityDamaged);
+
             tracker = new Tracker<ColorizableRenderer>(
                 ColorizableRenderer.ColorizableRendererEnabledEvent,
                 ColorizableRenderer.ColorizableRendererDisabledEvent);
         }
 
-        private void OnEntityDamaged(ICombatant damaged, ICombatant damager, uint arg2) {
+        private void OnEntityDamaged(ICombatant damaged, ICombatant damager, Attack attack, uint damage) {
+            if (currentEntity != null && (Entity) damager == currentEntity) {
+                HandleRankAttack(attack);
+            }
+
             if (!Equals(damager, currentEntity) && !Equals(damaged, currentEntity)) {
                 return;
             }
@@ -115,6 +128,33 @@ namespace Datenshi.Scripts.Game {
             TimeController.Instance.ImpactFrame();
         }
 
+        private Attack lastAttack;
+        private uint timesReused;
+        public float RankXPGainedWaitDuration = 2;
+        public float RankXPDropSpeed = .1F;
+        private float xpStopDurationLeft;
+
+        private void HandleRankAttack(Attack attack) {
+            if (attack == lastAttack) {
+                timesReused++;
+            } else {
+                timesReused = 0;
+                lastAttack = attack;
+            }
+
+            var xpToWin = GameResources.Instance.RankXPGraph.Evaluate(timesReused);
+            Debug.Log("Attack " + attack + " executed winning " + xpToWin + " with " + timesReused + " times used");
+
+            if (xpToWin <= 0) {
+                return;
+            }
+
+            xpStopDurationLeft = RankXPGainedWaitDuration;
+            Rank.XP += xpToWin;
+            PlayerRankXPGainedEvent.Invoke(xpToWin);
+        }
+
+        // oi
         private void ResetGlitch() {
             glitchTweener?.Kill();
             colorTweener?.Kill();
@@ -139,6 +179,7 @@ namespace Datenshi.Scripts.Game {
 
 
         private void Update() {
+            UpdateRank();
             var p = Player;
             if (p == null) {
                 return;
@@ -155,6 +196,21 @@ namespace Datenshi.Scripts.Game {
                 ShowDefend();
             } else {
                 HideDefend();
+            }
+        }
+
+        private void UpdateRank() {
+            var delta = UnityEngine.Time.deltaTime;
+            if (xpStopDurationLeft > 0) {
+                xpStopDurationLeft -= delta;
+                return;
+            }
+
+            var toDrop = RankXPDropSpeed * delta;
+            if (Rank.CurrentLevel > RankLevel.F || Rank.XP > toDrop) {
+                Rank.XP -= toDrop;
+            } else {
+                Rank.XP = 0;
             }
         }
 

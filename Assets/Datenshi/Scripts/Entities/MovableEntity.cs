@@ -1,6 +1,6 @@
 ﻿using Datenshi.Scripts.AI;
 using Datenshi.Scripts.Combat;
-using Datenshi.Scripts.Data;
+using Datenshi.Scripts.Combat.Attacks;
 using Datenshi.Scripts.Movement;
 using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
@@ -9,7 +9,6 @@ using UPM;
 using UPM.Input;
 using UPM.Motors;
 using UPM.Motors.Config;
-using UPM.Physics;
 
 namespace Datenshi.Scripts.Entities {
     /// <summary>
@@ -247,10 +246,10 @@ namespace Datenshi.Scripts.Entities {
             Velocity *= 1 - StunVelocityDampen;
         }
 
-        public override void Damage(ICombatant entity, uint damage) {
-            base.Damage(entity, damage);
+        public override uint Damage(ICombatant entity, Attack attack, float multiplier = 1) {
+            var damage = base.Damage(entity, attack, multiplier);
             if (!DamageGivesKnockback || damage < DamageKnockbackMin) {
-                return;
+                return damage;
             }
 
             ExternalForces = Center - entity.Center;
@@ -259,6 +258,7 @@ namespace Datenshi.Scripts.Entities {
             if (ExternalForces.y <= 0) {
                 ExternalForces.y += KnockbackLiftoff;
             }
+            return damage;
         }
     }
 }

@@ -16,22 +16,32 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
 
         public float Speed;
         public float DestroyDelay = 2;
-        public uint Damage;
         public GameObject SpawnOnHit;
         public AudioClip Clip;
         public AudioClip Defense;
         public AudioSource Source;
         public GameObject[] ToDecouple;
         public GameObject OnDefended;
+
+        [ShowInInspector, ReadOnly]
         private bool wasShot;
+
+        [ShowInInspector, ReadOnly]
         private bool ownerDestroyed;
 
-        public void Shoot(ICombatant shooter, ICombatant target) {
-            Shoot(shooter, target.Center - (Vector2) transform.position);
+        [ShowInInspector, ReadOnly]
+        public RangedAttack UsedAttack {
+            get;
+            private set;
+        }
+
+        public void Shoot(RangedAttack attack, ICombatant shooter, ICombatant target) {
+            Shoot(attack, shooter, target.Center - (Vector2) transform.position);
             ProjectileShotEvent.Instance.Invoke(this, shooter, target);
         }
 
-        public void Shoot(ICombatant shooter, Vector2 direction) {
+        public void Shoot(RangedAttack attack, ICombatant shooter, Vector2 direction) {
+            UsedAttack = attack;
             Owner = shooter;
             Owner.OnKilled.AddListener(OnOwnerKilled);
             wasShot = true;
@@ -70,7 +80,7 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
                 }
 
                 if (Owner.ShouldAttack(e)) {
-                    e.Damage(e, Damage);
+                    e.Damage(Owner, UsedAttack, DamageMultiplier);
                 } else {
                     return;
                 }
@@ -112,8 +122,13 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
             velocity.Normalize();
             var g = GameResources.Instance;
             velocity *= g.DeflectSpeed;
-            Damage = (uint) (Damage * g.DeflectDamageMultiply);
+            DamageMultiplier = g.DeflectDamageMultiply;
         }
+
+        public float DamageMultiplier {
+            get;
+            private set;
+        } = 1;
 
         public bool CanPoorlyDefend(ICombatant entity) {
             return true;

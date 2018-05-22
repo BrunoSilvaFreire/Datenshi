@@ -26,11 +26,6 @@ namespace Datenshi.Scripts.Entities {
         public void Heal(uint healthAmount) {
             Target.Heal(healthAmount);
         }
-
-        public void Damage(LivingEntity entity, uint damage) {
-            Target.Damage(entity, damage);
-        }
-
         public void RevokeOwnership() {
             Target.RevokeOwnership();
         }
