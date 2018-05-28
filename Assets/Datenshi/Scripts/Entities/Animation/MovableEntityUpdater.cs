@@ -133,14 +133,6 @@ namespace Datenshi.Scripts.Entities.Animation {
             Animator.SetTrigger(key);
         }
 
-        public override void TriggerDeflect() {
-            Animator.SetTrigger(DeflectKey);
-        }
-
-        public override void TriggerCounter() {
-            Animator.SetTrigger(CounterKey);
-        }
-
         public override void TriggerDeath() {
             Animator.SetTrigger(DeadKey);
         }

@@ -11,6 +11,7 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
         public float TimeDelay;
         public Vector2 Offset;
         public bool Aim = true;
+        public float FocusConsumption;
 
         [HideIf("Aim")]
         public bool RawDir = true;

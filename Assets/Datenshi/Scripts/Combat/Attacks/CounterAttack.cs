@@ -7,9 +7,15 @@ using UnityEngine;
 namespace Datenshi.Scripts.Combat.Attacks {
     [CreateAssetMenu(menuName = "Datenshi/Combat/CounterAttack")]
     public class CounterAttack : Attack {
+        public enum CounterType {
+            Agressive,
+            Evasive
+        }
+
         public float DefenseRegain = 1.5F;
         public ParticleSystem Particle;
         public byte Frames = 5;
+        public CounterType Type;
 
         public override void Execute(ICombatant entity) {
             entity.AnimatorUpdater.StartCoroutine(DoAttack(entity));
@@ -36,32 +42,21 @@ namespace Datenshi.Scripts.Combat.Attacks {
             DebugUtil.DrawBox2DWire(hb.Center, hb.Size, Color.green);
             var success = false;
             foreach (var coll in hit) {
-                var info = new DamageInfo(entity, 0);
+                var info = new DamageInfo(this, 1, null, entity);
                 var d = coll.GetComponent<IDefendable>();
-                if (d == null || !d.CanDefend(entity)) {
+                if (d == null || !CanDefend(d, entity)) {
                     continue;
                 }
 
                 success = true;
                 DebugUtil.DrawBox2DWire(((MonoBehaviour) d).gameObject.transform.position, Vector2.one, Color.green);
-                d.Defend(entity, ref info);
+                Defend(d, entity, ref info);
                 if (Particle != null) {
                     Particle.Clone(coll.transform.position);
                 }
 
                 if (updater == null) {
                     continue;
-                }
-
-                switch (d.GetDefenseType()) {
-                    case DefenseType.Deflect:
-                        updater.TriggerDeflect();
-                        break;
-                    case DefenseType.Counter:
-                        updater.TriggerCounter();
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
                 }
             }
 
@@ -70,6 +65,30 @@ namespace Datenshi.Scripts.Combat.Attacks {
             }
 
             return success;
+        }
+
+        private void Defend(IDefendable defendable, ICombatant entity, ref DamageInfo info) {
+            switch (Type) {
+                case CounterType.Agressive:
+                    defendable.AgressiveDefend(entity, ref info);
+                    break;
+                case CounterType.Evasive:
+                    defendable.EvasiveDefend(entity, ref info);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        private bool CanDefend(IDefendable defendable, ICombatant entity) {
+            switch (Type) {
+                case CounterType.Agressive:
+                    return defendable.CanAgressiveDefend(entity);
+                case CounterType.Evasive:
+                    return defendable.CanEvasiveDefend(entity);
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
     }
 }

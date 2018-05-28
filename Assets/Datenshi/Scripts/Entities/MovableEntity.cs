@@ -246,8 +246,8 @@ namespace Datenshi.Scripts.Entities {
             Velocity *= 1 - StunVelocityDampen;
         }
 
-        public override uint Damage(ICombatant entity, Attack attack, float multiplier = 1) {
-            var damage = base.Damage(entity, attack, multiplier);
+        public override uint Damage(ICombatant entity, ref DamageInfo info, IDefendable defendable = null) {
+            var damage = base.Damage(entity, ref info, defendable);
             if (!DamageGivesKnockback || damage < DamageKnockbackMin) {
                 return damage;
             }
@@ -258,6 +258,7 @@ namespace Datenshi.Scripts.Entities {
             if (ExternalForces.y <= 0) {
                 ExternalForces.y += KnockbackLiftoff;
             }
+
             return damage;
         }
     }

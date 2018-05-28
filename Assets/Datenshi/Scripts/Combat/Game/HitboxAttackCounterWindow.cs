@@ -56,22 +56,6 @@ namespace Datenshi.Scripts.Combat.Game {
             owner = GetComponentInParent<ICombatant>();
         }
 
-        public bool CanDefend(ICombatant entity) {
-            return available && entity != owner;
-        }
-
-        public void Defend(ICombatant entity, ref DamageInfo info) {
-            info.Canceled = true;
-            var c = GetComponentInParent<ICombatant>();
-            Debug.Log(entity + " Defending against " + c);
-            if (c == null) {
-                return;
-            }
-
-            c.Stun(StunDuration);
-            StartCoroutine(DoFreezeTimeCombo(TimeScale, TimeScaleDuration, entity));
-        }
-
         public float DamageCutoff = 5000;
         public float DamageLowfilterDefault = 0;
         public float LowCutoff = 440;
@@ -88,14 +72,39 @@ namespace Datenshi.Scripts.Combat.Game {
         }
 
 
-        public bool CanPoorlyDefend(ICombatant entity) {
-            return false;
+        public bool CanAutoDefend(ICombatant combatant) {
+            return true;
         }
 
-        public void PoorlyDefend(ICombatant entity, ref DamageInfo info) { }
+        public float DoAutoDefend(ICombatant combatant, ref DamageInfo info) {
+            info.Canceled = true;
+            return 0;
+        }
 
-        public DefenseType GetDefenseType() {
-            return DefenseType.Counter;
+        public bool CanAgressiveDefend(ICombatant combatant) {
+            return available && combatant != owner;
+        }
+
+        public float DoAgressiveDefend(ICombatant combatant, ref DamageInfo info) {
+            info.Canceled = true;
+            var c = GetComponentInParent<ICombatant>();
+            Debug.Log(combatant + " Defending against " + c);
+            if (c == null) {
+                return 0;
+            }
+
+            c.Stun(StunDuration);
+            StartCoroutine(DoFreezeTimeCombo(TimeScale, TimeScaleDuration, combatant));
+            return 0;
+        }
+
+        public bool CanEvasiveDefend(ICombatant combatant) {
+            return true;
+        }
+
+        public float DoEvasiveDefend(ICombatant combatant, ref DamageInfo info) {
+            info.Canceled = true;
+            return 0;
         }
     }
 }

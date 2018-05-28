@@ -16,10 +16,13 @@ namespace Datenshi.Scripts.Combat {
     }
 
     [Serializable]
-    public class SerializableCombatant : SerializableInterface<ICombatant> { }
+    public class SerializableCombatant : SerializableInterface<ICombatant> {
+        public SerializableCombatant() { }
+        public SerializableCombatant(ICombatant o) : base(o) { }
+    }
 
     public interface ICombatant : ILocatable, IVariableHolder, IInputReceiver {
-        uint Damage(ICombatant damageDealer, Attack attack, float multiplier = 1);
+        uint Damage(ICombatant damageDealer, ref DamageInfo damageInfo, IDefendable defendable = null);
 
         uint MaxHealth {
             get;

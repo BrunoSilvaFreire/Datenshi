@@ -1,6 +1,7 @@
 ﻿using System;
 using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Data;
+using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Input;
 using Datenshi.Scripts.Movement.Config;
 using Datenshi.Scripts.Util;
@@ -32,6 +33,7 @@ namespace Datenshi.Scripts.Movement.States {
         private int wallClimbExtraCheckDir = 0;
         private readonly HorizontalPhysicsCheck wallClimbExtraCheck;
         public State DashState;
+        public string DashTriggerAnimatorKey = "Dash";
 
         public GroundedState() {
             wallClimbExtraCheck = new HorizontalPhysicsCheck(WallClimbExtraChecker);
@@ -65,7 +67,7 @@ namespace Datenshi.Scripts.Movement.States {
             LayerMask collisionMask,
             float gravity,
             WallClimbState wallClimbState) {
-            var user = u as IDatenshiMovable;
+            var user = u as MovableEntity;
             if (user == null) {
                 return;
             }
@@ -108,14 +110,14 @@ namespace Datenshi.Scripts.Movement.States {
             }
         }
 
-        private bool CheckStateChange(IDatenshiMovable user, DatenshiGroundConfig c, StateMotorMachine machine) {
-            if (user.CollisionStatus.HasAny()) {
-                if (!c.DashEllegible) {
+        private bool CheckStateChange(MovableEntity user, DatenshiGroundConfig c, StateMotorMachine machine) {
+            if (!c.DashEllegible) {
+                if (user.CollisionStatus.HasAny()) {
                     c.DashEllegible = true;
                 }
             }
 
-            if (c.DashEllegible && user.InputProvider.GetButtonDown((int) Actions.Dash)) {
+            if (!user.Focusing && c.DashEllegible && user.InputProvider.GetButtonDown((int) Actions.Dash)) {
                 machine.State = DashState;
                 return true;
             }
@@ -129,7 +131,7 @@ namespace Datenshi.Scripts.Movement.States {
         }
 
         private void ProcessInputs(
-            IDatenshiMovable user,
+            MovableEntity user,
             DatenshiGroundConfig config,
             ref Vector2 velocity,
             ref CollisionStatus collisionStatus,
@@ -139,6 +141,7 @@ namespace Datenshi.Scripts.Movement.States {
             Bounds2D bounds,
             Bounds2D shrinkedBounds,
             WallClimbState wallClimbState) {
+            var animator = user.AnimatorUpdater;
             var provider = user.InputProvider as DatenshiInputProvider;
             var hasProvider = provider != null;
             var xInput = hasProvider ? provider.GetHorizontal() : 0;
@@ -150,15 +153,19 @@ namespace Datenshi.Scripts.Movement.States {
                 d.X = newX;
             }
 
-            user.Direction = d;*/
+            user.Direction = d;
+            */
+            if (user.InputProvider.GetButtonDown((int) Actions.Dash)) { }
+
             dir = Math.Sign(xInput);
             var jump = hasProvider && provider.GetJump();
-            var combatant = user as ICombatant;
-            if (combatant != null) {
-                combatant.Focusing = hasProvider && provider.GetDefend();
-                if (hasProvider && provider.GetAttack()) {
-                    combatant.AnimatorUpdater.TriggerAttack();
-                }
+            user.Focusing = hasProvider && provider.GetDefend();
+            if (hasProvider && provider.GetDash()) {
+                animator.SetTrigger(DashTriggerAnimatorKey);
+            }
+
+            if (hasProvider && provider.GetAttack()) {
+                animator.TriggerAttack();
             }
 
             if (jump) {

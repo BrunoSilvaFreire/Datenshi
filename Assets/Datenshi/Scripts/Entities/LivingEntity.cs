@@ -351,10 +351,18 @@ namespace Datenshi.Scripts.Entities {
             OnHealthChanged.Invoke();
         }
 
-        public virtual uint Damage(ICombatant entity, Attack attack, float multiplier = 1) {
-            if (Invulnerable || Ignored || Dead) {
+        public virtual uint Damage(ICombatant entity, ref DamageInfo info, IDefendable defendable = null) {
+            if (defendable != null && Focusing && defendable.CanAutoDefend(this)) {
+                defendable.DoAutoDefend(this, ref info);
                 return 0;
             }
+
+            if (Invulnerable || Ignored || Dead || info.Canceled) {
+                return 0;
+            }
+
+            var attack = info.Attack;
+            var multiplier = info.Multiplier;
 
             var damage = (uint) (attack.GetDamage(this) * multiplier);
             GlobalEntityDamagedEvent.Instance.Invoke(this, entity, attack, damage);

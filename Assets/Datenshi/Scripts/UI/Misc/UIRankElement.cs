@@ -39,9 +39,12 @@ namespace Datenshi.Scripts.UI.Misc {
             tracking = false;
             var r = controller.Rank;
             XPBar.DOFillAmount(r.RankPercentage, RankXPGainedTransitionDuration);
-            DamageLabel.SetAlpha(0);
-            var damage = GameResources.Instance.RankDamageGraph.Evaluate((byte) r.CurrentLevel);
-            DamageLabel.text = $"Damage +{damage}%";
+            if (DamageLabel != null) {
+                DamageLabel.SetAlpha(0);
+                var damage = GameResources.Instance.RankDamageGraph.Evaluate((byte) r.CurrentLevel);
+                DamageLabel.text = $"Damage +{damage}%";
+            }
+
             yield return new WaitForSeconds(RankXPGainedTransitionDuration);
             var left = controller.RankXPGainedWaitDuration - RankXPGainedTransitionDuration;
             if (left > 0) {

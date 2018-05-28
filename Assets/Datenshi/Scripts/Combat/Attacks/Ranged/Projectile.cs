@@ -22,6 +22,7 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
         public AudioSource Source;
         public GameObject[] ToDecouple;
         public GameObject OnDefended;
+        public float MaxAngle;
 
         [ShowInInspector, ReadOnly]
         private bool wasShot;
@@ -34,6 +35,12 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
             get;
             private set;
         }
+
+        public float DamageMultiplier {
+            get;
+            private set;
+        } = 1;
+
 
         public void Shoot(RangedAttack attack, ICombatant shooter, ICombatant target) {
             Shoot(attack, shooter, target.Center - (Vector2) transform.position);
@@ -79,8 +86,12 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
                     return;
                 }
 
+                var info = new DamageInfo(UsedAttack, DamageMultiplier, e, Owner);
                 if (Owner.ShouldAttack(e)) {
-                    e.Damage(Owner, UsedAttack, DamageMultiplier);
+                    e.Damage(Owner,ref info, this);
+                    if (info.Canceled) {
+                        return;
+                    }
                 } else {
                     return;
                 }
@@ -102,11 +113,15 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
             Destroy(gameObject);
         }
 
-        public bool CanDefend(ICombatant entity) {
+        private bool CanDefend(ICombatant entity) {
             return Owner != null && Owner.Relationship != entity.Relationship;
         }
 
-        public void Defend(ICombatant entity, ref DamageInfo info) {
+        public bool CanAgressiveDefend(ICombatant combatant) {
+            return CanDefend(combatant);
+        }
+
+        public float DoAgressiveDefend(ICombatant entity, ref DamageInfo info) {
             if (ownerDestroyed) {
                 velocity = -velocity;
             } else {
@@ -115,35 +130,41 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
 
             Modify();
             Owner = entity;
+            return UsedAttack.FocusConsumption;
+        }
+
+        public bool CanEvasiveDefend(ICombatant combatant) {
+            return CanDefend(combatant);
+        }
+
+        public float DoEvasiveDefend(ICombatant combatant, ref DamageInfo info) {
+            // TODO: Implement
+            return UsedAttack.FocusConsumption;
+        }
+
+
+        public bool CanAutoDefend(ICombatant entity) {
+            return CanDefend(entity);
+        }
+
+        public float DoAutoDefend(ICombatant entity, ref DamageInfo info) {
+            // gg
             PlayDefendFX();
+            info.Canceled = true;
+            var angle = Random.value * MaxAngle - MaxAngle / 2 + Angle(velocity);
+            velocity = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle));
+            Owner = entity;
+            Modify();
+            //Destroy(gameObject);
+            return UsedAttack.FocusConsumption;
         }
 
         private void Modify() {
+            PlayDefendFX();
             velocity.Normalize();
             var g = GameResources.Instance;
             velocity *= g.DeflectSpeed;
             DamageMultiplier = g.DeflectDamageMultiply;
-        }
-
-        public float DamageMultiplier {
-            get;
-            private set;
-        } = 1;
-
-        public bool CanPoorlyDefend(ICombatant entity) {
-            return true;
-        }
-
-        public float MaxAngle;
-
-        public void PoorlyDefend(ICombatant entity, ref DamageInfo info) {
-            // TODO: Maybe come back
-            //var angle = Random.value * MaxAngle - MaxAngle / 2 + Angle(velocity);
-            //velocity = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle));
-            //Owner = entity;
-            //Modify();
-            PlayDefendFX();
-            Destroy(gameObject);
         }
 
         private void PlayDefendFX() {
@@ -162,10 +183,6 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
             }
 
             return Mathf.Atan2(vec.x, vec.y) * Mathf.Rad2Deg;
-        }
-
-        public DefenseType GetDefenseType() {
-            return DefenseType.Deflect;
         }
     }
 }

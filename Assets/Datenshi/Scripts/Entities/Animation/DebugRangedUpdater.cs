@@ -23,10 +23,6 @@ namespace Datenshi.Scripts.Entities.Animation {
         public override void SetDefend(bool defend) { }
         public override void SetTrigger(string key) { }
 
-        public override void TriggerDeflect() { }
-
-        public override void TriggerCounter() { }
-
         public override void TriggerDeath() {
             Destroy(Entity.gameObject);
         }

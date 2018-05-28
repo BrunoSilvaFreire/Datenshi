@@ -1,30 +1,55 @@
-﻿namespace Datenshi.Scripts.Combat {
-    public class DamageInfo {
-        public DamageInfo(ICombatant entity, uint damage) {
-            User = entity;
-            Damage = damage;
-            Canceled = false;
-            Hit = null;
+﻿using System;
+using Datenshi.Scripts.Combat.Attacks;
+using UnityEngine;
+
+namespace Datenshi.Scripts.Combat {
+    [Serializable]
+    public struct DamageInfo {
+        public DamageInfo(Attack attack, float multiplier, ICombatant damaged, ICombatant damager) {
+            this.attack = attack;
+            this.multiplier = multiplier;
+            this.canceled = false;
+            this.damaged = new SerializableCombatant(damaged);
+            this.damager = new SerializableCombatant(damager);
         }
 
-        public ICombatant Hit {
-            get;
-            set;
+        [SerializeField]
+        private Attack attack;
+
+        [SerializeField]
+        private float multiplier;
+
+        [SerializeField]
+        private SerializableCombatant damaged;
+
+        [SerializeField]
+        private SerializableCombatant damager;
+
+        [SerializeField]
+        private bool canceled;
+
+        public Attack Attack => attack;
+
+        public float Multiplier {
+            get {
+                return multiplier;
+            }
+            set {
+                multiplier = value;
+            }
         }
 
-        public ICombatant User {
-            get;
-            set;
-        }
+        public ICombatant Damaged => damaged.Value;
 
-        public uint Damage {
-            get;
-            set;
-        }
+        public ICombatant Damager => damager.Value;
 
         public bool Canceled {
-            get;
-            set;
+            get {
+                return canceled;
+            }
+            set {
+                canceled = value;
+            }
         }
     }
 }

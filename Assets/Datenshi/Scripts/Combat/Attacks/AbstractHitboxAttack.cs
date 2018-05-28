@@ -11,12 +11,12 @@ namespace Datenshi.Scripts.Combat.Attacks {
         private HitboxAttackExecutedEvent() { }
     }
 
-    public abstract class AbstractHitboxAttack : Attack {
-        public static readonly Variable<bool> Blocked = new Variable<bool>("entity.combat.cqb.blocked", true);
+    public abstract class AbstractHitboxAttack : Attack, IDefendable {
         private static readonly Color HitboxColor = Color.green;
         public ParticleSystem Particle;
 
         public Bounds2D Hitbox;
+        public float FocusConsumption = 0.1f;
 #if UNITY_EDITOR
 
         [ShowInInspector]
@@ -44,18 +44,6 @@ namespace Datenshi.Scripts.Combat.Attacks {
             var found = Physics2D.OverlapBoxAll(hb.Center, hb.Size, 0, GameResources.Instance.EntitiesMask);
             HitboxAttackExecutedEvent.Instance.Invoke(entity, damage, found);
             foreach (var hit in found) {
-                var info = new DamageInfo(entity, damage);
-                var d = hit.GetComponentInParent<IDefendable>();
-                if (d != null && d.CanPoorlyDefend(entity)) {
-                    success = true;
-                    d.PoorlyDefend(entity, ref info);
-                }
-
-                if (entity.GetVariable(Blocked)) {
-                    entity.SetVariable(Blocked, false);
-                    continue;
-                }
-
                 var e = hit.GetComponentInParent<ICombatant>();
                 if (e != null && e.Ignored) {
                     continue;
@@ -65,16 +53,39 @@ namespace Datenshi.Scripts.Combat.Attacks {
                     continue;
                 }
 
-                if (!info.Canceled) {
-                    success = true;
-                    e.Damage(entity, this);
-                    if (Particle != null) {
-                        Particle.Clone(e.Center);
-                    }
-                }
+                var info = new DamageInfo(this, 1, e, entity);
+                success = true;
+                e.Damage(entity, ref info, this);
             }
 
             return success;
+        }
+
+        public bool CanAutoDefend(ICombatant combatant) {
+            return true;
+        }
+
+        public float DoAutoDefend(ICombatant combatant, ref DamageInfo info) {
+            info.Canceled = true;
+            return FocusConsumption;
+        }
+
+        public bool CanAgressiveDefend(ICombatant combatant) {
+            return true;
+        }
+
+        public float DoAgressiveDefend(ICombatant combatant, ref DamageInfo info) {
+            info.Canceled = true;
+            return FocusConsumption;
+        }
+
+        public bool CanEvasiveDefend(ICombatant combatant) {
+            return true;
+        }
+
+        public float DoEvasiveDefend(ICombatant combatant, ref DamageInfo info) {
+            info.Canceled = true;
+            return FocusConsumption;
         }
     }
 }
