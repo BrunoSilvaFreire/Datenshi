@@ -353,7 +353,7 @@ namespace Datenshi.Scripts.Entities {
 
         public virtual uint Damage(ICombatant entity, ref DamageInfo info, IDefendable defendable = null) {
             if (defendable != null && Focusing && defendable.CanAutoDefend(this)) {
-                defendable.DoAutoDefend(this, ref info);
+                defendable.AutoDefend(this, ref info);
                 return 0;
             }
 

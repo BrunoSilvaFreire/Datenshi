@@ -8,7 +8,9 @@ namespace Datenshi.Scripts {
         public const float Precision = 0.5F;
 
         public const float NavmeshBoxcastDownsizeValue = 0.1F;
-        public static readonly Vector2 NavmeshBoxcastDownsizeScale = new Vector2(NavmeshBoxcastDownsizeValue, NavmeshBoxcastDownsizeValue);
+
+        public static readonly Vector2 NavmeshBoxcastDownsizeScale =
+            new Vector2(NavmeshBoxcastDownsizeValue, NavmeshBoxcastDownsizeValue);
 
         public const float MinPrecision = 0.1F;
         public const float MaxPrecision = 100;
@@ -17,6 +19,6 @@ namespace Datenshi.Scripts {
         public const float DefaultSpeed = 10;
         public const float DefaultJumpHeight = 10;
 
-        public const float DefaultInputThreshold = 0.1F;
+        public const float DefaultInputThreshold = 0.1F; 
     }
 }
