@@ -1,4 +1,5 @@
 ﻿using Datenshi.Scripts.Animation;
+using UnityEngine;
 
 namespace Datenshi.Scripts.Combat {
     public abstract class CombatantAnimatorUpdater : AnimatorUpdater {
@@ -9,5 +10,9 @@ namespace Datenshi.Scripts.Combat {
         public abstract void SetDefend(bool defend);
         public abstract void SetTrigger(string key);
         public abstract void SetBool(string key, bool p1);
+
+        public void SetAnimationTimeIndependent(bool independent) {
+            Animator.updateMode = independent ? AnimatorUpdateMode.UnscaledTime : AnimatorUpdateMode.Normal;
+        }
     }
 }

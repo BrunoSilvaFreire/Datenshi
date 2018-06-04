@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Datenshi.Scripts.Combat.Attacks;
 using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Input;
@@ -56,9 +57,12 @@ namespace Datenshi.Scripts.Combat {
         Collider2D Hitbox {
             get;
         }
+
         CombatRelationship Relationship {
             get;
         }
+
+        void SetInvulnerable(float duration);
 
         CombatantAnimatorUpdater AnimatorUpdater {
             get;
@@ -99,5 +103,7 @@ namespace Datenshi.Scripts.Combat {
         UnityEvent OnKilled {
             get;
         }
+
+        Coroutine StartCoroutine(IEnumerator evasiveDash);
     }
 }

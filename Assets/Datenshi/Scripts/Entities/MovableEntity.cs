@@ -64,7 +64,7 @@ namespace Datenshi.Scripts.Entities {
             }
         }
 
-        public bool ApplyVelocity = true;
+        private bool applyVelocity = true;
 
         [TitleGroup(CombatGroup)]
         public bool DamageGivesKnockback;
@@ -181,14 +181,16 @@ namespace Datenshi.Scripts.Entities {
 
         public void Move() {
             motor.Move(this);
-            MovementTransform.position += (Vector3) Velocity * Time.deltaTime;
+            if (ApplyVelocity) {
+                MovementTransform.position += (Vector3) Velocity * DeltaTime;
+            }
         }
 
         protected override void Update() {
             base.Update();
             if (ExternalForces.magnitude > 0.1) {
                 ExternalForces = Vector2.Lerp(ExternalForces, Vector2.zero, ExternalForcesDeacceleration);
-                Velocity += ExternalForces * Time.deltaTime;
+                Velocity += ExternalForces * DeltaTime;
             }
 
             Move();
@@ -236,6 +238,29 @@ namespace Datenshi.Scripts.Entities {
                 motorConfig = value;
             }
         }
+
+        public bool ApplyVelocity {
+            get {
+                return applyVelocity;
+            }
+            set {
+                applyVelocity = value;
+            }
+        }
+
+        [SerializeField]
+        private bool timeScaleIndependent;
+
+        public bool TimeScaleIndependent {
+            get {
+                return timeScaleIndependent;
+            }
+            set {
+                timeScaleIndependent = value;
+            }
+        }
+
+        public float DeltaTime => TimeScaleIndependent ? Time.unscaledDeltaTime : Time.deltaTime;
 
         public override void Stun(float duration) {
             base.Stun(duration);

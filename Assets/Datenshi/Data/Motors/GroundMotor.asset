@@ -29,7 +29,7 @@ MonoBehaviour:
   WallClimbState: {fileID: 114308803090730658}
   ExtraWallClimbLengthCheck: 30
   DashState: {fileID: 114336871027057290}
-  DashTriggerAnimatorKey: Evade
+  EvadeTriggerAnimatorKey: Evade
 --- !u!114 &114308803090730658
 MonoBehaviour:
   m_ObjectHideFlags: 0

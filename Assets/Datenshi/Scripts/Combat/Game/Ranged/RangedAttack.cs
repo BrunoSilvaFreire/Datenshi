@@ -1,9 +1,10 @@
-﻿using Datenshi.Scripts.Data;
+﻿using Datenshi.Scripts.Combat.Attacks;
+using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Datenshi.Scripts.Combat.Attacks.Ranged {
+namespace Datenshi.Scripts.Combat.Game.Ranged {
     [CreateAssetMenu(menuName = "Datenshi/Combat/RangedAttack")]
     public class RangedAttack : Attack {
         public static readonly Variable<float> LastFire = new Variable<float>("entity.combat.lastFire", 0);
@@ -12,6 +13,11 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
         public Vector2 Offset;
         public bool Aim = true;
         public float FocusConsumption;
+        public float EvasionSlowdownDuration = 2;
+        public float EvasionTimeStopScale = .1F;
+        public float EvasionDashDuration = .25F;
+        public Vector2 EvasionOffset;
+        public float EvasionTimeStopDelay = .5F;
 
         [HideIf("Aim")]
         public bool RawDir = true;
@@ -37,6 +43,7 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
                 TimeDelay = 1 / value;
             }
         }
+
 
         public override void Execute(ICombatant entity) {
             var lastFire = entity.GetVariable(LastFire);

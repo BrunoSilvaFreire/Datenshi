@@ -12,5 +12,19 @@ namespace Datenshi.Scripts.Movement {
             get;
             set;
         }
+
+        bool ApplyVelocity {
+            get;
+            set;
+        }
+
+        bool TimeScaleIndependent {
+            get;
+            set;
+        }
+
+        float DeltaTime {
+            get;
+        }
     }
 }

@@ -5,49 +5,9 @@ using DG.Tweening.Core;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Game.Time {
-    public class Slowdown {
-        private readonly TimeController controller;
-
-        public float Duration {
-            get;
-            private set;
-        }
-
-        internal Slowdown(float duration, TimeController controller) {
-            IsActive = true;
-            Duration = duration;
-            this.controller = controller;
-        }
-
-        public bool IsActive {
-            get;
-            private set;
-        }
-
-        public void Stop() {
-            if (!IsActive) {
-                return;
-            }
-
-            if (controller.CurrentSlowdown == this) {
-                controller.ResetTime();
-                controller.CurrentSlowdown = null;
-            }
-
-            IsActive = false;
-        }
-    }
-
     public class TimeController : Singleton<TimeController> {
-        public float DefaultTimeScale = 1;
-        public float DefaultSlowdownScale = .25F;
-        public float DefaultImpactFrameScale = .5F;
-        public float DefaultImpactDuration = .25F;
-        public float TimeChangeDuration = .25F;
-        private Tween currentTween;
         private static readonly DOGetter<float> Getter = TimeGetter;
         private static readonly DOSetter<float> Setter = TimeSetter;
-        internal Slowdown CurrentSlowdown;
 
         private static float TimeGetter() {
             return UnityEngine.Time.timeScale;
@@ -57,50 +17,20 @@ namespace Datenshi.Scripts.Game.Time {
             UnityEngine.Time.timeScale = scale;
         }
 
-        public Slowdown Slowdown(float duration) {
-            return Slowdown(duration, DefaultSlowdownScale);
+        public float DefaultInitTimeScale = 1;
+        public float DefaultSlowdownDuration = .25F;
+        public void Slowdown() {
+            Slowdown(DefaultInitTimeScale);
         }
 
-        public Slowdown Slowdown(float duration, float timeScale) {
-            var s = CurrentSlowdown;
-            CurrentSlowdown = new Slowdown(duration, this);
-            s?.Stop();
-            StartCoroutine(Wait(CurrentSlowdown, CurrentSlowdown.Duration));
-            return CurrentSlowdown;
+        public void Slowdown(float initScale) {
+            Slowdown(initScale, DefaultSlowdownDuration);
         }
 
-        private IEnumerator Wait(Slowdown slowdown, float slowdownDuration) {
-            yield return new WaitForSecondsRealtime(slowdownDuration);
-            if (slowdown.IsActive) {
-                slowdown.Stop();
-            }
-        }
-
-        public void Reset() {
-            currentTween?.Kill();
-            currentTween = null;
-        }
-
-        public void ImpactFrame() {
-            ImpactFrame(DefaultImpactDuration);
-        }
-
-        public void ImpactFrame(float duration) {
-            ImpactFrame(DefaultImpactFrameScale, duration);
-        }
-
-        private void DOTime(float scale, float duration) {
-            Reset();
-            currentTween = DOTween.To(Getter, Setter, scale, duration).SetUpdate(true).OnComplete(Reset);
-        }
-
-        public void ResetTime() {
-            DOTime(DefaultTimeScale, TimeChangeDuration);
-        }
-
-        public void ImpactFrame(float timeScale, float duration) {
-            UnityEngine.Time.timeScale = timeScale;
-            DOTime(DefaultTimeScale, duration);
+        public void Slowdown(float initScale, float duration) {
+            this.DOKill();
+            UnityEngine.Time.timeScale = initScale;
+            DOTween.To(Getter, Setter, 1, duration).SetUpdate(true);
         }
     }
 }

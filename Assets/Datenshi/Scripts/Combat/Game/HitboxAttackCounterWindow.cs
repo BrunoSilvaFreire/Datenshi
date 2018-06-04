@@ -61,7 +61,7 @@ namespace Datenshi.Scripts.Combat.Game {
         public float LowCutoff = 440;
 
         private IEnumerator DoFreezeTimeCombo(float timeScale, float timeScaleDuration, ICombatant entity) {
-            TimeController.Instance.ImpactFrame(timeScale, timeScaleDuration);
+            TimeController.Instance.Slowdown(timeScale, timeScaleDuration);
             AudioManager.Instance.ImpactHighFilter(DamageCutoff, LowCutoff, timeScaleDuration);
             var animator = entity.AnimatorUpdater.Animator;
             var bnw = GraphicsSingleton.Instance.BlackAndWhite;

@@ -118,7 +118,7 @@ namespace Datenshi.Scripts.Game {
                 shakeTweener.OnComplete(ResetGlitch);
             }
 
-            TimeController.Instance.ImpactFrame();
+            TimeController.Instance.Slowdown();
         }
 
         private Attack lastAttack;

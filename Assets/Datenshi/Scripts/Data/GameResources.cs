@@ -23,7 +23,6 @@ namespace Datenshi.Scripts.Data {
 
         public float DeflectSpeed = 20;
         public float DeflectDamageMultiply = 3;
-
         public float GetRequiredXP(byte level) {
             return RankRequiredXPGraph.Evaluate(level);
         }

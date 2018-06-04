@@ -16,5 +16,10 @@ MonoBehaviour:
   Offset: {x: 0, y: -0.807}
   Aim: 1
   FocusConsumption: 0.5
+  EvasionSlowdownDuration: 2
+  EvasionTimeStopScale: 0.1
+  EvasionDashDuration: 0.25
+  EvasionOffset: {x: 1, y: 1}
+  EvasionTimeStopDelay: 1
   RawDir: 1
   Damage: 5

@@ -33,7 +33,7 @@ namespace Datenshi.Scripts.Movement.States {
         private int wallClimbExtraCheckDir = 0;
         private readonly HorizontalPhysicsCheck wallClimbExtraCheck;
         public State DashState;
-        public string DashTriggerAnimatorKey = "Dash";
+        public string EvadeTriggerAnimatorKey = "Evade";
 
         public GroundedState() {
             wallClimbExtraCheck = new HorizontalPhysicsCheck(WallClimbExtraChecker);
@@ -100,8 +100,9 @@ namespace Datenshi.Scripts.Movement.States {
 
             var max = user.MaxSpeed;
             if (collisionStatus.Down) {
-                max *= user.SpeedMultiplier;                
+                max *= user.SpeedMultiplier;
             }
+
             velocity.x = Mathf.Clamp(velocity.x, -max, max);
 
             GroundedBehaviour.Check(user, ref velocity, ref collisionStatus, collisionMask);
@@ -155,13 +156,12 @@ namespace Datenshi.Scripts.Movement.States {
 
             user.Direction = d;
             */
-            if (user.InputProvider.GetButtonDown((int) Actions.Dash)) { }
-
             dir = Math.Sign(xInput);
             var jump = hasProvider && provider.GetJump();
             user.Focusing = hasProvider && provider.GetDefend();
-            if (hasProvider && provider.GetDash()) {
-                animator.SetTrigger(DashTriggerAnimatorKey);
+            if (hasProvider && provider.GetButtonDown((int) Actions.Dash)) {
+                // If dash was ellegible it would not be here, so it's safe to assume we wanna evade
+                animator.SetTrigger(EvadeTriggerAnimatorKey);
             }
 
             if (hasProvider && provider.GetAttack()) {
@@ -222,7 +222,7 @@ namespace Datenshi.Scripts.Movement.States {
             }
 
             if (!collisionStatus.Down) {
-                var g = gravity * config.GravityScale * Time.deltaTime;
+                var g = gravity * config.GravityScale * user.DeltaTime;
                 if (velocity.y > 0 && !jump) {
                     g *= config.JumpCutGravityModifier;
                 }

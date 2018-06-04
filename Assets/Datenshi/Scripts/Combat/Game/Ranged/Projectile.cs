@@ -1,10 +1,15 @@
-﻿using Datenshi.Scripts.Data;
+﻿using System.Collections;
+using Datenshi.Scripts.Data;
+using Datenshi.Scripts.Entities;
+using Datenshi.Scripts.Game.Time;
+using Datenshi.Scripts.Graphics;
+using Datenshi.Scripts.Movement;
 using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Datenshi.Scripts.Combat.Attacks.Ranged {
+namespace Datenshi.Scripts.Combat.Game.Ranged {
     public class ProjectileShotEvent : UnityEvent<Projectile, ICombatant, ICombatant> {
         public static readonly ProjectileShotEvent Instance = new ProjectileShotEvent();
         private ProjectileShotEvent() { }
@@ -14,15 +19,14 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
         [ShowInInspector, ReadOnly]
         private Vector2 velocity;
 
-        public float Speed;
+        public float TravelSpeed = 5;
         public float DestroyDelay = 2;
         public GameObject SpawnOnHit;
-        public AudioClip Clip;
-        public AudioClip Defense;
+        public GameObject SpawnOnDefended;
+        public AudioClip DefendedClip;
         public AudioSource Source;
         public GameObject[] ToDecouple;
-        public GameObject OnDefended;
-        public float MaxAngle;
+        public float MaxAutoDefenseAngle = 150;
 
         [ShowInInspector, ReadOnly]
         private bool wasShot;
@@ -54,11 +58,7 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
             wasShot = true;
             velocity = direction;
             velocity.Normalize();
-            velocity *= Speed;
-
-            if (Source != null && Clip != null) {
-                Source.PlayOneShot(Clip);
-            }
+            velocity *= TravelSpeed;
         }
 
         private void OnOwnerKilled() {
@@ -88,7 +88,7 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
 
                 var info = new DamageInfo(UsedAttack, DamageMultiplier, e, Owner);
                 if (Owner.ShouldAttack(e)) {
-                    e.Damage(Owner,ref info, this);
+                    e.Damage(Owner, ref info, this);
                     if (info.Canceled) {
                         return;
                     }
@@ -138,8 +138,63 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
         }
 
         public float DoEvasiveDefend(ICombatant combatant, ref DamageInfo info) {
-            // TODO: Implement
+            info.Canceled = true;
+            combatant.StartCoroutine(EvasiveDash(combatant));
             return UsedAttack.FocusConsumption;
+        }
+
+        private IEnumerator EvasiveDash(ICombatant combatant) {
+            var sdDuration = UsedAttack.EvasionSlowdownDuration;
+            GraphicsSingleton.Instance.BlackAndWhite.DoAmountImpact(1, sdDuration);
+            var initScale = UsedAttack.EvasionTimeStopScale;
+            Time.timeScale = initScale;
+            combatant.Ignored = true;
+            var m = combatant as IDatenshiMovable;
+            var e = combatant as Entity;
+            var g = e != null ? e.MiscController.GhostingContainer : null;
+            var a = combatant.AnimatorUpdater;
+            if (m != null) {
+                m.TimeScaleIndependent = true;
+            }
+
+            if (g != null) {
+                g.SetPermanentSpawn(true);
+            }
+
+            a.SetAnimationTimeIndependent(true);
+/*            float timePassed = 0;
+            var originalPos = combatant.GroundPosition;
+            var entityPos = ownerDestroyed ? originalPos : Owner.GroundPosition;
+
+            var offset = UsedAttack.EvasionOffset;
+            var dir = Direction.DirectionValue.FromVector(entityPos.x - originalPos.x);
+            offset.x *= dir;
+            var targetPos = entityPos + offset;
+            var totalTime = UsedAttack.EvasionDashDuration;
+            while (timePassed < totalTime) {
+                timePassed += Time.unscaledDeltaTime;
+                var percent = timePassed / totalTime;
+                combatant.Transform.position = Vector2.Lerp(originalPos, targetPos, percent);
+                yield return null;
+            }
+
+            var d = combatant.CurrentDirection;
+            d.X = -dir;
+            combatant.CurrentDirection = d;*/
+            var slowdownDuration = UsedAttack.EvasionSlowdownDuration;
+            yield return new WaitForSecondsRealtime(UsedAttack.EvasionTimeStopDelay);
+            TimeController.Instance.Slowdown(initScale, slowdownDuration);
+            yield return new WaitForSeconds(slowdownDuration);
+            combatant.Ignored = false;
+            if (m != null) {
+                m.TimeScaleIndependent = false;
+            }
+
+            if (g != null) {
+                g.SetPermanentSpawn(false);
+            }
+
+            a.SetAnimationTimeIndependent(false);
         }
 
 
@@ -151,7 +206,7 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
             // gg
             PlayDefendFX();
             info.Canceled = true;
-            var angle = Random.value * MaxAngle - MaxAngle / 2 + Angle(velocity);
+            var angle = Random.value * MaxAutoDefenseAngle - MaxAutoDefenseAngle / 2 + Angle(velocity);
             velocity = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle));
             Owner = entity;
             Modify();
@@ -168,12 +223,12 @@ namespace Datenshi.Scripts.Combat.Attacks.Ranged {
         }
 
         private void PlayDefendFX() {
-            if (OnDefended != null) {
-                OnDefended.Clone(transform.position);
+            if (SpawnOnDefended != null) {
+                SpawnOnDefended.Clone(transform.position);
             }
 
-            if (Defense != null) {
-                Source.PlayOneShot(Defense);
+            if (DefendedClip != null) {
+                Source.PlayOneShot(DefendedClip);
             }
         }
 

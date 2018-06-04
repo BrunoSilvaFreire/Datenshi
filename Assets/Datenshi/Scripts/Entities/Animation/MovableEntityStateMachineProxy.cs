@@ -1,4 +1,5 @@
 ﻿using Datenshi.Scripts.AI;
+using Datenshi.Scripts.Animation;
 using Datenshi.Scripts.Combat.Attacks;
 using Datenshi.Scripts.Util;
 using UnityEngine;

@@ -1,5 +1,6 @@
 ﻿using System;
 using Datenshi.Scripts.Data;
+using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Input;
 using Datenshi.Scripts.Movement.Config;
 using UnityEngine;
@@ -29,14 +30,20 @@ namespace Datenshi.Scripts.Movement.States {
             vel.x = -inputDir * config.WallClimbCounterForce;
         }
 
-        public override void Move(IMovable user, ref Vector2 vel, ref CollisionStatus collStatus,
-            StateMotorMachine machine, StateMotorConfig c, LayerMask collisionMask) {
+        public override void Move(
+            IMovable user,
+            ref Vector2 vel,
+            ref CollisionStatus collStatus,
+            StateMotorMachine machine,
+            StateMotorConfig c,
+            LayerMask collisionMask) {
             var config = c as DatenshiGroundConfig;
+            var e = user as MovableEntity;
+
             var provider = user.InputProvider as DatenshiInputProvider;
-            var holder = user as IVariableHolder;
-            if (provider == null || holder == null || config == null) {
+            if (provider == null || e == null || config == null) {
                 machine.State = NormalState;
-                Debug.LogErrorFormat("Need these 3 to not be null in wall climb state: {0} || {1} || {2}", provider, holder, config);
+                Debug.LogErrorFormat("Need these 3 to not be null in wall climb state: {0} || {1} || {2}", provider, e, config);
                 return;
             }
 
@@ -45,10 +52,10 @@ namespace Datenshi.Scripts.Movement.States {
             var inputDir = Math.Sign(xInput);
             var wallDir = collStatus.HorizontalCollisionDir;
             if (inputDir != wallDir) {
-                var sinceLeft = holder.GetVariable(SecondsSinceLeaveWall);
+                var sinceLeft = e.GetVariable(SecondsSinceLeaveWall);
                 var margin = config.OffWallTimeMargin;
                 if (sinceLeft >= margin) {
-                    holder.SetVariable(SecondsSinceLeaveWall, 0);
+                    e.SetVariable(SecondsSinceLeaveWall, 0);
                     machine.State = NormalState;
                     return;
                 }
@@ -57,12 +64,12 @@ namespace Datenshi.Scripts.Movement.States {
                     vel.y = config.JumpForce;
                     vel.x = -wallDir * config.WallClimbCounterForce;
                     user.Velocity = vel;
-                    holder.SetVariable(SecondsSinceLeaveWall, 0);
+                    e.SetVariable(SecondsSinceLeaveWall, 0);
                     machine.State = NormalState;
                     ;
                 } else {
-                    sinceLeft += Time.deltaTime;
-                    holder.SetVariable(SecondsSinceLeaveWall, sinceLeft);
+                    sinceLeft += Time.unscaledDeltaTime;
+                    e.SetVariable(SecondsSinceLeaveWall, sinceLeft);
                     var gravity = GameResources.Instance.Gravity;
                     NormalState.ExecuteState(user, machine, ref vel, ref collStatus, collisionMask, gravity, this);
                 }
@@ -97,7 +104,7 @@ namespace Datenshi.Scripts.Movement.States {
                     DoWallClimb(ref vel, config, inputDir);
                     machine.State = NormalState;
                 } else {
-                    vel.y = SlideSpeed * Time.deltaTime;
+                    vel.y = SlideSpeed * e.DeltaTime;
                 }
 
                 user.Velocity = vel;

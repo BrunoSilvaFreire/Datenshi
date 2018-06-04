@@ -7126,6 +7126,81 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: -23.71518
       objectReference: {fileID: 0}
+    - target: {fileID: 114818207654441168, guid: 293e7333ecb6bc54ca4c938d7335d9b2,
+        type: 2}
+      propertyPath: _dontDestroyOnLoad
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114011135646057376, guid: 293e7333ecb6bc54ca4c938d7335d9b2,
+        type: 2}
+      propertyPath: DefaultInitTimeScale
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 114085977230786278, guid: 293e7333ecb6bc54ca4c938d7335d9b2,
+        type: 2}
+      propertyPath: OutlineColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114085977230786278, guid: 293e7333ecb6bc54ca4c938d7335d9b2,
+        type: 2}
+      propertyPath: OutlineColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114085977230786278, guid: 293e7333ecb6bc54ca4c938d7335d9b2,
+        type: 2}
+      propertyPath: OutlineColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114085977230786278, guid: 293e7333ecb6bc54ca4c938d7335d9b2,
+        type: 2}
+      propertyPath: Outline
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114711143589959862, guid: 293e7333ecb6bc54ca4c938d7335d9b2,
+        type: 2}
+      propertyPath: DebugInput
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114711143589959862, guid: 293e7333ecb6bc54ca4c938d7335d9b2,
+        type: 2}
+      propertyPath: Defend
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114302158536859372, guid: 293e7333ecb6bc54ca4c938d7335d9b2,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114482399299084776, guid: 293e7333ecb6bc54ca4c938d7335d9b2,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 95851931819171008, guid: 293e7333ecb6bc54ca4c938d7335d9b2,
+        type: 2}
+      propertyPath: m_UpdateMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114627651355056388, guid: 293e7333ecb6bc54ca4c938d7335d9b2,
+        type: 2}
+      propertyPath: inputProvider
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114627651355056388, guid: 293e7333ecb6bc54ca4c938d7335d9b2,
+        type: 2}
+      propertyPath: collisionStatus.Down
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114627651355056388, guid: 293e7333ecb6bc54ca4c938d7335d9b2,
+        type: 2}
+      propertyPath: invulnerable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114049724287705444, guid: 293e7333ecb6bc54ca4c938d7335d9b2,
+        type: 2}
+      propertyPath: SpawnCooldown
+      value: 0.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 293e7333ecb6bc54ca4c938d7335d9b2, type: 2}
   m_IsPrefabParent: 0

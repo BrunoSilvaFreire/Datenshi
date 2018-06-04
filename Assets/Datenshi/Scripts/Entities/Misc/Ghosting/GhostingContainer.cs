@@ -8,10 +8,21 @@ namespace Datenshi.Scripts.Entities.Misc.Ghosting {
     /// combined, this forms a trailing effect behind the player 
     /// </summary>
     public class GhostingContainer : MonoBehaviour {
-        public float SpawnRate;
+        public float SpawnCooldown;
+
+        [ShowInInspector]
+        public float SpawnRate {
+            get {
+                return 1 / SpawnCooldown;
+            }
+            set {
+                SpawnCooldown = 1 / value;
+            }
+        }
+
         public bool Spawning;
         public GhostPool Pool;
-        private float lastSpawn;
+        private float spawnCooldownLeft;
         public MovableEntity Entity;
 
         [ShowInInspector, ReadOnly]
@@ -21,18 +32,17 @@ namespace Datenshi.Scripts.Entities.Misc.Ghosting {
 
 
         private void Update() {
-            if (Spawning) {
-                var now = Time.time;
-                var delay = now - lastSpawn;
-                if (delay >= SpawnRate) {
+            if (Spawning || permanentSpawn) {
+                spawnCooldownLeft -= Entity.DeltaTime;
+                if (spawnCooldownLeft <= 0) {
                     Spawn();
                 }
             }
 
             toRemove.Clear();
             foreach (var sprite in usedSprites) {
-                sprite.TimeLeft -= Time.deltaTime;
-                if (sprite.TimeLeft < 0) {
+                sprite.TimeLeft -= Entity.DeltaTime;
+                if (sprite.TimeLeft <= 0) {
                     toRemove.Add(sprite);
                 }
             }
@@ -44,7 +54,7 @@ namespace Datenshi.Scripts.Entities.Misc.Ghosting {
         }
 
         private void Spawn() {
-            lastSpawn = Time.time;
+            spawnCooldownLeft = SpawnCooldown;
             var g = Pool.Get();
             if (g == null) {
                 Debug.LogWarning("Didn't get a ghost from the pool!");
@@ -53,6 +63,12 @@ namespace Datenshi.Scripts.Entities.Misc.Ghosting {
 
             g.Setup(Entity);
             usedSprites.Add(g);
+        }
+
+        private bool permanentSpawn;
+
+        public void SetPermanentSpawn(bool b) {
+            permanentSpawn = b;
         }
     }
 }

@@ -9,7 +9,9 @@
         "Datenshi-Movement",
         "Datenshi-Animation",
         "Datenshi-Graphics",
-        "Datenshi-Audio"
+        "Datenshi-Audio",
+        "Datenshi-Entities",
+        "Datenshi-World"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],
