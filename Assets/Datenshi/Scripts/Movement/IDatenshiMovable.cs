@@ -26,5 +26,7 @@ namespace Datenshi.Scripts.Movement {
         float DeltaTime {
             get;
         }
+
+        void AddSpeedEffector(float magnitude, float duration);
     }
 }

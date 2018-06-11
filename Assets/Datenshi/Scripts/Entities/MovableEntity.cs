@@ -64,8 +64,6 @@ namespace Datenshi.Scripts.Entities {
             }
         }
 
-        private bool applyVelocity = true;
-
         [TitleGroup(CombatGroup)]
         public bool DamageGivesKnockback;
 
@@ -240,13 +238,9 @@ namespace Datenshi.Scripts.Entities {
         }
 
         public bool ApplyVelocity {
-            get {
-                return applyVelocity;
-            }
-            set {
-                applyVelocity = value;
-            }
-        }
+            get;
+            set;
+        } = true;
 
         [SerializeField]
         private bool timeScaleIndependent;

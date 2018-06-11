@@ -148,17 +148,25 @@ namespace Datenshi.Scripts.Entities {
         }
 
         protected virtual void Update() {
+            UpdateRendering();
+            UpdateInvulnerability();
+            UpdateStun();
+            UpdateFocus();
+        }
+
+        private void UpdateRendering() {
             if (ColorizableRenderer != null) {
                 ColorizableRenderer.Outline = IsInvulnerable;
             }
+        }
 
-            if (Stunned) {
-                totalStunTimeLeft -= Time.deltaTime;
-                if (totalStunTimeLeft < 0) {
-                    Stunned = false;
-                }
+        private void UpdateInvulnerability() {
+            if (invulnerabilitySecondsLeft > 0) {
+                invulnerabilitySecondsLeft -= Time.deltaTime;
             }
+        }
 
+        private void UpdateFocus() {
             if (focusing) {
                 if (FocusTimeLeft <= 0) {
                     focusing = false;
@@ -193,6 +201,15 @@ namespace Datenshi.Scripts.Entities {
             }
 
             updater.SetDefend(focusing);
+        }
+
+        private void UpdateStun() {
+            if (Stunned) {
+                totalStunTimeLeft -= Time.deltaTime;
+                if (totalStunTimeLeft < 0) {
+                    Stunned = false;
+                }
+            }
         }
 
         public bool IsInvulnerable => Invulnerable || HasTemporaryInvulnerability;
@@ -293,35 +310,15 @@ namespace Datenshi.Scripts.Entities {
             }
         }
 
-        [ShowIf("HasTemporaryInvulnerability"), ReadOnly,
-         TitleGroup(HealthGroup)]
+        [ShowIf("HasTemporaryInvulnerability"), ReadOnly, TitleGroup(HealthGroup)]
         private float invulnerabilitySecondsLeft;
 
         [ShowInInspector, TitleGroup(HealthGroup)]
-        public bool HasTemporaryInvulnerability => invulnerabilityCoroutine != null;
+        public bool HasTemporaryInvulnerability => invulnerabilitySecondsLeft > 0;
 
-        private Coroutine invulnerabilityCoroutine;
 
         public void SetInvulnerable(float seconds) {
-            if (invulnerabilitySecondsLeft < seconds) {
-                invulnerabilitySecondsLeft = seconds;
-            }
-
-            CoroutineUtil.ReplaceCoroutine(ref invulnerabilityCoroutine, this, InvulnerabilityCoroutine());
-        }
-
-        private IEnumerator InvulnerabilityCoroutine() {
-            invulnerable = true;
-            Debug.Log($"<color=#FF00FF>Entity {name} became invulnerable for {invulnerabilitySecondsLeft}</color>");
-            while (invulnerabilitySecondsLeft > 0) {
-                invulnerabilitySecondsLeft -= Time.deltaTime;
-                yield return null;
-            }
-
-            Debug.Log($"<color=#FF00FF>Entity {name} is no longer invulnerable</color>");
-            invulnerabilityCoroutine = null;
-            Invulnerable = false;
-            invulnerabilitySecondsLeft = 0;
+            invulnerabilitySecondsLeft += seconds;
         }
 
         public bool IsEnemy(LivingEntity entity) {
@@ -360,7 +357,7 @@ namespace Datenshi.Scripts.Entities {
                 return 0;
             }
 
-            if (Invulnerable || Ignored || Dead || info.Canceled) {
+            if (IsInvulnerable || Ignored || Dead || info.Canceled) {
                 return 0;
             }
 
