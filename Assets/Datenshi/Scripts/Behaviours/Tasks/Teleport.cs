@@ -98,14 +98,14 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
 
         private IEnumerator DoTeleport(ICombatant entity, ILocatable target) {
             teleporting = true;
-            entity.Invulnerable = true;
+            entity.GodMode = true;
             var updater = entity.AnimatorUpdater.Animator;
             updater.SetTrigger(StartTeleportKey);
             updater.SetBool(TeleportingKey, true);
             yield return new WaitForSeconds(TeleportDuration);
             Entity.transform.position = GetBestPosition(target.Center);
             updater.SetTrigger(EndTeleportKey);
-            entity.Invulnerable = false;
+            entity.GodMode = false;
             updater.SetBool(TeleportingKey, false);
             teleporting = false;
             finished = true;

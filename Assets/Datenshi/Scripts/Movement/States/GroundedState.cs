@@ -100,7 +100,7 @@ namespace Datenshi.Scripts.Movement.States {
 
             var max = user.MaxSpeed;
             if (collisionStatus.Down) {
-                max *= user.SpeedMultiplier;
+                max *= user.BaseSpeedMultiplier;
             }
 
             velocity.x = Mathf.Clamp(velocity.x, -max, max);
@@ -118,7 +118,7 @@ namespace Datenshi.Scripts.Movement.States {
                 }
             }
 
-            if (!user.Focusing && c.DashEllegible && user.InputProvider.GetButtonDown((int) Actions.Dash)) {
+            if (!user.Defending && c.DashEllegible && user.InputProvider.GetButtonDown((int) Actions.Dash)) {
                 machine.State = DashState;
                 return true;
             }
@@ -158,7 +158,7 @@ namespace Datenshi.Scripts.Movement.States {
             */
             dir = Math.Sign(xInput);
             var jump = hasProvider && provider.GetJump();
-            user.Focusing = hasProvider && provider.GetDefend();
+            user.Defending = hasProvider && provider.GetDefend();
             if (hasProvider && provider.GetButtonDown((int) Actions.Dash)) {
                 // If dash was ellegible it would not be here, so it's safe to assume we wanna evade
                 animator.SetTrigger(EvadeTriggerAnimatorKey);

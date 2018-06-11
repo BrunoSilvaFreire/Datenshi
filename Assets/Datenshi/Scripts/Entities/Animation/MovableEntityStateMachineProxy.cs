@@ -72,7 +72,7 @@ namespace Datenshi.Scripts.Entities.Animation {
         }
 
         public void SetSpeedMultiplier(float value) {
-            Target.SpeedMultiplier = value;
+            Target.BaseSpeedMultiplier = value;
         }
 
 
@@ -167,7 +167,7 @@ namespace Datenshi.Scripts.Entities.Animation {
 
 
         public void SetFocusTimeLeft(float value) {
-            Target.FocusTimeLeft = value;
+            Target.DefendTimeLeft = value;
         }
 
         public void SetMaxHealth(uint value) {
@@ -179,7 +179,7 @@ namespace Datenshi.Scripts.Entities.Animation {
         }
 
         public void SetInvulnerable(bool value) {
-            Target.Invulnerable = value;
+            Target.GodMode = value;
         }
 
         public void SetUseGUILayout(bool value) {

@@ -15,7 +15,7 @@ namespace Datenshi.Scripts.UI.Misc {
 
         protected override float GetPercentage(Entity entity) {
             var e = entity as LivingEntity;
-            return e == null ? 0 : e.FocusTimePercent;
+            return e == null ? 0 : e.DefendTimePercent;
         }
     }
 }

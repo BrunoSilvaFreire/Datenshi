@@ -172,7 +172,7 @@ namespace Datenshi.Scripts.Game {
             }
 
             var l = currentEntity as LivingEntity;
-            var currentDefending = l != null && l.Focusing;
+            var currentDefending = l != null && l.Defending;
             if (currentDefending == defending) {
                 return;
             }

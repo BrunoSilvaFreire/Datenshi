@@ -1,4 +1,5 @@
-﻿using Datenshi.Scripts.AI;
+﻿using System.Collections.Generic;
+using Datenshi.Scripts.AI;
 using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Combat.Attacks;
 using Datenshi.Scripts.Movement;
@@ -52,17 +53,26 @@ namespace Datenshi.Scripts.Entities {
         public float YForce = 5;
 
         [SerializeField, TitleGroup(MovementGroup)]
-        private float speedMultiplier = 1;
+        private float baseSpeedMultiplier = 1;
 
+
+        public float BaseSpeedMultiplier {
+            get {
+                return baseSpeedMultiplier;
+            }
+            set {
+                baseSpeedMultiplier = value;
+            }
+        }
 
         public float SpeedMultiplier {
             get {
-                return speedMultiplier;
-            }
-            set {
-                speedMultiplier = value;
+                var baseSpeed = baseSpeedMultiplier;
+
+                return baseSpeed;
             }
         }
+
 
         [TitleGroup(CombatGroup)]
         public bool DamageGivesKnockback;
@@ -186,13 +196,11 @@ namespace Datenshi.Scripts.Entities {
 
         protected override void Update() {
             base.Update();
-            if (ExternalForces.magnitude > 0.1) {
-                ExternalForces = Vector2.Lerp(ExternalForces, Vector2.zero, ExternalForcesDeacceleration);
-                Velocity += ExternalForces * DeltaTime;
-            }
+            UpdateMovement();
+            UpdateDirection();
+        }
 
-            Move();
-
+        private void UpdateDirection() {
             var newDirection = Direction.FromVector(Velocity);
             var xDir = newDirection.X;
             var yDir = newDirection.Y;
@@ -206,6 +214,15 @@ namespace Datenshi.Scripts.Entities {
             }
 
             Direction = dir;
+        }
+
+        private void UpdateMovement() {
+            if (ExternalForces.magnitude > 0.1) {
+                ExternalForces = Vector2.Lerp(ExternalForces, Vector2.zero, ExternalForcesDeacceleration);
+                Velocity += ExternalForces * DeltaTime;
+            }
+
+            Move();
         }
 
 
@@ -255,10 +272,32 @@ namespace Datenshi.Scripts.Entities {
         }
 
         public float DeltaTime => TimeScaleIndependent ? Time.unscaledDeltaTime : Time.deltaTime;
+        private List<SpeedEffector> speedEffectors = new List<SpeedEffector>();
+
+        private struct SpeedEffector {
+            private readonly float magnitude;
+            private readonly float duration;
+            private float timeLeft;
+
+            public SpeedEffector(float magnitude, float duration) : this() {
+                this.magnitude = magnitude;
+                this.duration = duration;
+                timeLeft = duration;
+            }
+
+            public bool Tick() {
+                timeLeft -= Time.deltaTime;
+                return timeLeft <= 0;
+            }
+        }
+
+        public void AddSpeedEffector(float magnitude, float duration) {
+            //TODO implement
+        }
 
         public override void Stun(float duration) {
             base.Stun(duration);
-            if (Invulnerable || !StunRemovesVelocity) {
+            if (GodMode || !StunRemovesVelocity) {
                 return;
             }
 

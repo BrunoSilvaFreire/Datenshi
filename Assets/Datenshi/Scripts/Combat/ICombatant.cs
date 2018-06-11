@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using Datenshi.Scripts.Combat.Attacks;
+using Datenshi.Scripts.Combat.Status;
 using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Input;
 using Datenshi.Scripts.Util;
@@ -69,7 +71,7 @@ namespace Datenshi.Scripts.Combat {
         }
 
 
-        float FocusTimeLeft {
+        float DefendTimeLeft {
             get;
             set;
         }
@@ -78,12 +80,12 @@ namespace Datenshi.Scripts.Combat {
             get;
         }
 
-        bool Focusing {
+        bool Defending {
             get;
             set;
         }
 
-        bool CanFocus {
+        bool CanDefend {
             get;
         }
 
@@ -91,7 +93,7 @@ namespace Datenshi.Scripts.Combat {
             get;
         }
 
-        bool Invulnerable {
+        bool GodMode {
             get;
             set;
         }
@@ -99,6 +101,8 @@ namespace Datenshi.Scripts.Combat {
         void Stun(float duration);
 
         void ExecuteAttack(Attack attack);
+        void ApplyStatusEffect(StatusEffect e);
+        IEnumerable<T> FindStatusEffects<T>() where T : StatusEffect;
 
         UnityEvent OnKilled {
             get;

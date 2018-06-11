@@ -93,7 +93,7 @@ namespace Datenshi.Scripts.Entities {
         }
 
         public void SetFocusTimeLeft(float value) {
-            Target.FocusTimeLeft = value;
+            Target.DefendTimeLeft = value;
         }
 
 
@@ -106,7 +106,7 @@ namespace Datenshi.Scripts.Entities {
         }
 
         public void SetInvulnerable(bool value) {
-            Target.Invulnerable = value;
+            Target.GodMode = value;
         }
 
         public void SetUseGUILayout(bool value) {

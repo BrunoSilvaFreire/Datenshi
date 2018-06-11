@@ -3,9 +3,13 @@ using UPM.Motors;
 
 namespace Datenshi.Scripts.Movement {
     public interface IDatenshiMovable : ILocatable, IMovable {
-        float SpeedMultiplier {
+        float BaseSpeedMultiplier {
             get;
             set;
+        }
+
+        float SpeedMultiplier {
+            get;
         }
 
         Direction Direction {
@@ -27,6 +31,5 @@ namespace Datenshi.Scripts.Movement {
             get;
         }
 
-        void AddSpeedEffector(float magnitude, float duration);
     }
 }

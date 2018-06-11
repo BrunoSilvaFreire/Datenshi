@@ -61,7 +61,7 @@ namespace Datenshi.Scripts.Combat.Attacks {
             }
 
             if (success) {
-                entity.FocusTimeLeft += DefenseRegain;
+                entity.DefendTimeLeft += DefenseRegain;
             }
 
             return success;

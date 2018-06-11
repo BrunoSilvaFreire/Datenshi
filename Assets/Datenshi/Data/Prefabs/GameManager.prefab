@@ -1028,7 +1028,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1328608604676546}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -201.76, y: -23.67618, z: -9.87113}
+  m_LocalPosition: {x: -194.917, y: -23.71518, z: -9.87113}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4768774366305818}
@@ -1150,7 +1150,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1792401617246154}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -201.76, y: -23.67618, z: -9.87113}
+  m_LocalPosition: {x: -194.917, y: -23.71518, z: -9.87113}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4727608061611176}
@@ -1225,7 +1225,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1820342329192474}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -201.76, y: -25.86, z: 10.12887}
+  m_LocalPosition: {x: -194.917, y: -25.899, z: 10.12887}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4633032197183884}
@@ -1980,7 +1980,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: e0969d4992532924a81d562f2eb355ad, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -2016,11 +2016,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55e95f7de9e54216b06207c3cd974658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefaultTimeScale: 1
-  DefaultSlowdownScale: 1
-  DefaultImpactFrameScale: 0
-  DefaultImpactDuration: 0.15
-  TimeChangeDuration: 1
+  DefaultInitTimeScale: 0.05
+  DefaultSlowdownDuration: 0.25
 --- !u!114 &114040670184502158
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2046,8 +2043,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d76c7fa0c2b4b489beefdc95b59cf0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnRate: 0.05
-  Spawning: 1
+  SpawnCooldown: 0.05
+  Spawning: 0
   Pool: {fileID: 114787905019085876}
   Entity: {fileID: 114627651355056388}
 --- !u!114 &114067906443348532
@@ -2109,7 +2106,7 @@ MonoBehaviour:
   AlternativeColorOverrideAmount: 0
   DamageImpactDuration: 1
   Outline: 0
-  OutlineColor: {r: 1, g: 0, b: 0.32935524, a: 1}
+  OutlineColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &114089597294402330
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2642,7 +2639,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1328608604676546}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
@@ -2955,7 +2952,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1328608604676546}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
   m_Name: 
@@ -3323,12 +3320,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  health: 100
-  maxHealth: 100
-  invulnerable: 0
   DamageInvulnerability: 0
   DamageInvulnerabilityDuration: 3
-  relationship: 0
   OnDamaged:
     m_PersistentCalls:
       m_Calls: []
@@ -3344,15 +3337,14 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  DamageGivesStun: 1
   hitbox: {fileID: 61474997006736910}
-  DamageStunMin: 1
-  DamageStunDuration: 0.1
   onKilled:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  updater: {fileID: 114479122888574508}
+  ignored: 0
   defenseHitbox:
     Center: {x: 0.8774567, y: 1.096818}
     Size: {x: 2.754913, y: 2.249959}
@@ -3360,8 +3352,12 @@ MonoBehaviour:
   MinDefenseRequired: 0.1
   DefenseRecoverAmountMultiplier: 3
   DefenseDepleteAmountMultiplier: 2
-  updater: {fileID: 114479122888574508}
-  ignored: 0
+  health: 100
+  maxHealth: 100
+  godMode: 0
+  DamageGivesStun: 1
+  DamageStunMin: 1
+  DamageStunDuration: 0.1
   motor: {fileID: 11400000, guid: 0168b5d2959ddfb48ab36cda52203830, type: 2}
   accelerationCurve:
     serializedVersion: 2
@@ -3391,8 +3387,7 @@ MonoBehaviour:
   SkinWidth: 0.05
   maxSpeed: 10
   YForce: 24
-  speedMultiplier: 1
-  ApplyVelocity: 1
+  baseSpeedMultiplier: 1
   DamageGivesKnockback: 0
   DamageKnockbackMin: 1
   DamageKnockbackStrenght: 5
@@ -3410,6 +3405,7 @@ MonoBehaviour:
     Down: 0
     Left: 0
     Right: 0
+  timeScaleIndependent: 0
 --- !u!114 &114628393253672908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3810,9 +3806,6 @@ MonoBehaviour:
   DamageColorDriftAmount: 0.5
   DamageHorizontalShakeAmount: 0.5
   DamageGlitchDuration: 0.15
-  DamageCutoff: 440
-  DamageLowfilterDefault: 22000
-  LowCutoff: 440
   DefendOverrideAmount: 1
   DefendOverrideDuration: 0.5
   OnEntityChanged:
@@ -3889,7 +3882,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 581b3e3c96df0ef42aef16b63b27b87f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dontDestroyOnLoad: 1
+  _dontDestroyOnLoad: 0
   _userData:
     configVars:
       updateLoop: 1
@@ -4020,8 +4013,8 @@ MonoBehaviour:
         _layoutId: 0
       _defaultCustomControllerMaps: []
       _startingCustomControllers: []
-      _assignMouseOnStart: 0
-      _assignKeyboardOnStart: 0
+      _assignMouseOnStart: 1
+      _assignKeyboardOnStart: 1
       _excludeFromControllerAutoAssignment: 0
     actions:
     - _id: 0

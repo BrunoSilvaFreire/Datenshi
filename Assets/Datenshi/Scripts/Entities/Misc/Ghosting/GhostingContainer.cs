@@ -31,7 +31,7 @@ namespace Datenshi.Scripts.Entities.Misc.Ghosting {
         private readonly List<GhostingSprite> toRemove = new List<GhostingSprite>();
 
 
-        private void Update() {
+        private void LateUpdate() {
             if (Spawning || permanentSpawn) {
                 spawnCooldownLeft -= Entity.DeltaTime;
                 if (spawnCooldownLeft <= 0) {

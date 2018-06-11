@@ -11,17 +11,17 @@
     public static class DefendableExtensions {
         public static void AutoDefend(this IDefendable defendable, ICombatant combatant, ref DamageInfo info) {
             var focusToConsume = defendable.DoAutoDefend(combatant, ref info);
-            combatant.FocusTimeLeft -= focusToConsume;
+            combatant.DefendTimeLeft -= focusToConsume;
         }
 
         public static void AgressiveDefend(this IDefendable defendable, ICombatant combatant, ref DamageInfo info) {
             var focusToConsume = defendable.DoAgressiveDefend(combatant, ref info);
-            combatant.FocusTimeLeft -= focusToConsume;
+            combatant.DefendTimeLeft -= focusToConsume;
         }
 
         public static void EvasiveDefend(this IDefendable defendable, ICombatant combatant, ref DamageInfo info) {
             var focusToConsume = defendable.DoEvasiveDefend(combatant, ref info);
-            combatant.FocusTimeLeft -= focusToConsume;
+            combatant.DefendTimeLeft -= focusToConsume;
         }
     }
 }

@@ -109,7 +109,7 @@ namespace Datenshi.Scripts.Entities {
                 return;
             }
 
-            Target.SpeedMultiplier = value;
+            Target.BaseSpeedMultiplier = value;
         }
 
 
@@ -302,7 +302,7 @@ namespace Datenshi.Scripts.Entities {
                 return;
             }
 
-            Target.FocusTimeLeft = value;
+            Target.DefendTimeLeft = value;
         }
 
 
@@ -327,7 +327,7 @@ namespace Datenshi.Scripts.Entities {
                 return;
             }
 
-            Target.Invulnerable = value;
+            Target.GodMode = value;
         }
 
         public void SetUseGUILayout(bool value) {
