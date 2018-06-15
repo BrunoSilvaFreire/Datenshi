@@ -1,11 +1,15 @@
 ﻿using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Combat.Attacks;
+using Sirenix.OdinInspector;
 
 namespace Datenshi.Scripts.Entities {
     public partial class LivingEntity : ICombatant {
         private CombatRelationship relationship;
         public CombatRelationship Relationship => relationship;
 
+
+        [TitleGroup(CombatGroup)]
+        public EntityAttackEvent OnAttack;
 
         public bool IsEnemy(LivingEntity entity) {
             if (Relationship == CombatRelationship.Neutral || entity.Relationship == CombatRelationship.Neutral) {

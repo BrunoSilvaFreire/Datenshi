@@ -100,7 +100,7 @@ namespace Datenshi.Scripts.Entities {
                 return;
             }
 
-            updater.SetDefend(defending);
+            updater.SetDefending(defending);
         }
     }
 }

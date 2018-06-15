@@ -2,6 +2,7 @@
 using Datenshi.Scripts.AI;
 using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Combat.Attacks;
+using Datenshi.Scripts.Input;
 using Datenshi.Scripts.Movement;
 using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
@@ -148,20 +149,11 @@ namespace Datenshi.Scripts.Entities {
 
         public float SpeedPercent => Velocity.magnitude / MaxSpeed;
 
-        public Vector2 GroundPosition {
+        public override Vector2 GroundPosition {
             get {
                 var bounds = Hitbox.bounds;
                 var min = bounds.min;
                 return new Vector2(bounds.center.x, min.y + SkinWidth);
-            }
-        }
-
-        public Direction Direction {
-            get {
-                return direction;
-            }
-            set {
-                direction = value;
             }
         }
 
@@ -201,19 +193,27 @@ namespace Datenshi.Scripts.Entities {
         }
 
         private void UpdateDirection() {
+            if (Defending) {
+                if (InputProvider.GetButtonDown((int) Actions.Flip)) {
+                    direction.X = -direction.X;
+                }
+
+                return;
+            }
+
             var newDirection = Direction.FromVector(Velocity);
             var xDir = newDirection.X;
             var yDir = newDirection.Y;
-            var dir = Direction;
-            if (xDir != 0 && Direction.X != xDir) {
+            var dir = CurrentDirection;
+            if (xDir != 0 && dir.X != xDir) {
                 dir.X = xDir;
             }
 
-            if (yDir != 0 && Direction.Y != yDir) {
+            if (yDir != 0 && dir.Y != yDir) {
                 dir.Y = yDir;
             }
 
-            Direction = dir;
+            CurrentDirection = dir;
         }
 
         private void UpdateMovement() {

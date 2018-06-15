@@ -34,6 +34,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Dialogue: {fileID: 11400000, guid: 41e22645d67ab1f43ae89d0435c3b67b, type: 2}
   Target: 0
+  OpenOnStart: 1
   CloseOnFinish: 1
 --- !u!114 &114285348185404364
 MonoBehaviour:
@@ -101,6 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Dialogue: {fileID: 11400000, guid: 9ba334841f6444e4f8179a0e94064fc3, type: 2}
   Target: 0
+  OpenOnStart: 1
   CloseOnFinish: 1
 --- !u!114 &114968814435282654
 MonoBehaviour:

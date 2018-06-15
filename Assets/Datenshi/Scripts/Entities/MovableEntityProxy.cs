@@ -14,7 +14,7 @@ namespace Datenshi.Scripts.Entities {
                 return;
             }
 
-            Target.ExternalForces += new Vector2(Target.Direction.X * force, 0);
+            Target.ExternalForces += new Vector2(Target.CurrentDirection.X * force, 0);
         }
 
         public void AddYImpulse(float force) {
@@ -22,7 +22,7 @@ namespace Datenshi.Scripts.Entities {
                 return;
             }
 
-            Target.ExternalForces += new Vector2(0, Target.Direction.Y * force);
+            Target.ExternalForces += new Vector2(0, Target.CurrentDirection.Y * force);
         }
         public void Stun(float duration) {
             if (Target == null) {

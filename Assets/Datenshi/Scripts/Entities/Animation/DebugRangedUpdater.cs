@@ -9,10 +9,6 @@ namespace Datenshi.Scripts.Entities.Animation {
         public LivingEntity Entity;
         protected override void UpdateAnimator(Animator anim) { }
 
-        public override void TriggerAttack() {
-            Attacks[0].Execute(Entity);
-        }
-
         public override void TriggerAttack(string attack) {
             var found = Attacks.FirstOrDefault(a => a.name == attack);
             if (found != null) {
@@ -20,7 +16,7 @@ namespace Datenshi.Scripts.Entities.Animation {
             }
         }
 
-        public override void SetDefend(bool defend) { }
+        public override void SetDefending(bool defend) { }
         public override void SetTrigger(string key) { }
 
         public override void TriggerDeath() {
@@ -28,7 +24,6 @@ namespace Datenshi.Scripts.Entities.Animation {
         }
 
         public override void TriggerSpawn() { }
-        public override void SetBool(string key, bool value) {
-        }
+        public override void SetBool(string key, bool value) { }
     }
 }

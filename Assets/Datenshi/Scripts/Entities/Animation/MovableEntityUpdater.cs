@@ -15,7 +15,6 @@ namespace Datenshi.Scripts.Entities.Animation {
         public string SpeedRawKey = "SpeedRaw";
         public string GroundedKey = "Grounded";
         public string YSpeedKey = "YSpeed";
-        public string AttackKey = "Attack";
         public string DamagedKey = "Damaged";
         public string StoppingKey = "Stopping";
         public string AbsInputVerticalKey = "AbsInputVertical";
@@ -40,7 +39,6 @@ namespace Datenshi.Scripts.Entities.Animation {
             AddParameter(SpeedRawKey, AnimatorControllerParameterType.Float);
             AddParameter(GroundedKey, AnimatorControllerParameterType.Bool);
             AddParameter(YSpeedKey, AnimatorControllerParameterType.Float);
-            AddParameter(AttackKey, AnimatorControllerParameterType.Trigger);
             AddParameter(DamagedKey, AnimatorControllerParameterType.Trigger);
             AddParameter(StoppingKey, AnimatorControllerParameterType.Bool);
             AddParameter(AbsInputVerticalKey, AnimatorControllerParameterType.Float);
@@ -117,15 +115,11 @@ namespace Datenshi.Scripts.Entities.Animation {
             Renderer.flipX = Entity.CurrentDirection.X == -1;
         }
 
-        public override void TriggerAttack() {
-            Animator.SetTrigger(AttackKey);
-        }
-
         public override void TriggerAttack(string attack) {
             Animator.SetTrigger(attack);
         }
 
-        public override void SetDefend(bool defend) {
+        public override void SetDefending(bool defend) {
             Animator.SetBool(DefendKey, defend);
         }
 

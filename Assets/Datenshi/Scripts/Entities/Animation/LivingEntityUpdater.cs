@@ -10,7 +10,6 @@ using UnityEditor.Animations;
 
 namespace Datenshi.Scripts.Entities.Animation {
     public class LivingEntityUpdater : CombatantAnimatorUpdater {
-        public string AttackKey = "Attack";
         public string DamagedKey = "Damaged";
         public string AbsInputVerticalKey = "AbsInputVertical";
         public string AbsInputHorizontalKey = "AbsInputHorizontal";
@@ -29,7 +28,6 @@ namespace Datenshi.Scripts.Entities.Animation {
 
         [ShowInInspector, UsedImplicitly, Button]
         public void CreateParameters() {
-            AddParameter(AttackKey, AnimatorControllerParameterType.Trigger);
             AddParameter(DamagedKey, AnimatorControllerParameterType.Trigger);
             AddParameter(AbsInputVerticalKey, AnimatorControllerParameterType.Float);
             AddParameter(AbsInputHorizontalKey, AnimatorControllerParameterType.Float);
@@ -86,15 +84,13 @@ namespace Datenshi.Scripts.Entities.Animation {
             Renderer.flipX = Entity.CurrentDirection.X == -1;
         }
 
-        public override void TriggerAttack() {
-            Animator.SetTrigger(AttackKey);
-        }
+        
 
         public override void TriggerAttack(string attack) {
             Animator.SetTrigger(attack);
         }
 
-        public override void SetDefend(bool defend) {
+        public override void SetDefending(bool defend) {
             Animator.SetBool(DefendKey, defend);
         }
 

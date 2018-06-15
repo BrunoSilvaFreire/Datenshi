@@ -3,13 +3,16 @@ using UnityEngine;
 
 namespace Datenshi.Scripts.Combat {
     public abstract class CombatantAnimatorUpdater : AnimatorUpdater {
-        public abstract void TriggerAttack();
-        public abstract void TriggerAttack(string attack);
+        public const string DefaultAttackName = "Attack";
+        public abstract void TriggerAttack(string attack = DefaultAttackName);
         public abstract void TriggerDeath();
         public abstract void TriggerSpawn();
-        public abstract void SetDefend(bool defend);
+        //public abstract void TriggerAgressiveDefend();
+        //public abstract void TriggerEvasiveDefend();
+        public abstract void SetDefending(bool defend);
         public abstract void SetTrigger(string key);
         public abstract void SetBool(string key, bool p1);
+
 
         public void SetAnimationTimeIndependent(bool independent) {
             Animator.updateMode = independent ? AnimatorUpdateMode.UnscaledTime : AnimatorUpdateMode.Normal;

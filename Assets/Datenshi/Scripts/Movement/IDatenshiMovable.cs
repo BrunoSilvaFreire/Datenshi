@@ -12,11 +12,7 @@ namespace Datenshi.Scripts.Movement {
             get;
         }
 
-        Direction Direction {
-            get;
-            set;
-        }
-
+     
         bool ApplyVelocity {
             get;
             set;

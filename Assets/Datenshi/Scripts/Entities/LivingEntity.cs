@@ -43,15 +43,7 @@ namespace Datenshi.Scripts.Entities {
         [ShowIf("DamageInvulnerability")]
         public float DamageInvulnerabilityDuration = 3;
 
-        [TitleGroup(CombatGroup, "Informações sobre o combat desta LivingEntity"), SerializeField]
-        [TitleGroup(CombatGroup)]
-        public EntityDamagedEvent OnDamaged;
 
-        [TitleGroup(CombatGroup)]
-        public EntityAttackEvent OnAttack;
-
-        [TitleGroup(CombatGroup)]
-        public UnityEvent OnHealthChanged;
 
         [SerializeField]
         private Collider2D hitbox;
@@ -59,16 +51,6 @@ namespace Datenshi.Scripts.Entities {
         public Collider2D Hitbox => hitbox;
 
 
-        [SerializeField]
-        private UnityEvent onKilled;
-
-
-        public UnityEvent OnKilled => onKilled;
-
-        [SerializeField]
-        private CombatantAnimatorUpdater updater;
-
-        public CombatantAnimatorUpdater AnimatorUpdater => updater;
 
         [ShowInInspector, ReadOnly, TitleGroup(CombatGroup)]
         protected virtual void Update() {
@@ -117,17 +99,17 @@ namespace Datenshi.Scripts.Entities {
         public Vector2 Center {
             get {
                 var m = this as IMovable;
-                if (m != null) {
-                    var hb = m.Hitbox;
-                    return hb != null ? hb.bounds.center : transform.position;
+                if (m == null) {
+                    return transform.position;
                 }
 
-                return transform.position;
+                var hb = m.Hitbox;
+                return hb != null ? hb.bounds.center : transform.position;
             }
         }
 
 
-        public Vector2 GroundPosition {
+        public virtual Vector2 GroundPosition {
             get {
                 var pos = Center;
                 pos.y -= hitbox.bounds.size.y / 2;

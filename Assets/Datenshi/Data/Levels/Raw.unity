@@ -6628,6 +6628,21 @@ Prefab:
       propertyPath: m_ChildCameras.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114818207654441168, guid: 293e7333ecb6bc54ca4c938d7335d9b2,
+        type: 2}
+      propertyPath: _userData.actions.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 114818207654441168, guid: 293e7333ecb6bc54ca4c938d7335d9b2,
+        type: 2}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.size
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 114818207654441168, guid: 293e7333ecb6bc54ca4c938d7335d9b2,
+        type: 2}
+      propertyPath: _userData.actionCategoryMap.list.Array.data[0].actionIds.Array.size
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 4891667445214352, guid: 293e7333ecb6bc54ca4c938d7335d9b2, type: 2}
       propertyPath: m_LocalPosition.x
       value: 184.69563
@@ -7117,12 +7132,12 @@ Prefab:
     - target: {fileID: 114302158536859372, guid: 293e7333ecb6bc54ca4c938d7335d9b2,
         type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114482399299084776, guid: 293e7333ecb6bc54ca4c938d7335d9b2,
         type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 95851931819171008, guid: 293e7333ecb6bc54ca4c938d7335d9b2,
         type: 2}
@@ -7148,6 +7163,61 @@ Prefab:
         type: 2}
       propertyPath: SpawnCooldown
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 114818207654441168, guid: 293e7333ecb6bc54ca4c938d7335d9b2,
+        type: 2}
+      propertyPath: _userData.actions.Array.data[10]._id
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114818207654441168, guid: 293e7333ecb6bc54ca4c938d7335d9b2,
+        type: 2}
+      propertyPath: _userData.actions.Array.data[10]._name
+      value: Flip
+      objectReference: {fileID: 0}
+    - target: {fileID: 114818207654441168, guid: 293e7333ecb6bc54ca4c938d7335d9b2,
+        type: 2}
+      propertyPath: _userData.actions.Array.data[10]._type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114818207654441168, guid: 293e7333ecb6bc54ca4c938d7335d9b2,
+        type: 2}
+      propertyPath: _userData.actions.Array.data[10]._descriptiveName
+      value: Flip
+      objectReference: {fileID: 0}
+    - target: {fileID: 114818207654441168, guid: 293e7333ecb6bc54ca4c938d7335d9b2,
+        type: 2}
+      propertyPath: _userData.actions.Array.data[10]._userAssignable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114818207654441168, guid: 293e7333ecb6bc54ca4c938d7335d9b2,
+        type: 2}
+      propertyPath: _userData.actionCategoryMap.list.Array.data[0].actionIds.Array.data[10]
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114818207654441168, guid: 293e7333ecb6bc54ca4c938d7335d9b2,
+        type: 2}
+      propertyPath: _userData.actionIdCounter
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 114818207654441168, guid: 293e7333ecb6bc54ca4c938d7335d9b2,
+        type: 2}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[22]._actionId
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114818207654441168, guid: 293e7333ecb6bc54ca4c938d7335d9b2,
+        type: 2}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[22]._elementType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114818207654441168, guid: 293e7333ecb6bc54ca4c938d7335d9b2,
+        type: 2}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[22]._elementIdentifierId
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114818207654441168, guid: 293e7333ecb6bc54ca4c938d7335d9b2,
+        type: 2}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[22]._keyboardKeyCode
+      value: 113
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 293e7333ecb6bc54ca4c938d7335d9b2, type: 2}

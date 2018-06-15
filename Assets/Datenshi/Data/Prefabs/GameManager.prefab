@@ -1028,7 +1028,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1328608604676546}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -194.917, y: -23.71518, z: -9.87113}
+  m_LocalPosition: {x: -336.48, y: -23.85618, z: -9.87113}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4768774366305818}
@@ -1150,7 +1150,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1792401617246154}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -194.917, y: -23.71518, z: -9.87113}
+  m_LocalPosition: {x: -336.48, y: -23.85618, z: -9.87113}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4727608061611176}
@@ -1225,7 +1225,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1820342329192474}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -194.917, y: -25.899, z: 10.12887}
+  m_LocalPosition: {x: -336.48, y: -26.04, z: 10.12887}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4633032197183884}
@@ -2928,7 +2928,6 @@ MonoBehaviour:
   SpeedRawKey: SpeedRaw
   GroundedKey: Grounded
   YSpeedKey: YSpeed
-  AttackKey: Attack
   DamagedKey: Damaged
   StoppingKey: Stopping
   AbsInputVerticalKey: AbsInputVertical
@@ -3322,29 +3321,14 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   DamageInvulnerability: 0
   DamageInvulnerabilityDuration: 3
-  OnDamaged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Datenshi.Scripts.Entities.EntityDamagedEvent, Datenshi-Entities, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+  hitbox: {fileID: 61474997006736910}
+  ignored: 0
+  updater: {fileID: 114479122888574508}
   OnAttack:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: Datenshi.Scripts.Entities.EntityAttackEvent, Datenshi-Entities, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  OnHealthChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  hitbox: {fileID: 61474997006736910}
-  onKilled:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  updater: {fileID: 114479122888574508}
-  ignored: 0
   defenseHitbox:
     Center: {x: 0.8774567, y: 1.096818}
     Size: {x: 2.754913, y: 2.249959}
@@ -3352,6 +3336,21 @@ MonoBehaviour:
   MinDefenseRequired: 0.1
   DefenseRecoverAmountMultiplier: 3
   DefenseDepleteAmountMultiplier: 2
+  OnDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Datenshi.Scripts.Entities.EntityDamagedEvent, Datenshi-Entities, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onKilled:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   health: 100
   maxHealth: 100
   godMode: 0

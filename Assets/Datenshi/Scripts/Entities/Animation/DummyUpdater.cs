@@ -5,11 +5,9 @@ namespace Datenshi.Scripts.Entities.Animation {
     public class DummyUpdater : CombatantAnimatorUpdater {
         protected override void UpdateAnimator(Animator anim) { }
 
-        public override void TriggerAttack() { }
-
         public override void TriggerAttack(string attack) { }
 
-        public override void SetDefend(bool defend) { }
+        public override void SetDefending(bool defend) { }
 
         public override void SetTrigger(string key) { }
 

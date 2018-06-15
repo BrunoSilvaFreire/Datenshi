@@ -57,6 +57,9 @@ namespace Datenshi.Scripts.Movement.States {
                 entity.AnimatorUpdater.SetBool(DashAnimatorKey, true);
                 entity.SetVariable(Dashing, true);
                 var dir = Math.Sign(provider.GetHorizontal());
+                if (dir == 0) {
+                    dir = entity.CurrentDirection.X;
+                }
                 velocity = new Vector2(dir * speed, 0);
             }
 

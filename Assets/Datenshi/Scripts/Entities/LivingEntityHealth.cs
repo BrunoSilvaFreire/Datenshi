@@ -2,9 +2,21 @@
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Datenshi.Scripts.Entities {
     public partial class LivingEntity {
+        [TitleGroup(CombatGroup, "Informações sobre o combat desta LivingEntity")]
+        public EntityDamagedEvent OnDamaged;
+
+        [TitleGroup(CombatGroup)]
+        public UnityEvent OnHealthChanged;
+
+        [SerializeField]
+        private UnityEvent onKilled;
+
+        public UnityEvent OnKilled => onKilled;
+        
         [SerializeField, HideInInspector]
         private uint health;
 
