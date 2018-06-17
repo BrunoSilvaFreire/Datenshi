@@ -2,7 +2,6 @@
 using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
-using UnityEngine.Events;
 
 namespace Datenshi.Scripts.World.Rooms.Doors {
     public class RequirementDoor : Door {

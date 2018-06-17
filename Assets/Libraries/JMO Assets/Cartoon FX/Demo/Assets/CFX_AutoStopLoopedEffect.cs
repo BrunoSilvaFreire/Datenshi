@@ -1,7 +1,4 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
 
 // Cartoon FX  - (c) 2015 Jean Moreno
 //

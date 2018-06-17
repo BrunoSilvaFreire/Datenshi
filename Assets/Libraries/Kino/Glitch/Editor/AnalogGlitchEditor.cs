@@ -22,7 +22,6 @@
 //
 
 using Datenshi.Scripts.Graphics;
-using Kino;
 using UnityEditor;
 
 namespace Kino.Editor {

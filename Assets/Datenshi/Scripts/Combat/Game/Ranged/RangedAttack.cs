@@ -14,21 +14,17 @@ namespace Datenshi.Scripts.Combat.Game.Ranged {
         public Vector2 Offset;
         public bool Aim = true;
         public float FocusConsumption;
-        public float EvasionSpeedBoostMagnitude = 1.5F;
-        public float EvasionSpeedBoostDuration = 2F;
 
         [HideIf("Aim")]
         public bool RawDir = true;
 
         public uint Damage = 5;
+        public float EvasionDashDistance = 3;
+        public float EvasionDashDuration = .25F;
 
-        public SpeedStatusEffect SpeedStatusEffect {
-            get;
-        }
-        public RangedAttack() {
-            SpeedStatusEffect = new SpeedStatusEffect(EvasionSpeedBoostMagnitude, EvasionSpeedBoostDuration);
-        }
-        
+        public SpeedStatusEffect SpeedStatusEffect;
+
+
 #if UNITY_EDITOR
         [ShowInInspector]
         public GameObject CopyOffset {

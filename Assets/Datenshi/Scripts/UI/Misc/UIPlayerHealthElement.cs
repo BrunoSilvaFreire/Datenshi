@@ -1,6 +1,5 @@
 ﻿using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Game;
-using UnityEngine;
 
 namespace Datenshi.Scripts.UI.Misc {
     public class UIPlayerHealthElement : UIHealthElement {

@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace Datenshi.Scripts.Combat {
+﻿namespace Datenshi.Scripts.Combat {
     public static class CombatExtensions {
         public static bool ShouldAttack(this ICombatant combatant, ICombatant target) {
             if (combatant == null || target == null) {

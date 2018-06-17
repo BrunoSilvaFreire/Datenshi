@@ -1,6 +1,5 @@
 ﻿using System;
 using Datenshi.Scripts.Data;
-using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Input;
 using Rewired;
 using Sirenix.OdinInspector;

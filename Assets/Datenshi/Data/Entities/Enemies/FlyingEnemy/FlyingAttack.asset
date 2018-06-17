@@ -16,7 +16,8 @@ MonoBehaviour:
   Offset: {x: 0, y: -0.807}
   Aim: 1
   FocusConsumption: 0.5
-  EvasionSpeedBoostMagnitude: 1.5
-  EvasionSpeedBoostDuration: 10
   RawDir: 1
   Damage: 5
+  EvasionDashDistance: 5
+  EvasionDashDuration: 0.1
+  SpeedStatusEffect: {fileID: 11400000, guid: 6efa6ff350cb9bb4fa46a79c7e37a713, type: 2}

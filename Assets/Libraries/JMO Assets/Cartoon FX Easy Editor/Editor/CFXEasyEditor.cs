@@ -1,7 +1,5 @@
 using UnityEngine;
 using UnityEditor;
-using System.Collections.Generic;
-using System.Reflection;
 
 // Cartoon FX Easy Editor
 // (c) 2013-2017 - Jean Moreno

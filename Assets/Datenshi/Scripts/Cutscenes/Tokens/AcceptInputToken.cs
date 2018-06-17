@@ -2,7 +2,6 @@
 using Datenshi.Scripts.Data;
 using Shiroi.Cutscenes;
 using Shiroi.Cutscenes.Tokens;
-using UnityEngine;
 
 namespace Datenshi.Scripts.Cutscenes.Tokens {
     public class AcceptInputToken : Token {

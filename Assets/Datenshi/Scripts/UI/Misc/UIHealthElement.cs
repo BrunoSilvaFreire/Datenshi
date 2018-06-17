@@ -43,7 +43,7 @@ namespace Datenshi.Scripts.UI.Misc {
             }
 
             SubHealthBar.DOComplete();
-            CanvasGroup.DOComplete();
+            Group.DOComplete();
             var currentFill = HealthBar.fillAmount;
             if (amount < currentFill) {
                 HealthBar.fillAmount = amount;

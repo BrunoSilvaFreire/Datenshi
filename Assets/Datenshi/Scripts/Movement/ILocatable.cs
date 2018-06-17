@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using Datenshi.Scripts.Util;
+using UnityEngine;
 
 namespace Datenshi.Scripts.Movement {
-    public interface ILocatable {
+    public interface ILocatable : ICoroutineExecutor{
         Transform Transform {
             get;
         }

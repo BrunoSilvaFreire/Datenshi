@@ -2,7 +2,6 @@
 using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Input;
 using Datenshi.Scripts.Util;
-using Rewired;
 
 namespace Datenshi.Scripts.AI {
     [Serializable]

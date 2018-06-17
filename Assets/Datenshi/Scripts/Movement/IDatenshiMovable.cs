@@ -1,5 +1,4 @@
-﻿using Datenshi.Scripts.Util;
-using Datenshi.Scripts.Util.Volatiles;
+﻿using Datenshi.Scripts.Util.Volatiles;
 using UPM.Motors;
 
 namespace Datenshi.Scripts.Movement {

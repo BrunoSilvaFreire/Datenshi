@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 namespace Datenshi.Scripts.Character {
     [CreateAssetMenu(menuName = "Datenshi/Characters/Portrait")]

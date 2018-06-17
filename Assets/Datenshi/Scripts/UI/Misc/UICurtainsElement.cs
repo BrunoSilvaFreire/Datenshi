@@ -1,6 +1,5 @@
 ﻿using Datenshi.Scripts.Util;
 using DG.Tweening;
-using UnityEngine;
 using UnityEngine.UI;
 
 namespace Datenshi.Scripts.UI.Misc {

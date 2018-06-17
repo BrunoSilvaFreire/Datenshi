@@ -1,7 +1,6 @@
 ﻿using Datenshi.Scripts.Character;
 using Datenshi.Scripts.UI;
 using DG.Tweening;
-using Shiroi.Cutscenes;
 using UnityEngine;
 using UnityEngine.UI;
 

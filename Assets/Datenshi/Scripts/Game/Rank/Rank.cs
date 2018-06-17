@@ -1,7 +1,6 @@
 ﻿using System;
 using Datenshi.Scripts.Data;
 using Sirenix.OdinInspector;
-using UnityEngine;
 
 namespace Datenshi.Scripts.Game.Rank {
     public enum RankLevel : byte {

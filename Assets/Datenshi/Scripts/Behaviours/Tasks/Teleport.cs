@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using BehaviorDesigner.Runtime.Tasks;
 using Datenshi.Scripts.AI;
 using Datenshi.Scripts.Behaviours.Variables;

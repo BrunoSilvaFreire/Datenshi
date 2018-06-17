@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Input;
 using Sirenix.OdinInspector;

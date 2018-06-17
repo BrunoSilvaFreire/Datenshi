@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using Datenshi.Scripts.UI;
 using Datenshi.Scripts.UI.Misc;
 using Datenshi.Scripts.Util;
-using Shiroi.Cutscenes;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;

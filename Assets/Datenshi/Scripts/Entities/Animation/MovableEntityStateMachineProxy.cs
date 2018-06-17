@@ -1,5 +1,4 @@
 ﻿using Datenshi.Scripts.AI;
-using Datenshi.Scripts.Animation;
 using Datenshi.Scripts.Combat.Attacks;
 using Datenshi.Scripts.Util;
 using UnityEngine;
@@ -21,6 +20,10 @@ namespace Datenshi.Scripts.Entities.Animation {
         }
 
         public override void OnStateExit(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex) {
+            if (Target == null) {
+                Target = animator.GetComponentInParent<MovableEntity>();
+            }
+
             OnExit.Invoke();
         }
 
@@ -65,7 +68,6 @@ namespace Datenshi.Scripts.Entities.Animation {
         public void SetSkinWidth(float value) {
             Target.SkinWidth = value;
         }
-
 
         public void SetYForce(float value) {
             Target.YForce = value;

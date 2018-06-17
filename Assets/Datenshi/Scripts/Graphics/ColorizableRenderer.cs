@@ -1,9 +1,7 @@
 ﻿using System;
 using DG.Tweening;
-using Shiroi.Cutscenes.Util;
 using UnityEngine;
 using UnityEngine.Events;
-using ColorUtil = Datenshi.Scripts.Util.ColorUtil;
 
 namespace Datenshi.Scripts.Graphics {
     [Serializable]

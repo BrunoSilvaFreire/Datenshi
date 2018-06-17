@@ -10,6 +10,11 @@ namespace Datenshi.Scripts.Entities {
 
         public CombatRelationship Relationship => relationship;
 
+        [TitleGroup(HealthGroup, "Informações sobre a vida desta LivingEntity")]
+        public bool DamageInvulnerability;
+
+        [ShowIf("DamageInvulnerability")]
+        public float DamageInvulnerabilityDuration = 3;
 
         [TitleGroup(CombatGroup)]
         public EntityAttackEvent OnAttack;

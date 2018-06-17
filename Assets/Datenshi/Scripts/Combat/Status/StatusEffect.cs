@@ -1,27 +1,54 @@
-﻿using Datenshi.Scripts.Movement;
+﻿using System;
+using System.Collections.Generic;
+using Datenshi.Scripts.Util;
+using Datenshi.Scripts.Util.Volatiles;
+using UnityEngine;
+using UnityEngine.Events;
 
 namespace Datenshi.Scripts.Combat.Status {
-    public abstract class StatusEffect {
-        public abstract void Apply(ICombatant combatant);
+    [Serializable]
+    public class StatusEffectAppliedEvent : UnityEvent<StatusEffect, ICombatant, VolatilePropertyModifier> {
+        public static readonly StatusEffectAppliedEvent Instance = new StatusEffectAppliedEvent();
+        private StatusEffectAppliedEvent() { }
     }
 
-    public class SpeedStatusEffect : StatusEffect {
-        public float Magnitude {
-            get;
+    [Serializable]
+    public class StatusEffectRemovedEvent : UnityEvent<StatusEffect, ICombatant> {
+        public static readonly StatusEffectRemovedEvent Instance = new StatusEffectRemovedEvent();
+        private StatusEffectRemovedEvent() { }
+    }
+
+    public abstract class StatusEffect : ScriptableObject {
+        private static readonly Dictionary<ICombatant, List<Tuple<StatusEffect, VolatilePropertyModifier>>> AppliedEffects = new Dictionary<ICombatant, List<Tuple<StatusEffect, VolatilePropertyModifier>>>();
+        private static readonly Func<List<Tuple<StatusEffect, VolatilePropertyModifier>>> ListInstantiator = () => new List<Tuple<StatusEffect, VolatilePropertyModifier>>();
+
+        protected static void RemoveFromEffectsList(ICombatant combatant, StatusEffect speedStatusEffect) {
+            GetEffects(combatant).RemoveAll(tuple => tuple.Item1 == speedStatusEffect);
+            StatusEffectRemovedEvent.Instance.Invoke(speedStatusEffect, combatant);
         }
 
-        public float Duration {
-            get;
+        public static List<Tuple<StatusEffect, VolatilePropertyModifier>> GetEffects(ICombatant combatant) {
+            return AppliedEffects.GetOrPut(combatant, ListInstantiator);
         }
 
-        public SpeedStatusEffect(float magnitude, float duration) {
-            Magnitude = magnitude;
-            Duration = duration;
+
+        public const float ColorSaturation = 0.2980392F;
+        public const float ColorActiveBrightness = 0.9F;
+        public const float ColorInactiveBrightness = 0.1568628F;
+
+        public void Apply(ICombatant combatant) {
+            var m = OnApply(combatant);
+            StatusEffectAppliedEvent.Instance.Invoke(this, combatant, m);
+            GetEffects(combatant).Add(new Tuple<StatusEffect, VolatilePropertyModifier>(this, m));
         }
 
-        public override void Apply(ICombatant combatant) {
-            var movable = combatant as IDatenshiMovable;
-            movable?.SpeedMultiplier.AddModifier(Magnitude, Duration);
+        protected abstract VolatilePropertyModifier OnApply(ICombatant combatant);
+        protected abstract float GetHue();
+
+        public Color GetColor() {
+            return Color.HSVToRGB(GetHue(), ColorSaturation, ColorActiveBrightness);
         }
+
+        public abstract string GetAlias();
     }
 }

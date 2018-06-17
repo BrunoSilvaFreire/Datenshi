@@ -1,11 +1,9 @@
 ﻿using System;
-using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Input;
 using Datenshi.Scripts.Movement.Config;
 using Datenshi.Scripts.Util;
-using UnityEditor.Experimental.AssetImporters;
 using UnityEngine;
 using UPM;
 using UPM.Motors;

@@ -11,9 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3292dcf831442389b75fb3f0a2cd1cc, type: 3}
   m_Name: UIResources
   m_EditorClassIdentifier: 
-  CharacterViewPrefab: {fileID: 114894635326919280, guid: 309f1aee5dedc644e9d99068bfdd1f37,
-    type: 2}
-  CharacterSelectionMenuPrefab: {fileID: 114645752388065866, guid: 2ed7ff5b1fd8009489f5d23947317e46,
-    type: 2}
   PlayerViewPrefab: {fileID: 114987942772696908, guid: defa54ce7e4182e43b9af66f2afeaff4,
+    type: 2}
+  StatusEffectElementPrefab: {fileID: 114226414102311258, guid: dfd955e6495091742807096bb4f0f72a,
     type: 2}

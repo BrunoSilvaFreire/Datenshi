@@ -1,13 +1,10 @@
-﻿using System.Collections;
-using Datenshi.Scripts.Data;
-using Datenshi.Scripts.Entities;
-using Datenshi.Scripts.Game.Time;
-using Datenshi.Scripts.Graphics;
+﻿using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Movement;
 using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 namespace Datenshi.Scripts.Combat.Game.Ranged {
     public class ProjectileShotEvent : UnityEvent<Projectile, ICombatant, ICombatant> {
@@ -142,9 +139,17 @@ namespace Datenshi.Scripts.Combat.Game.Ranged {
 
         public float DoEvasiveDefend(ICombatant combatant, ref DamageInfo info) {
             info.Canceled = true;
-            var duration = UsedAttack.EvasionSpeedBoostDuration;
+            var duration = UsedAttack.SpeedStatusEffect.Duration;
             combatant.SetInvulnerable(duration);
             UsedAttack.SpeedStatusEffect.Apply(combatant);
+            var m = combatant as IDatenshiMovable;
+            if (m != null) {
+                var direction = -MovableUtility.XDirectionTo(transform.position.x, combatant.GroundPosition.x);
+                var target = m.GroundPosition;
+                target.x += UsedAttack.EvasionDashDistance * direction;
+                m.TranslateNoPhysics(target, UsedAttack.EvasionDashDuration);
+            }
+
             return UsedAttack.FocusConsumption;
         }
 
@@ -161,7 +166,6 @@ namespace Datenshi.Scripts.Combat.Game.Ranged {
             velocity = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle));
             Owner = entity;
             Modify();
-            //Destroy(gameObject);
             return UsedAttack.FocusConsumption;
         }
 

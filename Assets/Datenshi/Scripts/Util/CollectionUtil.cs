@@ -9,6 +9,7 @@ namespace Datenshi.Scripts.Util {
             return list.Count <= 0;
         }
 
+
         public static T GetOrPut<T>(this ICollection<T> collection, Func<T, bool> predicate, Func<T> instantiator) {
             foreach (var obj in collection) {
                 if (predicate(obj)) {
@@ -26,9 +27,7 @@ namespace Datenshi.Scripts.Util {
                 return collection[key];
             }
 
-            var newObj = instantiator();
-            collection[key] = newObj;
-            return newObj;
+            return collection[key] = instantiator();
         }
 
         public static bool HasSingle(this ICollection collection) {

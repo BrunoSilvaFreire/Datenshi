@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Datenshi.Scripts.UI;
 using UnityEngine;
 using Object = UnityEngine.Object;

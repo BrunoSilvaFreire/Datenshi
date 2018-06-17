@@ -1,9 +1,10 @@
-﻿using DG.Tweening;
+﻿using Datenshi.Scripts.UI.Misc;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Datenshi.Scripts.UI {
-    public abstract class UIDefaultColoredElement : UIElement {
+    public abstract class UIDefaultColoredElement : UICanvasGroupElement {
         [SerializeField, HideInInspector]
         private byte defaultColor;
 
@@ -16,10 +17,6 @@ namespace Datenshi.Scripts.UI {
         [SerializeField, HideInInspector]
         private byte saturation;
 
-        public CanvasGroup CanvasGroup;
-        public float CanvasGroupShowAmount = 1;
-        public float CanvasGroupHideAmount = 0;
-        public float CanvasGroupFadeDuration = 1;
 
         [ShowInInspector]
         public byte DefaultColor {
@@ -59,24 +56,5 @@ namespace Datenshi.Scripts.UI {
             UpdateColors(Color.HSVToRGB(hue, (float) saturation / byte.MaxValue, 1, true));
         }
 
-        protected override void SnapShow() {
-            CanvasGroup.DOKill();
-            CanvasGroup.alpha = CanvasGroupShowAmount;
-        }
-
-        protected override void SnapHide() {
-            CanvasGroup.DOKill();
-            CanvasGroup.alpha = CanvasGroupHideAmount;
-        }
-
-        protected override void OnShow() {
-            CanvasGroup.DOKill();
-            CanvasGroup.DOFade(CanvasGroupShowAmount, CanvasGroupFadeDuration);
-        }
-
-        protected override void OnHide() {
-            CanvasGroup.DOKill();
-            CanvasGroup.DOFade(CanvasGroupHideAmount, CanvasGroupFadeDuration);
-        }
     }
 }

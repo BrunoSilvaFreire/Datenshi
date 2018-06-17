@@ -104,7 +104,7 @@ namespace Datenshi.Scripts.Entities {
 
         public byte VerticalRaycasts => verticalRaycasts;
 
-        public float MaxSpeed => maxSpeed;
+        public float MaxSpeed => maxSpeed * SpeedMultiplier.Value;
 
         public Transform MovementTransform => transform;
 
@@ -131,7 +131,7 @@ namespace Datenshi.Scripts.Entities {
         }
 
 
-        public float SpeedPercent => Velocity.magnitude / MaxSpeed;
+        public float SpeedPercent => Velocity.x / MaxSpeed;
 
         public override Vector2 GroundPosition {
             get {

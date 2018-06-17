@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using Datenshi.Scripts.Combat.Attacks;
 using Datenshi.Scripts.Combat.Status;
@@ -106,6 +105,5 @@ namespace Datenshi.Scripts.Combat {
             get;
         }
 
-        Coroutine StartCoroutine(IEnumerator evasiveDash);
     }
 }

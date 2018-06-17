@@ -1,20 +1,11 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Combat.Attacks;
-using Datenshi.Scripts.Combat.Status;
 using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
-using Sirenix.Utilities;
 using UnityEngine;
 using UnityEngine.Events;
 using UPM.Motors;
-using UPM.Util;
-#if UNITY_EDITOR
-using UnityEditor;
-
-#endif
 
 namespace Datenshi.Scripts.Entities {
     [Serializable]
@@ -36,14 +27,6 @@ namespace Datenshi.Scripts.Entities {
         public const string HealthGroup = "Health";
         public const string CombatGroup = "Combat";
         public static readonly Color HitboxColor = new Color(0f, 1f, 0f, 0.5f);
-
-        [TitleGroup(HealthGroup, "Informações sobre a vida desta LivingEntity")]
-        public bool DamageInvulnerability;
-
-        [ShowIf("DamageInvulnerability")]
-        public float DamageInvulnerabilityDuration = 3;
-
-
 
         [SerializeField]
         private Collider2D hitbox;

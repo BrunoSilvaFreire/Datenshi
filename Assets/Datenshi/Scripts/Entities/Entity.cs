@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Datenshi.Scripts.Animation;
 using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Graphics;
 using Datenshi.Scripts.Input;

@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections;
 using Datenshi.Scripts.Audio;
-using Datenshi.Scripts.Combat;
-using Datenshi.Scripts.Game;
-using Datenshi.Scripts.Game.Time;
 using Datenshi.Scripts.Graphics;
 using Datenshi.Scripts.Input;
 using Datenshi.Scripts.UI.Input;
@@ -15,7 +12,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI.Extensions;
 using UPM.Input;
-using Object = UnityEngine.Object;
 
 namespace Datenshi.Scripts.UI.Misc {
     public interface IQuickTimeEventController {

@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using Datenshi.Scripts.Util.Singleton;
+﻿using Datenshi.Scripts.Util.Singleton;
 using DG.Tweening;
 using DG.Tweening.Core;
-using UnityEngine;
 
 namespace Datenshi.Scripts.Game.Time {
     public class TimeController : Singleton<TimeController> {

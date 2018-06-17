@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Datenshi.Scripts.UI;
 using Datenshi.Scripts.Util;
 using DG.Tweening;
