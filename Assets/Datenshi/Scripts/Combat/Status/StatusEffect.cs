@@ -1,32 +1,27 @@
 ﻿using Datenshi.Scripts.Movement;
-using UnityEngine;
-using UPM.Motors;
 
 namespace Datenshi.Scripts.Combat.Status {
     public abstract class StatusEffect {
-        public virtual void OnApply(ICombatant combatant) { }
-        public virtual bool OnTick(ICombatant combatant) {
-            return true;
-        }
+        public abstract void Apply(ICombatant combatant);
     }
 
-    public abstract class TimeStatusEffect : StatusEffect {
-        private readonly float duration;
-        private float timeLeft;
-
-        public override bool OnTick(ICombatant combatant) {
-            timeLeft -= Time.deltaTime;
-            return timeLeft <= 0;
-        }
-    }
-
-    public class SpeedStatusEffect : TimeStatusEffect {
-        private readonly float magnitude;
-
-        public SpeedStatusEffect(float magnitude) {
-            this.magnitude = magnitude;
+    public class SpeedStatusEffect : StatusEffect {
+        public float Magnitude {
+            get;
         }
 
-        public float Magnitude => magnitude;
+        public float Duration {
+            get;
+        }
+
+        public SpeedStatusEffect(float magnitude, float duration) {
+            Magnitude = magnitude;
+            Duration = duration;
+        }
+
+        public override void Apply(ICombatant combatant) {
+            var movable = combatant as IDatenshiMovable;
+            movable?.SpeedMultiplier.AddModifier(Magnitude, Duration);
+        }
     }
 }

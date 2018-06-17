@@ -1,17 +1,14 @@
 ﻿using Datenshi.Scripts.Util;
+using Datenshi.Scripts.Util.Volatiles;
 using UPM.Motors;
 
 namespace Datenshi.Scripts.Movement {
     public interface IDatenshiMovable : ILocatable, IMovable {
-        float BaseSpeedMultiplier {
-            get;
-            set;
-        }
+  
 
-        float SpeedMultiplier {
+        FloatVolatileProperty SpeedMultiplier {
             get;
         }
-
      
         bool ApplyVelocity {
             get;

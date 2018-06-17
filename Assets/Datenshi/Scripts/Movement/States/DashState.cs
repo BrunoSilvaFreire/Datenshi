@@ -46,7 +46,6 @@ namespace Datenshi.Scripts.Movement.States {
             var m = entity.MiscController;
             var g = m == null ? null : m.GhostingContainer;
             c.DashEllegible = false;
-
             var speed = DashDistance / DashDuration;
             var provider = user.InputProvider;
             if (!entity.GetVariable(Dashing)) {

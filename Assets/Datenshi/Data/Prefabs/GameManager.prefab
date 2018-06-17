@@ -3387,6 +3387,8 @@ MonoBehaviour:
   maxSpeed: 10
   YForce: 24
   baseSpeedMultiplier: 1
+  speedMultiplier:
+    BaseValue: 0
   DamageGivesKnockback: 0
   DamageKnockbackMin: 1
   DamageKnockbackStrenght: 5

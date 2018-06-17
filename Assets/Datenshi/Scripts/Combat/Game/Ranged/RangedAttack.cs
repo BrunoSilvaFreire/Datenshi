@@ -1,4 +1,5 @@
 ﻿using Datenshi.Scripts.Combat.Attacks;
+using Datenshi.Scripts.Combat.Status;
 using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
@@ -13,16 +14,21 @@ namespace Datenshi.Scripts.Combat.Game.Ranged {
         public Vector2 Offset;
         public bool Aim = true;
         public float FocusConsumption;
-        public float EvasionSlowdownDuration = 2;
-        public float EvasionTimeStopScale = .1F;
-        public float EvasionDashDuration = .25F;
-        public Vector2 EvasionOffset;
-        public float EvasionTimeStopDelay = .5F;
+        public float EvasionSpeedBoostMagnitude = 1.5F;
+        public float EvasionSpeedBoostDuration = 2F;
 
         [HideIf("Aim")]
         public bool RawDir = true;
 
         public uint Damage = 5;
+
+        public SpeedStatusEffect SpeedStatusEffect {
+            get;
+        }
+        public RangedAttack() {
+            SpeedStatusEffect = new SpeedStatusEffect(EvasionSpeedBoostMagnitude, EvasionSpeedBoostDuration);
+        }
+        
 #if UNITY_EDITOR
         [ShowInInspector]
         public GameObject CopyOffset {

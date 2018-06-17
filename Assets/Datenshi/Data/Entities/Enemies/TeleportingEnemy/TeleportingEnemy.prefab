@@ -340,35 +340,16 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  health: 8
-  maxHealth: 8
-  invulnerable: 0
   DamageInvulnerability: 0
   DamageInvulnerabilityDuration: 3
+  hitbox: {fileID: 61229744791870152}
+  ignored: 0
+  updater: {fileID: 114695080122684920}
   relationship: 2
-  OnDamaged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Datenshi.Scripts.Entities.EntityDamagedEvent, Datenshi-Entities, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnAttack:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: Datenshi.Scripts.Entities.EntityAttackEvent, Datenshi-Entities, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnHealthChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  DamageGivesStun: 0
-  hitbox: {fileID: 61229744791870152}
-  DamageStunMin: 10
-  DamageStunDuration: 1
-  onKilled:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   defenseHitbox:
     Center: {x: 0, y: 0}
@@ -377,8 +358,27 @@ MonoBehaviour:
   MinDefenseRequired: 0.1
   DefenseRecoverAmountMultiplier: 1
   DefenseDepleteAmountMultiplier: 2
-  updater: {fileID: 114695080122684920}
-  ignored: 0
+  OnDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Datenshi.Scripts.Entities.EntityDamagedEvent, Datenshi-Entities, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onKilled:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  health: 8
+  maxHealth: 8
+  godMode: 0
+  DamageGivesStun: 0
+  DamageStunMin: 10
+  DamageStunDuration: 1
   motor: {fileID: 11400000, guid: 86ff67f763aa58f44883b61f198a88ce, type: 2}
   accelerationCurve:
     serializedVersion: 2
@@ -408,8 +408,8 @@ MonoBehaviour:
   SkinWidth: 0.1
   maxSpeed: 10
   YForce: 5
-  speedMultiplier: 1
-  ApplyVelocity: 1
+  speedMultiplier:
+    BaseValue: 0
   DamageGivesKnockback: 0
   DamageKnockbackMin: 10
   DamageKnockbackStrenght: 3
@@ -427,6 +427,7 @@ MonoBehaviour:
     Down: 0
     Left: 0
     Right: 0
+  timeScaleIndependent: 0
 --- !u!114 &114079858820831974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -464,6 +465,7 @@ MonoBehaviour:
   GhostingContainer: {fileID: 0}
   minPitch: 0
   maxPitch: 0
+  MainSpriteRenderer: {fileID: 0}
 --- !u!114 &114162560845781466
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -692,7 +694,6 @@ MonoBehaviour:
   SpeedRawKey: SpeedRaw
   GroundedKey: Grounded
   YSpeedKey: YSpeed
-  AttackKey: Attack
   DamagedKey: Damaged
   StoppingKey: Stopping
   AbsInputVerticalKey: AbsInputVertical

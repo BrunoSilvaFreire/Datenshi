@@ -58,7 +58,6 @@ namespace Datenshi.Scripts.Entities {
             UpdateInvulnerability();
             UpdateStun();
             UpdateFocus();
-            UpdateStatusEffects();
         }
 
         private void UpdateRendering() {

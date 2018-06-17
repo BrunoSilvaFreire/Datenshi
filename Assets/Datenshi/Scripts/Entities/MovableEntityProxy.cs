@@ -109,7 +109,7 @@ namespace Datenshi.Scripts.Entities {
                 return;
             }
 
-            Target.BaseSpeedMultiplier = value;
+            Target.SpeedMultiplier.BaseValue = value;
         }
 
 

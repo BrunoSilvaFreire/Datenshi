@@ -27,6 +27,8 @@ namespace Datenshi.Scripts.Combat.Game.Ranged {
         public AudioSource Source;
         public GameObject[] ToDecouple;
         public float MaxAutoDefenseAngle = 150;
+        public float MaxTravelDistance = 30;
+        private float currentTravelDistance;
 
         [ShowInInspector, ReadOnly]
         private bool wasShot;
@@ -71,7 +73,8 @@ namespace Datenshi.Scripts.Combat.Game.Ranged {
                 return;
             }
 
-            transform.position += (Vector3) velocity * Time.deltaTime;
+            var dir = (Vector3) velocity * Time.deltaTime;
+            transform.position += dir;
         }
 
         private void OnCollisionEnter2D(Collision2D other) {
@@ -139,62 +142,10 @@ namespace Datenshi.Scripts.Combat.Game.Ranged {
 
         public float DoEvasiveDefend(ICombatant combatant, ref DamageInfo info) {
             info.Canceled = true;
-            combatant.StartCoroutine(EvasiveDash(combatant));
+            var duration = UsedAttack.EvasionSpeedBoostDuration;
+            combatant.SetInvulnerable(duration);
+            UsedAttack.SpeedStatusEffect.Apply(combatant);
             return UsedAttack.FocusConsumption;
-        }
-
-        private IEnumerator EvasiveDash(ICombatant combatant) {
-            var sdDuration = UsedAttack.EvasionSlowdownDuration;
-            GraphicsSingleton.Instance.BlackAndWhite.DoAmountImpact(1, sdDuration);
-            var initScale = UsedAttack.EvasionTimeStopScale;
-            Time.timeScale = initScale;
-            combatant.Ignored = true;
-            var m = combatant as IDatenshiMovable;
-            var e = combatant as Entity;
-            var g = e != null ? e.MiscController.GhostingContainer : null;
-            var a = combatant.AnimatorUpdater;
-            if (m != null) {
-                m.TimeScaleIndependent = true;
-            }
-
-            if (g != null) {
-                g.SetPermanentSpawn(true);
-            }
-
-            a.SetAnimationTimeIndependent(true);
-/*            float timePassed = 0;
-            var originalPos = combatant.GroundPosition;
-            var entityPos = ownerDestroyed ? originalPos : Owner.GroundPosition;
-
-            var offset = UsedAttack.EvasionOffset;
-            var dir = Direction.DirectionValue.FromVector(entityPos.x - originalPos.x);
-            offset.x *= dir;
-            var targetPos = entityPos + offset;
-            var totalTime = UsedAttack.EvasionDashDuration;
-            while (timePassed < totalTime) {
-                timePassed += Time.unscaledDeltaTime;
-                var percent = timePassed / totalTime;
-                combatant.Transform.position = Vector2.Lerp(originalPos, targetPos, percent);
-                yield return null;
-            }
-
-            var d = combatant.CurrentDirection;
-            d.X = -dir;
-            combatant.CurrentDirection = d;*/
-            var slowdownDuration = UsedAttack.EvasionSlowdownDuration;
-            yield return new WaitForSecondsRealtime(UsedAttack.EvasionTimeStopDelay);
-            TimeController.Instance.Slowdown(initScale, slowdownDuration);
-            yield return new WaitForSeconds(slowdownDuration);
-            combatant.Ignored = false;
-            if (m != null) {
-                m.TimeScaleIndependent = false;
-            }
-
-            if (g != null) {
-                g.SetPermanentSpawn(false);
-            }
-
-            a.SetAnimationTimeIndependent(false);
         }
 
 

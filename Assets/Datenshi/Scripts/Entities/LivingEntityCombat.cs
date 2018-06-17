@@ -1,10 +1,13 @@
 ﻿using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Combat.Attacks;
 using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace Datenshi.Scripts.Entities {
     public partial class LivingEntity : ICombatant {
+        [SerializeField]
         private CombatRelationship relationship;
+
         public CombatRelationship Relationship => relationship;
 
 

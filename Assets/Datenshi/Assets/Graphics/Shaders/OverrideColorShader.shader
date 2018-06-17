@@ -1,7 +1,7 @@
 ﻿Shader "Datenshi/OverrideColorShader" {
     Properties {
         _MainTex ("Texture", 2D) = "white" {}
-        _Amount ("Amount", Float) = 1
+        _Amount ("Amount", Float) = 0
         _Color ("Color", Color) = (1,0,0,0)
     }
     SubShader {

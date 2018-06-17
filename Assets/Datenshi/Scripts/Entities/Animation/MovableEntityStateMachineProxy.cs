@@ -72,9 +72,8 @@ namespace Datenshi.Scripts.Entities.Animation {
         }
 
         public void SetSpeedMultiplier(float value) {
-            Target.BaseSpeedMultiplier = value;
+            Target.SpeedMultiplier.BaseValue = value;
         }
-
 
         public void SetApplyVelocity(bool value) {
             Target.ApplyVelocity = value;

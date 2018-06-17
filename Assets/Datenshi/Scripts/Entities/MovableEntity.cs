@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using Datenshi.Scripts.AI;
 using Datenshi.Scripts.Combat;
-using Datenshi.Scripts.Combat.Attacks;
 using Datenshi.Scripts.Input;
 using Datenshi.Scripts.Movement;
 using Datenshi.Scripts.Util;
+using Datenshi.Scripts.Util.Volatiles;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UPM;
@@ -53,26 +53,10 @@ namespace Datenshi.Scripts.Entities {
         [TitleGroup(MovementGroup)]
         public float YForce = 5;
 
-        [SerializeField, TitleGroup(MovementGroup)]
-        private float baseSpeedMultiplier = 1;
+        [SerializeField]
+        private FloatVolatileProperty speedMultiplier;
 
-
-        public float BaseSpeedMultiplier {
-            get {
-                return baseSpeedMultiplier;
-            }
-            set {
-                baseSpeedMultiplier = value;
-            }
-        }
-
-        public float SpeedMultiplier {
-            get {
-                var baseSpeed = baseSpeedMultiplier;
-
-                return baseSpeed;
-            }
-        }
+        public FloatVolatileProperty SpeedMultiplier => speedMultiplier;
 
 
         [TitleGroup(CombatGroup)]
@@ -188,8 +172,13 @@ namespace Datenshi.Scripts.Entities {
 
         protected override void Update() {
             base.Update();
+            UpdateMovableVariables();
             UpdateMovement();
             UpdateDirection();
+        }
+
+        private void UpdateMovableVariables() {
+            SpeedMultiplier.Tick();
         }
 
         private void UpdateDirection() {

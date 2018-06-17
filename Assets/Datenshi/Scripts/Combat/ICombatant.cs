@@ -101,8 +101,6 @@ namespace Datenshi.Scripts.Combat {
         void Stun(float duration);
 
         void ExecuteAttack(Attack attack);
-        void ApplyStatusEffect(StatusEffect e);
-        IEnumerable<T> FindStatusEffects<T>() where T : StatusEffect;
 
         UnityEvent OnKilled {
             get;

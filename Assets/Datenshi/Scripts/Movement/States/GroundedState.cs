@@ -5,6 +5,7 @@ using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Input;
 using Datenshi.Scripts.Movement.Config;
 using Datenshi.Scripts.Util;
+using UnityEditor.Experimental.AssetImporters;
 using UnityEngine;
 using UPM;
 using UPM.Motors;
@@ -99,8 +100,10 @@ namespace Datenshi.Scripts.Movement.States {
                 wallClimbState);
 
             var max = user.MaxSpeed;
+            Debug.Log("Max = " + max);
             if (collisionStatus.Down) {
-                max *= user.BaseSpeedMultiplier;
+                max *= user.SpeedMultiplier.Value;
+                Debug.Log("New max = " + max);
             }
 
             velocity.x = Mathf.Clamp(velocity.x, -max, max);
@@ -233,7 +236,7 @@ namespace Datenshi.Scripts.Movement.States {
             var velDir = Math.Sign(velocity.x);
             var curve = user.AccelerationCurve;
             var speedPercent = user.SpeedPercent;
-            var rawAcceleration = curve.Evaluate(speedPercent);
+            var rawAcceleration = curve.Evaluate(speedPercent) * user.SpeedMultiplier.Value;
             var acceleration = rawAcceleration * dir;
             var maxSpeed = user.MaxSpeed * Mathf.Abs(xInput);
             var speed = Mathf.Abs(velocity.x);
