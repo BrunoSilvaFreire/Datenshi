@@ -40,9 +40,24 @@ namespace Datenshi.Scripts.Entities {
             set;
         }
 
+        public float DefendingFor {
+            get {
+                if (!defending) {
+                    return 0;
+                }
+
+                return Time.time - LastDefenseStart;
+            }
+        }
+
         private bool canReDefend;
         private bool defendingLastFrame;
         public bool Dead => health == 0;
+
+        public float LastDefenseStart {
+            get;
+            private set;
+        }
 
         [ShowInInspector, ReadOnly, TitleGroup(CombatGroup)]
         public bool Defending {
@@ -63,6 +78,9 @@ namespace Datenshi.Scripts.Entities {
                 }
 
                 defending = value;
+                if (defending) {
+                    LastDefenseStart = Time.time;
+                }
             }
         }
 

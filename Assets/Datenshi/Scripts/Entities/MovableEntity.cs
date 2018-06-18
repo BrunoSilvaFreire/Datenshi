@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Datenshi.Scripts.AI;
 using Datenshi.Scripts.Combat;
-using Datenshi.Scripts.Input;
 using Datenshi.Scripts.Movement;
 using Datenshi.Scripts.Util;
 using Datenshi.Scripts.Util.Volatiles;
@@ -53,6 +52,8 @@ namespace Datenshi.Scripts.Entities {
         [TitleGroup(MovementGroup)]
         public float YForce = 5;
 
+        public float DirectionChangeThreshold = .2F;
+
         [SerializeField]
         private FloatVolatileProperty speedMultiplier;
 
@@ -85,8 +86,6 @@ namespace Datenshi.Scripts.Entities {
         public InputProvider InputProvider => base.InputProvider;
 
         public AnimationCurve AccelerationCurve => accelerationCurve;
-
-        public Collider2D Hitbox => base.Hitbox;
 
 
         [SerializeField]
@@ -182,11 +181,7 @@ namespace Datenshi.Scripts.Entities {
         }
 
         private void UpdateDirection() {
-            if (Defending) {
-                if (InputProvider.GetButtonDown((int) Actions.Flip)) {
-                    direction.X = -direction.X;
-                }
-
+            if (Defending && DefendingFor > DirectionChangeThreshold) {
                 return;
             }
 

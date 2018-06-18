@@ -479,7 +479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30222439cf18439ca9ea2178ad33540d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TravelSpeed: 10
+  TravelSpeed: 15
   DestroyDelay: 2
   SpawnOnHit: {fileID: 0}
   SpawnOnDefended: {fileID: 0}
