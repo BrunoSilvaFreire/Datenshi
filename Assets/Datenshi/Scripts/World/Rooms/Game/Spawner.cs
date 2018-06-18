@@ -21,6 +21,7 @@ namespace Datenshi.Scripts.World.Rooms.Game {
 
         public SpawnMode Mode;
         public Wave Wave;
+        public bool AllowReplay;
 
         private void Start() {
             Room.OnObjectEnter.AddListener(OnEnter);
@@ -98,6 +99,9 @@ namespace Datenshi.Scripts.World.Rooms.Game {
                     ToOpen.Open();
                 }
 
+                if (AllowReplay) {
+                    started = false;
+                }
                 return;
             }
 

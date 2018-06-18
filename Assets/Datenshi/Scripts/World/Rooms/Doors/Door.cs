@@ -5,9 +5,9 @@ using UnityEngine;
 
 namespace Datenshi.Scripts.World.Rooms.Doors {
     public class Door : AbstractRoomMember {
-        public SpriteRenderer[] Renderers;
-        public Color OpenColor;
-        public Color CloseColor;
+        public MeshRenderer[] Renderers;
+        public Material OpenMaterial;
+        public Material CloseMaterial;
         public AudioClip OpenClip;
         public AudioClip CloseClip;
         public AudioSource Source;
@@ -33,7 +33,7 @@ namespace Datenshi.Scripts.World.Rooms.Doors {
             }
 
             foreach (var r in Renderers) {
-                r.color = OpenColor;
+                r.material = OpenMaterial;
             }
 
             if (!silent) {
@@ -44,6 +44,7 @@ namespace Datenshi.Scripts.World.Rooms.Doors {
             foreach (var r in Renderers) {
                 r.gameObject.SetActive(false);
             }
+
             Collider.gameObject.SetActive(false);
             openRoutine = null;
         }
@@ -54,7 +55,7 @@ namespace Datenshi.Scripts.World.Rooms.Doors {
             }
 
             foreach (var r in Renderers) {
-                r.color = CloseColor;
+                r.material = CloseMaterial;
             }
 
             if (!silent) {

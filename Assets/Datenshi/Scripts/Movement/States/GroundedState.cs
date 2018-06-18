@@ -98,10 +98,8 @@ namespace Datenshi.Scripts.Movement.States {
                 wallClimbState);
 
             var max = user.MaxSpeed;
-            Debug.Log("Max = " + max);
             if (collisionStatus.Down) {
                 max *= user.SpeedMultiplier.Value;
-                Debug.Log("New max = " + max);
             }
 
             velocity.x = Mathf.Clamp(velocity.x, -max, max);
