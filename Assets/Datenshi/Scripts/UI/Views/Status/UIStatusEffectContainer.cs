@@ -8,7 +8,7 @@ using Datenshi.Scripts.Util.Volatiles;
 using UnityEngine;
 
 namespace Datenshi.Scripts.UI.Views.Status {
-    public class UIStatusEffectContainer : UICanvasGroupElement {
+    public class UIStatusEffectContainer : UICanvasGroupView {
         public Transform ContentTransform;
 
         private void Start() {
@@ -23,7 +23,7 @@ namespace Datenshi.Scripts.UI.Views.Status {
                 return;
             }
 
-            foreach (var element in GetComponentsInChildren<UIStatusEffectElement>()) {
+            foreach (var element in GetComponentsInChildren<UIStatusEffectView>()) {
                 if (element.Effect == arg0) {
                     element.FadeDelete();
                 }
@@ -48,7 +48,7 @@ namespace Datenshi.Scripts.UI.Views.Status {
         }
 
         private void ReloadForEntity(Entity newEntity) {
-            foreach (var e in GetComponentsInChildren<UIStatusEffectElement>()) {
+            foreach (var e in GetComponentsInChildren<UIStatusEffectView>()) {
                 Destroy(e.gameObject);
             }
 
@@ -63,7 +63,7 @@ namespace Datenshi.Scripts.UI.Views.Status {
         }
 
         private void InitNewElement(StatusEffect effect, VolatilePropertyModifier modifier) {
-            var element = UIResources.Instance.StatusEffectElementPrefab.Clone(ContentTransform);
+            var element = UIResources.Instance.StatusEffectViewPrefab.Clone(ContentTransform);
             element.Init(effect, modifier);
             element.FadeIn();
         }

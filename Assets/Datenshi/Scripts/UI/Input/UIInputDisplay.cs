@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace Datenshi.Scripts.UI.Input {
-    public class UIInputDisplay : UIElement {
+    public class UIInputDisplay : UIView {
         public CanvasGroup Group;
         public float ShowDuration = .1F;
         public float HideDuration = .1F;

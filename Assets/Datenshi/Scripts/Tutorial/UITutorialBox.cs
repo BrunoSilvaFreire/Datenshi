@@ -13,7 +13,7 @@ namespace Datenshi.Scripts.Tutorial {
     [Serializable]
     public class UITutorialBoxEvent : UnityEvent<TutorialTrigger> { }
 
-    public class UITutorialBox : UIElement {
+    public class UITutorialBox : UIView {
         private static UITutorialBox instance;
 
         public static UITutorialBox Instance => instance ? instance : (instance = FindObjectOfType<UITutorialBox>());

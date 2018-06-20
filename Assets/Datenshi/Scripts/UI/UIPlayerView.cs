@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Datenshi.Scripts.Game;
 namespace Datenshi.Scripts.UI {
-    public class UIPlayerView : UIDefaultColoredElement {
+    public class UIPlayerView : UIDefaultColoredView {
         public Text CharacterNameLabel;
         public PlayerController Player;
 

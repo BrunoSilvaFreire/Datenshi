@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine;
 
 namespace Datenshi.Scripts.UI {
-    public abstract class UIElement : MonoBehaviour {
+    public abstract class UIView : MonoBehaviour {
         [ShowInInspector]
         public bool Showing {
             get {
@@ -90,7 +90,7 @@ namespace Datenshi.Scripts.UI {
         protected abstract void OnHide();
     }
 
-    public abstract class UIView : UIElement {
+    public abstract class UIElement : UIView {
         public abstract void Select();
         public abstract void Deselect();
     }

@@ -2,7 +2,7 @@
 using UnityEngine;
 
 namespace Datenshi.Scripts.UI.Misc {
-    public class UIDefenseElement : UIMaxedCharacterBarElement {
+    public class UIDefenseView : UIMaxedCharacterBarView {
         public bool UseCustomColor;
         public Color CustomColor;
         protected override bool HasColorAvailable() {

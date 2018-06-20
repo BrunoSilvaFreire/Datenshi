@@ -2,7 +2,7 @@
 using UnityEngine;
 
 namespace Datenshi.Scripts.UI.Misc {
-    public class UICanvasGroupElement : UIElement {
+    public class UICanvasGroupView : UIView {
         public CanvasGroup Group;
         public float ShowAlpha = 1;
         public float HideAlpha = 0;
@@ -26,7 +26,7 @@ namespace Datenshi.Scripts.UI.Misc {
 
         private void SetGroupAlpha(float alpha) {
             Group.DOKill();
-            Group.DOFade(alpha, GroupTransitionDuration);
+            Group.DOFade(alpha, GroupTransitionDuration).SetUpdate(true);
         }
     }
 }

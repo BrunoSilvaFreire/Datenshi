@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 
 namespace Datenshi.Scripts.UI.Misc {
-    public abstract class UIMaxedCharacterBarElement : UICharacterBarElement {
+    public abstract class UIMaxedCharacterBarView : UICharacterBarView {
         public float ShowPercentage = 0.975F;
         public bool ShowAlways;
 

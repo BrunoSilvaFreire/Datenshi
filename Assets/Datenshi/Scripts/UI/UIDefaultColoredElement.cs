@@ -4,7 +4,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Datenshi.Scripts.UI {
-    public abstract class UIDefaultColoredElement : UICanvasGroupElement {
+    public abstract class UIDefaultColoredView : UICanvasGroupView {
         [SerializeField, HideInInspector]
         private byte defaultColor;
 

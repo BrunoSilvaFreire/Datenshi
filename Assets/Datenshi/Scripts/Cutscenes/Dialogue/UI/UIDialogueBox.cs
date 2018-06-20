@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace Datenshi.Scripts.Cutscenes.Dialogue.UI {
-    public class UIDialogueBox : UIElement {
+    public class UIDialogueBox : UIView {
         public CanvasGroup CanvasGroup;
         public Text LabelField;
         public Text TextField;

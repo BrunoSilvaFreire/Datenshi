@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace Datenshi.Scripts.Input {
     /// <summary>
@@ -24,6 +25,16 @@ namespace Datenshi.Scripts.Input {
         public abstract bool GetDash();
         public abstract bool GetDefend();
         public abstract bool GetSubmit();
+#if UNITY_EDITOR
+        public const string DebugGroup = "Values";
+        [ShowInInspector, FoldoutGroup(DebugGroup)]
+        public float Horizontal => GetHorizontal();
 
+        [ShowInInspector, FoldoutGroup(DebugGroup)]
+        public float Vertical => GetVertical();
+
+        [ShowInInspector, FoldoutGroup(DebugGroup)]
+        public bool Jump => GetJump();
+#endif
     }
 }

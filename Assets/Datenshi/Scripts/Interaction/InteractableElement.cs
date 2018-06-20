@@ -9,7 +9,7 @@ namespace Datenshi.Scripts.Interaction {
     public class EntityInteractionEvent : UnityEvent<MovableEntity> { }
 
     public abstract class InteractableElement : MonoBehaviour {
-        public UIInteractableElementView UIElement;
+        public UIInteractableViewElement UIElement;
         public EntityInteractionEvent OnInteract;
         public abstract bool CanInteract(MovableEntity e);
 

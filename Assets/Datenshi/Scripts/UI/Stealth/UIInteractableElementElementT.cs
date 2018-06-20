@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.UI.Extensions;
 
 namespace Datenshi.Scripts.UI.Stealth {
-    public class UIInteractableElementView : UIView {
+    public class UIInteractableViewElement : UIElement {
         public Button Button;
         public Image Icon;
         public UICircle SelectionCircle;

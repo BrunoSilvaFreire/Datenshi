@@ -2,7 +2,7 @@
 using Datenshi.Scripts.Game;
 
 namespace Datenshi.Scripts.UI.Misc {
-    public class UIPlayerHealthElement : UIHealthElement {
+    public class UIPlayerHealthView : UIHealthView {
         public PlayerController Player;
 
         private void Awake() {

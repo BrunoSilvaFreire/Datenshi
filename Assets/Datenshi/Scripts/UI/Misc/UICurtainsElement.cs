@@ -3,11 +3,11 @@ using DG.Tweening;
 using UnityEngine.UI;
 
 namespace Datenshi.Scripts.UI.Misc {
-    public class UICurtainsElement : UIElement {
-        private static UICurtainsElement instance;
+    public class UICurtainsView : UIView {
+        private static UICurtainsView instance;
 
-        public static UICurtainsElement Instance
-            => instance == null ? (instance = FindObjectOfType<UICurtainsElement>()) : instance;
+        public static UICurtainsView Instance
+            => instance == null ? (instance = FindObjectOfType<UICurtainsView>()) : instance;
 
         public Image Curtain;
         public float FadeDuration = 2F;

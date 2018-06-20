@@ -30,7 +30,18 @@ namespace Datenshi.Scripts.Audio {
 
         public void PlayFX(AudioFX fx) {
             var source = GetSource(fx.Category);
-            source.PlayOneShot(fx.Clip, fx.Volume);
+            switch (fx.Category) {
+                case AudioCategory.SFX:
+                    source.PlayOneShot(fx.Clip, fx.Volume);
+                    break;
+                case AudioCategory.BGM:
+                    source.Stop();
+                    source.clip = fx.Clip;
+                    source.Play();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         private AudioSource GetSource(AudioCategory fxCategory) {

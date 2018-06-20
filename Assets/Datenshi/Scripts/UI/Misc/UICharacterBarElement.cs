@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace Datenshi.Scripts.UI.Misc {
-    public abstract class UICharacterBarElement : UICharacterColoredElement {
+    public abstract class UICharacterBarView : UICharacterColoredView {
         public Image DefenseBar;
 
         private void Update() {

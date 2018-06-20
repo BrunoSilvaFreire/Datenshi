@@ -4,25 +4,25 @@ using System.Collections.Generic;
 namespace Datenshi.Scripts.Cutscenes.Dialogue.UI {
     public class UIWorldDialogueStage : UIDialogueStage<UIWorldDialogueStage> {
         protected override void SnapShow() {
-            foreach (var portrait in Views) {
+            foreach (var portrait in Elements) {
                 portrait.SnapShowing(true);
             }
         }
 
         protected override void SnapHide() {
-            foreach (var portrait in Views) {
+            foreach (var portrait in Elements) {
                 portrait.SnapShowing(false);
             }
         }
 
         protected override void OnShow() {
-            foreach (var portrait in Views) {
+            foreach (var portrait in Elements) {
                 portrait.Showing = true;
             }
         }
 
         protected override void OnHide() {
-            foreach (var portrait in Views) {
+            foreach (var portrait in Elements) {
                 portrait.Showing = false;
             }
         }

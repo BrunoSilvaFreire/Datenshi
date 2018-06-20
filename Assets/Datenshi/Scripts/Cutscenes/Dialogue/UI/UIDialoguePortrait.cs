@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace Datenshi.Scripts.Cutscenes.Dialogue.UI {
-    public class UIDialoguePortrait : UIElement {
+    public class UIDialoguePortrait : UIView {
         public Image Image;
         public float VerticalOffset;
         public AppearanceMode Last;

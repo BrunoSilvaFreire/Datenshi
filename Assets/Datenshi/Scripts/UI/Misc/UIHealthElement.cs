@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace Datenshi.Scripts.UI.Misc {
-    public abstract class UIHealthElement : UIDefaultColoredElement {
+    public abstract class UIHealthView : UIDefaultColoredView {
         public Image HealthBar;
         public Image SubHealthBar;
         public float SubHealthDelay = 1;

@@ -4,19 +4,19 @@ using UnityEngine;
 
 namespace Datenshi.Scripts.UI {
     public static class UIElementExtensions {
-        public static void FadeIn(this UIElement element) {
-            element.SnapShowing(false);
-            element.Showing = true;
+        public static void FadeIn(this UIView view) {
+            view.SnapShowing(false);
+            view.Showing = true;
         }
 
-        public static void FadeOut(this UIElement element) {
-            element.SnapShowing(true);
-            element.Showing = false;
+        public static void FadeOut(this UIView view) {
+            view.SnapShowing(true);
+            view.Showing = false;
         }
 
-        public static void FadeDelete(this UICanvasGroupElement element) {
-            element.FadeOut();
-            Object.Destroy(element.gameObject, element.GroupTransitionDuration);
+        public static void FadeDelete(this UICanvasGroupView view) {
+            view.FadeOut();
+            Object.Destroy(view.gameObject, view.GroupTransitionDuration);
         }
     }
 }

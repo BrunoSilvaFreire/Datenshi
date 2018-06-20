@@ -27,9 +27,12 @@ namespace Datenshi.Scripts.Game {
                 ReloadPlayer();
             }
         }
+
+
         [ShowInInspector, ReadOnly]
         private Player currentPlayer;
 
+        public Player CurrentPlayer => currentPlayer;
         private void ReloadPlayer() {
             currentPlayer = ReInput.players.GetPlayer((int) playerID);
             Debug.LogFormat(

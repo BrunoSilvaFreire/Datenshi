@@ -1,7 +1,7 @@
 ﻿using Datenshi.Scripts.Entities;
 
 namespace Datenshi.Scripts.UI.Misc {
-    public class UIEntityHealthElement : UIHealthElement {
+    public class UIEntityHealthView : UIHealthView {
         public LivingEntity Entity;
 
         protected override LivingEntity GetEntity() {

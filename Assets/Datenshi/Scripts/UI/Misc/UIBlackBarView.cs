@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine.UI;
 
 namespace Datenshi.Scripts.UI.Misc {
-    public class UIBlackBarView : UIElement {
+    public class UIBlackBarView : UIView {
         public Image Up;
         public Image Down;
         public float ObscurePercent = 0.15F;

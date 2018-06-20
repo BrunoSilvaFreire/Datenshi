@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using ColorUtility = Datenshi.Scripts.Util.ColorUtility;
 
 namespace Datenshi.Scripts.UI.Views.Status {
-    public class UIStatusEffectElement : UIDefaultColoredElement {
+    public class UIStatusEffectView : UIDefaultColoredView {
         public StatusEffect Effect;
         public VolatilePropertyModifier Modifier;
         public Image Background;

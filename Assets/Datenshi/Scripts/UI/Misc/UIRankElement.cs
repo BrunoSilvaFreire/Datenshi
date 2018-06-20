@@ -9,7 +9,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace Datenshi.Scripts.UI.Misc {
-    public class UIRankElement : UICanvasGroupElement {
+    public class UIRankView : UICanvasGroupView {
         private PlayerController controller;
         public Text RankField;
         public Image XPBar;

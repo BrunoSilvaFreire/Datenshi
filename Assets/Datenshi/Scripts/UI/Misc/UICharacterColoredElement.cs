@@ -2,7 +2,7 @@
 using UnityEngine;
 
 namespace Datenshi.Scripts.UI.Misc {
-    public abstract class UICharacterColoredElement : UIDefaultColoredElement {
+    public abstract class UICharacterColoredView : UIDefaultColoredView {
         protected override bool HasColorAvailable() {
             var entity = PlayerController.Instance.CurrentEntity;
             if (entity == null) {

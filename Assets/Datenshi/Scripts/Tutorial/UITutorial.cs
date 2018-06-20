@@ -3,7 +3,7 @@ using DG.Tweening;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Tutorial {
-    public class UITutorial : UIElement {
+    public class UITutorial : UIView {
         public Vector2 Size;
         public float FadeDuration;
         public SpriteRenderer[] Renderers;
