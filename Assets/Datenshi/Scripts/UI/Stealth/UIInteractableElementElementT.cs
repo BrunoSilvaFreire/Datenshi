@@ -48,8 +48,5 @@ namespace Datenshi.Scripts.UI.Stealth {
             Button.Select();
         }
 
-        public override void Deselect() {
-            EventSystem.current.SetSelectedGameObject(null);
-        }
     }
 }

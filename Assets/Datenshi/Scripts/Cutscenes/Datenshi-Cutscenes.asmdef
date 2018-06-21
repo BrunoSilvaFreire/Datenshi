@@ -5,7 +5,8 @@
         "Datenshi-Utilities",
         "Datenshi-Data",
         "Datenshi-UI",
-        "Datenshi-Input"
+        "Datenshi-Input",
+        "Datenshi-Game"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],

@@ -29,9 +29,5 @@ namespace Datenshi.Scripts.UI.Elements {
         public override void Select() {
             Button.Select();
         }
-
-        public override void Deselect() {
-            EventSystem.current.SetSelectedGameObject(null);
-        }
     }
 }

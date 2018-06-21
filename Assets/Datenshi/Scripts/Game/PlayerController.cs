@@ -7,6 +7,7 @@ using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Game.Rank;
 using Datenshi.Scripts.Game.Time;
 using Datenshi.Scripts.Graphics;
+using Datenshi.Scripts.Input;
 using Datenshi.Scripts.Misc;
 using Datenshi.Scripts.Util;
 using Datenshi.Scripts.Util.Singleton;
@@ -23,6 +24,7 @@ namespace Datenshi.Scripts.Game {
 
     [Serializable]
     public class PlayerRankXPGainedEvent : UnityEvent<float> { }
+
 
     public class PlayerController : Singleton<PlayerController> {
         public PlayerInputProvider Player;
@@ -44,7 +46,7 @@ namespace Datenshi.Scripts.Game {
 
 
         public float DamageGlitchDuration = .25F;
-        
+
         public float DefendOverrideAmount = 1;
         public float DefendOverrideDuration = 0.5F;
         public PlayerEntityChangedEvent OnEntityChanged;
@@ -127,6 +129,7 @@ namespace Datenshi.Scripts.Game {
         public float RankXPDropSpeed = .1F;
         private float xpStopDurationLeft;
 
+
         private void HandleRankAttack(Attack attack) {
             if (attack == lastAttack) {
                 timesReused++;
@@ -165,25 +168,15 @@ namespace Datenshi.Scripts.Game {
 
         private void Update() {
             UpdateRank();
-            /*
-            var p = Player;
-            if (p == null) {
-                return;
-            }
-
-            var l = currentEntity as LivingEntity;
-            var currentDefending = l != null && l.Defending;
-            if (currentDefending == defending) {
-                return;
-            }
-
-            defending = currentDefending;
-            if (defending) {
-                ShowDefend();
-            } else {
-                HideDefend();
-            }*/
+            UpdatePause();
         }
+
+        private void UpdatePause() {
+            if (Player.GetButtonDown((int) Actions.Cancel)) {
+                RuntimeResources.Instance.TogglePaused();
+            }
+        }
+
 
         private void UpdateRank() {
             var delta = UnityEngine.Time.deltaTime;

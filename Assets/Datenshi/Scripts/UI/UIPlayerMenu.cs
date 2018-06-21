@@ -1,5 +1,5 @@
-﻿using Datenshi.Scripts.Input;
-using Datenshi.Scripts.UI.Misc;
+﻿using Datenshi.Scripts.Data;
+using Datenshi.Scripts.Input;
 
 namespace Datenshi.Scripts.UI {
     public class UIPlayerMenu : UIMenu {
@@ -7,12 +7,11 @@ namespace Datenshi.Scripts.UI {
 
         private void Start() {
             Hide();
+            GamePausedChangeEvent.Instance.AddListener(OnPausedChanged);
         }
 
-        private void Update() {
-            if (InputProvider.GetButtonDown((int) Actions.Cancel)) {
-                Showing = !Showing;
-            }
+        private void OnPausedChanged(bool arg0) {
+            Showing = arg0;
         }
     }
 }

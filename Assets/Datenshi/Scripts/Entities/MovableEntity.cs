@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Datenshi.Scripts.AI;
 using Datenshi.Scripts.Combat;
+using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Movement;
 using Datenshi.Scripts.Util;
 using Datenshi.Scripts.Util.Volatiles;
@@ -201,6 +202,9 @@ namespace Datenshi.Scripts.Entities {
         }
 
         private void UpdateMovement() {
+            if (RuntimeResources.Instance.Paused) {
+                return;
+            }
             if (ExternalForces.magnitude > 0.1) {
                 ExternalForces = Vector2.Lerp(ExternalForces, Vector2.zero, ExternalForcesDeacceleration);
                 Velocity += ExternalForces * DeltaTime;

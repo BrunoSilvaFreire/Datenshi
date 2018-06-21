@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Datenshi.Scripts.UI.Misc;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -11,6 +12,7 @@ namespace Datenshi.Scripts.UI {
 
         public bool PauseOnOpen;
         public IEnumerable<UIElement> Elements => elements;
+        public bool SelectFirstOnOpen = true;
 
         private void Awake() {
             elements = GetComponentsInChildren<UIElement>();
@@ -18,6 +20,9 @@ namespace Datenshi.Scripts.UI {
 
         protected override void OnShow() {
             base.OnShow();
+            if (SelectFirstOnOpen) {
+                elements.FirstOrDefault()?.Select();
+            }
             SetElementsActive(true);
             if (PauseOnOpen) {
                 Time.timeScale = 0;
@@ -33,6 +38,7 @@ namespace Datenshi.Scripts.UI {
         protected override void OnHide() {
             base.OnHide();
             SetElementsActive(false);
+            UIElement.Deselect();
             if (PauseOnOpen) {
                 Time.timeScale = 1;
             }

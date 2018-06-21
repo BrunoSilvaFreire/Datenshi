@@ -10,6 +10,9 @@ namespace Datenshi.Scripts.Cutscenes.Tokens {
         public float WaitDuration = 1;
         public override IEnumerator Execute(CutscenePlayer player) {
             var curtains = UICurtainsView.Instance;
+            if (!curtains) {
+                yield break;
+            }
             if (Reveal) {
                 curtains.Reveal();
             } else {

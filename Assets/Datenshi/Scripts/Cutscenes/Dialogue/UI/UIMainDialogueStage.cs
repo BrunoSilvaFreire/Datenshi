@@ -1,10 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Datenshi.Scripts.Game;
+using Datenshi.Scripts.Input;
 using Datenshi.Scripts.UI.Misc;
 using Datenshi.Scripts.Util;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.UI.Extensions;
 
 namespace Datenshi.Scripts.Cutscenes.Dialogue.UI {
     public class UIMainDialogueStage : UIDialogueStage<UIMainDialogueStage> {
@@ -14,9 +19,69 @@ namespace Datenshi.Scripts.Cutscenes.Dialogue.UI {
         public UIBlackBarView BlackBar;
         public UIDialoguePortrait PortraitPrefab;
         public Narrator Narrator;
+        public Text ContinueInstruction;
+        public Text SkipInstruction;
+        public float InstructionFadeDuration;
+        public UICircle SkipProgressCircle;
+        public float SkipRequiredCircle = 2;
+
+        public void SetShowContinueInstruction(bool show) {
+            ContinueInstruction.DOKill();
+            ContinueInstruction.DOFade(show ? 1 : 0, InstructionFadeDuration);
+        }
+
+        public void SetShowSkipInstruction(bool show) {
+            SkipInstruction.DOKill();
+            SkipInstruction.DOFade(show ? 1 : 0, InstructionFadeDuration);
+        }
 
         [ShowInInspector]
         private readonly List<UIDialoguePortrait> portraits = new List<UIDialoguePortrait>();
+
+        public float SkipCompleteIndicationDuration = 1;
+        public float SkipCompleteIndicationScale = 2;
+        private float lastStart;
+        private bool reelegible = true;
+
+        private void Update() {
+            if (!Showing) {
+                return;
+            }
+
+            var p = PlayerController.Instance.Player;
+            if (!reelegible) {
+                reelegible = !p.GetButton((int) Actions.Submit);
+                return;
+            }
+
+            if (p.GetButtonDown((int) Actions.Submit)) {
+                lastStart = Time.time;
+                return;
+            }
+
+            if (!p.GetButton((int) Actions.Submit)) {
+                SkipProgressCircle.Arc = 0;
+                return;
+            }
+
+            var totalTime = Time.time - lastStart;
+            if (totalTime > 0) {
+                Complete();
+                return;
+            }
+
+            SkipProgressCircle.Arc = totalTime / SkipRequiredCircle;
+        }
+
+        public UnityEvent OnSkip;
+
+        private void Complete() {
+            reelegible = false;
+            OnSkip.Invoke();
+            SkipProgressCircle.Arc = 1;
+            var t = SkipProgressCircle.rectTransform;
+            t.DOScale(SkipCompleteIndicationScale, SkipCompleteIndicationDuration).OnComplete(() => { t.localScale = Vector3.one; });
+        }
 
         public UIDialoguePortrait AddPortrait(Character.Character character) {
             var portrait = PortraitPrefab.Clone(transform);
@@ -60,8 +125,9 @@ namespace Datenshi.Scripts.Cutscenes.Dialogue.UI {
 
         protected override IEnumerator DoPlayDialogue(Dialogue dialogue) {
             var speeches = dialogue.Speeches;
+            ResetInstructions();
+            SetShowInstructions(true);
             foreach (var speech in speeches) {
-                Debug.Log($"Playing speech {speech}");
                 var character = speech.Character;
                 CharacterLabel.text = character.Alias;
                 var portrait = GetPortrait(character);
@@ -74,7 +140,6 @@ namespace Datenshi.Scripts.Cutscenes.Dialogue.UI {
 
 
                 foreach (var line in speech.Lines) {
-                    Debug.Log($"Playing line {line}");
                     if (line.Move) {
                         portrait.Appear(line.AppearanceMode);
                     }
@@ -84,6 +149,18 @@ namespace Datenshi.Scripts.Cutscenes.Dialogue.UI {
             }
 
             ClearPortraits();
+        }
+
+        private void SetShowInstructions(bool b) {
+            SetShowContinueInstruction(b);
+            SetShowSkipInstruction(b);
+        }
+
+        private void ResetInstructions() {
+            ContinueInstruction.DOKill();
+            ContinueInstruction.SetAlpha(0);
+            SkipInstruction.DOKill();
+            ContinueInstruction.SetAlpha(0);
         }
 
         private void ClearPortraits() {

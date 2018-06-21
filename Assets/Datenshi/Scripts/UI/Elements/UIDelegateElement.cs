@@ -9,8 +9,5 @@ namespace Datenshi.Scripts.UI.Elements {
             Delegate.Select();
         }
 
-        public override void Deselect() {
-            EventSystem.current.SetSelectedGameObject(null);
-        }
     }
 }

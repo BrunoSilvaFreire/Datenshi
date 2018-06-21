@@ -20,7 +20,6 @@ namespace Datenshi.Scripts.Cutscenes.Dialogue.UI {
             }
 
             CurrentDialogue = dialogue;
-            Debug.Log("Playing ");
             yield return DoPlayDialogue(dialogue);
             CurrentDialogue = null;
         }

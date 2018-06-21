@@ -3,6 +3,7 @@
 using UnityEditor;
 #endif
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Datenshi.Scripts.UI {
     public abstract class UIView : MonoBehaviour {
@@ -92,6 +93,9 @@ namespace Datenshi.Scripts.UI {
 
     public abstract class UIElement : UIView {
         public abstract void Select();
-        public abstract void Deselect();
+
+        public static void Deselect() {
+            EventSystem.current.SetSelectedGameObject(null);
+        }
     }
 }
