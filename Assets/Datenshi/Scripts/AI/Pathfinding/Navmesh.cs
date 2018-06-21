@@ -2,11 +2,13 @@
 using System.Linq;
 using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Util;
+using Datenshi.Scripts.Util.Singleton;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Datenshi.Scripts.AI.Pathfinding {
-    public class Navmesh : MonoBehaviour {
+    public class Navmesh : Singleton<Navmesh> {
         public static readonly Vector2 BoxCastSize = new Vector2(0.9F, 0.9F);
 
         [SerializeField]

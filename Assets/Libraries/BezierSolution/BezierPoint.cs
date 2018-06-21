@@ -220,7 +220,7 @@ namespace BezierSolution
 			other.m_followingControlPointLocalPosition = m_followingControlPointLocalPosition;
 		}
 
-		private void Revalidate()
+		public void Revalidate()
 		{
 			m_position = transform.position;
 			m_precedingControlPointPosition = transform.TransformPoint( m_precedingControlPointLocalPosition );

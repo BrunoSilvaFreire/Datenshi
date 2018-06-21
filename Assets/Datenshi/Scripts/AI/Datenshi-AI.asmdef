@@ -4,8 +4,11 @@
         "Datenshi-Utilities",
         "Datenshi-Data",
         "Datenshi-Movement",
-        "Datenshi-Input"
+        "Datenshi-Input",
+        "BezierSolution"
     ],
+    "optionalUnityReferences": [],
     "includePlatforms": [],
-    "excludePlatforms": []
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
 }

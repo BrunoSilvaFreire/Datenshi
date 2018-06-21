@@ -2,8 +2,6 @@
 
 Shader "Datenshi/EntityShader" {
 	Properties {
-	    [PerRendererData]
-		_Color ("Main Color", Color) = (1,1,1,1)
 		_OverrideColor ("Override Color", Color) = (1,1,1,1)
 		[PerRendererData] 
 		_OverrideAmount ("Override Amount", Range(0, 1)) = 0
@@ -84,7 +82,8 @@ Shader "Datenshi/EntityShader" {
 		sampler2D _NormalMap;
 
 		struct Input {
-			float2 uv_MainTex;
+		    float4 color : COLOR;
+			float2 uv_MainTex : TEXCOORD;
 		};
 
 		fixed4 _Color;

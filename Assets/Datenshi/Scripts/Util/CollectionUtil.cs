@@ -9,6 +9,9 @@ namespace Datenshi.Scripts.Util {
             return list.Count <= 0;
         }
 
+        public static bool IsEmpty<T>(this HashSet<T> list) {
+            return list.Count == 0;
+        }
 
         public static T GetOrPut<T>(this ICollection<T> collection, Func<T, bool> predicate, Func<T> instantiator) {
             foreach (var obj in collection) {
