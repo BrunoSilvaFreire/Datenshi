@@ -7,7 +7,7 @@ namespace Datenshi.Scripts.Cutscenes.Tokens {
     public class DialogueStageToken : Token {
         public bool Show;
 
-        public override IEnumerator Execute(CutscenePlayer player) {
+        public override IEnumerator Execute(CutscenePlayer player, CutsceneExecutor executor) {
             UIMainDialogueStage.Instance.Showing = Show;
             yield break;
         }

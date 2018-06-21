@@ -10,7 +10,7 @@ namespace Datenshi.Scripts.Cutscenes.Tokens {
         public Reference<UIDialoguePortrait> Portrait;
         public AppearanceMode AppearanceMode;
 
-        public override IEnumerator Execute(CutscenePlayer player) {
+        public override IEnumerator Execute(CutscenePlayer player, CutsceneExecutor executor) {
             Portrait.Resolve(player).Appear(AppearanceMode);
             yield break;
         }

@@ -5,6 +5,7 @@ using Datenshi.Scripts.Input;
 using Datenshi.Scripts.UI.Misc;
 using Datenshi.Scripts.Util;
 using DG.Tweening;
+using Shiroi.Cutscenes;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
@@ -43,44 +44,83 @@ namespace Datenshi.Scripts.Cutscenes.Dialogue.UI {
         private float lastStart;
         private bool reelegible = true;
 
+        private void Awake() {
+            foreach (var player in FindObjectsOfType<CutscenePlayer>()) {
+                Debug.Log($"Registering player {player}");
+                player.OnPlay.AddListener(OnCutscenePlay);
+                player.OnPlayed.AddListener(OnCutscenePlayed);
+            }
+        }
+
+        private readonly List<CutsceneExecutor> activeExecutors = new List<CutsceneExecutor>();
+
+        private void OnCutscenePlayed(CutsceneExecutor arg0) {
+            activeExecutors.Remove(arg0);
+        }
+
+        private void OnCutscenePlay(CutsceneExecutor arg0) {
+            activeExecutors.Add(arg0);
+        }
+
         private void Update() {
             if (!Showing) {
+                Debug.Log("Not shoing");
                 return;
             }
 
             var p = PlayerController.Instance.Player;
             if (!reelegible) {
+                Debug.Log("Not reelegible");
                 reelegible = !p.GetButton((int) Actions.Submit);
                 return;
             }
 
             if (p.GetButtonDown((int) Actions.Submit)) {
+                Debug.Log("Pressed submit");
                 lastStart = Time.time;
                 return;
             }
 
             if (!p.GetButton((int) Actions.Submit)) {
-                SkipProgressCircle.Arc = 0;
+                Debug.Log("Left submit");
+                SkipProgressCircle.SetArc(0);
                 return;
             }
 
             var totalTime = Time.time - lastStart;
-            if (totalTime > 0) {
+            Debug.Log($"Tota tilme = {totalTime}");
+            if (totalTime >= SkipRequiredCircle) {
                 Complete();
+                Debug.Log("Completed");
                 return;
             }
 
-            SkipProgressCircle.Arc = totalTime / SkipRequiredCircle;
+            Debug.Log($"Going up");
+            SkipProgressCircle.SetArc(totalTime / SkipRequiredCircle);
         }
 
         public UnityEvent OnSkip;
 
         private void Complete() {
             reelegible = false;
+            foreach (var executor in activeExecutors) {
+                Debug.Log("Skipped");
+                executor.Skip();
+            }
+
             OnSkip.Invoke();
             SkipProgressCircle.Arc = 1;
             var t = SkipProgressCircle.rectTransform;
-            t.DOScale(SkipCompleteIndicationScale, SkipCompleteIndicationDuration).OnComplete(() => { t.localScale = Vector3.one; });
+            t.DOScale(SkipCompleteIndicationScale, SkipCompleteIndicationDuration)
+                .OnComplete(
+                    () => {
+                        t.localScale = Vector3.one;
+                        SkipProgressCircle.SetArc(0);
+                    });
+            SkipProgressCircle.DOFade(0, SkipCompleteIndicationDuration)
+                .OnComplete(
+                    () => SkipProgressCircle.SetAlpha(1)
+                );
         }
 
         public UIDialoguePortrait AddPortrait(Character.Character character) {

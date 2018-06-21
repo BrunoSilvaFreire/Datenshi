@@ -8,7 +8,7 @@ namespace Datenshi.Scripts.Cutscenes.Tokens {
     public class SetCurtainsDisplayToken : Token {
         public bool Reveal;
         public float WaitDuration = 1;
-        public override IEnumerator Execute(CutscenePlayer player) {
+        public override IEnumerator Execute(CutscenePlayer player, CutsceneExecutor executor) {
             var curtains = UICurtainsView.Instance;
             if (!curtains) {
                 yield break;

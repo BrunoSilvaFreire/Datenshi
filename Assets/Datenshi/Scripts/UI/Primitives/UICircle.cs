@@ -198,5 +198,10 @@ namespace UnityEngine.UI.Extensions {
             Thickness = thickness;
             SetVerticesDirty();
         }
+
+        public void SetArc(float f) {
+            Arc = f;
+            SetVerticesDirty();
+        }
     }
 }

@@ -10,7 +10,7 @@ namespace Datenshi.Scripts.Cutscenes.Tokens {
         public bool DeleteOnFinish;
         public bool Wait;
 
-        public override IEnumerator Execute(CutscenePlayer player) {
+        public override IEnumerator Execute(CutscenePlayer player, CutsceneExecutor executor) {
             var go = Camera.main.gameObject;
             var source = go.AddComponent<AudioSource>();
             source.clip = AudioClip;

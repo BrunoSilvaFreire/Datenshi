@@ -18,7 +18,7 @@ namespace Datenshi.Scripts.Cutscenes.Tokens {
             return Target == target || Target == AcceptInputTarget.All;
         }
 
-        public override IEnumerator Execute(CutscenePlayer player) {
+        public override IEnumerator Execute(CutscenePlayer player, CutsceneExecutor executor) {
             if (ShouldModify(AcceptInputTarget.AI)) {
                 RuntimeResources.Instance.AllowAIInput = AcceptInput;
             }
