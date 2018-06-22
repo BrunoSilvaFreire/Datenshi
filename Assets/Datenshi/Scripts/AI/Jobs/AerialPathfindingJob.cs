@@ -9,6 +9,7 @@ using UnityEngine;
 
 namespace Datenshi.Scripts.AI.Jobs {
     public struct AerialPathfindingJob : IJob {
+        public const int MaxLength = 10;
         public readonly Vector2Int Start;
         public readonly Vector2Int End;
         private NativeArray<Vector2Int> result;
@@ -16,7 +17,7 @@ namespace Datenshi.Scripts.AI.Jobs {
         public AerialPathfindingJob(Vector2Int start, Vector2Int end) {
             Start = start;
             End = end;
-            result = new NativeArray<Vector2Int>();
+            result = new NativeArray<Vector2Int>(3, Allocator.TempJob);
         }
 
         public NativeArray<Vector2Int> Result => result;
@@ -30,17 +31,24 @@ namespace Datenshi.Scripts.AI.Jobs {
         }
 
         public void Execute() {
-            var navmesh = Navmesh.Instance;
+            var navmesh = Navmesh.SilentInstance;
+            if (navmesh == null) {
+                Debug.LogError("Navmesh is null!");
+                return;
+            }
+
             var fromP = Start;
             var toP = End;
             var from = navmesh.GetNode(fromP);
             var to = navmesh.GetNode(toP);
+            
+            /*
             var worldMask = GameResources.Instance.WorldMask;
 
             if (!Physics2D.Linecast(fromP, toP, worldMask)) {
                 result = new NativeArray<Vector2Int>(new[] {fromP, toP}, Allocator.TempJob);
                 return;
-            }
+            }*/
 
 
             if (from.IsBlocked || to.IsBlocked) {
@@ -73,8 +81,6 @@ namespace Datenshi.Scripts.AI.Jobs {
             };
 
             // For the first node, that value is completely heuristic.
-
-
             while (!openSet.IsEmpty()) {
                 // the node in openSet having the lowest fScore[] value
                 var current = openSet.MinBy(node => fScore.GetOrPut(node, () => float.PositiveInfinity));
@@ -129,6 +135,7 @@ namespace Datenshi.Scripts.AI.Jobs {
                 return;
             }
 
+            //result.CopyFrom();
             result = new NativeArray<Vector2Int>(cameFrom.Count, Allocator.Temp);
             result[0] = current.Position;
             const int currentIndex = 1;

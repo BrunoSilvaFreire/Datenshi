@@ -124,22 +124,24 @@ namespace Datenshi.Scripts.AI {
             var toP = navMesh.WorldPosCenter(to);
             var worldMask = GameResources.Instance.WorldMask;
 
+            if (from.IsBlocked || to.IsBlocked) {
+                action(null);
+                Debug.Log("Dinvalid loction");
+                return;
+            }
+
             if (!Physics2D.Linecast(fromP, toP, worldMask)) {
                 action(
                     new List<Node> {
                         from,
                         to
                     });
+                Debug.Log("Direct line");
                 return;
             }
 
             ThreadPool.QueueUserWorkItem(
                 state => {
-                    if (from.IsBlocked || to.IsBlocked) {
-                        action(null);
-                        return;
-                    }
-
                     // The set of nodes already evaluated.
                     var closedSet = new List<Node>();
                     // The set of currently discovered nodes that are not evaluated yet.
@@ -153,25 +155,26 @@ namespace Datenshi.Scripts.AI {
                     var cameFrom = new Dictionary<Node, Node>();
 
                     // For each node, the cost of getting from the start node to that node.
-                    var gScore = new Dictionary<Node, float>();
-
                     // The cost of going from start to start is zero.
-                    gScore[from] = 0.0f;
+                    var gScore = new Dictionary<Node, float> {
+                        [from] = 0.0f
+                    };
+
 
                     // For each node, the total cost of getting from the start node to the goal
                     // by passing by that node. That value is partly known, partly heuristic.
-                    var fScore = new Dictionary<Node, float>();
-
                     // For the first node, that value is completely heuristic.
-                    fScore[from] = Distance(from, to, navMesh);
+                    var fScore = new Dictionary<Node, float> {
+                        [from] = Distance(from, to, navMesh)
+                    };
 
 
                     while (!openSet.IsEmpty()) {
                         // the node in openSet having the lowest fScore[] value
-                        var current = openSet.MinBy(node => fScore.GetOrPut(node, () => float.PositiveInfinity));
+                        var current = openSet.MinBy(node => fScore[node]);
+                        Debug.Log("Checking node " + current);
                         if (Equals(current, to)) {
                             action(ReconstructAerial(cameFrom, current));
-                            Profiler.EndThreadProfiling();
                             return;
                         }
 
@@ -230,8 +233,15 @@ namespace Datenshi.Scripts.AI {
             var totalPath = new List<Node> {
                 current
             };
+            var lastDirection = Direction.Zero;
             while (cameFrom.ContainsKey(current)) {
                 var source = cameFrom[current];
+                var currentDirection = Direction.FromVector(current.Position - source.Position);
+                if (currentDirection != lastDirection) {
+                    totalPath.Add(source);
+                    lastDirection = currentDirection;
+                }
+
                 current = source;
             }
 

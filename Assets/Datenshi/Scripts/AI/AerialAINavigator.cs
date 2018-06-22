@@ -22,9 +22,6 @@ namespace Datenshi.Scripts.AI {
     public class SerializableNavigable : SerializableInterface<INavigable> { }
 
     public class AerialAINavigator : AINavigator {
-        [ShowInInspector]
-        private List<Vector2Int> path;
-
         public BezierPointPool Pool;
         public BezierSpline Spline;
 
@@ -65,7 +62,7 @@ namespace Datenshi.Scripts.AI {
         [Button]
         protected override void ReloadPath() {
             var entityPos = Navigable.Value.Center;
-            /*
+
             if (navmesh.IsOutOfBounds(entityPos) || navmesh.IsOutOfBounds(target)) {
                 return;
             }
@@ -78,35 +75,31 @@ namespace Datenshi.Scripts.AI {
                 navmesh,
                 Navigable.ToString(),
                 LoadPath
-            );*/
-            var grid = navmesh.Grid;
+            );
+
+            /*var grid = navmesh.Grid;
             var from = grid.WorldToCell(entityPos).ToVector2();
             var to = grid.WorldToCell(target).ToVector2();
             var job = new AerialPathfindingJob(from, to);
             var handle = job.Schedule();
             StartCoroutine(WaitForCompletion(job, handle));
+            */
+        }
+/*
+    private IEnumerator WaitForCompletion(AerialPathfindingJob job, JobHandle handle) {
+        while (handle.IsCompleted) {
+            yield return null;
         }
 
-        private IEnumerator WaitForCompletion(AerialPathfindingJob job, JobHandle handle) {
-            while (handle.IsCompleted) {
-                yield return null;
-            }
-            LoadPath(job.Result);
-        }
+        handle.Complete();
+        LoadPath(job.Result);
+    }*/
 
         private readonly List<BezierPoint> usedPoints = new List<BezierPoint>();
+        private List<Node> toUpdate;
 
-        private void LoadPath(NativeArray<Vector2Int> obj) {
-            UpdatePoints(obj.Length);
-            for (var i = 0; i < obj.Length; i++) {
-                var node = obj[i];
-                var point = usedPoints[i];
-                point.position = node.ToFloat();
-            }
-
-            foreach (var point in usedPoints) {
-                point.Revalidate();
-            }
+        private void LoadPath(List<Node> obj) {
+            toUpdate = obj;
         }
 
         private void UpdatePoints(int needed) {
@@ -138,30 +131,34 @@ namespace Datenshi.Scripts.AI {
         private void OnDrawGizmos() {
             Gizmos.color = Color.cyan;
             Gizmos.DrawWireSphere(target, 1);
-            if (path == null) {
+            if (usedPoints == null) {
                 return;
             }
 
-            for (var i = 1; i < path.Count; i++) {
-                var first = path[i];
-                var second = path[i - 1];
-                Draw(first, second, i);
+            var grid = navmesh.Grid;
+            for (var i = 1; i < usedPoints.Count; i++) {
+                var first = usedPoints[i];
+                var second = usedPoints[i - 1];
+                var a = grid.WorldToCell(first.position);
+                var b = grid.WorldToCell(second.position);
+                Draw(a, b, i);
             }
         }
 
-        private void Draw(Vector2Int first, Vector2Int second, int i) {
-            var firstPos = navmesh.Grid.GetCellCenterWorld(first.ToVector3());
-            var secondPos = navmesh.Grid.GetCellCenterWorld(second.ToVector3());
+        private void Draw(Vector3Int first, Vector3Int second, int i) {
+            var firstPos = navmesh.Grid.GetCellCenterWorld(first);
+            var secondPos = navmesh.Grid.GetCellCenterWorld(second);
             Handles.Label(
                 firstPos,
-                string.Format("{0} {1}\n->\n{2} {3}", i, first, (i - 1), second));
+                $"{i} {first}\n->\n{(i - 1)} {second}");
 
             Gizmos.DrawLine(firstPos, secondPos);
         }
 #endif
 
         public override void Execute(INavigable entity, DummyInputProvider provider) {
-            if (path.IsNullOrEmpty()) {
+            TestUpdate();
+            /*if (path.IsNullOrEmpty()) {
                 provider.Reset();
                 return;
             }
@@ -191,7 +188,21 @@ namespace Datenshi.Scripts.AI {
             var dir = targetPos - entityPos;
             provider.Horizontal = dir.x;
             provider.Vertical = dir.y;
-            Debug.DrawRay(entityPos, dir * 10, Color.white);
+            Debug.DrawRay(entityPos, dir * 10, Color.white);*/
+        }
+
+        private void TestUpdate() {
+            if (toUpdate == null) {
+                return;
+            }
+            UpdatePoints(toUpdate.Count);
+            for (var i = 0; i < toUpdate.Count; i++) {
+                var node = toUpdate[i];
+                var point = usedPoints[i];
+                point.NextPosition = node.Position.ToFloat();
+            }
+
+            toUpdate = null;
         }
 
         public override Vector2 GetFavourablePosition(ILocatable target) {

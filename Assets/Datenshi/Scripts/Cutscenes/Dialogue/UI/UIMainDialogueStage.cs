@@ -64,38 +64,31 @@ namespace Datenshi.Scripts.Cutscenes.Dialogue.UI {
 
         private void Update() {
             if (!Showing) {
-                Debug.Log("Not shoing");
                 return;
             }
 
             var p = PlayerController.Instance.Player;
             if (!reelegible) {
-                Debug.Log("Not reelegible");
                 reelegible = !p.GetButton((int) Actions.Submit);
                 return;
             }
 
             if (p.GetButtonDown((int) Actions.Submit)) {
-                Debug.Log("Pressed submit");
                 lastStart = Time.time;
                 return;
             }
 
             if (!p.GetButton((int) Actions.Submit)) {
-                Debug.Log("Left submit");
                 SkipProgressCircle.SetArc(0);
                 return;
             }
 
             var totalTime = Time.time - lastStart;
-            Debug.Log($"Tota tilme = {totalTime}");
             if (totalTime >= SkipRequiredCircle) {
                 Complete();
-                Debug.Log("Completed");
                 return;
             }
 
-            Debug.Log($"Going up");
             SkipProgressCircle.SetArc(totalTime / SkipRequiredCircle);
         }
 
