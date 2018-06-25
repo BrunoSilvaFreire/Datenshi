@@ -117,7 +117,7 @@ namespace Datenshi.Scripts.Movement.States {
                 }
             }
 
-            if (!user.Defending && c.DashEllegible && user.InputProvider.GetButtonDown((int) Actions.Dash)) {
+            if (!user.Defending && c.DashEllegible && user.InputProvider.GetButtonDownOrDefault((int) Actions.Dash)) {
                 machine.State = DashState;
                 return true;
             }
@@ -232,7 +232,9 @@ namespace Datenshi.Scripts.Movement.States {
             var velDir = Math.Sign(velocity.x);
             var curve = user.AccelerationCurve;
             var speedPercent = user.SpeedPercent;
+            Debug.Log("Speed percent = " + speedPercent + " @ curve acceleration " + curve);
             var rawAcceleration = curve.Evaluate(speedPercent) * user.SpeedMultiplier.Value;
+
             var acceleration = rawAcceleration * dir;
             var maxSpeed = user.MaxSpeed * Mathf.Abs(xInput);
             var speed = Mathf.Abs(velocity.x);

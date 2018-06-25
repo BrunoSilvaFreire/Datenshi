@@ -102,6 +102,7 @@ namespace Datenshi.Scripts.World.Rooms.Game {
                 if (AllowReplay) {
                     started = false;
                 }
+
                 return;
             }
 
@@ -190,13 +191,11 @@ namespace Datenshi.Scripts.World.Rooms.Game {
         }
 
         private Vector2 GetRandomSpawnLocation() {
-            var w = Room.Width;
-            var h = Room.Height;
-            var xIncrement = (Random.value * w) - w / 2;
-            var yIncrement = Random.value * h - h / 2;
-            var pos = (Vector2) Room.transform.position + Room.Area.offset;
-            pos.x += xIncrement;
-            pos.y += yIncrement;
+            var area = Room.Area.bounds;
+            var size = area.size;
+            var pos = area.min;
+            pos.x += Random.value * size.x;
+            pos.y += Random.value * size.y;
             return pos;
         }
     }

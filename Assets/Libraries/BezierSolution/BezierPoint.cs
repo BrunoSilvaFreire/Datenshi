@@ -208,16 +208,6 @@ namespace BezierSolution {
             }
         }
 
-        public Vector2? NextPosition;
-
-        private void Update() {
-            if (NextPosition.HasValue) {
-                position = NextPosition.Value;
-                NextPosition = null;
-                Revalidate();
-            }
-        }
-
         private void Awake() {
             transform.hasChanged = true;
         }

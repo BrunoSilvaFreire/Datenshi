@@ -126,7 +126,6 @@ namespace Datenshi.Scripts.AI {
 
             if (from.IsBlocked || to.IsBlocked) {
                 action(null);
-                Debug.Log("Dinvalid loction");
                 return;
             }
 
@@ -136,7 +135,6 @@ namespace Datenshi.Scripts.AI {
                         from,
                         to
                     });
-                Debug.Log("Direct line");
                 return;
             }
 
@@ -172,7 +170,6 @@ namespace Datenshi.Scripts.AI {
                     while (!openSet.IsEmpty()) {
                         // the node in openSet having the lowest fScore[] value
                         var current = openSet.MinBy(node => fScore[node]);
-                        Debug.Log("Checking node " + current);
                         if (Equals(current, to)) {
                             action(ReconstructAerial(cameFrom, current));
                             return;

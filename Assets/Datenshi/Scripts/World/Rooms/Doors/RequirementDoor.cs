@@ -9,6 +9,7 @@ namespace Datenshi.Scripts.World.Rooms.Doors {
         private List<ICombatant> deadRequired;
 
         private void Start() {
+            Close(true);
             deadRequired = new List<ICombatant>();
             foreach (var member in Room.Members) {
                 var entity = member as ICombatant;

@@ -195,11 +195,26 @@ namespace Datenshi.Scripts.AI {
             if (toUpdate == null) {
                 return;
             }
+
             UpdatePoints(toUpdate.Count);
-            for (var i = 0; i < toUpdate.Count; i++) {
+            var total = toUpdate.Count;
+            for (var i = 0; i < total; i++) {
                 var node = toUpdate[i];
                 var point = usedPoints[i];
-                point.NextPosition = node.Position.ToFloat();
+                point.position = node.Position.ToFloat() + new Vector2(.5F, .5F);
+                if (i > 0) {
+                    point.precedingControlPointPosition = toUpdate[i - 1].Position.ToFloat() + new Vector2(.5F, .5F);
+                } else {
+                    point.precedingControlPointLocalPosition = Vector2.zero;
+                }
+
+                if (i < total - 1) {
+                    point.followingControlPointPosition = toUpdate[i + 1].Position.ToFloat() + new Vector2(.5F, .5F);
+                } else {
+                    point.followingControlPointLocalPosition = Vector2.zero;
+                }
+
+                point.transform.parent = Spline.transform;
             }
 
             toUpdate = null;

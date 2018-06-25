@@ -35,6 +35,11 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
                 return TaskStatus.Failure;
             }
 
+            var p = Entity.InputProvider as DummyInputProvider;
+            if (p == null) {
+                return TaskStatus.Failure;
+            }
+
             var targetPos = Navigator.GetFavourablePosition(Override != null ? (Vector2) Override.position : t.Center);
             if (Vector2.Distance(Entity.Center, targetPos) > TeleportThreshold) {
                 Entity.transform.position = targetPos;
@@ -42,7 +47,7 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
             }
 
             Navigator.SetTarget(targetPos);
-            Navigator.Execute(Entity, (DummyInputProvider) Entity.InputProvider);
+            Navigator.Execute(Entity, p);
 
             return TaskStatus.Running;
         }

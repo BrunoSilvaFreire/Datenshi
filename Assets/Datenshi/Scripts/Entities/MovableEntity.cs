@@ -131,7 +131,15 @@ namespace Datenshi.Scripts.Entities {
         }
 
 
-        public float SpeedPercent => Velocity.x / MaxSpeed;
+        public float SpeedPercent {
+            get {
+                if (MaxSpeed > 0) {
+                    return Velocity.x / MaxSpeed;
+                }
+
+                return 0;
+            }
+        }
 
         public override Vector2 GroundPosition {
             get {
@@ -205,6 +213,7 @@ namespace Datenshi.Scripts.Entities {
             if (RuntimeResources.Instance.Paused) {
                 return;
             }
+
             if (ExternalForces.magnitude > 0.1) {
                 ExternalForces = Vector2.Lerp(ExternalForces, Vector2.zero, ExternalForcesDeacceleration);
                 Velocity += ExternalForces * DeltaTime;
