@@ -232,7 +232,6 @@ namespace Datenshi.Scripts.Movement.States {
             var velDir = Math.Sign(velocity.x);
             var curve = user.AccelerationCurve;
             var speedPercent = user.SpeedPercent;
-            Debug.Log("Speed percent = " + speedPercent + " @ curve acceleration " + curve);
             var rawAcceleration = curve.Evaluate(speedPercent) * user.SpeedMultiplier.Value;
 
             var acceleration = rawAcceleration * dir;

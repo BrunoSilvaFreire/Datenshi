@@ -1553,7 +1553,7 @@
             Determines whether a Unity object is null or "fake null",
             without ever calling Unity's own equality operators.
             This method is useful for checking if a Unity object is
-            null, destroyed or missing at times when it is not allowed
+            null, destroyed or missing at timeScales when it is not allowed
             to call Unity's own equality operators, for example when
             not running on the main thread.
             </summary>
@@ -2136,21 +2136,21 @@
             <typeparam name="InstanceType">The type of the class which the method is on.</typeparam>
             <typeparam name="ReturnType">The type which is returned by the given method info.</typeparam>
             <param name="methodInfo">The method info instance which is used.</param>
-            <returns>A delegate which calls the method and returns the result, except it's hundreds of times faster than MethodInfo.Invoke.</returns>
+            <returns>A delegate which calls the method and returns the result, except it's hundreds of timeScales faster than MethodInfo.Invoke.</returns>
         </member>
         <member name="M:Sirenix.Utilities.EmitUtilities.CreateStaticMethodCaller(System.Reflection.MethodInfo)">
             <summary>
             Creates a fast delegate method which calls a given parameterless static method.
             </summary>
             <param name="methodInfo">The method info instance which is used.</param>
-            <returns>A delegate which calls the method and returns the result, except it's hundreds of times faster than MethodInfo.Invoke.</returns>
+            <returns>A delegate which calls the method and returns the result, except it's hundreds of timeScales faster than MethodInfo.Invoke.</returns>
         </member>
         <member name="M:Sirenix.Utilities.EmitUtilities.CreateWeakInstanceMethodCaller``1(System.Reflection.MethodInfo)">
             <summary>
             Creates a fast delegate method which calls a given parameterless weakly typed instance method.
             </summary>
             <param name="methodInfo">The method info instance which is used.</param>
-            <returns>A delegate which calls the method and returns the result, except it's hundreds of times faster than MethodInfo.Invoke.</returns>
+            <returns>A delegate which calls the method and returns the result, except it's hundreds of timeScales faster than MethodInfo.Invoke.</returns>
         </member>
         <member name="M:Sirenix.Utilities.EmitUtilities.CreateWeakInstanceMethodCaller(System.Reflection.MethodInfo)">
             <summary>
@@ -2165,7 +2165,7 @@
             <typeparam name="TArg1">The type of the first argument.</typeparam>
             <param name="methodInfo">The method info instance which is used.</param>
             <returns>
-            A delegate which calls the method and returns the result, except it's hundreds of times faster than MethodInfo.Invoke.
+            A delegate which calls the method and returns the result, except it's hundreds of timeScales faster than MethodInfo.Invoke.
             </returns>
             <exception cref="T:System.ArgumentNullException">methodInfo</exception>
             <exception cref="T:System.ArgumentException">
@@ -2194,7 +2194,7 @@
             </summary>
             <typeparam name="InstanceType">The type of the class which the method is on.</typeparam>
             <param name="methodInfo">The method info instance which is used.</param>
-            <returns>A delegate which calls the method and returns the result, except it's hundreds of times faster than MethodInfo.Invoke.</returns>
+            <returns>A delegate which calls the method and returns the result, except it's hundreds of timeScales faster than MethodInfo.Invoke.</returns>
         </member>
         <member name="M:Sirenix.Utilities.EmitUtilities.CreateInstanceMethodCaller``2(System.Reflection.MethodInfo)">
             <summary>
@@ -2203,7 +2203,7 @@
             <typeparam name="InstanceType">The type of the class which the method is on.</typeparam>
             <typeparam name="Arg1">The type of the argument with which to call the method.</typeparam>
             <param name="methodInfo">The method info instance which is used.</param>
-            <returns>A delegate which calls the method and returns the result, except it's hundreds of times faster than MethodInfo.Invoke.</returns>
+            <returns>A delegate which calls the method and returns the result, except it's hundreds of timeScales faster than MethodInfo.Invoke.</returns>
         </member>
         <member name="T:Sirenix.Utilities.Flags">
             <summary>
@@ -2290,10 +2290,10 @@
              <summary>
              <para>
              A GlobalConfig singleton, automatically created and saved as a ScriptableObject in the project at the specified path.
-             This only happens if the UnityEditor is present. If it's not, a non-persistent ScriptableObject is created at run-time.
+             This only happens if the UnityEditor is present. If it's not, a non-persistent ScriptableObject is created at run-timeScale.
              </para>
              <para>
-             Remember to locate the path within a resources folder if you want the config file to be loaded at runtime without the Unity editor being present.
+             Remember to locate the path within a resources folder if you want the config file to be loaded at runtimeScale without the Unity editor being present.
              </para>
              <para>
              The asset path is specified by defining a <see cref="T:Sirenix.Utilities.GlobalConfigAttribute"/>. If no attribute is defined it will be saved in the root assets folder.
@@ -2375,7 +2375,7 @@
             <summary>
             Initializes a new instance of the <see cref="T:Sirenix.Utilities.GlobalConfigAttribute"/> class.
             </summary>
-            <param name="assetPath">The relative asset. Remember to locate the path within a resources folder if you want the config file to be loaded at runtime without the Unity Editor.</param>
+            <param name="assetPath">The relative asset. Remember to locate the path within a resources folder if you want the config file to be loaded at runtimeScale without the Unity Editor.</param>
         </member>
         <member name="T:Sirenix.Utilities.GUILayoutOptions">
              <summary>
@@ -2386,7 +2386,7 @@
              <example>
              <para>
              Most GUILayout and EditorGUILayout methods takes an optional "params GUILayoutOption[]" parameter.
-             Each time you call this, an array is allocated generating garbage.
+             Each timeScale you call this, an array is allocated generating garbage.
              </para>
              <code>
              // Generates garbage:
@@ -3564,7 +3564,7 @@
         </member>
         <member name="P:Sirenix.Utilities.MemberAliasFieldInfo.FieldHandle">
             <summary>
-            Gets a RuntimeFieldHandle, which is a handle to the internal metadata representation of a field.
+            Gets a RuntimeScaleFieldHandle, which is a handle to the internal metadata representation of a field.
             </summary>
         </member>
         <member name="P:Sirenix.Utilities.MemberAliasFieldInfo.Attributes">

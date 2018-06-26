@@ -84,7 +84,7 @@ namespace Datenshi.Scripts.UI.Misc {
 
             i.Setup(this, inv);
             SetFrequency(LowPass);
-            GraphicsSingleton.Instance.BlackAndWhite.DODarkenAmount(DarkenAmount, DarkenDuration);
+            //GraphicsSingleton.Instance.BlackAndWhite.DODarkenAmount(DarkenAmount, DarkenDuration);
             Counting = true;
             StartCoroutine(WaitForInput());
         }
@@ -158,7 +158,7 @@ namespace Datenshi.Scripts.UI.Misc {
 
 
         private IEnumerator DoStop(bool success) {
-            GraphicsSingleton.Instance.BlackAndWhite.DODarkenAmount(0, DarkenDuration);
+            //GraphicsSingleton.Instance.BlackAndWhite.DODarkenAmount(0, DarkenDuration);
             ResetCounter(success);
             yield return new WaitForSeconds(FinishStayDuration);
             Hide();

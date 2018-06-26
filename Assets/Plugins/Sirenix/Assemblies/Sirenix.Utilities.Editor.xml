@@ -999,7 +999,7 @@
         </member>
         <member name="P:Sirenix.Utilities.Editor.EditorIcons.Timer">
             <summary>
-            Gets an icon of a timer symbol.
+            Gets an icon of a timeScaler symbol.
             </summary>
         </member>
         <member name="P:Sirenix.Utilities.Editor.EditorIcons.TrafficStopLight">
@@ -6738,7 +6738,7 @@
         </member>
         <member name="T:Sirenix.Utilities.Editor.EditorTimeHelper">
             <summary>
-            A utility class for getting delta time for the GUI editor.
+            A utility class for getting delta timeScale for the GUI editor.
             </summary>
         </member>
         <member name="P:Sirenix.Utilities.Editor.EditorTimeHelper.Time">
@@ -6753,12 +6753,12 @@
         </member>
         <member name="P:Sirenix.Utilities.Editor.EditorTimeHelper.DeltaTime">
             <summary>
-            Gets the delta time.
+            Gets the delta timeScale.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.EditorTimeHelper.Update">
             <summary>
-            Updates the delta time.
+            Updates the delta timeScale.
             </summary>
         </member>
         <member name="T:Sirenix.Utilities.Editor.FuzzySearch">

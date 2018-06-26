@@ -34,9 +34,9 @@ Shader "Hidden/Kino/Glitch/Analog"
     float2 _MainTex_TexelSize;
 
     float2 _ScanLineJitter; // (displacement, threshold)
-    float2 _VerticalJump;   // (amount, time)
+    float2 _VerticalJump;   // (amount, timeScale)
     float _HorizontalShake;
-    float2 _ColorDrift;     // (amount, time)
+    float2 _ColorDrift;     // (amount, timeScale)
 
     float nrand(float x, float y)
     {

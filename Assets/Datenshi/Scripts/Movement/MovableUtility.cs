@@ -37,5 +37,9 @@ namespace Datenshi.Scripts.Movement {
         private static int XDirectionTo(this ILocatable locatable, float otherX) {
             return XDirectionTo(locatable.Center.x, otherX);
         }
+
+        public static float DistanceTo(this ILocatable locatable, Component component) {
+            return Vector2.Distance(locatable.Center, component.transform.position);
+        }
     }
 }

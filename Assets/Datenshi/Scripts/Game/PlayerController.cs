@@ -32,26 +32,11 @@ namespace Datenshi.Scripts.Game {
         [SerializeField, HideInInspector]
         private Entity currentEntity;
 
-        [ShowInInspector]
-        private Tracker<ColorizableRenderer> tracker;
-
         public Rank.Rank Rank;
 
-        public float DamageDarkenAmount = 1;
-        public float DamageDarkenDuration = 1;
 
-        public float DamageGlitchAmount = 1;
-        public float DamageColorDriftAmount = 1;
-        public float DamageHorizontalShakeAmount = 1;
-
-
-        public float DamageGlitchDuration = .25F;
-
-        public float DefendOverrideAmount = 1;
-        public float DefendOverrideDuration = 0.5F;
         public PlayerEntityChangedEvent OnEntityChanged;
         public PlayerRankXPGainedEvent PlayerRankXPGainedEvent;
-        public AudioFX[] DamageAudio;
 
         [ShowInInspector]
         public Entity CurrentEntity {
@@ -69,58 +54,21 @@ namespace Datenshi.Scripts.Game {
             }
         }
 
-        private TweenerCore<float, float, FloatOptions> glitchTweener;
-        private TweenerCore<float, float, FloatOptions> colorTweener;
-        private TweenerCore<float, float, FloatOptions> shakeTweener;
 
         private void Start() {
-            ResetGlitch();
             if (currentEntity.InputProvider != Player) {
                 currentEntity.RevokeOwnership();
                 currentEntity.RequestOwnership(Player);
                 OnEntityChanged.Invoke(null, currentEntity);
             }
-
             GameState.RestartState();
             GlobalEntityDamagedEvent.Instance.AddListener(OnEntityDamaged);
-
-            tracker = new Tracker<ColorizableRenderer>(
-                ColorizableRenderer.ColorizableRendererEnabledEvent,
-                ColorizableRenderer.ColorizableRendererDisabledEvent);
         }
 
         private void OnEntityDamaged(ICombatant damaged, ICombatant damager, Attack attack, uint damage) {
             if (currentEntity != null && (Entity) damager == currentEntity) {
                 HandleRankAttack(attack);
             }
-
-            if (!Equals(damager, currentEntity) && !Equals(damaged, currentEntity)) {
-                return;
-            }
-
-            if (Equals(damaged, currentEntity)) {
-                var graphics = GraphicsSingleton.Instance;
-                var damageGlitch = graphics.Glitch;
-                var bnw = graphics.BlackAndWhite;
-                ResetGlitch();
-                AudioManager.Instance.PlayFX(DamageAudio.RandomElement());
-                damageGlitch.enabled = true;
-                damageGlitch.ScanLineJitter = DamageGlitchAmount;
-                damageGlitch.ColorDrift = DamageColorDriftAmount;
-                damageGlitch.HorizontalShake = DamageHorizontalShakeAmount;
-
-
-                glitchTweener = damageGlitch.DOScanLineJitter(0, DamageGlitchDuration);
-                colorTweener = damageGlitch.DOColorDrift(0, DamageGlitchDuration);
-                shakeTweener = damageGlitch.DOHorizontalShake(0, DamageGlitchDuration);
-                bnw.DoDarkenImpact(DamageDarkenAmount, DamageDarkenDuration);
-
-                glitchTweener.OnComplete(ResetGlitch);
-                colorTweener.OnComplete(ResetGlitch);
-                shakeTweener.OnComplete(ResetGlitch);
-            }
-
-            TimeController.Instance.Slowdown();
         }
 
         private Attack lastAttack;
@@ -148,24 +96,6 @@ namespace Datenshi.Scripts.Game {
             PlayerRankXPGainedEvent.Invoke(xpToWin);
         }
 
-        // oi
-        private void ResetGlitch() {
-            glitchTweener?.Kill();
-            colorTweener?.Kill();
-            shakeTweener?.Kill();
-            glitchTweener = null;
-            colorTweener = null;
-            shakeTweener = null;
-            var damageGlitch = GraphicsSingleton.Instance.Glitch;
-            damageGlitch.ScanLineJitter = 0;
-            damageGlitch.ColorDrift = 0;
-            damageGlitch.HorizontalShake = 0;
-            damageGlitch.enabled = false;
-        }
-
-        //private bool defending;
-
-
         private void Update() {
             UpdateRank();
             UpdatePause();
@@ -191,40 +121,6 @@ namespace Datenshi.Scripts.Game {
             } else {
                 Rank.XP = 0;
             }
-        }
-
-        private void HideDefend() {
-            SetColorOverride(0);
-        }
-
-        private void ShowDefend() {
-            SetColorOverride(DefendOverrideAmount);
-        }
-
-        private void SetFilter(float f) {
-            var filter = AudioManager.Instance.LowPassFilter;
-            filter.DOKill();
-            filter.DOFrequency(f, DefendOverrideDuration);
-        }
-
-
-        private void SetColorOverride(float i) {
-            foreach (var obj in tracker.Objects) {
-                if (obj == null) {
-                    continue;
-                }
-
-                SetColorOverride(obj, i);
-            }
-        }
-
-        private void SetColorOverride(ColorizableRenderer r, float i) {
-            r.DOKill();
-            DOTween.To(
-                () => r.ColorOverrideAmount,
-                value => r.ColorOverrideAmount = value,
-                i,
-                DefendOverrideDuration);
         }
     }
 }

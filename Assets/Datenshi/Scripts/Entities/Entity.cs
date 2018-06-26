@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Graphics;
 using Datenshi.Scripts.Input;
+using Datenshi.Scripts.Movement;
 using Datenshi.Scripts.Util;
 using Datenshi.Scripts.World.Rooms;
 using Sirenix.OdinInspector;
@@ -23,7 +24,7 @@ namespace Datenshi.Scripts.Entities {
     /// Classe base de todas as entidades.
     /// Qualquer objeto que tenha um comportamento no jogo é considerado uma entidade.
     /// </summary>
-    public class Entity : MonoBehaviour, IColorizable, IRoomMember, IInputReceiver {
+    public class Entity : MonoBehaviour, ILocatable, IColorizable, IRoomMember, IInputReceiver {
         public static readonly EntityEvent EntityEnabledEvent = new EntityEvent();
         public static readonly EntityEvent EntityDisabledEvent = new EntityEvent();
         public const string MiscGroup = "Misc";
@@ -134,6 +135,12 @@ namespace Datenshi.Scripts.Entities {
                 return;
             }
         }
+
+        public Transform Transform => transform;
+
+        public virtual Vector2 Center => transform.position;
+
+        public Vector2 GroundPosition => Center;
     }
 
     public sealed class VariableValue {

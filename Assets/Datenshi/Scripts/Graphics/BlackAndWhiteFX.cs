@@ -1,7 +1,6 @@
-﻿using DG.Tweening;
-using DG.Tweening.Core;
-using DG.Tweening.Plugins.Options;
-using Sirenix.OdinInspector;
+﻿using System;
+using Datenshi.Scripts.Util;
+using Datenshi.Scripts.Util.Services;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Graphics {
@@ -11,8 +10,7 @@ namespace Datenshi.Scripts.Graphics {
         private const string DarkenPropertyName = "_DarkenAmount";
         private const string PropertyName = "_Amount";
 
-        [ShowInInspector]
-        public float Amount {
+        private float Amount {
             get {
                 return Material != null ? Material.GetFloat(PropertyName) : 0;
             }
@@ -23,8 +21,7 @@ namespace Datenshi.Scripts.Graphics {
             }
         }
 
-        [ShowInInspector]
-        public float DarkenAmount {
+        private float DarkenAmount {
             get {
                 return Material != null ? Material.GetFloat(DarkenPropertyName) : 0;
             }
@@ -35,28 +32,65 @@ namespace Datenshi.Scripts.Graphics {
             }
         }
 
+        private void Update() {
+            serviceHandler.Tick();
+            var highest = serviceHandler.WithGenericHighestPriority();
+            if (highest == null) {
+                Amount = 0;
+                DarkenAmount = 0;
+                return;
+            }
+
+            var meta = highest.Metadata;
+            Amount = meta.DesaturateAmount;
+            DarkenAmount = meta.DarkenAmount;
+        }
+
         protected override string GetShaderName() {
             return ShaderName;
         }
 
-        public void DoAmountImpact(float amount, float duration) {
-            this.DOKill();
-            Amount = amount;
-            DOAmount(0, duration);
-        }
-        public void DoDarkenImpact(float amount, float duration) {
-            
-            this.DOKill();
-            Amount = amount;
-            DOAmount(0, duration);
+        public TimedService<BlackAndWhiteMeta> RequestService(float duration, AnimationCurve desaturate,
+            AnimationCurve darken,
+            byte priority = Service.DefaultPriority) {
+            var meta = new BlackAndWhiteMeta(
+                desaturate, darken
+            );
+            return serviceHandler.RegisterTimedService(meta, duration, priority);
         }
 
-        public TweenerCore<float, float, FloatOptions> DOAmount(float amount, float duration) {
-            return DOTween.To(() => Amount, value => Amount = value, amount, duration);
+        private readonly ServiceHandler<BlackAndWhiteMeta> serviceHandler = new ServiceHandler<BlackAndWhiteMeta>();
+    }
+
+    public class BlackAndWhiteMeta : IComparable<BlackAndWhiteMeta>, ITickable<Service> {
+        public AnimationCurve DesaturateCurve;
+        public AnimationCurve DarkenCurve;
+
+        public BlackAndWhiteMeta(AnimationCurve desaturateCurve, AnimationCurve darkenCurve) {
+            DesaturateCurve = desaturateCurve;
+            DarkenCurve = darkenCurve;
         }
 
-        public TweenerCore<float, float, FloatOptions> DODarkenAmount(float amount, float duration) {
-            return DOTween.To(() => DarkenAmount, value => DarkenAmount = value, amount, duration);
+        public float DesaturateAmount => DesaturateCurve.Evaluate(currentPos);
+        public float DarkenAmount => DarkenCurve.Evaluate(currentPos);
+        private float currentPos;
+
+        public int CompareTo(BlackAndWhiteMeta other) {
+            if (ReferenceEquals(this, other)) return 0;
+            if (ReferenceEquals(null, other)) return 1;
+            var desaturateAmountComparison = DesaturateAmount.CompareTo(other.DesaturateAmount);
+            return desaturateAmountComparison != 0
+                ? desaturateAmountComparison
+                : DarkenAmount.CompareTo(other.DarkenAmount);
+        }
+
+        public void Tick(Service value) {
+            var timed = value as ITimedService;
+            if (timed == null) {
+                return;
+            }
+
+            currentPos = timed.Percentage;
         }
     }
 }

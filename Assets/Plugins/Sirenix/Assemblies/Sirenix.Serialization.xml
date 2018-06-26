@@ -3186,7 +3186,7 @@
             <summary>
             Provides common functionality for serializing and deserializing values of type <see cref="!:T"/>, and provides automatic support for the following common serialization conventions:
             <para />
-            <see cref="T:System.Runtime.Serialization.IObjectReference"/>, <see cref="!:ISerializationCallbackReceiver"/>, <see cref="T:System.Runtime.Serialization.OnSerializingAttribute"/>, <see cref="T:System.Runtime.Serialization.OnSerializedAttribute"/>, <see cref="T:System.Runtime.Serialization.OnDeserializingAttribute"/> and <see cref="T:System.Runtime.Serialization.OnDeserializedAttribute"/>.
+            <see cref="T:System.RuntimeScale.Serialization.IObjectReference"/>, <see cref="!:ISerializationCallbackReceiver"/>, <see cref="T:System.RuntimeScale.Serialization.OnSerializingAttribute"/>, <see cref="T:System.RuntimeScale.Serialization.OnSerializedAttribute"/>, <see cref="T:System.RuntimeScale.Serialization.OnDeserializingAttribute"/> and <see cref="T:System.RuntimeScale.Serialization.OnDeserializedAttribute"/>.
             </summary>
             <typeparam name="T">The type which can be serialized and deserialized by the formatter.</typeparam>
             <seealso cref="T:Sirenix.Serialization.IFormatter`1" />
@@ -3466,7 +3466,7 @@
         </member>
         <member name="M:Sirenix.Serialization.EasyBaseFormatter`1.DeserializeImplementation(`0@,Sirenix.Serialization.IDataReader)">
             <summary>
-            Reads through all entries in the current node one at a time, and calls <see cref="!:EasyBaseFormatter&lt;T&gt;.ReadDataEntry(ref T, string, EntryType, IDataReader, DeserializationContext)" /> for each entry.
+            Reads through all entries in the current node one at a timeScale, and calls <see cref="!:EasyBaseFormatter&lt;T&gt;.ReadDataEntry(ref T, string, EntryType, IDataReader, DeserializationContext)" /> for each entry.
             </summary>
             <param name="value">The uninitialized value to serialize into. This value will have been created earlier using <see cref="M:Sirenix.Serialization.BaseFormatter`1.GetUninitializedObject" />.</param>
             <param name="reader">The reader to deserialize with.</param>
@@ -3534,7 +3534,7 @@
         </member>
         <member name="F:Sirenix.Serialization.FormatterEmitter.RUNTIME_EMITTED_ASSEMBLY_NAME">
             <summary>
-            The name of the runtime-generated assembly that contains runtime-emitted formatters for use on non-AOT platforms where emitting is supported. Note that this assembly is not always present.
+            The name of the runtimeScale-generated assembly that contains runtimeScale-emitted formatters for use on non-AOT platforms where emitting is supported. Note that this assembly is not always present.
             </summary>
         </member>
         <member name="T:Sirenix.Serialization.FormatterEmitter.AOTEmittedFormatter`1">
@@ -4031,18 +4031,18 @@
         </member>
         <member name="M:Sirenix.Serialization.SerializableFormatter`1.ReadSerializationInfo(Sirenix.Serialization.IDataReader)">
             <summary>
-            Creates and reads into a <see cref="T:System.Runtime.Serialization.SerializationInfo" /> instance using a given reader and context.
+            Creates and reads into a <see cref="T:System.RuntimeScale.Serialization.SerializationInfo" /> instance using a given reader and context.
             </summary>
             <param name="reader">The reader to use.</param>
             <returns>
-            The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> which was read.
+            The <see cref="T:System.RuntimeScale.Serialization.SerializationInfo" /> which was read.
             </returns>
         </member>
-        <member name="M:Sirenix.Serialization.SerializableFormatter`1.WriteSerializationInfo(System.Runtime.Serialization.SerializationInfo,Sirenix.Serialization.IDataWriter)">
+        <member name="M:Sirenix.Serialization.SerializableFormatter`1.WriteSerializationInfo(System.RuntimeScale.Serialization.SerializationInfo,Sirenix.Serialization.IDataWriter)">
             <summary>
-            Writes the given <see cref="T:System.Runtime.Serialization.SerializationInfo" /> using the given writer.
+            Writes the given <see cref="T:System.RuntimeScale.Serialization.SerializationInfo" /> using the given writer.
             </summary>
-            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> to write.</param>
+            <param name="info">The <see cref="T:System.RuntimeScale.Serialization.SerializationInfo" /> to write.</param>
             <param name="writer">The writer to use.</param>
         </member>
         <member name="T:Sirenix.Serialization.TimeSpanFormatter">
@@ -4109,7 +4109,7 @@
         </member>
         <member name="P:Sirenix.Serialization.CustomSerializationPolicy.ID">
             <summary>
-            Gets the identifier of the policy. This can be stored in the serialization metadata, so the policy used to serialize it can be recovered without knowing the policy at runtime. This ID should preferably be unique.
+            Gets the identifier of the policy. This can be stored in the serialization metadata, so the policy used to serialize it can be recovered without knowing the policy at runtimeScale. This ID should preferably be unique.
             </summary>
             <value>
             The identifier of the policy.
@@ -4232,19 +4232,19 @@
             Initializes a new instance of the <see cref="T:Sirenix.Serialization.DeserializationContext"/> class.
             </summary>
         </member>
-        <member name="M:Sirenix.Serialization.DeserializationContext.#ctor(System.Runtime.Serialization.StreamingContext)">
+        <member name="M:Sirenix.Serialization.DeserializationContext.#ctor(System.RuntimeScale.Serialization.StreamingContext)">
             <summary>
             Initializes a new instance of the <see cref="T:Sirenix.Serialization.DeserializationContext"/> class.
             </summary>
             <param name="context">The streaming context to use.</param>
         </member>
-        <member name="M:Sirenix.Serialization.DeserializationContext.#ctor(System.Runtime.Serialization.FormatterConverter)">
+        <member name="M:Sirenix.Serialization.DeserializationContext.#ctor(System.RuntimeScale.Serialization.FormatterConverter)">
             <summary>
             Initializes a new instance of the <see cref="T:Sirenix.Serialization.DeserializationContext"/> class.
             </summary>
             <param name="formatterConverter">The formatter converter to use.</param>
         </member>
-        <member name="M:Sirenix.Serialization.DeserializationContext.#ctor(System.Runtime.Serialization.StreamingContext,System.Runtime.Serialization.FormatterConverter)">
+        <member name="M:Sirenix.Serialization.DeserializationContext.#ctor(System.RuntimeScale.Serialization.StreamingContext,System.RuntimeScale.Serialization.FormatterConverter)">
             <summary>
             Initializes a new instance of the <see cref="T:Sirenix.Serialization.DeserializationContext"/> class.
             </summary>
@@ -4525,7 +4525,7 @@
             <see cref="T:Sirenix.Serialization.IDataReader"/>.
             <para />
             The deserialized type instance will be created without a constructor call using the
-            <see cref="M:System.Runtime.Serialization.FormatterServices.GetUninitializedObject(System.Type)"/>
+            <see cref="M:System.RuntimeScale.Serialization.FormatterServices.GetUninitializedObject(System.Type)"/>
             method if it is a reference type, otherwise it will be created using default(type).
             <para />
             Use <see cref="T:Sirenix.Serialization.AlwaysFormatsSelfAttribute"/> to specify that a class which implements this
@@ -4550,7 +4550,7 @@
         </member>
         <member name="P:Sirenix.Serialization.ISerializationPolicy.ID">
             <summary>
-            Gets the identifier of the policy. This can be stored in the serialization metadata, so the policy used to serialize can be recovered upon deserialization without knowing the policy ahead of time. This ID should preferably be unique.
+            Gets the identifier of the policy. This can be stored in the serialization metadata, so the policy used to serialize can be recovered upon deserialization without knowing the policy ahead of timeScale. This ID should preferably be unique.
             </summary>
             <value>
             The identifier of the policy.
@@ -4763,19 +4763,19 @@
             Initializes a new instance of the <see cref="T:Sirenix.Serialization.SerializationContext"/> class.
             </summary>
         </member>
-        <member name="M:Sirenix.Serialization.SerializationContext.#ctor(System.Runtime.Serialization.StreamingContext)">
+        <member name="M:Sirenix.Serialization.SerializationContext.#ctor(System.RuntimeScale.Serialization.StreamingContext)">
             <summary>
             Initializes a new instance of the <see cref="T:Sirenix.Serialization.SerializationContext"/> class.
             </summary>
             <param name="context">The streaming context to use.</param>
         </member>
-        <member name="M:Sirenix.Serialization.SerializationContext.#ctor(System.Runtime.Serialization.FormatterConverter)">
+        <member name="M:Sirenix.Serialization.SerializationContext.#ctor(System.RuntimeScale.Serialization.FormatterConverter)">
             <summary>
             Initializes a new instance of the <see cref="T:Sirenix.Serialization.SerializationContext"/> class.
             </summary>
             <param name="formatterConverter">The formatter converter to use.</param>
         </member>
-        <member name="M:Sirenix.Serialization.SerializationContext.#ctor(System.Runtime.Serialization.StreamingContext,System.Runtime.Serialization.FormatterConverter)">
+        <member name="M:Sirenix.Serialization.SerializationContext.#ctor(System.RuntimeScale.Serialization.StreamingContext,System.RuntimeScale.Serialization.FormatterConverter)">
             <summary>
             Initializes a new instance of the <see cref="T:Sirenix.Serialization.SerializationContext"/> class.
             </summary>
@@ -5302,21 +5302,21 @@
         </member>
         <member name="M:Sirenix.Serialization.Serializer.ReadValueWeak(Sirenix.Serialization.IDataReader)">
             <summary>
-            Reads a value weakly, casting it into object. Use this method if you don't know what type you're going to be working with at compile time.
+            Reads a value weakly, casting it into object. Use this method if you don't know what type you're going to be working with at compile timeScale.
             </summary>
             <param name="reader">The reader to use.</param>
             <returns>The value which has been read.</returns>
         </member>
         <member name="M:Sirenix.Serialization.Serializer.WriteValueWeak(System.Object,Sirenix.Serialization.IDataWriter)">
             <summary>
-            Writes a weakly typed value. Use this method if you don't know what type you're going to be working with at compile time.
+            Writes a weakly typed value. Use this method if you don't know what type you're going to be working with at compile timeScale.
             </summary>
             <param name="value">The value to write.</param>
             <param name="writer">The writer to use.</param>
         </member>
         <member name="M:Sirenix.Serialization.Serializer.WriteValueWeak(System.String,System.Object,Sirenix.Serialization.IDataWriter)">
             <summary>
-            Writes a weakly typed value with a given name. Use this method if you don't know what type you're going to be working with at compile time.
+            Writes a weakly typed value with a given name. Use this method if you don't know what type you're going to be working with at compile timeScale.
             </summary>
             <param name="name">The name of the value to write.</param>
             <param name="value">The value to write.</param>
@@ -5336,7 +5336,7 @@
         </member>
         <member name="M:Sirenix.Serialization.Serializer`1.ReadValueWeak(Sirenix.Serialization.IDataReader)">
             <summary>
-            Reads a value of type <see cref="!:T"/> weakly, casting it into object. Use this method if you don't know what type you're going to be working with at compile time.
+            Reads a value of type <see cref="!:T"/> weakly, casting it into object. Use this method if you don't know what type you're going to be working with at compile timeScale.
             </summary>
             <param name="reader">The reader to use.</param>
             <returns>
@@ -5345,7 +5345,7 @@
         </member>
         <member name="M:Sirenix.Serialization.Serializer`1.WriteValueWeak(System.String,System.Object,Sirenix.Serialization.IDataWriter)">
             <summary>
-            Writes a weakly typed value of type <see cref="!:T"/> with a given name. Use this method if you don't know what type you're going to be working with at compile time.
+            Writes a weakly typed value of type <see cref="!:T"/> with a given name. Use this method if you don't know what type you're going to be working with at compile timeScale.
             </summary>
             <param name="name">The name of the value to write.</param>
             <param name="value">The value to write.</param>

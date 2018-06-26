@@ -2,7 +2,6 @@
 using Datenshi.Scripts.AI;
 using Datenshi.Scripts.Behaviours.Variables;
 using Datenshi.Scripts.Entities;
-using Datenshi.Scripts.Tutorial;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Behaviours.Tasks {
@@ -12,22 +11,6 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
         public MovableEntity Entity;
         public Transform Override;
         public float TeleportThreshold = 8;
-
-        public override void OnStart() {
-            var b = UITutorialBox.Instance;
-            b.OnShowTutorial.AddListener(OnShow);
-            b.OnHideTutorial.AddListener(OnHide);
-        }
-
-        private void OnHide(TutorialTrigger arg0) {
-            Override = null;
-        }
-
-        private void OnShow(TutorialTrigger arg0) {
-            if (arg0.HasCustomLocation) {
-                Override = arg0.CustomLocation;
-            }
-        }
 
         public override TaskStatus OnUpdate() {
             var t = Target.Value;

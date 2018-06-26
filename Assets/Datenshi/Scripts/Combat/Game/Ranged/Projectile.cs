@@ -1,4 +1,6 @@
-﻿using Datenshi.Scripts.Data;
+﻿using System.Collections.Generic;
+using Datenshi.Scripts.Data;
+using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Movement;
 using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
@@ -13,6 +15,28 @@ namespace Datenshi.Scripts.Combat.Game.Ranged {
     }
 
     public class Projectile : Ownable<ICombatant>, IDefendable {
+        private static readonly List<Projectile> activeProjectiles = new List<Projectile>();
+
+        public static Projectile GetClosestFromTo(LivingEntity shooter, ILocatable entity) {
+            Projectile closest = null;
+            var currentMinDistance = float.MaxValue;
+            foreach (var projectile in activeProjectiles) {
+                if (!projectile.wasShot || projectile.Owner as LivingEntity != shooter) {
+                    continue;
+                }
+
+                var d = Vector2.Distance(projectile.transform.position, entity.Center);
+                if (d > currentMinDistance) {
+                    continue;
+                }
+
+                closest = projectile;
+                currentMinDistance = d;
+            }
+
+            return closest;
+        }
+
         [ShowInInspector, ReadOnly]
         private Vector2 velocity;
 
@@ -51,6 +75,7 @@ namespace Datenshi.Scripts.Combat.Game.Ranged {
         }
 
         public void Shoot(RangedAttack attack, ICombatant shooter, Vector2 direction) {
+            activeProjectiles.Add(this);
             UsedAttack = attack;
             Owner = shooter;
             Owner.OnKilled.AddListener(OnOwnerKilled);
@@ -101,6 +126,7 @@ namespace Datenshi.Scripts.Combat.Game.Ranged {
         }
 
         private void Hit() {
+            activeProjectiles.Remove(this);
             foreach (var obj in ToDecouple) {
                 obj.transform.parent = null;
                 Destroy(obj, DestroyDelay);

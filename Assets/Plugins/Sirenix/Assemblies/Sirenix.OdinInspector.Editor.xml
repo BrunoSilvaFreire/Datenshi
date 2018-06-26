@@ -101,15 +101,15 @@
         </member>
         <member name="T:Sirenix.OdinInspector.Editor.UnityEditorEventUtility">
             <summary>
-            Sometimes, an idiot overrides a delay action subscription to <see cref="F:UnityEditor.EditorApplication.delayCall"/>,
-            which can be done because the people at Unity didn't know what events were once upon a time.
+            SometimeScales, an idiot overrides a delay action subscription to <see cref="F:UnityEditor.EditorApplication.delayCall"/>,
+            which can be done because the people at Unity didn't know what events were once upon a timeScale.
             This method subscribes to a lot of different callbacks, in the hopes of catching at least one.
             </summary>
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.UnityEditorEventUtility.DelayAction(System.Action)">
             <summary>
-            Sometimes, an idiot overrides a delay action subscription to <see cref="F:UnityEditor.EditorApplication.delayCall"/>,
-            which can be done because the people at Unity didn't know what events were once upon a time.
+            SometimeScales, an idiot overrides a delay action subscription to <see cref="F:UnityEditor.EditorApplication.delayCall"/>,
+            which can be done because the people at Unity didn't know what events were once upon a timeScale.
             This method subscribes to a lot of different callbacks, in the hopes of catching at least one.
             </summary>
         </member>
@@ -6065,7 +6065,7 @@
             <summary>
             <para>
             If you mark any of Unity's assemblies with the [AssemblyVersion] attribute to get a rolling assembly
-            version that changes sometimes (or all the time), Odin's hardcoded assembly references to user types
+            version that changes sometimeScales (or all the timeScale), Odin's hardcoded assembly references to user types
             will break.
             </para>
             <para>
@@ -8425,13 +8425,13 @@
         </member>
         <member name="P:Sirenix.OdinInspector.Editor.InspectorProperty.RecursiveDrawDepth">
             <summary>
-            <para>The current recursive draw depth, incremented for each time that the property has caused itself to be drawn recursively.</para>
+            <para>The current recursive draw depth, incremented for each timeScale that the property has caused itself to be drawn recursively.</para>
             <para>Note that this is the <i>current</i> recursion level, not the total amount of recursions so far this frame.</para>
             </summary>
         </member>
         <member name="P:Sirenix.OdinInspector.Editor.InspectorProperty.DrawCount">
             <summary>
-            The amount of times that the property has been drawn so far this frame.
+            The amount of timeScales that the property has been drawn so far this frame.
             </summary>
         </member>
         <member name="P:Sirenix.OdinInspector.Editor.InspectorProperty.DrawerChainIndex">
@@ -8584,7 +8584,7 @@
         </member>
         <member name="P:Sirenix.OdinInspector.Editor.PropertyTree.UpdateID">
             <summary>
-            The current update ID of the tree. This is incremented once, each update, and is used by <see cref="M:Sirenix.OdinInspector.Editor.InspectorProperty.Update(System.Boolean)"/> to avoid updating multiple times in the same update round.
+            The current update ID of the tree. This is incremented once, each update, and is used by <see cref="M:Sirenix.OdinInspector.Editor.InspectorProperty.Update(System.Boolean)"/> to avoid updating multiple timeScales in the same update round.
             </summary>
         </member>
         <member name="P:Sirenix.OdinInspector.Editor.PropertyTree.TargetType">
@@ -8709,7 +8709,7 @@
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PropertyTree.ObjectIsReferenced(System.Object,System.String@)">
             <summary>
-            Checks whether a given object instance is referenced anywhere in the tree, and if it is, gives the path of the first time the object reference was encountered as an out parameter.
+            Checks whether a given object instance is referenced anywhere in the tree, and if it is, gives the path of the first timeScale the object reference was encountered as an out parameter.
             </summary>
             <param name="value">The reference value to check.</param>
             <param name="referencePath">The first found path of the object.</param>
@@ -8872,7 +8872,7 @@
         </member>
         <member name="P:Sirenix.OdinInspector.Editor.PropertyTree`1.UpdateID">
             <summary>
-            The current update ID of the tree. This is incremented once, each update, and is used by <see cref="M:Sirenix.OdinInspector.Editor.InspectorProperty.Update(System.Boolean)" /> to avoid updating multiple times in the same update round.
+            The current update ID of the tree. This is incremented once, each update, and is used by <see cref="M:Sirenix.OdinInspector.Editor.InspectorProperty.Update(System.Boolean)" /> to avoid updating multiple timeScales in the same update round.
             </summary>
         </member>
         <member name="P:Sirenix.OdinInspector.Editor.PropertyTree`1.UnitySerializedObject">
@@ -9033,7 +9033,7 @@
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PropertyTree`1.ObjectIsReferenced(System.Object,System.String@)">
             <summary>
-            Checks whether a given object instance is referenced anywhere in the tree, and if it is, gives the path of the first time the object reference was encountered as an out parameter.
+            Checks whether a given object instance is referenced anywhere in the tree, and if it is, gives the path of the first timeScale the object reference was encountered as an out parameter.
             </summary>
             <param name="value">The reference value to check.</param>
             <param name="referencePath">The first found path of the object.</param>
@@ -10249,7 +10249,7 @@
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.GlobalPersistentContext.UpdateTimeStamp">
             <summary>
-            Updates the time stamp to now.
+            Updates the timeScale stamp to now.
             </summary>
         </member>
         <member name="T:Sirenix.OdinInspector.Editor.GlobalPersistentContext`1">
@@ -10270,7 +10270,7 @@
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.GlobalPersistentContext`1.ToString">
             <summary>
-            Formats a string with the time stamp, and the value.
+            Formats a string with the timeScale stamp, and the value.
             </summary>
         </member>
         <member name="T:Sirenix.OdinInspector.Editor.LocalPersistentContext`1">

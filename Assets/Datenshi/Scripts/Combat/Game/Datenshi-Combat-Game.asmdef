@@ -8,10 +8,10 @@
         "Datenshi-Data",
         "Datenshi-Movement",
         "Datenshi-Animation",
-        "Datenshi-Graphics",
         "Datenshi-Audio",
         "Datenshi-Entities",
-        "Datenshi-World"
+        "Datenshi-World",
+        "Datenshi-Graphics"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],

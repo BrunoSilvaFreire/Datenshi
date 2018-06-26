@@ -1,0 +1,21 @@
+{
+    "name": "Datenshi-Tutorial",
+    "references": [
+        "Datenshi-Game",
+        "Datenshi-World",
+        "Datenshi-Utilities",
+        "Datenshi-Data",
+        "Datenshi-Entities",
+        "Datenshi-Combat",
+        "Datenshi-Combat-Game",
+        "Datenshi-Graphics",
+        "Datenshi-Input",
+        "Datenshi-Movement"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [
+        "WindowsStandalone64"
+    ],
+    "allowUnsafeCode": false
+}

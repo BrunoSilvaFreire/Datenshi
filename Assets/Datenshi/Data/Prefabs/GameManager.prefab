@@ -19,7 +19,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4361977363644758}
-  - component: {fileID: 114890973029645690}
   - component: {fileID: 114125854694107516}
   m_Layer: 13
   m_Name: AI_Manager
@@ -527,6 +526,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4925638159815060}
+  - component: {fileID: 114678429322241490}
   m_Layer: 13
   m_Name: Point_Pool
   m_TagString: Untagged
@@ -1302,7 +1302,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4733015815471578}
   - component: {fileID: 114614995786073882}
-  - component: {fileID: 114242968407607890}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: Untagged
@@ -1326,7 +1325,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1820342329192474
 GameObject:
   m_ObjectHideFlags: 0
@@ -2986,8 +2985,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55e95f7de9e54216b06207c3cd974658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefaultInitTimeScale: 0.05
-  DefaultSlowdownDuration: 0.25
 --- !u!114 &114014389494264346
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3601,18 +3598,6 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
---- !u!114 &114242968407607890
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1792401617246154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d74eea5c36334caf8c0e53109f8a0109, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Camera: {fileID: 114614995786073882}
 --- !u!114 &114253587360023204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3853,8 +3838,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimePerRegen: 0.25
-  Pool: {fileID: 114890973029645690}
-  Spline: {fileID: 0}
+  Pool: {fileID: 0}
+  Spline: {fileID: 114125854694107516}
   Navigable:
     Object: {fileID: 114501879150352184}
   MinimumHeightAdvantage: 0.25
@@ -5044,7 +5029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4d4c506b7d14716a950885bed3aaf01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputProvider: {fileID: 0}
+  inputProvider: {fileID: 114711143589959862}
   colorizableRenderer: {fileID: 114085977230786278}
   MiscController: {fileID: 114090341149897628}
   Character: {fileID: 11400000, guid: 8a2ea0deeae62114f97ad13a532bdf1b, type: 2}
@@ -5287,6 +5272,20 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114678429322241490
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1233277602571564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f137f3ba8f934f0f969b01721f4f0378, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 114891756574394564, guid: 2b1326db54cef9c41a3f5afcc8597054, type: 2}
+  PrewarmAmount: 10
+  TemporaryObjectsAllowed: 5
 --- !u!114 &114705087027642172
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5575,15 +5574,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 114711143589959862}
-  currentEntity: {fileID: 114501879150352184}
-  DamageDarkenAmount: 1
-  DamageDarkenDuration: 2
-  DamageGlitchAmount: 1
-  DamageColorDriftAmount: 0.5
-  DamageHorizontalShakeAmount: 0.5
-  DamageGlitchDuration: 0.15
-  DefendOverrideAmount: 1
-  DefendOverrideDuration: 0.5
+  currentEntity: {fileID: 114627651355056388}
   OnEntityChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5594,12 +5585,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Datenshi.Scripts.Game.PlayerRankXPGainedEvent, Datenshi-Game, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  DamageAudio:
-  - {fileID: 11400000, guid: 1d6233869b6f446498748ee1ffe748c6, type: 2}
-  - {fileID: 11400000, guid: a64bef35561137b4fb41ea77485bbf93, type: 2}
-  - {fileID: 11400000, guid: 14bac36a4bb053f4eb64e74cfa4d5f30, type: 2}
-  - {fileID: 11400000, guid: abdbc746a825bb049897e7bcf2f09340, type: 2}
-  - {fileID: 11400000, guid: 96da23f9f121bf542adc7f6206cfa48d, type: 2}
   RankXPGainedWaitDuration: 2
   RankXPDropSpeed: 0.1
 --- !u!114 &114787905019085876
@@ -6500,28 +6485,14 @@ MonoBehaviour:
   SkipInstruction: {fileID: 114503355798169322}
   InstructionFadeDuration: 1
   SkipProgressCircle: {fileID: 114966305180605184}
-  SkipRequiredCircle: 2
-  SkipCompleteIndicationDuration: 1
+  SkipRequiredCircle: 0.5
+  SkipCompleteIndicationDuration: 0.25
   SkipCompleteIndicationScale: 2
   OnSkip:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114890973029645690
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1016038688105406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f137f3ba8f934f0f969b01721f4f0378, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Prefab: {fileID: 114891756574394564, guid: 2b1326db54cef9c41a3f5afcc8597054, type: 2}
-  PrewarmAmount: 10
-  TemporaryObjectsAllowed: 5
 --- !u!114 &114891636787637540
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6800,32 +6771,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fdb763ba47542a6a0744cad456614fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  overrideShowing: 0
+  overrideShowingValue: 0
+  showing: 0
   SizeChangeDuration: 0.25
   OnEnteredArea:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: Datenshi.Scripts.Tutorial.UITutorialBoxEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+    m_CallsDirty: 1
   OnShowTutorial:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: Datenshi.Scripts.Tutorial.UITutorialBoxEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+    m_CallsDirty: 1
   OnHideTutorial:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: Datenshi.Scripts.Tutorial.UITutorialBoxEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+    m_CallsDirty: 1
   OnLeftArea:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: Datenshi.Scripts.Tutorial.UITutorialBoxEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+    m_CallsDirty: 1
   CanvasGroup: {fileID: 225877387346341882}
   Holder: {fileID: 224276064333606384}
   DefaultSize: {x: 60, y: 30}
   Padding: {x: 10, y: 10}
   YOffset: 1.5
+  currentTrigger: {fileID: 0}
+  current: {fileID: 0}
+  showScheduled: 0
+  hideScheduled: 0
 --- !u!114 &114999363769920354
 MonoBehaviour:
   m_ObjectHideFlags: 1
