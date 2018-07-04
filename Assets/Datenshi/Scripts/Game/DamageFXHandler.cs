@@ -1,4 +1,5 @@
-﻿using Datenshi.Scripts.Audio;
+﻿using System.Collections;
+using Datenshi.Scripts.Audio;
 using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Combat.Attacks;
 using Datenshi.Scripts.Entities;
@@ -38,6 +39,7 @@ namespace Datenshi.Scripts.Game {
         }
 
         private void OnEntityDamaged(ICombatant damaged, ICombatant damager, Attack attack, uint damage) {
+            Vibrate();
             var currentEntity = PlayerController.Instance.CurrentEntity;
             if (!Equals(damager, currentEntity) && !Equals(damaged, currentEntity)) {
                 return;
@@ -63,6 +65,14 @@ namespace Datenshi.Scripts.Game {
             }
 
             TimeController.Instance.RequestAnimatedSlowdown(SlowdownScale, SlowdownDuration, 2);
+        }
+
+        private Coroutine vibrateCoroutine;
+        public float VibrationDuration = .1F;
+        public float VibrationLevel = .25F;
+
+        private void Vibrate() {
+            PlayerController.Instance.Player.CurrentPlayer.SetVibration(0, VibrationLevel, VibrationDuration);
         }
     }
 }

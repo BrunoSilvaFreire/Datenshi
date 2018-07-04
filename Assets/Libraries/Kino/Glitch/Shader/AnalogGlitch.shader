@@ -20,7 +20,7 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-Shader "Hidden/Kino/Glitch/Analog"
+Shader "Kino/Glitch/Analog"
 {
     Properties
     {
@@ -70,6 +70,13 @@ Shader "Hidden/Kino/Glitch/Analog"
     ENDCG
     SubShader
     {
+           Tags {
+                "Queue" = "Transparent"
+                "IgnoreProjector" = "True"
+                "RenderType" = "Transparent"
+                "PreviewType" = "Plane"
+                "CanUseSpriteAtlas" = "True"
+                }
         Pass
         {
             ZTest Always Cull Off ZWrite Off

@@ -41,6 +41,10 @@ namespace Datenshi.Scripts.UI.Elements {
             var player = PlayerController.Instance.Player.CurrentPlayer;
             var newLayout = ReInput.mapping.KeyboardLayouts[(int) arg0];
             Label.text = newLayout.descriptiveName;
+            foreach (var map in player.controllers.maps.GetAllMaps(ControllerType.Keyboard)) {
+                map.enabled = map.layoutId == newLayout.id;
+                Debug.Log("Map " + map + "," + map.name + " is now " + map.enabled);
+            }
         }
     }
 }

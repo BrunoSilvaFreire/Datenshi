@@ -96,10 +96,25 @@ namespace Datenshi.Scripts.AI {
     }*/
 
         private readonly List<BezierPoint> usedPoints = new List<BezierPoint>();
-        private List<Node> toUpdate;
+
+        private List<Vector2Int> path;
+        //private List<Node> toUpdate;
 
         private void LoadPath(List<Node> obj) {
-            toUpdate = obj;
+            if (obj == null) {
+                return;
+            }
+
+            var list = new List<Vector2Int>();
+            foreach (var node in obj) {
+                if (node == null) {
+                    continue;
+                }
+
+                list.Add(node.Position);
+            }
+
+            path = list;
         }
 
         private void UpdatePoints(int needed) {
@@ -157,8 +172,9 @@ namespace Datenshi.Scripts.AI {
 #endif
 
         public override void Execute(INavigable entity, DummyInputProvider provider) {
-            TestUpdate();
-            /*if (path.IsNullOrEmpty()) {
+            //TestUpdate();
+
+            if (path.IsNullOrEmpty()) {
                 provider.Reset();
                 return;
             }
@@ -188,8 +204,9 @@ namespace Datenshi.Scripts.AI {
             var dir = targetPos - entityPos;
             provider.Horizontal = dir.x;
             provider.Vertical = dir.y;
-            Debug.DrawRay(entityPos, dir * 10, Color.white);*/
+            Debug.DrawRay(entityPos, dir * 10, Color.white);
         }
+/*
 
         private void TestUpdate() {
             if (toUpdate == null) {
@@ -218,7 +235,7 @@ namespace Datenshi.Scripts.AI {
             }
 
             toUpdate = null;
-        }
+        }*/
 
         public override Vector2 GetFavourablePosition(ILocatable target) {
             return GetFavourablePosition(target.Center);

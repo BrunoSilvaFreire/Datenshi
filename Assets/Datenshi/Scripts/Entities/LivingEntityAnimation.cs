@@ -6,6 +6,13 @@ namespace Datenshi.Scripts.Entities {
         [SerializeField]
         private CombatantAnimatorUpdater updater;
 
-        public CombatantAnimatorUpdater AnimatorUpdater => updater;
+        public CombatantAnimatorUpdater AnimatorUpdater {
+            get {
+                return updater;
+            }
+            protected set {
+                updater = value;
+            }
+        }
     }
 }

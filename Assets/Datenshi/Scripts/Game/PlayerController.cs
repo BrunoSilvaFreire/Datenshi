@@ -17,6 +17,7 @@ using DG.Tweening.Plugins.Options;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Playables;
 
 namespace Datenshi.Scripts.Game {
     [Serializable]
@@ -54,6 +55,8 @@ namespace Datenshi.Scripts.Game {
             }
         }
 
+        public PlayableDirector Director;
+
 
         private void Start() {
             if (currentEntity.InputProvider != Player) {
@@ -61,6 +64,7 @@ namespace Datenshi.Scripts.Game {
                 currentEntity.RequestOwnership(Player);
                 OnEntityChanged.Invoke(null, currentEntity);
             }
+
             GameState.RestartState();
             GlobalEntityDamagedEvent.Instance.AddListener(OnEntityDamaged);
         }
@@ -121,6 +125,16 @@ namespace Datenshi.Scripts.Game {
             } else {
                 Rank.XP = 0;
             }
+        }
+
+        public static Entity GetOrCreateEntity() {
+            var player = Instance;
+            if (player == null) {
+                Debug.LogWarning("Couldn't find player controller in scene, loading from singletons...");
+                player = Singletons.Instance.PlayerControllerPrefab.Clone();
+            }
+
+            return player.CurrentEntity;
         }
     }
 }

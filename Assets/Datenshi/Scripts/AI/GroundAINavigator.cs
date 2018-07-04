@@ -82,8 +82,10 @@ namespace Datenshi.Scripts.AI {
                 navmesh,
                 e,
                 p => {
+                    Debug.Log("calculated");
                     path = p;
                     if (p != null) {
+                        
                         currentLink = p.Last();
                     }
                 });

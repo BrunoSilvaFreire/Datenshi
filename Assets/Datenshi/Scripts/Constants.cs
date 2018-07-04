@@ -19,6 +19,6 @@ namespace Datenshi.Scripts {
         public const float DefaultSpeed = 10;
         public const float DefaultJumpHeight = 10;
 
-        public const float DefaultInputThreshold = 0.1F; 
+        public const float DefaultInputThreshold = 0.1F;
     }
 }

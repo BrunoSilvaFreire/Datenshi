@@ -18,7 +18,7 @@ namespace Datenshi.Scripts.Entities {
     /// <br />
     /// A maneira com que ela se move depende de seu <see cref="F:Datenshi.Scripts.Entities.MovableEntity.Motor" />.
     /// </summary>
-    public class MovableEntity : LivingEntity, INavigable, IDatenshiMovable {
+    public partial class MovableEntity : LivingEntity, INavigable, IDatenshiMovable {
         public const string MovementGroup = "Movement";
 
         /// <summary>
@@ -84,18 +84,20 @@ namespace Datenshi.Scripts.Entities {
             return motorConfig as C;
         }
 
+        [TitleGroup(GeneralGroup)]
         public InputProvider InputProvider => base.InputProvider;
 
+        [TitleGroup(MovementGroup)]
         public AnimationCurve AccelerationCurve => accelerationCurve;
 
 
-        [SerializeField]
+        [TitleGroup(GeneralGroup), SerializeField]
         private float inset = .05F;
 
-        [SerializeField]
+        [TitleGroup(MovementGroup), SerializeField]
         private byte horizontalRaycasts = 3;
 
-        [SerializeField]
+        [TitleGroup(MovementGroup), SerializeField]
         private byte verticalRaycasts = 3;
 
         public float Inset => inset;
@@ -223,10 +225,10 @@ namespace Datenshi.Scripts.Entities {
         }
 
 
-        [SerializeField, HideInInspector]
+        [TitleGroup(MovementGroup), SerializeField, HideInInspector]
         private MotorConfig motorConfig;
 
-        [SerializeField]
+        [TitleGroup(MovementGroup), SerializeField]
         private CollisionStatus collisionStatus;
 
         [ShowInInspector, TitleGroup(MovementGroup)]
@@ -256,7 +258,7 @@ namespace Datenshi.Scripts.Entities {
             set;
         } = true;
 
-        [SerializeField]
+        [TitleGroup(MovementGroup), SerializeField]
         private bool timeScaleIndependent;
 
         public bool TimeScaleIndependent {
@@ -269,28 +271,6 @@ namespace Datenshi.Scripts.Entities {
         }
 
         public float DeltaTime => TimeScaleIndependent ? Time.unscaledDeltaTime : Time.deltaTime;
-        private List<SpeedEffector> speedEffectors = new List<SpeedEffector>();
-
-        private struct SpeedEffector {
-            private readonly float magnitude;
-            private readonly float duration;
-            private float timeLeft;
-
-            public SpeedEffector(float magnitude, float duration) : this() {
-                this.magnitude = magnitude;
-                this.duration = duration;
-                timeLeft = duration;
-            }
-
-            public bool Tick() {
-                timeLeft -= Time.deltaTime;
-                return timeLeft <= 0;
-            }
-        }
-
-        public void AddSpeedEffector(float magnitude, float duration) {
-            //TODO implement
-        }
 
         public override void Stun(float duration) {
             base.Stun(duration);

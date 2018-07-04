@@ -11,7 +11,7 @@ namespace Datenshi.Scripts.Game {
         [SerializeField, HideInInspector]
         private uint playerID;
 
-      
+
         [ShowInInspector]
         public uint PlayerID {
             get {
@@ -33,6 +33,7 @@ namespace Datenshi.Scripts.Game {
         private Player currentPlayer;
 
         public Player CurrentPlayer => currentPlayer;
+
         private void ReloadPlayer() {
             currentPlayer = ReInput.players.GetPlayer((int) playerID);
             Debug.LogFormat(
@@ -101,35 +102,43 @@ namespace Datenshi.Scripts.Game {
 
 
         public override float GetAxis(string key) {
+            if (!RuntimeResources.Instance.AllowPlayerInput) {
+                return 0;
+            }
+
             return currentPlayer.GetAxis(key);
         }
 
         public override float GetAxis(int id) {
+            if (!RuntimeResources.Instance.AllowPlayerInput) {
+                return 0;
+            }
+
             return currentPlayer.GetAxis(id);
         }
 
         public override bool GetButtonDown(string key) {
-            return currentPlayer.GetButtonDown(key);
+            return RuntimeResources.Instance.AllowPlayerInput && currentPlayer.GetButtonDown(key);
         }
 
         public override bool GetButtonDown(int id) {
-            return currentPlayer.GetButtonDown(id);
+            return RuntimeResources.Instance.AllowPlayerInput && currentPlayer.GetButtonDown(id);
         }
 
         public override bool GetButton(string key) {
-            return currentPlayer.GetButton(key);
+            return RuntimeResources.Instance.AllowPlayerInput && currentPlayer.GetButton(key);
         }
 
         public override bool GetButton(int id) {
-            return currentPlayer.GetButton(id);
+            return RuntimeResources.Instance.AllowPlayerInput && currentPlayer.GetButton(id);
         }
 
         public override bool GetButtonUp(string key) {
-            return currentPlayer.GetButtonUp(key);
+            return RuntimeResources.Instance.AllowPlayerInput && currentPlayer.GetButtonUp(key);
         }
 
         public override bool GetButtonUp(int id) {
-            return currentPlayer.GetButtonUp(id);
+            return RuntimeResources.Instance.AllowPlayerInput && currentPlayer.GetButtonUp(id);
         }
 
         public override bool GetJump() {
@@ -188,6 +197,5 @@ namespace Datenshi.Scripts.Game {
 #endif
             return Fetch(player => player.GetButtonDown((int) Actions.Submit));
         }
-
     }
 }

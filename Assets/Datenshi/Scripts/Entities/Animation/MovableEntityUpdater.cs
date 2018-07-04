@@ -22,11 +22,9 @@ namespace Datenshi.Scripts.Entities.Animation {
         public string InputVerticalKey = "InputVertical";
         public string InputHorizontalKey = "InputHorizontal";
         public string LastDamageKey = "LastDamage";
-        public string BecameGroundedKey = "BecameGrounded";
         public string DefendKey = "Defend";
         public string DeflectKey = "Deflect";
         public string CounterKey = "Counter";
-        public string BecameAiredKey = "BecameAired";
         public string StunKey = "Stunned";
         public string DeadKey = "Dead";
         public string SpawnKey = "Spawn";
@@ -46,8 +44,6 @@ namespace Datenshi.Scripts.Entities.Animation {
             AddParameter(InputVerticalKey, AnimatorControllerParameterType.Float);
             AddParameter(InputHorizontalKey, AnimatorControllerParameterType.Float);
             AddParameter(LastDamageKey, AnimatorControllerParameterType.Int);
-            AddParameter(BecameGroundedKey, AnimatorControllerParameterType.Trigger);
-            AddParameter(BecameAiredKey, AnimatorControllerParameterType.Trigger);
             AddParameter(DefendKey, AnimatorControllerParameterType.Bool);
             AddParameter(DeflectKey, AnimatorControllerParameterType.Trigger);
             AddParameter(CounterKey, AnimatorControllerParameterType.Trigger);
@@ -104,14 +100,7 @@ namespace Datenshi.Scripts.Entities.Animation {
             anim.SetFloat(SpeedRawKey, speed);
             anim.SetFloat(SpeedPercentKey, percentSpeed);
             var grounded = Entity.CollisionStatus.Down;
-            var wasGrounded = anim.GetBool(GroundedKey);
-            if (wasGrounded != grounded) {
-                anim.SetTrigger(grounded ? BecameGroundedKey : BecameAiredKey);
-            }
-
             anim.SetBool(GroundedKey, grounded);
-
-
             Renderer.flipX = Entity.CurrentDirection.X == -1;
         }
 

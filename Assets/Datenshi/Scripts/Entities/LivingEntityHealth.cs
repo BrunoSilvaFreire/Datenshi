@@ -16,7 +16,7 @@ namespace Datenshi.Scripts.Entities {
         private UnityEvent onKilled;
 
         public UnityEvent OnKilled => onKilled;
-        
+
         [SerializeField, HideInInspector]
         private uint health;
 
@@ -29,6 +29,12 @@ namespace Datenshi.Scripts.Entities {
 
         [ShowIf(nameof(HasTemporaryInvulnerability)), ReadOnly, TitleGroup(HealthGroup)]
         private float invulnerabilitySecondsLeft;
+
+        public float DamageColorDuration;
+
+        public Color DamageColor;
+
+        public float DamageColorAmount;
 
         /// <summary>
         /// A porcentagem de vida atual em uma escala de 0 -> 1.
@@ -135,7 +141,7 @@ namespace Datenshi.Scripts.Entities {
 
             OnDamaged.Invoke(entity, damage);
             OnHealthChanged.Invoke();
-            ColorizableRenderer.ImpactColor();
+            ColorizableRenderer.RequestColorOverride(DamageColor, DamageColorAmount, DamageColorDuration);
             Health -= damage;
             if (DamageInvulnerability) {
                 SetInvulnerable(DamageInvulnerabilityDuration);

@@ -1,0 +1,12 @@
+{
+    "name": "BezierSolution-Editor",
+    "references": [
+        "BezierSolution"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}

@@ -55,6 +55,6 @@ MonoBehaviour:
   m_Name: DashState
   m_EditorClassIdentifier: 
   DashDistance: 8
-  DashDuration: 0.25
+  DashDuration: 0.2
   DefaultState: {fileID: 114222677318753670}
   DashAnimatorKey: Dashing

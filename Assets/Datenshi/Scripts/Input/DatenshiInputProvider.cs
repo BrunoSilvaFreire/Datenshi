@@ -28,13 +28,13 @@ namespace Datenshi.Scripts.Input {
 #if UNITY_EDITOR
         public const string DebugGroup = "Values";
         [ShowInInspector, FoldoutGroup(DebugGroup)]
-        public float Horizontal => GetHorizontal();
+        public float HorizontalValue => GetHorizontal();
 
         [ShowInInspector, FoldoutGroup(DebugGroup)]
-        public float Vertical => GetVertical();
+        public float VerticalValue => GetVertical();
 
         [ShowInInspector, FoldoutGroup(DebugGroup)]
-        public bool Jump => GetJump();
+        public bool JumpValue => GetJump();
 #endif
     }
 }

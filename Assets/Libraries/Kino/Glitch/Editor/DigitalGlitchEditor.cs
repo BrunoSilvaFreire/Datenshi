@@ -25,7 +25,7 @@ using UnityEditor;
 
 namespace Kino.Editor
 {
-    [CanEditMultipleObjects]
+    /*[CanEditMultipleObjects]
     [CustomEditor(typeof(DigitalGlitch))]
     public class DigitalGlitchEditor : UnityEditor.Editor
     {
@@ -44,5 +44,5 @@ namespace Kino.Editor
 
             serializedObject.ApplyModifiedProperties();
         }
-    }
+    }*/
 }

@@ -1,5 +1,8 @@
 ﻿using System;
+using Datenshi.Scripts.Util;
+using Datenshi.Scripts.Util.Services;
 using DG.Tweening;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -16,19 +19,22 @@ namespace Datenshi.Scripts.Graphics {
     [ExecuteInEditMode]
     public class ColorizableRenderer : MonoBehaviour {
         public const string OverrideAmountKey = "_OverrideAmount";
+        public const string OverrideColorKey = "_OverrideColor";
         public const string OutlineKey = "_Outline";
         public const string OutlineColorKey = "_OutlineColor";
-        public const string AlternativeOverrideColorKey = "_AlternativeOverrideColor";
-        public const string AlternativeOverrideAmountKey = "_AlternativeOverrideAmount";
-        public const string ColorKey = "_Color";
-        public Renderer[] Renderers;
+        private Renderer[] renderers;
         private MaterialPropertyBlock block;
-        public float ColorOverrideAmount;
-        public Color AlternativeOverrideColor = Color.white;
-        public float AlternativeColorOverrideAmount;
-        public float DamageImpactDuration = 1;
         public bool Outline;
         public Color OutlineColor = Color.red;
+
+        [ShowInInspector]
+        private readonly ServiceHandler<ColorOverride> serviceHandler = new ServiceHandler<ColorOverride>();
+
+        public TimedService<ColorOverride> RequestColorOverride(Color color, float amount, float duration,
+            byte priority = Service.DefaultPriority) {
+            var meta = new ColorOverride(color, amount);
+            return serviceHandler.RegisterTimedService(meta, duration, priority);
+        }
 
         public static readonly ColorizableRendererEvent
             ColorizableRendererEnabledEvent = new ColorizableRendererEvent();
@@ -38,6 +44,7 @@ namespace Datenshi.Scripts.Graphics {
 
         private void Awake() {
             ColorizableRendererEnabledEvent.Invoke(this);
+            renderers = GetComponentsInChildren<Renderer>();
         }
 
         private void OnDisable() {
@@ -46,56 +53,61 @@ namespace Datenshi.Scripts.Graphics {
 
         private Tweener impactTweener;
 
-        public void ImpactColor() {
-            ImpactColor(DamageImpactDuration, Color.white);
-        }
-
-        public void ImpactColor(float duration) {
-            ImpactColor(duration, Color.white);
-        }
-
-        public void ImpactColor(float duration, Color color) {
-            AlternativeColorOverrideAmount = 1;
-            AlternativeOverrideColor = color;
-            DOAlternativeColorOverrideAmount(0, duration);
-        }
-
-        public void DOAlternativeColorOverrideAmount(float v, float duration) {
-            impactTweener?.Kill();
-            impactTweener = DOTween.To(() => AlternativeColorOverrideAmount,
-                value => AlternativeColorOverrideAmount = value, v, duration);
-        }
-
         private void Update() {
+            serviceHandler.Tick();
             if (block == null) {
                 block = new MaterialPropertyBlock();
             }
-            foreach (var r in Renderers) {
+
+            var service = serviceHandler.WithGenericHighestPriority();
+            foreach (var r in renderers) {
                 if (r == null) {
                     continue;
                 }
 
                 r.GetPropertyBlock(block);
-                Color color;
-                var spriteRenderer = r as SpriteRenderer;
-                if (spriteRenderer != null) {
-                    color = spriteRenderer.color;
-                } else if (r is LineRenderer) {
-                    color = ((LineRenderer) r).endColor;
-                } else if (r is TrailRenderer) {
-                    color = ((TrailRenderer) r).endColor;
-                } else {
-                    continue;
-                }
-
                 block.SetColor(OutlineColorKey, OutlineColor);
                 block.SetFloat(OutlineKey, Outline ? 1 : 0);
-                block.SetFloat(OverrideAmountKey, ColorOverrideAmount);
-                block.SetColor(ColorKey, color);
-                block.SetColor(AlternativeOverrideColorKey, AlternativeOverrideColor);
-                block.SetFloat(AlternativeOverrideAmountKey, AlternativeColorOverrideAmount);
+                if (service != null) {
+                    var meta = service.Metadata;
+                    block.SetColor(OverrideColorKey, meta.Color);
+                    block.SetFloat(OverrideAmountKey, meta.Amount);
+                } else {
+                    block.SetFloat(OverrideAmountKey, 0);
+                }
+
                 r.SetPropertyBlock(block);
             }
+        }
+    }
+
+    public class ColorOverride : IComparable<ColorOverride>, ITickable<Service> {
+        public Color Color;
+        private readonly float startAmount;
+
+        public float Amount {
+            get;
+            private set;
+        }
+
+        public ColorOverride(Color color, float amount) {
+            Color = color;
+            Amount = amount;
+            startAmount = amount;
+        }
+
+        public int CompareTo(ColorOverride other) {
+            if (ReferenceEquals(this, other)) return 0;
+            return ReferenceEquals(null, other) ? 1 : Amount.CompareTo(other.Amount);
+        }
+
+        public void Tick(Service value) {
+            var t = value as ITimedService;
+            if (t == null) {
+                return;
+            }
+
+            Amount = startAmount * (1 - t.Percentage);
         }
     }
 }

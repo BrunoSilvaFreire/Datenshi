@@ -7,6 +7,7 @@ using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Util;
 using UnityEngine;
+using UPM.Util;
 
 // ReSharper disable UnassignedField.Global
 // ReSharper disable MemberCanBePrivate.Global
@@ -16,7 +17,7 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
         public SharedCombatant Target;
         public MovableEntity Entity;
         public float WalkDistance = 5;
-        public float SightRadius;
+        public Bounds2D SightRadius;
         public float WaitTime = 1;
         public float CloseThreshold = 1;
         private bool left;
@@ -57,10 +58,11 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
 
             nav.Execute(Entity, provider);
 
-            foreach (var hit in Physics2D.OverlapCircleAll(
-                Entity.Center,
-                SightRadius,
-                GameResources.Instance.EntitiesMask)) {
+            var hits = Physics2D.OverlapBoxAll(
+                Entity.Center + Entity.CurrentDirection.X * SightRadius.Center,
+                SightRadius.Size,
+                GameResources.Instance.EntitiesMask);
+            foreach (var hit in hits) {
                 var e = hit.GetComponentInParent<ICombatant>();
                 if (!Entity.ShouldAttack(e)) {
                     continue;
@@ -80,7 +82,8 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
         }
 
         public override void OnDrawGizmos() {
-            DebugUtil.DrawWireCircle2D(Entity.Center, SightRadius, Color.green);
+            DebugUtil.DrawBox2DWire(Entity.Center + SightRadius.Center, SightRadius.Size, Color.red);
+            DebugUtil.DrawBox2DWire(targetPos, Vector2.one, Color.green);
         }
     }
 }

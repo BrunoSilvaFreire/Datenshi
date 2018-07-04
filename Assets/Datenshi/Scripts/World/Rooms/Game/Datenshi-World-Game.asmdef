@@ -10,7 +10,8 @@
         "Datenshi-Animation",
         "Datenshi-Input",
         "Datenshi-Graphics",
-        "Datenshi-Movement"
+        "Datenshi-Movement",
+        "Datenshi-Audio"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],

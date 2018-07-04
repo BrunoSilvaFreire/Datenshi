@@ -68,7 +68,14 @@ namespace Datenshi.Scripts.Entities {
         [TitleGroup(GeneralGroup), SerializeField]
         private ColorizableRenderer colorizableRenderer;
 
-        public ColorizableRenderer ColorizableRenderer => colorizableRenderer;
+        public ColorizableRenderer ColorizableRenderer {
+            get {
+                return colorizableRenderer;
+            }
+            protected set {
+                colorizableRenderer = value;
+            }
+        }
 
         public EntityMiscController MiscController;
 
@@ -136,11 +143,11 @@ namespace Datenshi.Scripts.Entities {
             }
         }
 
-        public Transform Transform => transform;
+        public virtual Transform Transform => transform;
 
         public virtual Vector2 Center => transform.position;
 
-        public Vector2 GroundPosition => Center;
+        public virtual Vector2 GroundPosition => Center;
     }
 
     public sealed class VariableValue {

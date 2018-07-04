@@ -230,7 +230,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1955423080555290}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.5, y: -3, z: -0.4375}
+  m_LocalPosition: {x: -77.7, y: 9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4849580934941250}
@@ -246,7 +246,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1041954193506414}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.625, z: -1}
+  m_LocalPosition: {x: 0, y: -0.083, z: -0.574}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children: []
   m_Father: {fileID: 4849580934941250}
@@ -320,7 +320,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: 0.8901961, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -358,14 +358,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a509e2442300205479ade85b569934a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Renderers:
-  - {fileID: 212692535571194284}
-  - {fileID: 212129443104965950}
-  - {fileID: 212308371954591044}
-  ColorOverrideAmount: 0
-  AlternativeOverrideColor: {r: 1, g: 1, b: 1, a: 1}
-  AlternativeColorOverrideAmount: 0
-  DamageImpactDuration: 1
+  Outline: 0
+  OutlineColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &114272609220495326
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -408,35 +402,16 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  health: 5
-  maxHealth: 5
-  invulnerable: 0
+  hitbox: {fileID: 61278361392465028}
+  ignored: 0
+  updater: {fileID: 114554701928853810}
+  relationship: 2
   DamageInvulnerability: 0
   DamageInvulnerabilityDuration: 3
-  relationship: 2
-  OnDamaged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Datenshi.Scripts.Entities.EntityDamagedEvent, Datenshi-Entities, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnAttack:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: Datenshi.Scripts.Entities.EntityAttackEvent, Datenshi-Entities, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnHealthChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  DamageGivesStun: 1
-  hitbox: {fileID: 61278361392465028}
-  DamageStunMin: 1
-  DamageStunDuration: 0.25
-  onKilled:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   defenseHitbox:
     Center: {x: 0, y: 0}
@@ -445,8 +420,30 @@ MonoBehaviour:
   MinDefenseRequired: 0.1
   DefenseRecoverAmountMultiplier: 1
   DefenseDepleteAmountMultiplier: 2
-  updater: {fileID: 114554701928853810}
-  ignored: 0
+  OnDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Datenshi.Scripts.Entities.EntityDamagedEvent, Datenshi-Entities, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onKilled:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  health: 5
+  maxHealth: 5
+  godMode: 0
+  DamageColorDuration: 0
+  DamageColor: {r: 0, g: 0, b: 0, a: 0}
+  DamageColorAmount: 0
+  DamageGivesStun: 1
+  DamageStunMin: 1
+  DamageStunDuration: 0.25
 --- !u!114 &114379470805548926
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -552,7 +549,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 95837474836999412}
-  AttackKey: Attack
   DamagedKey: Damaged
   AbsInputVerticalKey: AbsInputVertical
   AbsInputHorizontalKey: AbsInputHorizontal
@@ -644,14 +640,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 594d88b9ffec4455a198a7e96e0b0c83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Group: {fileID: 0}
+  ShowAlpha: 1
+  HideAlpha: 0
+  GroupTransitionDuration: 0.5
   defaultColor: 0
   currentLevel: 0
   currentXP: 0
   saturation: 150
-  CanvasGroup: {fileID: 225152737824206186}
-  CanvasGroupShowAmount: 1
-  CanvasGroupHideAmount: 0
-  CanvasGroupFadeDuration: 1
   HealthBar: {fileID: 114384531220014082}
   SubHealthBar: {fileID: 114391966341724644}
   SubHealthDelay: 1
@@ -694,7 +690,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 7ecaa590cace8ac41af787c467c16109, type: 2}
+  - {fileID: 2100000, guid: 4db23d56a75f4e74a8c5a67c13e0e5a0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -715,7 +711,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9ec9ea29b9f53f844a568ee528279c5b, type: 3}
-  m_Color: {r: 1, g: 0.8901961, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.9600028, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -739,7 +735,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 7ecaa590cace8ac41af787c467c16109, type: 2}
+  - {fileID: 2100000, guid: 4db23d56a75f4e74a8c5a67c13e0e5a0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -760,7 +756,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9ec9ea29b9f53f844a568ee528279c5b, type: 3}
-  m_Color: {r: 1, g: 0.88965523, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.9600028, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -784,7 +780,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 7ecaa590cace8ac41af787c467c16109, type: 2}
+  - {fileID: 2100000, guid: 4db23d56a75f4e74a8c5a67c13e0e5a0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -805,7 +801,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9ec9ea29b9f53f844a568ee528279c5b, type: 3}
-  m_Color: {r: 1, g: 0.88965523, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.9600028, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -37,7 +37,12 @@ namespace Datenshi.Scripts.AI {
         }
 
         private static T Fetch<T>(T horizontal) {
-            return !RuntimeResources.Instance.AllowPlayerInput ? default(T) : horizontal;
+            var i = RuntimeResources.Instance;
+            if (i == null) {
+                return default(T);
+            }
+
+            return !i.AllowPlayerInput ? default(T) : horizontal;
         }
 
         public override float GetVertical() {

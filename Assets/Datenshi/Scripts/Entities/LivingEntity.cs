@@ -26,7 +26,7 @@ namespace Datenshi.Scripts.Entities {
     public partial class LivingEntity : Entity {
         public const string HealthGroup = "Health";
         public const string CombatGroup = "Combat";
-        public static readonly Color HitboxColor = new Color(0f, 1f, 0f, 0.5f);
+        public static readonly Color HitboxColor = new Color(0.46f, 1f, 0.01f, 0.25f);
 
         [SerializeField]
         private Collider2D hitbox;
@@ -75,10 +75,10 @@ namespace Datenshi.Scripts.Entities {
         }
 
 
-        public Transform Transform => transform;
+        public override Transform Transform => transform;
 
 
-        public Vector2 Center {
+        public override Vector2 Center {
             get {
                 var m = this as IMovable;
                 if (m == null) {
@@ -91,7 +91,7 @@ namespace Datenshi.Scripts.Entities {
         }
 
 
-        public virtual Vector2 GroundPosition {
+        public override Vector2 GroundPosition {
             get {
                 var pos = Center;
                 pos.y -= hitbox.bounds.size.y / 2;
@@ -101,7 +101,7 @@ namespace Datenshi.Scripts.Entities {
 
         private void OnDrawGizmos() {
             var b = Hitbox.bounds;
-            Gizmos.color = Color.green;
+            Gizmos.color = HitboxColor;
             Gizmos.DrawCube(b.center, b.size);
         }
     }
