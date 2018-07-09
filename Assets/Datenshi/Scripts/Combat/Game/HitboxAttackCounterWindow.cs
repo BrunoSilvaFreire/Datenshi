@@ -66,6 +66,7 @@ namespace Datenshi.Scripts.Combat.Game {
             yield return new WaitForSeconds(timeScaleDuration);
             animator.updateMode = AnimatorUpdateMode.Normal;
         }
+/*
 
 
         public bool CanAutoDefend(ICombatant combatant) {
@@ -99,6 +100,14 @@ namespace Datenshi.Scripts.Combat.Game {
         }
 
         public float DoEvasiveDefend(ICombatant combatant, ref DamageInfo info) {
+            info.Canceled = true;
+            return 0;
+        }*/
+        public bool CanDefend(ICombatant combatant) {
+            return true;
+        }
+
+        public float Defend(ICombatant combatant, ref DamageInfo info) {
             info.Canceled = true;
             return 0;
         }

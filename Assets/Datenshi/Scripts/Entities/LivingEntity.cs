@@ -34,13 +34,13 @@ namespace Datenshi.Scripts.Entities {
         public Collider2D Hitbox => hitbox;
 
 
-
         [ShowInInspector, ReadOnly, TitleGroup(CombatGroup)]
         protected virtual void Update() {
             UpdateRendering();
             UpdateInvulnerability();
             UpdateStun();
             UpdateFocus();
+            UpdateDefense();
         }
 
         private void UpdateRendering() {

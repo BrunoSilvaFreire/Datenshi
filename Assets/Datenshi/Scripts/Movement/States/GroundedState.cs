@@ -85,23 +85,28 @@ namespace Datenshi.Scripts.Movement.States {
             var bounds = (Bounds2D) user.Hitbox.bounds;
             var shrinkedBounds = bounds;
             shrinkedBounds.Expand(user.Inset * -2);
-            ProcessInputs(
-                user,
-                config,
-                ref velocity,
-                ref collisionStatus,
-                gravity,
-                out dir,
-                collisionMask,
-                bounds,
-                shrinkedBounds,
-                wallClimbState);
 
             var max = user.MaxSpeed;
             if (collisionStatus.Down) {
                 max *= user.SpeedMultiplier.Value;
             }
 
+            if (user.Focusing) {
+                max *= user.FocusAnimationSpeed;
+            }
+
+            ProcessInputs(
+                user,
+                config,
+                ref velocity,
+                ref collisionStatus,
+                gravity,
+                max,
+                out dir,
+                collisionMask,
+                bounds,
+                shrinkedBounds,
+                wallClimbState);
             velocity.x = Mathf.Clamp(velocity.x, -max, max);
 
             GroundedBehaviour.Check(user, ref velocity, ref collisionStatus, collisionMask);
@@ -136,6 +141,7 @@ namespace Datenshi.Scripts.Movement.States {
             ref Vector2 velocity,
             ref CollisionStatus collisionStatus,
             float gravity,
+            float maxSpeed,
             out int dir,
             LayerMask collisionMask,
             Bounds2D bounds,
@@ -156,8 +162,8 @@ namespace Datenshi.Scripts.Movement.States {
             user.Direction = d;
             */
             dir = Math.Sign(xInput);
-            var jump = hasProvider && provider.GetJump();
             user.Defending = hasProvider && provider.GetDefend();
+            var jump = hasProvider && provider.GetJump() && !user.Defending;
             if (hasProvider && provider.GetButtonDown((int) Actions.Dash)) {
                 // If dash was ellegible it would not be here, so it's safe to assume we wanna evade
                 animator.SetTrigger(EvadeTriggerAnimatorKey);
@@ -235,7 +241,6 @@ namespace Datenshi.Scripts.Movement.States {
             var rawAcceleration = curve.Evaluate(speedPercent) * user.SpeedMultiplier.Value;
 
             var acceleration = rawAcceleration * dir;
-            var maxSpeed = user.MaxSpeed * Mathf.Abs(xInput);
             var speed = Mathf.Abs(velocity.x);
             if (velDir == 0 || velDir == dir && dir != 0) {
                 //Accelerating

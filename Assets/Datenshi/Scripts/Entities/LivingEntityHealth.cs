@@ -117,8 +117,9 @@ namespace Datenshi.Scripts.Entities {
         }
 
         public virtual uint Damage(ICombatant entity, ref DamageInfo info, IDefendable defendable = null) {
-            if (defendable != null && Defending && defendable.CanAutoDefend(this)) {
-                defendable.AutoDefend(this, ref info);
+            if (defendable != null && Defending && defendable.CanDefend(this)) {
+                defendable.Defend(this, ref info);
+                entity.AnimatorUpdater.TriggerDefend();
                 return 0;
             }
 
@@ -127,7 +128,7 @@ namespace Datenshi.Scripts.Entities {
             }
 
             var attack = info.Attack;
-            var multiplier = info.Multiplier;
+            var multiplier = info.Multiplier * entity.DamageMultiplier.Value;
 
             var damage = (uint) (attack.GetDamage(this) * multiplier);
             GlobalEntityDamagedEvent.Instance.Invoke(this, entity, attack, damage);

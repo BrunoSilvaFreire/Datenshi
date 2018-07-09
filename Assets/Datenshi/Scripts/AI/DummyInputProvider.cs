@@ -17,6 +17,8 @@ namespace Datenshi.Scripts.AI {
         public bool Dash;
         public bool Submit;
         public bool Defend;
+        public bool Focus;
+
 
         private void Start() {
             var e = Entity.Value;
@@ -103,6 +105,10 @@ namespace Datenshi.Scripts.AI {
 
         public override bool GetSubmit() {
             return Fetch(Submit);
+        }
+
+        public override bool GetFocus() {
+            return Focus;
         }
 
         public void Reset() {

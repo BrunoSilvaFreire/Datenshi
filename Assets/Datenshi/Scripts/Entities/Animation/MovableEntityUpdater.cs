@@ -21,12 +21,10 @@ namespace Datenshi.Scripts.Entities.Animation {
         public string AbsInputHorizontalKey = "AbsInputHorizontal";
         public string InputVerticalKey = "InputVertical";
         public string InputHorizontalKey = "InputHorizontal";
-        public string LastDamageKey = "LastDamage";
         public string DefendKey = "Defend";
-        public string DeflectKey = "Deflect";
-        public string CounterKey = "Counter";
         public string StunKey = "Stunned";
         public string DeadKey = "Dead";
+        public string DefendedKey = "Defended";
         public string SpawnKey = "Spawn";
         public MovableEntity Entity;
         public SpriteRenderer Renderer;
@@ -43,10 +41,7 @@ namespace Datenshi.Scripts.Entities.Animation {
             AddParameter(AbsInputHorizontalKey, AnimatorControllerParameterType.Float);
             AddParameter(InputVerticalKey, AnimatorControllerParameterType.Float);
             AddParameter(InputHorizontalKey, AnimatorControllerParameterType.Float);
-            AddParameter(LastDamageKey, AnimatorControllerParameterType.Int);
             AddParameter(DefendKey, AnimatorControllerParameterType.Bool);
-            AddParameter(DeflectKey, AnimatorControllerParameterType.Trigger);
-            AddParameter(CounterKey, AnimatorControllerParameterType.Trigger);
             AddParameter(StunKey, AnimatorControllerParameterType.Bool);
             AddParameter(DeadKey, AnimatorControllerParameterType.Trigger);
             AddParameter(SpawnKey, AnimatorControllerParameterType.Trigger);
@@ -75,7 +70,6 @@ namespace Datenshi.Scripts.Entities.Animation {
 
         private void OnDamaged(ICombatant combatant, uint arg1) {
             Animator.SetTrigger(DamagedKey);
-            Animator.SetInteger(LastDamageKey, (int) arg1);
         }
 
         protected override void UpdateAnimator(Animator anim) {
@@ -126,6 +120,10 @@ namespace Datenshi.Scripts.Entities.Animation {
 
         public override void SetBool(string key, bool p1) {
             Animator.SetBool(key, p1);
+        }
+
+        public override void TriggerDefend() {
+            Animator.SetTrigger(DefendedKey);
         }
     }
 }

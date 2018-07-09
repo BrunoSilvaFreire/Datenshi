@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using BehaviorDesigner.Runtime.Tasks;
 using Datenshi.Scripts.AI;
+using Datenshi.Scripts.AI.Pathfinding;
 using Datenshi.Scripts.Behaviours.Variables;
 using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Data;
@@ -22,8 +23,12 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
         public float CloseThreshold = 1;
         private bool left;
         private bool waiting;
-        private Vector2 targetPos;
 
+        public Vector2 targetPos;
+
+        public override void OnStart() {
+            RecalculateTargetPos(Entity.AINavigator);
+        }
 
         public override TaskStatus OnUpdate() {
             if (Target.Value != null) {
@@ -37,6 +42,7 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
             }
 
             if (waiting) {
+                Debug.Log("Watiting");
                 provider.Reset();
                 return TaskStatus.Running;
             }
@@ -47,17 +53,12 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
             var nav = Entity.AINavigator;
             var d = Vector2.Distance(Entity.GroundPosition, targetPos);
             if (d < CloseThreshold || Entity.CollisionStatus.HorizontalCollisionDir != 0) {
-                targetPos = Entity.GroundPosition;
-                targetPos.x += (left ? -1 : 1) * WalkDistance;
-                targetPos = nav.SetTarget(targetPos);
-
+                RecalculateTargetPos(nav);
                 left = !left;
                 StartCoroutine(WaitInvert());
                 return TaskStatus.Running;
             }
-
             nav.Execute(Entity, provider);
-
             var hits = Physics2D.OverlapBoxAll(
                 Entity.Center + Entity.CurrentDirection.X * SightRadius.Center,
                 SightRadius.Size,
@@ -75,6 +76,26 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
             return TaskStatus.Running;
         }
 
+        private void RecalculateTargetPos(AINavigator nav) {
+            targetPos = Entity.GroundPosition;
+            var dir = left ? -1 : 1;
+            targetPos.x += dir * WalkDistance;
+            targetPos = nav.SetTarget(targetPos);
+            var mesh = Navmesh.Instance;
+            var valid = false;
+            do {
+                var node = mesh.GetNodeAtWorld(targetPos);
+                if (node == null) {
+                    break;
+                }
+
+                valid = node.IsWalkable;
+                if (!valid) {
+                    targetPos.x -= dir;
+                }
+            } while (!valid);
+        }
+
         private IEnumerator WaitInvert() {
             waiting = true;
             yield return new WaitForSeconds(WaitTime);
@@ -82,8 +103,9 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
         }
 
         public override void OnDrawGizmos() {
-            DebugUtil.DrawBox2DWire(Entity.Center + SightRadius.Center, SightRadius.Size, Color.red);
-            DebugUtil.DrawBox2DWire(targetPos, Vector2.one, Color.green);
+            DebugUtil.DrawBox2DWire(Entity.Center + Entity.CurrentDirection.X * SightRadius.Center, SightRadius.Size, Color.red);
+            DebugUtil.DrawBox2DWire(targetPos, Vector2.one, Color.magenta);
+            Debug.DrawLine(Entity.GroundPosition, targetPos, Color.magenta);
         }
     }
 }

@@ -22,6 +22,7 @@ namespace Datenshi.Scripts.Entities.Animation {
         public string StunKey = "Stunned";
         public string DeadKey = "Dead";
         public string SpawnKey = "Spawn";
+        public string DefendedKey = "Defended";
         public LivingEntity Entity;
         public SpriteRenderer Renderer;
 #if UNITY_EDITOR
@@ -108,6 +109,10 @@ namespace Datenshi.Scripts.Entities.Animation {
 
         public override void SetBool(string key, bool value) {
             Animator.SetBool(key, value);
+        }
+
+        public override void TriggerDefend() {
+            Animator.SetTrigger(DefendedKey);
         }
     }
 }

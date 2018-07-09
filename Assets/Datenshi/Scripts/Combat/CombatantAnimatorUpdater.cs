@@ -17,5 +17,7 @@ namespace Datenshi.Scripts.Combat {
         public void SetAnimationTimeIndependent(bool independent) {
             Animator.updateMode = independent ? AnimatorUpdateMode.UnscaledTime : AnimatorUpdateMode.Normal;
         }
+
+        public abstract void TriggerDefend();
     }
 }

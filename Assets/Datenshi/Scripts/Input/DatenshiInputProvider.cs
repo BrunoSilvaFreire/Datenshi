@@ -24,6 +24,7 @@ namespace Datenshi.Scripts.Input {
 
         public abstract bool GetDash();
         public abstract bool GetDefend();
+        public abstract bool GetFocus();
         public abstract bool GetSubmit();
 #if UNITY_EDITOR
         public const string DebugGroup = "Values";

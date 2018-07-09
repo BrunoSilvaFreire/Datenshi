@@ -136,9 +136,11 @@ namespace Datenshi.Scripts.Combat.Game.Ranged {
                 SpawnOnHit.Clone(transform.position);
             }
 
+            PlayDefendFX();
             Destroy(gameObject);
         }
 
+        /*
         private bool CanDefend(ICombatant entity) {
             return Owner != null && Owner.Relationship != entity.Relationship;
         }
@@ -191,6 +193,21 @@ namespace Datenshi.Scripts.Combat.Game.Ranged {
             var angle = Random.value * MaxAutoDefenseAngle - MaxAutoDefenseAngle / 2 + Angle(velocity);
             velocity = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle));
             Owner = entity;
+            Modify();
+            return UsedAttack.FocusConsumption;
+        }
+*/
+
+        public bool CanDefend(ICombatant combatant) {
+            return true;
+        }
+
+        public float Defend(ICombatant combatant, ref DamageInfo info) {
+            PlayDefendFX();
+            info.Canceled = true;
+            var angle = Random.value * MaxAutoDefenseAngle - MaxAutoDefenseAngle / 2 + Angle(velocity);
+            velocity = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle));
+            Owner = combatant;
             Modify();
             return UsedAttack.FocusConsumption;
         }

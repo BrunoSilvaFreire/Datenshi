@@ -7,6 +7,7 @@ using Datenshi.Scripts.Input;
 using Datenshi.Scripts.Util;
 using UPM.Util;
 using Datenshi.Scripts.Movement;
+using Datenshi.Scripts.Util.Volatiles;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -34,6 +35,10 @@ namespace Datenshi.Scripts.Combat {
         float HealthPercentage {
             get;
             set;
+        }
+
+        FloatVolatileProperty DamageMultiplier {
+            get;
         }
 
         void Kill();
@@ -70,22 +75,27 @@ namespace Datenshi.Scripts.Combat {
         }
 
 
-        float DefendTimeLeft {
+        bool Dead {
+            get;
+        }
+
+        float FocusTimeLeft {
             get;
             set;
         }
 
-        bool Dead {
+        bool CanFocus {
             get;
+        }
+
+        bool Focusing {
+            get;
+            set;
         }
 
         bool Defending {
             get;
             set;
-        }
-
-        bool CanDefend {
-            get;
         }
 
         bool Stunned {
@@ -104,6 +114,5 @@ namespace Datenshi.Scripts.Combat {
         UnityEvent OnKilled {
             get;
         }
-
     }
 }

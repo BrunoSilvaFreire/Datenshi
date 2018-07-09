@@ -65,6 +65,8 @@ namespace Datenshi.Scripts.Game {
 
         [ShowIf("DebugInput")]
         public bool Jump;
+        [ShowIf("DebugInput")]
+        public bool Focus;
 
         [ShowIf("DebugInput")]
         public bool Attack;
@@ -100,6 +102,14 @@ namespace Datenshi.Scripts.Game {
             return Fetch(player => player.GetAxis((int) Actions.Vertical));
         }
 
+        public override bool GetFocus() {
+#if UNITY_EDITOR
+            if (DebugInput) {
+                return Focus;
+            }
+#endif
+            return Fetch(player => player.GetButton((int) Actions.Focus));
+        }
 
         public override float GetAxis(string key) {
             if (!RuntimeResources.Instance.AllowPlayerInput) {

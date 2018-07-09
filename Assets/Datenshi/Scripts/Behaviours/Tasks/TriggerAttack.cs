@@ -8,7 +8,6 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
     public class TriggerAttack : Action {
         public string AttackTrigger;
         public LivingEntity Entity;
-        public SharedCombatant Target;
         public float Delay = 3;
         private float lastUsed;
 
@@ -19,11 +18,6 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
             }
 
             lastUsed = now;
-            var t = Target.Value;
-            if (t != null) {
-                Entity.SetVariable(CombatVariables.AttackTarget, t);
-            }
-
             Entity.AnimatorUpdater.TriggerAttack(AttackTrigger);
             return TaskStatus.Success;
         }

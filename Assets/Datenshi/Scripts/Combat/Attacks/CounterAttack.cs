@@ -44,13 +44,15 @@ namespace Datenshi.Scripts.Combat.Attacks {
             foreach (var coll in hit) {
                 var info = new DamageInfo(this, 1, null, entity);
                 var d = coll.GetComponent<IDefendable>();
-                if (d == null || !CanDefend(d, entity)) {
+                if (d == null  
+                    // || !CanDefend(d, entity)
+                    ) {
                     continue;
                 }
 
                 success = true;
                 DebugUtil.DrawBox2DWire(((MonoBehaviour) d).gameObject.transform.position, Vector2.one, Color.green);
-                Defend(d, entity, ref info);
+                //Defend(d, entity, ref info);
                 if (Particle != null) {
                     Particle.Clone(coll.transform.position);
                 }
@@ -61,13 +63,13 @@ namespace Datenshi.Scripts.Combat.Attacks {
             }
 
             if (success) {
-                entity.DefendTimeLeft += DefenseRegain;
+                entity.FocusTimeLeft += DefenseRegain;
             }
 
             return success;
         }
 
-        private void Defend(IDefendable defendable, ICombatant entity, ref DamageInfo info) {
+        /*private void Defend(IDefendable defendable, ICombatant entity, ref DamageInfo info) {
             switch (Type) {
                 case CounterType.Agressive:
                     defendable.AgressiveDefend(entity, ref info);
@@ -89,6 +91,6 @@ namespace Datenshi.Scripts.Combat.Attacks {
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-        }
+        }*/
     }
 }

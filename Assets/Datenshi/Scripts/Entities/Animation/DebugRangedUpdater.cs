@@ -25,5 +25,8 @@ namespace Datenshi.Scripts.Entities.Animation {
 
         public override void TriggerSpawn() { }
         public override void SetBool(string key, bool value) { }
+        public override void TriggerDefend() {
+            
+        }
     }
 }

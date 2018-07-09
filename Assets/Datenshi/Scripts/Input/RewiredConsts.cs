@@ -22,7 +22,7 @@ namespace Datenshi.Scripts.Input {
          Cancel = 10,
          UIHorizontal = 11,
          UIVertical = 12,
-         Flip = 15
+         Focus = 15
     }
 
     public static class ActionsExtensions {

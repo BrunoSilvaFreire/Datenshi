@@ -6,7 +6,6 @@ namespace Datenshi.Scripts.Entities {
     public partial class LivingEntity {
         private bool defending;
 
-        public float DefendTimePercent => DefendTimeLeft / FocusMaxTime;
 
         [SerializeField]
         private Bounds2D defenseHitbox;
@@ -14,16 +13,12 @@ namespace Datenshi.Scripts.Entities {
         public float FocusMaxTime = 2;
 
         [TitleGroup(CombatGroup)]
-        public float MinDefenseRequired = 0.1F;
-
-        [TitleGroup(CombatGroup)]
-        public float DefenseRecoverAmountMultiplier = 1;
-
-        [TitleGroup(CombatGroup)]
-        public float DefenseDepleteAmountMultiplier = 2;
+        public float MinFocusRequired = 0.1F;
 
         [ShowInInspector, ReadOnly, TitleGroup(CombatGroup)]
-        public bool CanDefend => DefendTimeLeft > MinDefenseRequired;
+        public bool CanFocus => FocusTimeLeft > MinFocusRequired;
+
+        public float FocusPercent => FocusTimeLeft / FocusMaxTime;
 
         public Bounds2D DefenseHitbox {
             get {
@@ -35,9 +30,13 @@ namespace Datenshi.Scripts.Entities {
         }
 
         [ShowInInspector, ReadOnly, TitleGroup(CombatGroup)]
-        public float DefendTimeLeft {
-            get;
-            set;
+        public float FocusTimeLeft {
+            get {
+                return focusTimeLeft;
+            }
+            set {
+                focusTimeLeft = value >= FocusMaxTime ? FocusMaxTime : value;
+            }
         }
 
         public float DefendingFor {
@@ -50,8 +49,8 @@ namespace Datenshi.Scripts.Entities {
             }
         }
 
-        private bool canReDefend;
-        private bool defendingLastFrame;
+        private bool focusingLastFrame;
+        private float focusTimeLeft;
         public bool Dead => health == 0;
 
         public float LastDefenseStart {
@@ -65,15 +64,8 @@ namespace Datenshi.Scripts.Entities {
                 return defending;
             }
             set {
-                if (!defending && value && !canReDefend) {
-                    return;
-                }
-
+               
                 if (defending == value) {
-                    return;
-                }
-
-                if (value && !CanDefend) {
                     return;
                 }
 
@@ -84,36 +76,19 @@ namespace Datenshi.Scripts.Entities {
             }
         }
 
-        private void UpdateFocus() {
+        public void BreakDefense() { }
+
+        private void UpdateDefense() {
             if (defending) {
-                if (DefendTimeLeft <= 0) {
-                    defending = false;
-                } else {
-                    DefendTimeLeft -= Time.deltaTime * DefenseDepleteAmountMultiplier;
-                }
+                if (FocusTimeLeft <= 0) {
+                    BreakDefense();
+                } /* else {
+                    FocusTimeLeft -= Time.deltaTime * DefenseDepleteAmountMultiplier;
+                }*/
             } else {
-                var recoverAmount = Time.deltaTime * DefenseRecoverAmountMultiplier;
-                if (DefendTimeLeft + recoverAmount > FocusMaxTime) {
-                    DefendTimeLeft = FocusMaxTime;
-                } else {
-                    DefendTimeLeft += recoverAmount;
-                }
+                var recoverAmount = Time.deltaTime * FocusRecoverAmountMultiplier;
+                FocusTimeLeft += recoverAmount;
             }
-
-            var p = InputProvider;
-            if (p != null) {
-                var pressingDefend = p.GetDefend();
-                if (!Defending) {
-                    if (!canReDefend) {
-                        canReDefend = !pressingDefend;
-                    }
-                } else if (defendingLastFrame && !CanDefend) {
-                    canReDefend = false;
-                }
-            }
-
-            defendingLastFrame = Defending;
-
             if (updater == null) {
                 return;
             }

@@ -253,7 +253,7 @@ namespace Datenshi.Scripts.Entities {
                 return;
             }
 
-            Target.MinDefenseRequired = value;
+            Target.MinFocusRequired = value;
         }
 
         public void SetDefenseRecoverAmountMultiplier(float value) {
@@ -261,7 +261,7 @@ namespace Datenshi.Scripts.Entities {
                 return;
             }
 
-            Target.DefenseRecoverAmountMultiplier = value;
+            Target.FocusRecoverAmountMultiplier = value;
         }
 
         public void SetDefenseDepleteAmountMultiplier(float value) {
@@ -269,7 +269,7 @@ namespace Datenshi.Scripts.Entities {
                 return;
             }
 
-            Target.DefenseDepleteAmountMultiplier = value;
+            Target.FocusDepleteAmountMultiplier = value;
         }
 
         public void SetMiscController(EntityMiscController value) {
@@ -301,7 +301,7 @@ namespace Datenshi.Scripts.Entities {
                 return;
             }
 
-            Target.DefendTimeLeft = value;
+            Target.FocusTimeLeft = value;
         }
 
 

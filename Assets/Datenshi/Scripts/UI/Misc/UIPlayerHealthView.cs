@@ -22,6 +22,7 @@ namespace Datenshi.Scripts.UI.Misc {
                 newLiving.OnHealthChanged.AddListener(OnDamaged);
             }
 
+            Debug.Log("Changed");
             UpdateBar();
         }
 

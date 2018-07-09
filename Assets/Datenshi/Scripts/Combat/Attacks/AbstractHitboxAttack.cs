@@ -60,6 +60,7 @@ namespace Datenshi.Scripts.Combat.Attacks {
 
             return success;
         }
+/*
 
         public bool CanAutoDefend(ICombatant combatant) {
             return true;
@@ -84,6 +85,14 @@ namespace Datenshi.Scripts.Combat.Attacks {
         }
 
         public float DoEvasiveDefend(ICombatant combatant, ref DamageInfo info) {
+            info.Canceled = true;
+            return FocusConsumption;
+        }*/
+        public bool CanDefend(ICombatant combatant) {
+            return true;
+        }
+
+        public float Defend(ICombatant combatant, ref DamageInfo info) {
             info.Canceled = true;
             return FocusConsumption;
         }
