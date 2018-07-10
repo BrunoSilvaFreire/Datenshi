@@ -42,7 +42,6 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
             }
 
             if (waiting) {
-                Debug.Log("Watiting");
                 provider.Reset();
                 return TaskStatus.Running;
             }
@@ -58,6 +57,7 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
                 StartCoroutine(WaitInvert());
                 return TaskStatus.Running;
             }
+
             nav.Execute(Entity, provider);
             var hits = Physics2D.OverlapBoxAll(
                 Entity.Center + Entity.CurrentDirection.X * SightRadius.Center,
@@ -76,22 +76,30 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
             return TaskStatus.Running;
         }
 
+        private const int MaxFixTries = 10;
+
         private void RecalculateTargetPos(AINavigator nav) {
             targetPos = Entity.GroundPosition;
             var dir = left ? -1 : 1;
             targetPos.x += dir * WalkDistance;
             targetPos = nav.SetTarget(targetPos);
             var mesh = Navmesh.Instance;
-            var valid = false;
+            bool valid;
+            var currentTry = 0;
             do {
                 var node = mesh.GetNodeAtWorld(targetPos);
                 if (node == null) {
                     break;
                 }
 
-                valid = node.IsWalkable;
+                valid = !node.IsBlocked;
                 if (!valid) {
                     targetPos.x -= dir;
+                }
+
+                
+                if (++currentTry > MaxFixTries) {
+                    break;
                 }
             } while (!valid);
         }
@@ -103,7 +111,8 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
         }
 
         public override void OnDrawGizmos() {
-            DebugUtil.DrawBox2DWire(Entity.Center + Entity.CurrentDirection.X * SightRadius.Center, SightRadius.Size, Color.red);
+            DebugUtil.DrawBox2DWire(Entity.Center + Entity.CurrentDirection.X * SightRadius.Center, SightRadius.Size,
+                Color.red);
             DebugUtil.DrawBox2DWire(targetPos, Vector2.one, Color.magenta);
             Debug.DrawLine(Entity.GroundPosition, targetPos, Color.magenta);
         }

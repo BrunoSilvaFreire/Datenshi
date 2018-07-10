@@ -12,7 +12,7 @@ namespace Datenshi.Scripts.Combat.Attacks {
             entity.AnimatorUpdater.StartCoroutine(DoRepeatedAttack(entity));
         }
 
-        public override uint GetDamage(ICombatant livingEntity) {
+        public override uint GetDamage() {
             return DamagePerAttack;
         }
 

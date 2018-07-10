@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Name: Attack_Patroller_Summon_Minion
   m_EditorClassIdentifier: 
   Prefab: {fileID: 114090346911139254, guid: 24e3f36546888a94eaa28701f9af2af6, type: 2}
+  Amount: 3

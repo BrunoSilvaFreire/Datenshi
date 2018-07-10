@@ -64,7 +64,11 @@ namespace Datenshi.Scripts.World.Rooms.Game {
             closed = true;
             Close();
             Room.OnObjectExit.RemoveListener(OnEnter);
-            spawner.OnWaveCompleted.AddListener(OnCompleted);
+            if (spawner != null) {
+                spawner.OnWaveCompleted.AddListener(OnCompleted);                 
+            } else {
+                spawnerOk = true;
+            }
         }
     }
 }

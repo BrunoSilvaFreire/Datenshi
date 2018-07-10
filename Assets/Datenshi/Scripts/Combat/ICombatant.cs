@@ -24,9 +24,7 @@ namespace Datenshi.Scripts.Combat {
         public SerializableCombatant(ICombatant o) : base(o) { }
     }
 
-    public interface ICombatant : ILocatable, IVariableHolder, IInputReceiver {
-        uint Damage(ICombatant damageDealer, ref DamageInfo damageInfo, IDefendable defendable = null);
-
+    public interface IDamageable {
         uint MaxHealth {
             get;
             set;
@@ -37,13 +35,26 @@ namespace Datenshi.Scripts.Combat {
             set;
         }
 
-        FloatVolatileProperty DamageMultiplier {
+        bool Dead {
             get;
+        }
+
+        bool GodMode {
+            get;
+            set;
         }
 
         void Kill();
 
         void Heal(uint healthAmount);
+
+        uint Damage(ICombatant damageDealer, ref DamageInfo damageInfo, IDefendable defendable = null);
+    }
+
+    public interface ICombatant : ILocatable, IVariableHolder, IInputReceiver, IDamageable {
+        FloatVolatileProperty DamageMultiplier {
+            get;
+        }
 
 
         Direction CurrentDirection {
@@ -75,10 +86,6 @@ namespace Datenshi.Scripts.Combat {
         }
 
 
-        bool Dead {
-            get;
-        }
-
         float FocusTimeLeft {
             get;
             set;
@@ -102,10 +109,6 @@ namespace Datenshi.Scripts.Combat {
             get;
         }
 
-        bool GodMode {
-            get;
-            set;
-        }
 
         void Stun(float duration);
 

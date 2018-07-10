@@ -30,11 +30,11 @@ namespace Datenshi.Scripts.Entities {
         [ShowIf(nameof(HasTemporaryInvulnerability)), ReadOnly, TitleGroup(HealthGroup)]
         private float invulnerabilitySecondsLeft;
 
-        public float DamageColorDuration;
+        public float DamageColorDuration = .25F;
 
-        public Color DamageColor;
+        public Color DamageColor = Color.white;
 
-        public float DamageColorAmount;
+        public float DamageColorAmount = 1;
 
         /// <summary>
         /// A porcentagem de vida atual em uma escala de 0 -> 1.
@@ -130,7 +130,7 @@ namespace Datenshi.Scripts.Entities {
             var attack = info.Attack;
             var multiplier = info.Multiplier * entity.DamageMultiplier.Value;
 
-            var damage = (uint) (attack.GetDamage(this) * multiplier);
+            var damage = (uint) (attack.GetDamage() * multiplier);
             GlobalEntityDamagedEvent.Instance.Invoke(this, entity, attack, damage);
             if (damage >= health) {
                 Debug.Log($"<color=#FF0000><b>{name} killed by {entity} @ {damage}</b></color>");

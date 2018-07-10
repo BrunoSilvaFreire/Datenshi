@@ -21,7 +21,7 @@ namespace Datenshi.Scripts.Combat.Attacks {
             entity.AnimatorUpdater.StartCoroutine(DoAttack(entity));
         }
 
-        public override uint GetDamage(ICombatant livingEntity) {
+        public override uint GetDamage() {
             return 0;
         }
 
