@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Datenshi.Scripts.Combat.Attacks.Summoning {
     [CreateAssetMenu(menuName = "Datenshi/Combat/SummonAttack")]
-    public class SummonAttack : Attack {
+    public class SummonAttack : ActiveSkill {
         public Summonable Prefab;
         public byte Amount;
         public override void Execute(ICombatant entity) {
@@ -15,8 +15,5 @@ namespace Datenshi.Scripts.Combat.Attacks.Summoning {
             //}
         }
 
-        public override uint GetDamage() {
-            return 0;
-        }
     }
 }

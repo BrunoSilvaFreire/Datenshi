@@ -5,12 +5,12 @@ using UnityEngine;
 
 namespace Datenshi.Scripts.Entities.Animation {
     public class DebugRangedUpdater : CombatantAnimatorUpdater {
-        public Attack[] Attacks;
+        public ActiveSkill[] Skills;
         public LivingEntity Entity;
         protected override void UpdateAnimator(Animator anim) { }
 
-        public override void TriggerAttack(string attack) {
-            var found = Attacks.FirstOrDefault(a => a.name == attack);
+        public override void TriggerAttack(string attack = DefaultAttackName) {
+            var found = Skills.FirstOrDefault(a => a.name == attack);
             if (found != null) {
                 found.Execute(Entity);
             }

@@ -9,7 +9,7 @@ namespace Datenshi.Scripts.Combat.Attacks.Summoning {
                 return;
             }
 
-            Owner.ExecuteAttack(attack);
+            Owner.ExecuteSkill(attack);
         }
 
         public void Summon(ICombatant entity, Vector2 position) {

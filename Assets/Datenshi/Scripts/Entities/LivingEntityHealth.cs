@@ -130,7 +130,7 @@ namespace Datenshi.Scripts.Entities {
             var attack = info.Attack;
             var multiplier = info.Multiplier * entity.DamageMultiplier.Value;
 
-            var damage = (uint) (attack.GetDamage() * multiplier);
+            var damage = (uint) (attack.GetDamage(this) * multiplier);
             GlobalEntityDamagedEvent.Instance.Invoke(this, entity, attack, damage);
             if (damage >= health) {
                 Debug.Log($"<color=#FF0000><b>{name} killed by {entity} @ {damage}</b></color>");

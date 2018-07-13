@@ -99,7 +99,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0
-    functionName: ExecuteAttack
+    functionName: ExecuteSkill
     data: 
     objectReferenceParameter: {fileID: 11400000, guid: bf7233c41c309d14c9705d6e33bd403f,
       type: 2}

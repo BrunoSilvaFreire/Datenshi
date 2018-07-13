@@ -24,7 +24,18 @@ namespace Datenshi.Scripts.Combat {
         public SerializableCombatant(ICombatant o) : base(o) { }
     }
 
-    public interface IDamageable {
+    [Serializable]
+    public class SerializableDamageable : SerializableInterface<IDamageable> {
+        public SerializableDamageable() { }
+        public SerializableDamageable(IDamageable o) : base(o) { }
+    }
+
+    public interface IDamageable : ILocatable {
+        bool Ignored {
+            get;
+            set;
+        }
+
         uint MaxHealth {
             get;
             set;
@@ -51,7 +62,7 @@ namespace Datenshi.Scripts.Combat {
         uint Damage(ICombatant damageDealer, ref DamageInfo damageInfo, IDefendable defendable = null);
     }
 
-    public interface ICombatant : ILocatable, IVariableHolder, IInputReceiver, IDamageable {
+    public interface ICombatant : IVariableHolder, IInputReceiver, IDamageable {
         FloatVolatileProperty DamageMultiplier {
             get;
         }
@@ -62,10 +73,6 @@ namespace Datenshi.Scripts.Combat {
             set;
         }
 
-        bool Ignored {
-            get;
-            set;
-        }
 
         Bounds2D DefenseHitbox {
             get;
@@ -112,7 +119,7 @@ namespace Datenshi.Scripts.Combat {
 
         void Stun(float duration);
 
-        void ExecuteAttack(Attack attack);
+        void ExecuteSkill(ActiveSkill skill);
 
         UnityEvent OnKilled {
             get;

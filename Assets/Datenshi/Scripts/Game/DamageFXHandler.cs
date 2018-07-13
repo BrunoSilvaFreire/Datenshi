@@ -38,7 +38,7 @@ namespace Datenshi.Scripts.Game {
             damageGlitch.enabled = false;
         }
 
-        private void OnEntityDamaged(ICombatant damaged, ICombatant damager, Attack attack, uint damage) {
+        private void OnEntityDamaged(ICombatant damaged, ICombatant damager, IDamageSource attack, uint damage) {
             Vibrate();
             var currentEntity = PlayerController.Instance.CurrentEntity;
             if (!Equals(damager, currentEntity) && !Equals(damaged, currentEntity)) {

@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Datenshi.Scripts.Combat.Attacks {
     [CreateAssetMenu(menuName = "Datenshi/Combat/CounterAttack")]
-    public class CounterAttack : Attack {
+    public class CounterAttack : ActiveSkill {
         public enum CounterType {
             Agressive,
             Evasive
@@ -21,9 +21,6 @@ namespace Datenshi.Scripts.Combat.Attacks {
             entity.AnimatorUpdater.StartCoroutine(DoAttack(entity));
         }
 
-        public override uint GetDamage() {
-            return 0;
-        }
 
         private IEnumerator DoAttack(ICombatant entity) {
             for (byte i = 0; i < Frames; i++) {
@@ -42,11 +39,8 @@ namespace Datenshi.Scripts.Combat.Attacks {
             DebugUtil.DrawBox2DWire(hb.Center, hb.Size, Color.green);
             var success = false;
             foreach (var coll in hit) {
-                var info = new DamageInfo(this, 1, null, entity);
                 var d = coll.GetComponent<IDefendable>();
-                if (d == null  
-                    // || !CanDefend(d, entity)
-                    ) {
+                if (d == null) {
                     continue;
                 }
 

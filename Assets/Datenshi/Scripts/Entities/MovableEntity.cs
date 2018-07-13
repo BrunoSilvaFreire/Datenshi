@@ -11,6 +11,7 @@ using UPM;
 using UPM.Input;
 using UPM.Motors;
 using UPM.Motors.Config;
+using UPM.Physics;
 
 namespace Datenshi.Scripts.Entities {
     /// <summary>
@@ -73,8 +74,8 @@ namespace Datenshi.Scripts.Entities {
         [ShowIf("DamageGivesKnockback"), TitleGroup(CombatGroup)]
         public float KnockbackLiftoff = 3;
 
-        [TitleGroup(MovementGroup)]
-        public Vector2 ExternalForces;
+        [TitleGroup(MovementGroup), SerializeField]
+        private Vector2 externalForces;
 
         [TitleGroup(MovementGroup)]
         public float ExternalForcesDeacceleration = 0.1F;
@@ -173,11 +174,26 @@ namespace Datenshi.Scripts.Entities {
             }
         }
 
+        private PhysicsBehaviour externalForceBehaviour = new PhysicsBehaviour(
+            new HorizontalPhysicsCheck(),
+            new VerticalPhysicsCheck()
+        );
+
         public void Move() {
             motor.Move(this);
-            if (ApplyVelocity) {
-                MovementTransform.position += (Vector3) Velocity * DeltaTime;
+            if (!ApplyVelocity) {
+                return;
             }
+
+            MovementTransform.position += (Vector3) Velocity * DeltaTime;
+
+            if (ExternalForces.magnitude < 0.1) {
+                return;
+            }
+            externalForces = Vector2.Lerp(externalForces, Vector2.zero, ExternalForcesDeacceleration);
+            externalForceBehaviour.Check(this, ref externalForces, ref collisionStatus,
+                GameResources.Instance.WorldMask);
+            MovementTransform.position += (Vector3) externalForces * DeltaTime;
         }
 
         protected override void Update() {
@@ -214,11 +230,6 @@ namespace Datenshi.Scripts.Entities {
         private void UpdateMovement() {
             if (RuntimeResources.Instance.Paused) {
                 return;
-            }
-
-            if (ExternalForces.magnitude > 0.1) {
-                ExternalForces = Vector2.Lerp(ExternalForces, Vector2.zero, ExternalForcesDeacceleration);
-                Velocity += ExternalForces * DeltaTime;
             }
 
             Move();
@@ -272,6 +283,15 @@ namespace Datenshi.Scripts.Entities {
 
         public float DeltaTime => TimeScaleIndependent ? Time.unscaledDeltaTime : Time.deltaTime;
 
+        public Vector2 ExternalForces {
+            get {
+                return externalForces;
+            }
+            set {
+                externalForces = value;
+            }
+        }
+
         public override void Stun(float duration) {
             base.Stun(duration);
             if (GodMode || !StunRemovesVelocity) {
@@ -287,11 +307,11 @@ namespace Datenshi.Scripts.Entities {
                 return damage;
             }
 
-            ExternalForces = Center - entity.Center;
-            ExternalForces.Normalize();
-            ExternalForces *= DamageKnockbackStrenght;
-            if (ExternalForces.y <= 0) {
-                ExternalForces.y += KnockbackLiftoff;
+            externalForces = Center - entity.Center;
+            externalForces.Normalize();
+            externalForces *= DamageKnockbackStrenght;
+            if (externalForces.y <= 0) {
+                externalForces.y += KnockbackLiftoff;
             }
 
             return damage;

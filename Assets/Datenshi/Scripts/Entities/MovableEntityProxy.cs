@@ -31,12 +31,12 @@ namespace Datenshi.Scripts.Entities {
             Target.Stun(duration);
         }
 
-        public void ExecuteAttack(Attack attack) {
+        public void ExecuteSkill(ActiveSkill attack) {
             if (Target == null) {
                 return;
             }
 
-            Target.ExecuteAttack(attack);
+            Target.ExecuteSkill(attack);
         }
 
         public void SetInvulnerable(float seconds) {

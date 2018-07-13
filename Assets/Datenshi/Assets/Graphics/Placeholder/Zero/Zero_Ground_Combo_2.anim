@@ -88,7 +88,7 @@ AnimationClip:
   m_GenerateMotionCurves: 0
   m_Events:
   - time: 0
-    functionName: ExecuteAttack
+    functionName: ExecuteSkill
     data: 
     objectReferenceParameter: {fileID: 11400000, guid: d7a834e3e2942a0459137149ad734527,
       type: 2}

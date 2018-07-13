@@ -6,6 +6,7 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
     public class CloseToCamera : Conditional {
         public float MinRequiredDistance = 20;
         public Transform ToCheck;
+
         public override TaskStatus OnUpdate() {
             var m = Camera.main;
             var close = Vector2.Distance(transform.position, m.transform.position) <= MinRequiredDistance;
@@ -14,7 +15,12 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
 
         public override void OnDrawGizmos() {
             var m = Camera.main;
+            if (m == null) {
+                return;
+            }
+
             var a = ToCheck.position;
+
             var b = m.transform.position;
             var d = Vector2.Distance(a, b);
             DebugUtil.DrawWireCircle2D(a, MinRequiredDistance, Color.yellow);

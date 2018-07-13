@@ -8,7 +8,7 @@
             var cr = combatant.Relationship;
             var tr = target.Relationship;
             if (cr == CombatRelationship.Neutral || tr == CombatRelationship.Neutral) {
-                return false;
+                return true;
             }
 
             return !target.Dead && !target.Ignored && !Equals(cr, tr);

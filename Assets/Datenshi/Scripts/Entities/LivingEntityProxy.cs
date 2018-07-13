@@ -12,7 +12,7 @@ namespace Datenshi.Scripts.Entities {
         }
 
         public void ExecuteAttack(Attack attack) {
-            Target.ExecuteAttack(attack);
+            Target.ExecuteSkill(attack);
         }
 
         public void SetInvulnerable(float seconds) {

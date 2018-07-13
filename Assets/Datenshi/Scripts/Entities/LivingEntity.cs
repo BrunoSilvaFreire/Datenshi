@@ -11,7 +11,7 @@ namespace Datenshi.Scripts.Entities {
     [Serializable]
     public class EntityDamagedEvent : UnityEvent<ICombatant, uint> { }
 
-    public class GlobalEntityDamagedEvent : UnityEvent<ICombatant, ICombatant, Attack, uint> {
+    public class GlobalEntityDamagedEvent : UnityEvent<ICombatant, ICombatant, IDamageSource, uint> {
         public static readonly GlobalEntityDamagedEvent Instance = new GlobalEntityDamagedEvent();
         private GlobalEntityDamagedEvent() { }
     }
@@ -43,9 +43,19 @@ namespace Datenshi.Scripts.Entities {
             UpdateDefense();
         }
 
+        public float OutlineInvulnerabilityMinSecondsLeft = 2;
+
         private void UpdateRendering() {
             if (ColorizableRenderer != null) {
                 ColorizableRenderer.Outline = IsInvulnerable;
+                var color = ColorizableRenderer.OutlineColor;
+                if (invulnerabilitySecondsLeft > OutlineInvulnerabilityMinSecondsLeft) {
+                    color.a = 1;
+                } else {
+                    color.a = invulnerabilitySecondsLeft / OutlineInvulnerabilityMinSecondsLeft;
+                }
+
+                ColorizableRenderer.OutlineColor = color;
             }
         }
 

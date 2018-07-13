@@ -68,7 +68,7 @@ namespace Datenshi.Scripts.Combat.Game.Ranged {
             entity.SetVariable(LastFire, time);
         }
 
-        public override uint GetDamage() {
+        public override uint GetDamage(IDamageable damageable) {
             return Damage;
         }
     }

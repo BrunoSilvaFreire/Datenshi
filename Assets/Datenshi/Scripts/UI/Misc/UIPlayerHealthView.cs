@@ -33,6 +33,7 @@ namespace Datenshi.Scripts.UI.Misc {
         }
 
         protected override LivingEntity GetEntity() {
+            Debug.Log("Entity = "+Player.CurrentEntity);
             return Player.CurrentEntity as LivingEntity;
         }
     }

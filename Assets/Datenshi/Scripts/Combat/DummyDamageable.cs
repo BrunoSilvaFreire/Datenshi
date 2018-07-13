@@ -11,6 +11,18 @@ namespace Datenshi.Scripts.Combat {
         [SerializeField]
         private bool godMode;
 
+        [SerializeField]
+        private bool ignored;
+
+        public bool Ignored {
+            get {
+                return ignored;
+            }
+            set {
+                ignored = value;
+            }
+        }
+
         public uint MaxHealth {
             get {
                 return maxHealth;
@@ -71,9 +83,15 @@ namespace Datenshi.Scripts.Combat {
                 return 0;
             }
 
-            var dmg = (uint) (damageInfo.Attack.GetDamage() * damageInfo.Multiplier);
+            var dmg = (uint) (damageInfo.Attack.GetDamage(this) * damageInfo.Multiplier);
             CurrentHealth -= dmg;
             return dmg;
         }
+
+        public Transform Transform => transform;
+
+        public Vector2 Center => transform.position;
+
+        public Vector2 GroundPosition => Center;
     }
 }

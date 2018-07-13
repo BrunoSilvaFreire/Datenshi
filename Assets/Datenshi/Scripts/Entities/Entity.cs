@@ -9,6 +9,7 @@ using Datenshi.Scripts.World.Rooms;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
+using UPM.Input;
 
 namespace Datenshi.Scripts.Entities {
     [Serializable]
@@ -148,6 +149,14 @@ namespace Datenshi.Scripts.Entities {
         public virtual Vector2 Center => transform.position;
 
         public virtual Vector2 GroundPosition => Center;
+
+        public void ForceRequestOwnership(DatenshiInputProvider player) {
+            if (IsOwned) {
+                RevokeOwnership();
+            }
+
+            RequestOwnership(player);
+        }
     }
 
     public sealed class VariableValue {

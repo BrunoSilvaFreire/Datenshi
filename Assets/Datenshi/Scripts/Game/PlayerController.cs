@@ -32,7 +32,6 @@ namespace Datenshi.Scripts.Game {
 
         [SerializeField, HideInInspector]
         private Entity currentEntity;
-
         public Rank.Rank Rank;
 
 
@@ -45,13 +44,17 @@ namespace Datenshi.Scripts.Game {
                 return currentEntity;
             }
             set {
+                Debug.Log("Current entity = " + currentEntity);
                 if (currentEntity != null) {
+                    print("Revoking");
                     currentEntity.RevokeOwnership();
                 }
 
-                OnEntityChanged.Invoke(currentEntity, value);
+                var old = currentEntity;
                 currentEntity = value;
-                currentEntity.RequestOwnership(Player);
+                OnEntityChanged.Invoke(old, value);
+                print("Getting ownership of " + value);
+                currentEntity.ForceRequestOwnership(Player);
             }
         }
 
@@ -62,14 +65,20 @@ namespace Datenshi.Scripts.Game {
             if (currentEntity.InputProvider != Player) {
                 currentEntity.RevokeOwnership();
                 currentEntity.RequestOwnership(Player);
-                OnEntityChanged.Invoke(null, currentEntity);
             }
+
+            OnEntityChanged.Invoke(null, currentEntity);
 
             GameState.RestartState();
             GlobalEntityDamagedEvent.Instance.AddListener(OnEntityDamaged);
         }
 
-        private void OnEntityDamaged(ICombatant damaged, ICombatant damager, Attack attack, uint damage) {
+        private void OnEntityDamaged(ICombatant damaged, ICombatant damager, IDamageSource damageSource, uint damage) {
+            var attack = damageSource as Attack;
+            if (attack == null) {
+                return;
+            }
+
             if (currentEntity != null && (Entity) damager == currentEntity) {
                 HandleRankAttack(attack);
             }

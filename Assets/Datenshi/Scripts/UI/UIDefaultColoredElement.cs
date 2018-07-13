@@ -2,6 +2,7 @@
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Datenshi.Scripts.UI {
     public abstract class UIDefaultColoredView : UICanvasGroupView {
@@ -17,6 +18,7 @@ namespace Datenshi.Scripts.UI {
         [SerializeField, HideInInspector]
         private byte saturation;
 
+        public Graphic[] Attached;
 
         [ShowInInspector]
         public byte DefaultColor {
@@ -53,7 +55,11 @@ namespace Datenshi.Scripts.UI {
                 hue = (float) defaultColor / byte.MaxValue;
             }
 
-            UpdateColors(Color.HSVToRGB(hue, (float) saturation / byte.MaxValue, 1, true));
+            var color = Color.HSVToRGB(hue, (float) saturation / byte.MaxValue, 1, true);
+            foreach (var graphic in Attached) {
+                graphic.color = color;
+            }
+            UpdateColors(color);
         }
 
     }

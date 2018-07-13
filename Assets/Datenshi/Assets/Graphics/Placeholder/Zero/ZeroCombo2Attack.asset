@@ -11,9 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec3032e461cc4bb595938d01c9d95415, type: 3}
   m_Name: ZeroCombo2Attack
   m_EditorClassIdentifier: 
-  Particle: {fileID: 198445748007662224, guid: f6a6161f05bfe784eb4d6f44c6d05aad, type: 2}
+  Particle: {fileID: 198445748007662224, guid: cae7a7f79f37a934ab16d127427eef8c, type: 2}
   Hitbox:
     Center: {x: 0.6694107, y: 1.1957073}
     Size: {x: 3.5027313, y: 2.4137287}
+  FocusConsumption: 0.1
   Damage: 10
   Frames: 5

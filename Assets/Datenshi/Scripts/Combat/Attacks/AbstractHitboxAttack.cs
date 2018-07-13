@@ -44,22 +44,27 @@ namespace Datenshi.Scripts.Combat.Attacks {
             var found = Physics2D.OverlapBoxAll(hb.Center, hb.Size, 0, GameResources.Instance.EntitiesMask);
             HitboxAttackExecutedEvent.Instance.Invoke(entity, damage, found);
             foreach (var hit in found) {
-                var e = hit.GetComponentInParent<ICombatant>();
-                if (e != null && e.Ignored) {
+                var d = hit.GetComponentInParent<IDamageable>();
+                if (d == null || d.Ignored) {
                     continue;
                 }
 
-                if (e == null || e == entity || e.Relationship == entity.Relationship) {
+                var e = d as ICombatant;
+                if (e != null && !entity.ShouldAttack(e)) {
                     continue;
                 }
 
-                var info = new DamageInfo(this, 1, e, entity);
+                var info = new DamageInfo(this, 1, d, entity);
                 success = true;
-                e.Damage(entity, ref info, this);
+                d.Damage(entity, ref info, this);
+                if (Particle != null) {
+                    Particle.Clone(d.Center);
+                }
             }
 
             return success;
         }
+
 /*
 
         public bool CanAutoDefend(ICombatant combatant) {

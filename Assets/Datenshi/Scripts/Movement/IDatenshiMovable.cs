@@ -1,4 +1,5 @@
 ﻿using Datenshi.Scripts.Util.Volatiles;
+using UnityEngine;
 using UPM.Motors;
 
 namespace Datenshi.Scripts.Movement {
@@ -7,6 +8,11 @@ namespace Datenshi.Scripts.Movement {
 
         FloatVolatileProperty SpeedMultiplier {
             get;
+        }
+
+        Vector2 ExternalForces {
+            get;
+            set;
         }
      
         bool ApplyVelocity {

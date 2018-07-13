@@ -13,7 +13,7 @@ namespace Datenshi.Scripts.Interaction {
         public IEnumerable<InteractableElement> ElementsInRange => elementsInRange;
 
         private void Update() {
-            if (Entity.InputProvider.GetButtonDown((int) Actions.Submit)) {
+            if (Entity.InputProvider.GetButtonDownOrDefault((int) Actions.Submit)) {
                 Interact();
             }
         }
