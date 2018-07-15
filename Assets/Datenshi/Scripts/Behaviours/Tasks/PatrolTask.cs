@@ -15,6 +15,12 @@ using UPM.Util;
 
 namespace Datenshi.Scripts.Behaviours.Tasks {
     public class PatrolTask : Action {
+        public enum PatrolState {
+            Fail,
+            Running,
+            Waiting
+        }
+
         public SharedCombatant Target;
         public MovableEntity Entity;
         public float WalkDistance = 5;
@@ -36,11 +42,6 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
                 return TaskStatus.Failure;
             }
 
-            if (waiting) {
-                provider.Reset();
-                return TaskStatus.Running;
-            }
-
             provider.Walk = true;
             var xInput = left ? -1 : 1;
             provider.Horizontal = xInput;
@@ -52,6 +53,8 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
                 StartCoroutine(WaitInvert());
                 return TaskStatus.Running;
             }
+
+            Debug.Log("Executing navmesh " + nav);
             nav.Execute(Entity, provider);
             var hits = Physics2D.OverlapBoxAll(
                 Entity.Center + Entity.CurrentDirection.X * SightRadius.Center,
@@ -67,6 +70,7 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
                 Entity.SetVariable(CombatVariables.AttackTarget, e);
                 return TaskStatus.Success;
             }
+            Debug.Log("Still running @ " + Entity);
 
             return TaskStatus.Running;
         }
@@ -74,7 +78,7 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
         private const int MaxFixTries = 10;
 
         private void RecalculateTargetPos(AINavigator nav) {
-            targetPos = Entity.GroundPosition;
+            targetPos = nav.GetFavourableStartPosition(Entity);
             var dir = left ? -1 : 1;
             targetPos.x += dir * WalkDistance;
             targetPos = nav.SetTarget(targetPos);
@@ -92,7 +96,7 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
                     targetPos.x -= dir;
                 }
 
-                
+
                 if (++currentTry > MaxFixTries) {
                     break;
                 }
@@ -108,7 +112,7 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
         public override void OnDrawGizmos() {
             DebugUtil.DrawBox2DWire(Entity.Center + Entity.CurrentDirection.X * SightRadius.Center, SightRadius.Size,
                 Color.red);
-            var color = waiting ? Color.yellow : Color.magenta;
+            var color = waiting ? Color.yellow : Color.green;
             DebugUtil.DrawBox2DWire(targetPos, Vector2.one, color);
             Debug.DrawLine(Entity.GroundPosition, targetPos, color);
         }

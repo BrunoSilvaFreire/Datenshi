@@ -174,34 +174,36 @@ namespace Datenshi.Scripts.AI {
         public override void Execute(INavigable entity, DummyInputProvider provider) {
             //TestUpdate();
 
-            if (path.IsNullOrEmpty()) {
-                provider.Reset();
-                return;
-            }
-
+            Vector2 dir;
             var entityPos = entity.Center;
-            var currentNode = navmesh.GetNodeAtWorld(entityPos).Position;
-            int lastIndex;
-            if (path.Count == 1) {
-                lastIndex = 0;
+            if (path.IsNullOrEmpty()) {
+                dir = target - entityPos;
             } else {
-                lastIndex = path.Count - 1;
-            }
-
-            var targetNode = path[lastIndex];
-            var targetPos = (Vector2) navmesh.Grid.GetCellCenterWorld(targetNode.ToVector3());
-            if (currentNode == targetNode) {
-                path.RemoveAt(lastIndex);
-                if (path.IsEmpty()) {
-                    provider.Reset();
-                    return;
+                var currentNode = navmesh.GetNodeAtWorld(entityPos).Position;
+                int lastIndex;
+                if (path.Count == 1) {
+                    lastIndex = 0;
+                } else {
+                    lastIndex = path.Count - 1;
                 }
 
-                targetNode = path[path.Count - 1];
-                targetPos = navmesh.Grid.GetCellCenterWorld(targetNode.ToVector3());
+                var targetNode = path[lastIndex];
+                var targetPos = (Vector2) navmesh.Grid.GetCellCenterWorld(targetNode.ToVector3());
+                if (currentNode == targetNode) {
+                    path.RemoveAt(lastIndex);
+                    if (path.IsEmpty()) {
+                        provider.Reset();
+                        return;
+                    }
+
+                    targetNode = path[path.Count - 1];
+                    targetPos = navmesh.Grid.GetCellCenterWorld(targetNode.ToVector3());
+                }
+
+                dir = targetPos - entityPos;
             }
 
-            var dir = targetPos - entityPos;
+            dir.Normalize();
             provider.Horizontal = dir.x;
             provider.Vertical = dir.y;
             Debug.DrawRay(entityPos, dir * 10, Color.white);
@@ -236,6 +238,10 @@ namespace Datenshi.Scripts.AI {
 
             toUpdate = null;
         }*/
+
+        public override Vector2 GetFavourableStartPosition(INavigable navigable) {
+            return navigable.Center;
+        }
 
         public override Vector2 GetFavourablePosition(ILocatable target) {
             return GetFavourablePosition(target.Center);

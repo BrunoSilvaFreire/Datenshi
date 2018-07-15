@@ -34,5 +34,7 @@ namespace Datenshi.Scripts.AI {
         public abstract Vector2 GetFavourablePosition(ILocatable target);
         public abstract Vector2 GetFavourablePosition(Vector2 targetPos);
         public abstract bool IsValid(Node node);
+
+        public abstract Vector2 GetFavourableStartPosition(INavigable navigable);
     }
 }

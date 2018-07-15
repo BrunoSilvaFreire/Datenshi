@@ -138,6 +138,10 @@ namespace Datenshi.Scripts.AI {
             return targetPos;
         }
 
+        public override Vector2 GetFavourableStartPosition(INavigable navigable) {
+            return navigable.GroundPosition;
+        }
+
         public override bool IsValid(Node node) {
             return node.IsWalkable;
         }
