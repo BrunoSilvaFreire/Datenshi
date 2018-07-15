@@ -116,10 +116,11 @@ namespace Datenshi.Scripts.Entities {
             }
         }
 
-        public virtual uint Damage(ICombatant entity, ref DamageInfo info, IDefendable defendable = null) {
+        public virtual uint Damage(ref DamageInfo info, IDefendable defendable = null) {
+            var entity = info.Damager;
             if (defendable != null && Defending && defendable.CanDefend(this)) {
                 defendable.Defend(this, ref info);
-                entity.AnimatorUpdater.TriggerDefend();
+                AnimatorUpdater.TriggerDefend();
                 return 0;
             }
 

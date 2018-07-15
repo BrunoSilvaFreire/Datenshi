@@ -32,6 +32,7 @@ namespace Datenshi.Scripts.Game {
 
         [SerializeField, HideInInspector]
         private Entity currentEntity;
+
         public Rank.Rank Rank;
 
 
@@ -73,7 +74,8 @@ namespace Datenshi.Scripts.Game {
             GlobalEntityDamagedEvent.Instance.AddListener(OnEntityDamaged);
         }
 
-        private void OnEntityDamaged(ICombatant damaged, ICombatant damager, IDamageSource damageSource, uint damage) {
+        private void OnEntityDamaged(LivingEntity damaged, IDamageDealer damager, IDamageSource damageSource,
+            uint damage) {
             var attack = damageSource as Attack;
             if (attack == null) {
                 return;

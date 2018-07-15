@@ -5,12 +5,12 @@ using UnityEngine;
 namespace Datenshi.Scripts.Combat {
     [Serializable]
     public struct DamageInfo {
-        public DamageInfo(IDamageSource attack, float multiplier, IDamageable damaged, ICombatant damager) {
+        public DamageInfo(IDamageSource attack, float multiplier, IDamageable damaged, IDamageDealer damager) {
             this.attack = attack;
             this.multiplier = multiplier;
             this.canceled = false;
             this.damaged = new SerializableDamageable(damaged);
-            this.damager = new SerializableCombatant(damager);
+            this.damager = new SerializableDamageDealer(damager);
         }
 
         [SerializeField]
@@ -23,7 +23,7 @@ namespace Datenshi.Scripts.Combat {
         private SerializableDamageable damaged;
 
         [SerializeField]
-        private SerializableCombatant damager;
+        private SerializableDamageDealer damager;
 
         [SerializeField]
         private bool canceled;
@@ -41,7 +41,7 @@ namespace Datenshi.Scripts.Combat {
 
         public IDamageable Damaged => damaged.Value;
 
-        public ICombatant Damager => damager.Value;
+        public IDamageDealer Damager => damager.Value;
 
         public bool Canceled {
             get {

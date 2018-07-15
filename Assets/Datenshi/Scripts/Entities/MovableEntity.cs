@@ -301,12 +301,13 @@ namespace Datenshi.Scripts.Entities {
             Velocity *= 1 - StunVelocityDampen;
         }
 
-        public override uint Damage(ICombatant entity, ref DamageInfo info, IDefendable defendable = null) {
-            var damage = base.Damage(entity, ref info, defendable);
+        public override uint Damage(ref DamageInfo info, IDefendable defendable = null) {
+            var damage = base.Damage(ref info, defendable);
             if (!DamageGivesKnockback || damage < DamageKnockbackMin) {
                 return damage;
             }
 
+            var entity = info.Damager;
             externalForces = Center - entity.Center;
             externalForces.Normalize();
             externalForces *= DamageKnockbackStrenght;

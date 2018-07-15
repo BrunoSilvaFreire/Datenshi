@@ -78,7 +78,7 @@ namespace Datenshi.Scripts.Combat {
             CurrentHealth += healthAmount;
         }
 
-        public uint Damage(ICombatant damageDealer, ref DamageInfo damageInfo, IDefendable defendable = null) {
+        public uint Damage(ref DamageInfo damageInfo, IDefendable defendable = null) {
             if (GodMode) {
                 return 0;
             }

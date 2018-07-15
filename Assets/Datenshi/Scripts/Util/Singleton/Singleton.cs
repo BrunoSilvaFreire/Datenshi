@@ -9,6 +9,7 @@ namespace Datenshi.Scripts.Util.Singleton {
 
         private void OnEnable() {
             if (instance != null) {
+                Debug.LogWarning($"There is already an instance of {typeof(T).Name} on the scene! Destroying {name}.");
                 Destroy(gameObject);
                 return;
             }

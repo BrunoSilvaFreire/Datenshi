@@ -22,18 +22,15 @@ namespace Datenshi.Scripts.UI.Misc {
                 newLiving.OnHealthChanged.AddListener(OnDamaged);
             }
 
-            Debug.Log("Changed");
             UpdateBar();
         }
 
 
         private void OnDamaged() {
-            Debug.Log("Updating");
             UpdateBar();
         }
 
         protected override LivingEntity GetEntity() {
-            Debug.Log("Entity = "+Player.CurrentEntity);
             return Player.CurrentEntity as LivingEntity;
         }
     }

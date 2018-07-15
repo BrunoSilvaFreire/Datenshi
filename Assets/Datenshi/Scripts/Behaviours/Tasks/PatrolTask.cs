@@ -23,21 +23,16 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
         public float CloseThreshold = 1;
         private bool left;
         private bool waiting;
-
-        public Vector2 targetPos;
+        private Vector2 targetPos;
 
         public override void OnStart() {
             RecalculateTargetPos(Entity.AINavigator);
         }
 
         public override TaskStatus OnUpdate() {
-            if (Target.Value != null) {
-                return TaskStatus.Success;
-            }
-
-
             var provider = Entity.InputProvider as DummyInputProvider;
             if (provider == null) {
+                Debug.LogError($"There is no DummyProvider on Entity {Entity}");
                 return TaskStatus.Failure;
             }
 
@@ -52,12 +47,11 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
             var nav = Entity.AINavigator;
             var d = Vector2.Distance(Entity.GroundPosition, targetPos);
             if (d < CloseThreshold || Entity.CollisionStatus.HorizontalCollisionDir != 0) {
-                RecalculateTargetPos(nav);
                 left = !left;
+                RecalculateTargetPos(nav);
                 StartCoroutine(WaitInvert());
                 return TaskStatus.Running;
             }
-
             nav.Execute(Entity, provider);
             var hits = Physics2D.OverlapBoxAll(
                 Entity.Center + Entity.CurrentDirection.X * SightRadius.Center,
@@ -93,7 +87,7 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
                     break;
                 }
 
-                valid = !node.IsBlocked;
+                valid = nav.IsValid(node);
                 if (!valid) {
                     targetPos.x -= dir;
                 }
@@ -114,8 +108,9 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
         public override void OnDrawGizmos() {
             DebugUtil.DrawBox2DWire(Entity.Center + Entity.CurrentDirection.X * SightRadius.Center, SightRadius.Size,
                 Color.red);
-            DebugUtil.DrawBox2DWire(targetPos, Vector2.one, Color.magenta);
-            Debug.DrawLine(Entity.GroundPosition, targetPos, Color.magenta);
+            var color = waiting ? Color.yellow : Color.magenta;
+            DebugUtil.DrawBox2DWire(targetPos, Vector2.one, color);
+            Debug.DrawLine(Entity.GroundPosition, targetPos, color);
         }
     }
 }

@@ -9,9 +9,9 @@ using UPM.Motors;
 
 namespace Datenshi.Scripts.Entities {
     [Serializable]
-    public class EntityDamagedEvent : UnityEvent<ICombatant, uint> { }
+    public class EntityDamagedEvent : UnityEvent<IDamageDealer, uint> { }
 
-    public class GlobalEntityDamagedEvent : UnityEvent<ICombatant, ICombatant, IDamageSource, uint> {
+    public class GlobalEntityDamagedEvent : UnityEvent<LivingEntity, IDamageDealer, IDamageSource, uint> {
         public static readonly GlobalEntityDamagedEvent Instance = new GlobalEntityDamagedEvent();
         private GlobalEntityDamagedEvent() { }
     }

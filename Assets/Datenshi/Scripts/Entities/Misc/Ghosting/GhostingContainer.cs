@@ -30,6 +30,11 @@ namespace Datenshi.Scripts.Entities.Misc.Ghosting {
 
         private readonly List<GhostingSprite> toRemove = new List<GhostingSprite>();
 
+        private void OnDestroy() {
+            foreach (var sprite in usedSprites) {
+                Pool.Return(sprite);
+            }
+        }
 
         private void LateUpdate() {
             if (Spawning || permanentSpawn) {

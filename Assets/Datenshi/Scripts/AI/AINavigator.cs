@@ -1,4 +1,5 @@
-﻿using Datenshi.Scripts.Movement;
+﻿using Datenshi.Scripts.AI.Pathfinding;
+using Datenshi.Scripts.Movement;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Profiling;
@@ -32,5 +33,6 @@ namespace Datenshi.Scripts.AI {
 
         public abstract Vector2 GetFavourablePosition(ILocatable target);
         public abstract Vector2 GetFavourablePosition(Vector2 targetPos);
+        public abstract bool IsValid(Node node);
     }
 }

@@ -84,7 +84,6 @@ namespace Datenshi.Scripts.AI {
                 p => {
                     path = p;
                     if (p != null) {
-                        
                         currentLink = p.Last();
                     }
                 });
@@ -137,6 +136,10 @@ namespace Datenshi.Scripts.AI {
 
         public override Vector2 GetFavourablePosition(Vector2 targetPos) {
             return targetPos;
+        }
+
+        public override bool IsValid(Node node) {
+            return node.IsWalkable;
         }
     }
 }

@@ -3,6 +3,7 @@ using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Input;
 using Datenshi.Scripts.Movement.Config;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UPM;
 using UPM.Motors;
@@ -28,6 +29,29 @@ namespace Datenshi.Scripts.Movement.States {
 
         public float DashDistance = 10;
         public float DashDuration = 1;
+
+#if UNITY_EDITOR
+
+        [ShowInInspector]
+        public float MetersPerSecond {
+            get {
+                return DashDistance / DashDuration;
+            }
+            set {
+                DashDistance = DashDuration / value;
+            }
+        }
+
+        [ShowInInspector]
+        public float SecondPerMeter {
+            get {
+                return DashDuration / DashDistance;
+            }
+            set {
+                DashDuration = DashDistance / value;
+            }
+        }
+#endif
         public State DefaultState;
         public string DashAnimatorKey = "Dashing";
 
@@ -59,6 +83,7 @@ namespace Datenshi.Scripts.Movement.States {
                 if (dir == 0) {
                     dir = entity.CurrentDirection.X;
                 }
+
                 velocity = new Vector2(dir * speed, 0);
             }
 

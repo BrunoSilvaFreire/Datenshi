@@ -247,5 +247,9 @@ namespace Datenshi.Scripts.AI {
             var y = targetPos.y + MinimumHeightAdvantage;
             return new Vector2(x, y);
         }
+
+        public override bool IsValid(Node node) {
+            return node.IsEmpty;
+        }
     }
 }

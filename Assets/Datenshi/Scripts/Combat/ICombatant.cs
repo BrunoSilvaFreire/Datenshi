@@ -25,11 +25,37 @@ namespace Datenshi.Scripts.Combat {
     }
 
     [Serializable]
+    public class SerializableDamageDealer : SerializableInterface<IDamageDealer> {
+        public SerializableDamageDealer() { }
+        public SerializableDamageDealer(IDamageDealer o) : base(o) { }
+    }
+
+    [Serializable]
     public class SerializableDamageable : SerializableInterface<IDamageable> {
         public SerializableDamageable() { }
         public SerializableDamageable(IDamageable o) : base(o) { }
     }
 
+    /// <summary>
+    /// Representa uma fonte de dano.
+    /// <br/>
+    /// </summary>
+    public interface IDamageSource {
+        uint GetDamage(IDamageable damageable);
+    }
+
+    /// <summary>
+    /// Algo que pode dar dano em um <see cref="IDamageable"/> utilizando um <see cref="IDamageSource"/>.
+    /// </summary>
+    public interface IDamageDealer : ILocatable {
+        FloatVolatileProperty DamageMultiplier {
+            get;
+        }
+    }
+
+    /// <summary>
+    /// Algo que pode receber dano de um <see cref="IDamageDealer"/> através de um <see cref="IDamageSource"/>
+    /// </summary>
     public interface IDamageable : ILocatable {
         bool Ignored {
             get;
@@ -59,15 +85,10 @@ namespace Datenshi.Scripts.Combat {
 
         void Heal(uint healthAmount);
 
-        uint Damage(ICombatant damageDealer, ref DamageInfo damageInfo, IDefendable defendable = null);
+        uint Damage(ref DamageInfo damageInfo, IDefendable defendable = null);
     }
 
-    public interface ICombatant : IVariableHolder, IInputReceiver, IDamageable {
-        FloatVolatileProperty DamageMultiplier {
-            get;
-        }
-
-
+    public interface ICombatant : IVariableHolder, IInputReceiver, IDamageable, IDamageDealer {
         Direction CurrentDirection {
             get;
             set;

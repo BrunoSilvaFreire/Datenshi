@@ -54,7 +54,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ed35132c710408a9f4ab434de01feb6, type: 3}
   m_Name: DashState
   m_EditorClassIdentifier: 
-  DashDistance: 8
+  DashDistance: 5
   DashDuration: 0.2
   DefaultState: {fileID: 114222677318753670}
   DashAnimatorKey: Dashing

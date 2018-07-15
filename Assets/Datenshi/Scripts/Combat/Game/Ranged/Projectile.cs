@@ -113,7 +113,7 @@ namespace Datenshi.Scripts.Combat.Game.Ranged {
 
                 var info = new DamageInfo(UsedAttack, DamageMultiplier, e, Owner);
                 if (Owner.ShouldAttack(e)) {
-                    e.Damage(Owner, ref info, this);
+                    e.Damage(ref info, this);
                     if (info.Canceled) {
                         return;
                     }
