@@ -16,5 +16,5 @@ MonoBehaviour:
     Center: {x: 1.709559, y: 1.0686171}
     Size: {x: 4, y: 3.0177455}
   FocusConsumption: 0.1
-  Damage: 15
+  Damage: 7
   Frames: 5

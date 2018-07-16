@@ -29,11 +29,11 @@ namespace Datenshi.Scripts.Entities {
         }
 
         public float Defend(ICombatant combatant, ref DamageInfo info) {
-            var m = combatant as IMovable;
+            var m = Owner as IDatenshiMovable;
             if (m != null) {
                 var vel = ThrowbackForce;
                 vel.x *= Owner.XDirectionTo(combatant.Center);
-                m.Velocity = vel;
+                m.ExternalForces = vel;
             }
 
             return DefenseFocusComsuption;

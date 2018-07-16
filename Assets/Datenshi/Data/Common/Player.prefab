@@ -4955,9 +4955,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 14bac36a4bb053f4eb64e74cfa4d5f30, type: 2}
   - {fileID: 11400000, guid: abdbc746a825bb049897e7bcf2f09340, type: 2}
   - {fileID: 11400000, guid: 96da23f9f121bf542adc7f6206cfa48d, type: 2}
-  DamageGlitchAmount: 1
-  DamageColorDriftAmount: 1
-  DamageHorizontalShakeAmount: 2
+  DamageGlitchAmount: 0.5
+  DamageColorDriftAmount: 0.25
+  DamageHorizontalShakeAmount: 0.1
   DamageGlitchDuration: 0.25
   SlowdownDuration: 0.25
   SlowdownScale:
@@ -5013,7 +5013,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.15
+      value: 0.05
       inSlope: 0
       outSlope: 0
       tangentMode: 136
@@ -5023,8 +5023,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.15
-      outSlope: -0.15
+      inSlope: -0.05
+      outSlope: -0.05
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -5034,7 +5034,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   BNWDuration: 0.5
   VibrationDuration: 0.1
-  VibrationLevel: 1
+  VibrationLevel: 0.1
 --- !u!114 &114383205720794574
 MonoBehaviour:
   m_ObjectHideFlags: 1
