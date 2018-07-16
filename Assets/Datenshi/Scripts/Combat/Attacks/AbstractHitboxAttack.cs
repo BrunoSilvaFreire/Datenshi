@@ -56,6 +56,7 @@ namespace Datenshi.Scripts.Combat.Attacks {
 
                 var info = new DamageInfo(this, 1, d, entity);
                 success = true;
+                Debug.Log("Damaging " + d + " by " + this);
                 d.Damage(ref info, this);
                 if (Particle != null) {
                     Particle.Clone(d.Center);

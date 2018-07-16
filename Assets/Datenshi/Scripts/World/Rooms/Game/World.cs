@@ -21,7 +21,6 @@ namespace Datenshi.Scripts.World.Rooms.Game {
 
         private void Start() {
             var entity = PlayerController.GetOrCreateEntity();
-            Debug.Log("Entity = " + entity);
             entity.transform.position = SpawnPoint.position;
             AudioManager.Instance.PlayFX(Theme);
         }

@@ -119,7 +119,10 @@ namespace Datenshi.Scripts.Entities {
         public virtual uint Damage(ref DamageInfo info, IDefendable defendable = null) {
             var entity = info.Damager;
             if (defendable != null && Defending && defendable.CanDefend(this)) {
-                defendable.Defend(this, ref info);
+                FocusTimeLeft -= defendable.Defend(this, ref info);
+                if (FocusTimeLeft <= 0) {
+                    FocusTimeLeft = 0;
+                }
                 AnimatorUpdater.TriggerDefend();
                 return 0;
             }

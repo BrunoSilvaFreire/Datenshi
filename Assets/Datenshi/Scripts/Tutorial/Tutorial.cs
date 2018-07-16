@@ -7,7 +7,7 @@ namespace Datenshi.Scripts.Tutorial {
         public bool Playing {
             get;
             private set;
-        } = false;
+        }
 
         public void StartTutorial() {
             if (Playing) {

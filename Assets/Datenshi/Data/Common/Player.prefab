@@ -3560,7 +3560,7 @@ MonoBehaviour:
   defenseHitbox:
     Center: {x: 1.25, y: 1.096818}
     Size: {x: 2.754913, y: 2.249959}
-  FocusMaxTime: 20
+  FocusMaxTime: 10
   MinFocusRequired: 0.1
   OnDamaged:
     m_PersistentCalls:
@@ -6618,7 +6618,7 @@ MonoBehaviour:
   SubHealthBar: {fileID: 114213240072847094}
   SubHealthDelay: 1
   SubHealthAnimationDuration: 1
-  HideAfterDuration: 0
+  HideAfterDuration: 1
   Entity: {fileID: 114192182799440090}
 --- !u!165 &165443460437742034
 AudioHighPassFilter:
@@ -7805,7 +7805,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1652949721162608}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224984744243187452}
@@ -8393,7 +8393,7 @@ PlayableDirector:
   m_GameObject: {fileID: 1186671877983642}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 859882c439439a442b116382ff1dc449, type: 2}
+  m_PlayableAsset: {fileID: 0}
   m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
@@ -8407,7 +8407,7 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: 0}
     value: {fileID: 114226176100248164}
-  - key: {fileID: 114701024893334912, guid: 859882c439439a442b116382ff1dc449, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 0}
   m_ExposedReferences:
     m_References:

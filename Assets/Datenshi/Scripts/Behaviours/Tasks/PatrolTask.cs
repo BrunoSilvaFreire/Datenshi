@@ -54,7 +54,6 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
                 return TaskStatus.Running;
             }
 
-            Debug.Log("Executing navmesh " + nav);
             nav.Execute(Entity, provider);
             var hits = Physics2D.OverlapBoxAll(
                 Entity.Center + Entity.CurrentDirection.X * SightRadius.Center,
@@ -70,8 +69,6 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
                 Entity.SetVariable(CombatVariables.AttackTarget, e);
                 return TaskStatus.Success;
             }
-            Debug.Log("Still running @ " + Entity);
-
             return TaskStatus.Running;
         }
 

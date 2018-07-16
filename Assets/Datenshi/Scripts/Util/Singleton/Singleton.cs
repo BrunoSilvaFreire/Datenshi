@@ -8,8 +8,8 @@ namespace Datenshi.Scripts.Util.Singleton {
         public static T SilentInstance => instance;
 
         private void OnEnable() {
-            if (instance != null) {
-                Debug.LogWarning($"There is already an instance of {typeof(T).Name} on the scene! Destroying {name}.");
+            if (instance != null && instance != this) {
+                Debug.LogWarning($"There is already an instance of {typeof(T).Name} on the scene ({instance})! Destroying {name}.");
                 Destroy(gameObject);
                 return;
             }
