@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1696403387, guid: 03fe207ae5b0c9040a227147e429c73e, type: 3}
+  m_Name: MidCutscene
+  m_EditorClassIdentifier: 
+  tokens:
+  - {fileID: 114578731764053962}
+  - {fileID: 114868292822759484}
+  - {fileID: 114916992521938328}
+  - {fileID: 114953111062772404}
+  - {fileID: 114362175862245050}
+  FutureManager:
+    futures: []
+--- !u!114 &114362175862245050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c15f703cb0b4a8a821fccfecf4d294b, type: 3}
+  m_Name: AcceptInputToken
+  m_EditorClassIdentifier: 
+  AcceptInput: 1
+  Target: 2
+--- !u!114 &114578731764053962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c15f703cb0b4a8a821fccfecf4d294b, type: 3}
+  m_Name: AcceptInputToken
+  m_EditorClassIdentifier: 
+  AcceptInput: 0
+  Target: 2
+--- !u!114 &114868292822759484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65dbb3448f3a497e82817f2e5b3e0ac7, type: 3}
+  m_Name: ShowUIElementsToken
+  m_EditorClassIdentifier: 
+  Show: 0
+--- !u!114 &114916992521938328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f621b16fcb744fd4a85946f24e8d7485, type: 3}
+  m_Name: PlayDialogueToken
+  m_EditorClassIdentifier: 
+  Dialogue: {fileID: 0}
+  Target: 0
+  OpenOnStart: 1
+  CloseOnFinish: 1
+--- !u!114 &114953111062772404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65dbb3448f3a497e82817f2e5b3e0ac7, type: 3}
+  m_Name: ShowUIElementsToken
+  m_EditorClassIdentifier: 
+  Show: 1
