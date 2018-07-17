@@ -25,6 +25,7 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
                 }
 
                 Target.Value = en;
+                Entity.SetVariable(CombatVariables.AttackTarget, en);
                 return TaskStatus.Success;
             }
 

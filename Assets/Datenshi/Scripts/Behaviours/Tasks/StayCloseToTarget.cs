@@ -43,9 +43,7 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
             var b = Navigator.transform.position;
             var dist = Vector2.Distance(targetPos, Navigator.transform.position);
             var c = dist > DistanceThreshold ? Color.red : Color.green;
-            var msg = string.Format("Distance {0}-{1}: {2}/{3}", Navigator.name, t.AnimatorUpdater.gameObject.name,
-                dist,
-                DistanceThreshold);
+            var msg = $"Distance {Navigator.name}-{t.AnimatorUpdater.gameObject.name}: {dist}/{DistanceThreshold}";
             DebugUtil.DrawLabel(targetPos, msg);
             Debug.DrawLine(targetPos, b, c);
             DebugUtil.DrawWireCircle2D(b, DistanceThreshold, c);

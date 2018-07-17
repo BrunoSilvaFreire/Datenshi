@@ -20,7 +20,6 @@ namespace Datenshi.Scripts.Combat.Attacks {
             }
 
             m.ExternalForces = GetVelocity(entity);
-            Debug.Log("Velocity = " + m.ExternalForces);
         }
 
         private Vector2 GetVelocity(ICombatant entity) {

@@ -1,5 +1,6 @@
 ﻿using Datenshi.Scripts.Audio;
 using Datenshi.Scripts.Util;
+using DG.Tweening;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Animation {
@@ -21,6 +22,7 @@ namespace Datenshi.Scripts.Animation {
         public void PlayAudioFX(AudioFX fx) {
             AudioManager.Instance.PlayFX(fx);
         }
+
         public void DestroyObject() {
             Destroy(gameObject);
         }
@@ -28,5 +30,6 @@ namespace Datenshi.Scripts.Animation {
         public void DestroyParent() {
             Destroy(transform.parent.gameObject);
         }
+
     }
 }

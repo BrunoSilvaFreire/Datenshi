@@ -4,7 +4,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Datenshi.Scripts.World.Rooms.Doors {
-    public class Door : AbstractRoomMember {
+    public class Door : AbstractDoor {
         public MeshRenderer[] Renderers;
         public Material OpenMaterial;
         public Material CloseMaterial;
@@ -19,11 +19,11 @@ namespace Datenshi.Scripts.World.Rooms.Doors {
         [ShowIf(nameof(DoDoorDelay))]
         public float DoorDelay = 1;
 
-        public void Open(bool silent = false) {
+        public override void Open(bool silent = false) {
             CoroutineUtil.ReplaceCoroutine(ref openRoutine, this, DoOpen(silent));
         }
 
-        public void Close(bool silent = false) {
+        public override void Close(bool silent = false) {
             CoroutineUtil.ReplaceCoroutine(ref closeRoutine, this, DoClose(silent));
         }
 
@@ -32,9 +32,7 @@ namespace Datenshi.Scripts.World.Rooms.Doors {
                 yield return new WaitForSeconds(DoorDelay);
             }
 
-            foreach (var r in Renderers) {
-                r.material = OpenMaterial;
-            }
+            SetMat(OpenMaterial);
 
             if (!silent) {
                 Source.PlayOneShot(OpenClip);
@@ -49,14 +47,22 @@ namespace Datenshi.Scripts.World.Rooms.Doors {
             openRoutine = null;
         }
 
+        private void SetMat(Material mat) {
+            if (mat == null) {
+                return;
+            }
+
+            foreach (var r in Renderers) {
+                r.material = mat;
+            }
+        }
+
         private IEnumerator DoClose(bool silent) {
             if (!silent && DoDoorDelay) {
                 yield return new WaitForSeconds(DoorDelay);
             }
 
-            foreach (var r in Renderers) {
-                r.material = CloseMaterial;
-            }
+            SetMat(CloseMaterial);
 
             if (!silent) {
                 Source.PlayOneShot(CloseClip);

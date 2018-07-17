@@ -210,9 +210,9 @@ namespace Datenshi.Scripts.AI.Pathfinding {
         public Node GetNode(int index) {
 #if UNITY_EDITOR
             if (index >= nodes.Length || index < 0) {
-                Debug.LogWarning(
+/*                Debug.LogWarning(
                     "Index " + index + " is out of range in navmesh (" + nodes.Length +
-                    ")");
+                    ")");*/
                 return null;
             }
 #endif

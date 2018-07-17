@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Entities;
@@ -22,9 +23,12 @@ namespace Datenshi.Scripts.World.Rooms.Game {
         public SpawnMode Mode;
         public Wave Wave;
         public bool AllowReplay;
+        public bool BeginOnEnter;
 
         private void Start() {
-            Room.OnObjectEnter.AddListener(OnEnter);
+            if (BeginOnEnter) {
+                Room.OnObjectEnter.AddListener(OnEnter);
+            }
         }
 
         private void OnEnter(Collider2D arg0) {
@@ -59,7 +63,7 @@ namespace Datenshi.Scripts.World.Rooms.Game {
         [ShowInInspector, ReadOnly]
         private bool countdownStarted;
 
-        public Door ToOpen;
+        public AbstractDoor ToOpen;
         public bool PlayWarning;
         public byte SyrenCounts;
         public AudioClip SyrenClip;
@@ -92,7 +96,7 @@ namespace Datenshi.Scripts.World.Rooms.Game {
                 return;
             }
 
-            if (currentGroup >= Wave.TotalGroups - 1 && !CurrentGroup.HasAnyAlive) {
+            if (currentGroup >= Wave.TotalGroups - 1 && toBeKilled.IsEmpty()) {
                 playing = false;
                 OnWaveCompleted.Invoke();
                 if (ToOpen) {
@@ -116,7 +120,7 @@ namespace Datenshi.Scripts.World.Rooms.Game {
 
             if (CurrentGroup.IsWaitForPrevious && currentGroup >= 0) {
                 if (!countdownStarted) {
-                    if (CurrentGroup.HasAnyAlive) {
+                    if (!toBeKilled.IsEmpty()) {
                         return;
                     }
 
@@ -151,13 +155,29 @@ namespace Datenshi.Scripts.World.Rooms.Game {
         public void Spawn() {
             Debug.Log("Spawning");
             currentGroup++;
-            CurrentGroup.Spawn(this);
+            var spawned = CurrentGroup.Spawn(this);
+            foreach (var o in spawned) {
+                var c = o.GetComponentInChildren<LivingEntity>();
+                if (c == null) {
+                    continue;
+                }
+
+                UnityAction del = null;
+                del = delegate {
+                    c.OnKilled.RemoveListener(del);
+                    toBeKilled.Remove(c);
+                };
+                c.OnKilled.AddListener(del);
+                toBeKilled.Add(c);
+            }
+
             lastTimeMark = Time.time;
             if (currentGroup < Wave.TotalGroups - 1 && NextGroup.IsSimultaneous) {
                 Spawn();
             }
         }
 
+        private List<LivingEntity> toBeKilled = new List<LivingEntity>();
         public WaveGroup CurrentGroup => Wave.Groups[currentGroup];
         public WaveGroup NextGroup => Wave.Groups[currentGroup + 1];
         public WaveGroup LastGroup => Wave.Groups[currentGroup - 1];
@@ -225,35 +245,21 @@ namespace Datenshi.Scripts.World.Rooms.Game {
 
         public byte Count = 3;
 
-        [ShowInInspector, ReadOnly]
-        public GameObject[] Spawned {
-            get;
-            private set;
-        }
-
-        public bool HasAnyAlive {
-            get {
-                if (Spawned == null) {
-                    return true;
-                }
-
-                var combatants = from o in Spawned where o != null select o.GetComponent<ICombatant>();
-                return combatants.Any(c => !c.Dead);
-            }
-        }
 
         [HideIf(nameof(IsSimultaneous))]
         public float SecondsDelay;
 
-        public void Spawn(Spawner spawner) {
-            Spawned = new GameObject[Count];
+        public GameObject[] Spawn(Spawner spawner) {
+            var spawned = new GameObject[Count];
             for (byte i = 0; i < Count; i++) {
                 var loc = spawner.GetSpawnLocation();
                 var obj = Prefab.Clone(loc);
                 var c = obj.GetComponentInChildren<ICombatant>();
                 c?.AnimatorUpdater.TriggerSpawn();
-                Spawned[i] = obj;
+                spawned[i] = obj;
             }
+
+            return spawned;
         }
 
         public bool HasDelayPassed(float lastTimeMark) {

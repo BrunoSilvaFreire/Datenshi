@@ -113,7 +113,6 @@ namespace Datenshi.Scripts.AI {
             return totalPath;
         }
 
-
         public static void CalculatePathAerial(
             Node from,
             Node to,
@@ -138,6 +137,7 @@ namespace Datenshi.Scripts.AI {
                 return;
             }
 
+            const byte maxTries = 50;
             ThreadPool.QueueUserWorkItem(
                 state => {
                     // The set of nodes already evaluated.
@@ -165,9 +165,13 @@ namespace Datenshi.Scripts.AI {
                     var fScore = new Dictionary<Node, float> {
                         [from] = Distance(from, to, navMesh)
                     };
-
+                    byte currentAttempt = 0;
 
                     while (!openSet.IsEmpty()) {
+                        if (++currentAttempt == maxTries) {
+                            break;
+                        }
+
                         // the node in openSet having the lowest fScore[] value
                         var current = openSet.MinBy(node => fScore[node]);
                         if (Equals(current, to)) {

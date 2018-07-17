@@ -15,10 +15,47 @@ MonoBehaviour:
   - {fileID: 114578731764053962}
   - {fileID: 114868292822759484}
   - {fileID: 114916992521938328}
+  - {fileID: 114234321275087210}
+  - {fileID: 114935486415420120}
+  - {fileID: 114080205896672784}
+  - {fileID: 114525045650388724}
+  - {fileID: 114824355677303494}
   - {fileID: 114953111062772404}
+  - {fileID: 114568457221065196}
   - {fileID: 114362175862245050}
   FutureManager:
-    futures: []
+    futures:
+    - type: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      name: future_name
+      id: -1811233587
+      provider: 4
+--- !u!114 &114080205896672784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1967645408, guid: 03fe207ae5b0c9040a227147e429c73e, type: 3}
+  m_Name: WaitForSecondsToken
+  m_EditorClassIdentifier: 
+  Duration: 0.25
+  Realtime: 0
+--- !u!114 &114234321275087210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1967645408, guid: 03fe207ae5b0c9040a227147e429c73e, type: 3}
+  m_Name: WaitForSecondsToken
+  m_EditorClassIdentifier: 
+  Duration: 1
+  Realtime: 0
 --- !u!114 &114362175862245050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32,6 +69,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AcceptInput: 1
   Target: 2
+--- !u!114 &114525045650388724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76df3812d0f84fb6a4b5d3548dfacad2, type: 3}
+  m_Name: DestroySceneObjectToken
+  m_EditorClassIdentifier: 
+  ToDestroy:
+    exposedName: -310578
+    defaultValue: {fileID: 0}
+--- !u!114 &114568457221065196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97e76b450db6443682a0d30e09772988, type: 3}
+  m_Name: ActivateSpawnerToken
+  m_EditorClassIdentifier: 
+  Spawner:
+    exposedName: -1119538
+    defaultValue: {fileID: 0}
 --- !u!114 &114578731764053962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45,6 +110,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AcceptInput: 0
   Target: 2
+--- !u!114 &114824355677303494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1967645408, guid: 03fe207ae5b0c9040a227147e429c73e, type: 3}
+  m_Name: WaitForSecondsToken
+  m_EditorClassIdentifier: 
+  Duration: 0.5
+  Realtime: 0
 --- !u!114 &114868292822759484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,10 +146,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f621b16fcb744fd4a85946f24e8d7485, type: 3}
   m_Name: PlayDialogueToken
   m_EditorClassIdentifier: 
-  Dialogue: {fileID: 0}
+  Dialogue: {fileID: 11400000, guid: 307e0df62aceb3440a871ea3a587b471, type: 2}
   Target: 0
   OpenOnStart: 1
   CloseOnFinish: 1
+--- !u!114 &114935486415420120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 134833709, guid: 03fe207ae5b0c9040a227147e429c73e, type: 3}
+  m_Name: SpawnPrefabToken
+  m_EditorClassIdentifier: 
+  Obj: {fileID: 1063866593415516, guid: 30943881c7135794e80fc6dd1e2baca0, type: 2}
+  FutureName: future_name
+  Position: {x: 44.61993, y: 30.94562, z: 0}
+  Rotation: {x: 0, y: 0, z: 0, w: 1}
+  futureId: -1811233587
 --- !u!114 &114953111062772404
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daa59a9e91d14f54a1d29f259ad60d90, type: 3}
+  m_Name: SentryAttack
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 114702364624681138, guid: e7562f9b88783db42b1dc7a877e5d580, type: 2}
+  TimeDelay: 1
+  Offset: {x: 0, y: 1}
+  Aim: 1
+  FocusConsumption: 2.5
+  RawDir: 1
+  Damage: 5
+  EvasionDashDistance: 3
+  EvasionDashDuration: 0.25
+  SpeedStatusEffect: {fileID: 11400000, guid: 6efa6ff350cb9bb4fa46a79c7e37a713, type: 2}

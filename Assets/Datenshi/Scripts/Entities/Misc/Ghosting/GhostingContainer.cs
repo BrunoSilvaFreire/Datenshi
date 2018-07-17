@@ -25,6 +25,14 @@ namespace Datenshi.Scripts.Entities.Misc.Ghosting {
         private float spawnCooldownLeft;
         public MovableEntity Entity;
 
+        public void ActivateGhosting() {
+            Spawning = true;
+        }
+
+        public void DeactiveGhosting() {
+            Spawning = false;
+        }
+
         [ShowInInspector, ReadOnly]
         private readonly List<GhostingSprite> usedSprites = new List<GhostingSprite>();
 
