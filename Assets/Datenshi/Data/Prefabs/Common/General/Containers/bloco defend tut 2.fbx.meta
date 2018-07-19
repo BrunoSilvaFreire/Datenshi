@@ -1,0 +1,599 @@
+fileFormatVersion: 2
+guid: 12d82797e159827478cbc65f82c9fe23
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: base_container6
+    100002: base_container6 1
+    100004: //RootNode
+    100006: detalhes_porta_esq12
+    100008: detalhes_porta_esq12 1
+    100010: detalhes_porta_esq13
+    100012: detalhes_porta_esq14
+    100014: detalhes_porta_esq14 1
+    100016: group1
+    100018: group13
+    100020: group14
+    100022: group15
+    100024: group16
+    100026: parede_esq6
+    100028: parede_esq7
+    100030: parede_esq7 1
+    100032: parede_frente5
+    100034: parede_frente7
+    100036: parede_frente7 1
+    100038: parede_frente8
+    100040: parede_frente8 1
+    100042: pCube147
+    100044: pCube148
+    100046: pCube149
+    100048: pCube163
+    100050: pCube164
+    100052: pCube29
+    100054: pCube74
+    100056: pCube77
+    100058: pCube82
+    100060: pCube84
+    100062: pCube85
+    100064: pCube86
+    100066: pCube94
+    100068: pCube95
+    100070: pCube96
+    100072: pCylinder28
+    100074: pCylinder29
+    100076: pCylinder30
+    100078: pCylinder31
+    100080: pCylinder32
+    100082: pCylinder33
+    100084: pCylinder34
+    100086: polySurface17
+    100088: polySurface17 1
+    100090: polySurface18
+    100092: polySurface2
+    100094: polySurface25
+    100096: polySurface26
+    100098: polySurface27
+    100100: polySurface34
+    100102: polySurface38
+    100104: polySurface39
+    100106: polySurface40
+    100108: polySurface41
+    100110: polySurface42
+    100112: polySurface43
+    100114: polySurface44
+    100116: polySurface44 1
+    100118: polySurface45
+    100120: polySurface46
+    100122: polySurface46 1
+    100124: polySurface48
+    100126: polySurface49
+    100128: polySurface50
+    100130: polySurface51
+    100132: polySurface51 1
+    100134: polySurface52
+    100136: polySurface61
+    100138: polySurface62
+    100140: polySurface63
+    100142: polySurface64
+    100144: polySurface65
+    100146: polySurface66
+    100148: polySurface68
+    100150: polySurface85
+    100152: polySurface86
+    100154: polySurface89
+    100156: porta_esq12
+    100158: porta_esq13
+    100160: porta_esq14
+    100162: porta_esq14 1
+    100164: porta_esq15
+    100166: porta_esq15 1
+    100168: pPlane11
+    100170: pPlane12
+    100172: pPlane13
+    100174: pPlane14
+    100176: pPlane17
+    100178: pPlane18
+    100180: pPlane19
+    100182: pPlane2
+    100184: pPlane20
+    100186: pPlane4
+    100188: quinas6
+    100190: quinas7
+    100192: quinas7 1
+    100194: teto_container6
+    100196: teto_container7
+    100198: teto_container7 1
+    100200: teto_interno6
+    100202: teto_interno7
+    100204: teto_interno7 1
+    100206: tranca_porta6
+    100208: tranca_porta7
+    100210: tranca_porta7 1
+    100212: transform33
+    100214: transform34
+    100216: transform35
+    100218: transform36
+    100220: transform37
+    100222: transform38
+    100224: transform39
+    100226: transform40
+    100228: transform41
+    100230: transform70
+    400000: base_container6
+    400002: base_container6 1
+    400004: //RootNode
+    400006: detalhes_porta_esq12
+    400008: detalhes_porta_esq12 1
+    400010: detalhes_porta_esq13
+    400012: detalhes_porta_esq14
+    400014: detalhes_porta_esq14 1
+    400016: group1
+    400018: group13
+    400020: group14
+    400022: group15
+    400024: group16
+    400026: parede_esq6
+    400028: parede_esq7
+    400030: parede_esq7 1
+    400032: parede_frente5
+    400034: parede_frente7
+    400036: parede_frente7 1
+    400038: parede_frente8
+    400040: parede_frente8 1
+    400042: pCube147
+    400044: pCube148
+    400046: pCube149
+    400048: pCube163
+    400050: pCube164
+    400052: pCube29
+    400054: pCube74
+    400056: pCube77
+    400058: pCube82
+    400060: pCube84
+    400062: pCube85
+    400064: pCube86
+    400066: pCube94
+    400068: pCube95
+    400070: pCube96
+    400072: pCylinder28
+    400074: pCylinder29
+    400076: pCylinder30
+    400078: pCylinder31
+    400080: pCylinder32
+    400082: pCylinder33
+    400084: pCylinder34
+    400086: polySurface17
+    400088: polySurface17 1
+    400090: polySurface18
+    400092: polySurface2
+    400094: polySurface25
+    400096: polySurface26
+    400098: polySurface27
+    400100: polySurface34
+    400102: polySurface38
+    400104: polySurface39
+    400106: polySurface40
+    400108: polySurface41
+    400110: polySurface42
+    400112: polySurface43
+    400114: polySurface44
+    400116: polySurface44 1
+    400118: polySurface45
+    400120: polySurface46
+    400122: polySurface46 1
+    400124: polySurface48
+    400126: polySurface49
+    400128: polySurface50
+    400130: polySurface51
+    400132: polySurface51 1
+    400134: polySurface52
+    400136: polySurface61
+    400138: polySurface62
+    400140: polySurface63
+    400142: polySurface64
+    400144: polySurface65
+    400146: polySurface66
+    400148: polySurface68
+    400150: polySurface85
+    400152: polySurface86
+    400154: polySurface89
+    400156: porta_esq12
+    400158: porta_esq13
+    400160: porta_esq14
+    400162: porta_esq14 1
+    400164: porta_esq15
+    400166: porta_esq15 1
+    400168: pPlane11
+    400170: pPlane12
+    400172: pPlane13
+    400174: pPlane14
+    400176: pPlane17
+    400178: pPlane18
+    400180: pPlane19
+    400182: pPlane2
+    400184: pPlane20
+    400186: pPlane4
+    400188: quinas6
+    400190: quinas7
+    400192: quinas7 1
+    400194: teto_container6
+    400196: teto_container7
+    400198: teto_container7 1
+    400200: teto_interno6
+    400202: teto_interno7
+    400204: teto_interno7 1
+    400206: tranca_porta6
+    400208: tranca_porta7
+    400210: tranca_porta7 1
+    400212: transform33
+    400214: transform34
+    400216: transform35
+    400218: transform36
+    400220: transform37
+    400222: transform38
+    400224: transform39
+    400226: transform40
+    400228: transform41
+    400230: transform70
+    2100000: phongE10
+    2100002: lambert1
+    2100004: phongE11
+    2100006: asfalto
+    2100008: blinn4
+    2100010: metal_cinza
+    2100012: material_azul_container
+    2100014: phongE7
+    2100016: phongE9
+    2300000: base_container6
+    2300002: base_container6 1
+    2300004: detalhes_porta_esq12
+    2300006: detalhes_porta_esq12 1
+    2300008: detalhes_porta_esq13
+    2300010: detalhes_porta_esq14
+    2300012: detalhes_porta_esq14 1
+    2300014: parede_esq6
+    2300016: parede_esq7
+    2300018: parede_esq7 1
+    2300020: parede_frente5
+    2300022: parede_frente7
+    2300024: parede_frente7 1
+    2300026: parede_frente8
+    2300028: parede_frente8 1
+    2300030: pCube147
+    2300032: pCube148
+    2300034: pCube149
+    2300036: pCube163
+    2300038: pCube164
+    2300040: pCube77
+    2300042: pCube82
+    2300044: pCube84
+    2300046: pCube85
+    2300048: pCube86
+    2300050: pCube94
+    2300052: pCube95
+    2300054: pCube96
+    2300056: pCylinder28
+    2300058: pCylinder29
+    2300060: pCylinder30
+    2300062: pCylinder31
+    2300064: pCylinder32
+    2300066: pCylinder33
+    2300068: pCylinder34
+    2300070: polySurface17 1
+    2300072: polySurface18
+    2300074: polySurface2
+    2300076: polySurface34
+    2300078: polySurface38
+    2300080: polySurface39
+    2300082: polySurface40
+    2300084: polySurface42
+    2300086: polySurface43
+    2300088: polySurface44
+    2300090: polySurface44 1
+    2300092: polySurface45
+    2300094: polySurface46
+    2300096: polySurface46 1
+    2300098: polySurface48
+    2300100: polySurface49
+    2300102: polySurface50
+    2300104: polySurface51
+    2300106: polySurface61
+    2300108: polySurface62
+    2300110: polySurface63
+    2300112: polySurface64
+    2300114: polySurface65
+    2300116: polySurface66
+    2300118: polySurface68
+    2300120: polySurface85
+    2300122: polySurface86
+    2300124: polySurface89
+    2300126: porta_esq12
+    2300128: porta_esq13
+    2300130: porta_esq14
+    2300132: porta_esq14 1
+    2300134: porta_esq15
+    2300136: porta_esq15 1
+    2300138: pPlane11
+    2300140: pPlane12
+    2300142: pPlane13
+    2300144: pPlane14
+    2300146: pPlane17
+    2300148: pPlane18
+    2300150: pPlane19
+    2300152: pPlane20
+    2300154: pPlane4
+    2300156: quinas6
+    2300158: quinas7
+    2300160: quinas7 1
+    2300162: teto_container6
+    2300164: teto_container7
+    2300166: teto_container7 1
+    2300168: teto_interno6
+    2300170: teto_interno7
+    2300172: teto_interno7 1
+    2300174: tranca_porta6
+    2300176: tranca_porta7
+    2300178: tranca_porta7 1
+    3300000: base_container6
+    3300002: base_container6 1
+    3300004: detalhes_porta_esq12
+    3300006: detalhes_porta_esq12 1
+    3300008: detalhes_porta_esq13
+    3300010: detalhes_porta_esq14
+    3300012: detalhes_porta_esq14 1
+    3300014: parede_esq6
+    3300016: parede_esq7
+    3300018: parede_esq7 1
+    3300020: parede_frente5
+    3300022: parede_frente7
+    3300024: parede_frente7 1
+    3300026: parede_frente8
+    3300028: parede_frente8 1
+    3300030: pCube147
+    3300032: pCube148
+    3300034: pCube149
+    3300036: pCube163
+    3300038: pCube164
+    3300040: pCube77
+    3300042: pCube82
+    3300044: pCube84
+    3300046: pCube85
+    3300048: pCube86
+    3300050: pCube94
+    3300052: pCube95
+    3300054: pCube96
+    3300056: pCylinder28
+    3300058: pCylinder29
+    3300060: pCylinder30
+    3300062: pCylinder31
+    3300064: pCylinder32
+    3300066: pCylinder33
+    3300068: pCylinder34
+    3300070: polySurface17 1
+    3300072: polySurface18
+    3300074: polySurface2
+    3300076: polySurface34
+    3300078: polySurface38
+    3300080: polySurface39
+    3300082: polySurface40
+    3300084: polySurface42
+    3300086: polySurface43
+    3300088: polySurface44
+    3300090: polySurface44 1
+    3300092: polySurface45
+    3300094: polySurface46
+    3300096: polySurface46 1
+    3300098: polySurface48
+    3300100: polySurface49
+    3300102: polySurface50
+    3300104: polySurface51
+    3300106: polySurface61
+    3300108: polySurface62
+    3300110: polySurface63
+    3300112: polySurface64
+    3300114: polySurface65
+    3300116: polySurface66
+    3300118: polySurface68
+    3300120: polySurface85
+    3300122: polySurface86
+    3300124: polySurface89
+    3300126: porta_esq12
+    3300128: porta_esq13
+    3300130: porta_esq14
+    3300132: porta_esq14 1
+    3300134: porta_esq15
+    3300136: porta_esq15 1
+    3300138: pPlane11
+    3300140: pPlane12
+    3300142: pPlane13
+    3300144: pPlane14
+    3300146: pPlane17
+    3300148: pPlane18
+    3300150: pPlane19
+    3300152: pPlane20
+    3300154: pPlane4
+    3300156: quinas6
+    3300158: quinas7
+    3300160: quinas7 1
+    3300162: teto_container6
+    3300164: teto_container7
+    3300166: teto_container7 1
+    3300168: teto_interno6
+    3300170: teto_interno7
+    3300172: teto_interno7 1
+    3300174: tranca_porta6
+    3300176: tranca_porta7
+    3300178: tranca_porta7 1
+    4300000: pPlane14
+    4300002: pPlane13
+    4300004: pPlane12
+    4300006: pPlane11
+    4300008: pCylinder32
+    4300010: pCylinder31
+    4300012: pCube96
+    4300014: pCylinder34
+    4300016: pCylinder33
+    4300018: pCube95
+    4300020: pCube94
+    4300022: pPlane4
+    4300024: pCylinder30
+    4300026: pCube86
+    4300028: pCylinder29
+    4300030: pCylinder28
+    4300032: pCube85
+    4300034: pCube84
+    4300036: pCube82
+    4300038: polySurface51
+    4300040: polySurface68
+    4300042: polySurface66
+    4300044: polySurface65
+    4300046: polySurface64
+    4300048: polySurface63
+    4300050: polySurface62
+    4300052: polySurface61
+    4300054: polySurface49
+    4300056: polySurface48
+    4300058: polySurface50
+    4300060: polySurface43
+    4300062: polySurface42
+    4300064: polySurface45
+    4300066: polySurface40
+    4300068: polySurface17
+    4300070: polySurface39
+    4300072: polySurface38
+    4300074: pCube77
+    4300076: polySurface85
+    4300078: polySurface86
+    4300080: tranca_porta6
+    4300082: polySurface34
+    4300084: polySurface18
+    4300086: polySurface2
+    4300088: polySurface46
+    4300090: polySurface44
+    4300092: parede_frente7
+    4300094: base_container6
+    4300096: parede_esq7
+    4300098: tranca_porta7
+    4300100: teto_interno7
+    4300102: porta_esq14
+    4300104: detalhes_porta_esq14
+    4300106: parede_frente8
+    4300108: detalhes_porta_esq12
+    4300110: porta_esq15
+    4300112: quinas7
+    4300114: teto_container7
+    4300116: polySurface46
+    4300118: polySurface44
+    4300120: parede_frente7
+    4300122: base_container6
+    4300124: parede_esq7
+    4300126: tranca_porta7
+    4300128: teto_interno7
+    4300130: porta_esq14
+    4300132: detalhes_porta_esq14
+    4300134: parede_frente8
+    4300136: detalhes_porta_esq12
+    4300138: porta_esq15
+    4300140: quinas7
+    4300142: teto_container7
+    4300144: teto_interno6
+    4300146: teto_container6
+    4300148: pPlane17
+    4300150: porta_esq13
+    4300152: detalhes_porta_esq13
+    4300154: parede_frente5
+    4300156: quinas6
+    4300158: parede_esq6
+    4300160: porta_esq12
+    4300162: pCube148
+    4300164: pCube149
+    4300166: pCube147
+    4300168: pPlane18
+    4300170: pPlane19
+    4300172: pPlane20
+    4300174: pCube163
+    4300176: pCube164
+    4300178: polySurface89
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
