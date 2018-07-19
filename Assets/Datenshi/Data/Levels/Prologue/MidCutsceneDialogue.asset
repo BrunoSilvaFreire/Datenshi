@@ -34,7 +34,7 @@ MonoBehaviour:
         Duration: 0
         Offset: 0
         Left: 0
-    - Text: Don't you have any respect? Breaking into evil lairs isn't the most educated
+    - Text: Don't you have any respect? Breaking into evil lairs isn't the most polite
         thing to do.
       Move: 0
       AppearanceMode:
@@ -59,7 +59,7 @@ MonoBehaviour:
         Left: 0
   - Character: {fileID: 11400000, guid: 8a2ea0deeae62114f97ad13a532bdf1b, type: 2}
     Lines:
-    - Text: Nah, I like more the "viligante" vibe
+    - Text: Nah, I prefer the "viligante" vibe
       Move: 0
       AppearanceMode:
         Duration: 0
@@ -73,13 +73,7 @@ MonoBehaviour:
         Duration: 0
         Offset: 0
         Left: 0
-    - Text: It's time you find out what we do to them.
-      Move: 0
-      AppearanceMode:
-        Duration: 0
-        Offset: 0
-        Left: 0
-    - Text: Dispose of her...
+    - Text: It's time you find out what we do to them. Dispose of her...
       Move: 0
       AppearanceMode:
         Duration: 0

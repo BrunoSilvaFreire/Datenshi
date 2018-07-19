@@ -75,7 +75,6 @@ namespace Datenshi.Scripts.Combat.Game.Ranged {
         }
 
         public void Shoot(RangedAttack attack, ICombatant shooter, Vector2 direction) {
-            Debug.Log("Projectile being shot @ " + direction + " vs " + TravelSpeed);
             activeProjectiles.Add(this);
             UsedAttack = attack;
             Owner = shooter;
