@@ -45,7 +45,8 @@ namespace Datenshi.Scripts.Game {
                 return;
             }
 
-            if (Equals(damaged, currentEntity)) {
+            if (Equals(damaged, currentEntity) && !damaged.Dead) {
+                
                 var graphics = GraphicsSingleton.Instance;
                 var damageGlitch = graphics.Glitch;
                 var bnw = graphics.BlackAndWhite;

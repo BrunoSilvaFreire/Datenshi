@@ -163,7 +163,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4869860289754634}
   - component: {fileID: 114483040877600832}
-  - component: {fileID: 114963100824252444}
+  - component: {fileID: 114176065867285408}
   m_Layer: 12
   m_Name: Hikari_Managers
   m_TagString: Untagged
@@ -201,6 +201,7 @@ GameObject:
   - component: {fileID: 114826382447101696}
   - component: {fileID: 114261209192061870}
   - component: {fileID: 320201413818288954}
+  - component: {fileID: 114370987329960236}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -3343,6 +3344,135 @@ MonoBehaviour:
   PauseOnOpen: 1
   SelectFirstOnOpen: 1
   InputProvider: {fileID: 114339961509699726}
+--- !u!114 &114176065867285408
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1142559646716826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98dbdf2caa2f48888ca6a38648e359b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 95393897510120624}
+  SpeedPercentKey: SpeedPercent
+  SpeedRawKey: SpeedRaw
+  GroundedKey: Grounded
+  YSpeedKey: YSpeed
+  DamagedKey: Damaged
+  StoppingKey: Stopping
+  AbsInputVerticalKey: AbsInputVertical
+  AbsInputHorizontalKey: AbsInputHorizontal
+  InputVerticalKey: InputVertical
+  InputHorizontalKey: InputHorizontal
+  DefendKey: Defend
+  StunKey: Stunned
+  DeadKey: Dead
+  DefendedKey: Defended
+  SpawnKey: Spawn
+  Entity: {fileID: 114192182799440090}
+  Renderer: {fileID: 212196902035482046}
+  DeathFXDuration: 3
+  DeathFXColorIntensity: 1
+  DeathFXJumpIntensity: 1
+  DeathFXRestartDuration: 2
+  DesaturationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  DarkenCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  ResaturationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -1
+      outSlope: -1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  BrightenCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -1
+      outSlope: -1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &114190743001756036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3399,7 +3529,7 @@ MonoBehaviour:
   hitbox: {fileID: 61213029514595710}
   OutlineInvulnerabilityMinSecondsLeft: 1
   ignored: 0
-  updater: {fileID: 114963100824252444}
+  updater: {fileID: 114176065867285408}
   relationship: 0
   DamageInvulnerability: 1
   DamageInvulnerabilityDuration: 2
@@ -4807,6 +4937,18 @@ MonoBehaviour:
   m_Text: 'Yay
 
 '
+--- !u!114 &114370987329960236
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1186671877983642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15be52b10fa347259a65123a96c4e96b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LastCheckpoint: {fileID: 0}
 --- !u!114 &114371224082356120
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6285,35 +6427,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
---- !u!114 &114963100824252444
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1142559646716826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aef4956867049d9a991e65034ed5936, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Animator: {fileID: 95393897510120624}
-  SpeedPercentKey: SpeedPercent
-  SpeedRawKey: SpeedRaw
-  GroundedKey: Grounded
-  YSpeedKey: YSpeed
-  DamagedKey: Damaged
-  StoppingKey: Stopping
-  AbsInputVerticalKey: AbsInputVertical
-  AbsInputHorizontalKey: AbsInputHorizontal
-  InputVerticalKey: InputVertical
-  InputHorizontalKey: InputHorizontal
-  DefendKey: Defend
-  StunKey: Stunned
-  DeadKey: Dead
-  DefendedKey: Defended
-  SpawnKey: Spawn
-  Entity: {fileID: 114192182799440090}
-  Renderer: {fileID: 212196902035482046}
 --- !u!114 &114964734649739956
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -15,6 +15,7 @@ namespace Datenshi.Scripts.Audio {
         public AudioSource BGMSource;
         public AudioLowPassFilter LowPassFilter;
         public AudioHighPassFilter HighPassFilter;
+        public AudioReverbFilter ReverbFilter;
 
         public void ImpactHighFilter(float value, float cutoff, float duration) {
             HighPassFilter.DOKill();
@@ -53,6 +54,14 @@ namespace Datenshi.Scripts.Audio {
                 default:
                     throw new ArgumentOutOfRangeException(nameof(fxCategory), fxCategory, null);
             }
+        }
+
+        public void StopBGM() {
+            BGMSource.Stop();
+        }
+
+        public void RestartBGM() {
+            BGMSource.Play();
         }
     }
 }

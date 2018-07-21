@@ -5,6 +5,7 @@ using Datenshi.Scripts.Combat.Attacks;
 using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Game.Rank;
+using Datenshi.Scripts.Game.Restart;
 using Datenshi.Scripts.Game.Time;
 using Datenshi.Scripts.Graphics;
 using Datenshi.Scripts.Input;
@@ -27,7 +28,7 @@ namespace Datenshi.Scripts.Game {
     public class PlayerRankXPGainedEvent : UnityEvent<float> { }
 
 
-    public class PlayerController : Singleton<PlayerController> {
+    public class PlayerController : Singleton<PlayerController>, IRestartable {
         public PlayerInputProvider Player;
 
         [SerializeField, HideInInspector]
@@ -45,16 +46,13 @@ namespace Datenshi.Scripts.Game {
                 return currentEntity;
             }
             set {
-                Debug.Log("Current entity = " + currentEntity);
                 if (currentEntity != null) {
-                    print("Revoking");
                     currentEntity.RevokeOwnership();
                 }
 
                 var old = currentEntity;
                 currentEntity = value;
                 OnEntityChanged.Invoke(old, value);
-                print("Getting ownership of " + value);
                 currentEntity.ForceRequestOwnership(Player);
             }
         }
@@ -69,8 +67,6 @@ namespace Datenshi.Scripts.Game {
             }
 
             OnEntityChanged.Invoke(null, currentEntity);
-
-            GameState.RestartState();
             GlobalEntityDamagedEvent.Instance.AddListener(OnEntityDamaged);
         }
 
@@ -146,6 +142,15 @@ namespace Datenshi.Scripts.Game {
             }
 
             return player.CurrentEntity;
+        }
+
+        public void Restart() {
+            var le = CurrentEntity as LivingEntity;
+            if (le == null) {
+                return;
+            }
+
+            le.Heal();
         }
     }
 }

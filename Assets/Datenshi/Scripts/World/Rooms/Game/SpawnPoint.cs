@@ -1,12 +1,13 @@
 ﻿using System;
 using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Game;
+using Datenshi.Scripts.Game.Restart;
 using Datenshi.Scripts.Util.Misc;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Datenshi.Scripts.World.Rooms.Game {
-    public class SpawnPoint : MonoBehaviour {
+    public class SpawnPoint : MonoBehaviour, IRestartable {
         public enum PositionSourceType {
             Player,
             SpawnPoint
@@ -93,6 +94,12 @@ namespace Datenshi.Scripts.World.Rooms.Game {
 
         private void OnDrawGizmosSelected() {
             Threshold.DrawGizmos(transform.position);
+        }
+
+        public void Restart() {
+            if (active) {
+                Despawn();
+            }
         }
     }
 }

@@ -123,6 +123,7 @@ namespace Datenshi.Scripts.Entities {
                 if (FocusTimeLeft <= 0) {
                     FocusTimeLeft = 0;
                 }
+
                 AnimatorUpdater.TriggerDefend();
                 return 0;
             }
@@ -187,6 +188,10 @@ namespace Datenshi.Scripts.Entities {
         public void Heal(uint healthAmount) {
             Health += healthAmount;
             OnHealthChanged.Invoke();
+        }
+
+        public void Heal() {
+            Heal(maxHealth - health);
         }
     }
 }

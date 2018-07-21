@@ -9,6 +9,8 @@ namespace Datenshi.Scripts.Graphics {
         private const string ShaderName = "Datenshi/BlackAndWhiteShader";
         private const string DarkenPropertyName = "_DarkenAmount";
         private const string PropertyName = "_Amount";
+        public float DefaultDesaturationAmount = 0;
+        public float DefaultDarkenAmount = 0;
 
         private float Amount {
             get {
@@ -36,8 +38,8 @@ namespace Datenshi.Scripts.Graphics {
             serviceHandler.Tick();
             var highest = serviceHandler.WithGenericHighestPriority();
             if (highest == null) {
-                Amount = 0;
-                DarkenAmount = 0;
+                Amount = DefaultDesaturationAmount;
+                DarkenAmount = DefaultDarkenAmount;
                 return;
             }
 
