@@ -19,7 +19,7 @@ namespace Datenshi.Scripts.Movement.States {
             new Variable<float>("entity.motors.states.dash.dashDuration", 0);
 
         public static readonly VerticalPhysicsCheck VerticalVelocityCheck = new VerticalPhysicsCheck();
-        public static readonly HorizontalPhysicsCheck HorizontalVelocityCheck = new HorizontalPhysicsCheck();
+        public static readonly DatenshiHorizontalPhysicsCheck HorizontalVelocityCheck = new DatenshiHorizontalPhysicsCheck();
 
 
         public static readonly PhysicsBehaviour DashBehaviour = new PhysicsBehaviour(

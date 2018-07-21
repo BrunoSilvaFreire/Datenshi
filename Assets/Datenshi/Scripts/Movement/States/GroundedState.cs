@@ -18,7 +18,7 @@ namespace Datenshi.Scripts.Movement.States {
         public float ExtraWallClimbLengthCheck = .5F;
 
         public static readonly VerticalPhysicsCheck VerticalVelocityCheck = new VerticalPhysicsCheck();
-        public static readonly HorizontalPhysicsCheck HorizontalVelocityCheck = new HorizontalPhysicsCheck();
+        public static readonly DatenshiHorizontalPhysicsCheck HorizontalVelocityCheck = new DatenshiHorizontalPhysicsCheck();
         public static readonly VerticalPhysicsCheck SlopeCheck = new VerticalPhysicsCheck(SlopeCheckProvider);
 
 
