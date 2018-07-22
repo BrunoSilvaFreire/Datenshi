@@ -206,8 +206,17 @@ namespace Datenshi.Scripts.World.Rooms.Game {
             }
         }
 
+        private int lastElement = -1;
+
         private Vector2 GetRandomPredefinedLocation() {
-            return Locations.RandomElement();
+            int current, currentTry = 0;
+            const int maxTries = 10;
+            do {
+                current = Random.Range(0, Locations.Length);
+            } while (current != lastElement && ++currentTry < maxTries);
+
+            lastElement = current;
+            return Locations[current];
         }
 
         private Vector2 GetRandomSpawnLocation() {

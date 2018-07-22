@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Datenshi.Scripts.Audio;
 using Datenshi.Scripts.Game;
 using Datenshi.Scripts.Input;
 using Datenshi.Scripts.UI.Misc;
@@ -134,22 +135,43 @@ namespace Datenshi.Scripts.Cutscenes.Dialogue.UI {
         }
 
         protected override void SnapShow() {
+            CharacterLabel.SetAlpha(1);
+            Narrator.textComponent.SetAlpha(1);
+            ContinueInstruction.SetAlpha(1);
+            SkipInstruction.SetAlpha(1);
             BlackBar.SnapShowing(true);
         }
 
         protected override void SnapHide() {
+            CharacterLabel.SetAlpha(0);
+            Narrator.textComponent.SetAlpha(0);
+            ContinueInstruction.SetAlpha(0);
+            SkipInstruction.SetAlpha(0);
             BlackBar.SnapShowing(false);
         }
 
         protected override void OnShow() {
             BlackBar.Showing = true;
+            SetGraphicFade(CharacterLabel, 1);
+            SetGraphicFade(Narrator.textComponent, 1);
+            SetGraphicFade(ContinueInstruction, 1);
+            SetGraphicFade(SkipInstruction, 1);
             foreach (var portrait in portraits) {
                 portrait.Showing = true;
             }
         }
 
+        private void SetGraphicFade(Graphic g, float value) {
+            g.DOKill();
+            g.DOFade(value, GroupTransitionDuration);
+        }
+
         protected override void OnHide() {
             BlackBar.Showing = false;
+            SetGraphicFade(CharacterLabel, 0);
+            SetGraphicFade(Narrator.textComponent, 0);
+            SetGraphicFade(ContinueInstruction, 0);
+            SetGraphicFade(SkipInstruction, 0);
             foreach (var portrait in portraits) {
                 portrait.Showing = false;
             }
@@ -158,6 +180,7 @@ namespace Datenshi.Scripts.Cutscenes.Dialogue.UI {
 
         protected override IEnumerator DoPlayDialogue(Dialogue dialogue) {
             var speeches = dialogue.Speeches;
+            BlackBar.ShowDialogue = true;
             ResetInstructions();
             SetShowInstructions(true);
             foreach (var speech in speeches) {
@@ -182,6 +205,7 @@ namespace Datenshi.Scripts.Cutscenes.Dialogue.UI {
             }
 
             ClearPortraits();
+            BlackBar.ShowDialogue = false;
         }
 
         private void SetShowInstructions(bool b) {

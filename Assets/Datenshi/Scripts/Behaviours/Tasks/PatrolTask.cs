@@ -27,11 +27,13 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
         public Bounds2D SightRadius;
         public float WaitTime = 1;
         public float CloseThreshold = 1;
+        public bool StartAtLeft = true;
         private bool left;
         private bool waiting;
         private Vector2 targetPos;
 
         public override void OnStart() {
+            left = StartAtLeft;
             RecalculateTargetPos(Entity.AINavigator);
         }
 

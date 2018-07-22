@@ -1,3 +1,14 @@
-﻿fileFormatVersion: 2
+fileFormatVersion: 2
 guid: 8939eccfe00f43c7aa040e53f5d9260d
-timeCreated: 1525875928
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - ToOpen: {instanceID: 0}
+  - SyrenClip: {fileID: 8300000, guid: 46a146339e1142b4e9517efb44a75f43, type: 3}
+  - Source: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

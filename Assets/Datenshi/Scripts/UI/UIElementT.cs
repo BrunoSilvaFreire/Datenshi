@@ -29,30 +29,30 @@ namespace Datenshi.Scripts.UI {
             }
         }
 
+        public bool AllowOverride = true;
         private bool overrideShowing;
         private bool overrideShowingValue;
 
         public void Override(bool value) {
+            if (!AllowOverride) {
+                return;
+            }
+
             if (!overrideShowing) {
                 overrideShowing = true;
             }
 
             overrideShowingValue = value;
-            if (overrideShowingValue != showing) {
-                UpdateState();
-            }
+            UpdateState();
         }
 
         public void ReleaseOverride() {
             overrideShowing = false;
-            if (overrideShowingValue == Showing) {
-                return;
-            }
-
             UpdateState();
         }
 
-        private void UpdateState() {
+        protected void UpdateState() {
+            Debug.Log($"Updating {name} to {Showing}");
             if (Showing) {
                 Show();
             } else {
@@ -73,16 +73,12 @@ namespace Datenshi.Scripts.UI {
 
         public void Show() {
             showing = true;
-            if (!overrideShowing) {
-                OnShow();
-            }
+            OnShow();
         }
 
         public void Hide() {
             showing = false;
-            if (!overrideShowing) {
-                OnHide();
-            }
+            OnHide();
         }
 
         protected abstract void SnapShow();

@@ -8,7 +8,8 @@
         "Datenshi-Input",
         "Datenshi-Game",
         "Datenshi-World",
-        "Datenshi-World-Game"
+        "Datenshi-World-Game",
+        "Datenshi-Audio"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],

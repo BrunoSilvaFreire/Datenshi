@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -11,7 +12,19 @@ namespace Datenshi.Scripts.UI.Misc {
         public float ObscurePercent = 0.15F;
         public float ShowDelay = 0.5F;
         public float DialogueObscurePercent = 0.3F;
-        public bool ShowDialogue;
+
+        [SerializeField]
+        private bool showDialogue;
+
+        public bool ShowDialogue {
+            get {
+                return showDialogue;
+            }
+            set {
+                showDialogue = value;
+                UpdateState();
+            }
+        }
 #if UNITY_EDITOR
         private void OnValidate() {
             if (EditorApplication.isPlaying) {

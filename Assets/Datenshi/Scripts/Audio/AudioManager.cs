@@ -16,6 +16,9 @@ namespace Datenshi.Scripts.Audio {
         public AudioLowPassFilter LowPassFilter;
         public AudioHighPassFilter HighPassFilter;
         public AudioReverbFilter ReverbFilter;
+        public float NormalBGMVolume;
+        public float CutsceneBGMVolume;
+        public float BGMVolumeTransitionDuration = .25F;
 
         public void ImpactHighFilter(float value, float cutoff, float duration) {
             HighPassFilter.DOKill();
@@ -63,5 +66,31 @@ namespace Datenshi.Scripts.Audio {
         public void RestartBGM() {
             BGMSource.Play();
         }
+
+        public void SetBGMAudioVolume(AudioLevel level) {
+            SetBGMAudioVolume(level, BGMVolumeTransitionDuration);
+        }
+
+        public void SetBGMAudioVolume(AudioLevel level, float duration) {
+            BGMSource.DOKill();
+            var newVolume = GetBGMVolume(level);
+            DOTween.To(() => BGMSource.volume, value => BGMSource.volume = value, newVolume, duration);
+        }
+
+        private float GetBGMVolume(AudioLevel level) {
+            switch (level) {
+                case AudioLevel.Normal:
+                    return NormalBGMVolume;
+                case AudioLevel.Cutscene:
+                    return CutsceneBGMVolume;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(level), level, null);
+            }
+        }
+    }
+
+    public enum AudioLevel {
+        Normal,
+        Cutscene
     }
 }

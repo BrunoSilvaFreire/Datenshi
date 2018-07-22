@@ -40,7 +40,7 @@ namespace Datenshi.Scripts.Cutscenes.Dialogue.UI {
         public AudioSource AudioSource;
 
         [ShowInInspector]
-        private Text textComponent;
+        public Text textComponent;
 
         public float DefaultPrintDelay;
         public bool WaitForInput;
