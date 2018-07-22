@@ -341,7 +341,7 @@ GameObject:
   - component: {fileID: 23017059}
   - component: {fileID: 23017060}
   m_Layer: 0
-  m_Name: GroundCharger_Spawner (3)
+  m_Name: FlyingCharger_Spawner5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -354,11 +354,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 23017058}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 47.07, y: 2.959999, z: 0}
+  m_LocalPosition: {x: 47.07, y: 2.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1664723817}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &23017060
 MonoBehaviour:
@@ -953,7 +953,7 @@ GameObject:
   - component: {fileID: 132036895}
   - component: {fileID: 132036896}
   m_Layer: 0
-  m_Name: GroundCharger_Spawner (1)
+  m_Name: FlyingCharger_Spawner1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -966,7 +966,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 132036894}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.0699997, y: -0.040000916, z: 0}
+  m_LocalPosition: {x: -1.7, y: -0.040000916, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1664723817}
@@ -58236,17 +58236,6 @@ MonoBehaviour:
   m_Script: {fileID: 707169203, guid: 03fe207ae5b0c9040a227147e429c73e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnPlay:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Shiroi.Cutscenes.CutsceneEvent, ShiroiCutscenes-Runtime, Version=1.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnPlayed:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Shiroi.Cutscenes.CutsceneEvent, ShiroiCutscenes-Runtime, Version=1.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  references: []
 --- !u!156049354 &394420737
 Grid:
   m_ObjectHideFlags: 0
@@ -65238,10 +65227,6 @@ MonoBehaviour:
   m_Script: {fileID: -88106150, guid: 03fe207ae5b0c9040a227147e429c73e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cutscene: {fileID: 11400000, guid: 927d4ba93e258274ca771a188541fdc8, type: 2}
-  Player: {fileID: 394420736}
-  PostAction: 2
-  Mode: 1
 --- !u!61 &1178410508
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -66865,7 +66850,7 @@ GameObject:
   - component: {fileID: 1405824103}
   - component: {fileID: 1405824104}
   m_Layer: 0
-  m_Name: GroundCharger_Spawner (2)
+  m_Name: FlyingCharger_Spawner3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66878,11 +66863,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1405824102}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 30.07, y: 2.96, z: 0}
+  m_LocalPosition: {x: 27.6, y: 1.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1664723817}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1405824104
 MonoBehaviour:
@@ -68137,6 +68122,51 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Datenshi.Scripts.World.Rooms.RoomCollisionEvent, Datenshi-World, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!1 &1514094855
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1514094856}
+  - component: {fileID: 1514094857}
+  m_Layer: 0
+  m_Name: FlyingCharger_Spawner4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1514094856
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1514094855}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 31, y: 2.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1664723817}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1514094857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1514094855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a93af3bb72c543f7b1179bbc9e1c3cf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 114436857642151606, guid: 47ca908442818ed4aad2281a6f9ea103, type: 2}
+  PositionSource: 0
+  Threshold:
+    Minimum: 20
+    Maximum: 25
 --- !u!1 &1520857264
 GameObject:
   m_ObjectHideFlags: 0
@@ -69636,6 +69666,51 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1651216427}
   m_Mesh: {fileID: 4300146, guid: 6ad8f7d910a231c469f45b2c3b308dfb, type: 3}
+--- !u!1 &1661342849
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1661342850}
+  - component: {fileID: 1661342851}
+  m_Layer: 0
+  m_Name: GroundCharger_Spawner2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1661342850
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1661342849}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 32.8, y: -0.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1664723817}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1661342851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1661342849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a93af3bb72c543f7b1179bbc9e1c3cf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 114439828193827072, guid: 3e9fb3107770ec040b3169b09eb125e0, type: 2}
+  PositionSource: 0
+  Threshold:
+    Minimum: 20
+    Maximum: 25
 --- !u!1 &1664723816
 GameObject:
   m_ObjectHideFlags: 0
@@ -69664,8 +69739,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 132036895}
+  - {fileID: 2131126126}
   - {fileID: 1405824103}
+  - {fileID: 1514094856}
+  - {fileID: 1661342850}
   - {fileID: 23017059}
+  - {fileID: 2108010933}
   m_Father: {fileID: 909686504}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -69823,7 +69902,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4489300258031866, guid: 588b115d2bfbd3542adb6d3cd21dcd66, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 184.69563
+      value: 183
       objectReference: {fileID: 0}
     - target: {fileID: 4489300258031866, guid: 588b115d2bfbd3542adb6d3cd21dcd66, type: 2}
       propertyPath: m_LocalPosition.y
@@ -70409,6 +70488,18 @@ Prefab:
         type: 2}
       propertyPath: orthographic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715890564677138, guid: 588b115d2bfbd3542adb6d3cd21dcd66, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -335
+      objectReference: {fileID: 0}
+    - target: {fileID: 4449853845169802, guid: 588b115d2bfbd3542adb6d3cd21dcd66, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -335
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735978529038936, guid: 588b115d2bfbd3542adb6d3cd21dcd66, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -335
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 588b115d2bfbd3542adb6d3cd21dcd66, type: 2}
@@ -73538,10 +73629,6 @@ MonoBehaviour:
   m_Script: {fileID: -88106150, guid: 03fe207ae5b0c9040a227147e429c73e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cutscene: {fileID: 0}
-  Player: {fileID: 394420736}
-  PostAction: 3
-  Mode: 1
 --- !u!1 &2008482124
 GameObject:
   m_ObjectHideFlags: 0
@@ -74346,6 +74433,51 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &2108010932
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2108010933}
+  - component: {fileID: 2108010934}
+  m_Layer: 0
+  m_Name: FlyingCharger_Spawner6
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2108010933
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2108010932}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 51.8, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1664723817}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2108010934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2108010932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a93af3bb72c543f7b1179bbc9e1c3cf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 114436857642151606, guid: 47ca908442818ed4aad2281a6f9ea103, type: 2}
+  PositionSource: 0
+  Threshold:
+    Minimum: 20
+    Maximum: 25
 --- !u!1 &2108220544
 GameObject:
   m_ObjectHideFlags: 0
@@ -74770,6 +74902,51 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3, y: 2}
   m_EdgeRadius: 0
+--- !u!1 &2131126125
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2131126126}
+  - component: {fileID: 2131126127}
+  m_Layer: 0
+  m_Name: FlyingCharger_Spawner2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2131126126
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2131126125}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.6, y: -1.7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1664723817}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2131126127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2131126125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a93af3bb72c543f7b1179bbc9e1c3cf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 114436857642151606, guid: 47ca908442818ed4aad2281a6f9ea103, type: 2}
+  PositionSource: 0
+  Threshold:
+    Minimum: 20
+    Maximum: 25
 --- !u!1 &2134420084
 GameObject:
   m_ObjectHideFlags: 0
