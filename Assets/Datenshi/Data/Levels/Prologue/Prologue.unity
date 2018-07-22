@@ -58236,6 +58236,17 @@ MonoBehaviour:
   m_Script: {fileID: 707169203, guid: 03fe207ae5b0c9040a227147e429c73e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnPlay:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Shiroi.Cutscenes.CutsceneEvent, ShiroiCutscenes-Runtime, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnPlayed:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Shiroi.Cutscenes.CutsceneEvent, ShiroiCutscenes-Runtime, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  references: []
 --- !u!156049354 &394420737
 Grid:
   m_ObjectHideFlags: 0
@@ -65227,6 +65238,10 @@ MonoBehaviour:
   m_Script: {fileID: -88106150, guid: 03fe207ae5b0c9040a227147e429c73e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Cutscene: {fileID: 0}
+  Player: {fileID: 0}
+  PostAction: 2
+  Mode: 0
 --- !u!61 &1178410508
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -70501,6 +70516,27 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: -335
       objectReference: {fileID: 0}
+    - target: {fileID: 4449853845169802, guid: 588b115d2bfbd3542adb6d3cd21dcd66, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4449853845169802, guid: 588b115d2bfbd3542adb6d3cd21dcd66, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4449853845169802, guid: 588b115d2bfbd3542adb6d3cd21dcd66, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4449853845169802, guid: 588b115d2bfbd3542adb6d3cd21dcd66, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 20770504324774694, guid: 588b115d2bfbd3542adb6d3cd21dcd66,
+        type: 2}
+      propertyPath: far clip plane
+      value: 500
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 588b115d2bfbd3542adb6d3cd21dcd66, type: 2}
   m_IsPrefabParent: 0
@@ -73629,6 +73665,10 @@ MonoBehaviour:
   m_Script: {fileID: -88106150, guid: 03fe207ae5b0c9040a227147e429c73e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Cutscene: {fileID: 0}
+  Player: {fileID: 0}
+  PostAction: 2
+  Mode: 0
 --- !u!1 &2008482124
 GameObject:
   m_ObjectHideFlags: 0
