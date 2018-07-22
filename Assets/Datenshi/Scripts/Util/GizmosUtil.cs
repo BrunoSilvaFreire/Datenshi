@@ -322,5 +322,36 @@ namespace Datenshi.Scripts.Util {
         public static void DrawBounds2D(Bounds bounds, Color color) {
             DrawBox2DWire(bounds.center, bounds.size, color);
         }
+
+        public const uint CirclesVertices = 24;
+
+        public static void DrawWireCircle2D(Vector2 entityPos, float radius, Color color) {
+            var verts = new Vector2[CirclesVertices];
+            for (uint i = 0; i < CirclesVertices; i++) {
+                var pos = (float) i / CirclesVertices * 6.283185F;
+                var x = Mathf.Sin(pos) * radius;
+                var y = Mathf.Cos(pos) * radius;
+                var vert = entityPos;
+                vert.x += x;
+                vert.y += y;
+                verts[i] = vert;
+            }
+
+            DrawArray(verts, color, true);
+        }
+
+        private static void DrawArray(Vector2[] path, Color color, bool close = false) {
+            var max = path.Length - 1;
+            Gizmos.color = color;
+            for (var i = 0; i < max; i++) {
+                var first = path[i];
+                var second = path[i + 1];
+                Gizmos.DrawLine(first, second);
+            }
+
+            if (close) {
+                Gizmos.DrawLine(path[0], path[path.Length - 1]);
+            }
+        }
     }
 }

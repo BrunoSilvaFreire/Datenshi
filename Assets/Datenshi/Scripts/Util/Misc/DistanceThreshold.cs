@@ -41,8 +41,8 @@ namespace Datenshi.Scripts.Util.Misc {
             g.a = .5F;
             var y = Color.yellow;
             y.a = .5F;
-            DebugUtil.DrawWireCircle2D(center, Minimum, g);
-            DebugUtil.DrawWireCircle2D(center, Maximum, y);
+            GizmosUtil.DrawWireCircle2D(center, Minimum, g);
+            GizmosUtil.DrawWireCircle2D(center, Maximum, y);
         }
     }
 }

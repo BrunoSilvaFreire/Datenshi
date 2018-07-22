@@ -93,7 +93,7 @@ namespace Datenshi.Scripts.World.Rooms.Game {
         }
 
         private void OnDrawGizmos() {
-            DebugUtil.DrawWireCircle2D(transform.position, 1f, Color.red);
+            GizmosUtil.DrawWireCircle2D(transform.position, 1f, Color.red);
         }
 
         private void OnDrawGizmosSelected() {
