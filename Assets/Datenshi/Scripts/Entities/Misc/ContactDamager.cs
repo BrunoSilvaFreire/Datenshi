@@ -1,9 +1,8 @@
 ﻿using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Movement;
 using UnityEngine;
-using UPM.Motors;
 
-namespace Datenshi.Scripts.Entities {
+namespace Datenshi.Scripts.Entities.Misc {
     public class ContactDamager : MonoBehaviour, IDamageSource, IDefendable {
         public LivingEntity Owner;
         public uint Damage;

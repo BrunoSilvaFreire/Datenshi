@@ -7,7 +7,12 @@ namespace Datenshi.Scripts.Cinemachine {
     public class CinemachineEntityFollower : MonoBehaviour {
         public CinemachineVirtualCamera CameraBase;
 
-        private void Awake() {
+        private void Start() {
+            var e = PlayerController.GetOrCreateEntity();
+            Debug.Log("Entity = " + e);
+            if (e != null) {
+                CameraBase.Follow = e.Transform;
+            }
             PlayerController.Instance.OnEntityChanged.AddListener(OnChanged);
         }
 

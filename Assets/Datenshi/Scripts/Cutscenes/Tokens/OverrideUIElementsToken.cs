@@ -10,7 +10,6 @@ namespace Datenshi.Scripts.Cutscenes.Tokens {
 
         public override IEnumerator Execute(CutscenePlayer player, CutsceneExecutor executor) {
             foreach (var uiElement in FindObjectsOfType<UIView>()) {
-                Debug.Log($"Overring {uiElement} to {Value}");
                 uiElement.Override(Value);
             }
 

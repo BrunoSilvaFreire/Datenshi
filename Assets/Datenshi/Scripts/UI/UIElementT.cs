@@ -52,7 +52,6 @@ namespace Datenshi.Scripts.UI {
         }
 
         protected void UpdateState() {
-            Debug.Log($"Updating {name} to {Showing}");
             if (Showing) {
                 Show();
             } else {
