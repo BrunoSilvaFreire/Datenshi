@@ -564,17 +564,17 @@ AnimationClip:
   m_GenerateMotionCurves: 0
   m_Events:
   - time: 1
-    functionName: DestroyParent
+    functionName: PlayEffect
     data: 
-    objectReferenceParameter: {fileID: 0}
+    objectReferenceParameter: {fileID: 11400000, guid: a721b4af643d00c48bb6d34b30c81efa,
+      type: 2}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 1
-    functionName: SpawnPrefab
+    functionName: DestroyParent
     data: 
-    objectReferenceParameter: {fileID: 1134129239631916, guid: 7e48ba6b1b968764490bbc70b66e3fe1,
-      type: 2}
+    objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0

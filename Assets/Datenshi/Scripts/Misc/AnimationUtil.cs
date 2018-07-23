@@ -1,14 +1,18 @@
 ﻿using Datenshi.Scripts.Audio;
+using Datenshi.Scripts.FX;
 using Datenshi.Scripts.Util;
-using DG.Tweening;
 using UnityEngine;
 
-namespace Datenshi.Scripts.Animation {
+namespace Datenshi.Scripts.Misc {
     public class AnimationUtil : MonoBehaviour {
         public AudioSource Source;
 
         public void SpawnPrefab(GameObject prefab) {
             prefab.Clone(transform.position);
+        }
+
+        public void PlayEffect(Effect effect) {
+            effect.Execute(transform.position);
         }
 
         public void PlayAudioOneShot(AudioClip clip) {
@@ -30,6 +34,5 @@ namespace Datenshi.Scripts.Animation {
         public void DestroyParent() {
             Destroy(transform.parent.gameObject);
         }
-
     }
 }

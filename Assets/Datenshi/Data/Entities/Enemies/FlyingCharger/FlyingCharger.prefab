@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4923025326862548}
   - component: {fileID: 212674968473663152}
-  - component: {fileID: 114873319939289890}
   - component: {fileID: 61884439444700740}
+  - component: {fileID: 114277922984115088}
   - component: {fileID: 114266286993722668}
   - component: {fileID: 114514755281869446}
   - component: {fileID: 114509678107300158}
@@ -277,6 +277,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Outline: 0
   OutlineColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!114 &114277922984115088
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1190410910461276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1424380507e04e4bb106b9825b73eadf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 0}
+  Attacks: []
+  Entity: {fileID: 114436857642151606}
+  DeathEffect: {fileID: 11400000, guid: a721b4af643d00c48bb6d34b30c81efa, type: 2}
+  SpawnEffect: {fileID: 0}
 --- !u!114 &114364173896487102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -321,7 +337,7 @@ MonoBehaviour:
   hitbox: {fileID: 61884439444700740}
   OutlineInvulnerabilityMinSecondsLeft: 2
   ignored: 0
-  updater: {fileID: 114873319939289890}
+  updater: {fileID: 114277922984115088}
   relationship: 2
   DamageInvulnerability: 0
   DamageInvulnerabilityDuration: 3
@@ -586,6 +602,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 594d88b9ffec4455a198a7e96e0b0c83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AllowOverride: 1
   Group: {fileID: 0}
   ShowAlpha: 1
   HideAlpha: 0
@@ -623,21 +640,6 @@ MonoBehaviour:
   Submit: 0
   Defend: 0
   Focus: 0
---- !u!114 &114873319939289890
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1190410910461276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90175505b6424245868c8a2fff30bca9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Animator: {fileID: 0}
-  Skills:
-  - {fileID: 11400000, guid: e218c7fef030fdc4c8ba9e0bad0164ea, type: 2}
-  Entity: {fileID: 114436857642151606}
 --- !u!114 &114927567936252510
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -265,17 +265,9 @@ AnimationClip:
   m_GenerateMotionCurves: 0
   m_Events:
   - time: 0.16666667
-    functionName: PlayAudioFX
+    functionName: PlayEffect
     data: 
-    objectReferenceParameter: {fileID: 11400000, guid: 580642dbe344bfd48aff846ee7b71a7d,
-      type: 2}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.16666667
-    functionName: SpawnPrefab
-    data: 
-    objectReferenceParameter: {fileID: 1134129239631916, guid: 7e48ba6b1b968764490bbc70b66e3fe1,
+    objectReferenceParameter: {fileID: 11400000, guid: a721b4af643d00c48bb6d34b30c81efa,
       type: 2}
     floatParameter: 0
     intParameter: 0

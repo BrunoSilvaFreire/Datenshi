@@ -1,0 +1,14 @@
+{
+    "name": "Datenshi-FX",
+    "references": [
+        "Datenshi-Utilities",
+        "Datenshi-Audio",
+        "Datenshi-Graphics",
+        "Datenshi-Game",
+        "Datenshi-Combat"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}
