@@ -3,13 +3,12 @@
 Shader "Datenshi/EntityShader" {
 	Properties {
 	    _Color("Color", Color) = (1,1,1,1)
-		[PerRendererData]
-		_OverrideColor ("Override Color", Color) = (1,1,1,1)
-		[PerRendererData] 
-		_OverrideAmount ("Override Amount", Range(0, 1)) = 0
 		_OccludeColor ("OccludeColor", Color) = (1,1,1,1)
 		_OccludeAmount ("OccludeAmount", Range(0, 1)) = 0
 		[PerRendererData]
+		_OverrideColor ("OverrideColor", Color) = (1,1,1,1)
+		[PerRendererData]
+		_OverrideAmount ("OverrideAmount", Range(0, 1)) = 0
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
 		_Emission("Emission", 2D) = "black"
 		_NormalMap("Normal Map", 2D) = "white" {}
@@ -20,13 +19,15 @@ Shader "Datenshi/EntityShader" {
 		_OutlineColor("Outline Color", Color) = (0.96, 0, 0.34, 1)
 	}
 	SubShader {
-	
+	Cull Off
 	    Tags { 
 	        "Queue"="Transparent" 
 	        "RenderType"="Transparent"
+	        "PreviewType"="Plane"
 	     }
 		//LOD 200
-        Cull Off
+		
+		//OcclusionPass
         Pass {
 		    ZWrite Off        
             Blend SrcAlpha OneMinusSrcAlpha
@@ -67,6 +68,7 @@ Shader "Datenshi/EntityShader" {
         ENDCG
         
         }
+        // Surface Pass
 		CGPROGRAM
 		#pragma surface surf Standard fullforwardshadows alpha:fade
 		#pragma target 3.0
@@ -79,9 +81,6 @@ Shader "Datenshi/EntityShader" {
 		};
 
 		sampler2D _Emission;
-        fixed4 _OverrideColor;
-        fixed _OverrideAmount;
-        
 
 		void surf (Input IN, inout SurfaceOutputStandard o) {
 			fixed4 textureColor = tex2D (_MainTex, IN.uv_MainTex) * IN.color;
@@ -99,7 +98,8 @@ Shader "Datenshi/EntityShader" {
 			
 		}
 		ENDCG
-		Cull Off
+		
+		//OurlinePass
         Lighting Off
         ZWrite Off
         Blend SrcAlpha OneMinusSrcAlpha
@@ -175,40 +175,42 @@ Shader "Datenshi/EntityShader" {
             ENDCG
         }
         Pass {
+            ZTest Always
             CGPROGRAM
-            #pragma vertex vert
-            #pragma fragment frag
-        
-            struct appdata {
-                float4 vertex : POSITION;
-                float2 uv : TEXCOORD;
-            };
-        
-            struct v2f {
-                float4 vertex : SV_POSITION;
-                float2 uv : TEXCOORD;
-            };
-        
-            v2f vert (appdata v) {
-                v2f o;
-                o.vertex = UnityObjectToClipPos(v.vertex);
-                o.uv = v.uv;
-                return o;
-            }
+		        #pragma vertex vert
+			    #pragma fragment frag
+    			
+    			#include "UnityCG.cginc"
+
+	    		struct appdata
+		    	{
+			    	float4 vertex : POSITION;
+				    float2 uv : TEXCOORD;
+			    };
+
+			    struct v2f {
+				    float2 uv : TEXCOORD;
+				    float4 vertex : SV_POSITION;
+			    };
+
+			    v2f vert (appdata v) {
+				    v2f o;
+				    o.vertex = UnityObjectToClipPos(v.vertex);
+				    o.uv = v.uv;
+				    return o;
+			    }
 			
 			sampler2D _MainTex;
 			fixed4 _OverrideColor;
 			fixed _OverrideAmount;
-			
 			fixed4 frag (v2f i) : SV_Target {
-			    fixed4 col = tex2D(_MainTex, i.vertex);
-			    col.rgb = _OverrideColor.rgb;
-			    col.a *= _OverrideAmount;
-			    return col;
+			    fixed4 rawCol = tex2D(_MainTex, i.uv);
+				fixed4 col = _OverrideColor;
+				col.a = rawCol.a * _OverrideAmount;
+				return col;
 			}
-        
-            ENDCG
-        }
+        ENDCG
+      }
 	}
 	FallBack "Diffuse"
 }

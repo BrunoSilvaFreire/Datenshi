@@ -3,6 +3,7 @@ using Datenshi.Scripts.Util;
 using Datenshi.Scripts.Util.Singleton;
 using DG.Tweening;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Datenshi.Scripts.Audio {
     public enum AudioCategory {
@@ -32,8 +33,13 @@ namespace Datenshi.Scripts.Audio {
             LowPassFilter.DOFrequency(value, duration);
         }
 
-        public void PlayFX(AudioFX fx) {
+        public void PlayFX(AudioFX fx, float minPitch, float maxPitch) {
+            PlayFX(fx, Random.Range(minPitch, maxPitch));
+        }
+
+        public void PlayFX(AudioFX fx, float pitch = 1) {
             var source = GetSource(fx.Category);
+            source.pitch = pitch;
             switch (fx.Category) {
                 case AudioCategory.SFX:
                     source.PlayOneShot(fx.Clip, fx.Volume);

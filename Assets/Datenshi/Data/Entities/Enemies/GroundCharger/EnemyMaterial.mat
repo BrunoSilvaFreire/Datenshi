@@ -4,7 +4,7 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: EnemyMaterial
   m_Shader: {fileID: 4800000, guid: 4a866e3565274c4297a398f32c059958, type: 3}
@@ -65,6 +65,7 @@ Material:
     m_Floats:
     - _AlternativeOverrideAmount: 0
     - _BumpScale: 1
+    - _ColorOverrideAmount: 0.732
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DrawOcclusion: 1
@@ -83,6 +84,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _TestAmount: 1
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:

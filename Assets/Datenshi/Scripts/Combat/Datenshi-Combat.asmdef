@@ -6,8 +6,11 @@
         "Datenshi-Animation",
         "Datenshi-AI",
         "Datenshi-Input",
-        "Datenshi-Movement"
+        "Datenshi-Movement",
+        "Datenshi-FX"
     ],
+    "optionalUnityReferences": [],
     "includePlatforms": [],
-    "excludePlatforms": []
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
 }

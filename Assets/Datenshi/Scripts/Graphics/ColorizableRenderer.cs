@@ -26,6 +26,7 @@ namespace Datenshi.Scripts.Graphics {
         private MaterialPropertyBlock block;
         public bool Outline;
         public Color OutlineColor = Color.red;
+        public float DefaultOverrideAmount = 0;
 
         [ShowInInspector]
         private readonly ServiceHandler<ColorOverride> serviceHandler = new ServiceHandler<ColorOverride>();
@@ -73,7 +74,7 @@ namespace Datenshi.Scripts.Graphics {
                     block.SetColor(OverrideColorKey, meta.Color);
                     block.SetFloat(OverrideAmountKey, meta.Amount);
                 } else {
-                    block.SetFloat(OverrideAmountKey, 0);
+                    block.SetFloat(OverrideAmountKey, DefaultOverrideAmount);
                 }
 
                 r.SetPropertyBlock(block);

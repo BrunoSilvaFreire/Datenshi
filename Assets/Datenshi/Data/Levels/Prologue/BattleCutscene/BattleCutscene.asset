@@ -3,7 +3,7 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -12,17 +12,28 @@ MonoBehaviour:
   m_Name: BattleCutscene
   m_EditorClassIdentifier: 
   tokens:
+  - {fileID: 114772001746446538}
   - {fileID: 114379503717530320}
+  - {fileID: 114747033133253480}
   - {fileID: 114284660265786108}
   - {fileID: 114503533826876558}
+  - {fileID: 114885247382305410}
+  - {fileID: 114434881270862396}
+  - {fileID: 114932840033848200}
+  - {fileID: 114267932001685784}
+  - {fileID: 114444770272946770}
+  - {fileID: 114810424729107850}
+  - {fileID: 114784595100581012}
+  - {fileID: 114541847066955050}
   - {fileID: 114431990284914764}
+  - {fileID: 114225344753869498}
   - {fileID: 114202603873637196}
   FutureManager:
     futures: []
 --- !u!114 &114202603873637196
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -32,10 +43,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AcceptInput: 1
   Target: 2
+--- !u!114 &114225344753869498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd17541b2cd94104bd6d6aea874f7ab0, type: 3}
+  m_Name: ReleaseUIElementsOverrideToken
+  m_EditorClassIdentifier: 
+--- !u!114 &114267932001685784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1330792292, guid: 03fe207ae5b0c9040a227147e429c73e, type: 3}
+  m_Name: SetGameObjectActiveToken
+  m_EditorClassIdentifier: 
+  Target:
+    exposedName: -53806
+    defaultValue: {fileID: 0}
+  Active: 0
 --- !u!114 &114284660265786108
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -50,7 +87,7 @@ MonoBehaviour:
 --- !u!114 &114379503717530320
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -63,7 +100,7 @@ MonoBehaviour:
 --- !u!114 &114431990284914764
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -75,10 +112,41 @@ MonoBehaviour:
     exposedName: -1018970
     defaultValue: {fileID: 0}
   Priority: 0
+--- !u!114 &114434881270862396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9e9525cce384acda6ccb878e495ace0, type: 3}
+  m_Name: SpawnEntityToken
+  m_EditorClassIdentifier: 
+  Entity: {fileID: 114439828193827072, guid: 3e9fb3107770ec040b3169b09eb125e0, type: 2}
+  Position: {x: -79, y: 8}
+  Room:
+    exposedName: 29634
+    defaultValue: {fileID: 0}
+--- !u!114 &114444770272946770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1330792292, guid: 03fe207ae5b0c9040a227147e429c73e, type: 3}
+  m_Name: SetGameObjectActiveToken
+  m_EditorClassIdentifier: 
+  Target:
+    exposedName: -53808
+    defaultValue: {fileID: 0}
+  Active: 0
 --- !u!114 &114503533826876558
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -86,5 +154,101 @@ MonoBehaviour:
   m_Script: {fileID: -1967645408, guid: 03fe207ae5b0c9040a227147e429c73e, type: 3}
   m_Name: WaitForSecondsToken
   m_EditorClassIdentifier: 
-  Duration: 10
+  Duration: 1.5
   Realtime: 0
+--- !u!114 &114541847066955050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1330792292, guid: 03fe207ae5b0c9040a227147e429c73e, type: 3}
+  m_Name: SetGameObjectActiveToken
+  m_EditorClassIdentifier: 
+  Target:
+    exposedName: -352036
+    defaultValue: {fileID: 0}
+  Active: 1
+--- !u!114 &114747033133253480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1967645408, guid: 03fe207ae5b0c9040a227147e429c73e, type: 3}
+  m_Name: WaitForSecondsToken
+  m_EditorClassIdentifier: 
+  Duration: 1
+  Realtime: 0
+--- !u!114 &114772001746446538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9291d0afd51740edb692f3558371b200, type: 3}
+  m_Name: OverrideUIElementsToken
+  m_EditorClassIdentifier: 
+  Value: 0
+--- !u!114 &114784595100581012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1967645408, guid: 03fe207ae5b0c9040a227147e429c73e, type: 3}
+  m_Name: WaitForSecondsToken
+  m_EditorClassIdentifier: 
+  Duration: 1.5
+  Realtime: 0
+--- !u!114 &114810424729107850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1330792292, guid: 03fe207ae5b0c9040a227147e429c73e, type: 3}
+  m_Name: SetGameObjectActiveToken
+  m_EditorClassIdentifier: 
+  Target:
+    exposedName: -553542
+    defaultValue: {fileID: 0}
+  Active: 0
+--- !u!114 &114885247382305410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fd9888a8cfc40a6b6f578acdcfa563c, type: 3}
+  m_Name: PlayEffectToken
+  m_EditorClassIdentifier: 
+  Effect: {fileID: 11400000, guid: a721b4af643d00c48bb6d34b30c81efa, type: 2}
+  Location: {x: -80, y: 8, z: -0.5}
+--- !u!114 &114932840033848200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1330792292, guid: 03fe207ae5b0c9040a227147e429c73e, type: 3}
+  m_Name: SetGameObjectActiveToken
+  m_EditorClassIdentifier: 
+  Target:
+    exposedName: -53804
+    defaultValue: {fileID: 0}
+  Active: 0

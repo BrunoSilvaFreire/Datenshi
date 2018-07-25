@@ -33,6 +33,10 @@ namespace Datenshi.Scripts.UI {
         private bool overrideShowing;
         private bool overrideShowingValue;
 
+        private void Start() {
+            UpdateState();
+        }
+
         public void Override(bool value) {
             if (!AllowOverride) {
                 return;
@@ -53,9 +57,9 @@ namespace Datenshi.Scripts.UI {
 
         protected void UpdateState() {
             if (Showing) {
-                Show();
+                OnShow();
             } else {
-                Hide();
+                OnHide();
             }
         }
 
@@ -68,6 +72,7 @@ namespace Datenshi.Scripts.UI {
             }
         }
 
+        [SerializeField]
         private bool showing;
 
         public void Show() {

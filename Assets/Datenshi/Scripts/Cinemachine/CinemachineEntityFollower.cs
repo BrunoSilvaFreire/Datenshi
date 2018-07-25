@@ -9,7 +9,6 @@ namespace Datenshi.Scripts.Cinemachine {
 
         private void Start() {
             var e = PlayerController.GetOrCreateEntity();
-            Debug.Log("Entity = " + e);
             if (e != null) {
                 CameraBase.Follow = e.Transform;
             }

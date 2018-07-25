@@ -1,21 +1,15 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using BezierSolution;
-using Datenshi.Scripts.AI.Jobs;
 using Datenshi.Scripts.AI.Pathfinding;
 using Datenshi.Scripts.AI.Util;
 using Datenshi.Scripts.Movement;
 using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
-using Unity.Collections;
-using Unity.Jobs;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace Datenshi.Scripts.AI {
     [Serializable]

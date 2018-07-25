@@ -1,12 +1,9 @@
 {
   "dependencies": {
-    "com.unity.postprocessing": "2.0.9-preview",
     "com.unity.cinemachine": "2.2.0",
-    "com.unity.ads": "exclude",
-    "com.unity.purchasing": "exclude",
-    "com.unity.analytics": "exclude",
-    "com.unity.standardevents": "exclude",
     "com.unity.package-manager-ui": "1.9.11",
+    "com.unity.postprocessing": "2.0.9-preview",
+    "com.unity.textmeshpro": "1.2.4",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
     "com.unity.modules.assetbundle": "1.0.0",

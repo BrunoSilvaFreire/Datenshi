@@ -3,9 +3,7 @@
     "references": [
         "Datenshi-Utilities",
         "Datenshi-Audio",
-        "Datenshi-Graphics",
-        "Datenshi-Game",
-        "Datenshi-Combat"
+        "Datenshi-Graphics"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],

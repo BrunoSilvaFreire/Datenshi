@@ -5,7 +5,6 @@ using Datenshi.Scripts.Util;
 using Datenshi.Scripts.Util.Singleton;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace Datenshi.Scripts.AI.Pathfinding {
     public class Navmesh : Singleton<Navmesh> {

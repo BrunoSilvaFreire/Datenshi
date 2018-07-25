@@ -9,7 +9,12 @@
         "Datenshi-Game",
         "Datenshi-World",
         "Datenshi-World-Game",
-        "Datenshi-Audio"
+        "Datenshi-Audio",
+        "Datenshi-FX",
+        "Datenshi-Entities",
+        "Datenshi-Graphics",
+        "Datenshi-Movement",
+        "Datenshi-Combat"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],

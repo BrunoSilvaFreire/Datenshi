@@ -6,7 +6,6 @@ using Datenshi.Scripts.AI.Pathfinding.Links;
 using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Util;
 using UnityEngine;
-using UnityEngine.Profiling;
 
 namespace Datenshi.Scripts.AI {
     public static class AStar {

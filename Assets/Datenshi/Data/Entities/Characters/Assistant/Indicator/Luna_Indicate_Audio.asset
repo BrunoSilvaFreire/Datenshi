@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cdd0efbed1b4bc7b1332c88e74b2a67, type: 3}
+  m_Name: Luna_Indicate_Audio
+  m_EditorClassIdentifier: 
+  Clip: {fileID: 8300000, guid: 9f3de72cdc15b2241aa8854a9b5702fc, type: 3}
+  Category: 0
+  Volume: 1

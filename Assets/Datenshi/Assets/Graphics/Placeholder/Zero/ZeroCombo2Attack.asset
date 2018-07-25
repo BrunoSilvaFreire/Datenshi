@@ -3,7 +3,7 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec3032e461cc4bb595938d01c9d95415, type: 3}
   m_Name: ZeroCombo2Attack
   m_EditorClassIdentifier: 
-  Particle: {fileID: 198445748007662224, guid: cae7a7f79f37a934ab16d127427eef8c, type: 2}
+  OnHit: {fileID: 11400000, guid: c9d455259533e3e458d800f0106b1eb7, type: 2}
   Hitbox:
     Center: {x: 0.6694107, y: 1.1957073}
     Size: {x: 3.5027313, y: 2.4137287}

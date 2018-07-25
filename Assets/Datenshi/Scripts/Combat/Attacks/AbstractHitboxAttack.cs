@@ -1,4 +1,5 @@
 ﻿using Datenshi.Scripts.Data;
+using Datenshi.Scripts.FX;
 using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -13,7 +14,7 @@ namespace Datenshi.Scripts.Combat.Attacks {
 
     public abstract class AbstractHitboxAttack : Attack, IDefendable {
         private static readonly Color HitboxColor = Color.green;
-        public ParticleSystem Particle;
+        public Effect OnHit;
 
         public Bounds2D Hitbox;
         public float FocusConsumption = 0.1f;
@@ -57,8 +58,8 @@ namespace Datenshi.Scripts.Combat.Attacks {
                 var info = new DamageInfo(this, 1, d, entity);
                 success = true;
                 d.Damage(ref info, this);
-                if (Particle != null) {
-                    Particle.Clone(d.Center);
+                if (OnHit != null) {
+                    OnHit.Execute(d.Center);
                 }
             }
 

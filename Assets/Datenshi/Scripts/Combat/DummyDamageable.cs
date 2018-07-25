@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Datenshi.Scripts.FX;
+using UnityEngine;
+using UnityEngine.Events;
 
 namespace Datenshi.Scripts.Combat {
     public class DummyDamageable : MonoBehaviour, IDamageable {
@@ -13,6 +15,13 @@ namespace Datenshi.Scripts.Combat {
 
         [SerializeField]
         private bool ignored;
+
+        [SerializeField]
+        private UnityEvent onKilled;
+
+        public bool DestroyOnDeath = true;
+        public Effect DamagedEffect;
+        public Effect KilledEffect;
 
         public bool Ignored {
             get {
@@ -71,7 +80,14 @@ namespace Datenshi.Scripts.Combat {
 
         public void Kill() {
             currentHealth = 0;
-            Destroy(gameObject);
+            onKilled.Invoke();
+            if (KilledEffect != null) {
+                KilledEffect.Execute(transform.position);
+            }
+
+            if (DestroyOnDeath) {
+                Destroy(gameObject);
+            }
         }
 
         public void Heal(uint healthAmount) {
@@ -79,14 +95,20 @@ namespace Datenshi.Scripts.Combat {
         }
 
         public uint Damage(ref DamageInfo damageInfo, IDefendable defendable = null) {
-            if (GodMode) {
+            if (GodMode || Dead) {
                 return 0;
+            }
+
+            if (DamagedEffect != null) {
+                DamagedEffect.Execute(transform.position);
             }
 
             var dmg = (uint) (damageInfo.Attack.GetDamage(this) * damageInfo.Multiplier);
             CurrentHealth -= dmg;
             return dmg;
         }
+
+        public UnityEvent OnKilled => onKilled;
 
         public Transform Transform => transform;
 

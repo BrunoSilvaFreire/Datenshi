@@ -86,6 +86,10 @@ namespace Datenshi.Scripts.Combat {
         void Heal(uint healthAmount);
 
         uint Damage(ref DamageInfo damageInfo, IDefendable defendable = null);
+
+        UnityEvent OnKilled {
+            get;
+        }
     }
 
     public interface ICombatant : IVariableHolder, IInputReceiver, IDamageable, IDamageDealer {
@@ -141,9 +145,5 @@ namespace Datenshi.Scripts.Combat {
         void Stun(float duration);
 
         void ExecuteSkill(ActiveSkill skill);
-
-        UnityEvent OnKilled {
-            get;
-        }
     }
 }

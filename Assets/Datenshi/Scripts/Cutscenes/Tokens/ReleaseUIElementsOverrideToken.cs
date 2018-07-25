@@ -1,8 +1,8 @@
 ﻿using System.Collections;
-using System.Diagnostics;
 using Datenshi.Scripts.UI;
 using Shiroi.Cutscenes;
 using Shiroi.Cutscenes.Tokens;
+using UnityEngine;
 
 namespace Datenshi.Scripts.Cutscenes.Tokens {
     public class ReleaseUIElementsOverrideToken : Token {

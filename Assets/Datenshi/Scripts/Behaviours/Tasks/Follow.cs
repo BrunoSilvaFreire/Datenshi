@@ -11,6 +11,7 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
         public MovableEntity Entity;
         public Transform Override;
         public float TeleportThreshold = 8;
+        public float IdleThreshold = .5F;
 
         public override TaskStatus OnUpdate() {
             var t = Target.Value;
@@ -24,13 +25,18 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
             }
 
             var targetPos = Navigator.GetFavourablePosition(Override != null ? (Vector2) Override.position : t.Center);
-            if (Vector2.Distance(Entity.Center, targetPos) > TeleportThreshold) {
+            var d = Vector2.Distance(Entity.Center, targetPos);
+            if (d > TeleportThreshold) {
                 Entity.transform.position = targetPos;
                 return TaskStatus.Running;
             }
 
-            Navigator.SetTarget(targetPos);
-            Navigator.Execute(Entity, p);
+            if (d > IdleThreshold) {
+                Navigator.SetTarget(targetPos);
+                Navigator.Execute(Entity, p);
+            } else {
+                p.Reset();
+            }
 
             return TaskStatus.Running;
         }

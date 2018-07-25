@@ -3,7 +3,7 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -14,8 +14,7 @@ MonoBehaviour:
   Speeches:
   - Character: {fileID: 11400000, guid: 8a2ea0deeae62114f97ad13a532bdf1b, type: 2}
     Lines:
-    - Text: Okay, our mission is to find Dimitri Vodka, and stop the attack! You ready
-        Luna?
+    - Text: Okay Luna, we're here, are you ready?
       Move: 1
       AppearanceMode:
         Duration: 0.5
@@ -31,7 +30,7 @@ MonoBehaviour:
         Left: 0
   - Character: {fileID: 11400000, guid: 8a2ea0deeae62114f97ad13a532bdf1b, type: 2}
     Lines:
-    - Text: Okay then, let's go!
+    - Text: Okay then, just need to break out of this container...
       Move: 1
       AppearanceMode:
         Duration: 0

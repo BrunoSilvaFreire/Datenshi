@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Datenshi.Scripts.AI.Pathfinding;
-using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Util;
 using Unity.Collections;
 using Unity.Jobs;

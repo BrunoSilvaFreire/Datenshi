@@ -20,6 +20,9 @@ namespace Datenshi.Scripts.World.Rooms {
     [Serializable]
     public class RoomCollisionEvent : UnityEvent<Collider2D> { }
 
+    [Serializable]
+    public class RoomMemberEvent : UnityEvent<IRoomMember> { }
+
     public class Room : MonoBehaviour {
         private readonly List<IRoomMember> members = new List<IRoomMember>();
         public BoxCollider2D Area;
@@ -29,6 +32,8 @@ namespace Datenshi.Scripts.World.Rooms {
         public float Height => Area.size.y;
         public RoomCollisionEvent OnObjectEnter;
         public RoomCollisionEvent OnObjectExit;
+        public RoomMemberEvent OnMemberAdded;
+        public RoomMemberEvent OnMemberRemoved;
 
         public bool IsInBounds(Vector2 pos) {
             return !IsOutInBounds(pos);
@@ -54,17 +59,7 @@ namespace Datenshi.Scripts.World.Rooms {
                     continue;
                 }
 
-                member.RequestRoomMembership(this);
-                members.Add(member);
-                var e = member.OnDestroyed;
-                UnityAction action = null;
-                action = () => {
-                    members.Remove(member);
-                    if (action != null) {
-                        e.RemoveListener(action);
-                    }
-                };
-                e.AddListener(action);
+                AddMember(member);
             }
         }
 
@@ -93,6 +88,24 @@ namespace Datenshi.Scripts.World.Rooms {
             }
 
             return default(T);
+        }
+
+        public void AddMember(IRoomMember member) {
+            member.RequestRoomMembership(this);
+            members.Add(member);
+            var e = member.OnDestroyed;
+            UnityAction action = null;
+            action = () => {
+                RemoveMember(member);
+                e.RemoveListener(action);
+            };
+            e.AddListener(action);
+            OnMemberAdded.Invoke(member);
+        }
+
+        private void RemoveMember(IRoomMember member) {
+            members.Remove(member);
+            OnMemberRemoved.Invoke(member);
         }
     }
 }

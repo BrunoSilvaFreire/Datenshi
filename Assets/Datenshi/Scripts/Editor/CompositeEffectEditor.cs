@@ -18,10 +18,17 @@ namespace Datenshi.Scripts.Editor {
         }
 
         public override void OnInspectorGUI() {
+            GUILayout.BeginHorizontal();
+            var found = (Effect) EditorGUILayout.ObjectField("Add Existing Effect", null, typeof(Effect), false);
+            if (found != null && !effect.SubEffects.Contains(found)) {
+                effect.SubEffects.Add(found);
+            }
+
             if (GUILayout.Button("Add New Effect")) {
                 PopupWindow.Show(new Rect(0, 0, 300, 0), content);
-                return;
             }
+
+            GUILayout.EndHorizontal();
 
             for (var i = 0; i < effect.SubEffects.Count; i++) {
                 var effectSubEffect = effect.SubEffects[i];

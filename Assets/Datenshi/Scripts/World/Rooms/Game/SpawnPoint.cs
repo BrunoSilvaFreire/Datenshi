@@ -7,7 +7,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Datenshi.Scripts.World.Rooms.Game {
-    public class SpawnPoint : MonoBehaviour {
+    public class SpawnPoint : AbstractRoomMember {
         public enum PositionSourceType {
             Player,
             SpawnPoint
@@ -71,8 +71,6 @@ namespace Datenshi.Scripts.World.Rooms.Game {
         private void Despawn() {
             Destroy(active.gameObject);
             active = null;
-
-            killed = false;
         }
 
         private void Spawn() {
@@ -84,6 +82,7 @@ namespace Datenshi.Scripts.World.Rooms.Game {
                 return;
             }
 
+            Room.AddMember(l);
             l.OnKilled.AddListener(OnKilled);
         }
 
