@@ -1,7 +1,8 @@
 {
     "name": "Datenshi-Audio",
     "references": [
-        "Datenshi-Utilities"
+        "Datenshi-Utilities",
+        "FMOD"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],

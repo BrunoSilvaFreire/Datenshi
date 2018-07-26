@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using Datenshi.Scripts.UI;
 using Datenshi.Scripts.Util;
+using Datenshi.Scripts.Util.Misc.Narrator;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;

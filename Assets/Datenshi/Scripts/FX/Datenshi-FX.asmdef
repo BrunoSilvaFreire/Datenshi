@@ -3,7 +3,8 @@
     "references": [
         "Datenshi-Utilities",
         "Datenshi-Audio",
-        "Datenshi-Graphics"
+        "Datenshi-Graphics",
+        "FMOD"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],

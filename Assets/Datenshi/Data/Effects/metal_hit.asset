@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cdd0efbed1b4bc7b1332c88e74b2a67, type: 3}
   m_Name: metal_hit
   m_EditorClassIdentifier: 
-  Clip: {fileID: 8300000, guid: 3dbe29c7af811ff4e8a9dce8f494d0e6, type: 3}
   Category: 0
   Volume: 0.6
+  FMODEventName: event:/SFX/Metal Hit

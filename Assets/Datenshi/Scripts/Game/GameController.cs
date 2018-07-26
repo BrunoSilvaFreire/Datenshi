@@ -55,21 +55,26 @@ namespace Datenshi.Scripts.Game {
             var audio = AudioManager.Instance;
             audio.StopBGM();
             var f = audio.ReverbFilter;
-            f.enabled = true;
+            if (f != null) {
+                f.enabled = true;
+            }
+            var runtime = RuntimeResources.Instance;
+            runtime.AllowPlayerInput = false;
+            runtime.AllowAIInput = false;
+            
             var graphics = GraphicsSingleton.Instance;
             var glitch = graphics.Glitch;
             glitch.ColorDrift = DeathFXColorIntensity;
             glitch.ScanLineJitter = DeathFXJumpIntensity;
-            var runtime = RuntimeResources.Instance;
-            runtime.AllowPlayerInput = false;
-            runtime.AllowAIInput = false;
             var bnw = graphics.BlackAndWhite;
-            bnw.RequestService(DeathFXRestartDuration, DesaturationCurve, DarkenCurve, 2);
             float defaultDesaturate = bnw.DefaultDesaturationAmount, defaultDarken = bnw.DefaultDarkenAmount;
             bnw.DefaultDarkenAmount = 1;
             bnw.DefaultDesaturationAmount = 1;
             yield return new WaitForSeconds(DeathFXDuration + DeathFXWaitDuration);
-            f.enabled = false;
+            if (f) {
+                f.enabled = false;
+            }
+
             audio.RestartBGM();
             RestartAll();
             runtime.AllowPlayerInput = true;

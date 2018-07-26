@@ -27,7 +27,6 @@ namespace Datenshi.Scripts.Combat.Attacks {
             if (TowardsCombatTarget) {
                 var t = entity.GetVariable(CombatVariables.AttackTarget);
                 if (t == null) {
-                    Debug.LogWarning("No combat target! " + entity, this);
                     return Vector2.zero;
                 }
 

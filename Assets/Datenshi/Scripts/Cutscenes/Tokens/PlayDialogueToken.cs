@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Datenshi.Scripts.Cutscenes.Dialogue.UI;
 using Shiroi.Cutscenes;
 using Shiroi.Cutscenes.Tokens;
@@ -19,19 +20,26 @@ namespace Datenshi.Scripts.Cutscenes.Tokens {
         public bool CloseOnFinish = true;
 
         public override IEnumerator Execute(CutscenePlayer player, CutsceneExecutor executor) {
-            var stage = UIMainDialogueStage.Instance;
+            UIDialogueStage stage;
+            switch (Target) {
+                case DialogueTarget.Main:
+                    stage = UIMainDialogueStage.Instance;
+                    break;
+                case DialogueTarget.World:
+                    stage = UIWorldDialogueStage.Instance;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
             if (OpenOnStart) {
                 stage.Showing = true;
             }
 
-            stage.SetShowContinueInstruction(true);
             yield return stage.PlayDialogue(Dialogue);
             if (CloseOnFinish) {
                 stage.Showing = false;
             }
-
-            stage.SetShowContinueInstruction(false);
         }
-
     }
 }

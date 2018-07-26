@@ -1,64 +1,45 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Datenshi.Scripts.Entities;
+using Datenshi.Scripts.Util;
 
 namespace Datenshi.Scripts.Cutscenes.Dialogue.UI {
     public class UIWorldDialogueStage : UIDialogueStage<UIWorldDialogueStage> {
-        protected override void SnapShow() {
-            foreach (var portrait in Elements) {
-                portrait.SnapShowing(true);
-            }
-        }
-
-        protected override void SnapHide() {
-            foreach (var portrait in Elements) {
-                portrait.SnapShowing(false);
-            }
-        }
-
-        protected override void OnShow() {
-            foreach (var portrait in Elements) {
-                portrait.Showing = true;
-            }
-        }
-
-        protected override void OnHide() {
-            foreach (var portrait in Elements) {
-                portrait.Showing = false;
-            }
-        }
-
-        private Dialogue currentDialogue;
-        private List<DialogueHistory> lastLines = new List<DialogueHistory>();
-
-        private sealed class DialogueHistory {
-            public DialogueHistory(DialogueSpeech speech, DialogueLine line) {
-                Speech = speech;
-                Line = line;
-            }
-
-            public DialogueSpeech Speech {
-                get;
-            }
-
-            public DialogueLine Line {
-                get;
-            }
-        }
-
         protected override IEnumerator DoPlayDialogue(Dialogue dialogue) {
             var speeches = dialogue.Speeches;
+            var con = new HashSet<EntityMiscController>();
+            ;
             foreach (var speech in speeches) {
                 var character = speech.Character;
+                var entity = FindEntityForCharacter(character);
                 foreach (var line in speech.Lines) {
-                    var history = new DialogueHistory(speech, line);
-                    lastLines.Add(history);
-                    yield return AddLine(history);
+                    var c = entity.MiscController;
+                    c.ShowCanvas();
+                    con.Add(c);
+                    var narrator = c.EntityNarrator;
+                    yield return narrator.TypeTextCharByChar(line.Text, character.SpeechClip);
                 }
+            }
+
+            foreach (var entityMiscController in con) {
+                entityMiscController.HideCanvas();
             }
         }
 
-        private IEnumerator AddLine(DialogueHistory history) {
-            throw new System.NotImplementedException();
+        private readonly Dictionary<Character.Character, Entity> entityCache =
+            new Dictionary<Character.Character, Entity>();
+
+        private Entity FindEntityForCharacter(Character.Character character) {
+            if (entityCache.ContainsKey(character)) {
+                return entityCache[character];
+            }
+
+            return entityCache[character] = FindEntityInScene(character);
+        }
+
+        private static Entity FindEntityInScene(Character.Character character) {
+            return ObjectUtil.FindAll<Entity>().FirstOrDefault(entity => entity.Character == character);
         }
     }
 }

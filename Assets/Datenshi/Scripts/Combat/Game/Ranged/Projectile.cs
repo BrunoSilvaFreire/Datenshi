@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Entities;
+using Datenshi.Scripts.FX;
 using Datenshi.Scripts.Movement;
 using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
@@ -42,10 +43,9 @@ namespace Datenshi.Scripts.Combat.Game.Ranged {
 
         public float TravelSpeed = 5;
         public float DestroyDelay = 2;
-        public GameObject SpawnOnHit;
-        public GameObject SpawnOnDefended;
-        public AudioClip DefendedClip;
-        public AudioSource Source;
+        public Effect HitEffect;
+        public Effect ShotEffect;
+        public Effect DefendedEffect;
         public GameObject[] ToDecouple;
         public float MaxAutoDefenseAngle = 150;
         public float MaxTravelDistance = 30;
@@ -132,8 +132,8 @@ namespace Datenshi.Scripts.Combat.Game.Ranged {
                 Destroy(obj, DestroyDelay);
             }
 
-            if (SpawnOnHit != null) {
-                SpawnOnHit.Clone(transform.position);
+            if (HitEffect != null) {
+                HitEffect.Execute(transform.position);
             }
 
             PlayDefendFX();
@@ -221,12 +221,8 @@ namespace Datenshi.Scripts.Combat.Game.Ranged {
         }
 
         private void PlayDefendFX() {
-            if (SpawnOnDefended != null) {
-                SpawnOnDefended.Clone(transform.position);
-            }
-
-            if (DefendedClip != null) {
-                Source.PlayOneShot(DefendedClip);
+            if (DefendedEffect != null) {
+                DefendedEffect.Execute(transform.position);
             }
         }
 

@@ -57,15 +57,6 @@ namespace Datenshi.Scripts.Combat.Game {
 
         public float DamageCutoff = 5000;
         public float LowCutoff = 440;
-
-        private IEnumerator DoFreezeTimeCombo(float timeScale, float timeScaleDuration, ICombatant entity) {
-            TimeController.Instance.RequestSlowdown(timeScale, timeScaleDuration);
-            AudioManager.Instance.ImpactHighFilter(DamageCutoff, LowCutoff, timeScaleDuration);
-            var animator = entity.AnimatorUpdater.Animator;
-            animator.updateMode = AnimatorUpdateMode.UnscaledTime;
-            yield return new WaitForSeconds(timeScaleDuration);
-            animator.updateMode = AnimatorUpdateMode.Normal;
-        }
 /*
 
 

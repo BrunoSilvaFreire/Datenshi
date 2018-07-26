@@ -10,7 +10,8 @@
         "Datenshi-Entities",
         "Datenshi-Graphics",
         "Datenshi-World",
-        "Datenshi-AI"
+        "Datenshi-AI",
+        "Datenshi-FX"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],

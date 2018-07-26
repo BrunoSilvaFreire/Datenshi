@@ -21,8 +21,8 @@ namespace Datenshi.Scripts.World.Rooms.Game {
 
         public void Show(Vector2 direction) {
             Showing = true;
-            var angle = Mathf.Atan2(direction.x, direction.y);
-            transform.rotation = Quaternion.Euler(0, 0, angle * Mathf.Rad2Deg);
+            var angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, angle);
         }
     }
 }

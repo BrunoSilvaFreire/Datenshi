@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cdd0efbed1b4bc7b1332c88e74b2a67, type: 3}
   m_Name: explosion_fx
   m_EditorClassIdentifier: 
-  Clip: {fileID: 8300000, guid: 8ab3a3bfbbfd33548a34a37a130249bd, type: 3}
   Category: 0
   Volume: 0.5
+  FMODEventName: event:/SFX/Explosion

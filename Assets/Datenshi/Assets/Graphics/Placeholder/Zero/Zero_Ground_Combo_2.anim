@@ -3,7 +3,7 @@
 --- !u!74 &7400000
 AnimationClip:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Zero_Ground_Combo_2
   serializedVersion: 6
@@ -96,10 +96,10 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0
-    functionName: PlayAudioOneShot
+    functionName: PlayAudioFX
     data: 
-    objectReferenceParameter: {fileID: 8300000, guid: 59cd4522bdd4ee441b87ffbad0fd5cd1,
-      type: 3}
+    objectReferenceParameter: {fileID: 11400000, guid: 007c7b831126dc343a4bcd3fab5c8b9b,
+      type: 2}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0

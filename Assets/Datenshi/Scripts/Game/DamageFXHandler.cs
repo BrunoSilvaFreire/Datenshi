@@ -1,17 +1,15 @@
-﻿using System.Collections;
-using Datenshi.Scripts.Audio;
+﻿using Datenshi.Scripts.Audio;
 using Datenshi.Scripts.Combat;
-using Datenshi.Scripts.Combat.Attacks;
 using Datenshi.Scripts.Entities;
+using Datenshi.Scripts.FX;
 using Datenshi.Scripts.Game.Time;
 using Datenshi.Scripts.Graphics;
-using Datenshi.Scripts.Util;
 using DG.Tweening;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Game {
     public class DamageFXHandler : MonoBehaviour {
-        public AudioFX[] DamageAudio;
+        public Effect DamageAudio;
 
         public float DamageGlitchAmount = 1;
         public float DamageColorDriftAmount = 1;
@@ -46,12 +44,11 @@ namespace Datenshi.Scripts.Game {
             }
 
             if (Equals(damaged, currentEntity) && !damaged.Dead) {
-                
                 var graphics = GraphicsSingleton.Instance;
                 var damageGlitch = graphics.Glitch;
                 var bnw = graphics.BlackAndWhite;
                 ResetGlitch();
-                AudioManager.Instance.PlayFX(DamageAudio.RandomElement());
+                DamageAudio.Execute(currentEntity.Center);
                 damageGlitch.DOKill();
                 damageGlitch.enabled = true;
                 damageGlitch.ScanLineJitter = DamageGlitchAmount;

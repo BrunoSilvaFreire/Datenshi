@@ -4,11 +4,7 @@ using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace Datenshi.Scripts.Cutscenes.Dialogue.UI {
-    public abstract class UIDialogueStage<T> : UIMenu where T : Object {
-        private static T instance;
-
-        public static T Instance => instance ? instance : (instance = FindObjectOfType<T>());
-
+    public abstract class UIDialogueStage : UIMenu {
         public Dialogue CurrentDialogue {
             get;
             private set;
@@ -25,5 +21,11 @@ namespace Datenshi.Scripts.Cutscenes.Dialogue.UI {
         }
 
         protected abstract IEnumerator DoPlayDialogue(Dialogue dialogue);
+    }
+
+    public abstract class UIDialogueStage<T> : UIDialogueStage where T : Object {
+        private static T instance;
+
+        public static T Instance => instance ? instance : (instance = FindObjectOfType<T>());
     }
 }

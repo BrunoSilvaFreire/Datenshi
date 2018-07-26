@@ -1,15 +1,30 @@
 ﻿using Datenshi.Scripts.Entities.Misc.Ghosting;
 using Datenshi.Scripts.Util;
+using Datenshi.Scripts.Util.Misc.Narrator;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Datenshi.Scripts.Entities {
     public class EntityMiscController : MonoBehaviour {
-        public Canvas EntityCanvas;
+        public CanvasGroup EntityCanvas;
+        public Narrator EntityNarrator;
         public AudioSource EntityAudioSource;
         public AudioClip[] StepSounds;
         public Animator Animator;
         public GhostingContainer GhostingContainer;
+        public float CanvasFadeDuration = .5F;
+
+        public void ShowCanvas() {
+            EntityCanvas.DOKill();
+            EntityCanvas.DOFade(1, CanvasFadeDuration);
+        }
+
+        public void HideCanvas() {
+            EntityCanvas.DOKill();
+            EntityCanvas.DOFade(0, CanvasFadeDuration);
+        }
 
         [SerializeField, HideInInspector]
         private float minPitch;

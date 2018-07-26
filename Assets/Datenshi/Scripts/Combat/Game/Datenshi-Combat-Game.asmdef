@@ -11,7 +11,8 @@
         "Datenshi-Audio",
         "Datenshi-Entities",
         "Datenshi-World",
-        "Datenshi-Graphics"
+        "Datenshi-Graphics",
+        "Datenshi-FX"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],

@@ -3,7 +3,7 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cdd0efbed1b4bc7b1332c88e74b2a67, type: 3}
   m_Name: PrologueTheme
   m_EditorClassIdentifier: 
-  Clip: {fileID: 8300000, guid: 75a44b213ae07ad438e8b96867613c55, type: 3}
   Category: 1
   Volume: 1
+  FMODEventName: event:/BG/Songs/Prologue Theme

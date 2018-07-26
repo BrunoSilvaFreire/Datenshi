@@ -44,6 +44,10 @@ namespace Datenshi.Scripts.Util.Pooling {
         }
 
         public void Return(T obj) {
+            if (obj == null) {
+                return;
+            }
+
             if (temporaryObjects.Contains(obj)) {
                 temporaryObjects.Remove(obj);
                 Destroy(obj.gameObject);

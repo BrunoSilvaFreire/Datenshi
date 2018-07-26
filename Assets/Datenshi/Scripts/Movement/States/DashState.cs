@@ -1,6 +1,7 @@
 ﻿using System;
 using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Entities;
+using Datenshi.Scripts.FX;
 using Datenshi.Scripts.Input;
 using Datenshi.Scripts.Movement.Config;
 using Sirenix.OdinInspector;
@@ -19,7 +20,9 @@ namespace Datenshi.Scripts.Movement.States {
             new Variable<float>("entity.motors.states.dash.dashDuration", 0);
 
         public static readonly VerticalPhysicsCheck VerticalVelocityCheck = new VerticalPhysicsCheck();
-        public static readonly DatenshiHorizontalPhysicsCheck HorizontalVelocityCheck = new DatenshiHorizontalPhysicsCheck();
+
+        public static readonly DatenshiHorizontalPhysicsCheck HorizontalVelocityCheck =
+            new DatenshiHorizontalPhysicsCheck();
 
 
         public static readonly PhysicsBehaviour DashBehaviour = new PhysicsBehaviour(
@@ -27,6 +30,7 @@ namespace Datenshi.Scripts.Movement.States {
             HorizontalVelocityCheck
         );
 
+        public Effect DashEffect;
         public float DashDistance = 10;
         public float DashDuration = 1;
 
@@ -77,6 +81,7 @@ namespace Datenshi.Scripts.Movement.States {
                     g.Spawning = true;
                 }
 
+                DashEffect.Execute(entity.Center);
                 entity.AnimatorUpdater.SetBool(DashAnimatorKey, true);
                 entity.SetVariable(Dashing, true);
                 var dir = Math.Sign(provider.GetHorizontal());

@@ -10,7 +10,8 @@
         "Datenshi-Combat",
         "Datenshi-Movement",
         "Datenshi-Audio",
-        "Datenshi-Animation"
+        "Datenshi-Animation",
+        "Datenshi-FX"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],

@@ -14,7 +14,8 @@
         "Datenshi-Entities",
         "Datenshi-Graphics",
         "Datenshi-Movement",
-        "Datenshi-Combat"
+        "Datenshi-Combat",
+        "FMOD"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],
