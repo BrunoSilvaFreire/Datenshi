@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Datenshi.Scripts.Input;
+using FMODUnity;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
@@ -34,8 +35,6 @@ namespace Datenshi.Scripts.Util.Misc.Narrator {
         [Tooltip("Event called when a character is printed. Inteded for audio callbacks.")]
         private CharacterPrintedEvent characterPrinted = new CharacterPrintedEvent();
 
-        public AudioClip DefaultSpeechClip;
-        public AudioSource AudioSource;
 
         [ShowInInspector]
         public Text textComponent;
@@ -44,6 +43,8 @@ namespace Datenshi.Scripts.Util.Misc.Narrator {
         public bool WaitForInput;
         private string printingText;
         private Coroutine typeTextCoroutine;
+        public RectTransform RebuildTransform;
+        public float PostCompleteSpeechDelay = .5F;
 
         /// <summary>
         /// Gets the PrintCompleted callback event.
@@ -115,7 +116,7 @@ namespace Datenshi.Scripts.Util.Misc.Narrator {
         }
 
 
-        public IEnumerator TypeTextCharByChar(string text, AudioClip clip = null) {
+        public IEnumerator TypeTextCharByChar(string text, string clip = null) {
             printingText = text;
             TextComponent.text = string.Empty;
 
@@ -141,12 +142,13 @@ namespace Datenshi.Scripts.Util.Misc.Narrator {
                         cancel = true;
                     }
 
+                    LayoutRebuilder.ForceRebuildLayoutImmediate(RebuildTransform);
                     currentTime -= Time.deltaTime;
                     yield return null;
                 }
 
                 if (clip != null) {
-                    AudioSource.PlayOneShot(clip);
+                    RuntimeManager.PlayOneShot(clip);
                 }
 
                 if (cancel) {
@@ -158,6 +160,8 @@ namespace Datenshi.Scripts.Util.Misc.Narrator {
                 while (!InputUtil.GetAnyPlayerButtonDown((int) Actions.Attack)) {
                     yield return null;
                 }
+            } else {
+                yield return new WaitForSeconds(PostCompleteSpeechDelay);
             }
 
             typeTextCoroutine = null;

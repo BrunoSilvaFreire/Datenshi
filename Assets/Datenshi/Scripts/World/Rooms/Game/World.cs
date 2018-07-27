@@ -16,6 +16,8 @@ namespace Datenshi.Scripts.World.Rooms.Game {
         public Transform SpawnPoint;
         public AudioFX Theme;
 
+        public Light SunLight;
+
         private void OnEnable() {
             WorldLoadedEvent.Invoke(this);
         }

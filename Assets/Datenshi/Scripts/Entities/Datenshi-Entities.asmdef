@@ -10,8 +10,11 @@
         "Datenshi-Graphics",
         "Datenshi-Combat",
         "Datenshi-AI",
-        "Datenshi-Movement"
+        "Datenshi-Movement",
+        "FMOD"
     ],
+    "optionalUnityReferences": [],
     "includePlatforms": [],
-    "excludePlatforms": []
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
 }

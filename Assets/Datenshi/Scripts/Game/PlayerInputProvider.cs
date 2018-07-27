@@ -3,9 +3,10 @@ using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Input;
 using Rewired;
 using Sirenix.OdinInspector;
-using UnityEditor;
 using UnityEngine;
-
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 namespace Datenshi.Scripts.Game {
     public class PlayerInputProvider : DatenshiInputProvider {
         [SerializeField, HideInInspector]
@@ -54,7 +55,7 @@ namespace Datenshi.Scripts.Game {
 
             return currentPlayer == null ? default(T) : selector(currentPlayer);
         }
-#if UNITY_EDITOR
+
         public bool DebugInput;
 
         [ShowIf("DebugInput")]
@@ -65,6 +66,7 @@ namespace Datenshi.Scripts.Game {
 
         [ShowIf("DebugInput")]
         public bool Jump;
+
         [ShowIf("DebugInput")]
         public bool Focus;
 
@@ -82,7 +84,6 @@ namespace Datenshi.Scripts.Game {
 
         [ShowIf("DebugInput")]
         public bool Defend;
-#endif
 
         public override float GetHorizontal() {
 #if UNITY_EDITOR

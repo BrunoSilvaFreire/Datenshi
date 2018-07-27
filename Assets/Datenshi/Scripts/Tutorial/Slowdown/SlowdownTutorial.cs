@@ -2,7 +2,7 @@
 using Datenshi.Scripts.Util.Services;
 using UnityEngine;
 
-namespace Datenshi.Scripts.Tutorial {
+namespace Datenshi.Scripts.Tutorial.Slowdown {
     public abstract class SlowdownTutorialExecutor : MonoBehaviour {
         public float TimeScale;
         public abstract void Init(IndefiniteService<TimeMeta> meta);

@@ -7,7 +7,7 @@ namespace Datenshi.Scripts.Character {
         public string Alias;
         public Color SignatureColor;
         public CharacterPortrait Portrait;
-        public AudioClip SpeechClip;
+        public string SpeechClip;
 
         public Color AlternativeSignatureColor {
             get {

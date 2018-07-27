@@ -2,12 +2,11 @@
 using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Game;
 using Datenshi.Scripts.Game.Time;
-using Datenshi.Scripts.Graphics;
 using Datenshi.Scripts.Movement;
 using Datenshi.Scripts.Util.Services;
 using UnityEngine;
 
-namespace Datenshi.Scripts.Tutorial {
+namespace Datenshi.Scripts.Tutorial.Slowdown {
     public class DeflectTutorialExecutor : SlowdownTutorialExecutor {
         public LivingEntity CombatantToDeflect;
         public AnimationCurve TimeScaleCurve;

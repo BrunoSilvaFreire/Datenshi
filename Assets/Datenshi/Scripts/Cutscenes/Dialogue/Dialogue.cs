@@ -16,14 +16,16 @@ namespace Datenshi.Scripts.Cutscenes.Dialogue {
 
     [Serializable]
     public class DialogueLine {
+        [TextArea]
         public string Text;
+
         public bool Move;
 
         [ShowIf("Move")]
         public AppearanceMode AppearanceMode;
 
         public override string ToString() {
-            return string.Format("Dialogue(Text: {0}, Move: {1}, AppearanceMode: {2})", Text, Move, AppearanceMode);
+            return $"Dialogue(Text: {Text}, Move: {Move}, AppearanceMode: {AppearanceMode})";
         }
     }
 }

@@ -132,6 +132,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1751494128118918
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4814638767669388}
+  - component: {fileID: 108705292840299826}
+  m_Layer: 13
+  m_Name: GroundCharger_LightSource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1836566726867166
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,12 +199,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1368727619611508}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -82.9, y: 8.9, z: 0}
+  m_LocalPosition: {x: -150.83064, y: 8.68, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4667705863788062}
   - {fileID: 4212661922202986}
   - {fileID: 224462239472852634}
+  - {fileID: 4814638767669388}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -217,6 +234,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4115587914337108}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4814638767669388
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1751494128118918}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.78, z: -0.66}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4115587914337108}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50494662803096726
 Rigidbody2D:
@@ -394,6 +424,43 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!108 &108705292840299826
+Light:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1751494128118918}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 1, g: 0.09019608, b: 0.26666668, a: 1}
+  m_Intensity: 1
+  m_Range: 5
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!114 &114090624169523564
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -503,12 +570,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EntityCanvas: {fileID: 0}
+  EntityNarrator: {fileID: 0}
   EntityAudioSource: {fileID: 82932196114826660}
   StepSounds:
   - {fileID: 8300000, guid: 9f8c9a6c85adddf448368cf7c92a4375, type: 3}
   - {fileID: 8300000, guid: a5c3f2373ab4e8247b71f946525db4e8, type: 3}
   Animator: {fileID: 95805302420909456}
   GhostingContainer: {fileID: 0}
+  CanvasFadeDuration: 0.5
   minPitch: 0.8
   maxPitch: 1.2
   MainSpriteRenderer: {fileID: 212851883096092766}
@@ -869,7 +938,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Outline: 1
   OutlineColor: {r: 1, g: 0, b: 0, a: 1}
-  Debug: 1
+  DefaultOverrideAmount: 0
 --- !u!114 &114982206245523822
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -933,7 +1002,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 326e1d76241ffd747b86ec475e8e23a6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4, g: 0.4, b: 0.4, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

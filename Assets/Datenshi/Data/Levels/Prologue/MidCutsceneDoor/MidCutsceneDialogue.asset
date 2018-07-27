@@ -3,7 +3,7 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -14,13 +14,13 @@ MonoBehaviour:
   Speeches:
   - Character: {fileID: 11400000, guid: 8a2ea0deeae62114f97ad13a532bdf1b, type: 2}
     Lines:
-    - Text: Quite the villain aren't you?
+    - Text: "Grande vil\xE3o voc\xEA hein?"
       Move: 1
       AppearanceMode:
         Duration: 0
         Offset: 0
         Left: 1
-    - Text: Evil lair, evil army and shady evil look
+    - Text: "Base do mal, ex\xE9rcito do mal e at\xE9 visual do mal!"
       Move: 0
       AppearanceMode:
         Duration: 0
@@ -28,14 +28,14 @@ MonoBehaviour:
         Left: 0
   - Character: {fileID: 11400000, guid: 3576f22b259cc3a4b862e01841f270f7, type: 2}
     Lines:
-    - Text: And you're quite an annoying prick
+    - Text: "E voc\xEA \xE9 uma grande "
       Move: 1
       AppearanceMode:
         Duration: 0
         Offset: 0
         Left: 0
-    - Text: Don't you have any respect? Breaking into evil lairs isn't the most polite
-        thing to do.
+    - Text: "Voc\xEA n\xE3o tem respeito? Invadir bases do mal n\xE3o \xE9 a coisa
+        mais educada a se fazer."
       Move: 0
       AppearanceMode:
         Duration: 0
@@ -43,7 +43,7 @@ MonoBehaviour:
         Left: 0
   - Character: {fileID: 11400000, guid: 8a2ea0deeae62114f97ad13a532bdf1b, type: 2}
     Lines:
-    - Text: Is it? Super heroes do it all the time!
+    - Text: "N\xE3o \xE9? Super her\xF3is fazem isso o tempo todo!"
       Move: 0
       AppearanceMode:
         Duration: 0
@@ -51,7 +51,7 @@ MonoBehaviour:
         Left: 0
   - Character: {fileID: 11400000, guid: 3576f22b259cc3a4b862e01841f270f7, type: 2}
     Lines:
-    - Text: And are you one?
+    - Text: "E voc\xEA \xE9 uma?"
       Move: 0
       AppearanceMode:
         Duration: 0
@@ -59,7 +59,7 @@ MonoBehaviour:
         Left: 0
   - Character: {fileID: 11400000, guid: 8a2ea0deeae62114f97ad13a532bdf1b, type: 2}
     Lines:
-    - Text: Nah, I prefer the "viligante" vibe
+    - Text: Naah, eu prefiro a vibe de "vigilante"
       Move: 0
       AppearanceMode:
         Duration: 0
@@ -67,13 +67,14 @@ MonoBehaviour:
         Left: 0
   - Character: {fileID: 11400000, guid: 3576f22b259cc3a4b862e01841f270f7, type: 2}
     Lines:
-    - Text: Ah yes, we had those back in mother Russia...
+    - Text: Ah sim, tinhamos esses na Russia
       Move: 0
       AppearanceMode:
         Duration: 0
         Offset: 0
         Left: 0
-    - Text: It's time you find out what we do to them. Dispose of her...
+    - Text: "Est\xE1 na hora de voc\xEA descobrir oque fazemos com eles... Livrem-se
+        dela"
       Move: 0
       AppearanceMode:
         Duration: 0

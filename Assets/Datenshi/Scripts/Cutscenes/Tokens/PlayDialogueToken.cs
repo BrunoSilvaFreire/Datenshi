@@ -4,7 +4,6 @@ using Datenshi.Scripts.Cutscenes.Dialogue.UI;
 using Shiroi.Cutscenes;
 using Shiroi.Cutscenes.Tokens;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Datenshi.Scripts.Cutscenes.Tokens {
     public class PlayDialogueToken : Token {
@@ -32,6 +31,7 @@ namespace Datenshi.Scripts.Cutscenes.Tokens {
                     throw new ArgumentOutOfRangeException();
             }
 
+            Debug.Log("Playing");
             if (OpenOnStart) {
                 stage.Showing = true;
             }

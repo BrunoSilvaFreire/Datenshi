@@ -72,7 +72,7 @@ Material:
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
-    - _OccludeAmount: 1
+    - _OccludeAmount: 0
     - _OcclusionStrength: 1
     - _Outline: 0
     - _OutlineWidth: 0.1

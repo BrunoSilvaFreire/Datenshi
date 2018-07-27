@@ -17,7 +17,6 @@ MonoBehaviour:
   - {fileID: 114363713963586780}
   - {fileID: 114875511087294292}
   - {fileID: 114716756800798584}
-  - {fileID: 114886963738860784}
   - {fileID: 114762501562512552}
   FutureManager:
     futures: []
@@ -100,18 +99,3 @@ MonoBehaviour:
   Target: 0
   OpenOnStart: 1
   CloseOnFinish: 1
---- !u!114 &114886963738860784
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1330792292, guid: 03fe207ae5b0c9040a227147e429c73e, type: 3}
-  m_Name: SetGameObjectActiveToken
-  m_EditorClassIdentifier: 
-  Target:
-    exposedName: 27336
-    defaultValue: {fileID: 0}
-  Active: 1

@@ -4,8 +4,12 @@ using UnityEngine;
 
 namespace Datenshi.Scripts.Tutorial.Trigger {
     public class TutorialColliderTrigger : MonoBehaviour {
-        public bool DestroyOnEnter = true;
         public Tutorial Tutorial;
+
+        public void HideAndDestroy() {
+            Tutorial.StopTutorial();
+            Destroy(gameObject);
+        }
 
         private void OnTriggerEnter2D(Collider2D other) {
             if (other.isTrigger) {

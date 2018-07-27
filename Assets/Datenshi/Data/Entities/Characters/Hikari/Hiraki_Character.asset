@@ -3,7 +3,7 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -14,5 +14,5 @@ MonoBehaviour:
   Alias: Hikari
   SignatureColor: {r: 0.31142685, g: 1, b: 0.254902, a: 1}
   Portrait: {fileID: 11400000, guid: 59ad56690db32c745a092cc2aae53bd1, type: 2}
-  SpeechClip: {fileID: 8300000, guid: 94b893c2a1446164e8f18bbbb7dac4b1, type: 3}
+  SpeechClip: event:/SFX/Player/Hikari Voice
   CharacterScreen: {fileID: 8400000, guid: 6d8666327460cce409bdb972cac62e92, type: 2}

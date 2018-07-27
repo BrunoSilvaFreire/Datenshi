@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Util;
+using UnityEngine;
 
 namespace Datenshi.Scripts.Cutscenes.Dialogue.UI {
     public class UIWorldDialogueStage : UIDialogueStage<UIWorldDialogueStage> {
         protected override IEnumerator DoPlayDialogue(Dialogue dialogue) {
             var speeches = dialogue.Speeches;
             var con = new HashSet<EntityMiscController>();
-            ;
             foreach (var speech in speeches) {
                 var character = speech.Character;
                 var entity = FindEntityForCharacter(character);
