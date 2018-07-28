@@ -21,7 +21,7 @@ namespace Datenshi.Scripts.Tutorial {
 
         public void StopTutorial() {
             if (!Playing) {
-                Debug.LogWarning($"Attempted to stop tutorial {name} but it\'s now playing.");
+                Debug.LogWarning($"Attempted to stop tutorial {name} but it\'s not playing.");
                 return;
             }
             Playing = false;

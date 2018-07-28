@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Datenshi.Scripts.AI;
+﻿using Datenshi.Scripts.AI;
 using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Movement;
@@ -7,6 +6,7 @@ using Datenshi.Scripts.Util;
 using Datenshi.Scripts.Util.Volatiles;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Profiling;
 using UPM;
 using UPM.Input;
 using UPM.Motors;
@@ -190,9 +190,16 @@ namespace Datenshi.Scripts.Entities {
             if (ExternalForces.magnitude < 0.1) {
                 return;
             }
+
             externalForces = Vector2.Lerp(externalForces, Vector2.zero, ExternalForcesDeacceleration);
+#if UNITY_EDITOR
+            Profiler.BeginSample("MovableEntity-ExternalForcesPhysicsBehaviour");
+#endif
             externalForceBehaviour.Check(this, ref externalForces, ref collisionStatus,
                 GameResources.Instance.WorldMask);
+#if UNITY_EDITOR
+            Profiler.EndSample();
+#endif
             MovementTransform.position += (Vector3) externalForces * DeltaTime;
         }
 
@@ -231,8 +238,13 @@ namespace Datenshi.Scripts.Entities {
             if (RuntimeResources.Instance.Paused) {
                 return;
             }
-
+#if UNITY_EDITOR
+            Profiler.BeginSample("MovableEntityMovement");
+#endif
             Move();
+#if UNITY_EDITOR
+            Profiler.EndSample();
+#endif
         }
 
 

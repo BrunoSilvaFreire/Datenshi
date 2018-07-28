@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 4869860289754634}
   - component: {fileID: 114483040877600832}
   - component: {fileID: 114176065867285408}
+  - component: {fileID: 114749551969931578}
   m_Layer: 12
   m_Name: Hikari_Managers
   m_TagString: Untagged
@@ -911,6 +912,7 @@ GameObject:
   - component: {fileID: 114623865737294946}
   - component: {fileID: 114140339557269888}
   - component: {fileID: 114127229633623062}
+  - component: {fileID: 114266790173885514}
   m_Layer: 13
   m_Name: Luna_Managers
   m_TagString: Untagged
@@ -4614,6 +4616,18 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
+--- !u!114 &114266790173885514
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1675342110669022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7159a161b374400e8a74144b4100a894, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Transform: {fileID: 4984853807975146}
 --- !u!114 &114280303094746968
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4976,36 +4990,220 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LastCheckpoint: {fileID: 0}
-  DeathFXDuration: 2
-  DeathFXColorIntensity: 1
-  DeathFXJumpIntensity: 1
+  DeathFXDuration: 1.3
+  DeathFXColorDriftIntensity:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.25
+      value: 0.3
+      inSlope: -0.4631399
+      outSlope: -0.4631399
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  DeathFXScanLineIntensity:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.25
+      value: 0.5
+      inSlope: 0.26650923
+      outSlope: 0.26650923
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.030221641
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  DeathFXVerticalJumpIntensity:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  DeathFXHorizontalShakeIntensity:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  DeathFXDesaturate:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  DeathFXDarken:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   DeathFXRestartDuration: 2
   DeathFXWaitDuration: 2
-  DesaturationCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  DarkenCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
   ResaturationCurve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -1.915345
+      outSlope: -0.58129984
+      tangentMode: 1
+      weightedMode: 1
+      inWeight: 0.06850237
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   BrightenCurve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -1.915345
+      outSlope: -0.58129984
+      tangentMode: 1
+      weightedMode: 1
+      inWeight: 0.06850237
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  DeathFX: {fileID: 0}
+  DeathFX: {fileID: 11400000, guid: c5d981cbf8f66984c938d4628064edee, type: 2}
 --- !u!114 &114371224082356120
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5018,9 +5216,102 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageAudio: {fileID: 11400000, guid: 6499d18e09c77304b88434b5902c74e4, type: 2}
-  DamageGlitchAmount: 0.5
-  DamageColorDriftAmount: 0.25
-  DamageHorizontalShakeAmount: 0.1
+  DamageLineJitterAmount:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.93417907
+      outSlope: -0.93417907
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.026192069
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  DamageColorDriftAmount:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.25
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.8184218
+      outSlope: -0.8184218
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.033579588
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  DamageHorizontalShakeAmount:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  DamageVerticalJumpAmount:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   DamageGlitchDuration: 0.25
   SlowdownDuration: 0.25
   SlowdownScale:
@@ -5472,10 +5763,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 870b9a8f0f82f4f56800cc427bcd1025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scanLineJitter: 0
-  verticalJump: 0
-  horizontalShake: 0
-  colorDrift: 0
+  defaultScanLineJitter: 0
+  defaultVerticalJump: 0
+  defaultHorizontalShake: 0
+  defaultColorDrift: 0
   shader: {fileID: 4800000, guid: da33272284ea24f208f36998880990be, type: 3}
 --- !u!114 &114497723522305144
 MonoBehaviour:
@@ -6223,6 +6514,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114749551969931578
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1142559646716826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7159a161b374400e8a74144b4100a894, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Transform: {fileID: 4715890564677138}
 --- !u!114 &114749894255637506
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Datenshi.Scripts.Input;
 using FMODUnity;
@@ -116,7 +117,7 @@ namespace Datenshi.Scripts.Util.Misc.Narrator {
         }
 
 
-        public IEnumerator TypeTextCharByChar(string text, string clip = null) {
+        public IEnumerator TypeTextCharByChar(string text, string clip = null, Func<bool> checker = null) {
             printingText = text;
             TextComponent.text = string.Empty;
 
@@ -144,6 +145,10 @@ namespace Datenshi.Scripts.Util.Misc.Narrator {
 
                     LayoutRebuilder.ForceRebuildLayoutImmediate(RebuildTransform);
                     currentTime -= Time.deltaTime;
+                    if (checker != null && checker()) {
+                        yield break;
+                    }
+
                     yield return null;
                 }
 

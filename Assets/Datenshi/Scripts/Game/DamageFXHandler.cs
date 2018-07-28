@@ -11,9 +11,10 @@ namespace Datenshi.Scripts.Game {
     public class DamageFXHandler : MonoBehaviour {
         public Effect DamageAudio;
 
-        public float DamageGlitchAmount = 1;
-        public float DamageColorDriftAmount = 1;
-        public float DamageHorizontalShakeAmount = 1;
+        public AnimationCurve DamageLineJitterAmount;
+        public AnimationCurve DamageColorDriftAmount;
+        public AnimationCurve DamageHorizontalShakeAmount;
+        public AnimationCurve DamageVerticalJumpAmount;
 
         public float DamageGlitchDuration = .25F;
 
@@ -24,16 +25,7 @@ namespace Datenshi.Scripts.Game {
         public float BNWDuration = 1;
 
         private void Start() {
-            ResetGlitch();
             GlobalEntityDamagedEvent.Instance.AddListener(OnEntityDamaged);
-        }
-
-        private static void ResetGlitch() {
-            var damageGlitch = GraphicsSingleton.Instance.Glitch;
-            damageGlitch.ScanLineJitter = 0;
-            damageGlitch.ColorDrift = 0;
-            damageGlitch.HorizontalShake = 0;
-            damageGlitch.enabled = false;
         }
 
         private void OnEntityDamaged(ICombatant damaged, IDamageDealer damager, IDamageSource attack, uint damage) {
@@ -47,18 +39,14 @@ namespace Datenshi.Scripts.Game {
                 var graphics = GraphicsSingleton.Instance;
                 var damageGlitch = graphics.Glitch;
                 var bnw = graphics.BlackAndWhite;
-                ResetGlitch();
                 DamageAudio.Execute(currentEntity.Center);
-                damageGlitch.DOKill();
-                damageGlitch.enabled = true;
-                damageGlitch.ScanLineJitter = DamageGlitchAmount;
-                damageGlitch.ColorDrift = DamageColorDriftAmount;
-                damageGlitch.HorizontalShake = DamageHorizontalShakeAmount;
-
-
-                damageGlitch.DOScanLineJitter(0, DamageGlitchDuration);
-                damageGlitch.DOColorDrift(0, DamageGlitchDuration).OnComplete(ResetGlitch);
-                damageGlitch.DOHorizontalShake(0, DamageGlitchDuration);
+                var meta = new GlitchMeta(
+                    DamageLineJitterAmount,
+                    DamageVerticalJumpAmount,
+                    DamageHorizontalShakeAmount,
+                    DamageColorDriftAmount
+                );
+                damageGlitch.RequesTimedService(DamageGlitchDuration, meta);
                 bnw.RequestService(BNWDuration, DesaturateCurve, DarkenCurve);
             }
 

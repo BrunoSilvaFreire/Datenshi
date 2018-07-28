@@ -13,12 +13,14 @@ namespace Datenshi.Scripts.Game {
     public class GameController : Singleton<GameController> {
         public Checkpoint LastCheckpoint;
         public float DeathFXDuration = 2;
-        public float DeathFXColorIntensity = 1;
-        public float DeathFXJumpIntensity = 1;
+        public AnimationCurve DeathFXColorDriftIntensity;
+        public AnimationCurve DeathFXScanLineIntensity;
+        public AnimationCurve DeathFXVerticalJumpIntensity;
+        public AnimationCurve DeathFXHorizontalShakeIntensity;
+        public AnimationCurve DeathFXDesaturate;
+        public AnimationCurve DeathFXDarken;
         public float DeathFXRestartDuration = 2;
         public float DeathFXWaitDuration = 2;
-        public AnimationCurve DesaturationCurve;
-        public AnimationCurve DarkenCurve;
         public AnimationCurve ResaturationCurve;
         public AnimationCurve BrightenCurve;
         public AudioFX DeathFX;
@@ -47,6 +49,7 @@ namespace Datenshi.Scripts.Game {
 
         private Coroutine restartRoutine;
 
+
         public void RestartGame() {
             CoroutineUtil.ReplaceCoroutine(ref restartRoutine, this, RestartFX());
         }
@@ -54,23 +57,32 @@ namespace Datenshi.Scripts.Game {
         private IEnumerator RestartFX() {
             var audio = AudioManager.Instance;
             audio.StopBGM();
+            audio.PlayFX(DeathFX);
             var f = audio.ReverbFilter;
             if (f != null) {
                 f.enabled = true;
             }
+
             var runtime = RuntimeResources.Instance;
             runtime.AllowPlayerInput = false;
             runtime.AllowAIInput = false;
-            
+
             var graphics = GraphicsSingleton.Instance;
             var glitch = graphics.Glitch;
-            glitch.ColorDrift = DeathFXColorIntensity;
-            glitch.ScanLineJitter = DeathFXJumpIntensity;
+            var meta = new GlitchMeta(
+                DeathFXScanLineIntensity,
+                DeathFXVerticalJumpIntensity,
+                DeathFXHorizontalShakeIntensity,
+                DeathFXColorDriftIntensity
+            );
+            glitch.RequesTimedService(DeathFXDuration, meta, 2);
             var bnw = graphics.BlackAndWhite;
+            bnw.RequestService(DeathFXDuration, DeathFXDesaturate, DeathFXDarken, 2);
             float defaultDesaturate = bnw.DefaultDesaturationAmount, defaultDarken = bnw.DefaultDarkenAmount;
+            yield return new WaitForSeconds(DeathFXDuration);
             bnw.DefaultDarkenAmount = 1;
             bnw.DefaultDesaturationAmount = 1;
-            yield return new WaitForSeconds(DeathFXDuration + DeathFXWaitDuration);
+            yield return new WaitForSeconds(DeathFXWaitDuration);
             if (f) {
                 f.enabled = false;
             }
@@ -79,14 +91,12 @@ namespace Datenshi.Scripts.Game {
             RestartAll();
             runtime.AllowPlayerInput = true;
             runtime.AllowAIInput = true;
-            glitch.ColorDrift = 0;
-            glitch.VerticalJump = 0;
             bnw.RequestService(DeathFXRestartDuration, ResaturationCurve, BrightenCurve, 2);
             bnw.DefaultDarkenAmount = defaultDarken;
             bnw.DefaultDesaturationAmount = defaultDesaturate;
         }
 
-        private static void RestartAll() {
+        private void RestartAll() {
             foreach (var restartable in ObjectUtil.FindAll<IRestartable>()) {
                 restartable.Restart();
             }

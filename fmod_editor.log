@@ -7,7 +7,7 @@
 [LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
 [LOG] Thread::initThread                       : Init FMOD stream thread. Priority: 2, Stack Size: 65536, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Priority: 3, Stack Size: 49152, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 000000007002AED8 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 00000000665133C8 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Priority: 0, Stack Size: 65536, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -15,63 +15,12 @@
 [LOG] Thread::initThread                       : Init FMOD Studio bank load thread. Priority: 0, Stack Size: 65536, Semaphore: No, Sleep Time: 1, Looping: No.
 [LOG] Manager::init                            : done.
 [LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
-[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
-[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             : exinfo->length             = 5177696
-[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 45984
-[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000000B84FF5FC
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFB2869D9C0
-[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFB2869D990
-[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFB2869DA90
-[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFB2869DB50
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000000006E2B3128
-[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
-[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
-[LOG] SystemI::createSoundInternal             : Sample 0/1: name='hikari_voice', format=2, channels=2, frequency=48000, lengthbytes=6912, lengthpcm=82285, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.161346.
 [LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
-[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
-[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             : exinfo->length             = 5177696
-[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 45984
-[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000000B84FF5FC
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFB2869D9C0
-[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFB2869D990
-[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFB2869DA90
-[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFB2869DB50
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000000036E55D58
-[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
-[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
-[LOG] SystemI::createSoundInternal             : Sample 0/1: name='luna_voice', format=2, channels=2, frequency=48000, lengthbytes=6144, lengthpcm=82285, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.210083.
 [LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
-[LOG] SoundI::release                          : city_ambience (0000000060889A98)
-[LOG] SoundI::release                          :     city_ambience (0000000049247A68)
-[LOG] SoundI::release                          :     city_ambience (000000006088AB78)
-[LOG] SoundI::release                          :  (0000000058954BF8)
-[LOG] SoundI::release                          :     luna_voice (0000000049247248)
-[LOG] SoundI::release                          :  (0000000058953AB8)
-[LOG] SoundI::release                          :     hikari_voice (000000006E3E5B08)
-[LOG] SoundI::release                          :  (0000000058953948)
-[LOG] SoundI::release                          :     prologue_theme_fader (000000006E3E5488)
-[LOG] SoundI::release                          :  (00000000589530A8)
-[LOG] SoundI::release                          :     prologue_theme_intro (000000006E3E4108)
-[LOG] SoundI::release                          :  (00000000589544C8)
-[LOG] SoundI::release                          :     prologue_theme_intro_loop (000000006E3E57C8)
-[LOG] Thread::callback                         : FMOD Studio update thread finished.
-[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
-[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
-[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
-[LOG] LiveUpdate::release                      : 
-[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
-[LOG] Thread::callback                         : FMOD stream thread finished.
-[LOG] Thread::callback                         : FMOD mixer thread finished.
-[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
-[LOG] SystemI::close                           : Closed.
+[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
+[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
+[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
 [LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
 [LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
 [LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
@@ -79,22 +28,10 @@
 [LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
 [LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
-[ERR] OutputWASAPI::mixerThread                : GetCurrentPadding returned 0x88890004.  Device was unplugged!
-[ERR] OutputWASAPI::mixerThread                : GetCurrentPadding returned 0x88890004.  Device was unplugged!
-[LOG] Thread::callback                         : FMOD mixer thread finished.
-[LOG] OutputWASAPI::init                       : Mix Format (WAVEFORMATEX): wFormatTag=0xFFFE, nChannels=2, nSamplesPerSec=48000, nAvgBytesPerSec=384000, nBlockAlign=8, wBitsPerSample=32, cbSize=22.
-[LOG] OutputWASAPI::init                       : Mix Format (WAVEFORMATEXTENSIBLE): wValidBitsPerSample=32, dwChannelMask=0x00000003, SubFormat=00000003-0000-0010-8000-00AA00389B71.
-[ERR] OutputWASAPI::init                       : IAudioClient::Initialize returned 0x88890010.
-[LOG] SystemI::setOutputInternal               : Setting output to 'FMOD NoSound Output'
-[LOG] OutputNoSound::init                      : Initializing.
-[LOG] OutputNoSound::init                      : Done.
-[LOG] Thread::initThread                       : Init FMOD mixer thread. Priority: 3, Stack Size: 49152, Semaphore: No, Sleep Time: 7, Looping: Yes.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Thread::callback                         : FMOD Studio sample load thread finished.
 [LOG] LiveUpdate::release                      : 
 [LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
 [LOG] Thread::callback                         : FMOD stream thread finished.
 [LOG] Thread::callback                         : FMOD mixer thread finished.
-[LOG] Thread::callback                         : FMOD nonblocking thread (0) finished.
-[LOG] Thread::callback                         : FMOD file thread finished.
 [LOG] SystemI::close                           : Closed.

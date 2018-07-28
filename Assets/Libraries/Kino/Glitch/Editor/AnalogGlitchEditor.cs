@@ -34,10 +34,10 @@ namespace Kino.Editor {
         private SerializedProperty colorDrift;
 
         private void OnEnable() {
-            scanLineJitter = serializedObject.FindProperty("scanLineJitter");
-            verticalJump = serializedObject.FindProperty("verticalJump");
-            horizontalShake = serializedObject.FindProperty("horizontalShake");
-            colorDrift = serializedObject.FindProperty("colorDrift");
+            scanLineJitter = serializedObject.FindProperty("defaultScanLineJitter");
+            verticalJump = serializedObject.FindProperty("defaultVerticalJump");
+            horizontalShake = serializedObject.FindProperty("defaultHorizontalShake");
+            colorDrift = serializedObject.FindProperty("defaultColorDrift");
         }
 
         public override void OnInspectorGUI() {

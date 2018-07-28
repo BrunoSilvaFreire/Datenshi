@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 2f99b8985d2366b42b7db5521ec311db
 ModelImporter:
-  serializedVersion: 22
+  serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     100002: tabua01
@@ -87,7 +87,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
@@ -99,6 +99,8 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0

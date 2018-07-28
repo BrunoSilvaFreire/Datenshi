@@ -3,7 +3,7 @@ using Datenshi.Scripts.Entities.Misc;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Misc {
-    public class DamageZone : AbstractDamageDealer, IDamageSource {
+    public class KillZone : AbstractDamageDealer, IDamageSource {
         public uint Damage;
 
         public uint GetDamage(IDamageable damageable) {
@@ -17,8 +17,7 @@ namespace Datenshi.Scripts.Misc {
                 return;
             }
 
-            var damageInfo = new DamageInfo(this, DamageMultiplier.Value, d, this);
-            d.Damage(ref damageInfo);
+            d.Kill();
         }
     }
 }
