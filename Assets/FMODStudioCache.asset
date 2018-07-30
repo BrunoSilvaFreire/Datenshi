@@ -38,9 +38,11 @@ MonoBehaviour:
   - {fileID: 114940351856525362}
   - {fileID: 114288457120359316}
   - {fileID: 114845380913852040}
+  - {fileID: 114307344333401724}
+  - {fileID: 114137427802399594}
   MasterBankRef: {fileID: 114153637303560762}
   StringsBankRef: {fileID: 114780754475790610}
-  stringsBankWriteTime: 636683725521487446
+  stringsBankWriteTime: 636684875723726888
   cacheVersion: 2
 --- !u!114 &114083520590833908
 MonoBehaviour:
@@ -124,6 +126,28 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114137427802399594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Misc/DimitriVoice
+  guid: 9d090f5959b6f84093115638cbbda4a7
+  Banks:
+  - {fileID: 114153637303560762}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1718
 --- !u!114 &114147274625202212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,11 +197,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: C:\Work\Unity\DatenshiFMOD\Build\Desktop\Master Bank.bank
-  lastModified: 636683725521427618
+  lastModified: 636684875723647098
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 5226976
+    Value: 5270880
   Exists: 1
 --- !u!114 &114207108128864754
 MonoBehaviour:
@@ -251,7 +275,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 950
   Length: 322
 --- !u!114 &114222876979835322
 MonoBehaviour:
@@ -415,6 +439,28 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114307344333401724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Misc/HealthPickup
+  guid: 9cca1b067b222042b09f205daf835e75
+  Banks:
+  - {fileID: 114153637303560762}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 3044
 --- !u!114 &114308903346524688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -502,7 +548,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114480819017883484}
+  - {fileID: 114947768409976608}
   MinDistance: 0
   MaxDistance: 0
   Length: 240000
@@ -800,12 +846,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: C:\Work\Unity\DatenshiFMOD\Build\Desktop\Master Bank.strings.bank
-  lastModified: 636683725521487446
+  lastModified: 636684875723726888
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 2458
+    Value: 2556
   Exists: 1
+--- !u!114 &114784768916317504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: IntroLoop
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114819000386042772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -939,6 +1000,21 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1714
+--- !u!114 &114947768409976608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: IntroLoop
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114967326713265716
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -43,14 +43,16 @@ namespace Datenshi.Scripts.Movement.States {
             var provider = user.InputProvider as DatenshiInputProvider;
             if (provider == null || e == null || config == null) {
                 machine.State = NormalState;
-                Debug.LogErrorFormat("Need these 3 to not be null in wall climb state: {0} || {1} || {2}", provider, e, config);
+                Debug.LogErrorFormat("Need these 3 to not be null in wall climb state: {0} || {1} || {2}", provider, e,
+                    config);
                 return;
             }
 
             var xInput = provider.GetHorizontal();
 
             var inputDir = Math.Sign(xInput);
-            var wallDir = collStatus.HorizontalCollisionDir;
+            var wallDir = -collStatus.HorizontalCollisionDir;
+            //Check is is leaving wall
             if (inputDir != wallDir) {
                 var sinceLeft = e.GetVariable(SecondsSinceLeaveWall);
                 var margin = config.OffWallTimeMargin;
@@ -95,10 +97,8 @@ namespace Datenshi.Scripts.Movement.States {
                 }
             }
 
-            RaycastHit2D? hit;
             WallBehaviour.Check(user, ref vel, ref collStatus, collisionMask);
-            if (!collStatus.Down && (collStatus.Left || collStatus.Right) &&
-                collStatus.HorizontalCollisionDir == inputDir) {
+            if (!collStatus.Down && (collStatus.Left || collStatus.Right) && wallDir == inputDir) {
                 //Sliding down
                 if (provider.GetJumpDown()) {
                     DoWallClimb(ref vel, config, inputDir);

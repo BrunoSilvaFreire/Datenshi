@@ -5,6 +5,12 @@ using UnityEngine;
 
 namespace Datenshi.Scripts.Util {
     public static class BehaviourUtil {
+        public static void ClearChildren(this Transform transform) {
+            for (var i = 0; i < transform.childCount; i++) {
+                Object.Destroy(transform.GetChild(i).gameObject);
+            }
+        }
+
         public static T Clone<T>(this T obj) where T : Object => Object.Instantiate(obj);
 
         public static T Clone<T>(this T obj, Vector3 transform) where T : Object {

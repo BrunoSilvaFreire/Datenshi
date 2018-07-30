@@ -41,9 +41,10 @@
 			    }
 			    
 			    sampler2D _MainTex;
+			    fixed4 _Color;
 		    	fixed4 frag (v2f i) : SV_Target {
 		    	    fixed4 color = i.color;
-		    	    color.a = tex2D(_MainTex, i.uv).a;
+		    	    color.a = tex2D(_MainTex, i.uv).a * _Color.a;
 				    return color;
 			    }
             ENDCG
@@ -82,10 +83,10 @@
 			    
 			    sampler2D _MainTex;
 			    fixed4 _OccludeColor;
-		    	
+		    	fixed4 _Color;
 		    	fixed4 frag (v2f i) : SV_Target {
 				    fixed4 col = _OccludeColor;
-				    col.a = tex2D(_MainTex, i.uv).a;
+				    col.a = tex2D(_MainTex, i.uv).a * _Color.a;
 				    return col;
 			    }
             ENDCG

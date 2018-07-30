@@ -3,7 +3,7 @@
 --- !u!74 &7400000
 AnimationClip:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Sentry_Shoot
   serializedVersion: 6
@@ -243,6 +243,14 @@ AnimationClip:
     functionName: ExecuteAttack
     data: 
     objectReferenceParameter: {fileID: 11400000, guid: 256b75d5256f6704eabe6fc1712a703b,
+      type: 2}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.25
+    functionName: PlayEffect
+    data: 
+    objectReferenceParameter: {fileID: 11400000, guid: d7440b99508b8fe48a880ae4dd1ea547,
       type: 2}
     floatParameter: 0
     intParameter: 0

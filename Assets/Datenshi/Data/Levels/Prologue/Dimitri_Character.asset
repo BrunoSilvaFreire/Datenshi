@@ -3,7 +3,7 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -14,4 +14,4 @@ MonoBehaviour:
   Alias: Dimitri
   SignatureColor: {r: 0.8352941, g: 0.16862746, b: 0.11764706, a: 1}
   Portrait: {fileID: 11400000, guid: 467bec4329385824c8c997d32030a1c8, type: 2}
-  SpeechClip: {fileID: 8300000, guid: 94b893c2a1446164e8f18bbbb7dac4b1, type: 3}
+  SpeechClip: event:/SFX/Misc/DimitriVoice

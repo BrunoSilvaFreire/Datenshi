@@ -19,6 +19,7 @@ namespace Datenshi.Scripts.Audio {
 
     public class AudioManager : Singleton<AudioManager> {
         public StudioEventEmitter BGMSource;
+        public StudioEventEmitter BGSFXSource;
         public AudioReverbFilter ReverbFilter;
         public float NormalBGMVolume;
         public float CutsceneBGMVolume;
@@ -111,13 +112,22 @@ namespace Datenshi.Scripts.Audio {
                     return NormalBGMVolume;
                 case AudioLevel.Cutscene:
                     return CutsceneBGMVolume;
+                case AudioLevel.None:
+                    return 0;
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(level), level, null);
             }
         }
+
+        public void Stop() {
+            BGMSource.Stop();
+            BGSFXSource.Stop();
+        }
     }
 
     public enum AudioLevel {
+        None,
         Normal,
         Cutscene
     }

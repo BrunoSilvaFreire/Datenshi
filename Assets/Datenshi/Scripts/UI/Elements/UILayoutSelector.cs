@@ -7,6 +7,7 @@ namespace Datenshi.Scripts.UI.Elements {
     public class UILayoutSelector : UIDelegateElement<Slider> {
         public Text Label;
         public RectTransform HandleDragArea;
+        public UIInputPreviewer Previewer;
 
         private void Start() {
             Delegate.minValue = 0;
@@ -45,6 +46,8 @@ namespace Datenshi.Scripts.UI.Elements {
                 map.enabled = map.layoutId == newLayout.id;
                 Debug.Log("Map " + map + "," + map.name + " is now " + map.enabled);
             }
+
+            Previewer.UpdatePreview();
         }
     }
 }

@@ -283,8 +283,8 @@ BoxCollider2D:
   m_Offset: {x: 0.08333331, y: 0.9791667}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.45348838, y: 0}
-    oldSize: {x: 1.7916666, y: 1.9583334}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 1.6666666, y: 3.0416667}
     newSize: {x: 27.083334, y: 74.791664}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -415,7 +415,7 @@ Animator:
   m_GameObject: {fileID: 1836566726867166}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c05f16d9fd4cea8408368d3bd1c3fd2e, type: 2}
+  m_Controller: {fileID: 9100000, guid: d2b10517ae889fc43a8a5d45ca83924e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -652,6 +652,7 @@ MonoBehaviour:
   SpawnKey: Spawn
   Entity: {fileID: 114439828193827072}
   Renderer: {fileID: 212851883096092766}
+  InvertFlip: 1
 --- !u!114 &114432371228562324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -751,6 +752,7 @@ MonoBehaviour:
   DamageColorDuration: 0.25
   DamageColor: {r: 1, g: 1, b: 1, a: 1}
   DamageColorAmount: 1
+  DefenseBreakStunDuration: 2
   DamageGivesStun: 0
   DamageStunMin: 10
   DamageStunDuration: 1
@@ -936,7 +938,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a509e2442300205479ade85b569934a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Outline: 1
+  Outline: 0
   OutlineColor: {r: 1, g: 0, b: 0, a: 1}
   DefaultOverrideAmount: 0
 --- !u!114 &114982206245523822
@@ -1001,7 +1003,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 326e1d76241ffd747b86ec475e8e23a6, type: 3}
+  m_Sprite: {fileID: 21300006, guid: 8c4cf355562ad374fa39253b586eb3c4, type: 3}
   m_Color: {r: 0.4, g: 0.4, b: 0.4, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1133,7 +1135,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2.5}
+  m_AnchoredPosition: {x: 0, y: 3.75}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224590152630033404

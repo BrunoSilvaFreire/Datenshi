@@ -24,6 +24,7 @@ namespace Datenshi.Scripts.World.Rooms.Game {
         public Wave Wave;
         public bool AllowReplay;
         public bool BeginOnEnter;
+        public UnityEvent OnCompleted;
 
         private void Start() {
             if (BeginOnEnter) {
@@ -98,7 +99,7 @@ namespace Datenshi.Scripts.World.Rooms.Game {
 
             if (currentGroup >= Wave.TotalGroups - 1 && toBeKilled.IsEmpty()) {
                 playing = false;
-                OnWaveCompleted.Invoke();
+                OnCompleted.Invoke();
                 if (ToOpen) {
                     ToOpen.Open();
                 }
@@ -132,6 +133,7 @@ namespace Datenshi.Scripts.World.Rooms.Game {
                     return;
                 }
 
+                OnWaveCompleted.Invoke();
                 Spawn();
                 countdownStarted = false;
             }
@@ -196,7 +198,7 @@ namespace Datenshi.Scripts.World.Rooms.Game {
         }
 
         private void OnDrawGizmos() {
-            if (!IsRandom) {
+            if (!IsPredefinedLocation) {
                 return;
             }
 

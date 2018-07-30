@@ -15,6 +15,9 @@ namespace Datenshi.Scripts.Cutscenes.Triggers {
         [SerializeField]
         private UnityEvent onDestroyed;
 
+        [SerializeField]
+        private UnityEvent onCompleted;
+
 
         public UnityEvent OnDestroyed => onDestroyed;
 
@@ -34,6 +37,13 @@ namespace Datenshi.Scripts.Cutscenes.Triggers {
         }
 
         private void Start() {
+            if (Room == null) {
+                var r = GetComponentInParent<Room>();
+                if (r != null) {
+                    r.AddMember(this);
+                }
+            }
+
             Initialize();
         }
 
@@ -86,6 +96,7 @@ namespace Datenshi.Scripts.Cutscenes.Triggers {
                 return;
             }
 
+            onCompleted.Invoke();
             Trigger();
         }
 

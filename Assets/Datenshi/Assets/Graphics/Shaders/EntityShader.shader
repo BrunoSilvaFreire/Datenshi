@@ -11,6 +11,9 @@ Shader "Datenshi/EntityShader" {
 		_OverrideAmount ("OverrideAmount", Range(0, 1)) = 0
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
 		_Emission("Emission", 2D) = "black"
+		_EmissionSinFrequency("EmissionSinFrequency", Float) = 1
+		_EmissionSinScale("EmissionSinScale", Float) = 1
+		_EmissionMinimum("EmissionOffset", Float) = 0
 		_NormalMap("Normal Map", 2D) = "white" {}
 		_OutlineWidth("Outline Width", Float) = 0.1
 		[PerRendererData]
@@ -81,7 +84,12 @@ Shader "Datenshi/EntityShader" {
 		};
 
 		sampler2D _Emission;
-
+        float _EmissionMinimum;
+        float _EmissionSinScale;
+        float _EmissionSinFrequency;
+        float maximum(float a, float b) {
+            return a > b ? a : b;
+        }
 		void surf (Input IN, inout SurfaceOutputStandard o) {
 			fixed4 textureColor = tex2D (_MainTex, IN.uv_MainTex) * IN.color;
 			
@@ -89,7 +97,9 @@ Shader "Datenshi/EntityShader" {
 			o.Albedo = textureColor;
 			fixed4 c = tex2D(_Emission, IN.uv_MainTex);
 			fixed4 e = c;
-            o.Emission = e * e.a;
+			float intensity = e.a * _EmissionMinimum;
+			intensity += (sin(_Time.x *_EmissionSinFrequency) / 2 + 0.5) * _EmissionSinScale * e.a;
+            o.Emission = e * intensity;
 			
 			//o.Albedo = c;
 			//o.Normal = UnpackNormal(tex2D(_NormalMap, IN.uv_MainTex));

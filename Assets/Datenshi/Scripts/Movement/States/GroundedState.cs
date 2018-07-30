@@ -18,7 +18,10 @@ namespace Datenshi.Scripts.Movement.States {
         public float ExtraWallClimbLengthCheck = .5F;
 
         public static readonly VerticalPhysicsCheck VerticalVelocityCheck = new VerticalPhysicsCheck();
-        public static readonly DatenshiHorizontalPhysicsCheck HorizontalVelocityCheck = new DatenshiHorizontalPhysicsCheck();
+
+        public static readonly DatenshiHorizontalPhysicsCheck HorizontalVelocityCheck =
+            new DatenshiHorizontalPhysicsCheck();
+
         public static readonly VerticalPhysicsCheck SlopeCheck = new VerticalPhysicsCheck(SlopeCheckProvider);
 
 
@@ -132,7 +135,7 @@ namespace Datenshi.Scripts.Movement.States {
 
         private static bool IsRunningTowardsWall(RaycastHit2D? down, CollisionStatus collStatus, int xDir) {
             return (!down.HasValue || !down.Value) && (collStatus.Left || collStatus.Right) &&
-                   collStatus.HorizontalCollisionDir == xDir;
+                   -collStatus.HorizontalCollisionDir == xDir;
         }
 
         private void ProcessInputs(

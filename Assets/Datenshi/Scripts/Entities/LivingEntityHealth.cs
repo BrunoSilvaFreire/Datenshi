@@ -35,6 +35,7 @@ namespace Datenshi.Scripts.Entities {
         public Color DamageColor = Color.white;
 
         public float DamageColorAmount = 1;
+        public float DefenseBreakStunDuration = 2;
 
         /// <summary>
         /// A porcentagem de vida atual em uma escala de 0 -> 1.
@@ -119,7 +120,14 @@ namespace Datenshi.Scripts.Entities {
         public virtual uint Damage(ref DamageInfo info, IDefendable defendable = null) {
             var entity = info.Damager;
             if (defendable != null && Defending && defendable.CanDefend(this)) {
-                FocusTimeLeft -= defendable.Defend(this, ref info);
+                var d = defendable.Defend(this, ref info);
+                if (d > FocusTimeLeft) {
+                    FocusTimeLeft = 0;
+                    Stun(DefenseBreakStunDuration);
+                } else {
+                    FocusTimeLeft -= d;
+                }
+
                 if (FocusTimeLeft <= 0) {
                     FocusTimeLeft = 0;
                 }

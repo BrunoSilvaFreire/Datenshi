@@ -31,7 +31,6 @@ namespace Datenshi.Scripts.Cutscenes.Tokens {
                     throw new ArgumentOutOfRangeException();
             }
 
-            Debug.Log("Playing");
             if (OpenOnStart) {
                 stage.Showing = true;
             }

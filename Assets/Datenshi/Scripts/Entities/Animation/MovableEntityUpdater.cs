@@ -28,6 +28,7 @@ namespace Datenshi.Scripts.Entities.Animation {
         public string SpawnKey = "Spawn";
         public MovableEntity Entity;
         public SpriteRenderer Renderer;
+        public bool InvertFlip;
 #if UNITY_EDITOR
         [ShowInInspector, UsedImplicitly, Button]
         public void CreateParameters() {
@@ -95,10 +96,10 @@ namespace Datenshi.Scripts.Entities.Animation {
             anim.SetFloat(SpeedPercentKey, percentSpeed);
             var grounded = Entity.CollisionStatus.Down;
             anim.SetBool(GroundedKey, grounded);
-            Renderer.flipX = Entity.CurrentDirection.X == -1;
+            Renderer.flipX = Entity.CurrentDirection.X == (InvertFlip ? 1 : -1);
         }
 
-        public override void TriggerAttack(string attack) {
+        public override void TriggerAttack(string attack = DefaultAttackName) {
             Animator.SetTrigger(attack);
         }
 

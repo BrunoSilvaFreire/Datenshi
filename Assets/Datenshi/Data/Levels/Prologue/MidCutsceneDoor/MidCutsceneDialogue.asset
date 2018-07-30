@@ -28,7 +28,7 @@ MonoBehaviour:
         Left: 0
   - Character: {fileID: 11400000, guid: 3576f22b259cc3a4b862e01841f270f7, type: 2}
     Lines:
-    - Text: "E voc\xEA \xE9 uma grande "
+    - Text: "E voc\xEA \xE9 uma grande peste."
       Move: 1
       AppearanceMode:
         Duration: 0

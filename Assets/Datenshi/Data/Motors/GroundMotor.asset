@@ -42,7 +42,7 @@ MonoBehaviour:
   m_Name: WallClimbState
   m_EditorClassIdentifier: 
   NormalState: {fileID: 114222677318753670}
-  SlideSpeed: -100
+  SlideSpeed: -500
 --- !u!114 &114336871027057290
 MonoBehaviour:
   m_ObjectHideFlags: 0

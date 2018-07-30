@@ -71,7 +71,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c39fbec5b28c4f1d85d2fb8d44008cf9, type: 3}
   m_Name: SetBGMVolumeLevelToken
   m_EditorClassIdentifier: 
-  Level: 1
+  Level: 2
   TransitionDuration: 2
 --- !u!114 &114234321275087210
 MonoBehaviour:
@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c39fbec5b28c4f1d85d2fb8d44008cf9, type: 3}
   m_Name: SetBGMVolumeLevelToken
   m_EditorClassIdentifier: 
-  Level: 0
+  Level: 1
   TransitionDuration: 1
 --- !u!114 &114916992521938328
 MonoBehaviour:
@@ -245,7 +245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Obj: {fileID: 1063866593415516, guid: 30943881c7135794e80fc6dd1e2baca0, type: 2}
   FutureName: future_name
-  Position: {x: 50.65, y: 32, z: 0}
+  Position: {x: 84, y: 24, z: 0}
   Rotation: {x: 0, y: 0, z: 0, w: 1}
   futureId: -1811233587
 --- !u!114 &114953111062772404

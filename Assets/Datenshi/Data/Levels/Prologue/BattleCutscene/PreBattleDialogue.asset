@@ -30,8 +30,7 @@ MonoBehaviour:
         Left: 0
   - Character: {fileID: 11400000, guid: 8a2ea0deeae62114f97ad13a532bdf1b, type: 2}
     Lines:
-    - Text: "Certo, vamos avan\xE7ar.\nS\xF3 temos de lidar com nosso amigo logo em
-        baixo."
+    - Text: "Certo, vamos avan\xE7ar."
       Move: 0
       AppearanceMode:
         Duration: 0

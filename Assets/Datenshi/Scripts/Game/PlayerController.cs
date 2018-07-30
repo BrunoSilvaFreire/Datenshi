@@ -57,6 +57,8 @@ namespace Datenshi.Scripts.Game {
             }
         }
 
+        public Canvas Canvas;
+
         public PlayableDirector Director;
 
 

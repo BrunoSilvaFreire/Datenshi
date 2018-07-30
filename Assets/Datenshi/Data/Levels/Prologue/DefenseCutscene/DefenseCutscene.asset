@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1696403387, guid: 03fe207ae5b0c9040a227147e429c73e, type: 3}
+  m_Name: DefenseCutscene
+  m_EditorClassIdentifier: 
+  tokens:
+  - {fileID: 114426312710823556}
+  FutureManager:
+    futures: []
+--- !u!114 &114426312710823556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f621b16fcb744fd4a85946f24e8d7485, type: 3}
+  m_Name: PlayDialogueToken
+  m_EditorClassIdentifier: 
+  Dialogue: {fileID: 11400000, guid: ac372e65afbb4ad4ba467eae4773aeb5, type: 2}
+  Target: 1
+  OpenOnStart: 1
+  CloseOnFinish: 1
