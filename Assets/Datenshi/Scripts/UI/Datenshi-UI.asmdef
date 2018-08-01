@@ -12,7 +12,8 @@
         "Datenshi-Movement",
         "Datenshi-Data",
         "Datenshi-Audio",
-        "Datenshi-Animation"
+        "Datenshi-Animation",
+        "Unity.Postprocessing.Runtime"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],

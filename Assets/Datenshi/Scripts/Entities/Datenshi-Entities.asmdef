@@ -11,7 +11,8 @@
         "Datenshi-Combat",
         "Datenshi-AI",
         "Datenshi-Movement",
-        "FMOD"
+        "FMOD",
+        "Datenshi-FX"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],

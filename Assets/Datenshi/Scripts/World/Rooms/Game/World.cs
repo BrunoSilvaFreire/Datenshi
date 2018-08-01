@@ -1,11 +1,10 @@
 ﻿using System;
 using Datenshi.Scripts.Audio;
 using Datenshi.Scripts.Game;
-using Datenshi.Scripts.Game.Restart;
 using Datenshi.Scripts.Util.Singleton;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
+using UPM.Util;
 
 namespace Datenshi.Scripts.World.Rooms.Game {
     [Serializable]
@@ -17,6 +16,8 @@ namespace Datenshi.Scripts.World.Rooms.Game {
         public AudioFX Theme;
 
         public Light SunLight;
+
+        public CompositeCollider2D WorldBounds;
 
         private void OnEnable() {
             WorldLoadedEvent.Invoke(this);

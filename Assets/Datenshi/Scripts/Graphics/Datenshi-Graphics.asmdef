@@ -1,7 +1,8 @@
 {
     "name": "Datenshi-Graphics",
     "references": [
-        "Datenshi-Utilities"
+        "Datenshi-Utilities",
+        "Unity.Postprocessing.Runtime"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],
