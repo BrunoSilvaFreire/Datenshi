@@ -46,7 +46,7 @@ namespace Datenshi.Scripts.Util.Services {
 
         public override void Tick() {
             base.Tick();
-            TimeLeft -= Time.unscaledDeltaTime;
+            TimeLeft -= UnityEngine.Time.unscaledDeltaTime;
         }
     }
 

@@ -1,5 +1,5 @@
-﻿using Datenshi.Scripts.Game.Time;
-using Datenshi.Scripts.Util.Services;
+﻿using Datenshi.Scripts.Util.Services;
+using Datenshi.Scripts.Util.Time;
 using Datenshi.Tut;
 using UnityEngine;
 

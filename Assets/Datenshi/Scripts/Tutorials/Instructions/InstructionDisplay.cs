@@ -74,7 +74,7 @@ namespace Datenshi.Scripts.Tutorials.Instructions {
         }
 
         private string GetText() {
-r            var rewiredPlayer = PlayerController.Instance.Player.CurrentPlayer;
+            var rewiredPlayer = PlayerController.Instance.Player.CurrentPlayer;
             if (rewiredPlayer == null) {
                 return "No Player";
             }

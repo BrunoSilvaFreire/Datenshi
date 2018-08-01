@@ -144,7 +144,7 @@ namespace Datenshi.Scripts.Util.Misc.Narrator {
                     }
 
                     LayoutRebuilder.ForceRebuildLayoutImmediate(RebuildTransform);
-                    currentTime -= Time.deltaTime;
+                    currentTime -= UnityEngine.Time.deltaTime;
                     if (checker != null && checker()) {
                         yield break;
                     }

@@ -2,8 +2,8 @@
 using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.FX;
-using Datenshi.Scripts.Game.Time;
 using Datenshi.Scripts.Graphics;
+using Datenshi.Scripts.Util.Time;
 using DG.Tweening;
 using UnityEngine;
 

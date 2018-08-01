@@ -28,7 +28,7 @@ namespace Datenshi.Scripts.Util.Misc {
         }
 
         public bool Tick() {
-            return (timeLeft -= Time.deltaTime) <= 0;
+            return (timeLeft -= UnityEngine.Time.deltaTime) <= 0;
         }
     }
 
@@ -55,7 +55,7 @@ namespace Datenshi.Scripts.Util.Misc {
 
         private readonly List<T> toRemove = new List<T>();
 
-        protected virtual float GetDeltaTime() => Time.deltaTime;
+        protected virtual float GetDeltaTime() => UnityEngine.Time.deltaTime;
 
         private void LateUpdate() {
             if (Spawning || permanentSpawn) {

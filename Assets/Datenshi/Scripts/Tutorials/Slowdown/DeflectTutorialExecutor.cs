@@ -1,9 +1,9 @@
 ﻿using Datenshi.Scripts.Combat.Game.Ranged;
 using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Game;
-using Datenshi.Scripts.Game.Time;
 using Datenshi.Scripts.Movement;
 using Datenshi.Scripts.Util.Services;
+using Datenshi.Scripts.Util.Time;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Tutorials.Slowdown {

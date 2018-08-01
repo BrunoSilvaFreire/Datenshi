@@ -40,7 +40,7 @@ namespace Datenshi.Scripts.Util.Volatiles {
                 return false;
             }
 
-            var r = (timeLeft -= Time.deltaTime) <= 0;
+            var r = (timeLeft -= UnityEngine.Time.deltaTime) <= 0;
             if (r) {
                 TryInvokeCallback();
             }

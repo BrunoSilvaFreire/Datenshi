@@ -13,6 +13,64 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SubEffects:
   - {fileID: 114506060323585280}
+  - {fileID: 114335878688442628}
+  - {fileID: 114499989159149020}
+  - {fileID: 114641434207292028}
+--- !u!114 &114335878688442628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89967e6a83484a9299b2ec73c2f71de6, type: 3}
+  m_Name: AudioEffect
+  m_EditorClassIdentifier: 
+  AudioFX: {fileID: 11400000, guid: afb319c0f3a212d4195d7a442babebd6, type: 2}
+  RandomizePitch: 1
+  MinPitch: 0.9
+  MaxPitch: 1.1
+--- !u!114 &114499989159149020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b56f025aa77d42e2b707236f533ca8fb, type: 3}
+  m_Name: CameraShakeEffect
+  m_EditorClassIdentifier: 
+  Definition:
+    m_ImpulseChannel: 1
+    m_RawSignal: {fileID: 11400000, guid: d07d2b5f719d0cc469684697d65c5f0b, type: 2}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.1
+      m_DecayTime: 0.05
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 1000
 --- !u!114 &114506060323585280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26,3 +84,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EffectPrefab: {fileID: 198445748007662224, guid: cae7a7f79f37a934ab16d127427eef8c,
     type: 2}
+--- !u!114 &114641434207292028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e69873ccd9504d20bb9e1a799d60d5ba, type: 3}
+  m_Name: SlowdownEffect
+  m_EditorClassIdentifier: 
+  SlowdownCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  SlowdownDuration: 0.25
