@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using BezierSolution;
 using Datenshi.Scripts.AI.Pathfinding;
-using Datenshi.Scripts.AI.Util;
 using Datenshi.Scripts.Movement;
 using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
@@ -16,9 +14,6 @@ namespace Datenshi.Scripts.AI {
     public class SerializableNavigable : SerializableInterface<INavigable> { }
 
     public class AerialAINavigator : AINavigator {
-        public BezierPointPool Pool;
-        public BezierSpline Spline;
-
         [ShowInInspector]
         public SerializableNavigable Navigable;
 
@@ -89,7 +84,6 @@ namespace Datenshi.Scripts.AI {
         LoadPath(job.Result);
     }*/
 
-        private readonly List<BezierPoint> usedPoints = new List<BezierPoint>();
 
         private List<Vector2Int> path;
         //private List<Node> toUpdate;
@@ -111,46 +105,19 @@ namespace Datenshi.Scripts.AI {
             path = list;
         }
 
-        private void UpdatePoints(int needed) {
-            var inUse = usedPoints.Count;
-            if (needed > inUse) {
-                AllocatePoints(needed - inUse);
-            } else if (inUse > needed) {
-                DelocatePoints(inUse - needed);
-            }
-
-            //We have exactly enough
-        }
-
-        private void AllocatePoints(int i) {
-            for (var j = 0; j < i; j++) {
-                usedPoints.Add(Pool.Get());
-            }
-        }
-
-        private void DelocatePoints(int i) {
-            for (var j = 0; j < i; j++) {
-                var point = usedPoints[j];
-                usedPoints.RemoveAt(j);
-                Pool.Return(point);
-            }
-        }
 #if UNITY_EDITOR
 
         private void OnDrawGizmos() {
-            Gizmos.color = Color.cyan;
-            Gizmos.DrawWireSphere(target, 1);
-            if (usedPoints == null) {
+            if (path.IsNullOrEmpty()) {
                 return;
             }
 
-            var grid = navmesh.Grid;
-            for (var i = 1; i < usedPoints.Count; i++) {
-                var first = usedPoints[i];
-                var second = usedPoints[i - 1];
-                var a = grid.WorldToCell(first.position);
-                var b = grid.WorldToCell(second.position);
-                Draw(a, b, i);
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawWireSphere(target, 1);
+            for (var i = 1; i < path.Count; i++) {
+                var first = path[i];
+                var second = path[i - 1];
+                Draw(first.ToVector3(), second.ToVector3(), i);
             }
         }
 

@@ -3,10 +3,12 @@ using System.Linq;
 using Datenshi.Scripts.Game;
 using Datenshi.Scripts.Input;
 using Rewired;
+using Rewired.Utils.Classes.Data;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Datenshi.Scripts.Tutorials.Instructions {
+
     public class InstructionDisplay : MonoBehaviour, ILayoutElement {
         public Image ImageDisplay;
         public Text TextDisplay;
@@ -74,7 +76,12 @@ namespace Datenshi.Scripts.Tutorials.Instructions {
         }
 
         private string GetText() {
-            var rewiredPlayer = PlayerController.Instance.Player.CurrentPlayer;
+            var i = PlayerController.Instance;
+            if (i == null) {
+                return "No Player Controller";
+            }
+
+            var rewiredPlayer = i.Player.CurrentPlayer;
             if (rewiredPlayer == null) {
                 return "No Player";
             }

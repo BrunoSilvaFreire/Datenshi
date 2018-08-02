@@ -437,8 +437,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimePerRegen: 1
-  Pool: {fileID: 0}
-  Spline: {fileID: 0}
   Navigable:
     Object: {fileID: 114436857642151606}
   MinimumHeightAdvantage: 3
@@ -493,7 +491,7 @@ MonoBehaviour:
   Attacks:
   - {fileID: 11400000, guid: e218c7fef030fdc4c8ba9e0bad0164ea, type: 2}
   Entity: {fileID: 114436857642151606}
-  DeathEffect: {fileID: 11400000, guid: a721b4af643d00c48bb6d34b30c81efa, type: 2}
+  DeathEffect: {fileID: 11400000, guid: bac0405c99ac67d40bba15e74cfca3c4, type: 2}
   SpawnEffect: {fileID: 0}
 --- !u!114 &114364173896487102
 MonoBehaviour:
@@ -723,6 +721,7 @@ MonoBehaviour:
   Damage: 10
   DefenseFocusComsuption: 5
   ThrowbackForce: {x: 25, y: 25}
+  DefenseEffect: {fileID: 0}
 --- !u!114 &114705651568594450
 MonoBehaviour:
   m_ObjectHideFlags: 1

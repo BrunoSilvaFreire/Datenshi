@@ -18,7 +18,16 @@ namespace Datenshi.Scripts.World.Rooms.Game {
         public float Distance => End - Start;
 
         private void Update() {
-            var entity = PlayerController.Instance.CurrentEntity;
+            var instance = PlayerController.Instance;
+            if (instance == null) {
+                return;
+            }
+
+            var entity = instance.CurrentEntity;
+            if (entity == null) {
+                return;
+            }
+
             var entX = entity.Center.x;
             currentPosition = Mathf.Clamp01((entX - Start) / (End - Start));
             UpdateLight();
@@ -31,11 +40,13 @@ namespace Datenshi.Scripts.World.Rooms.Game {
                 return;
             }
 
-            UpdateLight(bestPosition, SkyboxMaterial, SkyColor, ColorGradient, Intensity, AmbientIntensity, AtmosphereTickness);
+            UpdateLight(bestPosition, SkyboxMaterial, SkyColor, ColorGradient, Intensity, AmbientIntensity,
+                AtmosphereTickness);
         }
 
         public static void UpdateLight(float position, Material skyboxMaterial, Gradient skyboxColor,
-            Gradient colorGradient, AnimationCurve intensity, AnimationCurve ambientIntensity, AnimationCurve atmosphereTickness) {
+            Gradient colorGradient, AnimationCurve intensity, AnimationCurve ambientIntensity,
+            AnimationCurve atmosphereTickness) {
             var l = World.Instance.SunLight;
             l.color = colorGradient.Evaluate(position);
             l.intensity = intensity.Evaluate(position);

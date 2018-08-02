@@ -7,7 +7,7 @@ using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Game;
 using Datenshi.Scripts.Graphics;
 using Datenshi.Scripts.Util;
-using Datenshi.Scripts.World.Rooms.Doors;
+using Datenshi.Scripts.World.Rooms.Game.Doors;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;

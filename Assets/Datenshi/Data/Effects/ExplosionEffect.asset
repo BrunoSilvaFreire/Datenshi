@@ -81,5 +81,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0900606cf684e368bf88e8d125e303b, type: 3}
   m_Name: Explosion_ParticleEffect
   m_EditorClassIdentifier: 
-  EffectPrefab: {fileID: 198572881580852744, guid: 7e48ba6b1b968764490bbc70b66e3fe1,
+  EffectPrefab: {fileID: 198000012942003240, guid: ecdd96beb7f93494880c052dfccf9dc1,
     type: 2}
