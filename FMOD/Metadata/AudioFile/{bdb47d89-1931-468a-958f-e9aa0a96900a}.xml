@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{bdb47d89-1931-468a-958f-e9aa0a96900a}">
+        <property name="assetPath">
+            <value>go_go_go.ogg</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>2.3843764172335602</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{bb96851b-7c91-400b-a547-594cec51a9bb}</destination>
+        </relationship>
+    </object>
+</objects>

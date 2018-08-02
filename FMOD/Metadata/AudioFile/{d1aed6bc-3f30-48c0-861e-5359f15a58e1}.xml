@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{d1aed6bc-3f30-48c0-861e-5359f15a58e1}">
+        <property name="assetPath">
+            <value>Robotic Voice Gibberish 2.wav</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>0.21229024943310656</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{bb96851b-7c91-400b-a547-594cec51a9bb}</destination>
+        </relationship>
+    </object>
+</objects>

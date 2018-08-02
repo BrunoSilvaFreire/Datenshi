@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="MixerGroup" id="{2c80a9b3-fffe-4d60-ab96-fea3e8635484}">
+        <property name="name">
+            <value>FXBypass</value>
+        </property>
+        <relationship name="effectChain">
+            <destination>{9519805b-7ee9-4e66-b4c3-c13027888f49}</destination>
+        </relationship>
+        <relationship name="panner">
+            <destination>{2f440a96-997a-4c9a-9303-2e472acbb6cd}</destination>
+        </relationship>
+        <relationship name="output">
+            <destination>{83b7ab84-ab33-468e-9300-7d00d3a91bfa}</destination>
+        </relationship>
+    </object>
+    <object class="MixerBusEffectChain" id="{9519805b-7ee9-4e66-b4c3-c13027888f49}">
+        <relationship name="effects">
+            <destination>{6c37f367-6635-4deb-b0e8-37f731d52b12}</destination>
+        </relationship>
+    </object>
+    <object class="MixerBusPanner" id="{2f440a96-997a-4c9a-9303-2e472acbb6cd}"/>
+    <object class="MixerBusFader" id="{6c37f367-6635-4deb-b0e8-37f731d52b12}"/>
+</objects>

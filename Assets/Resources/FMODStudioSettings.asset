@@ -13,9 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: C:\Work\Unity\DatenshiFMOD\Datenshi.fspro
-  SourceProjectPathUnformatted: C:\Work\Unity\DatenshiFMOD\Datenshi.fspro
-  SourceBankPathUnformatted: C:\Work\Unity\DatenshiFMOD\Build
+  sourceProjectPath: FMOD\Datenshi.fspro
+  SourceProjectPathUnformatted: FMOD\Datenshi.fspro
+  SourceBankPathUnformatted: FMOD\Build
   AutomaticEventLoading: 1
   AutomaticSampleLoading: 0
   ImportType: 0
@@ -57,5 +57,5 @@ MonoBehaviour:
   - Platform: 2
     Value: 32
   Plugins: []
-  MasterBank: Master Bank
+  MasterBank: 
   Banks: []

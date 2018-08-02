@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="EventFolder" id="{16eb9147-fc14-42a3-aca2-67eaaf423b81}">
+        <property name="name">
+            <value>Voices Gibberish</value>
+        </property>
+        <relationship name="folder">
+            <destination>{6f570b54-2f34-4932-a900-772c09e998ec}</destination>
+        </relationship>
+    </object>
+</objects>

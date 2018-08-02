@@ -9,7 +9,12 @@
 /Assets/Datenshi/Data/Levels/Prologue/PrologueBruno
 /Assets/Datenshi/Data/Levels/Prologue/PrologueMox
 /Assets/Datenshi/Data/Levels/Prologue/Prologue
+/FMOD/.cache
+/FMOD/.unsaved
+/FMOD/.user
 /output*
+fmod.log
+fmod_editor.log
 ExportedObj/
 .consulo/
 *.csproj

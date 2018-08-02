@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{b7a4d636-d94a-432f-904f-453715961c2c}">
+        <property name="assetPath">
+            <value>Light Saber Sword Clash 3.wav</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>0.46460317460317463</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{bb96851b-7c91-400b-a547-594cec51a9bb}</destination>
+        </relationship>
+    </object>
+</objects>

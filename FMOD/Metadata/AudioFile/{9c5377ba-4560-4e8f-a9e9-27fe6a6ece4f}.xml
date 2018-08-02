@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{9c5377ba-4560-4e8f-a9e9-27fe6a6ece4f}">
+        <property name="assetPath">
+            <value>Deep Male Voice Gibberish 3.wav</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>0.19167800453514738</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{bb96851b-7c91-400b-a547-594cec51a9bb}</destination>
+        </relationship>
+    </object>
+</objects>
