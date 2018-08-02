@@ -13,6 +13,6 @@ namespace Datenshi.Scripts.UI.Elements {
 
         private void OnChanged(bool arg0) {
             GraphicsSingleton.Instance.PostProcessVolume.enabled = arg0;
-        }t 
+        } 
     }
 }
