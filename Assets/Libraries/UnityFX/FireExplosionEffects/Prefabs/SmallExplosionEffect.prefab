@@ -143,7 +143,7 @@ ParticleSystem:
   serializedVersion: 5
   lengthInSec: 4
   simulationSpeed: 2
-  stopAction: 0
+  stopAction: 2
   looping: 1
   prewarm: 0
   playOnAwake: 1
@@ -4733,7 +4733,7 @@ ParticleSystem:
   serializedVersion: 5
   lengthInSec: 4
   simulationSpeed: 2
-  stopAction: 0
+  stopAction: 2
   looping: 1
   prewarm: 0
   playOnAwake: 1
@@ -9197,7 +9197,7 @@ ParticleSystem:
   serializedVersion: 5
   lengthInSec: 4
   simulationSpeed: 2
-  stopAction: 0
+  stopAction: 2
   looping: 1
   prewarm: 0
   playOnAwake: 1
@@ -13710,7 +13710,7 @@ ParticleSystem:
   lengthInSec: 4
   simulationSpeed: 2
   stopAction: 2
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0

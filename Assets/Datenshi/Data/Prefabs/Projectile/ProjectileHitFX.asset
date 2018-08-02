@@ -9,12 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c20fb49d78b40c49d2b743845e26662, type: 3}
-  m_Name: DefendFX
+  m_Name: ProjectileHitFX
   m_EditorClassIdentifier: 
   SubEffects:
-  - {fileID: 114812333238485614}
-  - {fileID: 114408351330292104}
---- !u!114 &114408351330292104
+  - {fileID: 114544037031966242}
+  - {fileID: 114096024041425246}
+--- !u!114 &114096024041425246
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -25,11 +25,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89967e6a83484a9299b2ec73c2f71de6, type: 3}
   m_Name: AudioEffect
   m_EditorClassIdentifier: 
-  AudioFX: {fileID: 11400000, guid: 4f16ee5a0cd8bea45a37d3071d8dc8db, type: 2}
+  AudioFX: {fileID: 11400000, guid: 5fa2b4c3c000ad6448e0720a504aff52, type: 2}
   RandomizePitch: 0
   MinPitch: 0.9
   MaxPitch: 1.1
---- !u!114 &114812333238485614
+--- !u!114 &114544037031966242
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,5 +40,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0900606cf684e368bf88e8d125e303b, type: 3}
   m_Name: ParticleEffect
   m_EditorClassIdentifier: 
-  EffectPrefab: {fileID: 198793422798427994, guid: e99433c2643018441b566d8c3aba4c05,
+  EffectPrefab: {fileID: 198373253261171140, guid: 9d2d98736ac4eac4cb1f37c23166c0b5,
     type: 2}

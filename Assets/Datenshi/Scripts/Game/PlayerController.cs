@@ -34,7 +34,7 @@ namespace Datenshi.Scripts.Game {
         private Entity currentEntity;
 
         public Rank.Rank Rank;
-
+        public Entity ToChange;
 
         public PlayerEntityChangedEvent OnEntityChanged;
         public PlayerRankXPGainedEvent PlayerRankXPGainedEvent;
@@ -60,6 +60,12 @@ namespace Datenshi.Scripts.Game {
 
         public PlayableDirector Director;
 
+        private void OnValidate() {
+            if (ToChange != null) {
+                CurrentEntity = ToChange;
+                ToChange = null;
+            }
+        }
 
         private void Start() {
             if (currentEntity.InputProvider != Player) {

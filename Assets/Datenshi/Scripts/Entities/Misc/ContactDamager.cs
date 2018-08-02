@@ -38,7 +38,7 @@ namespace Datenshi.Scripts.Entities.Misc {
             }
 
             if (DefenseEffect != null) {
-                DefenseEffect.Execute(transform.position);
+                DefenseEffect.Execute(combatant.Center);
             }
 
             return DefenseFocusComsuption;

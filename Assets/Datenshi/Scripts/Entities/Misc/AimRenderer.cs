@@ -24,8 +24,15 @@ namespace Datenshi.Scripts.Entities.Misc {
                 return;
             }
 #endif
-            Renderer.gameObject.SetActive(Render);
-            if (!Render) {
+
+            var r = Render;
+            var le = Entity as LivingEntity;
+            if (le != null) {
+                r = Render && !le.Dead;
+            }
+
+            Renderer.gameObject.SetActive(r);
+            if (!r) {
                 return;
             }
 

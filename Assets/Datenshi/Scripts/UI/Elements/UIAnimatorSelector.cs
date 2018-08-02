@@ -8,6 +8,7 @@ namespace Datenshi.Scripts.UI.Elements {
         public Text Label;
         public RectTransform HandleDragArea;
         public RuntimeAnimatorController[] Animators;
+        public Material[] Materials;
 
         private void Start() {
             Delegate.minValue = 0;
@@ -44,8 +45,11 @@ namespace Datenshi.Scripts.UI.Elements {
                 return;
             }
 
-            var newLayout = Animators[(int) arg0];
+            var i = (int) arg0;
+            var newLayout = Animators[i];
+            var newMat = Materials[i];
             Label.text = newLayout.name;
+            p.MiscController.MainSpriteRenderer.material = newMat;
             p.AnimatorUpdater.Animator.runtimeAnimatorController = newLayout;
         }
     }

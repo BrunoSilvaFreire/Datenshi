@@ -83,6 +83,9 @@ namespace Datenshi.Scripts.Combat.Game.Ranged {
             velocity = direction;
             velocity.Normalize();
             velocity *= TravelSpeed;
+            if (ShotEffect != null) {
+                ShotEffect.Execute(transform.position);
+            }
         }
 
         private void OnOwnerKilled() {
@@ -136,7 +139,6 @@ namespace Datenshi.Scripts.Combat.Game.Ranged {
                 HitEffect.Execute(transform.position);
             }
 
-            PlayDefendFX();
             Destroy(gameObject);
         }
 

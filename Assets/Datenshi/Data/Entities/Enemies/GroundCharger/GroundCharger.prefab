@@ -821,6 +821,7 @@ MonoBehaviour:
   Damage: 10
   DefenseFocusComsuption: 5
   ThrowbackForce: {x: 30, y: 5}
+  DefenseEffect: {fileID: 11400000, guid: 2b8610edaf669454ba59846674d74038, type: 2}
 --- !u!114 &114533878482550748
 MonoBehaviour:
   m_ObjectHideFlags: 1

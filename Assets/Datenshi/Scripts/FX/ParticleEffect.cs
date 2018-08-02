@@ -6,7 +6,10 @@ namespace Datenshi.Scripts.FX {
         public ParticleSystem EffectPrefab;
 
         public override void Execute(Vector3 location) {
-            Instantiate(EffectPrefab, location, Quaternion.identity);
+            var i = Instantiate(EffectPrefab, location, Quaternion.identity);
+            if (!i.main.playOnAwake) {
+                i.Play();
+            }
         }
     }
 }

@@ -9,8 +9,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9cdd0efbed1b4bc7b1332c88e74b2a67, type: 3}
-  m_Name: Projectile_Audio
+  m_Name: ProjectileHitSFX
   m_EditorClassIdentifier: 
   Category: 0
-  Volume: 0.8
-  FMODEventName: event:/SFX/Projectile Shot 2
+  Volume: 1
+  FMODEventName: event:/SFX/Projectile Shot 1

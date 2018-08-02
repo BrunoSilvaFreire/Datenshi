@@ -11,6 +11,7 @@ Shader "Datenshi/EntityShader" {
 		_OverrideAmount ("OverrideAmount", Range(0, 1)) = 0
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
 		_Emission("Emission", 2D) = "black"
+		_EmissionScale("Emission Scale", Float) = 1
 		_EmissionSinFrequency("EmissionSinFrequency", Float) = 1
 		_EmissionSinScale("EmissionSinScale", Float) = 1
 		_EmissionMinimum("EmissionOffset", Float) = 0
@@ -86,6 +87,7 @@ Shader "Datenshi/EntityShader" {
 		sampler2D _Emission;
         float _EmissionMinimum;
         float _EmissionSinScale;
+        float _EmissionScale;
         float _EmissionSinFrequency;
         float maximum(float a, float b) {
             return a > b ? a : b;
@@ -99,7 +101,7 @@ Shader "Datenshi/EntityShader" {
 			fixed4 e = c;
 			float intensity = e.a * _EmissionMinimum;
 			intensity += (sin(_Time.x *_EmissionSinFrequency) / 2 + 0.5) * _EmissionSinScale * e.a;
-            o.Emission = e * intensity;
+            o.Emission = e * intensity * _EmissionScale;
 			
 			//o.Albedo = c;
 			//o.Normal = UnpackNormal(tex2D(_NormalMap, IN.uv_MainTex));
