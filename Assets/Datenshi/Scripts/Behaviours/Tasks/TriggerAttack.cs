@@ -14,7 +14,7 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
         public override TaskStatus OnUpdate() {
             var now = Time.time;
             if (now - lastUsed < Delay) {
-                return TaskStatus.Success;
+                return TaskStatus.Running;
             }
 
             lastUsed = now;

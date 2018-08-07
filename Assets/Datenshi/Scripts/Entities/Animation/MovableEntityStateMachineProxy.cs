@@ -113,9 +113,6 @@ namespace Datenshi.Scripts.Entities.Animation {
             Target.DamageInvulnerabilityDuration = value;
         }
 
-        public void SetOnDamaged(EntityDamagedEvent value) {
-            Target.OnDamaged = value;
-        }
 
         public void SetOnAttack(EntityAttackEvent value) {
             Target.OnAttack = value;

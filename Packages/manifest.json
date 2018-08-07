@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "com.unity.ads": "2.0.8",
     "com.unity.analytics": "2.0.16",
     "com.unity.cinemachine": "2.2.0",
     "com.unity.package-manager-ui": "1.9.11",

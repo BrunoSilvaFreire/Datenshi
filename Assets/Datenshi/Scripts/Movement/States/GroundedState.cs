@@ -178,7 +178,7 @@ namespace Datenshi.Scripts.Movement.States {
 
             if (jump) {
                 if (collisionStatus.Down) {
-                    velocity.y = config.JumpForce;
+                    velocity.y = user.YForce;
                 } else {
                     var jumpDown = provider.GetJumpDown();
                     if (jumpDown) {

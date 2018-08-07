@@ -19,6 +19,9 @@ namespace Datenshi.Scripts.Combat {
         [SerializeField]
         private UnityEvent onKilled;
 
+        [SerializeField]
+        private CombatantDamagedEvent onDamaged;
+
         public bool DestroyOnDeath = true;
         public Effect DamagedEffect;
         public Effect KilledEffect;
@@ -108,6 +111,7 @@ namespace Datenshi.Scripts.Combat {
             return dmg;
         }
 
+
         public UnityEvent OnKilled => onKilled;
 
         public Transform Transform => transform;
@@ -115,5 +119,7 @@ namespace Datenshi.Scripts.Combat {
         public Vector2 Center => transform.position;
 
         public Vector2 GroundPosition => Center;
+
+        public CombatantDamagedEvent OnDamaged => onDamaged;
     }
 }

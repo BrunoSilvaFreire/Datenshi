@@ -69,7 +69,7 @@ namespace Datenshi.Scripts.Entities.Animation {
             Entity.OnDamaged.AddListener(OnDamaged);
         }
 
-        private void OnDamaged(IDamageDealer combatant, uint arg1) {
+        private void OnDamaged(DamageInfo info) {
             Animator.SetTrigger(DamagedKey);
         }
 

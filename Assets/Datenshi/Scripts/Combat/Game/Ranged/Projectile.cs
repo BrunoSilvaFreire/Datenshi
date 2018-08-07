@@ -16,12 +16,12 @@ namespace Datenshi.Scripts.Combat.Game.Ranged {
     }
 
     public class Projectile : Ownable<ICombatant>, IDefendable {
-        private static readonly List<Projectile> activeProjectiles = new List<Projectile>();
+        private static readonly List<Projectile> ActiveProjectiles = new List<Projectile>();
 
         public static Projectile GetClosestFromTo(LivingEntity shooter, ILocatable entity) {
             Projectile closest = null;
             var currentMinDistance = float.MaxValue;
-            foreach (var projectile in activeProjectiles) {
+            foreach (var projectile in ActiveProjectiles) {
                 if (!projectile.wasShot || projectile.Owner as LivingEntity != shooter) {
                     continue;
                 }
@@ -70,12 +70,15 @@ namespace Datenshi.Scripts.Combat.Game.Ranged {
 
 
         public void Shoot(RangedAttack attack, ICombatant shooter, ICombatant target) {
+            if ((Object) shooter == null || (Object) target == null) {
+                return;
+            }
             Shoot(attack, shooter, target.Center - (Vector2) transform.position);
             ProjectileShotEvent.Instance.Invoke(this, shooter, target);
         }
 
         public void Shoot(RangedAttack attack, ICombatant shooter, Vector2 direction) {
-            activeProjectiles.Add(this);
+            ActiveProjectiles.Add(this);
             UsedAttack = attack;
             Owner = shooter;
             Owner.OnKilled.AddListener(OnOwnerKilled);
@@ -129,7 +132,7 @@ namespace Datenshi.Scripts.Combat.Game.Ranged {
         }
 
         private void Hit() {
-            activeProjectiles.Remove(this);
+            ActiveProjectiles.Remove(this);
             foreach (var obj in ToDecouple) {
                 obj.transform.parent = null;
                 Destroy(obj, DestroyDelay);

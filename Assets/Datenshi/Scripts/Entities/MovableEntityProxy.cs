@@ -192,14 +192,6 @@ namespace Datenshi.Scripts.Entities {
             Target.DamageInvulnerabilityDuration = value;
         }
 
-        public void SetOnDamaged(EntityDamagedEvent value) {
-            if (Target == null) {
-                return;
-            }
-
-            Target.OnDamaged = value;
-        }
-
         public void SetOnAttack(EntityAttackEvent value) {
             if (Target == null) {
                 return;

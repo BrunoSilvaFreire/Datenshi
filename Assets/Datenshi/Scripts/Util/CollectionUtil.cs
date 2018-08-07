@@ -66,9 +66,9 @@ namespace Datenshi.Scripts.Util {
             Func<TSource, TKey> selector,
             IComparer<TKey> comparer) {
             if (source == null)
-                throw new ArgumentNullException("source");
+                throw new ArgumentNullException(nameof(source));
             if (selector == null)
-                throw new ArgumentNullException("selector");
+                throw new ArgumentNullException(nameof(selector));
             comparer = comparer ?? Comparer<TKey>.Default;
 
             using (var sourceIterator = source.GetEnumerator()) {
@@ -90,6 +90,44 @@ namespace Datenshi.Scripts.Util {
                 }
 
                 return min;
+            }
+        }
+
+        public static TSource MaxBy<TSource, TKey>(
+            this IEnumerable<TSource> source,
+            Func<TSource, TKey> selector) {
+            return source.MaxBy(selector, null);
+        }
+
+        public static TSource MaxBy<TSource, TKey>(
+            this IEnumerable<TSource> source,
+            Func<TSource, TKey> selector,
+            IComparer<TKey> comparer) {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            if (selector == null)
+                throw new ArgumentNullException(nameof(selector));
+            comparer = comparer ?? Comparer<TKey>.Default;
+
+            using (var sourceIterator = source.GetEnumerator()) {
+                if (!sourceIterator.MoveNext()) {
+                    throw new InvalidOperationException("Sequence contains no elements");
+                }
+
+                var max = sourceIterator.Current;
+                var maxKey = selector(max);
+                while (sourceIterator.MoveNext()) {
+                    var candidate = sourceIterator.Current;
+                    var candidateProjected = selector(candidate);
+                    if (comparer.Compare(candidateProjected, maxKey) <= 0) {
+                        continue;
+                    }
+
+                    max = candidate;
+                    maxKey = candidateProjected;
+                }
+
+                return max;
             }
         }
 

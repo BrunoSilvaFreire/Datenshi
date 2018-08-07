@@ -36,6 +36,9 @@ namespace Datenshi.Scripts.Combat {
         public SerializableDamageable(IDamageable o) : base(o) { }
     }
 
+    [Serializable]
+    public class CombatantDamagedEvent : UnityEvent<DamageInfo> { }
+
     /// <summary>
     /// Representa uma fonte de dano.
     /// <br/>
@@ -86,6 +89,10 @@ namespace Datenshi.Scripts.Combat {
         void Heal(uint healthAmount);
 
         uint Damage(ref DamageInfo damageInfo, IDefendable defendable = null);
+
+        CombatantDamagedEvent OnDamaged {
+            get;
+        }
 
         UnityEvent OnKilled {
             get;

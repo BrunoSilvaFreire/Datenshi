@@ -68,7 +68,6 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
                 }
 
                 Target.Value = e;
-                Entity.SetVariable(CombatVariables.AttackTarget, e);
                 return TaskStatus.Success;
             }
             return TaskStatus.Running;

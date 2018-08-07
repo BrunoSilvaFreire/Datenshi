@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daa59a9e91d14f54a1d29f259ad60d90, type: 3}
+  m_Name: LunaAttack
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 114200628134858730, guid: baf5416a0f658cc4c9df0964de007869, type: 2}
+  TimeDelay: 0.25
+  Offset: {x: 0, y: -1}
+  Aim: 1
+  FocusConsumption: 0
+  RawDir: 0
+  Damage: 1

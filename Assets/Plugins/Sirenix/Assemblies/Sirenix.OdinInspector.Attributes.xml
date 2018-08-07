@@ -374,7 +374,7 @@
         </member>
         <member name="T:Sirenix.OdinInspector.CustomValueDrawerAttribute">
              <summary>
-             Instead of making a new attribute, and a new drawer, for a one-timeScale thing, you can with this attribute, make a method that acts as a custom property drawer.
+             Instead of making a new attribute, and a new drawer, for a one-time thing, you can with this attribute, make a method that acts as a custom property drawer.
              These drawers will out of the box have support for undo/redo and multi-selection.
              </summary>
              <example>
@@ -422,7 +422,7 @@
         </member>
         <member name="M:Sirenix.OdinInspector.CustomValueDrawerAttribute.#ctor(System.String)">
             <summary>
-            Instead of making a new attribute, and a new drawer, for a one-timeScale thing, you can with this attribute, make a method that acts as a custom property drawer.
+            Instead of making a new attribute, and a new drawer, for a one-time thing, you can with this attribute, make a method that acts as a custom property drawer.
             These drawers will out of the box have support for undo/redo and multi-selection.
             </summary>
             <param name="methodName">The name of the method to draw the value.</param>
@@ -3456,7 +3456,7 @@
              <para>Use this to give the user a specific set of options to select from.</para>
              </summary>
              <remarks>
-             <note type="note">Due to a bug in Unity, enums will sometimeScales not work correctly. The last example shows how this can be fixed.</note>
+             <note type="note">Due to a bug in Unity, enums will sometimes not work correctly. The last example shows how this can be fixed.</note>
              </remarks>
              <example>
              <para>The following example shows a how the ValueDropdown can be used on an int property.</para>

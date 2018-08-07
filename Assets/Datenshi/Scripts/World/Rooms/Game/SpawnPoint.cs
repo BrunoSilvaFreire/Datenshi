@@ -1,13 +1,14 @@
 ﻿using System;
 using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Game;
+using Datenshi.Scripts.Game.Restart;
 using Datenshi.Scripts.Util;
 using Datenshi.Scripts.Util.Misc;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Datenshi.Scripts.World.Rooms.Game {
-    public class SpawnPoint : AbstractRoomMember {
+    public class SpawnPoint : AbstractRoomMember, IRestartable {
         public enum PositionSourceType {
             Player,
             SpawnPoint
@@ -16,6 +17,8 @@ namespace Datenshi.Scripts.World.Rooms.Game {
         public Entity Prefab;
         public PositionSourceType PositionSource;
         public DistanceThreshold Threshold = new DistanceThreshold(15, 20);
+        public AnimationCurve DistanceMultiplier = AnimationCurve.EaseInOut(0, 1, 3, 2);
+        private uint totalKills;
 
         [ShowInInspector]
         private Entity active;
@@ -45,7 +48,7 @@ namespace Datenshi.Scripts.World.Rooms.Game {
             bool withinMaximum;
             if (active == null) {
                 if (killed) {
-                    withinMaximum = Threshold.IsWithinMaximum(transform, pPos);
+                    withinMaximum = Threshold.IsWithinMaximum(transform, pPos, DistanceMultiplier.Evaluate(totalKills));
                     if (!withinMaximum) {
                         killed = false;
                     }
@@ -88,6 +91,7 @@ namespace Datenshi.Scripts.World.Rooms.Game {
 
         private void OnKilled() {
             killed = true;
+            totalKills++;
             ((LivingEntity) active).OnKilled.RemoveListener(OnKilled);
         }
 
@@ -96,7 +100,11 @@ namespace Datenshi.Scripts.World.Rooms.Game {
         }
 
         private void OnDrawGizmosSelected() {
-            Threshold.DrawGizmos(transform.position);
+            Threshold.DrawGizmos(transform.position, DistanceMultiplier);
+        }
+
+        public void Restart() {
+            totalKills = 0;
         }
     }
 }

@@ -6,6 +6,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor.Animations;
+
 #endif
 
 namespace Datenshi.Scripts.Entities.Animation {
@@ -63,10 +64,9 @@ namespace Datenshi.Scripts.Entities.Animation {
             Entity.OnDamaged.AddListener(OnDamaged);
         }
 
-        private void OnDamaged(IDamageDealer combatant, uint arg1) {
-            Debug.Log("Damaged found");
+        private void OnDamaged(DamageInfo arg0) {
             Animator.SetTrigger(DamagedKey);
-            Animator.SetInteger(LastDamageKey, (int) arg1);
+            Animator.SetInteger(LastDamageKey, (int) (arg0.Multiplier * arg0.Attack.GetDamage(arg0.Damaged)));
         }
 
         protected override void UpdateAnimator(Animator anim) {
@@ -85,7 +85,6 @@ namespace Datenshi.Scripts.Entities.Animation {
             Renderer.flipX = Entity.CurrentDirection.X == -1;
         }
 
-        
 
         public override void TriggerAttack(string attack) {
             Animator.SetTrigger(attack);

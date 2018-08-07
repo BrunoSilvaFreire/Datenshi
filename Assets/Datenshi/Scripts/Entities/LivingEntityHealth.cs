@@ -6,8 +6,8 @@ using UnityEngine.Events;
 
 namespace Datenshi.Scripts.Entities {
     public partial class LivingEntity {
-        [TitleGroup(CombatGroup, "Informações sobre o combat desta LivingEntity")]
-        public EntityDamagedEvent OnDamaged;
+        [SerializeField]
+        private CombatantDamagedEvent onDamaged;
 
         [TitleGroup(CombatGroup)]
         public UnityEvent OnHealthChanged;
@@ -65,6 +65,8 @@ namespace Datenshi.Scripts.Entities {
 
         public bool IsInvulnerable => GodMode || HasTemporaryInvulnerability;
 
+        [TitleGroup(CombatGroup, "Informações sobre o combat desta LivingEntity")]
+        public CombatantDamagedEvent OnDamaged => onDamaged;
 
         /// <summary>
         /// O total de vida da entidade atual.
@@ -153,7 +155,7 @@ namespace Datenshi.Scripts.Entities {
 
             Debug.Log($"<color=#FF0000>{name} damaged by {entity} @ {damage}</color>");
 
-            OnDamaged.Invoke(entity, damage);
+            OnDamaged.Invoke(info);
             OnHealthChanged.Invoke();
             ColorizableRenderer.RequestColorOverride(DamageColor, DamageColorAmount, DamageColorDuration);
             Health -= damage;

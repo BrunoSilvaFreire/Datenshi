@@ -19,10 +19,6 @@ namespace Datenshi.Scripts.Combat.Game.Ranged {
         public bool RawDir = true;
 
         public uint Damage = 5;
-        public float EvasionDashDistance = 3;
-        public float EvasionDashDuration = .25F;
-
-        public SpeedStatusEffect SpeedStatusEffect;
 
 
 #if UNITY_EDITOR
