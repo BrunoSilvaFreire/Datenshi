@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 namespace Datenshi.Scripts.FX {
-    [CreateAssetMenu(menuName = "Datenshi/Effects/ParticleEffect")]
+    [CreateAssetMenu(menuName = BasePath + "/Particle")]
     public class ParticleEffect : Effect {
         public ParticleSystem EffectPrefab;
 

@@ -85,6 +85,7 @@ Shader "Datenshi/EntityShader" {
 		};
 
 		sampler2D _Emission;
+		float4 _OverrideColor;
         float _EmissionMinimum;
         float _EmissionSinScale;
         float _EmissionScale;
@@ -95,7 +96,7 @@ Shader "Datenshi/EntityShader" {
 		void surf (Input IN, inout SurfaceOutputStandard o) {
 			fixed4 textureColor = tex2D (_MainTex, IN.uv_MainTex) * IN.color;
 			
-			o.Alpha = textureColor.a;
+			o.Alpha = textureColor.a * _OverrideColor.a;
 			o.Albedo = textureColor;
 			fixed4 c = tex2D(_Emission, IN.uv_MainTex);
 			fixed4 e = c;

@@ -5,6 +5,7 @@ namespace Datenshi.Scripts.Util.Services {
     public abstract class Service<M> : Service, IComparable<Service<M>> where M : IComparable<M> {
         public M Metadata {
             get;
+            set;
         }
 
         private readonly ITickable tickableNoParam;

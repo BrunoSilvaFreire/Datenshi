@@ -13,7 +13,7 @@ namespace Datenshi.Scripts.FX {
             Effect.Execute(GetRandomLoc(b));
         }
 
-        private Vector2 GetRandomLoc(Bounds2D bounds2D) {
+        private static Vector2 GetRandomLoc(Bounds2D bounds2D) {
             var startPos = bounds2D.Min;
             startPos.x += Random.value * bounds2D.Size.x;
             startPos.y += Random.value * bounds2D.Size.y;

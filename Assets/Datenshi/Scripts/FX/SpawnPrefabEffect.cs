@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 namespace Datenshi.Scripts.FX {
-    [CreateAssetMenu(menuName = "Datenshi/Effects/SpawnPrefab")]
+    [CreateAssetMenu(menuName = BasePath + "/SpawnPrefab")]
     public class SpawnPrefabEffect : Effect {
         public GameObject Prefab;
 

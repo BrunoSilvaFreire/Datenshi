@@ -3,7 +3,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Datenshi.Scripts.FX {
-    [CreateAssetMenu(menuName = "Datenshi/Effects/AudioEffect")]
+    [CreateAssetMenu(menuName = BasePath + "/Audio")]
     public class AudioEffect : Effect {
         public AudioFX AudioFX;
 
