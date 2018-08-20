@@ -27,10 +27,13 @@ namespace Datenshi.Scripts.Graphics {
         private SpriteRenderer[] renderers;
 
         [ShowInInspector, ReadOnly]
-        private TrailRenderer trails;
+        private ColorizableSlave[] slaves;
 
         [ShowInInspector, ReadOnly]
-        private ColorizableSlave[] slaves;
+        private TrailRenderer[] trails;
+
+        [ShowInInspector, ReadOnly]
+        private ColorizableTrailSlave[] trailsSlaves;
 
         private MaterialPropertyBlock block;
         public bool Outline;
@@ -82,7 +85,22 @@ namespace Datenshi.Scripts.Graphics {
         private void Awake() {
             ColorizableRendererEnabledEvent.Invoke(this);
             renderers = GetComponentsInChildren<SpriteRenderer>();
+            trails = GetComponentsInChildren<TrailRenderer>();
             slaves = new ColorizableSlave[renderers.Length];
+            InitSlaves();
+            InitTrailSlaves();
+        }
+
+        private void InitTrailSlaves() {
+            for (var i = 0; i < trails.Length; i++) {
+                var ren = trails[i];
+                var slave = ren.GetOrAddComponent<ColorizableTrailSlave>();
+                slave.Initialize(ren);
+                trailsSlaves[i] = slave;
+            }
+        }
+
+        private void InitSlaves() {
             for (var i = 0; i < slaves.Length; i++) {
                 var ren = renderers[i];
                 var slave = ren.GetOrAddComponent<ColorizableSlave>();
@@ -145,6 +163,40 @@ namespace Datenshi.Scripts.Graphics {
         }
     }
 
+
+    public class TrailOverride {
+        public float Length;
+        private readonly float startAmount;
+
+        public float Amount {
+            get;
+            set;
+        }
+
+        public bool Update {
+            get;
+            set;
+        }
+
+        public TrailOverride(float length, bool update = true) {
+            Length = length;
+            Update = update;
+        }
+
+        public int CompareTo(TrailOverride other) {
+            if (ReferenceEquals(this, other)) return 0;
+            return ReferenceEquals(null, other) ? 1 : Amount.CompareTo(other.Amount);
+        }
+
+        public void Tick(Service value) {
+            var t = value as ITimedService;
+            if (t == null || !Update) {
+                return;
+            }
+
+            Amount = startAmount * (1 - t.Percentage);
+        }
+    }
     public class ColorOverride : IComparable<ColorOverride>, ITickable<Service> {
         public Color Color;
         private readonly float startAmount;

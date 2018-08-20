@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
 
 namespace Datenshi.Scripts.Graphics {
-    public class ColorizableSlave : MonoBehaviour {
+    public class ColorizableSlave : AbstractSlave<SpriteRenderer> {
         public Color SpriteColor;
-        public SpriteRenderer Renderer;
 
-        public void Initialize(SpriteRenderer renderer) {
-            Renderer = renderer;
-            SpriteColor = Renderer.color;
+        public override void Initialize(SpriteRenderer renderer) {
+            base.Initialize(renderer);
+            SpriteColor = renderer.color;
         }
     }
 }

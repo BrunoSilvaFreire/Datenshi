@@ -12,7 +12,6 @@ namespace Datenshi.Scripts.Entities {
         public Narrator EntityNarrator;
         public AudioSource EntityAudioSource;
         public AudioClip[] StepSounds;
-        public Animator Animator;
         public GhostingContainer GhostingContainer;
         public float CanvasFadeDuration = .5F;
 
@@ -65,14 +64,6 @@ namespace Datenshi.Scripts.Entities {
             }
 
             EntityAudioSource.pitch = pitch;
-        }
-
-        public void SetEntityAudioSourcePitchParameter(string parameterName) {
-            if (EntityAudioSource == null || Animator == null) {
-                return;
-            }
-
-            EntityAudioSource.pitch = Animator.GetFloat(parameterName);
         }
 
         public void PlayStepSound() {

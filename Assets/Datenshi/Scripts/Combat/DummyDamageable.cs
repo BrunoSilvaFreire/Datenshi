@@ -102,6 +102,7 @@ namespace Datenshi.Scripts.Combat {
                 return 0;
             }
 
+            GlobalDamageEvent.Instance.Invoke(damageInfo);
             if (DamagedEffect != null) {
                 DamagedEffect.Execute(transform.position);
             }

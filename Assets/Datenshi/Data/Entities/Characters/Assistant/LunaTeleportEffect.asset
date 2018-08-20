@@ -41,7 +41,7 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  Duration: 1.5
+  Duration: 1
   Amount:
     serializedVersion: 2
     m_Curve:

@@ -4,7 +4,6 @@ using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.FX;
 using Datenshi.Scripts.Graphics;
 using Datenshi.Scripts.Util.Time;
-using DG.Tweening;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Game {
@@ -26,6 +25,16 @@ namespace Datenshi.Scripts.Game {
 
         private void Start() {
             GlobalEntityDamagedEvent.Instance.AddListener(OnEntityDamaged);
+            GlobalDamageEvent.Instance.AddListener(OnDamaged);
+        }
+
+        private void OnDamaged(DamageInfo arg0) {
+            var currentEntity = PlayerController.Instance.CurrentEntity;
+            if (!Equals(arg0.Damager, currentEntity) && !Equals(arg0.Damaged, currentEntity)) {
+                return;
+            }
+
+            Vibrate();
         }
 
         private void OnEntityDamaged(ICombatant damaged, IDamageDealer damager, IDamageSource attack, uint damage) {
