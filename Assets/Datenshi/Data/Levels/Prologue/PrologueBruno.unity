@@ -38,13 +38,13 @@ RenderSettings:
   m_ReflectionIntensity: 0.364
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1985944765}
-  m_IndirectSpecularColor: {r: 0.30532864, g: 0.31298587, b: 0.28192362, a: 0.364}
+  m_IndirectSpecularColor: {r: 0.29232952, g: 0.31103823, b: 0.303545, a: 0.364}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -58,13 +58,13 @@ LightmapSettings:
     serializedVersion: 10
     m_Resolution: 2
     m_BakeResolution: 40
-    m_AtlasSize: 1024
+    m_AtlasSize: 512
     m_AO: 1
     m_AOMaxDistance: 1
     m_CompAOExponent: 1
     m_CompAOExponentDirect: 0
     m_Padding: 2
-    m_LightmapParameters: {fileID: 15200, guid: 0000000000000000f000000000000000,
+    m_LightmapParameters: {fileID: 15204, guid: 0000000000000000f000000000000000,
       type: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
@@ -90,7 +90,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
-  m_LightingDataAsset: {fileID: 112000722, guid: 8008af1fb42d80141a408bf684cf53a9,
+  m_LightingDataAsset: {fileID: 112000722, guid: 29289d7fa15734942bcd457cea9430d5,
     type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -1044,10 +1044,33 @@ MonoBehaviour:
     Maximum: 25
   DistanceMultiplier:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 3
+      value: 2
+      inSlope: 0.0075761266
+      outSlope: 0.0075761266
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.39645028
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!320 &59221014 stripped
+PlayableDirector:
+  m_CorrespondingSourceObject: {fileID: 320526605852664056, guid: 588b115d2bfbd3542adb6d3cd21dcd66,
+    type: 2}
+  m_PrefabInternal: {fileID: 2006188602}
 --- !u!1 &61850117
 GameObject:
   m_ObjectHideFlags: 0
@@ -3130,7 +3153,25 @@ MonoBehaviour:
     Maximum: 20
   DistanceMultiplier:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 3
+      value: 2
+      inSlope: 0.0075761266
+      outSlope: 0.0075761266
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.39645028
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -62528,6 +62569,8 @@ MonoBehaviour:
     Object: {fileID: 2118582210}
   - Id: 1994173606
     Object: {fileID: 635327645}
+  - Id: -1811566089
+    Object: {fileID: 59221014}
 --- !u!156049354 &394420737
 Grid:
   m_ObjectHideFlags: 0
@@ -63101,6 +63144,112 @@ Transform:
   m_Father: {fileID: 625089488}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &433066482
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 224059072633865186, guid: ee520430282f0d34abbb78a89475cffc,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224059072633865186, guid: ee520430282f0d34abbb78a89475cffc,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224059072633865186, guid: ee520430282f0d34abbb78a89475cffc,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224059072633865186, guid: ee520430282f0d34abbb78a89475cffc,
+        type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224059072633865186, guid: ee520430282f0d34abbb78a89475cffc,
+        type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224059072633865186, guid: ee520430282f0d34abbb78a89475cffc,
+        type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224059072633865186, guid: ee520430282f0d34abbb78a89475cffc,
+        type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224059072633865186, guid: ee520430282f0d34abbb78a89475cffc,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 224059072633865186, guid: ee520430282f0d34abbb78a89475cffc,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -138.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 224059072633865186, guid: ee520430282f0d34abbb78a89475cffc,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 8.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 224059072633865186, guid: ee520430282f0d34abbb78a89475cffc,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 224059072633865186, guid: ee520430282f0d34abbb78a89475cffc,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 224059072633865186, guid: ee520430282f0d34abbb78a89475cffc,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224059072633865186, guid: ee520430282f0d34abbb78a89475cffc,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224059072633865186, guid: ee520430282f0d34abbb78a89475cffc,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224059072633865186, guid: ee520430282f0d34abbb78a89475cffc,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224059072633865186, guid: ee520430282f0d34abbb78a89475cffc,
+        type: 2}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224059072633865186, guid: ee520430282f0d34abbb78a89475cffc,
+        type: 2}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114227548755981228, guid: ee520430282f0d34abbb78a89475cffc,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: f94890c740800524594c8a8024751c81, type: 2}
+    m_RemovedComponents:
+    - {fileID: 114916159706316726, guid: ee520430282f0d34abbb78a89475cffc, type: 2}
+  m_SourcePrefab: {fileID: 100100000, guid: ee520430282f0d34abbb78a89475cffc, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1001 &435612717
 Prefab:
   m_ObjectHideFlags: 0
@@ -64655,7 +64804,25 @@ MonoBehaviour:
     Maximum: 25
   DistanceMultiplier:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 3
+      value: 2
+      inSlope: 0.0075761266
+      outSlope: 0.0075761266
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.39645028
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -64711,7 +64878,25 @@ MonoBehaviour:
     Maximum: 20
   DistanceMultiplier:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 3
+      value: 2
+      inSlope: 0.0075761266
+      outSlope: 0.0075761266
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.39645028
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -65363,7 +65548,25 @@ MonoBehaviour:
     Maximum: 20
   DistanceMultiplier:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 3
+      value: 2
+      inSlope: 0.0075761266
+      outSlope: 0.0075761266
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.39645028
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -65754,7 +65957,25 @@ MonoBehaviour:
     Maximum: 25
   DistanceMultiplier:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 3
+      value: 2
+      inSlope: 0.0075761266
+      outSlope: 0.0075761266
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.39645028
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -67997,7 +68218,25 @@ MonoBehaviour:
     Maximum: 25
   DistanceMultiplier:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 3
+      value: 2
+      inSlope: 0.0075761266
+      outSlope: 0.0075761266
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.39645028
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -68053,7 +68292,25 @@ MonoBehaviour:
     Maximum: 20
   DistanceMultiplier:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 3
+      value: 2
+      inSlope: 0.0075761266
+      outSlope: 0.0075761266
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.39645028
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -68750,7 +69007,25 @@ MonoBehaviour:
     Maximum: 25
   DistanceMultiplier:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 3
+      value: 2
+      inSlope: 0.0075761266
+      outSlope: 0.0075761266
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.39645028
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -72156,7 +72431,25 @@ MonoBehaviour:
     Maximum: 25
   DistanceMultiplier:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 3
+      value: 2
+      inSlope: 0.0075761266
+      outSlope: 0.0075761266
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.39645028
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -72364,7 +72657,25 @@ MonoBehaviour:
     Maximum: 20
   DistanceMultiplier:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 3
+      value: 2
+      inSlope: 0.0075761266
+      outSlope: 0.0075761266
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.39645028
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -72494,7 +72805,7 @@ MonoBehaviour:
   m_Script: {fileID: -88106150, guid: 03fe207ae5b0c9040a227147e429c73e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cutscene: {fileID: 11400000, guid: 927d4ba93e258274ca771a188541fdc8, type: 2}
+  Cutscene: {fileID: 11400000, guid: b3a150cae183b7e41b7242bb01e4e443, type: 2}
   Player: {fileID: 394420736}
   PostAction: 2
   Mode: 1
@@ -73295,7 +73606,25 @@ MonoBehaviour:
     Maximum: 25
   DistanceMultiplier:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 3
+      value: 2
+      inSlope: 0.0075761266
+      outSlope: 0.0075761266
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.39645028
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -73901,7 +74230,25 @@ MonoBehaviour:
     Maximum: 25
   DistanceMultiplier:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 3
+      value: 2
+      inSlope: 0.0075761266
+      outSlope: 0.0075761266
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.39645028
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -78346,7 +78693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89bf4717da5243adaed3224d3a0f0424, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 1134129239631916, guid: 7e48ba6b1b968764490bbc70b66e3fe1, type: 2}
+  Prefab: {fileID: 0}
   Bounds:
     Center: {x: 0, y: 0}
     Size: {x: 16, y: 1}
@@ -79722,7 +80069,25 @@ MonoBehaviour:
     Maximum: 25
   DistanceMultiplier:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 3
+      value: 2
+      inSlope: 0.0075761266
+      outSlope: 0.0075761266
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.39645028
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -80934,7 +81299,25 @@ MonoBehaviour:
     Maximum: 25
   DistanceMultiplier:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 3
+      value: 2
+      inSlope: 0.0075761266
+      outSlope: 0.0075761266
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.39645028
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -82191,7 +82574,25 @@ MonoBehaviour:
     Maximum: 25
   DistanceMultiplier:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 3
+      value: 2
+      inSlope: 0.0075761266
+      outSlope: 0.0075761266
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.39645028
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -82973,7 +83374,25 @@ MonoBehaviour:
     Maximum: 25
   DistanceMultiplier:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 3
+      value: 2
+      inSlope: 0.0075761266
+      outSlope: 0.0075761266
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.39645028
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -84109,7 +84528,25 @@ MonoBehaviour:
     Maximum: 25
   DistanceMultiplier:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 3
+      value: 2
+      inSlope: 0.0075761266
+      outSlope: 0.0075761266
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.39645028
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4

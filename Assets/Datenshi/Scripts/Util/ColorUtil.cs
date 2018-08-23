@@ -1,7 +1,13 @@
 ﻿using UnityEngine;
 
 namespace Datenshi.Scripts.Util {
-        public static class ColorUtility {
+    public static class ColorUtility {
+        public static float GetBrightness(this Color color) {
+            float h, s, v;
+            Color.RGBToHSV(color, out h, out s, out v);
+            return v;
+        }
+
         /// <summary>
         /// Copies this color, and return a new color with the modified brightness set to <see cref="brightness"/>
         /// </summary>

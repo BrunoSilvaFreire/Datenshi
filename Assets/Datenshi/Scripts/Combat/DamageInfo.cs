@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Datenshi.Scripts.Combat {
     [Serializable]
-    public struct DamageInfo {
+    public class DamageInfo {
         public DamageInfo(IDamageSource attack, float multiplier, IDamageable damaged, IDamageDealer damager) {
             this.attack = attack;
             this.multiplier = multiplier;

@@ -19,6 +19,7 @@ namespace Datenshi.Scripts.Game.Rank {
     public class Rank {
         public const byte ExtraDamagePerLevel = 5;
         private float xp;
+        public const float MaxRankLevel = 10;
 
         public float RankPercentage => XP / NextLevelRequiredXP;
 

@@ -18,6 +18,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Playables;
+using Object = UnityEngine.Object;
 
 namespace Datenshi.Scripts.Game {
     [Serializable]
@@ -75,6 +76,13 @@ namespace Datenshi.Scripts.Game {
 
             OnEntityChanged.Invoke(null, currentEntity);
             GlobalEntityDamagedEvent.Instance.AddListener(OnEntityDamaged);
+            HitboxAttackExecutedEvent.Instance.AddListener(OnAttack);
+        }
+
+        private void OnAttack(ICombatant arg0, uint arg1, Collider2D arg2, DamageInfo arg3) {
+            if ((Object) arg0 == CurrentEntity) {
+                arg3.Multiplier = GameResources.Instance.RankDamageGraph.Evaluate((byte) Rank.CurrentLevel);
+            }
         }
 
         private void OnEntityDamaged(LivingEntity damaged, IDamageDealer damager, IDamageSource damageSource,

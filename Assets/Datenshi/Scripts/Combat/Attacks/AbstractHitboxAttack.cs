@@ -7,7 +7,7 @@ using UnityEngine.Events;
 using UPM.Util;
 
 namespace Datenshi.Scripts.Combat.Attacks {
-    public class HitboxAttackExecutedEvent : UnityEvent<ICombatant, uint, Collider2D[]> {
+    public class HitboxAttackExecutedEvent : UnityEvent<ICombatant, uint, Collider2D, DamageInfo> {
         public static readonly HitboxAttackExecutedEvent Instance = new HitboxAttackExecutedEvent();
         private HitboxAttackExecutedEvent() { }
     }
@@ -43,7 +43,6 @@ namespace Datenshi.Scripts.Combat.Attacks {
             DebugUtil.DrawBox2DWire(hb.Center, hb.Size, HitboxColor);
             var success = false;
             var found = Physics2D.OverlapBoxAll(hb.Center, hb.Size, 0, GameResources.Instance.EntitiesMask);
-            HitboxAttackExecutedEvent.Instance.Invoke(entity, damage, found);
             foreach (var hit in found) {
                 var d = hit.GetComponentInParent<IDamageable>();
                 if (d == null || d.Ignored) {
@@ -56,6 +55,7 @@ namespace Datenshi.Scripts.Combat.Attacks {
                 }
 
                 var info = new DamageInfo(this, 1, d, entity);
+                HitboxAttackExecutedEvent.Instance.Invoke(entity, damage, hit, info);
                 success = true;
                 d.Damage(ref info, this);
                 if (OnHit != null) {

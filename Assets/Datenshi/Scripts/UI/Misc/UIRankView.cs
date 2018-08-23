@@ -13,20 +13,28 @@ namespace Datenshi.Scripts.UI.Misc {
         private PlayerController controller;
         public Text RankField;
         public Image XPBar;
+        public Image XPBarBackground;
         public Animator Animator;
         public string LevelUpKey = "LevelUp";
         public string LevelDownKey = "LevelDown";
         public float RankXPGainedTransitionDuration;
-        public float DamageFadeDuration;
-        public float DamageResizeDuration;
         public Text DamageLabel;
-        public RectTransform DamageTransform;
+        public Gradient ColorGradient;
+        public float BackgroundBrightnessLoss = 0.25F;
         private bool tracking;
 
         private void Start() {
             controller = PlayerController.Instance;
             controller.PlayerRankXPGainedEvent.AddListener(OnXPGained);
+            UpdateText(controller.Rank);
             tracking = true;
+        }
+
+        private void UpdateText(Rank r) {
+            if (DamageLabel != null) {
+                var damage = GameResources.Instance.RankDamageGraph.Evaluate((byte) r.CurrentLevel);
+                DamageLabel.text = $"Damage {damage * 100}%";
+            }
         }
 
         private Coroutine xpGainedRoutine;
@@ -39,11 +47,7 @@ namespace Datenshi.Scripts.UI.Misc {
             tracking = false;
             var r = controller.Rank;
             XPBar.DOFillAmount(r.RankPercentage, RankXPGainedTransitionDuration);
-            if (DamageLabel != null) {
-                DamageLabel.SetAlpha(0);
-                var damage = GameResources.Instance.RankDamageGraph.Evaluate((byte) r.CurrentLevel);
-                DamageLabel.text = $"Damage +{damage}%";
-            }
+
 
             yield return new WaitForSeconds(RankXPGainedTransitionDuration);
             var left = controller.RankXPGainedWaitDuration - RankXPGainedTransitionDuration;
@@ -54,17 +58,27 @@ namespace Datenshi.Scripts.UI.Misc {
             tracking = true;
         }
 
+        private void SetColor(Rank rank) {
+            var position = ((float) rank.CurrentLevel + rank.RankPercentage) / Rank.MaxRankLevel;
+            var color = ColorGradient.Evaluate(position);
+            DamageLabel.color = color;
+            XPBar.color = color;
+            XPBarBackground.color = color.SetBrightness(color.GetBrightness() - BackgroundBrightnessLoss);
+        }
+
         private RankLevel lastRank = RankLevel.F;
 
         private void Update() {
             var r = controller.Rank;
             XPBar.fillAmount = r.RankPercentage;
             var currentRank = r.CurrentLevel;
+            SetColor(r);
             if (lastRank == currentRank) {
                 return;
             }
 
             RankField.text = Enum.GetName(typeof(RankLevel), controller.Rank.CurrentLevel);
+            UpdateText(r);
 
             if (lastRank > currentRank) {
                 Animator.SetTrigger(LevelDownKey);

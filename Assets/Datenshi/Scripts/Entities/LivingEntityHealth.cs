@@ -123,6 +123,7 @@ namespace Datenshi.Scripts.Entities {
             var entity = info.Damager;
             if (defendable != null && Defending && defendable.CanDefend(this)) {
                 var d = defendable.Defend(this, ref info);
+                GlobalDefenseEvent.Instance.Invoke(this, info);
                 if (d > FocusTimeLeft) {
                     FocusTimeLeft = 0;
                     Stun(DefenseBreakStunDuration);

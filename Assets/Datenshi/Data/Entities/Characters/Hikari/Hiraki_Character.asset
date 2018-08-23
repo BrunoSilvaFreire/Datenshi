@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Hiraki_Character
   m_EditorClassIdentifier: 
   Alias: Hikari
-  SignatureColor: {r: 0.31142685, g: 1, b: 0.254902, a: 1}
+  SignatureColor: {r: 0.39215687, g: 1, b: 0.67058825, a: 1}
   Portrait: {fileID: 11400000, guid: 59ad56690db32c745a092cc2aae53bd1, type: 2}
   SpeechClip: event:/SFX/Player/Hikari Voice
   CharacterScreen: {fileID: 8400000, guid: 6d8666327460cce409bdb972cac62e92, type: 2}

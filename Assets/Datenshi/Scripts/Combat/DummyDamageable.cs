@@ -108,7 +108,12 @@ namespace Datenshi.Scripts.Combat {
             }
 
             var dmg = (uint) (damageInfo.Attack.GetDamage(this) * damageInfo.Multiplier);
-            CurrentHealth -= dmg;
+            if (dmg >= CurrentHealth) {
+                Kill();
+            } else {
+                CurrentHealth -= dmg;
+            }
+
             return dmg;
         }
 
