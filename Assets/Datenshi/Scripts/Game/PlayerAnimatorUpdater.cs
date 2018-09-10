@@ -9,7 +9,5 @@ namespace Datenshi.Scripts.Game {
         public override void TriggerDeath() {
             GameController.Instance.RestartGame();
         }
-
-        
     }
 }

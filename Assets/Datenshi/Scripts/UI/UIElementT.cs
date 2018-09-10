@@ -30,7 +30,11 @@ namespace Datenshi.Scripts.UI {
         }
 
         public bool AllowOverride = true;
+
+        [ShowInInspector]
         private bool overrideShowing;
+
+        [ShowInInspector]
         private bool overrideShowingValue;
 
         private void Start() {
@@ -72,7 +76,7 @@ namespace Datenshi.Scripts.UI {
             }
         }
 
-        [SerializeField]
+        [SerializeField, HideInInspector]
         private bool showing;
 
         public void Show() {

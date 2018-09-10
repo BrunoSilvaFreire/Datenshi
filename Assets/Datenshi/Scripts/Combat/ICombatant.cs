@@ -105,11 +105,6 @@ namespace Datenshi.Scripts.Combat {
             set;
         }
 
-
-        Bounds2D DefenseHitbox {
-            get;
-        }
-
         Collider2D Hitbox {
             get;
         }

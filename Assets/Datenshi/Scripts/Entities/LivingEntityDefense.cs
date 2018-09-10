@@ -1,14 +1,11 @@
-﻿using Sirenix.OdinInspector;
+﻿using Datenshi.Scripts.Util;
+using Sirenix.OdinInspector;
 using UnityEngine;
-using UPM.Util;
 
 namespace Datenshi.Scripts.Entities {
     public partial class LivingEntity {
         private bool defending;
 
-
-        [SerializeField]
-        private Bounds2D defenseHitbox;
 
         public float FocusMaxTime = 2;
 
@@ -20,14 +17,6 @@ namespace Datenshi.Scripts.Entities {
 
         public float FocusPercent => FocusTimeLeft / FocusMaxTime;
 
-        public Bounds2D DefenseHitbox {
-            get {
-                var hb = defenseHitbox;
-                hb.Center.x *= CurrentDirection.X;
-                hb.Center += (Vector2) transform.position;
-                return hb;
-            }
-        }
 
         [ShowInInspector, ReadOnly, TitleGroup(CombatGroup)]
         public float FocusTimeLeft {
@@ -64,7 +53,6 @@ namespace Datenshi.Scripts.Entities {
                 return defending;
             }
             set {
-               
                 if (defending == value) {
                     return;
                 }
@@ -89,6 +77,7 @@ namespace Datenshi.Scripts.Entities {
                 var recoverAmount = Time.deltaTime * FocusRecoverAmountMultiplier;
                 FocusTimeLeft += recoverAmount;
             }
+
             if (updater == null) {
                 return;
             }

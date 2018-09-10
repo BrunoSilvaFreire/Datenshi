@@ -71,8 +71,12 @@ namespace Datenshi.Scripts.Combat.Game.Ranged {
 
         public void Shoot(RangedAttack attack, ICombatant shooter, ICombatant target) {
             if ((Object) shooter == null || (Object) target == null) {
+                Debug.LogError(
+                    $"Projectile was attempted to be shot, but shooter or target is null ({shooter}, {target})"
+                );
                 return;
             }
+
             Shoot(attack, shooter, target.Center - (Vector2) transform.position);
             ProjectileShotEvent.Instance.Invoke(this, shooter, target);
         }

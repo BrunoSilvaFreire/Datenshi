@@ -41,6 +41,9 @@ namespace Datenshi.Scripts.Entities {
             UpdateStun();
             UpdateFocus();
             UpdateDefense();
+            if (AnimatorUpdater != null) {
+                AnimatorUpdater.UpdateAnimator();
+            }
         }
 
         public float OutlineInvulnerabilityMinSecondsLeft = 2;
@@ -109,7 +112,7 @@ namespace Datenshi.Scripts.Entities {
             }
         }
 
-        private void OnDrawGizmos() {
+        protected virtual void OnDrawGizmos() {
             var b = Hitbox.bounds;
             Gizmos.color = HitboxColor;
             Gizmos.DrawCube(b.center, b.size);

@@ -66,6 +66,9 @@ namespace Datenshi.Scripts.Entities.Animation {
         }
 #endif
         private void Start() {
+            if (Entity == null) {
+                 return;
+            }
             Entity.OnDamaged.AddListener(OnDamaged);
         }
 
@@ -74,6 +77,10 @@ namespace Datenshi.Scripts.Entities.Animation {
         }
 
         protected override void UpdateAnimator(Animator anim) {
+            if (Entity == null) {
+                return;
+            }
+
             var vel = Entity.Velocity;
             var speed = vel.magnitude;
             var percentSpeed = speed / Entity.MaxSpeed;

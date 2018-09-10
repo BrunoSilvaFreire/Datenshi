@@ -44,8 +44,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Definition:
     m_ImpulseChannel: 1
-    m_RawSignal: {fileID: 11400000, guid: d07d2b5f719d0cc469684697d65c5f0b, type: 2}
-    m_AmplitudeGain: 1
+    m_RawSignal: {fileID: 11400000, guid: 0acd1382e18c7de419283788296236be, type: 2}
+    m_AmplitudeGain: 0.55
     m_FrequencyGain: 1
     m_RepeatMode: 0
     m_Randomize: 1
@@ -82,7 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0900606cf684e368bf88e8d125e303b, type: 3}
   m_Name: ParticleEffect
   m_EditorClassIdentifier: 
-  EffectPrefab: {fileID: 198445748007662224, guid: cae7a7f79f37a934ab16d127427eef8c,
+  EffectPrefab: {fileID: 198897291966273228, guid: f04407c50c45a034d95fda0aa691123d,
     type: 2}
 --- !u!114 &114641434207292028
 MonoBehaviour:
@@ -119,4 +119,4 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  SlowdownDuration: 0.25
+  SlowdownDuration: 0.15

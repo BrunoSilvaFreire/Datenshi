@@ -87,6 +87,7 @@ namespace Datenshi.Scripts.Graphics {
             renderers = GetComponentsInChildren<SpriteRenderer>();
             trails = GetComponentsInChildren<TrailRenderer>();
             slaves = new ColorizableSlave[renderers.Length];
+            trailsSlaves = new ColorizableTrailSlave[trails.Length];
             InitSlaves();
             InitTrailSlaves();
         }
@@ -114,6 +115,19 @@ namespace Datenshi.Scripts.Graphics {
         }
 
         private Tweener impactTweener;
+        private bool flipX;
+
+        public bool FlipX {
+            get {
+                return flipX;
+            }
+            set {
+                flipX = value;
+                foreach (var spriteRenderer in renderers) {
+                    spriteRenderer.flipX = value;
+                }
+            }
+        }
 
         private void Update() {
             overrideServiceHandler.Tick();
@@ -197,6 +211,7 @@ namespace Datenshi.Scripts.Graphics {
             Amount = startAmount * (1 - t.Percentage);
         }
     }
+
     public class ColorOverride : IComparable<ColorOverride>, ITickable<Service> {
         public Color Color;
         private readonly float startAmount;

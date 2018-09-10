@@ -31,6 +31,21 @@ namespace Datenshi.Scripts.Entities {
         public const string MiscGroup = "Misc";
         public const string GeneralGroup = "General";
 
+
+        [TitleGroup(MiscGroup), SerializeField]
+        private bool timeScaleIndependent;
+
+        public bool TimeScaleIndependent {
+            get {
+                return timeScaleIndependent;
+            }
+            set {
+                timeScaleIndependent = value;
+            }
+        }
+
+        public float DeltaTime => TimeScaleIndependent ? Time.unscaledDeltaTime : Time.deltaTime;
+
         public Room Room {
             get;
             private set;

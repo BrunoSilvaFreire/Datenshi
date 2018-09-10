@@ -281,19 +281,6 @@ namespace Datenshi.Scripts.Entities {
             set;
         } = true;
 
-        [TitleGroup(MovementGroup), SerializeField]
-        private bool timeScaleIndependent;
-
-        public bool TimeScaleIndependent {
-            get {
-                return timeScaleIndependent;
-            }
-            set {
-                timeScaleIndependent = value;
-            }
-        }
-
-        public float DeltaTime => TimeScaleIndependent ? Time.unscaledDeltaTime : Time.deltaTime;
 
         public Vector2 ExternalForces {
             get {

@@ -83151,6 +83151,31 @@ Prefab:
       propertyPath: Material
       value: 
       objectReference: {fileID: 551102163}
+    - target: {fileID: 224809780945413318, guid: 588b115d2bfbd3542adb6d3cd21dcd66,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 30.199951
+      objectReference: {fileID: 0}
+    - target: {fileID: 114051697619806424, guid: 588b115d2bfbd3542adb6d3cd21dcd66,
+        type: 2}
+      propertyPath: AllowOverride
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114674306197147514, guid: 588b115d2bfbd3542adb6d3cd21dcd66,
+        type: 2}
+      propertyPath: showing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114215805100493058, guid: 588b115d2bfbd3542adb6d3cd21dcd66,
+        type: 2}
+      propertyPath: showing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114051697619806424, guid: 588b115d2bfbd3542adb6d3cd21dcd66,
+        type: 2}
+      propertyPath: showing
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 588b115d2bfbd3542adb6d3cd21dcd66, type: 2}
   m_IsPrefabAsset: 0

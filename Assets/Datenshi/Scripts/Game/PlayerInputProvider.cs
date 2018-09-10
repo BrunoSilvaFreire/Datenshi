@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Input;
 using Rewired;
@@ -56,35 +57,37 @@ namespace Datenshi.Scripts.Game {
 
             return currentPlayer == null ? default(T) : selector(currentPlayer);
         }
-
+#if UNITY_EDITOR
+        [ShowInInspector, NonSerialized]
         public bool DebugInput;
 
-        [ShowIf("DebugInput")]
+        [ShowIf("DebugInput"), ShowInInspector, NonSerialized]
         public float x;
 
-        [ShowIf("DebugInput")]
+        [ShowIf("DebugInput"), ShowInInspector, NonSerialized]
         public float y;
 
-        [ShowIf("DebugInput")]
+        [ShowIf("DebugInput"), ShowInInspector, NonSerialized]
         public bool Jump;
 
-        [ShowIf("DebugInput")]
+        [ShowIf("DebugInput"), ShowInInspector, NonSerialized]
         public bool Focus;
 
-        [ShowIf("DebugInput")]
+        [ShowIf("DebugInput"), ShowInInspector, NonSerialized]
         public bool Attack;
 
-        [ShowIf("DebugInput")]
+        [ShowIf("DebugInput"), ShowInInspector, NonSerialized]
         public bool Walk;
 
-        [ShowIf("DebugInput")]
+        [ShowIf("DebugInput"), ShowInInspector, NonSerialized]
         public bool Dash;
 
-        [ShowIf("DebugInput")]
+        [ShowIf("DebugInput"), ShowInInspector, NonSerialized]
         public bool Submit;
 
-        [ShowIf("DebugInput")]
+        [ShowIf("DebugInput"), ShowInInspector, NonSerialized]
         public bool Defend;
+#endif
 
         public override float GetHorizontal() {
 #if UNITY_EDITOR
@@ -151,6 +154,15 @@ namespace Datenshi.Scripts.Game {
 
         public override bool GetButtonUp(int id) {
             return RuntimeResources.Instance.AllowPlayerInput && currentPlayer.GetButtonUp(id);
+        }
+
+        private bool lastJump;
+
+        private void Update() {
+            lastJump = Jump;
+            if (lastJump && Jump) {
+                Jump = false;
+            }
         }
 
         public override bool GetJump() {

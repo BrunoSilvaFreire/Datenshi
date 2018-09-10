@@ -11,5 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5109c3f890a54b0697bb84dd548fb1ea, type: 3}
   m_Name: Singletons
   m_EditorClassIdentifier: 
-  PlayerControllerPrefab: {fileID: 114734066672738978, guid: 588b115d2bfbd3542adb6d3cd21dcd66,
-    type: 2}
+  PlayerControllerPrefab: {fileID: 0}

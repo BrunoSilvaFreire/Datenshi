@@ -22,7 +22,7 @@ namespace Datenshi.Scripts.Entities.Misc.Ghosting {
 
         private bool playing;
 
-        public void Setup(MovableEntity entity) {
+        public void Setup(Entity entity) {
             playing = true;
             TimeLeft = Duration;
             var r = entity.MiscController.MainSpriteRenderer;

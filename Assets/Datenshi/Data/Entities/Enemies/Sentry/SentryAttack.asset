@@ -3,7 +3,7 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -14,10 +14,7 @@ MonoBehaviour:
   Prefab: {fileID: 114702364624681138, guid: e7562f9b88783db42b1dc7a877e5d580, type: 2}
   TimeDelay: 1
   Offset: {x: 0, y: 1}
-  Aim: 1
+  Aim: 0
   FocusConsumption: 2.5
-  RawDir: 1
+  RawDir: 0
   Damage: 5
-  EvasionDashDistance: 3
-  EvasionDashDuration: 0.25
-  SpeedStatusEffect: {fileID: 11400000, guid: 6efa6ff350cb9bb4fa46a79c7e37a713, type: 2}

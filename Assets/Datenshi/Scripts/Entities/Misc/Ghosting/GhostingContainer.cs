@@ -23,7 +23,7 @@ namespace Datenshi.Scripts.Entities.Misc.Ghosting {
         public bool Spawning;
         public GhostPool Pool;
         private float spawnCooldownLeft;
-        public MovableEntity Entity;
+        public Entity Entity;
 
         public void ActivateGhosting() {
             Spawning = true;
@@ -67,7 +67,7 @@ namespace Datenshi.Scripts.Entities.Misc.Ghosting {
         }
 
         private void Spawn() {
-            spawnCooldownLeft = SpawnCooldown;
+            spawnCooldownLeft -= Entity.DeltaTime;
             var g = Pool.Get();
             if (g == null) {
                 Debug.LogWarning("Didn't get a ghost from the pool!");

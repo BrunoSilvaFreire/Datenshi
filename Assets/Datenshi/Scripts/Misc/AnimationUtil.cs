@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace Datenshi.Scripts.Misc {
     public class AnimationUtil : MonoBehaviour {
-        public AudioSource Source;
 
         public void SpawnPrefab(GameObject prefab) {
             prefab.Clone(transform.position);
@@ -13,14 +12,6 @@ namespace Datenshi.Scripts.Misc {
 
         public void PlayEffect(Effect effect) {
             effect.Execute(transform.position);
-        }
-
-        public void PlayAudioOneShot(AudioClip clip) {
-            if (Source == null) {
-                return;
-            }
-
-            Source.PlayOneShot(clip);
         }
 
         public void PlayAudioFX(AudioFX fx) {

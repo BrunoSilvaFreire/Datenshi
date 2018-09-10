@@ -1,0 +1,1472 @@
+fileFormatVersion: 2
+guid: 14215e6127bdda046b43923a721d5854
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: hikari_0
+    21300002: hikari_1
+    21300004: hikari_2
+    21300006: hikari_3
+    21300008: hikari_4
+    21300010: hikari_5
+    21300012: hikari_6
+    21300014: hikari_7
+    21300016: hikari_8
+    21300018: hikari_9
+    21300020: hikari_10
+    21300022: hikari_11
+    21300024: hikari_12
+    21300026: hikari_13
+    21300028: hikari_14
+    21300030: hikari_15
+    21300032: hikari_16
+    21300034: hikari_17
+    21300036: hikari_18
+    21300038: hikari_19
+    21300040: hikari_20
+    21300042: hikari_21
+    21300044: hikari_22
+    21300046: hikari_23
+    21300048: hikari_24
+    21300050: hikari_25
+    21300052: hikari_26
+    21300054: hikari_27
+    21300056: hikari_28
+    21300058: hikari_29
+    21300060: hikari_30
+    21300062: hikari_31
+    21300064: hikari_32
+    21300066: hikari_33
+    21300068: hikari_34
+    21300070: hikari_35
+    21300072: hikari_36
+    21300074: hikari_37
+    21300076: hikari_38
+    21300078: hikari_39
+    21300080: hikari_40
+    21300082: hikari_41
+    21300084: hikari_42
+    21300086: hikari_43
+    21300088: hikari_44
+    21300090: hikari_45
+    21300092: hikari_46
+    21300094: hikari_47
+    21300096: hikari_48
+    21300098: hikari_49
+    21300100: hikari_50
+    21300102: hikari_51
+    21300104: hikari_52
+    21300106: hikari_53
+    21300108: hikari_54
+    21300110: hikari_55
+    21300112: hikari_56
+    21300114: hikari_57
+    21300116: hikari_58
+    21300118: hikari_59
+    21300120: hikari_60
+    21300122: hikari_61
+    21300124: hikari_62
+    21300126: hikari_63
+    21300128: hikari_64
+    21300130: hikari_65
+    21300132: hikari_66
+    21300134: hikari_67
+    21300136: hikari_68
+    21300138: hikari_69
+    21300140: hikari_70
+    21300142: hikari_71
+    21300144: hikari_72
+  externalObjects: {}
+  serializedVersion: 7
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 24
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: hikari_0
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 1408
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b3f10959154de44980a06dee721695a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_1
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 1408
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eeece5f5a6dae514f9fbbf22c26f79c4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_2
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 1408
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 965fee405757aef45a087a1959669c1e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_3
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 1408
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07e2faf598b2bf048ab754a9c5525259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_4
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 1408
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58c2876cdb1c7a745992c7faa456dc65
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_5
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 1408
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cfc43b34238eb941a4d3b8fb88b44c0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_6
+      rect:
+        serializedVersion: 2
+        x: 798
+        y: 1408
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed1a9a446a0dbd146ab4e266419077ec
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_7
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 1280
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: def3f8a8377898941a20c8a891b6c865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_8
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 1280
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 649b60a1556ebba438f3fc8a17664d8e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_9
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 1280
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b827489884e3fe4fbdd0e837abb1f86
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_10
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 1280
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 259ef6dda9a699d489877c5493b481b5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_11
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 1280
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44bf741827029424bb7f36fdc16e4696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_12
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 1280
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a86656e622b53c84d8e0344aaf2d431e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_13
+      rect:
+        serializedVersion: 2
+        x: 798
+        y: 1280
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54e9e769c4c88d04987f976aaa839739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_14
+      rect:
+        serializedVersion: 2
+        x: 926
+        y: 1280
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2c8886eee004e7438f327637b5cbe27
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_15
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 1280
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef0780696049209499f3dc2a140052fa
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_16
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 1280
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 600d842850eb64744b162ed9ce9f77d7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_17
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 1152
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc02204250e3d8f408480ef83438c982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_18
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 1152
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4f745957202cfd458e648424efdf9c6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_19
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 1152
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d00a3c594a4275741a16b85015daf101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_20
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 1152
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32f58c4df38388349b276de00a737d05
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_21
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 1024
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b36cbbc2c80df244b1a59a84dbdea03
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_22
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 1024
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ceb2779f6063a8442a39167393508f19
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_23
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 1024
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1743def370bd84a42a2b35735341b486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_24
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 1024
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77da108de875c7245b913be961e514c0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_25
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 896
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fd7b93b3e335fb41bd3069d368652a6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_26
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 896
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fbbb1c9b1ea23c4a92a14ed65cf34f2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_27
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 896
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24ec15249ac598445b297c61217c4fa6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_28
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 896
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc5080d82d97c404980b17dcb31312d1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_29
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 896
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce3ffead1e1ecf64982969886f2a72d2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_30
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 768
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aac2bdfb9838f744da02c2dee31daced
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_31
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 768
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9214a5ffeaf29f84f928f3783be8477b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_32
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 768
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf13706641ee26641b9fd16bb605aca8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_33
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 640
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54c654b486366e446aee548e92ccd8c4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_34
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 640
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52ecf830aad385e4594032cdedee8366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_35
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 640
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79c02a101e376b749a86abdb78b84cc6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_36
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 640
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b6398f7202b1474db1c6b6311bfbefa
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_37
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 640
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0910074008520d340a514d8f2d351f71
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_38
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 512
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36f0ada975e654a4281a4419d98b18b1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_39
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 512
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9197e2b1548dfb40a88e4e5b9ea248c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_40
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 512
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6a97dc434c6b7542ad04c709324fcdb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_41
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 512
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6075f2c0dae0bf84aad67c0fdbfb13a9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_42
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 512
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a32b034e6181273428557bee269ea0e0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_43
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 384
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf3c3317f9fff2c48a837df693466996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_44
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 384
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02e36efdecbe8a747ac490233a2ff1f4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_45
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 384
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27eaaf5f39d3cf144b041da9618e0d9e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_46
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 384
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae440ef9f7892e84c9e9fab436fd2a93
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_47
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 384
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24b180eceeb54e5459f6b38a7d090e28
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_48
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 384
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d945f2a2d5587d469e2929eb10bb509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_49
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 256
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a330ce0319654f74b9e57da88ab603eb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_50
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 256
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d47190917413d1947821f94526504f97
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_51
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 256
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e930f6d2600055244b0c607e5ca02036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_52
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 256
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbb1312eb32a28244838ea50be91b512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_53
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 256
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4760fc1a0bfd5ff47963201c6076800e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_54
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 256
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c06d1a538defb54e812e975e91a65e6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_55
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 128
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29424c8169f707e43abdd5ff878fe63e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_56
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 128
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c00bc8030035a5543af9b5fe403c7e6f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_57
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 128
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 583e2740160852d46a110831e39bb63c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_58
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 128
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1af96384a24512542b6c99be0b599407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_59
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 128
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2530016e5537894a97ae0cc17e79269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_60
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 0
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9df129efc8ecc9438ee103dfc168209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_61
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 0
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dff0093faaf3644cb645b23898400e7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_62
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 0
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e39e09efd01ac84595989d8845caa9c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_63
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 0
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0059e5546235ab842ad868f411da6e56
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hikari_64
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 0
+        width: 128.3
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b52ce849d2cf164ca21889f501657eb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 3686b29963d27394c934046dd47ef679
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

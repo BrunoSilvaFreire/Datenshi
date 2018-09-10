@@ -64,8 +64,15 @@ namespace Datenshi.Scripts.Editor {
         }
 
         private static string CreateSetter(MemberInfo field, Type fieldFieldType) {
-            return string.Format("public void Set{0}({1} value) {{\n    \nif (Target == null) {{\n        return;\n        }   Target.{2} = value;\n}}\n\n",
-                Capitalize(field.Name), fieldFieldType.Name, field.Name);
+            try {
+                return
+                    $"public void Set{Capitalize(field.Name)}({fieldFieldType.Name} value) {{\n    \nif (Target == null) {{\n        return;\n        }}   Target.{field.Name} = value;\n}}\n\n";
+            } catch (Exception e) {
+                Console.WriteLine(e);
+                Debug.Log($"Field is {field}");
+                Debug.Log($"{field} @ {field.Name}, {fieldFieldType.Name}, {field.Name}");
+                throw;
+            }
         }
 
         private static bool IsValid(MethodInfo info) {

@@ -26,7 +26,7 @@ namespace Datenshi.Scripts.Entities {
         [SerializeField]
         private FloatVolatileProperty damageMultiplier;
 
-        
+
         public FloatVolatileProperty DamageMultiplier => damageMultiplier;
 
         public bool IsEnemy(LivingEntity entity) {
@@ -50,6 +50,7 @@ namespace Datenshi.Scripts.Entities {
             if (attack != null) {
                 OnAttack.Invoke(attack);
             }
+
             skill.Execute(this);
         }
 
@@ -81,12 +82,8 @@ namespace Datenshi.Scripts.Entities {
         [TitleGroup(CombatGroup)]
         public float FocusDepleteAmountMultiplier = 2;
 
+        [TitleGroup(CombatGroup)]
         public float FocusDamageMultiplier = 1.5F;
-        [SerializeField]
-        private bool hasContactDamage;
-
-        [SerializeField]
-        private float contactDamage;
 
         private void UpdateFocus() {
             var p = InputProvider;
