@@ -7297,7 +7297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Material: {fileID: 0}
-  DefaultDesaturationAmount: 0.66
+  DefaultDesaturationAmount: 0
   DefaultDarkenAmount: 0
 --- !u!114 &114788703150249536
 MonoBehaviour:

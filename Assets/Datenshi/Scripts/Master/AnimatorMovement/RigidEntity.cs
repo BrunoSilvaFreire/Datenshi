@@ -24,6 +24,9 @@ namespace Datenshi.Scripts.Master.AnimatorMovement {
         protected override void Update() {
             base.Update();
             UpdateCollisionStatus();
+            if (AnimatorUpdater != null) {
+                AnimatorUpdater.UpdateAnimator();
+            }
         }
 
         private void LateUpdate() {

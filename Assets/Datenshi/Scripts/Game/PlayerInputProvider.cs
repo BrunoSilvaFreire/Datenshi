@@ -156,14 +156,6 @@ namespace Datenshi.Scripts.Game {
             return RuntimeResources.Instance.AllowPlayerInput && currentPlayer.GetButtonUp(id);
         }
 
-        private bool lastJump;
-
-        private void Update() {
-            lastJump = Jump;
-            if (lastJump && Jump) {
-                Jump = false;
-            }
-        }
 
         public override bool GetJump() {
 #if UNITY_EDITOR

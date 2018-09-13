@@ -19,8 +19,6 @@ namespace Datenshi.Scripts.Master.AnimatorMovement.Misc {
         private void UpdateState(Animator animator) {
             var b = -entity.CollisionStatus.HorizontalCollisionDir ==
                     System.Math.Sign(entity.InputProvider.GetHorizontal());
-            Debug.Log(
-                $"Checking collision for wall climb @ {-entity.CollisionStatus.HorizontalCollisionDir} =={System.Math.Sign(entity.InputProvider.GetHorizontal())}");
             animator.SetBool(WallClimbValidKey, b);
         }
 

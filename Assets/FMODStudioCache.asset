@@ -40,9 +40,11 @@ MonoBehaviour:
   - {fileID: 114391505633145742}
   - {fileID: 114903129528080272}
   - {fileID: 114830704183595030}
+  - {fileID: 114984851014510472}
+  - {fileID: 114785022642166376}
   MasterBankRef: {fileID: 114714833352202522}
   StringsBankRef: {fileID: 114135330643410682}
-  stringsBankWriteTime: 636687265518388373
+  stringsBankWriteTime: 636724505383460272
   cacheVersion: 2
 --- !u!114 &114004021812052978
 MonoBehaviour:
@@ -88,6 +90,21 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1714
+--- !u!114 &114078962007508844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: State
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114083520590833908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,11 +236,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: FMOD\Build\Desktop\Master Bank.strings.bank
-  lastModified: 636687265518388373
+  lastModified: 636724505383460272
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 2556
+    Value: 2648
   Exists: 1
 --- !u!114 &114137427802399594
 MonoBehaviour:
@@ -302,6 +319,21 @@ MonoBehaviour:
   - Name: Desktop
     Value: 5270880
   Exists: 1
+--- !u!114 &114165395990210638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: State
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114199594911428992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -523,6 +555,21 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 2056
+--- !u!114 &114259419878287088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: IntroLoop
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114277198747830044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -675,6 +722,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: IntroLoop
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114311950327509464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Shooting
   Min: 0
   Max: 1
   Default: 0
@@ -842,6 +904,21 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 240000
+--- !u!114 &114475520923262546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: IntroLoop
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114480819017883484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -957,7 +1034,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114297877476556254}
+  - {fileID: 114259419878287088}
   MinDistance: 0
   MaxDistance: 0
   Length: 240000
@@ -1087,6 +1164,21 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 191
+--- !u!114 &114606551730078736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: IntroLoop
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114611211640479454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1228,6 +1320,21 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 2056
+--- !u!114 &114695349740145332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: IntroLoop
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114714833352202522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1240,12 +1347,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: C:\Work\Unity\Datenshi\FMOD\Build\Desktop\Master Bank.bank
-  lastModified: 636687265518328534
+  lastModified: 636724505383410391
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 5270880
+    Value: 5680992
   Exists: 1
+--- !u!114 &114729164300533814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Shooting
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114732558971570494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1349,6 +1471,21 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114775340404991432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: State
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114780754475790610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1382,6 +1519,29 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114785022642166376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Misc/Minigun
+  guid: af2c9a69db08a64b87e3f98193566983
+  Banks:
+  - {fileID: 114714833352202522}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 114311950327509464}
+  MinDistance: 1
+  MaxDistance: 1000
+  Length: 4756
 --- !u!114 &114819000386042772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1419,6 +1579,21 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 50
   Length: 433
+--- !u!114 &114832198639876116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Shooting
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114845380913852040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1500,6 +1675,21 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 506
+--- !u!114 &114891679026759248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: State
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114893305127802600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1542,7 +1732,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 50
+  MaxDistance: 100
   Length: 606
 --- !u!114 &114906747727791460
 MonoBehaviour:
@@ -1662,6 +1852,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1281
+--- !u!114 &114984851014510472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/BG/Songs/Novak Theme
+  guid: 4fef386d235ee04280b90a2e40e4c150
+  Banks:
+  - {fileID: 114714833352202522}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 114165395990210638}
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 27428
 --- !u!114 &114993112523480610
 MonoBehaviour:
   m_ObjectHideFlags: 0

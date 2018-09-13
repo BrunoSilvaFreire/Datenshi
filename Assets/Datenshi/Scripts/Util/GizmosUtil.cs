@@ -211,6 +211,16 @@ namespace Datenshi.Scripts.Util {
             }
         };
 
+        public static void DrawArea(Vector2 a, Vector2 b, Color color) {
+            var min = new Vector2(Mathf.Min(a.x, b.x), Mathf.Min(a.y, b.y));
+            var max = new Vector2(Mathf.Max(a.x, b.x), Mathf.Max(a.y, b.y));
+            var bounds = new Bounds2D {
+                Min = min,
+                Max = max
+            };
+            DebugUtil.DrawBounds2D(bounds, color);
+        }
+
         public const float LineHeight = 0.2F;
 
         public static void DrawLabel(Vector3 pos, string s) {

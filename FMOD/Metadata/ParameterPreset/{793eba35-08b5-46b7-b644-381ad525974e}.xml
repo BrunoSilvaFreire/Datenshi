@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="ParameterPreset" id="{793eba35-08b5-46b7-b644-381ad525974e}">
+        <property name="name">
+            <value>Shooting</value>
+        </property>
+        <relationship name="folder">
+            <destination>{dd0426e8-2dc1-4a6d-bbf1-5c74530d9f18}</destination>
+        </relationship>
+        <relationship name="parameter">
+            <destination>{eb4ebb74-7339-41a5-a462-b35fc54dc82f}</destination>
+        </relationship>
+    </object>
+    <object class="GameParameter" id="{eb4ebb74-7339-41a5-a462-b35fc54dc82f}">
+        <property name="initialValue">
+            <value>0</value>
+        </property>
+        <property name="isExposedRecursively">
+            <value>false</value>
+        </property>
+    </object>
+</objects>

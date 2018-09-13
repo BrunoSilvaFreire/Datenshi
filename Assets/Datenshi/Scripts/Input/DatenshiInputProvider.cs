@@ -28,6 +28,7 @@ namespace Datenshi.Scripts.Input {
         public abstract bool GetSubmit();
 #if UNITY_EDITOR
         public const string DebugGroup = "Values";
+
         [ShowInInspector, FoldoutGroup(DebugGroup)]
         public float HorizontalValue => GetHorizontal();
 
@@ -37,5 +38,13 @@ namespace Datenshi.Scripts.Input {
         [ShowInInspector, FoldoutGroup(DebugGroup)]
         public bool JumpValue => GetJump();
 #endif
+        public Vector2 GetLastValidInputVector(float defaultXDirection = 1) {
+            var vec = GetInputVector();
+            if (Mathf.Approximately(vec.x, 0)) {
+                vec.x = defaultXDirection;
+            }
+
+            return vec;
+        }
     }
 }

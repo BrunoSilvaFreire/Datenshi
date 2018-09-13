@@ -25,7 +25,6 @@ namespace Datenshi.Scripts.Master.AnimatorMovement {
         private void Move(Animator animator) {
             var vel = entity.Rigidbody.velocity;
             Move(ref vel, entity, entity.GetConfig<T>(), animator);
-            Debug.Log("Velocity is " + vel);
             entity.Rigidbody.velocity = vel;
         }
 

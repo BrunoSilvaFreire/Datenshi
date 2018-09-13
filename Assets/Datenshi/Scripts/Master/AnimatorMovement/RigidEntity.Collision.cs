@@ -16,8 +16,8 @@ namespace Datenshi.Scripts.Master.AnimatorMovement {
         [ReadOnly, ShowInInspector]
         private readonly List<ContactPoint2D> currentContacts = new List<ContactPoint2D>();
 
-        private void UpdateCollisionStatus() {
-            Debug.Log("Updating collision status");
+        internal void UpdateCollisionStatus() {
+           // Debug.Log("Updating collision status");
             var status = CollisionStatus;
             status.Down = currentContacts.Any(DownCollision);
             status.Up = currentContacts.Any(UpCollision);
@@ -28,6 +28,8 @@ namespace Datenshi.Scripts.Master.AnimatorMovement {
                 DebugUtil.DrawWireCircle2D(point.point, 0.1F, Color.red);
                 Debug.DrawRay(point.point, point.normal, Color.red);
             }
+            currentContacts.Clear();
+
         }
 
         private static bool RightCollision(ContactPoint2D arg) {
@@ -46,14 +48,21 @@ namespace Datenshi.Scripts.Master.AnimatorMovement {
             return arg.normal.y > 0;
         }
 
-        private void FixedUpdate() {
-            currentContacts.Clear();
-        }
 
         private void OnCollisionExit2D(Collision2D other) {
+            UpdateCollisionStatus();
+            //Debug.Log("Collision exit");
             foreach (var contact in other.contacts) {
-                currentContacts.RemoveAll(d => Mathf.Approximately(d.point.x, contact.point.x) &&
-                                               Mathf.Approximately(d.point.y, contact.point.y) /*&&
+                currentContacts.RemoveAll(delegate(ContactPoint2D d) {
+                        var r = Mathf.Approximately(d.point.x, contact.point.x) &&
+                                Mathf.Approximately(d.point.y, contact.point.y);
+                        if (r) {
+                            //Debug.Log($"Removing collision @ {d.point}, {d.collider}");
+                        }
+
+                        return r;
+                    }
+/*&&
                                                Mathf.Approximately(d.normal.x, contact.normal.x) &&
                                                Mathf.Approximately(d.normal.y, contact.normal.y)*/
                 );
@@ -61,14 +70,19 @@ namespace Datenshi.Scripts.Master.AnimatorMovement {
         }
 
         private void OnCollisionEnter2D(Collision2D other) {
+            UpdateCollisionStatus();
+            //Debug.Log("Collision enter");
             foreach (var contact in other.contacts) {
+                //Debug.Log($"Adding collision @ {contact.point}, {contact.collider}");
                 currentContacts.Add(contact);
             }
         }
 
         private void OnCollisionStay2D(Collision2D other) {
-            foreach (var contacts in other.contacts) {
-                currentContacts.Add(contacts);
+            //Debug.Log("Collision Stay");
+            foreach (var contact in other.contacts) {
+                //Debug.Log($"Adding collision @ {contact.point}, {contact.collider}");
+                currentContacts.Add(contact);
             }
         }
     }

@@ -33,7 +33,9 @@ namespace Datenshi.Scripts.Entities {
 
         public Collider2D Hitbox => hitbox;
 
-
+        protected virtual void Start() {
+            CurrentDirection = Direction.Right;
+        }
         [ShowInInspector, ReadOnly, TitleGroup(CombatGroup)]
         protected virtual void Update() {
             UpdateRendering();
@@ -41,9 +43,9 @@ namespace Datenshi.Scripts.Entities {
             UpdateStun();
             UpdateFocus();
             UpdateDefense();
-            if (AnimatorUpdater != null) {
+/*            if (AnimatorUpdater != null) {
                 AnimatorUpdater.UpdateAnimator();
-            }
+            }*/
         }
 
         public float OutlineInvulnerabilityMinSecondsLeft = 2;

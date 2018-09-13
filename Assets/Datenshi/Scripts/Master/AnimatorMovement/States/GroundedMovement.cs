@@ -25,7 +25,7 @@ namespace Datenshi.Scripts.Master.AnimatorMovement.States {
             }
 
             var shouldJump = hasProvider && provider.GetJumpDown() && !entity.Defending;
-            if (shouldJump && (collisionStatus.Down || CheckJumpCall(entity, config))) {
+            if (shouldJump && entity.JumpEllegible()) {
                 //Grounded and should jump
                 velocity.y = config.JumpForce;
             }
@@ -55,11 +55,6 @@ namespace Datenshi.Scripts.Master.AnimatorMovement.States {
                 }
             }
             velocity.x = Mathf.Clamp(velocity.x, -maxSpeed, maxSpeed);
-        }
-
-        private bool CheckJumpCall(RigidEntity entity, GroundedAnimatorConfig state) {
-            return Physics2D.Raycast(entity.GroundPosition, Vector2.down, state.RaycastLength,
-                GameResources.Instance.WorldMask);
         }
     }
 }

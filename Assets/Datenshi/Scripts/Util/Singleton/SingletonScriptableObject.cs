@@ -8,11 +8,11 @@ namespace Datenshi.Scripts.Util.Singleton {
         private static readonly string Path = typeof(T).Name;
         private static T instance;
 
-        public static T Instance => instance ?? (instance = Load());
+        public static T Instance => instance == null ? (instance = Load()) : instance;
 
         private static T Load() {
 #if UNITY_EDITOR
-            var resourcePath = string.Format("Assets/Datenshi/Resources/{0}.asset", Path);
+            var resourcePath = $"Assets/Datenshi/Resources/{Path}.asset";
             if (!AssetDatabase.LoadAssetAtPath<T>(resourcePath)) {
                 Debug.LogFormat("Creating new singleton @ {0}", resourcePath);
                 var asset = CreateInstance<T>();

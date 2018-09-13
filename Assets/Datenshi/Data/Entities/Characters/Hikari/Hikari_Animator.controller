@@ -203,29 +203,6 @@ MonoBehaviour:
   entity: {fileID: 0}
   GravityScale: 3
   OposingForceMultiplier: 2
---- !u!114 &114393579076129314
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbb1ef5d6a2441fe9652bc8baeae4e19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnEnter:
-  - ParameterName: Local_MidAir
-    Type: 4
-    IntValue: 0
-    BoolValue: 1
-    FloatValue: 0
-  OnExit:
-  - ParameterName: Local_MidAir
-    Type: 4
-    IntValue: 0
-    BoolValue: 0
-    FloatValue: 0
 --- !u!114 &114486768564013936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1698,8 +1675,7 @@ AnimatorStateMachine:
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
-  m_StateMachineBehaviours:
-  - {fileID: 114393579076129314}
+  m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 252, y: 192, z: 0}
   m_EntryPosition: {x: -12, y: 156, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
