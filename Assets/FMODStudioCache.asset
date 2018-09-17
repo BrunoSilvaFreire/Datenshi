@@ -44,7 +44,7 @@ MonoBehaviour:
   - {fileID: 114785022642166376}
   MasterBankRef: {fileID: 114714833352202522}
   StringsBankRef: {fileID: 114135330643410682}
-  stringsBankWriteTime: 636724505383460272
+  stringsBankWriteTime: 636724652691520481
   cacheVersion: 2
 --- !u!114 &114004021812052978
 MonoBehaviour:
@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: FMOD\Build\Desktop\Master Bank.strings.bank
-  lastModified: 636724505383460272
+  lastModified: 636724652691520481
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -777,6 +777,21 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114412261734138316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: State
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114415723969463076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1034,7 +1049,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114259419878287088}
+  - {fileID: 114660942064545514}
   MinDistance: 0
   MaxDistance: 0
   Length: 240000
@@ -1283,6 +1298,21 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 293
+--- !u!114 &114660942064545514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: IntroLoop
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114679996156795338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1347,7 +1377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: C:\Work\Unity\Datenshi\FMOD\Build\Desktop\Master Bank.bank
-  lastModified: 636724505383410391
+  lastModified: 636724652691495503
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -1538,7 +1568,7 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 114311950327509464}
+  - {fileID: 114891163352909388}
   MinDistance: 1
   MaxDistance: 1000
   Length: 4756
@@ -1675,6 +1705,21 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 506
+--- !u!114 &114891163352909388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Shooting
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114891679026759248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1871,7 +1916,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114165395990210638}
+  - {fileID: 114412261734138316}
   MinDistance: 0
   MaxDistance: 0
   Length: 27428

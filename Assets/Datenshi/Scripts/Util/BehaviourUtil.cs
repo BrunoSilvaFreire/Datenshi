@@ -5,6 +5,23 @@ using UnityEngine;
 
 namespace Datenshi.Scripts.Util {
     public static class BehaviourUtil {
+        public static bool AttempRetrievePosition(this Object obj, out Vector2 pos) {
+            var go = obj as GameObject;
+            if (go != null) {
+                pos = go.transform.position;
+                return true;
+            }
+
+            var c = obj as Component;
+            if (c != null) {
+                pos = c.transform.position;
+                return true;
+            }
+
+            pos = default(Vector2);
+            return false;
+        }
+
         public static void ClearChildren(this Transform transform) {
             for (var i = 0; i < transform.childCount; i++) {
                 Object.Destroy(transform.GetChild(i).gameObject);

@@ -69,23 +69,6 @@
             Memoizes the specified func - returns the memoized version
             </summary>
         </member>
-        <member name="T:Sirenix.Utilities.DirectoryInfoExtensions">
-            <summary>
-            DirectoryInfo method extensions.
-            </summary>
-        </member>
-        <member name="M:Sirenix.Utilities.DirectoryInfoExtensions.HasSubDirectory(System.IO.DirectoryInfo,System.IO.DirectoryInfo)">
-            <summary>
-            Determines whether the directory has a given directory in its hierarchy of children.
-            </summary>
-            <param name="parentDir">The parent directory.</param>
-            <param name="subDir">The sub directory.</param>
-        </member>
-        <member name="M:Sirenix.Utilities.DirectoryInfoExtensions.FindParentDirectoryWithName(System.IO.DirectoryInfo,System.String)">
-            <summary>
-            Finds a parent directory with a given name, or null if no such parent directory exists.
-            </summary>
-        </member>
         <member name="T:Sirenix.Utilities.FieldInfoExtensions">
             <summary>
             FieldInfo method extensions.
@@ -291,7 +274,11 @@
             <summary>
             Convert a colletion to a HashSet.
             </summary>
-            <param name="source">The collection.</param>
+        </member>
+        <member name="M:Sirenix.Utilities.LinqExtensions.ToHashSet``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Convert a colletion to a HashSet.
+            </summary>
         </member>
         <member name="M:Sirenix.Utilities.LinqExtensions.ToImmutableList``1(System.Collections.Generic.IEnumerable{``0})">
             <summary>
@@ -392,21 +379,21 @@
             <param name="condition">The condition.</param>
             <param name="prepend">The collection to prepend.</param>
         </member>
-        <member name="M:Sirenix.Utilities.LinqExtensions.Append``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0})">
+        <member name="M:Sirenix.Utilities.LinqExtensions.AppendWith``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0})">
             <summary>
             Add an item to the end of a collection.
             </summary>
             <param name="source">The collection.</param>
             <param name="append">Func to create the item to append.</param>
         </member>
-        <member name="M:Sirenix.Utilities.LinqExtensions.Append``1(System.Collections.Generic.IEnumerable{``0},``0)">
+        <member name="M:Sirenix.Utilities.LinqExtensions.AppendWith``1(System.Collections.Generic.IEnumerable{``0},``0)">
             <summary>
             Add an item to the end of a collection.
             </summary>
             <param name="source">The collection.</param>
             <param name="append">The item to append.</param>
         </member>
-        <member name="M:Sirenix.Utilities.LinqExtensions.Append``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``0})">
+        <member name="M:Sirenix.Utilities.LinqExtensions.AppendWith``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``0})">
             <summary>
             Add a collection to the end of another collection.
             </summary>
@@ -487,53 +474,64 @@
             <param name="list">The list.</param>
             <param name="item">The value.</param>
         </member>
+        <!-- Badly formed XML comment ignored for member "M:Sirenix.Utilities.LinqExtensions.AddRange``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IEnumerable{``0})" -->
+        <member name="M:Sirenix.Utilities.LinqExtensions.Sort``1(System.Collections.Generic.IList{``0},System.Comparison{``0})">
+            <summary>
+            Sorts an IList
+            </summary>
+        </member>
+        <member name="M:Sirenix.Utilities.LinqExtensions.Sort``1(System.Collections.Generic.IList{``0})">
+            <summary>
+            Sorts an IList
+            </summary>
+        </member>
         <member name="T:Sirenix.Utilities.MemberInfoExtensions">
             <summary>
             MemberInfo method extensions.
             </summary>
         </member>
-        <member name="M:Sirenix.Utilities.MemberInfoExtensions.IsDefined``1(System.Reflection.MemberInfo,System.Boolean)">
+        <member name="M:Sirenix.Utilities.MemberInfoExtensions.IsDefined``1(System.Reflection.ICustomAttributeProvider,System.Boolean)">
             <summary>
             Returns true if the attribute whose type is specified by the generic argument is defined on this member
             </summary>
         </member>
-        <member name="M:Sirenix.Utilities.MemberInfoExtensions.IsDefined``1(System.Reflection.MemberInfo)">
+        <member name="M:Sirenix.Utilities.MemberInfoExtensions.IsDefined``1(System.Reflection.ICustomAttributeProvider)">
             <summary>
             Returns true if the attribute whose type is specified by the generic argument is defined on this member
             </summary>
         </member>
-        <member name="M:Sirenix.Utilities.MemberInfoExtensions.GetAttribute``1(System.Reflection.MemberInfo,System.Boolean)">
+        <member name="M:Sirenix.Utilities.MemberInfoExtensions.GetAttribute``1(System.Reflection.ICustomAttributeProvider,System.Boolean)">
             <summary>
             Returns the first found custom attribute of type T on this member
             Returns null if none was found
             </summary>
         </member>
-        <member name="M:Sirenix.Utilities.MemberInfoExtensions.GetAttribute``1(System.Reflection.MemberInfo)">
+        <member name="M:Sirenix.Utilities.MemberInfoExtensions.GetAttribute``1(System.Reflection.ICustomAttributeProvider)">
             <summary>
             Returns the first found non-inherited custom attribute of type T on this member
             Returns null if none was found
             </summary>
         </member>
-        <member name="M:Sirenix.Utilities.MemberInfoExtensions.GetAttributes``1(System.Reflection.MemberInfo)">
+        <member name="M:Sirenix.Utilities.MemberInfoExtensions.GetAttributes``1(System.Reflection.ICustomAttributeProvider)">
             <summary>
             Gets all attributes of the specified generic type.
             </summary>
             <param name="member">The member.</param>
         </member>
-        <member name="M:Sirenix.Utilities.MemberInfoExtensions.GetAttributes``1(System.Reflection.MemberInfo,System.Boolean)">
+        <member name="M:Sirenix.Utilities.MemberInfoExtensions.GetAttributes``1(System.Reflection.ICustomAttributeProvider,System.Boolean)">
             <summary>
             Gets all attributes of the specified generic type.
             </summary>
             <param name="member">The member.</param>
             <param name="inherit">If true, specifies to also search the ancestors of element for custom attributes.</param>
         </member>
-        <member name="M:Sirenix.Utilities.MemberInfoExtensions.GetAttributes(System.Reflection.MemberInfo)">
+        <member name="M:Sirenix.Utilities.MemberInfoExtensions.GetAttributes(System.Reflection.ICustomAttributeProvider)">
             <summary>
             Gets all attribute instances defined on a MemeberInfo.
             </summary>
             <param name="member">The member.</param>
         </member>
-        <member name="M:Sirenix.Utilities.MemberInfoExtensions.GetAttributes(System.Reflection.MemberInfo,System.Boolean)">
+        <member name="M:Sirenix.Utilities.MemberInfoExtensions.GetAttributes(System.Reflection.ICustomAttributeProvider,System.Boolean)">
             <summary>
             Gets all attribute instances on a MemberInfo.
             </summary>
@@ -643,6 +641,16 @@
             The - operator.
             </summary>
         </member>
+        <member name="F:Sirenix.Utilities.Operator.Multiply">
+            <summary>
+            The * operator.
+            </summary>
+        </member>
+        <member name="F:Sirenix.Utilities.Operator.Division">
+            <summary>
+            The / operator.
+            </summary>
+        </member>
         <member name="F:Sirenix.Utilities.Operator.LessThan">
             <summary>
             The &lt; operator.
@@ -661,6 +669,103 @@
         <member name="F:Sirenix.Utilities.Operator.GreaterThanOrEqual">
             <summary>
             The &gt;= operator.
+            </summary>
+        </member>
+        <member name="F:Sirenix.Utilities.Operator.Modulus">
+            <summary>
+            The % operator.
+            </summary>
+        </member>
+        <member name="F:Sirenix.Utilities.Operator.RightShift">
+            <summary>
+            The &gt;&gt; operator.
+            </summary>
+        </member>
+        <member name="F:Sirenix.Utilities.Operator.LeftShift">
+            <summary>
+            The &lt;&lt; operator.
+            </summary>
+        </member>
+        <member name="F:Sirenix.Utilities.Operator.BitwiseAnd">
+            <summary>
+            The &amp; operator.
+            </summary>
+        </member>
+        <member name="F:Sirenix.Utilities.Operator.BitwiseOr">
+            <summary>
+            The | operator.
+            </summary>
+        </member>
+        <member name="F:Sirenix.Utilities.Operator.ExclusiveOr">
+            <summary>
+            The ^ operator.
+            </summary>
+        </member>
+        <member name="F:Sirenix.Utilities.Operator.BitwiseComplement">
+            <summary>
+            The ~ operator.
+            </summary>
+        </member>
+        <member name="F:Sirenix.Utilities.Operator.LogicalAnd">
+            <summary>
+            The &amp;&amp; operator.
+            </summary>
+        </member>
+        <member name="F:Sirenix.Utilities.Operator.LogicalOr">
+            <summary>
+            The || operator.
+            </summary>
+        </member>
+        <member name="T:Sirenix.Utilities.PathUtilities">
+            <summary>
+            DirectoryInfo method extensions.
+            </summary>
+        </member>
+        <member name="M:Sirenix.Utilities.PathUtilities.GetDirectoryName(System.String)">
+            <summary>
+            Gets the name of the directory. Always returns forward slash seperators as opposed to Path.GetDirectoryName().
+            </summary>
+        </member>
+        <member name="M:Sirenix.Utilities.PathUtilities.HasSubDirectory(System.IO.DirectoryInfo,System.IO.DirectoryInfo)">
+            <summary>
+            Determines whether the directory has a given directory in its hierarchy of children.
+            </summary>
+            <param name="parentDir">The parent directory.</param>
+            <param name="subDir">The sub directory.</param>
+        </member>
+        <member name="M:Sirenix.Utilities.PathUtilities.FindParentDirectoryWithName(System.IO.DirectoryInfo,System.String)">
+            <summary>
+            Finds a parent directory with a given name, or null if no such parent directory exists.
+            </summary>
+        </member>
+        <member name="M:Sirenix.Utilities.PathUtilities.CanMakeRelative(System.String,System.String)">
+            <summary>
+            Returns a value indicating whether or not a path can be made relative to another.
+            </summary>
+            <param name="absoluteParentPath">The parent path.</param>
+            <param name="absolutePath">The path to make relative to the parent path.</param>
+            <returns>A value indicating if the path can be made relative to the parent path.</returns>
+        </member>
+        <member name="M:Sirenix.Utilities.PathUtilities.MakeRelative(System.String,System.String)">
+            <summary>
+            Returns a path string to path that is relative to the parent path.
+            </summary>
+            <param name="absoluteParentPath">The parent path.</param>
+            <param name="absolutePath">The path to make relative to the parent path.</param>
+            <returns>A relative path from parent path to path.</returns>
+        </member>
+        <member name="M:Sirenix.Utilities.PathUtilities.TryMakeRelative(System.String,System.String,System.String@)">
+            <summary>
+            Tries to make a path that is relative from parent path to path.
+            </summary>
+            <param name="absoluteParentPath">The parent path.</param>
+            <param name="absolutePath">The path to make relative to the parent path.</param>
+            <param name="relativePath">A relative path from parent path to path. <c>null</c> if no relative path could be made.</param>
+            <returns>A value indicating if the method succeeded in making a relative path.</returns>
+        </member>
+        <member name="M:Sirenix.Utilities.PathUtilities.Combine(System.String,System.String)">
+            <summary>
+            Combines two paths, and replaces all backslases with forward slash.
             </summary>
         </member>
         <member name="T:Sirenix.Utilities.PropertyInfoExtensions">
@@ -810,6 +915,11 @@
             <param name="rect">The original Rect.</param>
             <param name="width">The desired width of the new Rect.</param>
         </member>
+        <member name="M:Sirenix.Utilities.RectExtensions.AlignRight(UnityEngine.Rect,System.Single,System.Boolean)">
+            <summary>
+            Returns a Rect, with the specified width, that has been aligned to the right of the original Rect.
+            </summary>
+        </member>
         <member name="M:Sirenix.Utilities.RectExtensions.AlignTop(UnityEngine.Rect,System.Single)">
             <summary>
             Returns a Rect, with the specified height, that has been aligned to the top of the original Rect.
@@ -830,6 +940,27 @@
             </summary>
             <param name="rect">The original Rect.</param>
             <param name="height">The desired height of the new Rect.</param>
+        </member>
+        <member name="M:Sirenix.Utilities.RectExtensions.AlignCenterX(UnityEngine.Rect,System.Single)">
+            <summary>
+            Returns a Rect, with the specified width, that has been aligned horizontally to the center of the original rect.
+            </summary>
+            <param name="rect">The original Rect.</param>
+            <param name="width">The desired width of the new Rect.</param>
+        </member>
+        <member name="M:Sirenix.Utilities.RectExtensions.AlignCenterY(UnityEngine.Rect,System.Single)">
+            <summary>
+            Returns a Rect, with the specified height, that has been aligned vertically to the center of the original rect.
+            </summary>
+            <param name="rect">The original Rect.</param>
+            <param name="height">The desired height of the new Rect.</param>
+        </member>
+        <member name="M:Sirenix.Utilities.RectExtensions.AlignCenterXY(UnityEngine.Rect,System.Single)">
+            <summary>
+            Returns a Rect, with the specified width and height, that has been aligned vertically to the center of the original rect.
+            </summary>
+            <param name="rect">The original Rect.</param>
+            <param name="size">The desired width and height of the new Rect.</param>
         </member>
         <member name="M:Sirenix.Utilities.RectExtensions.Expand(UnityEngine.Rect,System.Single)">
             <summary>
@@ -873,6 +1004,16 @@
             <param name="count">The amount of subrects the Rect should be split into.</param>
         </member>
         <member name="M:Sirenix.Utilities.RectExtensions.SplitGrid(UnityEngine.Rect,System.Single,System.Single,System.Int32)">
+            <summary>
+            Splits a Rect into a grid from left to right and then down.
+            </summary>
+            <param name="rect">The original rect.</param>
+            <param name="width">The width of a grid cell.</param>
+            <param name="height">The height of a grid cell.</param>
+            <param name="index">The index of the grid cell.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sirenix.Utilities.RectExtensions.SplitTableGrid(UnityEngine.Rect,System.Int32,System.Single,System.Int32)">
             <summary>
             Splits a Rect into a grid from left to right and then down.
             </summary>
@@ -1226,58 +1367,9 @@
              3. .NET's own <see cref="P:System.Collections.Generic.EqualityComparer`1.Default"/>
              </summary>
              <remarks>
-             <para>Note that in the special case of the type <see cref="T:UnityEngine.Quaternion"/>, a special equality comparer is returned that checks Quaternion's "q1 == q2", and then also checks whether all the Quaternion components are equal.</para>
+             <para>Note that in the special case of the type <see cref="T:UnityEngine.Quaternion"/>, a special equality comparer is returned that only checks whether all the Quaternion components are equal.</para>
              <para>This is because, by default, Quaternion's equality operator is broken when operating on invalid quaternions; "default(Quaternion) == default(Quaternion)" evaluates to false, and this causes a multitude of problems.</para>
              </remarks>
-        </member>
-        <member name="M:Sirenix.Utilities.TypeExtensions.HasCustomAttribute``1(System.Reflection.MemberInfo)">
-            <summary>
-            Determines whether a MemberInfo has the attribute specified in the generic argument.
-            </summary>
-            <typeparam name="T">The attribute type.</typeparam>
-            <param name="memberInfo">The MemberInfo.</param>
-        </member>
-        <member name="M:Sirenix.Utilities.TypeExtensions.HasCustomAttribute``1(System.Reflection.MemberInfo,System.Boolean)">
-            <summary>
-            Determines whether a MemberInfo has the attribute specified in the generic argument.
-            </summary>
-            <typeparam name="T">The attribute type.</typeparam>
-            <param name="memberInfo">The MemberInfo.</param>
-            <param name="inherit">If true, specifies to also search the ancestors of element for custom attributes.</param>
-        </member>
-        <member name="M:Sirenix.Utilities.TypeExtensions.HasCustomAttribute``1(System.Reflection.MemberInfo,``0@)">
-            <summary>
-            Determines whether a MemberInfo has the attribute specified in the generic argument.
-            </summary>
-            <typeparam name="T">The attribute type.</typeparam>
-            <param name="memberInfo">The MemberInfo.</param>
-            <param name="attribute">The attribute instance.</param>
-        </member>
-        <member name="M:Sirenix.Utilities.TypeExtensions.HasCustomAttribute``1(System.Reflection.MemberInfo,System.Boolean,``0@)">
-            <summary>
-            Determines whether a MemberInfo has the attribute specified in the generic argument.
-            </summary>
-            <typeparam name="T">The attribute type.</typeparam>
-            <param name="memberInfo">The MemberInfo.</param>
-            <param name="attribute">The attribute instance.</param>
-            <param name="inherit">If true, specifies to also search the ancestors of element for custom attributes.</param>
-        </member>
-        <member name="M:Sirenix.Utilities.TypeExtensions.HasCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)">
-            <summary>
-            Determines whether a MemberInfo has the attribute specified.
-            </summary>
-            <param name="memberInfo">The MemberInfo.</param>
-            <param name="customAttributeType">Type of the custom attribute.</param>
-            <param name="inherit">If true, specifies to also search the ancestors of element for custom attributes.</param>
-        </member>
-        <member name="M:Sirenix.Utilities.TypeExtensions.HasCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean,System.Attribute@)">
-            <summary>
-            Determines whether a MemberInfo has the attribute specified.
-            </summary>
-            <param name="memberInfo">The MemberInfo.</param>
-            <param name="customAttributeType">Type of the custom attribute.</param>
-            <param name="inherit">If true, specifies to also search the ancestors of element for custom attributes.</param>
-            <param name="attribute">The attribute instance.</param>
         </member>
         <member name="M:Sirenix.Utilities.TypeExtensions.GetAttribute``1(System.Type,System.Boolean)">
             <summary>
@@ -1292,6 +1384,14 @@
             </summary>
             <param name="type">The type.</param>
             <param name="to">To.</param>
+        </member>
+        <member name="M:Sirenix.Utilities.TypeExtensions.ImplementsOpenGenericType(System.Type,System.Type)">
+            <summary>
+            Determines whether a type implements an open generic interface or class such as IList&lt;&gt; or List&lt;&gt;.
+            </summary>
+            <param name="candidateType">Type of the candidate.</param>
+            <param name="openGenericType">Type of the open generic type.</param>
+            <returns></returns>
         </member>
         <member name="M:Sirenix.Utilities.TypeExtensions.ImplementsOpenGenericInterface(System.Type,System.Type)">
             <summary>
@@ -1308,6 +1408,13 @@
             </summary>
             <param name="candidateType">Type of the candidate.</param>
             <param name="openGenericType">Type of the open generic interface.</param>
+        </member>
+        <member name="M:Sirenix.Utilities.TypeExtensions.GetArgumentsOfInheritedOpenGenericType(System.Type,System.Type)">
+            <summary>
+            Gets the generic arguments of an inherited open generic class or interface.
+            </summary>
+            <param name="candidateType">Type of the candidate.</param>
+            <param name="openGenericType">The open generic type to get the arguments of.</param>
         </member>
         <member name="M:Sirenix.Utilities.TypeExtensions.GetArgumentsOfInheritedOpenGenericClass(System.Type,System.Type)">
             <summary>
@@ -1501,7 +1608,7 @@
             <para>Checks whether an array of types satisfy the constraints of a given generic type definition.</para>
             <para>If this method returns true, the given parameters can be safely used with <see cref="M:System.Type.MakeGenericType(System.Type[])"/> with the given generic type definition.</para>
             </summary>
-            <param name="genericTypeDefinition">The generic type definition to check.</param>
+            <param name="genericType">The generic type definition to check.</param>
             <param name="parameters">The parameters to check validity for.</param>
             <exception cref="T:System.ArgumentNullException">
             genericTypeDefinition is null
@@ -1509,6 +1616,11 @@
             types is null
             </exception>
             <exception cref="T:System.ArgumentException">The genericTypeDefinition parameter must be a generic type definition.</exception>
+        </member>
+        <member name="M:Sirenix.Utilities.TypeExtensions.GenericParameterIsFulfilledBy(System.Type,System.Type,System.Collections.Generic.Dictionary{System.Type,System.Type},System.Collections.Generic.HashSet{System.Type})">
+            <summary>
+            Before calling this method we must ALWAYS hold a lock on the GenericConstraintsSatisfaction_LOCK object, as that is an implicit assumption it works with.
+            </summary>
         </member>
         <member name="M:Sirenix.Utilities.TypeExtensions.GetGenericConstraintsString(System.Type,System.Boolean)">
             <summary>
@@ -1645,12 +1757,14 @@
         </member>
         <member name="F:Sirenix.Utilities.AssemblyTypeFlags.CustomTypes">
             <summary>
-            CustomTypes includes UserTypes, UserEditorTypes, PluginTypes and PluginEditorTypes.
+            CustomTypes includes includes all types manually added to the Unity project.
+            This includes UserTypes, UserEditorTypes, PluginTypes and PluginEditorTypes.
             </summary>
         </member>
         <member name="F:Sirenix.Utilities.AssemblyTypeFlags.GameTypes">
             <summary>
-            GameTypes includes UserTypes, PluginTypes, UnityTypes and OtherTypes.
+            GameTypes includes all assemblies that are likely to be included in builds.
+            This includes UserTypes, PluginTypes, UnityTypes and OtherTypes.
             </summary>
         </member>
         <member name="F:Sirenix.Utilities.AssemblyTypeFlags.EditorTypes">
@@ -1672,7 +1786,6 @@
             <summary>
             Re-scans the entire AppDomain.
             </summary>
-            <exception cref="T:System.NotImplementedException"></exception>
         </member>
         <member name="M:Sirenix.Utilities.AssemblyUtilities.#cctor">
             <summary>
@@ -1698,11 +1811,10 @@
             Gets the type.
             </summary>
             <param name="fullName">The full name of the type without any assembly information.</param>
-            <returns></returns>
         </member>
         <member name="M:Sirenix.Utilities.AssemblyUtilities.GetType(System.String)">
             <summary>
-            Gets the type.
+            Looks in all assemblies for for the given type.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.AssemblyUtilities.IsDependentOn(System.Reflection.Assembly,System.Reflection.Assembly)">
@@ -1741,7 +1853,6 @@
             </summary>
             <param name="assembly">The assembly.</param>
             <returns>The full directory path in which a given assembly is located, or <c>Null</c> if no file path was found.</returns>
-            <exception cref="T:System.NullReferenceException"><paramref name="assembly"/> is Null.</exception>
         </member>
         <member name="M:Sirenix.Utilities.AssemblyUtilities.GetTypes(Sirenix.Utilities.AssemblyTypeFlags)">
             <summary>

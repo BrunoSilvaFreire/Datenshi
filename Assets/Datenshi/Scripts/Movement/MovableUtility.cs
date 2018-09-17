@@ -39,7 +39,10 @@ namespace Datenshi.Scripts.Movement {
         }
 
         public static float DistanceTo(this ILocatable locatable, Component component) {
-            return Vector2.Distance(locatable.Center, component.transform.position);
+            return locatable.DistanceTo(component.transform.position);
+        }
+        public static float DistanceTo(this ILocatable locatable, Vector2 position) {
+            return Vector2.Distance(locatable.Center, position);
         }
     }
 }

@@ -1,5 +1,11 @@
 ﻿#if UNITY_5_6_OR_NEWER
 
+//-----------------------------------------------------------------------
+// <copyright file="BuildAOTAutomation.cs" company="Sirenix IVS">
+// Copyright (c) Sirenix IVS. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
 namespace Sirenix.Serialization.Internal
 {
     using Sirenix.Serialization;
@@ -14,7 +20,11 @@ namespace Sirenix.Serialization.Internal
 
 #endif
 
+#if UNITY_2018_1_OR_NEWER
+    public class PreBuildAOTAutomation : IPreprocessBuildWithReport
+#else
     public class PreBuildAOTAutomation : IPreprocessBuild
+#endif
     {
         public int callbackOrder
         {
@@ -45,7 +55,11 @@ namespace Sirenix.Serialization.Internal
 #endif
     }
 
+#if UNITY_2018_1_OR_NEWER
+    public class PostBuildAOTAutomation : IPostprocessBuildWithReport
+#else
     public class PostBuildAOTAutomation : IPostprocessBuild
+#endif
     {
         public int callbackOrder
         {

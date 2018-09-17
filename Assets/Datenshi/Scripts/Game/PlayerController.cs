@@ -8,7 +8,6 @@ using Datenshi.Scripts.Game.Rank;
 using Datenshi.Scripts.Game.Restart;
 using Datenshi.Scripts.Graphics;
 using Datenshi.Scripts.Input;
-using Datenshi.Scripts.Misc;
 using Datenshi.Scripts.Util;
 using Datenshi.Scripts.Util.Singleton;
 using DG.Tweening;

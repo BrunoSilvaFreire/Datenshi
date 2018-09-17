@@ -15,11 +15,52 @@ using UPM.Physics;
 
 namespace Datenshi.Scripts.Entities {
     /// <summary>
+    /// Isso existe por motivos de compatibilidade de MovableEntity com RigidEntity
+    /// </summary>
+    public abstract class AbstractMovableEntity : LivingEntity , INavigable  {
+        public abstract void Move();
+        public abstract C GetMotorConfig<C>() where C : MotorConfig;
+
+        public abstract InputProvider InputProvider {
+            get;
+        }
+
+        public abstract AnimationCurve AccelerationCurve {
+            get;
+        }
+
+        public abstract float MaxSpeed {
+            get;
+        }
+
+        public abstract Motor Motor {
+            get;
+        }
+
+        public abstract CollisionStatus CollisionStatus {
+            get;
+            set;
+        }
+
+        public abstract MotorConfig MotorConfig {
+            get;
+        }
+
+        public abstract float SpeedPercent {
+            get;
+        }
+
+        public abstract AINavigator AINavigator {
+            get;
+        }
+    }
+
+    /// <summary>
     /// Uma entidade que se move.
     /// <br />
     /// A maneira com que ela se move depende de seu <see cref="F:Datenshi.Scripts.Entities.MovableEntity.Motor" />.
     /// </summary>
-    public partial class MovableEntity : LivingEntity, INavigable, IDatenshiMovable {
+    public partial class MovableEntity : AbstractMovableEntity, INavigable, IDatenshiMovable {
         public const string MovementGroup = "Movement";
 
         /// <summary>
@@ -35,7 +76,7 @@ namespace Datenshi.Scripts.Entities {
         private AINavigator aiNavigator;
 
         [ShowInInspector, TitleGroup(MovementGroup)]
-        public AINavigator AINavigator {
+        public override AINavigator AINavigator {
             get {
                 return aiNavigator;
             }
@@ -81,15 +122,15 @@ namespace Datenshi.Scripts.Entities {
         public float ExternalForcesDeacceleration = 0.1F;
 
 
-        public C GetMotorConfig<C>() where C : MotorConfig {
+        public override C GetMotorConfig<C>() where C : MotorConfig {
             return motorConfig as C;
         }
 
         [TitleGroup(GeneralGroup)]
-        public InputProvider InputProvider => base.InputProvider;
+        public override InputProvider InputProvider => base.InputProvider;
 
         [TitleGroup(MovementGroup)]
-        public AnimationCurve AccelerationCurve => accelerationCurve;
+        public override AnimationCurve AccelerationCurve => accelerationCurve;
 
 
         [TitleGroup(GeneralGroup), SerializeField]
@@ -107,7 +148,7 @@ namespace Datenshi.Scripts.Entities {
 
         public byte VerticalRaycasts => verticalRaycasts;
 
-        public float MaxSpeed => maxSpeed * SpeedMultiplier.Value;
+        public override float MaxSpeed => maxSpeed * SpeedMultiplier.Value;
 
         public Transform MovementTransform => transform;
 
@@ -124,7 +165,7 @@ namespace Datenshi.Scripts.Entities {
         }
 
         [ShowInInspector, ReadOnly, TitleGroup(MovementGroup)]
-        public CollisionStatus CollisionStatus {
+        public override CollisionStatus CollisionStatus {
             get {
                 return collisionStatus;
             }
@@ -195,7 +236,10 @@ namespace Datenshi.Scripts.Entities {
 #if UNITY_EDITOR
             Profiler.BeginSample("MovableEntity-ExternalForcesPhysicsBehaviour");
 #endif
-            externalForceBehaviour.Check(this, ref externalForces, ref collisionStatus,
+            externalForceBehaviour.Check(
+                this,
+                ref externalForces,
+                ref collisionStatus,
                 GameResources.Instance.WorldMask);
 #if UNITY_EDITOR
             Profiler.EndSample();

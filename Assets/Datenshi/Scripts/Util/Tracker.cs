@@ -3,7 +3,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Datenshi.Scripts.Misc {
+namespace Datenshi.Scripts.Util {
     public sealed class Tracker<T> where T : Object {
         [ShowInInspector, ReadOnly]
         private readonly List<T> objects = new List<T>();

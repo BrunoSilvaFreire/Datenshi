@@ -5,8 +5,10 @@ namespace Datenshi.Scripts.Character {
     public class Character : ScriptableObject {
         public const float AlternativeBrightnessDifference = 0.3F;
         public string Alias;
+        public string ShortAlias;
         public Color SignatureColor;
         public CharacterPortrait Portrait;
+        public Font CharacterFont;
         public string SpeechClip;
 
         public Color AlternativeSignatureColor {
