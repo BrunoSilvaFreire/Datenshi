@@ -5,6 +5,7 @@ using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Util;
 using UnityEngine;
+using UnityUtilities;
 
 namespace Datenshi.Scripts.Behaviours.Tasks {
     public class SentryTask : Action {

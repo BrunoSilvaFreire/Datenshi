@@ -1,9 +1,11 @@
 ﻿using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Entities;
-using Datenshi.Scripts.FX;
 using Datenshi.Scripts.Game;
 using Datenshi.Scripts.Graphics;
-using Datenshi.Scripts.Util.Time;
+using Shiroi.FX.Effects;
+using Shiroi.FX.Features;
+using Shiroi.FX.Services.BuiltIn;
+using Shiroi.FX.Utilities;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Master {
@@ -32,6 +34,7 @@ namespace Datenshi.Scripts.Master {
         private void AttemptVibrate(DamageInfo info) {
             AttemptVibrate(info.Damager, info.Damaged);
         }
+
         private void AttemptVibrate(IDamageDealer damager, IDamageable damaged) {
             var currentEntity = PlayerController.Instance.CurrentEntity;
             if (!Equals(damager, currentEntity) && !Equals(damaged, currentEntity)) {
@@ -40,6 +43,7 @@ namespace Datenshi.Scripts.Master {
 
             Vibrate();
         }
+
         private void OnDefended(ICombatant ignored, DamageInfo arg0) {
             AttemptVibrate(arg0);
         }
@@ -66,18 +70,19 @@ namespace Datenshi.Scripts.Master {
                 var graphics = GraphicsSingleton.Instance;
                 var damageGlitch = graphics.Glitch;
                 var bnw = graphics.BlackAndWhite;
-                DamageAudio.Execute(currentEntity.Center);
+                DamageAudio.Play(new EffectContext(this, new PositionFeature(currentEntity.Center)));
                 var meta = new GlitchMeta(
                     DamageLineJitterAmount,
                     DamageVerticalJumpAmount,
                     DamageHorizontalShakeAmount,
                     DamageColorDriftAmount
                 );
-                damageGlitch.RequesTimedService(DamageGlitchDuration, meta);
-                bnw.RequestService(BNWDuration, DesaturateCurve, DarkenCurve);
+                damageGlitch.RegisterTimedService(DamageGlitchDuration, meta);
+                bnw.RegisterTimedService(BNWDuration, new BlackAndWhiteMeta(DesaturateCurve, DarkenCurve));
             }
 
-            TimeController.Instance.RequestAnimatedSlowdown(SlowdownScale, SlowdownDuration, 2);
+            TimeController.Instance.RegisterTimedService(SlowdownDuration, new AnimatedTimeMeta(SlowdownScale),
+                priority: 200);
         }
 
         private Color GetColor(IDamageDealer damager) {

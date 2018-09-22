@@ -1,4 +1,6 @@
 ﻿using Datenshi.Scripts.Combat;
+using Datenshi.Scripts.Graphics;
+using Shiroi.FX.Utilities;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
@@ -158,7 +160,9 @@ namespace Datenshi.Scripts.Entities {
 
             OnDamaged.Invoke(info);
             OnHealthChanged.Invoke();
-            ColorizableRenderer.RequestColorOverride(DamageColor, DamageColorAmount, DamageColorDuration);
+            ColorizableRenderer.RegisterTimedService(DamageColorDuration,
+                new ColorOverride(DamageColor, DamageColorAmount)
+            );
             Health -= damage;
             if (DamageInvulnerability) {
                 SetInvulnerable(DamageInvulnerabilityDuration);

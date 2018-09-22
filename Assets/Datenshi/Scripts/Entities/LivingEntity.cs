@@ -1,11 +1,11 @@
 ﻿using System;
 using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Combat.Attacks;
+using Datenshi.Scripts.Movement;
 using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
-using UPM.Motors;
 
 namespace Datenshi.Scripts.Entities {
     [Serializable]
@@ -28,7 +28,7 @@ namespace Datenshi.Scripts.Entities {
         public const string CombatGroup = "Combat";
         public static readonly Color HitboxColor = new Color(0.46f, 1f, 0.01f, 0.25f);
 
-        [SerializeField]
+        [SerializeField, TitleGroup(GeneralGroup)]
         private Collider2D hitbox;
 
         public Collider2D Hitbox => hitbox;
@@ -36,7 +36,7 @@ namespace Datenshi.Scripts.Entities {
         protected virtual void Start() {
             CurrentDirection = Direction.Right;
         }
-        [ShowInInspector, ReadOnly, TitleGroup(CombatGroup)]
+
         protected virtual void Update() {
             UpdateRendering();
             UpdateInvulnerability();
@@ -65,7 +65,7 @@ namespace Datenshi.Scripts.Entities {
         }
 
 
-        [SerializeField]
+        [SerializeField, TitleGroup(GeneralGroup)]
         private bool ignored;
 
 

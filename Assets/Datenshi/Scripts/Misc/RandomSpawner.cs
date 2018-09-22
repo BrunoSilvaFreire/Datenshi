@@ -1,6 +1,6 @@
-﻿using Datenshi.Scripts.Util;
-using UnityEngine;
-using UPM.Util;
+﻿using UnityEngine;
+using UnityUtilities;
+using UnityUtilities.Misc;
 
 namespace Datenshi.Scripts.Misc {
     public class RandomSpawner : MonoBehaviour {
@@ -23,7 +23,7 @@ namespace Datenshi.Scripts.Misc {
         private void OnDrawGizmos() {
             var b = Bounds;
             b.Center += (Vector2) transform.position;
-            GizmosUtil.DrawBounds2D(b, Color.green);
+            GizmosUtility.DrawBounds2D(b, Color.green);
         }
     }
 }

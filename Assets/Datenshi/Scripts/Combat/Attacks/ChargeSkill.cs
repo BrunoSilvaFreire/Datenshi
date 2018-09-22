@@ -14,7 +14,7 @@ namespace Datenshi.Scripts.Combat.Attacks {
         public Vector2 Velocity = Vector2.right;
 
         public override void Execute(ICombatant entity) {
-            var m = entity as IDatenshiMovable;
+            var m = entity as IMovable;
             if (m == null) {
                 return;
             }

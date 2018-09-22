@@ -1,7 +1,8 @@
 ﻿using System.Collections;
-using Datenshi.Scripts.FX;
 using Shiroi.Cutscenes;
 using Shiroi.Cutscenes.Tokens;
+using Shiroi.FX.Effects;
+using Shiroi.FX.Features;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Cutscenes.Tokens {
@@ -10,7 +11,7 @@ namespace Datenshi.Scripts.Cutscenes.Tokens {
         public Vector3 Location;
 
         public override IEnumerator Execute(CutscenePlayer player, CutsceneExecutor executor) {
-            Effect.Execute(Location);
+            Effect.Play(new EffectContext(player, new PositionFeature(Location)));
             yield break;
         }
     }

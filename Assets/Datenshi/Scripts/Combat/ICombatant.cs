@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using Datenshi.Scripts.Combat.Attacks;
-using Datenshi.Scripts.Combat.Status;
 using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Input;
 using Datenshi.Scripts.Util;
-using UPM.Util;
 using Datenshi.Scripts.Movement;
 using Datenshi.Scripts.Util.Volatiles;
 using UnityEngine;

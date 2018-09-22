@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityUtilities;
 using Object = UnityEngine.Object;
 
 namespace Datenshi.Scripts.Util {
@@ -58,7 +59,7 @@ namespace Datenshi.Scripts.Util {
                 Vector2 pos;
                 var sceneObj = obj.Obj;
                 if (sceneObj.AttempRetrievePosition(out pos)) {
-                    GizmosUtil.DrawWireCircle2D(pos, 1, Color.magenta);
+                    GizmosUtility.DrawWireCircle2D(pos, 1, Color.magenta);
                 }
             }
         }

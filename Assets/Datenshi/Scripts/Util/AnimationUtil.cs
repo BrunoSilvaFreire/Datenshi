@@ -1,7 +1,10 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Util {
+    public class WTFException : Exception { }
+
     public static class AnimationUtil {
         public static bool HasParameter(this Animator animator, string parameter) {
             return animator.parameters.Any(p => p.name == parameter);
@@ -30,7 +33,7 @@ namespace Datenshi.Scripts.Util {
 
             animator.SetInteger(key, f);
         }
-        
+
         public static void AttemptSetTrigger(this Animator animator, string key) {
             if (!animator.HasParameter(key)) {
                 return;

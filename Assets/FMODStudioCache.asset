@@ -42,9 +42,10 @@ MonoBehaviour:
   - {fileID: 114830704183595030}
   - {fileID: 114984851014510472}
   - {fileID: 114785022642166376}
+  - {fileID: 114666285671538324}
   MasterBankRef: {fileID: 114714833352202522}
   StringsBankRef: {fileID: 114135330643410682}
-  stringsBankWriteTime: 636724652691520481
+  stringsBankWriteTime: 636730705152289095
   cacheVersion: 2
 --- !u!114 &114004021812052978
 MonoBehaviour:
@@ -68,6 +69,21 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 464
+--- !u!114 &114037311771890940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: State
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114046587587161858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,6 +155,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: IntroLoop
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114093289536005736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: State
   Min: 0
   Max: 1
   Default: 0
@@ -236,11 +267,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: FMOD\Build\Desktop\Master Bank.strings.bank
-  lastModified: 636724652691520481
+  lastModified: 636730705152289095
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 2648
+    Value: 2688
   Exists: 1
 --- !u!114 &114137427802399594
 MonoBehaviour:
@@ -400,6 +431,21 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
+--- !u!114 &114207508404676756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Shooting
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114211134879663282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1049,7 +1095,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114660942064545514}
+  - {fileID: 114603134876320720}
   MinDistance: 0
   MaxDistance: 0
   Length: 240000
@@ -1179,6 +1225,21 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 191
+--- !u!114 &114603134876320720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: IntroLoop
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114606551730078736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1313,6 +1374,28 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114666285671538324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Misc/SqueakyToy
+  guid: d20630fe3ddc164b8be436ebb55e3d6f
+  Banks:
+  - {fileID: 114714833352202522}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1000
 --- !u!114 &114679996156795338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1377,11 +1460,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: C:\Work\Unity\Datenshi\FMOD\Build\Desktop\Master Bank.bank
-  lastModified: 636724652691495503
+  lastModified: 636730705152249197
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 5680992
+    Value: 5703520
   Exists: 1
 --- !u!114 &114729164300533814
 MonoBehaviour:
@@ -1568,7 +1651,7 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 114891163352909388}
+  - {fileID: 114207508404676756}
   MinDistance: 1
   MaxDistance: 1000
   Length: 4756
@@ -1683,6 +1766,21 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 191
+--- !u!114 &114867418044254970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Shooting
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114887323613706242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1801,6 +1899,21 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 4046
+--- !u!114 &114912408484466202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: IntroLoop
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114918078454055620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1916,7 +2029,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114412261734138316}
+  - {fileID: 114093289536005736}
   MinDistance: 0
   MaxDistance: 0
   Length: 27428

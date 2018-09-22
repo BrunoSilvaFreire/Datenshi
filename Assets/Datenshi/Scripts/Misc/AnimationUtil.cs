@@ -1,6 +1,7 @@
 ﻿using Datenshi.Scripts.Audio;
-using Datenshi.Scripts.FX;
 using Datenshi.Scripts.Util;
+using Shiroi.FX.Effects;
+using Shiroi.FX.Features;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Misc {
@@ -11,7 +12,7 @@ namespace Datenshi.Scripts.Misc {
         }
 
         public void PlayEffect(Effect effect) {
-            effect.Execute(transform.position);
+            effect.Play(new EffectContext(this, new PositionFeature(transform.position)));
         }
 
         public void PlayAudioFX(AudioFX fx) {

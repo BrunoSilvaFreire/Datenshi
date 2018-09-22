@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f05255d263147cb86a1c7e5ce5f5cd7, type: 3}
+  m_Name: HikariMotor
+  m_EditorClassIdentifier: 
+  States:
+  - {fileID: 114875747530634424}
+  - {fileID: 114468145598613026}
+--- !u!114 &114468145598613026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683404b28851410facf798fba3a3dea5, type: 3}
+  m_Name: DashMovement
+  m_EditorClassIdentifier: 
+  DashDuration: 1
+  DashDistance: 8
+  DashGravityScale: 0.25
+  DefaultState: {fileID: 114875747530634424}
+--- !u!114 &114875747530634424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13dfdedb753940c0b711652e056de346, type: 3}
+  m_Name: GroundedMovement
+  m_EditorClassIdentifier: 
+  GravityScale: 1
+  OposingForceMultiplier: 2

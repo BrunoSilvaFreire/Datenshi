@@ -1,10 +1,12 @@
 ﻿using Datenshi.Scripts.Data;
-using Datenshi.Scripts.FX;
-using Datenshi.Scripts.Util;
+using Shiroi.FX.Effects;
+using Shiroi.FX.Features;
+using Shiroi.FX.Utilities;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
-using UPM.Util;
+using UnityUtilities;
+using UnityUtilities.Misc;
 
 namespace Datenshi.Scripts.Combat.Attacks {
     public class HitboxAttackExecutedEvent : UnityEvent<ICombatant, uint, Collider2D, DamageInfo> {
@@ -14,7 +16,7 @@ namespace Datenshi.Scripts.Combat.Attacks {
 
     public abstract class AbstractHitboxAttack : Attack, IDefendable {
         private static readonly Color HitboxColor = Color.green;
-        public Effect OnHit;
+        public Effect OnHit, OnHitEnemyEntity;
 
         public Bounds2D Hitbox;
         public float FocusConsumption = 0.1f;
@@ -40,7 +42,7 @@ namespace Datenshi.Scripts.Combat.Attacks {
             }
 
             hb.Center += (Vector2) entity.Transform.position;
-            DebugUtil.DrawBox2DWire(hb.Center, hb.Size, HitboxColor);
+            DebugUtil.DrawWireBox2D(hb.Center, hb.Size, HitboxColor);
             var success = false;
             var found = Physics2D.OverlapBoxAll(hb.Center, hb.Size, 0, GameResources.Instance.EntitiesMask);
             foreach (var hit in found) {
@@ -58,9 +60,9 @@ namespace Datenshi.Scripts.Combat.Attacks {
                 HitboxAttackExecutedEvent.Instance.Invoke(entity, damage, hit, info);
                 success = true;
                 d.Damage(ref info, this);
-                if (OnHit != null) {
-                    OnHit.Execute(d.Center);
-                }
+                OnHit.PlayIfPresent(new EffectContext(entity as MonoBehaviour,
+                    new PositionFeature(hit.transform.position)
+                ));
             }
 
             return success;

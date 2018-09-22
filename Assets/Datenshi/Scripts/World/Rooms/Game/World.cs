@@ -4,7 +4,6 @@ using Datenshi.Scripts.Game;
 using Datenshi.Scripts.Util.Singleton;
 using UnityEngine;
 using UnityEngine.Events;
-using UPM.Util;
 
 namespace Datenshi.Scripts.World.Rooms.Game {
     [Serializable]

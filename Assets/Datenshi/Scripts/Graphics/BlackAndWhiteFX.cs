@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using Datenshi.Scripts.Util;
-using Datenshi.Scripts.Util.Services;
+using Shiroi.FX.Services;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Graphics {
     [ExecuteInEditMode]
-    public class BlackAndWhiteFX : StandaloneVisualFX {
+    public class BlackAndWhiteFX : SingletonServiceController<BlackAndWhiteFX, BlackAndWhiteMeta> {
         private const string ShaderName = "Datenshi/BlackAndWhiteShader";
         private const string DarkenPropertyName = "_DarkenAmount";
         private const string PropertyName = "_Amount";
@@ -34,37 +36,57 @@ namespace Datenshi.Scripts.Graphics {
             }
         }
 
-        private void Update() {
-            serviceHandler.Tick();
-            var highest = serviceHandler.WithGenericHighestPriority();
-            if (highest == null) {
-                Amount = DefaultDesaturationAmount;
-                DarkenAmount = DefaultDarkenAmount;
+        [SerializeField, ReadOnly]
+        protected Material Material;
+
+        public Material GetMaterial() {
+            return Material ? Material : (Material = LoadMaterial());
+        }
+
+        private Material LoadMaterial() {
+            var shader = Shader.Find(ShaderName);
+            if (shader != null) {
+                return new Material(shader);
+            }
+
+            Debug.LogWarningFormat("Couldn't find shader '{0}' for black and white effect", ShaderName);
+            return null;
+        }
+
+        private void OnRenderImage(RenderTexture source, RenderTexture destination) {
+            var m = GetMaterial();
+            if (m == null) {
                 return;
             }
 
-            var meta = highest.Metadata;
-            Amount = meta.DesaturateAmount;
+            UnityEngine.Graphics.Blit(source, destination, m);
+        }
+
+        protected override void UpdateGameToDefault() {
+            DarkenAmount = DefaultDarkenAmount;
+            Amount = DefaultDesaturationAmount;
+        }
+
+        protected override void UpdateGameTo(IEnumerable<WeightnedMeta<BlackAndWhiteMeta>> activeMetas) {
+            float darken = 0, desaturate = 0;
+            foreach (var weightedMeta in activeMetas) {
+                var meta = weightedMeta.Meta;
+                var w = weightedMeta.Weight;
+                darken += meta.DarkenAmount * w;
+                desaturate += meta.DesaturateAmount * w;
+            }
+
+            DarkenAmount = darken;
+            Amount = desaturate;
+        }
+
+        protected override void UpdateGameTo(BlackAndWhiteMeta meta) {
             DarkenAmount = meta.DarkenAmount;
+            Amount = meta.DesaturateAmount;
         }
-
-        protected override string GetShaderName() {
-            return ShaderName;
-        }
-
-        public TimedService<BlackAndWhiteMeta> RequestService(float duration, AnimationCurve desaturate,
-            AnimationCurve darken,
-            byte priority = Service.DefaultPriority) {
-            var meta = new BlackAndWhiteMeta(
-                desaturate, darken
-            );
-            return serviceHandler.RegisterTimedService(meta, duration, priority);
-        }
-
-        private readonly ServiceHandler<BlackAndWhiteMeta> serviceHandler = new ServiceHandler<BlackAndWhiteMeta>();
     }
 
-    public class BlackAndWhiteMeta : IComparable<BlackAndWhiteMeta>, ITickable<Service> {
+    public class BlackAndWhiteMeta : IComparable<BlackAndWhiteMeta>, ITimedServiceTickable {
         public AnimationCurve DesaturateCurve;
         public AnimationCurve DarkenCurve;
 
@@ -86,13 +108,8 @@ namespace Datenshi.Scripts.Graphics {
                 : DarkenAmount.CompareTo(other.DarkenAmount);
         }
 
-        public void Tick(Service value) {
-            var timed = value as ITimedService;
-            if (timed == null) {
-                return;
-            }
-
-            currentPos = timed.Percentage;
+        public void Tick(ITimedService value) {
+            currentPos = value.PercentageCompleted;
         }
     }
 }

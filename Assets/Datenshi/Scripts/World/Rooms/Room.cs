@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Datenshi.Scripts.Util;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityUtilities;
 
 namespace Datenshi.Scripts.World.Rooms {
     public interface IRoomMember {
@@ -68,7 +69,7 @@ namespace Datenshi.Scripts.World.Rooms {
                 return;
             }
 
-            GizmosUtil.DrawBounds2D(Area.bounds, Color.magenta);
+            GizmosUtility.DrawBounds2D(Area.bounds, Color.magenta);
         }
 
         private void OnTriggerEnter2D(Collider2D other) {

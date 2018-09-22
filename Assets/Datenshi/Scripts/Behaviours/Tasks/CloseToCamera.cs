@@ -1,6 +1,6 @@
 ﻿using BehaviorDesigner.Runtime.Tasks;
-using Datenshi.Scripts.Util;
 using UnityEngine;
+using UnityUtilities;
 
 namespace Datenshi.Scripts.Behaviours.Tasks {
     public class CloseToCamera : Conditional {

@@ -1,364 +1,64 @@
 ﻿using Datenshi.Scripts.AI;
-using Datenshi.Scripts.Combat;
-using Datenshi.Scripts.Data;
-using Datenshi.Scripts.Movement;
 using Datenshi.Scripts.Util;
-using Datenshi.Scripts.Util.Volatiles;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.Profiling;
-using UPM;
-using UPM.Input;
-using UPM.Motors;
-using UPM.Motors.Config;
-using UPM.Physics;
 
 namespace Datenshi.Scripts.Entities {
-    /// <summary>
-    /// Isso existe por motivos de compatibilidade de MovableEntity com RigidEntity
-    /// </summary>
-    public abstract class AbstractMovableEntity : LivingEntity , INavigable  {
-        public abstract void Move();
-        public abstract C GetMotorConfig<C>() where C : MotorConfig;
-
-        public abstract InputProvider InputProvider {
-            get;
-        }
-
-        public abstract AnimationCurve AccelerationCurve {
-            get;
-        }
-
-        public abstract float MaxSpeed {
-            get;
-        }
-
-        public abstract Motor Motor {
-            get;
-        }
-
-        public abstract CollisionStatus CollisionStatus {
-            get;
-            set;
-        }
-
-        public abstract MotorConfig MotorConfig {
-            get;
-        }
-
-        public abstract float SpeedPercent {
-            get;
-        }
-
-        public abstract AINavigator AINavigator {
-            get;
-        }
-    }
-
-    /// <summary>
-    /// Uma entidade que se move.
-    /// <br />
-    /// A maneira com que ela se move depende de seu <see cref="F:Datenshi.Scripts.Entities.MovableEntity.Motor" />.
-    /// </summary>
-    public partial class MovableEntity : AbstractMovableEntity, INavigable, IDatenshiMovable {
+    public partial class MovableEntity : LivingEntity, INavigable {
         public const string MovementGroup = "Movement";
-
-        /// <summary>
-        /// O motor a ser utilizado por essa entidade para movimentação
-        /// </summary>
-        [SerializeField, HideInInspector]
-        private Motor motor;
-
-        [TitleGroup(MovementGroup), SerializeField]
-        private AnimationCurve accelerationCurve = AnimationCurve.Constant(0, 1, 1);
-
-        [SerializeField, HideInInspector]
-        private AINavigator aiNavigator;
-
-        [ShowInInspector, TitleGroup(MovementGroup)]
-        public override AINavigator AINavigator {
-            get {
-                return aiNavigator;
-            }
-            set {
-                aiNavigator = value;
-            }
-        }
-
-
-        [TitleGroup(MovementGroup)]
-        public float SkinWidth = 0.1F;
-
-        [TitleGroup(MovementGroup), SerializeField]
-        private float maxSpeed = 10;
-
-        [TitleGroup(MovementGroup)]
-        public float YForce = 5;
-
-        public float DirectionChangeThreshold = .2F;
-
-        [SerializeField]
-        private FloatVolatileProperty speedMultiplier;
-
-        public FloatVolatileProperty SpeedMultiplier => speedMultiplier;
-
-
-        [TitleGroup(CombatGroup)]
-        public bool DamageGivesKnockback;
-
-        [ShowIf("DamageGivesKnockback"), TitleGroup(CombatGroup)]
-        public uint DamageKnockbackMin = 10;
-
-        [ShowIf("DamageGivesKnockback"), TitleGroup(CombatGroup)]
-        public float DamageKnockbackStrenght = 3;
-
-        [ShowIf("DamageGivesKnockback"), TitleGroup(CombatGroup)]
-        public float KnockbackLiftoff = 3;
-
-        [TitleGroup(MovementGroup), SerializeField]
-        private Vector2 externalForces;
-
-        [TitleGroup(MovementGroup)]
-        public float ExternalForcesDeacceleration = 0.1F;
-
-
-        public override C GetMotorConfig<C>() where C : MotorConfig {
-            return motorConfig as C;
-        }
+        public const string AIGroup = "AI";
 
         [TitleGroup(GeneralGroup)]
-        public override InputProvider InputProvider => base.InputProvider;
+        public Rigidbody2D Rigidbody;
 
         [TitleGroup(MovementGroup)]
-        public override AnimationCurve AccelerationCurve => accelerationCurve;
+        public GameObject RigidStateHolder;
 
+        [TitleGroup(MovementGroup)]
+        public float DirectionChangeThreshold = .2F;
 
-        [TitleGroup(GeneralGroup), SerializeField]
-        private float inset = .05F;
-
-        [TitleGroup(MovementGroup), SerializeField]
-        private byte horizontalRaycasts = 3;
-
-        [TitleGroup(MovementGroup), SerializeField]
-        private byte verticalRaycasts = 3;
-
-        public float Inset => inset;
-
-        public byte HorizontalRaycasts => horizontalRaycasts;
-
-        public byte VerticalRaycasts => verticalRaycasts;
-
-        public override float MaxSpeed => maxSpeed * SpeedMultiplier.Value;
-
-        public Transform MovementTransform => transform;
-
-        [TitleGroup(CombatGroup)]
-        public bool StunRemovesVelocity;
-
-        [TitleGroup(CombatGroup), ShowIf("StunRemovesVelocity")]
-        public float StunVelocityDampen = 1;
-
-        [ShowInInspector, ReadOnly, TitleGroup(MovementGroup)]
-        public Vector2 Velocity {
-            get;
-            set;
-        }
-
-        [ShowInInspector, ReadOnly, TitleGroup(MovementGroup)]
-        public override CollisionStatus CollisionStatus {
-            get {
-                return collisionStatus;
+        protected override void Start() {
+            base.Start();
+            foreach (var movement in AnimatorUpdater.Animator.GetBehaviours<AnimatorMovement>()) {
+                movement.Initialize(this);
             }
-            set {
-                collisionStatus = value;
-            }
-        }
-
-
-        public float SpeedPercent {
-            get {
-                if (MaxSpeed > 0) {
-                    return Velocity.x / MaxSpeed;
-                }
-
-                return 0;
-            }
-        }
-
-        public override Vector2 GroundPosition {
-            get {
-                var bounds = Hitbox.bounds;
-                var min = bounds.min;
-                return new Vector2(bounds.center.x, min.y + SkinWidth);
-            }
-        }
-
-        [ShowInInspector, TitleGroup(MovementGroup, "Informações sobre a maneira de locomoção desta entidade")]
-        public Motor Motor {
-            get {
-                return motor;
-            }
-            set {
-                motor = value;
-                if (value == null || !motor.RequiresConfig(this)) {
-                    return;
-                }
-
-                var config = MotorConfig;
-                if (config != null && config.IsCompatible(motor)) {
-                    return;
-                }
-
-                var foundConfig = GetComponentInChildren<MotorConfig>();
-                var foundValid = foundConfig != null && foundConfig.IsCompatible(motor);
-                MotorConfig = foundValid ? foundConfig : value.CreateConfig(this);
-            }
-        }
-
-        private PhysicsBehaviour externalForceBehaviour = new PhysicsBehaviour(
-            new HorizontalPhysicsCheck(),
-            new VerticalPhysicsCheck()
-        );
-
-        public void Move() {
-            motor.Move(this);
-            if (!ApplyVelocity) {
-                return;
-            }
-
-            MovementTransform.position += (Vector3) Velocity * DeltaTime;
-
-            if (ExternalForces.magnitude < 0.1) {
-                return;
-            }
-
-            externalForces = Vector2.Lerp(externalForces, Vector2.zero, ExternalForcesDeacceleration);
-#if UNITY_EDITOR
-            Profiler.BeginSample("MovableEntity-ExternalForcesPhysicsBehaviour");
-#endif
-            externalForceBehaviour.Check(
-                this,
-                ref externalForces,
-                ref collisionStatus,
-                GameResources.Instance.WorldMask);
-#if UNITY_EDITOR
-            Profiler.EndSample();
-#endif
-            MovementTransform.position += (Vector3) externalForces * DeltaTime;
         }
 
         protected override void Update() {
             base.Update();
-            UpdateMovableVariables();
-            UpdateMovement();
+            if (AnimatorUpdater != null) {
+                AnimatorUpdater.UpdateAnimator();
+            }
+        }
+
+        private void FixedUpdate() {
+            UpdateCollisionStatus();
+            if (Motor != null) {
+                Motor.Move(this);
+            }
+        }
+
+        private void LateUpdate() {
             UpdateDirection();
         }
 
-        private void UpdateMovableVariables() {
-            SpeedMultiplier.Tick();
+
+        protected override void OnDrawGizmos() {
+            var b = Hitbox.bounds;
+            b.center += (Vector3) Rigidbody.velocity * Time.deltaTime;
+            Gizmos.color = HitboxColor;
+            Gizmos.DrawCube(b.center, b.size);
         }
 
-        private void UpdateDirection() {
-            if (Defending && DefendingFor > DirectionChangeThreshold) {
-                return;
-            }
+        [SerializeField, TitleGroup(AIGroup)]
+        private AINavigator aiNavigator;
 
-            var newDirection = Direction.FromVector(Velocity);
-            var xDir = newDirection.X;
-            var yDir = newDirection.Y;
-            var dir = CurrentDirection;
-            if (xDir != 0 && dir.X != xDir) {
-                dir.X = xDir;
-            }
+        public AINavigator AINavigator => aiNavigator;
+    }
 
-            if (yDir != 0 && dir.Y != yDir) {
-                dir.Y = yDir;
-            }
-
-            CurrentDirection = dir;
-        }
-
-        private void UpdateMovement() {
-            if (RuntimeResources.Instance.Paused) {
-                return;
-            }
-#if UNITY_EDITOR
-            Profiler.BeginSample("MovableEntityMovement");
-#endif
-            Move();
-#if UNITY_EDITOR
-            Profiler.EndSample();
-#endif
-        }
-
-
-        [TitleGroup(MovementGroup), SerializeField, HideInInspector]
-        private MotorConfig motorConfig;
-
-        [TitleGroup(MovementGroup), SerializeField]
-        private CollisionStatus collisionStatus;
-
-        [ShowInInspector, TitleGroup(MovementGroup)]
-        public MotorConfig MotorConfig {
-            get {
-                return motorConfig;
-            }
-
-            set {
-                if (value != null) {
-                    var m = motor;
-                    if (m != null && m.RequiresConfig(this) && !value.IsCompatible(m)) {
-                        Debug.LogWarning("Attempted to set motor config " + value + " incompatible to motor " + motor);
-                        return;
-                    }
-                } else if (motor.RequiresConfig(this)) {
-                    Debug.LogWarning("Attempted to remove motor config required by motor " + motor);
-                    return;
-                }
-
-                motorConfig = value;
-            }
-        }
-
-        public bool ApplyVelocity {
-            get;
-            set;
-        } = true;
-
-
-        public Vector2 ExternalForces {
-            get {
-                return externalForces;
-            }
-            set {
-                externalForces = value;
-            }
-        }
-
-        public override void Stun(float duration) {
-            base.Stun(duration);
-            if (GodMode || !StunRemovesVelocity) {
-                return;
-            }
-
-            Velocity *= 1 - StunVelocityDampen;
-        }
-
-        public override uint Damage(ref DamageInfo info, IDefendable defendable = null) {
-            var damage = base.Damage(ref info, defendable);
-            if (!DamageGivesKnockback || damage < DamageKnockbackMin) {
-                return damage;
-            }
-
-            var entity = info.Damager;
-            externalForces = Center - entity.Center;
-            externalForces.Normalize();
-            externalForces *= DamageKnockbackStrenght;
-            if (externalForces.y <= 0) {
-                externalForces.y += KnockbackLiftoff;
-            }
-
-            return damage;
+    public static class RigidEntityExtensions {
+        public static float GetSpeedPercentage(this MovableEntity entity) {
+            return entity.Rigidbody.velocity.magnitude / entity.MovementConfig.MaxSpeed;
         }
     }
 }

@@ -4,6 +4,7 @@ using Datenshi.Scripts.Behaviours.Variables;
 using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Util;
 using UnityEngine;
+using UnityUtilities;
 
 namespace Datenshi.Scripts.Behaviours.Tasks {
     public class StayCloseToTarget : Action {
@@ -44,7 +45,7 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
             var dist = Vector2.Distance(targetPos, Navigator.transform.position);
             var c = dist > DistanceThreshold ? Color.red : Color.green;
             var msg = $"Distance {Navigator.name}-{t.AnimatorUpdater.gameObject.name}: {dist}/{DistanceThreshold}";
-            DebugUtil.DrawLabel(targetPos, msg);
+            //DebugUtil.DrawLabel(targetPos, msg);
             Debug.DrawLine(targetPos, b, c);
             DebugUtil.DrawWireCircle2D(b, DistanceThreshold, c);
         }

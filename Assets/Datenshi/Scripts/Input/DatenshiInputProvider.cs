@@ -5,7 +5,7 @@ namespace Datenshi.Scripts.Input {
     /// <summary>
     /// Representa uma fonte de input. Seja um player, ou AI.
     /// </summary>
-    public abstract class DatenshiInputProvider : UPM.Input.InputProvider {
+    public abstract class DatenshiInputProvider : MonoBehaviour {
         public void GetInputVectorInject(out float x, out float y, out Vector2 input) {
             x = GetHorizontal();
             y = GetVertical();
@@ -18,8 +18,16 @@ namespace Datenshi.Scripts.Input {
 
         public abstract bool GetJump();
 
-        public abstract bool GetJumpDown();
-
+        public abstract float GetHorizontal();
+        public abstract float GetVertical();
+        public abstract float GetAxis(string key);
+        public abstract float GetAxis(int id);
+        public abstract bool GetButtonDown(string key);
+        public abstract bool GetButtonDown(int id);
+        public abstract bool GetButton(string key);
+        public abstract bool GetButton(int id);
+        public abstract bool GetButtonUp(string key);
+        public abstract bool GetButtonUp(int id);
         public abstract bool GetAttack();
 
         public abstract bool GetDash();
@@ -46,5 +54,7 @@ namespace Datenshi.Scripts.Input {
 
             return vec;
         }
+
+        public abstract bool GetJumpDown();
     }
 }

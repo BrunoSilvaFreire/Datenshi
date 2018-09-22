@@ -1,6 +1,8 @@
 ﻿using Datenshi.Scripts.Combat;
-using Datenshi.Scripts.FX;
 using Datenshi.Scripts.Movement;
+using Shiroi.FX.Effects;
+using Shiroi.FX.Features;
+using Shiroi.FX.Utilities;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Entities.Misc {
@@ -30,7 +32,7 @@ namespace Datenshi.Scripts.Entities.Misc {
         }
 
         public float Defend(ICombatant combatant, ref DamageInfo info) {
-            var m = Owner as IDatenshiMovable;
+            var m = Owner as IMovable;
             if (m != null) {
                 var vel = ThrowbackForce;
                 vel.x *= Owner.XDirectionTo(combatant.Center);
@@ -38,7 +40,7 @@ namespace Datenshi.Scripts.Entities.Misc {
             }
 
             if (DefenseEffect != null) {
-                DefenseEffect.Execute(combatant.Center);
+                DefenseEffect.PlayIfPresent(this);
             }
 
             return DefenseFocusComsuption;

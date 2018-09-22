@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace Datenshi.Scripts.Movement {
     public static class MovableUtility {
-        public static void TranslateNoPhysics(this IDatenshiMovable entity, Vector2 targetPos, float duration) {
+        public static void TranslateNoPhysics(this IMovable entity, Vector2 targetPos, float duration) {
             entity.StartCoroutine(DoTranslateNoPhysics(entity, targetPos, duration));
         }
 
-        private static IEnumerator DoTranslateNoPhysics(IDatenshiMovable entity, Vector2 targetPos, float duration) {
+        private static IEnumerator DoTranslateNoPhysics(IMovable entity, Vector2 targetPos, float duration) {
             var timeLeft = duration;
             var originalPos = entity.GroundPosition;
             entity.ApplyVelocity = false;

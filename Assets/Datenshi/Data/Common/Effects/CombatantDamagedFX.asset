@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 483066763, guid: 220592144c7fcfd4ca4aeb13babc9d40, type: 3}
+  m_Name: CombatantDamagedFX
+  m_EditorClassIdentifier: 
+  Effects:
+  - {fileID: 114610065626053460}
+--- !u!114 &114610065626053460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1432916263, guid: 220592144c7fcfd4ca4aeb13babc9d40, type: 3}
+  m_Name: ObjectShakeEffect
+  m_EditorClassIdentifier: 
+  UseShakeControllerIfPresent: 1
+  Duration:
+    Source: 0
+    TagName: 
+    Value:
+      Mode: 0
+      Range:
+        start: 0
+        end: 0
+      Constant: 17.42
+  Frequency:
+    Source: 0
+    TagName: 
+    Value:
+      m_Mode: 0
+      m_CurveMultiplier: 0
+      m_CurveMin:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_CurveMax:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_ConstantMin: 0
+      m_ConstantMax: 26.3
+  Intensity:
+    Source: 0
+    TagName: 
+    Value:
+      m_Mode: 0
+      m_CurveMultiplier: 0
+      m_CurveMin:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_CurveMax:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_ConstantMin: 0
+      m_ConstantMax: 8.46
+  Mode: 0
+  Dimensions: 7

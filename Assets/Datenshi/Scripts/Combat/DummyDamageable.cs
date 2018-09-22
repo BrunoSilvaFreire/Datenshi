@@ -1,4 +1,4 @@
-﻿using Datenshi.Scripts.FX;
+﻿using Shiroi.FX.Effects;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -85,7 +85,7 @@ namespace Datenshi.Scripts.Combat {
             currentHealth = 0;
             onKilled.Invoke();
             if (KilledEffect != null) {
-                KilledEffect.Execute(transform.position);
+                KilledEffect.PlayIfPresent(this);
             }
 
             if (DestroyOnDeath) {
@@ -103,9 +103,7 @@ namespace Datenshi.Scripts.Combat {
             }
 
             GlobalDamageEvent.Instance.Invoke(damageInfo);
-            if (DamagedEffect != null) {
-                DamagedEffect.Execute(transform.position);
-            }
+            DamagedEffect.PlayIfPresent(this);
 
             var dmg = (uint) (damageInfo.Attack.GetDamage(this) * damageInfo.Multiplier);
             if (dmg >= CurrentHealth) {

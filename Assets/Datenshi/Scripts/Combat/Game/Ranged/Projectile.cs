@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Entities;
-using Datenshi.Scripts.FX;
 using Datenshi.Scripts.Movement;
-using Datenshi.Scripts.Util;
+using Shiroi.FX.Effects;
+using Shiroi.FX.Features;
+using Shiroi.FX.Utilities;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
@@ -91,7 +92,7 @@ namespace Datenshi.Scripts.Combat.Game.Ranged {
             velocity.Normalize();
             velocity *= TravelSpeed;
             if (ShotEffect != null) {
-                ShotEffect.Execute(transform.position);
+                ShotEffect.PlayIfPresent(this);
             }
         }
 
@@ -143,7 +144,7 @@ namespace Datenshi.Scripts.Combat.Game.Ranged {
             }
 
             if (HitEffect != null) {
-                HitEffect.Execute(transform.position);
+                HitEffect.PlayIfPresent(this);
             }
 
             Destroy(gameObject);
@@ -230,9 +231,7 @@ namespace Datenshi.Scripts.Combat.Game.Ranged {
         }
 
         private void PlayDefendFX() {
-            if (DefendedEffect != null) {
-                DefendedEffect.Execute(transform.position);
-            }
+            DefendedEffect.PlayIfPresent(this);
         }
 
         public static float Angle(Vector2 vec) {

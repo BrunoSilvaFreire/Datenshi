@@ -1,11 +1,11 @@
 ﻿using System;
 using Datenshi.Scripts.Combat.Gravity;
+using Datenshi.Scripts.Movement.Config;
 using Sirenix.OdinInspector;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 using UnityEngine;
-using UPM.Motors.Config;
 
 namespace Datenshi.Scripts.AI.Pathfinding.Links {
     [Serializable]
@@ -54,14 +54,14 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links {
         }
 
         public override bool CanMakeIt(INavigable entity) {
-            var m = entity.MotorConfig;
+            var m = entity.MovementConfig;
             var b = true;
-            var config = m as GroundMotorConfig;
+            var config = m as TerrestrialConfig;
             if (config != null) {
                 b = config.JumpForce > requiredForce.y;
             }
 
-            return entity.MaxSpeed > requiredForce.x && b;
+            return m.MaxSpeed > requiredForce.x && b;
         }
 
         private bool CanFit(INavigable entity) {

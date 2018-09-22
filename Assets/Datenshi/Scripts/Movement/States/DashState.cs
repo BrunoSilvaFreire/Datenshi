@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.FX;
@@ -110,4 +110,4 @@ namespace Datenshi.Scripts.Movement.States {
             machine.State = DefaultState;
         }
     }
-}
+}*/

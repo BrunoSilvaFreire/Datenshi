@@ -13,7 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tokens:
   - {fileID: 114097716882855290}
-  - {fileID: 114637442584881822}
   FutureManager:
     futures: []
 --- !u!114 &114097716882855290
@@ -31,18 +30,3 @@ MonoBehaviour:
   Target: 1
   OpenOnStart: 1
   CloseOnFinish: 1
---- !u!114 &114637442584881822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2f454b1a34844e2a51a120699f18025, type: 3}
-  m_Name: ShowTutorialForToken
-  m_EditorClassIdentifier: 
-  Duration: 5
-  Tutorial:
-    exposedName: 
-    defaultValue: {fileID: 0}

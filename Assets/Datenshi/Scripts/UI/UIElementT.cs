@@ -7,6 +7,19 @@ using UnityEngine.EventSystems;
 
 namespace Datenshi.Scripts.UI {
     public abstract class UIView : MonoBehaviour {
+        public static void SetReleaseAllElementsOverride() {
+            foreach (var element in FindObjectsOfType<UIView>()) {
+                element.ReleaseOverride();
+            }
+        }
+
+        public static void SetAllElementsShowing(bool Show) {
+            foreach (var element in FindObjectsOfType<UIView>()) {
+                element.Override(Show);
+            }
+        }
+
+
         [ShowInInspector]
         public bool Showing {
             get {

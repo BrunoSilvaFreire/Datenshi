@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityUtilities;
 
 namespace Datenshi.Scripts.Util.Misc {
     [Serializable]
@@ -41,8 +42,8 @@ namespace Datenshi.Scripts.Util.Misc {
             g.a = .5F;
             var y = Color.yellow;
             y.a = .5F;
-            GizmosUtil.DrawWireCircle2D(center, Minimum, g);
-            GizmosUtil.DrawWireCircle2D(center, Maximum, y);
+            GizmosUtility.DrawWireCircle2D(center, Minimum, g);
+            GizmosUtility.DrawWireCircle2D(center, Maximum, y);
         }
 
         public void DrawGizmos(Vector2 center, AnimationCurve distanceMultiplier) {
@@ -50,7 +51,7 @@ namespace Datenshi.Scripts.Util.Misc {
             for (int i = 0; i < max; i++) {
                 var y = Color.yellow;
                 y.a = .5F;
-                GizmosUtil.DrawWireCircle2D(center, Maximum * distanceMultiplier.Evaluate(i), y);
+                GizmosUtility.DrawWireCircle2D(center, Maximum * distanceMultiplier.Evaluate(i), y);
             }
         }
     }

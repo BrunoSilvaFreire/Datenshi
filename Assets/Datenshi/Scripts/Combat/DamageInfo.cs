@@ -1,5 +1,4 @@
 ﻿using System;
-using Datenshi.Scripts.Combat.Attacks;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Combat {

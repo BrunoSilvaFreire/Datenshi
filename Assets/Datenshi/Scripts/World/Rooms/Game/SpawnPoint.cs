@@ -6,6 +6,7 @@ using Datenshi.Scripts.Util;
 using Datenshi.Scripts.Util.Misc;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityUtilities;
 
 namespace Datenshi.Scripts.World.Rooms.Game {
     public class SpawnPoint : AbstractRoomMember, IRestartable {
@@ -96,7 +97,7 @@ namespace Datenshi.Scripts.World.Rooms.Game {
         }
 
         private void OnDrawGizmos() {
-            GizmosUtil.DrawWireCircle2D(transform.position, 1f, Color.red);
+            GizmosUtility.DrawWireCircle2D(transform.position, 1f, Color.red);
         }
 
         private void OnDrawGizmosSelected() {

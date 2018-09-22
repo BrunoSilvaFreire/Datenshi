@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Input;
 using Rewired;

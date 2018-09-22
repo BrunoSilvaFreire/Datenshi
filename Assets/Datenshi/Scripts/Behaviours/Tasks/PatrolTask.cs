@@ -6,9 +6,9 @@ using Datenshi.Scripts.Behaviours.Variables;
 using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Entities;
-using Datenshi.Scripts.Util;
 using UnityEngine;
-using UPM.Util;
+using UnityUtilities;
+using UnityUtilities.Misc;
 
 // ReSharper disable UnassignedField.Global
 // ReSharper disable MemberCanBePrivate.Global
@@ -108,10 +108,10 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
         }
 
         public override void OnDrawGizmos() {
-            DebugUtil.DrawBox2DWire(Entity.Center + Entity.CurrentDirection.X * SightRadius.Center, SightRadius.Size,
+            DebugUtil.DrawWireBox2D(Entity.Center + Entity.CurrentDirection.X * SightRadius.Center, SightRadius.Size,
                 Color.red);
             var color = waiting ? Color.yellow : Color.green;
-            DebugUtil.DrawBox2DWire(targetPos, Vector2.one, color);
+            DebugUtil.DrawWireBox2D(targetPos, Vector2.one, color);
             Debug.DrawLine(Entity.GroundPosition, targetPos, color);
         }
     }

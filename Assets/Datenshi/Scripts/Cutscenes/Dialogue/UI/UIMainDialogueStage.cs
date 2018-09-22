@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Datenshi.Scripts.Audio;
+using Datenshi.Scripts.Entities.Misc.Narrator;
 using Datenshi.Scripts.Game;
 using Datenshi.Scripts.Input;
 using Datenshi.Scripts.UI.Misc;
 using Datenshi.Scripts.Util;
-using Datenshi.Scripts.Util.Misc.Narrator;
 using DG.Tweening;
 using Shiroi.Cutscenes;
 using Sirenix.OdinInspector;

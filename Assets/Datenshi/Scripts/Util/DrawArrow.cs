@@ -2,7 +2,7 @@
 
 namespace Datenshi.Scripts.Util {
     public static class DrawArrow {
-        public static void ForGizmo(Vector3 pos, Vector3 direction, float arrowHeadLength = 0.25f, float arrowHeadAngle = 20.0f) {
+        public static void ForGizmos(Vector3 pos, Vector3 direction, float arrowHeadLength = 0.25f, float arrowHeadAngle = 20.0f) {
             Gizmos.DrawRay(pos, direction);
 
             var right = Quaternion.LookRotation(direction) * Quaternion.Euler(180 + arrowHeadAngle, 0, 0) * new Vector3(0, 0, 1);
@@ -11,7 +11,7 @@ namespace Datenshi.Scripts.Util {
             Gizmos.DrawRay(pos + direction, left * arrowHeadLength);
         }
 
-        public static void ForGizmo(Vector3 pos, Vector3 direction, Color color, float arrowHeadLength = 0.25f, float arrowHeadAngle = 20.0f) {
+        public static void ForGizmos(Vector3 pos, Vector3 direction, Color color, float arrowHeadLength = 0.25f, float arrowHeadAngle = 20.0f) {
             Gizmos.color = color;
             Gizmos.DrawRay(pos, direction);
 

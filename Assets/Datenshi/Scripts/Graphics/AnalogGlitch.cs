@@ -22,16 +22,14 @@
 //
 
 using System;
-using Datenshi.Scripts.Util.Services;
-using DG.Tweening;
-using DG.Tweening.Core;
-using DG.Tweening.Plugins.Options;
+using System.Collections.Generic;
+using Shiroi.FX.Services;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Graphics {
     [ExecuteInEditMode]
     [RequireComponent(typeof(Camera))]
-    public class AnalogGlitch : MonoBehaviour {
+    public class AnalogGlitch : SingletonServiceController<AnalogGlitch, GlitchMeta> {
         // Scan line jitter
 
         [SerializeField, Range(0, 1)]
@@ -78,37 +76,12 @@ namespace Datenshi.Scripts.Graphics {
         private Material material;
 
         private float verticalJumpTime;
-        private readonly ServiceHandler<GlitchMeta> serviceHandler = new ServiceHandler<GlitchMeta>();
 
-        private void Update() {
-            serviceHandler.Tick();
-            var s = serviceHandler.WithGenericHighestPriority() as TimedService<GlitchMeta>;
-            if (s == null) {
-                SetDefault();
-            } else {
-                Set(s);
-            }
-        }
-
-        public TimedService<GlitchMeta> RequesTimedService(float duration, GlitchMeta meta,
-            byte priority = Service.DefaultPriority) {
-            return serviceHandler.RegisterTimedService(meta, duration, priority);
-        }
-
-        private void Set(TimedService<GlitchMeta> service) {
-            var meta = service.Metadata;
-            var pos = service.Percentage;
-            ColorDrift = meta.ColorDrift.Evaluate(pos);
-            HorizontalShake = meta.HorizontalLine.Evaluate(pos);
-            VerticalJump = meta.VerticalJump.Evaluate(pos);
-            ScanLineJitter = meta.ScanLineJitter.Evaluate(pos);
-        }
-
-        private void SetDefault() {
-            ColorDrift = defaultColorDrift;
-            HorizontalShake = defaultHorizontalShake;
-            VerticalJump = defaultVerticalJump;
-            ScanLineJitter = defaultScanLineJitter;
+        private void Set(GlitchMeta.GlitchInfo info) {
+            ColorDrift = info.ColorDrift;
+            HorizontalShake = info.HorizontalLine;
+            VerticalJump = info.VerticalJump;
+            ScanLineJitter = info.ScanLineJitter;
         }
 
         private void OnRenderImage(RenderTexture source, RenderTexture destination) {
@@ -132,9 +105,35 @@ namespace Datenshi.Scripts.Graphics {
 
             UnityEngine.Graphics.Blit(source, destination, material);
         }
+
+        protected override void UpdateGameToDefault() {
+            ColorDrift = defaultColorDrift;
+            HorizontalShake = defaultHorizontalShake;
+            VerticalJump = defaultVerticalJump;
+            ScanLineJitter = defaultScanLineJitter;
+        }
+
+        protected override void UpdateGameTo(IEnumerable<WeightnedMeta<GlitchMeta>> activeMetas) {
+            var info = new GlitchMeta.GlitchInfo();
+            foreach (var weightnedMeta in activeMetas) {
+                var w = weightnedMeta.Weight;
+                var i = weightnedMeta.Meta.Evaluate();
+                info.ScanLineJitter += w * i.ScanLineJitter;
+                info.ColorDrift += w * i.ColorDrift;
+                info.HorizontalLine += w * i.HorizontalLine;
+                info.VerticalJump += w * i.VerticalJump;
+            }
+
+            Set(info);
+        }
+
+
+        protected override void UpdateGameTo(GlitchMeta meta) {
+            Set(meta.Evaluate());
+        }
     }
 
-    public class GlitchMeta : IComparable<GlitchMeta> {
+    public class GlitchMeta : IComparable<GlitchMeta>, ITimedServiceTickable {
         public GlitchMeta(AnimationCurve scanLineJitter, AnimationCurve verticalJump, AnimationCurve horizontalLine,
             AnimationCurve colorDrift) {
             ScanLineJitter = scanLineJitter;
@@ -159,8 +158,34 @@ namespace Datenshi.Scripts.Graphics {
             get;
         }
 
+        public struct GlitchInfo {
+            public float ScanLineJitter, VerticalJump, HorizontalLine, ColorDrift;
+
+            public GlitchInfo(float scanLineJitter, float verticalJump, float horizontalLine, float colorDrift) {
+                ScanLineJitter = scanLineJitter;
+                VerticalJump = verticalJump;
+                HorizontalLine = horizontalLine;
+                ColorDrift = colorDrift;
+            }
+        }
+
+        public GlitchInfo Evaluate() {
+            return new GlitchInfo(
+                ScanLineJitter.Evaluate(position),
+                VerticalJump.Evaluate(position),
+                HorizontalLine.Evaluate(position),
+                ColorDrift.Evaluate(position)
+            );
+        }
+
         public int CompareTo(GlitchMeta other) {
             return 0;
+        }
+
+        private float position;
+
+        public void Tick(ITimedService service) {
+            position = service.PercentageCompleted;
         }
     }
 }

@@ -1,9 +1,8 @@
-﻿using UPM.Input;
-
+﻿
 namespace Datenshi.Scripts.Input {
     public static class InputExtensions {
 
-        public static bool GetButtonDownOrDefault(this InputProvider provider, int button) {
+        public static bool GetButtonDownOrDefault(this DatenshiInputProvider provider, int button) {
             return provider != null && provider.GetButtonDown(button);
         }
     }

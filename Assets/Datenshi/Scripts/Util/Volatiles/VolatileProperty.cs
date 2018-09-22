@@ -10,7 +10,7 @@ namespace Datenshi.Scripts.Util.Volatiles {
         private static readonly Predicate<VolatilePropertyModifier<T>> EffectorTicker = modifier => modifier.Tick();
         public T BaseValue;
 
-        [SerializeField, ShowInInspector, ReadOnly]
+        [ShowInInspector, ReadOnly]
         private List<VolatilePropertyModifier<T>> effectors = new List<VolatilePropertyModifier<T>>();
 
         public IEnumerable<VolatilePropertyModifier<T>> Effectors => effectors;
@@ -37,7 +37,8 @@ namespace Datenshi.Scripts.Util.Volatiles {
             effectors.RemoveAll(EffectorTicker);
         }
 
-        public VolatilePropertyModifier<T> AddModifier(float magnitude, float duration, ModifierRemovedCallback callback = null) {
+        public VolatilePropertyModifier<T> AddModifier(float magnitude, float duration,
+            ModifierRemovedCallback callback = null) {
             var modifier = new VolatilePropertyModifier<T>(this, callback, duration, magnitude);
             effectors.Add(modifier);
             return modifier;

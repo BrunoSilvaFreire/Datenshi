@@ -2,7 +2,6 @@
 using System.Linq;
 
 namespace Datenshi.Scripts.Util.Volatiles {
-
     public class UIntVolatileProperty : VolatileProperty<uint> {
         public override uint Value {
             get {
@@ -17,6 +16,10 @@ namespace Datenshi.Scripts.Util.Volatiles {
             get {
                 return Effectors.Aggregate(BaseValue, (current, modifier) => current * modifier.Multiplier);
             }
+        }
+
+        public static implicit operator FloatVolatileProperty(float value) {
+            return new FloatVolatileProperty {BaseValue = value};
         }
     }
 }

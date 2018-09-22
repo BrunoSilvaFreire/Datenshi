@@ -2,13 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using Datenshi.Scripts.Input;
+using Datenshi.Scripts.Util;
 using FMODUnity;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace Datenshi.Scripts.Util.Misc.Narrator {
+namespace Datenshi.Scripts.Entities.Misc.Narrator {
     /// <summary>
     /// Type text component types out Text one character at a time. Heavily adapted from synchrok's GitHub project.
     /// </summary>

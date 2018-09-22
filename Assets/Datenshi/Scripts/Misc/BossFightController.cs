@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Shiroi.Cutscenes;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Misc {
@@ -6,7 +7,7 @@ namespace Datenshi.Scripts.Misc {
         public Character.Character BossCharacter;
 
         public void Begin() {
-                StartCoroutine(InitializeBossFight());
+            StartCoroutine(InitializeBossFight());
         }
 
         private IEnumerator InitializeBossFight() {

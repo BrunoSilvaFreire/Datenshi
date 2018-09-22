@@ -1,6 +1,6 @@
 ﻿using Datenshi.Scripts.Entities.Misc.Ghosting;
+using Datenshi.Scripts.Entities.Misc.Narrator;
 using Datenshi.Scripts.Util;
-using Datenshi.Scripts.Util.Misc.Narrator;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;

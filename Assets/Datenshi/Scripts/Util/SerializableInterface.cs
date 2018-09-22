@@ -8,6 +8,9 @@ namespace Datenshi.Scripts.Util {
     public class SerializableInterface<T> where T : class {
         public SerializableInterface() { }
 
+        [ReadOnly]
+        public Object Object;
+
         public SerializableInterface(T o) {
             Object = o as Object;
         }
@@ -22,9 +25,6 @@ namespace Datenshi.Scripts.Util {
             }
         }
 
-
-        [SerializeField, ReadOnly]
-        private Object Object;
 
         public static implicit operator T(SerializableInterface<T> i) {
             return i.Value;

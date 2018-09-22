@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca91f30ec55e4c448da724e9f1f13f16, type: 3}
+  m_Name: NovakCharacter
+  m_EditorClassIdentifier: 
+  Alias: Novak Esaulov
+  ShortAlias: Novak
+  SignatureColor: {r: 0.8352941, g: 0.16862746, b: 0.11764706, a: 1}
+  Portrait: {fileID: 11400000, guid: 467bec4329385824c8c997d32030a1c8, type: 2}
+  CharacterFont: {fileID: 12800000, guid: 2e21ffcd2ac1d78479fd6afb2122305a, type: 3}
+  SpeechClip: event:/SFX/Misc/DimitriVoice

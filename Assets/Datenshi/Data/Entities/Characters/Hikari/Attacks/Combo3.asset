@@ -11,7 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec3032e461cc4bb595938d01c9d95415, type: 3}
   m_Name: Combo3
   m_EditorClassIdentifier: 
-  OnHit: {fileID: 11400000, guid: c9d455259533e3e458d800f0106b1eb7, type: 2}
+  OnHit: {fileID: 11400000, guid: fff328f7919def3419a016e2a6bbe41e, type: 2}
+  OnHitEnemyEntity: {fileID: 0}
   Hitbox:
     Center: {x: 1.7148662, y: 0.25966406}
     Size: {x: 2.0927534, y: 2.8392897}

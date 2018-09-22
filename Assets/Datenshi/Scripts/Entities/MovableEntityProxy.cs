@@ -1,106 +1,63 @@
-using UnityEngine;
-using Datenshi.Scripts.AI;
 using Datenshi.Scripts.Combat.Attacks;
+using Datenshi.Scripts.Input;
 using Datenshi.Scripts.Util;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Datenshi.Scripts.Entities {
     public class MovableEntityProxy : MonoBehaviour {
         public MovableEntity Target;
 
-        public void AddXImpulse(float force) {
-            if (Target == null) {
-                return;
-            }
-
-            Target.ExternalForces += new Vector2(Target.CurrentDirection.X * force, 0);
+        public void ExecuteSkill(ActiveSkill skill) {
+            Target.ExecuteSkill(skill);
         }
 
-        public void AddYImpulse(float force) {
-            if (Target == null) {
-                return;
-            }
-
-            Target.ExternalForces += new Vector2(0, Target.CurrentDirection.Y * force);
-        }
-        public void Stun(float duration) {
-            if (Target == null) {
-                return;
-            }
-
-            Target.Stun(duration);
-        }
-
-        public void ExecuteSkill(ActiveSkill attack) {
-            if (Target == null) {
-                return;
-            }
-
-            Target.ExecuteSkill(attack);
+        public void BreakDefense() {
+            Target.BreakDefense();
         }
 
         public void SetInvulnerable(float seconds) {
-            if (Target == null) {
-                return;
-            }
-
             Target.SetInvulnerable(seconds);
         }
 
         public void Kill() {
-            if (Target == null) {
-                return;
-            }
-
             Target.Kill();
         }
 
         public void Heal(uint healthAmount) {
-            if (Target == null) {
-                return;
-            }
-
             Target.Heal(healthAmount);
         }
 
-        public void RevokeOwnership() {
-            if (Target == null) {
-                return;
-            }
+        public void Heal() {
+            Target.Heal();
+        }
 
+        public void Stun(float duration) {
+            Target.Stun(duration);
+        }
+
+        public void RevokeOwnership() {
             Target.RevokeOwnership();
         }
 
-        public void SetAIAgent(AINavigator value) {
-            if (Target == null) {
-                return;
-            }
-
-            Target.AINavigator = value;
+        public void ForceRequestOwnership(DatenshiInputProvider player) {
+            Target.ForceRequestOwnership(player);
         }
 
-        public void SetVelocity(Vector2 value) {
+        public void SetRigidbody(Rigidbody2D value) {
             if (Target == null) {
                 return;
             }
 
-            Target.Velocity = value;
+            Target.Rigidbody = value;
         }
 
-        public void SetSkinWidth(float value) {
+        public void SetRigidStateHolder(GameObject value) {
             if (Target == null) {
                 return;
             }
 
-            Target.SkinWidth = value;
-        }
-
-        public void SetYForce(float value) {
-            if (Target == null) {
-                return;
-            }
-
-            Target.YForce = value;
+            Target.RigidStateHolder = value;
         }
 
         public void SetSpeedMultiplier(float value) {
@@ -111,61 +68,20 @@ namespace Datenshi.Scripts.Entities {
             Target.SpeedMultiplier.BaseValue = value;
         }
 
-
-        public void SetApplyVelocity(bool value) {
+        public void SetDirectionChangeThreshold(float value) {
             if (Target == null) {
                 return;
             }
 
-            Target.ApplyVelocity = value;
+            Target.DirectionChangeThreshold = value;
         }
 
-        public void SetDamageGivesKnockback(bool value) {
+        public void SetOutlineInvulnerabilityMinSecondsLeft(float value) {
             if (Target == null) {
                 return;
             }
 
-            Target.DamageGivesKnockback = value;
-        }
-
-        public void SetDamageKnockbackMin(uint value) {
-            if (Target == null) {
-                return;
-            }
-
-            Target.DamageKnockbackMin = value;
-        }
-
-        public void SetDamageKnockbackStrenght(float value) {
-            if (Target == null) {
-                return;
-            }
-
-            Target.DamageKnockbackStrenght = value;
-        }
-
-        public void SetKnockbackLiftoff(float value) {
-            if (Target == null) {
-                return;
-            }
-
-            Target.KnockbackLiftoff = value;
-        }
-
-        public void SetExternalForces(Vector2 value) {
-            if (Target == null) {
-                return;
-            }
-
-            Target.ExternalForces = value;
-        }
-
-        public void SetExternalForcesDeacceleration(float value) {
-            if (Target == null) {
-                return;
-            }
-
-            Target.ExternalForcesDeacceleration = value;
+            Target.OutlineInvulnerabilityMinSecondsLeft = value;
         }
 
         public void SetDamageInvulnerability(bool value) {
@@ -174,14 +90,6 @@ namespace Datenshi.Scripts.Entities {
             }
 
             Target.DamageInvulnerability = value;
-        }
-
-        public void SetDamageInvulnerability(int value) {
-            if (Target == null) {
-                return;
-            }
-
-            Target.DamageInvulnerability = value == 1;
         }
 
         public void SetDamageInvulnerabilityDuration(float value) {
@@ -200,12 +108,92 @@ namespace Datenshi.Scripts.Entities {
             Target.OnAttack = value;
         }
 
+        public void SetFocusAnimationSpeed(float value) {
+            if (Target == null) {
+                return;
+            }
+
+            Target.FocusAnimationSpeed = value;
+        }
+
+        public void SetFocusRecoverAmountMultiplier(float value) {
+            if (Target == null) {
+                return;
+            }
+
+            Target.FocusRecoverAmountMultiplier = value;
+        }
+
+        public void SetFocusDepleteAmountMultiplier(float value) {
+            if (Target == null) {
+                return;
+            }
+
+            Target.FocusDepleteAmountMultiplier = value;
+        }
+
+        public void SetFocusDamageMultiplier(float value) {
+            if (Target == null) {
+                return;
+            }
+
+            Target.FocusDamageMultiplier = value;
+        }
+
+        public void SetFocusMaxTime(float value) {
+            if (Target == null) {
+                return;
+            }
+
+            Target.FocusMaxTime = value;
+        }
+
+        public void SetMinFocusRequired(float value) {
+            if (Target == null) {
+                return;
+            }
+
+            Target.MinFocusRequired = value;
+        }
+
         public void SetOnHealthChanged(UnityEvent value) {
             if (Target == null) {
                 return;
             }
 
             Target.OnHealthChanged = value;
+        }
+
+        public void SetDamageColorDuration(float value) {
+            if (Target == null) {
+                return;
+            }
+
+            Target.DamageColorDuration = value;
+        }
+
+        public void SetDamageColor(Color value) {
+            if (Target == null) {
+                return;
+            }
+
+            Target.DamageColor = value;
+        }
+
+        public void SetDamageColorAmount(float value) {
+            if (Target == null) {
+                return;
+            }
+
+            Target.DamageColorAmount = value;
+        }
+
+        public void SetDefenseBreakStunDuration(float value) {
+            if (Target == null) {
+                return;
+            }
+
+            Target.DefenseBreakStunDuration = value;
         }
 
         public void SetDamageGivesStun(bool value) {
@@ -232,38 +220,6 @@ namespace Datenshi.Scripts.Entities {
             Target.DamageStunDuration = value;
         }
 
-        public void SetFocusMaxTime(float value) {
-            if (Target == null) {
-                return;
-            }
-
-            Target.FocusMaxTime = value;
-        }
-
-        public void SetMinDefenseRequired(float value) {
-            if (Target == null) {
-                return;
-            }
-
-            Target.MinFocusRequired = value;
-        }
-
-        public void SetDefenseRecoverAmountMultiplier(float value) {
-            if (Target == null) {
-                return;
-            }
-
-            Target.FocusRecoverAmountMultiplier = value;
-        }
-
-        public void SetDefenseDepleteAmountMultiplier(float value) {
-            if (Target == null) {
-                return;
-            }
-
-            Target.FocusDepleteAmountMultiplier = value;
-        }
-
         public void SetMiscController(EntityMiscController value) {
             if (Target == null) {
                 return;
@@ -288,6 +244,22 @@ namespace Datenshi.Scripts.Entities {
             Target.CurrentDirection = value;
         }
 
+        public void SetIgnored(bool value) {
+            if (Target == null) {
+                return;
+            }
+
+            Target.Ignored = value;
+        }
+
+        public void SetFocusing(bool value) {
+            if (Target == null) {
+                return;
+            }
+
+            Target.Focusing = value;
+        }
+
         public void SetFocusTimeLeft(float value) {
             if (Target == null) {
                 return;
@@ -296,13 +268,12 @@ namespace Datenshi.Scripts.Entities {
             Target.FocusTimeLeft = value;
         }
 
-
-        public void SetMaxHealth(uint value) {
+        public void SetDefending(bool value) {
             if (Target == null) {
                 return;
             }
 
-            Target.MaxHealth = value;
+            Target.Defending = value;
         }
 
         public void SetHealthPercentage(float value) {
@@ -313,12 +284,28 @@ namespace Datenshi.Scripts.Entities {
             Target.HealthPercentage = value;
         }
 
-        public void SetInvulnerable(bool value) {
+        public void SetGodMode(bool value) {
             if (Target == null) {
                 return;
             }
 
             Target.GodMode = value;
+        }
+
+        public void SetMaxHealth(uint value) {
+            if (Target == null) {
+                return;
+            }
+
+            Target.MaxHealth = value;
+        }
+
+        public void SetTimeScaleIndependent(bool value) {
+            if (Target == null) {
+                return;
+            }
+
+            Target.TimeScaleIndependent = value;
         }
 
         public void SetUseGUILayout(bool value) {
@@ -328,7 +315,6 @@ namespace Datenshi.Scripts.Entities {
 
             Target.useGUILayout = value;
         }
-#if UNITY_EDITOR
 
         public void SetRunInEditMode(bool value) {
             if (Target == null) {
@@ -337,7 +323,6 @@ namespace Datenshi.Scripts.Entities {
 
             Target.runInEditMode = value;
         }
-#endif
 
         public void SetEnabled(bool value) {
             if (Target == null) {

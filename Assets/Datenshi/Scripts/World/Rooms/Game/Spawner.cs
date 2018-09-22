@@ -11,6 +11,8 @@ using Datenshi.Scripts.World.Rooms.Game.Doors;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityUtilities;
+using CollectionUtil = Datenshi.Scripts.Util.CollectionUtil;
 using Random = UnityEngine.Random;
 
 namespace Datenshi.Scripts.World.Rooms.Game {
@@ -97,7 +99,7 @@ namespace Datenshi.Scripts.World.Rooms.Game {
                 return;
             }
 
-            if (currentGroup >= Wave.TotalGroups - 1 && toBeKilled.IsEmpty()) {
+            if (currentGroup >= Wave.TotalGroups - 1 && CollectionUtil.IsEmpty(toBeKilled)) {
                 playing = false;
                 OnCompleted.Invoke();
                 if (ToOpen) {
@@ -121,7 +123,7 @@ namespace Datenshi.Scripts.World.Rooms.Game {
 
             if (CurrentGroup.IsWaitForPrevious && currentGroup >= 0) {
                 if (!countdownStarted) {
-                    if (!toBeKilled.IsEmpty()) {
+                    if (!CollectionUtil.IsEmpty(toBeKilled)) {
                         return;
                     }
 
@@ -204,7 +206,7 @@ namespace Datenshi.Scripts.World.Rooms.Game {
 
 
             foreach (var location in Locations) {
-                GizmosUtil.DrawBox2DWire(location, Vector2.one, Color.red);
+                GizmosUtility.DrawWireBox2D(location, Vector2.one, Color.red);
             }
         }
 
@@ -264,7 +266,7 @@ namespace Datenshi.Scripts.World.Rooms.Game {
             var spawned = new GameObject[Count];
             for (byte i = 0; i < Count; i++) {
                 var loc = spawner.GetSpawnLocation();
-                var obj = Prefab.Clone(loc);
+                var obj = BehaviourUtil.Clone(Prefab, loc);
                 var c = obj.GetComponentInChildren<ICombatant>();
                 c?.AnimatorUpdater.TriggerSpawn();
                 spawned[i] = obj;

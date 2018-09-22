@@ -7,12 +7,14 @@ using Datenshi.Scripts.Graphics;
 using Datenshi.Scripts.Util;
 using Datenshi.Scripts.Util.Singleton;
 using Datenshi.Scripts.World;
+using Shiroi.FX.Utilities;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Game {
     public class GameController : Singleton<GameController> {
         public Checkpoint LastCheckpoint;
         public float DeathFXDuration = 2;
+        public ushort EffectPriority = 200;
         public AnimationCurve DeathFXColorDriftIntensity;
         public AnimationCurve DeathFXScanLineIntensity;
         public AnimationCurve DeathFXVerticalJumpIntensity;
@@ -75,9 +77,10 @@ namespace Datenshi.Scripts.Game {
                 DeathFXHorizontalShakeIntensity,
                 DeathFXColorDriftIntensity
             );
-            glitch.RequesTimedService(DeathFXDuration, meta, 2);
+            glitch.RegisterTimedService(DeathFXDuration, meta, priority: EffectPriority);
             var bnw = graphics.BlackAndWhite;
-            bnw.RequestService(DeathFXDuration, DeathFXDesaturate, DeathFXDarken, 2);
+            bnw.RegisterTimedService(DeathFXDuration, new BlackAndWhiteMeta(DeathFXDesaturate, DeathFXDarken),
+                priority: 200);
             float defaultDesaturate = bnw.DefaultDesaturationAmount, defaultDarken = bnw.DefaultDarkenAmount;
             yield return new WaitForSeconds(DeathFXDuration);
             bnw.DefaultDarkenAmount = 1;
@@ -91,7 +94,8 @@ namespace Datenshi.Scripts.Game {
             RestartAll();
             runtime.AllowPlayerInput = true;
             runtime.AllowAIInput = true;
-            bnw.RequestService(DeathFXRestartDuration, ResaturationCurve, BrightenCurve, 2);
+            bnw.RegisterTimedService(DeathFXRestartDuration, new BlackAndWhiteMeta(ResaturationCurve, BrightenCurve),
+                priority: EffectPriority);
             bnw.DefaultDarkenAmount = defaultDarken;
             bnw.DefaultDesaturationAmount = defaultDesaturate;
         }

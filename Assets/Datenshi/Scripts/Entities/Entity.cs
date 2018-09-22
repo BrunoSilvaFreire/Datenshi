@@ -9,7 +9,6 @@ using Datenshi.Scripts.World.Rooms;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
-using UPM.Input;
 
 namespace Datenshi.Scripts.Entities {
     [Serializable]

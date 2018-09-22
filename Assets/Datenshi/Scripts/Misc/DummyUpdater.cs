@@ -2,7 +2,9 @@
 using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Combat.Attacks;
 using Datenshi.Scripts.Entities;
-using Datenshi.Scripts.FX;
+using Shiroi.FX.Effects;
+using Shiroi.FX.Features;
+using Shiroi.FX.Utilities;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Misc {
@@ -27,7 +29,7 @@ namespace Datenshi.Scripts.Misc {
 
         public override void TriggerDeath() {
             if (DeathEffect != null) {
-                DeathEffect.Execute(transform.position);
+                DeathEffect.PlayIfPresent(this);
             }
 
             Destroy(transform.parent.gameObject);
@@ -35,7 +37,7 @@ namespace Datenshi.Scripts.Misc {
 
         public override void TriggerSpawn() {
             if (SpawnEffect != null) {
-                SpawnEffect.Execute(transform.position);
+                SpawnEffect.PlayIfPresent(this);
             }
         }
         public override void SetBool(string key, bool value) { }

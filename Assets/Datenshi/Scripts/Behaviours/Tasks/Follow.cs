@@ -3,6 +3,7 @@ using Datenshi.Scripts.AI;
 using Datenshi.Scripts.Behaviours.Variables;
 using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Entities.FX;
+using Shiroi.FX.Effects;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Behaviours.Tasks {
@@ -13,7 +14,7 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
         public Transform Override;
         public float TeleportThreshold = 8;
         public float IdleThreshold = .5F;
-        public EntityEffect TeleportEffect;
+        public Effect TeleportEffect;
 
         public override TaskStatus OnUpdate() {
             var t = Target.Value;
@@ -31,7 +32,7 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
             if (d > TeleportThreshold) {
                 Entity.transform.position = targetPos;
                 if (TeleportEffect != null) {
-                    TeleportEffect.Execute(Entity);
+                    TeleportEffect.PlayIfPresent(Entity, new EntityFeature(Entity));
                 }
                 return TaskStatus.Running;
             }

@@ -2,7 +2,6 @@
 
 Shader "Datenshi/EntityShader" {
 	Properties {
-	    _Color("Color", Color) = (1,1,1,1)
 		_OccludeColor ("OccludeColor", Color) = (1,1,1,1)
 		_OccludeAmount ("OccludeAmount", Range(0, 1)) = 0
 		[PerRendererData]

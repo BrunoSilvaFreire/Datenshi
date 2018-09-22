@@ -1,4 +1,4 @@
-﻿namespace Datenshi.Scripts.Util.Misc.Narrator {
+﻿namespace Datenshi.Scripts.Entities.Misc.Narrator {
     /// <summary>
     /// RichTextTags help parse text that contains HTML style tags, used by Unity's RichText text components.
     /// </summary>

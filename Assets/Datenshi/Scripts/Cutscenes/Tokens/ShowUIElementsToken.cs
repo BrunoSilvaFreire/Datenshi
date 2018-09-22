@@ -8,9 +8,7 @@ namespace Datenshi.Scripts.Cutscenes.Tokens {
         public bool Show;
 
         public override IEnumerator Execute(CutscenePlayer player, CutsceneExecutor executor) {
-            foreach (var element in FindObjectsOfType<UIElement>()) {
-                element.Showing = Show;
-            }
+            UIView.SetAllElementsShowing(Show);
             yield break;
         }
     }

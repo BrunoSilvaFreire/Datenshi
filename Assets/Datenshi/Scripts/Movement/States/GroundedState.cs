@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Input;
@@ -163,7 +163,7 @@ namespace Datenshi.Scripts.Movement.States {
             }
 
             user.Direction = d;
-            */
+            #1#
             dir = Math.Sign(xInput);
             user.Defending = hasProvider && provider.GetDefend();
             var jump = hasProvider && provider.GetJump() && !user.Defending;
@@ -290,4 +290,4 @@ namespace Datenshi.Scripts.Movement.States {
             wallClimbState.DoWallClimb(ref velocity, config, dir);
         }
     }
-}
+}*/

@@ -5,9 +5,9 @@ using Datenshi.Scripts.Graphics;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Game {
-    public class PlayerAnimatorUpdater : MovableEntityUpdater {
+    /*public class PlayerAnimatorUpdater : MovableEntityUpdater {
         public override void TriggerDeath() {
             GameController.Instance.RestartGame();
         }
-    }
+    }*/
 }

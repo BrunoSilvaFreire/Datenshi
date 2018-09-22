@@ -7,11 +7,22 @@ using UnityEngine.UI;
 
 namespace Datenshi.Scripts.UI.Misc {
     public class UIBlackBarView : UIView {
+        private static UIBlackBarView instance;
         public Image Up;
         public Image Down;
         public float ObscurePercent = 0.15F;
         public float ShowDelay = 0.5F;
         public float DialogueObscurePercent = 0.3F;
+
+        public static UIBlackBarView Instance => instance;
+
+        private void OnEnable() {
+            instance = this;
+        }
+
+        private void OnDisable() {
+            instance = null;
+        }
 
         [SerializeField]
         private bool showDialogue;

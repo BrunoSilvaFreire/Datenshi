@@ -14,7 +14,7 @@ namespace Datenshi.Scripts.Combat.Status {
 
 
         protected override VolatilePropertyModifier OnApply(ICombatant combatant) {
-            var movable = combatant as IDatenshiMovable;
+            var movable = combatant as IMovable;
             if (movable == null) {
                 return null;
             }

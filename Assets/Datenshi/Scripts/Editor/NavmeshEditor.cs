@@ -175,12 +175,12 @@ namespace Datenshi.Scripts.Editor {
             var center = navmesh.WorldPosCenter(node);
             //HandlesUtil.DrawBox2D(center, Navmesh.BoxCastSize, Color.cyan);
             if (node.IsEmpty) {
-                HandlesUtil.DrawBox2D(center, size, Color.white);
+                //HandlesUtil.DrawBox2D(center, size, Color.white);
                 return;
             }
 
             var nodeColor = node.IsWalkable ? Color.green : Color.red;
-            HandlesUtil.DrawBox2DWire(center, size, nodeColor);
+            //HandlesUtil.DrawBox2DWire(center, size, nodeColor);
             var e = Event.current;
             /*bool showGLinkInfos;
             if (e.type == EventType.KeyDown) {
@@ -269,7 +269,7 @@ namespace Datenshi.Scripts.Editor {
 
                 var color = GetColor(node.Type);
                 var center = grid.CellToWorld(node.Position.ToVector3()) + cellSize / 2;
-                HandlesUtil.DrawBox2D(center, cellSize, color);
+                //HandlesUtil.DrawBox2D(center, cellSize, color);
             }
         }
 
@@ -287,9 +287,9 @@ namespace Datenshi.Scripts.Editor {
             var maxCenter = grid.GetCellCenterWorld(max.ToVector3());
             navmesh.Min = grid.WorldToCell(Handles.PositionHandle(minCenter, Quaternion.identity)).ToVector2();
             navmesh.Max = grid.WorldToCell(Handles.PositionHandle(maxCenter, Quaternion.identity)).ToVector2();
-            HandlesUtil.DrawBox2DWire(navmesh.Center, navmesh.Size, Color.green);
+            /*HandlesUtil.DrawBox2DWire(navmesh.Center, navmesh.Size, Color.green);
             HandlesUtil.DrawBox2DWire(minCenter, grid.cellSize, Color.cyan);
-            HandlesUtil.DrawBox2DWire(maxCenter, grid.cellSize, Color.magenta);
+            HandlesUtil.DrawBox2DWire(maxCenter, grid.cellSize, Color.magenta);*/
         }
 
         private void DrawSceneLinks() {

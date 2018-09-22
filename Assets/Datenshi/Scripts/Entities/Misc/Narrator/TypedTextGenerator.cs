@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Datenshi.Scripts.Util.Misc.Narrator {
+namespace Datenshi.Scripts.Entities.Misc.Narrator {
     /// <summary>
     /// Typed text generator is used to create TypedText results given a text that should be printed one character
     /// at a time, up to the specified character.

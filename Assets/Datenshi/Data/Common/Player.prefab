@@ -993,7 +993,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4676904288151562}
   - component: {fileID: 114843637249450844}
-  - component: {fileID: 114480467874206278}
+  - component: {fileID: 114553257371078678}
   m_Layer: 0
   m_Name: Hikari_Managers
   m_TagString: Untagged
@@ -1957,14 +1957,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4192790781410470}
   - component: {fileID: 114717850131439576}
-  - component: {fileID: 114141317589187458}
   m_Layer: 13
   m_Name: Luna
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1988194109311624
 GameObject:
   m_ObjectHideFlags: 1
@@ -3167,15 +3166,15 @@ MonoBehaviour:
         unityObjects:
         - {fileID: 0}
         - {fileID: 114948912807115394}
-        - {fileID: 114141317589187458}
-        - {fileID: 114181794771767024}
-        - {fileID: 114141317589187458}
-        - {fileID: 114717850131439576}
-        - {fileID: 114141317589187458}
-        - {fileID: 114141317589187458}
+        - {fileID: 0}
         - {fileID: 114181794771767024}
         - {fileID: 0}
-        - {fileID: 114141317589187458}
+        - {fileID: 114717850131439576}
+        - {fileID: 0}
+        - {fileID: 0}
+        - {fileID: 114181794771767024}
+        - {fileID: 0}
+        - {fileID: 0}
         - {fileID: 11400000, guid: 9ff33a9f236601e459008d183a9655c9, type: 2}
         byteData: 446174656e7368692e536372697074732e4265686176696f7572732e5661726961626c65732e5368617265644c6976696e67456e7469747948696b6172690100000000446174656e7368692e536372697074732e4265686176696f7572732e5661726961626c65732e536861726564436f6d626174616e74436f6d6261745461726765740100000000456e747279010027d186c2d5febc42000000000000000000000100000053656c6563746f720100144e01c3109126430000000000000000000000000000020000004173736973740100000070c30000024300000000000000000000020000000300000048617320547261636b657220436f6d62617420546172676574010046e7a4c3acf815430000000000000000000001000000446174656e7368692e536372697074732e4265686176696f7572732e5661726961626c65732e536861726564436f6d626174616e74436f6d62617454617267657401010400000055706461746520436f6d626174205461726765740100f02720c360d714430000000000000000000002000000446174656e7368692e536372697074732e4265686176696f7572732e5661726961626c65732e536861726564436f6d626174616e74436f6d626174546172676574010500000041747461636b010000e42542c33418430000000000000000000000000000060000005374617920436c6f736520546f2054617267657401001e1e1ac30000dc4200000000000000000000446174656e7368692e536372697074732e4265686176696f7572732e5661726961626c65732e536861726564436f6d626174616e74436f6d626174546172676574010300000004000000000000400000a04005000000070000004c6f6f6b2041740100d096963f5f5f1c430000000000000000000006000000446174656e7368692e536372697074732e4265686176696f7572732e5661726961626c65732e536861726564436f6d626174616e74436f6d6261745461726765740108000000547269676765722041747461636b0100eff0e842d2d2ee42000000000000000000004c756e6141747461636b070000000000803e09000000466f6c6c6f77010000002a43000066430000000000000000000008000000446174656e7368692e536372697074732e4265686176696f7572732e5661726961626c65732e5368617265644c6976696e67456e7469747948696b61726901090000000a000000000070410000003f0b000000
         byteDataArray: 446174656e7368692e536372697074732e4265686176696f7572732e5661726961626c65732e5368617265644c6976696e67456e7469747948696b6172690100000000446174656e7368692e536372697074732e4265686176696f7572732e5661726961626c65732e536861726564436f6d626174616e74436f6d6261745461726765740100000000456e747279010027d186c2d5febc42000000000000000000000100000053656c6563746f720100144e01c3109126430000000000000000000000000000020000004173736973740100000070c30000024300000000000000000000020000000300000048617320547261636b657220436f6d62617420546172676574010046e7a4c3acf815430000000000000000000001000000446174656e7368692e536372697074732e4265686176696f7572732e5661726961626c65732e536861726564436f6d626174616e74436f6d62617454617267657401010400000055706461746520436f6d626174205461726765740100f02720c360d714430000000000000000000002000000446174656e7368692e536372697074732e4265686176696f7572732e5661726961626c65732e536861726564436f6d626174616e74436f6d626174546172676574010500000041747461636b010000e42542c33418430000000000000000000000000000060000005374617920436c6f736520546f2054617267657401001e1e1ac30000dc4200000000000000000000446174656e7368692e536372697074732e4265686176696f7572732e5661726961626c65732e536861726564436f6d626174616e74436f6d626174546172676574010300000004000000000000400000a04005000000070000004c6f6f6b2041740100d096963f5f5f1c430000000000000000000006000000446174656e7368692e536372697074732e4265686176696f7572732e5661726961626c65732e536861726564436f6d626174616e74436f6d6261745461726765740108000000547269676765722041747461636b0100eff0e842d2d2ee42000000000000000000004c756e6141747461636b070000000000803e09000000466f6c6c6f77010000002a43000066430000000000000000000008000000446174656e7368692e536372697074732e4265686176696f7572732e5661726961626c65732e5368617265644c6976696e67456e7469747948696b61726901090000000a000000000070410000003f0b000000
@@ -3875,121 +3874,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 2
---- !u!114 &114141317589187458
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1987408583409610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4d4c506b7d14716a950885bed3aaf01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeScaleIndependent: 0
-  inputProvider: {fileID: 0}
-  colorizableRenderer: {fileID: 114046854081123366}
-  MiscController: {fileID: 114215381939899112}
-  Character: {fileID: 11400000, guid: 6c3cb2d9c454beb4a831605b3ff7faa4, type: 2}
-  onDestroyed:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  hitbox: {fileID: 61004827535312666}
-  OutlineInvulnerabilityMinSecondsLeft: 2
-  ignored: 1
-  updater: {fileID: 0}
-  relationship: 0
-  DamageInvulnerability: 1
-  DamageInvulnerabilityDuration: 3
-  OnAttack:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Datenshi.Scripts.Entities.EntityAttackEvent, Datenshi-Entities, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  FocusAnimationSpeed: 2
-  damageMultiplier:
-    BaseValue: 0
-  FocusRecoverAmountMultiplier: 1
-  FocusDepleteAmountMultiplier: 2
-  FocusDamageMultiplier: 1.5
-  FocusMaxTime: 2
-  MinFocusRequired: 0.1
-  onDamaged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Datenshi.Scripts.Combat.CombatantDamagedEvent, Datenshi-Combat, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnHealthChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  onKilled:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  health: 9999
-  maxHealth: 9999
-  godMode: 1
-  DamageColorDuration: 0
-  DamageColor: {r: 0, g: 0, b: 0, a: 0}
-  DamageColorAmount: 0
-  DefenseBreakStunDuration: 2
-  DamageGivesStun: 0
-  DamageStunMin: 10
-  DamageStunDuration: 1
-  motor: {fileID: 11400000, guid: 86ff67f763aa58f44883b61f198a88ce, type: 2}
-  accelerationCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  aiNavigator: {fileID: 114181794771767024}
-  SkinWidth: 0.1
-  maxSpeed: 10
-  YForce: 5
-  DirectionChangeThreshold: 0.2
-  speedMultiplier:
-    BaseValue: 1
-  DamageGivesKnockback: 0
-  DamageKnockbackMin: 10
-  DamageKnockbackStrenght: 3
-  KnockbackLiftoff: 3
-  externalForces: {x: 0, y: 0}
-  ExternalForcesDeacceleration: 0.1
-  inset: 0.05
-  horizontalRaycasts: 3
-  verticalRaycasts: 3
-  StunRemovesVelocity: 0
-  StunVelocityDampen: 1
-  motorConfig: {fileID: 0}
-  collisionStatus:
-    Up: 0
-    Down: 0
-    Left: 0
-    Right: 0
 --- !u!114 &114144150027273966
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4268,7 +4152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimePerRegen: 0.25
   Navigable:
-    Object: {fileID: 114141317589187458}
+    Object: {fileID: 0}
   MinimumHeightAdvantage: 1
   MinimumFavourableDistance: 1
 --- !u!114 &114188215968769844
@@ -4554,8 +4438,12 @@ MonoBehaviour:
   DamageStunDuration: 1
   Rigidbody: {fileID: 50001891686215338}
   RigidStateHolder: {fileID: 1523917863201740}
-  SpeedMultiplier: 1
   DirectionChangeThreshold: 0.2
+  aiNavigator: {fileID: 0}
+  speedMultiplier:
+    BaseValue: 1
+  applyVelocity: 0
+  config: {fileID: 114553257371078678}
 --- !u!114 &114223543682029144
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4988,7 +4876,7 @@ MonoBehaviour:
   Animator: {fileID: 0}
   Attacks:
   - {fileID: 11400000, guid: fa983fa29bb43fc418c2d2cb5449f2b6, type: 2}
-  Entity: {fileID: 114141317589187458}
+  Entity: {fileID: 0}
   DeathEffect: {fileID: 0}
   SpawnEffect: {fileID: 0}
 --- !u!114 &114302567722827144
@@ -6112,7 +6000,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1230420072473524}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
   m_Name: 
@@ -6316,45 +6204,6 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
   m_ChildControlHeight: 0
---- !u!114 &114480467874206278
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1523917863201740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2387a026d234436c85e60670a5e4f6f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxSpeed: 8
-  JumpForce: 10
-  RaycastLength: 0.1
-  Acceleration:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  DashEllegible: 1
 --- !u!114 &114486891839996600
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6460,7 +6309,7 @@ MonoBehaviour:
   characterPrinted:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Datenshi.Scripts.Util.Misc.Narrator.Narrator+CharacterPrintedEvent,
+    m_TypeName: Datenshi.Scripts.Entities.Misc.Narrator.Narrator+CharacterPrintedEvent,
       Datenshi-Entities, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   textComponent: {fileID: 0}
   DefaultPrintDelay: 0.05
@@ -6589,6 +6438,46 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
+--- !u!114 &114553257371078678
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1523917863201740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8c1b42848df47ed9713e663f8c465fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxSpeed: 8
+  OffWallTimeMargin: 0.3
+  WallClimbCounterForce: 10
+  RejumpLength: 0.3
+  JumpForce: 23
+  Acceleration:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &114554325753690410
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6820,7 +6709,7 @@ MonoBehaviour:
   characterPrinted:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Datenshi.Scripts.Util.Misc.Narrator.Narrator+CharacterPrintedEvent,
+    m_TypeName: Datenshi.Scripts.Entities.Misc.Narrator.Narrator+CharacterPrintedEvent,
       Datenshi-Entities, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   textComponent: {fileID: 114680985979659940}
   DefaultPrintDelay: 0.05
@@ -7104,7 +6993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Entity:
-    Object: {fileID: 114141317589187458}
+    Object: {fileID: 0}
   Horizontal: 0
   Vertical: 0
   Jump: 0
@@ -9298,7 +9187,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 30.199951, y: -210.9}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 290.07, y: 90}
   m_Pivot: {x: 0, y: 1}
 --- !u!224 &224242327588074224
 RectTransform:
