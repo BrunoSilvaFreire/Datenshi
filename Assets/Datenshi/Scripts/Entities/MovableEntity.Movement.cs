@@ -1,16 +1,15 @@
-using Datenshi.Scripts.Entities.Motor.States;
 using Datenshi.Scripts.Movement.Config;
 using Datenshi.Scripts.Util;
-using Datenshi.Scripts.Util.Volatiles;
+using Datenshi.Scripts.Util.Buffs;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Entities {
     public partial class MovableEntity {
-        [SerializeField, TitleGroup(MovementGroup)]
-        private FloatVolatileProperty speedMultiplier;
+        [SerializeField, BoxGroup(MovementGroup)]
+        private FloatProperty speedMultiplier;
 
-        public FloatVolatileProperty SpeedMultiplier {
+        public FloatProperty SpeedMultiplier {
             get {
                 return speedMultiplier;
             }
@@ -19,13 +18,13 @@ namespace Datenshi.Scripts.Entities {
             }
         }
 
-        [ShowInInspector, TitleGroup(MovementGroup)]
+        [ShowInInspector, BoxGroup(MovementGroup)]
         public Vector2 ExternalForces {
             get;
             set;
         }
 
-        [SerializeField, TitleGroup(MovementGroup)]
+        [SerializeField, BoxGroup(MovementGroup)]
         private bool applyVelocity;
 
         public bool ApplyVelocity {
@@ -46,10 +45,10 @@ namespace Datenshi.Scripts.Entities {
             }
         }
 
-        [SerializeField, TitleGroup(MovementGroup)]
+        [SerializeField, BoxGroup(MovementGroup), InlineEditor]
         private MovementConfig config;
 
-        [TitleGroup(MovementGroup)]
+        [BoxGroup(MovementGroup), InlineEditor()]
         public Motor.Motor Motor;
 
         public MovementConfig MovementConfig {

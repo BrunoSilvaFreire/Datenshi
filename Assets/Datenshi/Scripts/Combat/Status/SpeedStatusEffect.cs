@@ -1,6 +1,6 @@
 ﻿using System;
 using Datenshi.Scripts.Movement;
-using Datenshi.Scripts.Util.Volatiles;
+using Datenshi.Scripts.Util.Buffs;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Combat.Status {
@@ -13,7 +13,7 @@ namespace Datenshi.Scripts.Combat.Status {
         public bool ClearOthers;
 
 
-        protected override VolatilePropertyModifier OnApply(ICombatant combatant) {
+        protected override PropertyModifier OnApply(ICombatant combatant) {
             var movable = combatant as IMovable;
             if (movable == null) {
                 return null;
@@ -21,12 +21,10 @@ namespace Datenshi.Scripts.Combat.Status {
 
             var m = movable.SpeedMultiplier;
             if (ClearOthers) {
-                m.Clear();
+                m.ClearModifiers();
             }
 
-            var mod = m.AddModifier(Magnitude, Duration, () => { RemoveFromEffectsList(combatant, this); });
-
-            return mod;
+            return m.AddPeriodicModifier(Duration, Magnitude);
         }
 
 

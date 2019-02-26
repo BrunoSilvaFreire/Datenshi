@@ -3,6 +3,7 @@ using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Combat.Attacks;
 using Datenshi.Scripts.Movement;
 using Datenshi.Scripts.Util;
+using Datenshi.Scripts.Util.Buffs;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
@@ -25,29 +26,32 @@ namespace Datenshi.Scripts.Entities {
     /// </summary>
     public partial class LivingEntity : Entity {
         public const string HealthGroup = "Health";
-        public const string CombatGroup = "Combat";
         public static readonly Color HitboxColor = new Color(0.46f, 1f, 0.01f, 0.25f);
 
-        [SerializeField, TitleGroup(GeneralGroup)]
+        [SerializeField, BoxGroup(GeneralGroup)]
         private Collider2D hitbox;
 
         public Collider2D Hitbox => hitbox;
 
         protected virtual void Start() {
             CurrentDirection = Direction.Right;
+            InitDefense();
         }
 
         protected virtual void Update() {
             UpdateRendering();
             UpdateInvulnerability();
             UpdateStun();
-            UpdateFocus();
+            UpdateStamina();
             UpdateDefense();
+            damageMultiplier.Tick();
+
 /*            if (AnimatorUpdater != null) {
                 AnimatorUpdater.UpdateAnimator();
             }*/
         }
 
+        [BoxGroup(MiscGroup)]
         public float OutlineInvulnerabilityMinSecondsLeft = 2;
 
         private void UpdateRendering() {
@@ -65,7 +69,7 @@ namespace Datenshi.Scripts.Entities {
         }
 
 
-        [SerializeField, TitleGroup(GeneralGroup)]
+        [SerializeField, BoxGroup(GeneralGroup)]
         private bool ignored;
 
 

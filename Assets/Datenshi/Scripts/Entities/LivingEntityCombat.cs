@@ -1,33 +1,33 @@
 ﻿using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Combat.Attacks;
-using Datenshi.Scripts.Util.Volatiles;
+using Datenshi.Scripts.Util.Buffs;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Entities {
     public partial class LivingEntity : ICombatant {
-        [SerializeField]
+        public const string CombatGroup = "Combat";
+
+        [SerializeField, BoxGroup(CombatGroup)]
         private CombatRelationship relationship;
 
         public CombatRelationship Relationship => relationship;
 
-        [TitleGroup(HealthGroup, "Informações sobre a vida desta LivingEntity")]
+        [BoxGroup(CombatGroup)]
         public bool DamageInvulnerability;
 
-        [ShowIf("DamageInvulnerability")]
+        [ShowIf(nameof(DamageInvulnerability)), BoxGroup(CombatGroup)]
         public float DamageInvulnerabilityDuration = 3;
 
-        [TitleGroup(CombatGroup)]
+        [BoxGroup(CombatGroup)]
         public EntityAttackEvent OnAttack;
 
-        [TitleGroup(CombatGroup)]
-        public float FocusAnimationSpeed = 2;
-
-        [SerializeField]
-        private FloatVolatileProperty damageMultiplier;
+        [SerializeField, BoxGroup(CombatGroup)]
+        private FloatProperty damageMultiplier;
 
 
-        public FloatVolatileProperty DamageMultiplier => damageMultiplier;
+        public FloatProperty DamageMultiplier => damageMultiplier;
+
 
         public bool IsEnemy(LivingEntity entity) {
             if (Relationship == CombatRelationship.Neutral || entity.Relationship == CombatRelationship.Neutral) {
@@ -52,69 +52,6 @@ namespace Datenshi.Scripts.Entities {
             }
 
             skill.Execute(this);
-        }
-
-        [ShowInInspector, TitleGroup(CombatGroup)]
-        private bool focusing;
-
-        public bool Focusing {
-            get {
-                return focusing;
-            }
-            set {
-                if (value && !canRefocus) {
-                    return;
-                }
-
-                if (value && !CanFocus) {
-                    return;
-                }
-
-                focusing = value;
-            }
-        }
-
-        private bool canRefocus;
-
-        [TitleGroup(CombatGroup)]
-        public float FocusRecoverAmountMultiplier = 1;
-
-        [TitleGroup(CombatGroup)]
-        public float FocusDepleteAmountMultiplier = 2;
-
-        [TitleGroup(CombatGroup)]
-        public float FocusDamageMultiplier = 1.5F;
-
-        private void UpdateFocus() {
-            var p = InputProvider;
-            if (p != null) {
-                var pressingFocus = p.GetFocus();
-                if (Focusing) {
-                    if (focusingLastFrame && !CanFocus) {
-                        canRefocus = false;
-                        Focusing = false;
-                    }
-                } else {
-                    if (!canRefocus) {
-                        canRefocus = !pressingFocus;
-                    }
-                }
-
-                Focusing = pressingFocus;
-            }
-
-            damageMultiplier.BaseValue = Focusing ? FocusDamageMultiplier : 1;
-            focusingLastFrame = Focusing;
-            if (Focusing) {
-                FocusTimeLeft -= Time.deltaTime * FocusDepleteAmountMultiplier;
-            }
-
-            var a = AnimatorUpdater != null ? AnimatorUpdater.Animator : null;
-            if (a == null) {
-                return;
-            }
-
-            a.speed = focusing ? FocusAnimationSpeed : 1;
         }
     }
 }

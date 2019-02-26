@@ -1,6 +1,6 @@
 ﻿using System;
+using Lunari.Tsuki;
 using UnityEngine;
-using UnityUtilities;
 
 namespace Datenshi.Scripts.Util.Misc {
     [Serializable]

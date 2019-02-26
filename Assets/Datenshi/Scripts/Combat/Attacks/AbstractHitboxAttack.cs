@@ -1,12 +1,11 @@
 ﻿using Datenshi.Scripts.Data;
+using Lunari.Tsuki;
+using Lunari.Tsuki.Misc;
 using Shiroi.FX.Effects;
 using Shiroi.FX.Features;
-using Shiroi.FX.Utilities;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityUtilities;
-using UnityUtilities.Misc;
 
 namespace Datenshi.Scripts.Combat.Attacks {
     public class HitboxAttackExecutedEvent : UnityEvent<ICombatant, uint, Collider2D, DamageInfo> {

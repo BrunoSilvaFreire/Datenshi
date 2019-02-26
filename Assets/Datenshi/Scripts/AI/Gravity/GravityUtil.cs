@@ -4,6 +4,7 @@ using System.Linq;
 using Datenshi.Scripts.AI.Pathfinding;
 using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Util;
+using Lunari.Tsuki;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Combat.Gravity {

@@ -56,9 +56,8 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links {
         public override bool CanMakeIt(INavigable entity) {
             var m = entity.MovementConfig;
             var b = true;
-            var config = m as TerrestrialConfig;
-            if (config != null) {
-                b = config.JumpForce > requiredForce.y;
+            if (m != null) {
+                b = m.VerticalForce > requiredForce.y;
             }
 
             return m.MaxSpeed > requiredForce.x && b;
@@ -103,7 +102,7 @@ namespace Datenshi.Scripts.AI.Pathfinding.Links {
             var distance = Mathf.Abs(Mathf.Abs(originPos.x) - Mathf.Abs(pos.x));
             if (distance > 0.5F) {
                 //Run towards middle
-                provider.Jump = false;
+                provider.Jump.Consume();
                 provider.Horizontal = direction;
             } else if (entity.CollisionStatus.Down) {
                 entity.Velocity = requiredForce;

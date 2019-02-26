@@ -1,14 +1,15 @@
 ﻿using Datenshi.Scripts.Combat.Status;
 using Datenshi.Scripts.Util;
-using Datenshi.Scripts.Util.Volatiles;
+using Datenshi.Scripts.Util.Buffs;
 using UnityEngine;
 using UnityEngine.UI;
 using ColorUtility = Datenshi.Scripts.Util.ColorUtility;
 
 namespace Datenshi.Scripts.UI.Views.Status {
     public class UIStatusEffectView : UIDefaultColoredView {
+        
         public StatusEffect Effect;
-        public VolatilePropertyModifier Modifier;
+        public PropertyModifier Modifier;
         public Image Background;
         public Image Foreground;
         public Text Label;
@@ -22,26 +23,28 @@ namespace Datenshi.Scripts.UI.Views.Status {
             return Effect.GetColor();
         }
 
-        public void Init(StatusEffect effect, VolatilePropertyModifier modifer) {
+        public void Init(StatusEffect effect, PropertyModifier modifer) {
             Effect = effect;
             Modifier = modifer;
             float fillAmount = 1;
-            if (Modifier != null && !Modifier.IsInfinite) {
-                fillAmount = Modifier.TimePercentage;
+            var p = modifer as PeriodicPropertyModifier;
+            if (p != null) {
+                fillAmount = p.PercentCompleted;
             }
 
             Foreground.fillAmount = fillAmount;
             Label.text = effect.GetAlias();
-            Magnitude.text = $"x{modifer.Multiplier}"; 
+            Magnitude.text = $"x{modifer.Multiplier}";
             UpdateColors();
         }
 
         private void Update() {
-            if (Modifier == null || Modifier.IsInfinite) {
+            var p = Modifier as PeriodicPropertyModifier;
+            if (p == null) {
                 return;
             }
 
-            Foreground.fillAmount = Modifier.TimePercentage;
+            Foreground.fillAmount = p.PercentCompleted;
         }
 
         protected override void UpdateColors(Color color) {

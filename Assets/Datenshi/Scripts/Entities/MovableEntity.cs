@@ -1,5 +1,6 @@
 ﻿using Datenshi.Scripts.AI;
 using Datenshi.Scripts.Util;
+using Datenshi.Scripts.Util.Buffs;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -8,31 +9,28 @@ namespace Datenshi.Scripts.Entities {
         public const string MovementGroup = "Movement";
         public const string AIGroup = "AI";
 
-        [TitleGroup(GeneralGroup)]
+        [BoxGroup(GeneralGroup)]
         public Rigidbody2D Rigidbody;
 
-        [TitleGroup(MovementGroup)]
+        [BoxGroup(MovementGroup)]
         public GameObject RigidStateHolder;
 
-        [TitleGroup(MovementGroup)]
+        [BoxGroup(MovementGroup)]
         public float DirectionChangeThreshold = .2F;
 
         protected override void Start() {
             base.Start();
-            foreach (var movement in AnimatorUpdater.Animator.GetBehaviours<AnimatorMovement>()) {
-                movement.Initialize(this);
-            }
         }
 
         protected override void Update() {
             base.Update();
-            if (AnimatorUpdater != null) {
-                AnimatorUpdater.UpdateAnimator();
-            }
+            UpdateAI();
+            speedMultiplier.Tick();
         }
 
         private void FixedUpdate() {
             UpdateCollisionStatus();
+
             if (Motor != null) {
                 Motor.Move(this);
             }
@@ -40,6 +38,9 @@ namespace Datenshi.Scripts.Entities {
 
         private void LateUpdate() {
             UpdateDirection();
+            if (AnimatorUpdater != null) {
+                AnimatorUpdater.UpdateAnimator();
+            }
         }
 
 
@@ -49,11 +50,6 @@ namespace Datenshi.Scripts.Entities {
             Gizmos.color = HitboxColor;
             Gizmos.DrawCube(b.center, b.size);
         }
-
-        [SerializeField, TitleGroup(AIGroup)]
-        private AINavigator aiNavigator;
-
-        public AINavigator AINavigator => aiNavigator;
     }
 
     public static class RigidEntityExtensions {

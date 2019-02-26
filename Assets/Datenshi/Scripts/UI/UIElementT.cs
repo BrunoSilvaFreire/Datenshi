@@ -47,7 +47,7 @@ namespace Datenshi.Scripts.UI {
         [ShowInInspector]
         private bool overrideShowing;
 
-        [ShowInInspector]
+        [ShowInInspector, ShowIf(nameof(overrideShowing))]
         private bool overrideShowingValue;
 
         private void Start() {

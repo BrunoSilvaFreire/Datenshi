@@ -6,9 +6,9 @@ using Datenshi.Scripts.Behaviours.Variables;
 using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Entities;
+using Lunari.Tsuki;
+using Lunari.Tsuki.Misc;
 using UnityEngine;
-using UnityUtilities;
-using UnityUtilities.Misc;
 
 // ReSharper disable UnassignedField.Global
 // ReSharper disable MemberCanBePrivate.Global
@@ -44,7 +44,7 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
                 return TaskStatus.Failure;
             }
 
-            provider.Walk = true;
+            //provider.Walk = true;
             var xInput = left ? -1 : 1;
             provider.Horizontal = xInput;
             var nav = Entity.AINavigator;

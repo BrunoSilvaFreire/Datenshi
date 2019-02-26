@@ -127,7 +127,7 @@ namespace Datenshi.Scripts.Game {
         }
 
         private void UpdatePause() {
-            if (Player.GetButtonDown((int) Actions.Cancel)) {
+            if (Player.CurrentPlayer.GetButtonDown((int) Actions.Cancel)) {
                 RuntimeResources.Instance.TogglePaused();
             }
         }
@@ -146,6 +146,10 @@ namespace Datenshi.Scripts.Game {
             } else {
                 Rank.XP = 0;
             }
+        }
+
+        public static T GetOrCreateEntity<T>() where T : Entity {
+            return GetOrCreateEntity() as T;
         }
 
         public static Entity GetOrCreateEntity() {

@@ -5,6 +5,7 @@ using Datenshi.Scripts.AI.Pathfinding;
 using Datenshi.Scripts.AI.Pathfinding.Links;
 using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Util;
+using Lunari.Tsuki;
 using UnityEngine;
 
 namespace Datenshi.Scripts.AI {

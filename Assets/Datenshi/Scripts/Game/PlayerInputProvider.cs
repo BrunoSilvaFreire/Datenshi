@@ -79,13 +79,28 @@ namespace Datenshi.Scripts.Game {
         public bool Walk;
 
         [ShowIf("DebugInput"), ShowInInspector, NonSerialized]
-        public bool Dash;
-
-        [ShowIf("DebugInput"), ShowInInspector, NonSerialized]
         public bool Submit;
 
         [ShowIf("DebugInput"), ShowInInspector, NonSerialized]
         public bool Defend;
+
+        [SerializeField, ReadOnly]
+        private ConsumableInput jump, attack, dash;
+
+        private void Update() {
+            if (currentPlayer.GetButtonDown((int) Actions.Jump)) {
+                jump.Set();
+            }
+
+            if (currentPlayer.GetButtonDown((int) Actions.Dash)) {
+                dash.Set();
+            }
+
+            if (currentPlayer.GetButtonDown((int) Actions.Attack)) {
+                attack.Set();
+            }
+        }
+
 #endif
 
         public override float GetHorizontal() {
@@ -106,102 +121,29 @@ namespace Datenshi.Scripts.Game {
             return Fetch(player => player.GetAxis((int) Actions.Vertical));
         }
 
+        public override ConsumableInput GetAttack() {
+            return attack;
+        }
+
+        public override bool GetDashing() {
+            return Fetch(player => player.GetButton((int) Actions.Dash));
+        }
+
+        public override ConsumableInput GetDash() {
+            return dash;
+        }
+
         public override bool GetFocus() {
 #if UNITY_EDITOR
             if (DebugInput) {
                 return Focus;
             }
 #endif
-            return Fetch(player => player.GetButton((int) Actions.Focus));
+            return Fetch(player => UnityEngine.Input.GetKey(KeyCode.LeftShift));
         }
 
-        public override float GetAxis(string key) {
-            if (!RuntimeResources.Instance.AllowPlayerInput) {
-                return 0;
-            }
-
-            return currentPlayer.GetAxis(key);
-        }
-
-        public override float GetAxis(int id) {
-            if (!RuntimeResources.Instance.AllowPlayerInput) {
-                return 0;
-            }
-
-            return currentPlayer.GetAxis(id);
-        }
-
-        public override bool GetButtonDown(string key) {
-            return RuntimeResources.Instance.AllowPlayerInput && currentPlayer.GetButtonDown(key);
-        }
-
-        public override bool GetButtonDown(int id) {
-            return RuntimeResources.Instance.AllowPlayerInput && currentPlayer.GetButtonDown(id);
-        }
-
-        public override bool GetButton(string key) {
-            return RuntimeResources.Instance.AllowPlayerInput && currentPlayer.GetButton(key);
-        }
-
-        public override bool GetButton(int id) {
-            return RuntimeResources.Instance.AllowPlayerInput && currentPlayer.GetButton(id);
-        }
-
-        public override bool GetButtonUp(string key) {
-            return RuntimeResources.Instance.AllowPlayerInput && currentPlayer.GetButtonUp(key);
-        }
-
-        public override bool GetButtonUp(int id) {
-            return RuntimeResources.Instance.AllowPlayerInput && currentPlayer.GetButtonUp(id);
-        }
-
-
-        public override bool GetJump() {
-#if UNITY_EDITOR
-            if (DebugInput) {
-                return Jump;
-            }
-#endif
-            return Fetch(player => player.GetButton((int) Actions.Jump));
-        }
-
-        public override bool GetJumpDown() {
-#if UNITY_EDITOR
-            if (DebugInput) {
-                return Jump;
-            }
-#endif
-            return Fetch(player => player.GetButtonDown((int) Actions.Jump));
-        }
-
-        public override bool GetAttack() {
-#if UNITY_EDITOR
-            if (DebugInput) {
-                return Attack;
-            }
-#endif
-            return Fetch(player => player.GetButtonDown((int) Actions.Attack));
-        }
-
-
-        public override bool GetDash() {
-#if UNITY_EDITOR
-            if (DebugInput) {
-                return Dash;
-            }
-#endif
-            return Fetch(player => player.GetButtonDown((int) Actions.Dash));
-        }
-
-
-        public override bool GetDefend() {
-#if UNITY_EDITOR
-            if (DebugInput) {
-                return Defend;
-            }
-#endif
-
-            return Fetch(player => player.GetButton((int) Actions.Defend));
+        public override ConsumableInput GetJump() {
+            return jump;
         }
 
         public override bool GetSubmit() {
@@ -211,6 +153,15 @@ namespace Datenshi.Scripts.Game {
             }
 #endif
             return Fetch(player => player.GetButtonDown((int) Actions.Submit));
+        }
+
+        public override bool GetJumping() {
+#if UNITY_EDITOR
+            if (DebugInput) {
+                return Focus;
+            }
+#endif
+            return Fetch(player => player.GetButton((int) Actions.Jump));
         }
     }
 }

@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using Datenshi.Scripts.Util;
-using Datenshi.Scripts.Util.Volatiles;
+using Datenshi.Scripts.Util.Buffs;
+using Lunari.Tsuki;
 using UnityEngine;
 using UnityEngine.Events;
 
+
 namespace Datenshi.Scripts.Combat.Status {
     [Serializable]
-    public class StatusEffectAppliedEvent : UnityEvent<StatusEffect, ICombatant, VolatilePropertyModifier> {
+    public class StatusEffectAppliedEvent : UnityEvent<StatusEffect, ICombatant, PropertyModifier> {
         public static readonly StatusEffectAppliedEvent Instance = new StatusEffectAppliedEvent();
         private StatusEffectAppliedEvent() { }
     }
@@ -19,15 +21,18 @@ namespace Datenshi.Scripts.Combat.Status {
     }
 
     public abstract class StatusEffect : ScriptableObject {
-        private static readonly Dictionary<ICombatant, List<Tuple<StatusEffect, VolatilePropertyModifier>>> AppliedEffects = new Dictionary<ICombatant, List<Tuple<StatusEffect, VolatilePropertyModifier>>>();
-        private static readonly Func<List<Tuple<StatusEffect, VolatilePropertyModifier>>> ListInstantiator = () => new List<Tuple<StatusEffect, VolatilePropertyModifier>>();
+        private static readonly Dictionary<ICombatant, List<Tuple<StatusEffect, PropertyModifier>>> AppliedEffects
+            = new Dictionary<ICombatant, List<Tuple<StatusEffect, PropertyModifier>>>();
+
+        private static readonly Func<List<Tuple<StatusEffect, PropertyModifier>>> ListInstantiator =
+            () => new List<Tuple<StatusEffect, PropertyModifier>>();
 
         protected static void RemoveFromEffectsList(ICombatant combatant, StatusEffect speedStatusEffect) {
             GetEffects(combatant).RemoveAll(tuple => tuple.Item1 == speedStatusEffect);
             StatusEffectRemovedEvent.Instance.Invoke(speedStatusEffect, combatant);
         }
 
-        public static List<Tuple<StatusEffect, VolatilePropertyModifier>> GetEffects(ICombatant combatant) {
+        public static List<Tuple<StatusEffect, PropertyModifier>> GetEffects(ICombatant combatant) {
             return AppliedEffects.GetOrPut(combatant, ListInstantiator);
         }
 
@@ -39,10 +44,10 @@ namespace Datenshi.Scripts.Combat.Status {
         public void Apply(ICombatant combatant) {
             var m = OnApply(combatant);
             StatusEffectAppliedEvent.Instance.Invoke(this, combatant, m);
-            GetEffects(combatant).Add(new Tuple<StatusEffect, VolatilePropertyModifier>(this, m));
+            GetEffects(combatant).Add(new Tuple<StatusEffect, PropertyModifier>(this, m));
         }
 
-        protected abstract VolatilePropertyModifier OnApply(ICombatant combatant);
+        protected abstract PropertyModifier OnApply(ICombatant combatant);
         protected abstract float GetHue();
 
         public Color GetColor() {

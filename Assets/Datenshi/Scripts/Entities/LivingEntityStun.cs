@@ -3,23 +3,23 @@ using UnityEngine;
 
 namespace Datenshi.Scripts.Entities {
     public partial class LivingEntity {
-        [TitleGroup(CombatGroup)]
+        [BoxGroup(CombatGroup)]
         public bool DamageGivesStun;
 
         [SerializeField]
-        [TitleGroup(CombatGroup)]
+        [BoxGroup(CombatGroup)]
         public bool Stunned {
             get;
             private set;
         }
 
-        [ShowIf("DamageGivesStun"), TitleGroup(CombatGroup)]
+        [ShowIf("DamageGivesStun"), BoxGroup(CombatGroup)]
         public uint DamageStunMin = 10;
 
-        [ShowIf("DamageGivesStun"), TitleGroup(CombatGroup)]
+        [ShowIf("DamageGivesStun"), BoxGroup(CombatGroup)]
         public float DamageStunDuration = 1;
 
-        [ShowIf("DamageGivesStun"), TitleGroup(CombatGroup), ReadOnly]
+        [ShowIf("DamageGivesStun"), BoxGroup(CombatGroup), ReadOnly]
         private float totalStunTimeLeft;
 
         public virtual void Stun(float duration) {

@@ -2,6 +2,7 @@
 using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Game;
 using Datenshi.Scripts.Util;
+using Lunari.Tsuki;
 using UnityEngine;
 
 namespace Datenshi.Scripts.World.Rooms.Game {

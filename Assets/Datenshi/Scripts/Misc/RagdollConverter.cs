@@ -7,8 +7,8 @@ namespace Datenshi.Scripts.Misc {
         public Behaviour[] ToEnable;
         public Rigidbody Rigidbody;
         public bool Launch;
-        public Vector3 LaunchDirection;
-        public Vector3 RotationDirection;
+        public Vector3 LaunchDirection, LaunchDirectionRandomization;
+        public Vector3 RotationDirection, RotationDirectionRandomization;
 
         public void Convert() {
             foreach (var o in ToDestroy) {
@@ -21,12 +21,20 @@ namespace Datenshi.Scripts.Misc {
 
             Rigidbody.isKinematic = false;
             if (Launch) {
-                Rigidbody.velocity = LaunchDirection;
-                Rigidbody.angularVelocity = RotationDirection;
+                Rigidbody.velocity = LaunchDirection + RandomVector(LaunchDirectionRandomization);
+                Rigidbody.angularVelocity = RotationDirection + RandomVector((RotationDirectionRandomization));
             }
+
             foreach (var component in ToEnable) {
                 component.enabled = true;
             }
+        }
+
+        private Vector3 RandomVector(Vector3 dir) {
+            return new Vector3(
+                Random.value * dir.x,
+                Random.value * dir.y,
+                Random.value * dir.z);
         }
     }
 }

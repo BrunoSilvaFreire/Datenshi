@@ -4,29 +4,14 @@ using UnityEngine;
 
 namespace Datenshi.Scripts.Entities {
     public partial class LivingEntity {
+        public const string DefenseGroup = "Defense";
         private bool defending;
 
+        [BoxGroup(CombatGroup)]
+        public float MinDefenseRequired = 0.1F;
 
-        public float FocusMaxTime = 2;
-
-        [TitleGroup(CombatGroup)]
-        public float MinFocusRequired = 0.1F;
-
-        [ShowInInspector, ReadOnly, TitleGroup(CombatGroup)]
-        public bool CanFocus => FocusTimeLeft > MinFocusRequired;
-
-        public float FocusPercent => FocusTimeLeft / FocusMaxTime;
-
-
-        [ShowInInspector, ReadOnly, TitleGroup(CombatGroup)]
-        public float FocusTimeLeft {
-            get {
-                return focusTimeLeft;
-            }
-            set {
-                focusTimeLeft = value >= FocusMaxTime ? FocusMaxTime : value;
-            }
-        }
+        [ShowInInspector, ReadOnly, BoxGroup(CombatGroup)]
+        public bool CanDefend => CurrentStamina > MinDefenseRequired;
 
         public float DefendingFor {
             get {
@@ -38,16 +23,16 @@ namespace Datenshi.Scripts.Entities {
             }
         }
 
-        private bool focusingLastFrame;
-        private float focusTimeLeft;
-        public bool Dead => health == 0;
+
+        [BoxGroup(DefenseGroup)]
+        public float DefenseRecoveryMultiplier = 2;
 
         public float LastDefenseStart {
             get;
             private set;
         }
 
-        [ShowInInspector, ReadOnly, TitleGroup(CombatGroup)]
+        [ShowInInspector, ReadOnly, BoxGroup(CombatGroup)]
         public bool Defending {
             get {
                 return defending;
@@ -64,20 +49,19 @@ namespace Datenshi.Scripts.Entities {
             }
         }
 
+        private void InitDefense() {
+            defenseHandle = GetStaminaHandle(DefenseStaminaConsumption);
+        }
+
+
         public void BreakDefense() { }
+        private StaminaHandle defenseHandle;
+
+        [BoxGroup(DefenseGroup)]
+        public float DefenseStaminaConsumption;
 
         private void UpdateDefense() {
-            if (defending) {
-                if (FocusTimeLeft <= 0) {
-                    BreakDefense();
-                } /* else {
-                    FocusTimeLeft -= Time.deltaTime * DefenseDepleteAmountMultiplier;
-                }*/
-            } else {
-                var recoverAmount = Time.deltaTime * FocusRecoverAmountMultiplier;
-                FocusTimeLeft += recoverAmount;
-            }
-
+            defenseHandle.Active = defending;
             if (updater == null) {
                 return;
             }

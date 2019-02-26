@@ -1,7 +1,8 @@
 ﻿using Datenshi.Scripts.Data;
+using Datenshi.Scripts.Entities.Motor.States;
+using Datenshi.Scripts.Entities.Motor.States.Terrestrial;
 using Datenshi.Scripts.Movement.Config;
 using UnityEngine;
-using UnityUtilities;
 
 namespace Datenshi.Scripts.Entities {
     public static class MovableEntityUtility {

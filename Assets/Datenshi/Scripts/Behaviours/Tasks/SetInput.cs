@@ -14,14 +14,28 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
         public bool Defend;
 
         public override TaskStatus OnUpdate() {
-            Provider.Attack = Attack;
-            Provider.Jump = Jump;
+            if (Attack) {
+                Provider.Attack.Set();
+            } else {
+                Provider.Attack.Consume();
+            }
+
+            if (Jump) {
+                Provider.Jump.Set();
+            } else {
+                Provider.Jump.Consume();
+            }
+
             Provider.Horizontal = Horizontal;
             Provider.Vertical = Vertical;
-            Provider.Walk = Walk;
-            Provider.Dash = Dash;
+            if (Dash) {
+                Provider.Dash.Set();
+            } else {
+                Provider.Dash.Consume();
+            }
+
             Provider.Submit = Submit;
-            Provider.Defend = Defend;
+            Provider.Focus = Defend;
             return TaskStatus.Success;
         }
     }

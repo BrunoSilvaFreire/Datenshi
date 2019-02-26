@@ -4,7 +4,7 @@ using Datenshi.Scripts.Entities;
 using Datenshi.Scripts.Game;
 using Datenshi.Scripts.UI.Misc;
 using Datenshi.Scripts.Util;
-using Datenshi.Scripts.Util.Volatiles;
+using Datenshi.Scripts.Util.Buffs;
 using UnityEngine;
 
 namespace Datenshi.Scripts.UI.Views.Status {
@@ -30,7 +30,7 @@ namespace Datenshi.Scripts.UI.Views.Status {
             }
         }
 
-        private void OnStatusEffectApplied(StatusEffect effect, ICombatant combatant, VolatilePropertyModifier modifier) {
+        private void OnStatusEffectApplied(StatusEffect effect, ICombatant combatant, PropertyModifier modifier) {
             if (!IsCurrent(combatant)) {
                 return;
             }
@@ -62,7 +62,7 @@ namespace Datenshi.Scripts.UI.Views.Status {
             }
         }
 
-        private void InitNewElement(StatusEffect effect, VolatilePropertyModifier modifier) {
+        private void InitNewElement(StatusEffect effect, PropertyModifier modifier) {
             var element = UIResources.Instance.StatusEffectViewPrefab.Clone(ContentTransform);
             element.Init(effect, modifier);
             element.FadeIn();

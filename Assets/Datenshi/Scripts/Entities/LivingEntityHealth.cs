@@ -8,13 +8,13 @@ using UnityEngine.Events;
 
 namespace Datenshi.Scripts.Entities {
     public partial class LivingEntity {
-        [SerializeField]
+        [SerializeField, BoxGroup(CombatGroup)]
         private CombatantDamagedEvent onDamaged;
 
-        [TitleGroup(CombatGroup)]
+        [BoxGroup(CombatGroup)]
         public UnityEvent OnHealthChanged;
 
-        [SerializeField]
+        [SerializeField, BoxGroup(CombatGroup)]
         private UnityEvent onKilled;
 
         public UnityEvent OnKilled => onKilled;
@@ -29,14 +29,19 @@ namespace Datenshi.Scripts.Entities {
         private bool godMode;
 
 
-        [ShowIf(nameof(HasTemporaryInvulnerability)), ReadOnly, TitleGroup(HealthGroup)]
+        [ShowIf(nameof(HasTemporaryInvulnerability)), ReadOnly, BoxGroup(HealthGroup)]
         private float invulnerabilitySecondsLeft;
 
+        [BoxGroup(HealthGroup)]
         public float DamageColorDuration = .25F;
 
+        [BoxGroup(HealthGroup)]
         public Color DamageColor = Color.white;
 
+        [BoxGroup(HealthGroup)]
         public float DamageColorAmount = 1;
+
+        [BoxGroup(DefenseGroup)]
         public float DefenseBreakStunDuration = 2;
 
         /// <summary>
@@ -44,7 +49,7 @@ namespace Datenshi.Scripts.Entities {
         /// <br/>
         /// Qualquer tentativa de mudar este valor delega a chamada para <see cref="Health"/>. 
         /// </summary>
-        [ShowInInspector, TitleGroup(HealthGroup), ProgressBar(0, 1), PropertyRange(0, 1)]
+        [ShowInInspector, BoxGroup(HealthGroup), ProgressBar(0, 1), PropertyRange(0, 1)]
         public float HealthPercentage {
             get {
                 return (float) Health / MaxHealth;
@@ -54,7 +59,7 @@ namespace Datenshi.Scripts.Entities {
             }
         }
 
-        [ShowInInspector, TitleGroup(HealthGroup)]
+        [ShowInInspector, BoxGroup(HealthGroup)]
         public bool GodMode {
             get {
                 return godMode;
@@ -67,7 +72,7 @@ namespace Datenshi.Scripts.Entities {
 
         public bool IsInvulnerable => GodMode || HasTemporaryInvulnerability;
 
-        [TitleGroup(CombatGroup, "Informações sobre o combat desta LivingEntity")]
+        [BoxGroup(CombatGroup)]
         public CombatantDamagedEvent OnDamaged => onDamaged;
 
         /// <summary>
@@ -78,7 +83,7 @@ namespace Datenshi.Scripts.Entities {
         /// Se for setado para um valor maior que <see cref="MaxHealth"/>, <see cref="Health"/> será setado 
         /// igual a <see cref="MaxHealth"/>. 
         /// </summary>
-        [ShowInInspector, TitleGroup(HealthGroup, "Informações sobre a vida desta LivingEntity")]
+        [ShowInInspector, BoxGroup(HealthGroup)]
         public uint Health {
             get {
                 return health;
@@ -108,7 +113,7 @@ namespace Datenshi.Scripts.Entities {
         /// Se for setada para um valor menor que <see cref="Health"/>, <see cref="Health"/> será setado 
         /// igual a <see cref="MaxHealth"/>
         /// </summary>
-        [ShowInInspector, TitleGroup(HealthGroup)]
+        [ShowInInspector, BoxGroup(HealthGroup)]
         public uint MaxHealth {
             get {
                 return maxHealth;
@@ -121,21 +126,20 @@ namespace Datenshi.Scripts.Entities {
             }
         }
 
+        public bool Dead => health == 0;
+
         public virtual uint Damage(ref DamageInfo info, IDefendable defendable = null) {
             var entity = info.Damager;
             if (defendable != null && Defending && defendable.CanDefend(this)) {
                 var d = defendable.Defend(this, ref info);
                 GlobalDefenseEvent.Instance.Invoke(this, info);
-                if (d > FocusTimeLeft) {
-                    FocusTimeLeft = 0;
+                if (d > CurrentStamina) {
+                    CurrentStamina = 0;
                     Stun(DefenseBreakStunDuration);
                 } else {
-                    FocusTimeLeft -= d;
+                    CurrentStamina -= d;
                 }
 
-                if (FocusTimeLeft <= 0) {
-                    FocusTimeLeft = 0;
-                }
 
                 AnimatorUpdater.TriggerDefend();
                 return 0;
@@ -159,7 +163,6 @@ namespace Datenshi.Scripts.Entities {
             Debug.Log($"<color=#FF0000>{name} damaged by {entity} @ {damage}</color>");
 
             OnDamaged.Invoke(info);
-            OnHealthChanged.Invoke();
             ColorizableRenderer.RegisterTimedService(DamageColorDuration,
                 new ColorOverride(DamageColor, DamageColorAmount)
             );
@@ -175,7 +178,7 @@ namespace Datenshi.Scripts.Entities {
             return damage;
         }
 
-        [ShowInInspector, TitleGroup(HealthGroup)]
+        [ShowInInspector, BoxGroup(HealthGroup)]
         public bool HasTemporaryInvulnerability => invulnerabilitySecondsLeft > 0;
 
 

@@ -45,7 +45,7 @@ MonoBehaviour:
   - {fileID: 114666285671538324}
   MasterBankRef: {fileID: 114714833352202522}
   StringsBankRef: {fileID: 114135330643410682}
-  stringsBankWriteTime: 636730705152289095
+  stringsBankWriteTime: 636734871438631838
   cacheVersion: 2
 --- !u!114 &114004021812052978
 MonoBehaviour:
@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: FMOD\Build\Desktop\Master Bank.strings.bank
-  lastModified: 636730705152289095
+  lastModified: 636734871438631838
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -351,6 +351,21 @@ MonoBehaviour:
     Value: 5270880
   Exists: 1
 --- !u!114 &114165395990210638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: State
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114191211124525528
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -734,6 +749,21 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114302106393374500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Shooting
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114307344333401724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -783,6 +813,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Shooting
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114388454944072080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: IntroLoop
   Min: 0
   Max: 1
   Default: 0
@@ -1095,7 +1140,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114603134876320720}
+  - {fileID: 114388454944072080}
   MinDistance: 0
   MaxDistance: 0
   Length: 240000
@@ -1460,7 +1505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: C:\Work\Unity\Datenshi\FMOD\Build\Desktop\Master Bank.bank
-  lastModified: 636730705152249197
+  lastModified: 636734871438591960
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -1651,7 +1696,7 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 114207508404676756}
+  - {fileID: 114302106393374500}
   MinDistance: 1
   MaxDistance: 1000
   Length: 4756
@@ -2029,7 +2074,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114093289536005736}
+  - {fileID: 114191211124525528}
   MinDistance: 0
   MaxDistance: 0
   Length: 27428

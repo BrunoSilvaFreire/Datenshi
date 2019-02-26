@@ -1,7 +1,7 @@
 using System;
 using Datenshi.Scripts.Util;
+using Lunari.Tsuki.Misc;
 using UnityEngine;
-using UnityUtilities.Misc;
 
 namespace Datenshi.Scripts.Movement {
     [Serializable]
@@ -17,7 +17,6 @@ namespace Datenshi.Scripts.Movement {
 
                 if (left) {
                     return UnitValue.MinusOne;
-                    
                 }
 
                 if (right) {
@@ -65,6 +64,10 @@ namespace Datenshi.Scripts.Movement {
         }
 
         public bool HasAny => down || up || left || right;
-    }
+        public bool HasHorizontal => HorizontalCollisionDir != 0;
 
+        public override string ToString() {
+            return $"{nameof(Up)}: {Up}, {nameof(Down)}: {Down}, {nameof(Left)}: {Left}, {nameof(Right)}: {Right}";
+        }
+    }
 }

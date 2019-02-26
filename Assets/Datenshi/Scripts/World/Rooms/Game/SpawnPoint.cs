@@ -4,9 +4,9 @@ using Datenshi.Scripts.Game;
 using Datenshi.Scripts.Game.Restart;
 using Datenshi.Scripts.Util;
 using Datenshi.Scripts.Util.Misc;
+using Lunari.Tsuki;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityUtilities;
 
 namespace Datenshi.Scripts.World.Rooms.Game {
     public class SpawnPoint : AbstractRoomMember, IRestartable {
@@ -15,7 +15,9 @@ namespace Datenshi.Scripts.World.Rooms.Game {
             SpawnPoint
         }
 
+        [Required]
         public Entity Prefab;
+
         public PositionSourceType PositionSource;
         public DistanceThreshold Threshold = new DistanceThreshold(15, 20);
         public AnimationCurve DistanceMultiplier = AnimationCurve.EaseInOut(0, 1, 3, 2);
@@ -78,6 +80,10 @@ namespace Datenshi.Scripts.World.Rooms.Game {
         }
 
         private void Spawn() {
+            if (Prefab == null) {
+                return;
+            }
+
             active = Instantiate(Prefab, transform.position, Quaternion.identity);
             killed = false;
 
@@ -86,7 +92,10 @@ namespace Datenshi.Scripts.World.Rooms.Game {
                 return;
             }
 
-            Room.AddMember(l);
+            if (Room != null) {
+                Room.AddMember(l);
+            }
+
             l.OnKilled.AddListener(OnKilled);
         }
 

@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -13,32 +14,153 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   States:
   - {fileID: 114875747530634424}
-  - {fileID: 114468145598613026}
+  - {fileID: 114987882203699684}
+  - {fileID: 114368084961262792}
+--- !u!114 &114368084961262792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bf10aceb0df4543877e4a4ca7d2406d, type: 3}
+  m_Name: AerialMovement
+  m_EditorClassIdentifier: 
+  Listeners:
+  - {fileID: 114650431551528070}
+  MovementData:
+    OposingForceMultiplier: 1
+  GroundedMovement: {fileID: 114875747530634424}
+  JumpSlowdownSpeed: 0.5
 --- !u!114 &114468145598613026
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 683404b28851410facf798fba3a3dea5, type: 3}
   m_Name: DashMovement
   m_EditorClassIdentifier: 
-  DashDuration: 1
-  DashDistance: 8
-  DashGravityScale: 0.25
-  DefaultState: {fileID: 114875747530634424}
+  DashSpeedMultiplier: 5
+  DashChangeSpeed: 0.15
+  DashStaminaConsumption: 3
+  DashMinStaminaRequired: 4
+--- !u!114 &114637583791975508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9beea81eed6447e69a8c60ac41407638, type: 3}
+  m_Name: Wall Climb Listener
+  m_EditorClassIdentifier: 
+  Destination: {fileID: 114987882203699684}
+--- !u!114 &114650431551528070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9beea81eed6447e69a8c60ac41407638, type: 3}
+  m_Name: WallClimbListener
+  m_EditorClassIdentifier: 
+  Destination: {fileID: 114987882203699684}
+--- !u!114 &114819462657444922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea9b191d614745fa98e919309dae0828, type: 3}
+  m_Name: Defense Updater
+  m_EditorClassIdentifier: 
 --- !u!114 &114875747530634424
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13dfdedb753940c0b711652e056de346, type: 3}
   m_Name: GroundedMovement
   m_EditorClassIdentifier: 
-  GravityScale: 1
-  OposingForceMultiplier: 2
+  Listeners:
+  - {fileID: 114637583791975508}
+  - {fileID: 114819462657444922}
+  - {fileID: 114940951701717126}
+  GravityScale: 6
+  MovementData:
+    OposingForceMultiplier: 2
+  AerialMovement: {fileID: 114368084961262792}
+--- !u!114 &114940951701717126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683404b28851410facf798fba3a3dea5, type: 3}
+  m_Name: Dash Listener
+  m_EditorClassIdentifier: 
+  DashSpeedMultiplier: 2
+  DashChangeSpeed: 0.15
+  DashStaminaConsumption: 3
+  DashMinStaminaRequired: 4
+--- !u!114 &114987882203699684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7356cc25ae1644ca9079c4101c2bb539, type: 3}
+  m_Name: WallClimbMovement
+  m_EditorClassIdentifier: 
+  Listeners: []
+  Gravity:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 5
+      value: 9.81
+      inSlope: -6.258975
+      outSlope: -6.258975
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.036265947
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  WallCounterForce: 5
+  WallJumpMultiplier: 1
+  DefaultState: {fileID: 114875747530634424}

@@ -4,6 +4,7 @@ using Datenshi.Scripts.AI.Pathfinding;
 using Datenshi.Scripts.Movement;
 using Datenshi.Scripts.Util;
 using Sirenix.OdinInspector;
+using Lunari.Tsuki;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif

@@ -112,7 +112,7 @@ namespace Datenshi.Scripts.Combat.Game.Ranged {
             if (Direction == DirectionMode.Attack) {
                 var target = entity.GetVariable(CombatVariables.AttackTarget);
                 if (target != null) {
-                    var dir = entity.Center - target.Center;
+                    var dir = target.Center - entity.Center;
                     dir.Normalize();
                     return dir;
                 }

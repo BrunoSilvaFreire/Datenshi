@@ -8,6 +8,9 @@ namespace Datenshi.Scripts.Behaviours.Variables {
     public class SharedCombatant : SharedVariable<ICombatant> { }
 
     [Serializable]
+    public class SharedEntity : SharedVariable<Entity> { }
+
+    [Serializable]
     public class SharedLivingEntity : SharedVariable<LivingEntity> { }
 
     [Serializable]

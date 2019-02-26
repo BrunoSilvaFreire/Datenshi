@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Lunari.Tsuki;
 using UnityEngine;
-using UnityUtilities;
 using Object = UnityEngine.Object;
 
 namespace Datenshi.Scripts.Util {
@@ -19,8 +19,15 @@ namespace Datenshi.Scripts.Util {
         }
 
         private ObjectLink? FindLink(PropertyName id) {
+            Debug.Log($"Looking for link with id {id}");
             foreach (var objectLink in objects) {
-                if (objectLink.ID == id) {
+                Debug.Log(objectLink.ID);
+                Debug.Log(id);
+                var v = objectLink.ID == id;
+                Debug.Log(v);
+                Debug.Log("finish");
+                if (v) {
+                    Debug.Log("gg");
                     return objectLink;
                 }
             }
@@ -40,7 +47,9 @@ namespace Datenshi.Scripts.Util {
         }
 
         public Object GetReferenceValue(PropertyName id, out bool idValid) {
+            Debug.Log($"id: {id}");
             var found = FindLink(id);
+            Debug.Log($"Found @ '{id}'");
             if (found != null) {
                 idValid = true;
                 return found.Value.Obj;
@@ -58,9 +67,15 @@ namespace Datenshi.Scripts.Util {
             foreach (var obj in objects) {
                 Vector2 pos;
                 var sceneObj = obj.Obj;
-                if (sceneObj.AttempRetrievePosition(out pos)) {
+                if (sceneObj.AttemptRetrievePosition(out pos)) {
                     GizmosUtility.DrawWireCircle2D(pos, 1, Color.magenta);
                 }
+            }
+        }
+
+        private void Awake() {
+            foreach (var sceneLinkerAcessor in acessors) {
+                sceneLinkerAcessor.OnLoaded(this);
             }
         }
     }

@@ -17,7 +17,7 @@ namespace Datenshi.Scripts.UI.Misc {
 
         protected override float GetPercentage(Entity entity) {
             var e = entity as LivingEntity;
-            return e == null ? 0 : e.FocusPercent;
+            return e == null ? 0 : e.StaminaPercentage;
         }
 
         protected override void UpdateBar(Image defenseBar, Entity entity) {
@@ -28,7 +28,7 @@ namespace Datenshi.Scripts.UI.Misc {
             }
 
             if (!ShowAlways) {
-                Showing = l.Defending || l.Focusing;
+                Showing = l.Defending;
             }
         }
     }

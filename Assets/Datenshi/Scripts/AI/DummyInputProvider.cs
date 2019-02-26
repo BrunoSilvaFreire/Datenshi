@@ -11,28 +11,22 @@ namespace Datenshi.Scripts.AI {
         public SerializableInputReceiver Entity;
         public float Horizontal;
         public float Vertical;
-        public bool Jump;
-        public bool Attack;
-        public bool Walk;
-        public bool Dash;
+        public ConsumableInput Attack, Jump;
+        public ConsumableInput Dash;
         public bool Submit;
-        public bool Defend;
         public bool Focus;
 
 
         private void Start() {
             var e = Entity.Value;
+            if (e == null) {
+                return;
+            }
+
             e.RevokeOwnership();
             e.RequestOwnership(this);
         }
 
-        private bool jumpDown;
-        private bool lastJump;
-
-        private void Update() {
-            jumpDown = lastJump != Jump && Jump && !jumpDown;
-            lastJump = Jump;
-        }
 
         public override float GetHorizontal() {
             return Fetch(Horizontal);
@@ -51,56 +45,24 @@ namespace Datenshi.Scripts.AI {
             return Fetch(Vertical);
         }
 
-        public override float GetAxis(string key) {
-            return 0;
+        public override ConsumableInput GetJump() {
+            return Jump;
         }
 
-        public override float GetAxis(int id) {
-            return 0;
+        public override ConsumableInput GetAttack() {
+            return Attack;
         }
 
-        public override bool GetButtonDown(string key) {
-            return false;
+        public override ConsumableInput GetDash() {
+            return Dash;
         }
 
-        public override bool GetButtonDown(int id) {
-            return false;
+        public override bool GetDashing() {
+            return Dash.Peek();
         }
 
-        public override bool GetButton(string key) {
-            return false;
-        }
-
-        public override bool GetButton(int id) {
-            return false;
-        }
-
-        public override bool GetButtonUp(string key) {
-            return false;
-        }
-
-        public override bool GetButtonUp(int id) {
-            return false;
-        }
-
-        public override bool GetJump() {
-            return Fetch(Jump);
-        }
-
-        public override bool GetJumpDown() {
-            return jumpDown;
-        }
-
-        public override bool GetAttack() {
-            return Fetch(Attack);
-        }
-
-        public override bool GetDash() {
-            return Fetch(Dash);
-        }
-
-        public override bool GetDefend() {
-            return Fetch(Defend);
+        public override bool GetJumping() {
+            return Jump.Peek();
         }
 
         public override bool GetSubmit() {
@@ -112,11 +74,9 @@ namespace Datenshi.Scripts.AI {
         }
 
         public void Reset() {
-            Jump = false;
-            Attack = false;
-            Dash = false;
-            Defend = false;
-            Walk = false;
+            Jump.Consume();
+            Attack.Consume();
+            Dash.Consume();
             Submit = false;
             Horizontal = 0;
             Vertical = 0;

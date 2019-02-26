@@ -12,19 +12,27 @@ MonoBehaviour:
   m_Name: NovakBossFightCutscene
   m_EditorClassIdentifier: 
   tokens:
-  - {fileID: 114491345263953410}
-  - {fileID: 114938133725889664}
-  - {fileID: 114739281053167272}
-  - {fileID: 114653080677789916}
-  - {fileID: 114227802916651898}
-  - {fileID: 114356811773751270}
-  - {fileID: 114735839264467176}
-  - {fileID: 114868570283953386}
-  - {fileID: 114640947403688674}
-  - {fileID: 114608960793060392}
+  - {fileID: 114355358650752534}
+  - {fileID: 114526371178062992}
+  - {fileID: 114560318275499278}
+  - {fileID: 114585942371867012}
+  - {fileID: 114117294646525654}
+  - {fileID: 114249051632158352}
+  - {fileID: 114128591442165200}
+  - {fileID: 114514309213691972}
+  - {fileID: 114920615462272346}
+  - {fileID: 114229371296515634}
+  - {fileID: 114056388679302764}
+  - {fileID: 114288031500986982}
+  - {fileID: 114333207599518950}
+  - {fileID: 114895889823651702}
+  - {fileID: 114288754415170148}
+  - {fileID: 114121909354426746}
+  - {fileID: 114569481298130870}
+  - {fileID: 114184812116716518}
   FutureManager:
     futures: []
---- !u!114 &114227802916651898
+--- !u!114 &114056388679302764
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -32,14 +40,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b7b32a4e2974b7dbf3935d2458f7c05, type: 3}
-  m_Name: SetCinemachinePriorityToken
+  m_Script: {fileID: -1967645408, guid: 03fe207ae5b0c9040a227147e429c73e, type: 3}
+  m_Name: WaitForSecondsToken
   m_EditorClassIdentifier: 
-  Camera:
-    exposedName: -391816
-    defaultValue: {fileID: 0}
-  Priority: 15
---- !u!114 &114356811773751270
+  Duration: 0.5
+  Realtime: 1
+--- !u!114 &114117294646525654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19a06477e0ac44b3a2be71272fb53608, type: 3}
+  m_Name: DisablePlayerAIToken
+  m_EditorClassIdentifier: 
+--- !u!114 &114121909354426746
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -51,8 +68,8 @@ MonoBehaviour:
   m_Name: WaitForSecondsToken
   m_EditorClassIdentifier: 
   Duration: 1
-  Realtime: 0
---- !u!114 &114491345263953410
+  Realtime: 1
+--- !u!114 &114128591442165200
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -60,25 +77,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd17541b2cd94104bd6d6aea874f7ab0, type: 3}
-  m_Name: ReleaseUIElementsOverrideToken
+  m_Script: {fileID: -1967645408, guid: 03fe207ae5b0c9040a227147e429c73e, type: 3}
+  m_Name: WaitForSecondsToken
   m_EditorClassIdentifier: 
---- !u!114 &114608960793060392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b7b32a4e2974b7dbf3935d2458f7c05, type: 3}
-  m_Name: SetCinemachinePriorityToken
-  m_EditorClassIdentifier: 
-  Camera:
-    exposedName: -391816
-    defaultValue: {fileID: 0}
-  Priority: 0
---- !u!114 &114640947403688674
+  Duration: 0.5
+  Realtime: 1
+--- !u!114 &114184812116716518
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,7 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AcceptInput: 1
   Target: 2
---- !u!114 &114653080677789916
+--- !u!114 &114229371296515634
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -99,25 +103,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -1967645408, guid: 03fe207ae5b0c9040a227147e429c73e, type: 3}
-  m_Name: WaitForSecondsToken
+  m_Script: {fileID: 11500000, guid: 6b7b32a4e2974b7dbf3935d2458f7c05, type: 3}
+  m_Name: SetCinemachinePriorityToken
   m_EditorClassIdentifier: 
-  Duration: 1
-  Realtime: 0
---- !u!114 &114735839264467176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e67f7b223d80419fb460827d95157356, type: 3}
-  m_Name: DialogueStageToken
-  m_EditorClassIdentifier: 
-  Show: 1
-  Snapping: 0
---- !u!114 &114739281053167272
+  Camera:
+    exposedName: 24210
+    defaultValue: {fileID: 0}
+  Priority: 15
+--- !u!114 &114249051632158352
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,7 +123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AcceptInput: 0
   Target: 2
---- !u!114 &114868570283953386
+--- !u!114 &114288031500986982
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,7 +138,36 @@ MonoBehaviour:
   Target: 0
   OpenOnStart: 1
   CloseOnFinish: 1
---- !u!114 &114938133725889664
+--- !u!114 &114288754415170148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee0fb28e17974eceb90c664ebe16ae41, type: 3}
+  m_Name: InitializeBossFightToken
+  m_EditorClassIdentifier: 
+  Controller:
+    exposedName: -34020
+    defaultValue: {fileID: 0}
+--- !u!114 &114333207599518950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7b32a4e2974b7dbf3935d2458f7c05, type: 3}
+  m_Name: SetCinemachinePriorityToken
+  m_EditorClassIdentifier: 
+  Camera:
+    exposedName: 23926
+    defaultValue: {fileID: 0}
+  Priority: 0
+--- !u!114 &114355358650752534
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,3 +179,90 @@ MonoBehaviour:
   m_Name: OverrideUIElementsToken
   m_EditorClassIdentifier: 
   Value: 0
+--- !u!114 &114514309213691972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc54fc54f8eb42ebaad9f64ca03630f4, type: 3}
+  m_Name: CloseDoorToken
+  m_EditorClassIdentifier: 
+  Door:
+    exposedName: -1099742
+    defaultValue: {fileID: 0}
+  Open: 0
+--- !u!114 &114526371178062992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d4966c71eec4e63a7c1e5c40600297f, type: 3}
+  m_Name: EnablePlayerAIToken
+  m_EditorClassIdentifier: 
+--- !u!114 &114560318275499278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49fbd4e4af774833a023f97b6b633163, type: 3}
+  m_Name: SetPlayerAITargetToken
+  m_EditorClassIdentifier: 
+  Target: {x: -25.5, y: 8.5}
+--- !u!114 &114569481298130870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd17541b2cd94104bd6d6aea874f7ab0, type: 3}
+  m_Name: ReleaseUIElementsOverrideToken
+  m_EditorClassIdentifier: 
+--- !u!114 &114585942371867012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b69639812894830b5d2b5c8730f05a3, type: 3}
+  m_Name: WaitForPlayerToArriveAtTargetLocationToken
+  m_EditorClassIdentifier: 
+  Radius: 1
+--- !u!114 &114895889823651702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1967645408, guid: 03fe207ae5b0c9040a227147e429c73e, type: 3}
+  m_Name: WaitForSecondsToken
+  m_EditorClassIdentifier: 
+  Duration: 1
+  Realtime: 1
+--- !u!114 &114920615462272346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1967645408, guid: 03fe207ae5b0c9040a227147e429c73e, type: 3}
+  m_Name: WaitForSecondsToken
+  m_EditorClassIdentifier: 
+  Duration: 0.5
+  Realtime: 0

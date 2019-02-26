@@ -4,7 +4,7 @@ using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Input;
 using Datenshi.Scripts.Util;
 using Datenshi.Scripts.Movement;
-using Datenshi.Scripts.Util.Volatiles;
+using Datenshi.Scripts.Util.Buffs;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -48,7 +48,7 @@ namespace Datenshi.Scripts.Combat {
     /// Algo que pode dar dano em um <see cref="IDamageable"/> utilizando um <see cref="IDamageSource"/>.
     /// </summary>
     public interface IDamageDealer : ILocatable {
-        FloatVolatileProperty DamageMultiplier {
+        FloatProperty DamageMultiplier {
             get;
         }
     }
@@ -117,19 +117,10 @@ namespace Datenshi.Scripts.Combat {
         }
 
 
-        float FocusTimeLeft {
-            get;
-            set;
-        }
-
-        bool CanFocus {
+        bool CanDefend {
             get;
         }
 
-        bool Focusing {
-            get;
-            set;
-        }
 
         bool Defending {
             get;

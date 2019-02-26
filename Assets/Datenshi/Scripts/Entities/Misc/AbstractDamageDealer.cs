@@ -1,11 +1,11 @@
 ﻿using Datenshi.Scripts.Combat;
-using Datenshi.Scripts.Util.Volatiles;
+using Datenshi.Scripts.Util.Buffs;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Entities.Misc {
     public class AbstractDamageDealer : MonoBehaviour, IDamageDealer {
         [SerializeField]
-        private FloatVolatileProperty damageMultiplier;
+        private FloatProperty damageMultiplier;
 
         public Transform Transform => transform;
 
@@ -13,6 +13,6 @@ namespace Datenshi.Scripts.Entities.Misc {
 
         public Vector2 GroundPosition => Center;
 
-        public FloatVolatileProperty DamageMultiplier => damageMultiplier;
+        public FloatProperty DamageMultiplier => damageMultiplier;
     }
 }

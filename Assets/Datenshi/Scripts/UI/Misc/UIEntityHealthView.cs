@@ -1,4 +1,5 @@
 ﻿using Datenshi.Scripts.Entities;
+using UnityEngine;
 
 namespace Datenshi.Scripts.UI.Misc {
     public class UIEntityHealthView : UIHealthView {

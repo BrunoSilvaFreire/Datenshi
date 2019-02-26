@@ -162,7 +162,7 @@ Shader "Datenshi/EntityShader" {
             fixed4 frag(v2f IN) : SV_Target
             {
                 fixed4 c = tex2D(_MainTex, IN.texcoord);
-                if (_Outline == 0) {
+                if (!_Outline) {
                     return Transparent;
                 }
 

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Datenshi.Scripts.Util {
     public static class BehaviourUtil {
-        public static bool AttempRetrievePosition(this Object obj, out Vector2 pos) {
+        public static bool AttemptRetrievePosition(this Object obj, out Vector2 pos) {
             var go = obj as GameObject;
             if (go != null) {
                 pos = go.transform.position;

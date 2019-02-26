@@ -1,7 +1,28 @@
-﻿using Sirenix.OdinInspector;
+﻿using System;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Input {
+    [Serializable]
+    public class ConsumableInput {
+        [SerializeField, ReadOnly]
+        private bool active;
+
+        public bool Peek() {
+            return active;
+        }
+
+        public bool Consume() {
+            var value = active;
+            active = false;
+            return value;
+        }
+
+        public void Set() {
+            active = true;
+        }
+    }
+
     /// <summary>
     /// Representa uma fonte de input. Seja um player, ou AI.
     /// </summary>
@@ -16,36 +37,16 @@ namespace Datenshi.Scripts.Input {
             return new Vector2(GetHorizontal(), GetVertical());
         }
 
-        public abstract bool GetJump();
-
         public abstract float GetHorizontal();
         public abstract float GetVertical();
-        public abstract float GetAxis(string key);
-        public abstract float GetAxis(int id);
-        public abstract bool GetButtonDown(string key);
-        public abstract bool GetButtonDown(int id);
-        public abstract bool GetButton(string key);
-        public abstract bool GetButton(int id);
-        public abstract bool GetButtonUp(string key);
-        public abstract bool GetButtonUp(int id);
-        public abstract bool GetAttack();
-
-        public abstract bool GetDash();
-        public abstract bool GetDefend();
+        public abstract ConsumableInput GetJump();
+        public abstract ConsumableInput GetAttack();
+        public abstract ConsumableInput GetDash();
+        public abstract bool GetDashing();
         public abstract bool GetFocus();
         public abstract bool GetSubmit();
-#if UNITY_EDITOR
-        public const string DebugGroup = "Values";
+        public abstract bool GetJumping();
 
-        [ShowInInspector, FoldoutGroup(DebugGroup)]
-        public float HorizontalValue => GetHorizontal();
-
-        [ShowInInspector, FoldoutGroup(DebugGroup)]
-        public float VerticalValue => GetVertical();
-
-        [ShowInInspector, FoldoutGroup(DebugGroup)]
-        public bool JumpValue => GetJump();
-#endif
         public Vector2 GetLastValidInputVector(float defaultXDirection = 1) {
             var vec = GetInputVector();
             if (Mathf.Approximately(vec.x, 0)) {
@@ -54,7 +55,5 @@ namespace Datenshi.Scripts.Input {
 
             return vec;
         }
-
-        public abstract bool GetJumpDown();
     }
 }

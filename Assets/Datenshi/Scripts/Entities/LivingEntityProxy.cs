@@ -59,20 +59,8 @@ namespace Datenshi.Scripts.Entities {
         }
 
 
-        public void SetFocusMaxTime(float value) {
-            Target.FocusMaxTime = value;
-        }
-
         public void SetMinDefenseRequired(float value) {
-            Target.MinFocusRequired = value;
-        }
-
-        public void SetDefenseRecoverAmountMultiplier(float value) {
-            Target.FocusRecoverAmountMultiplier = value;
-        }
-
-        public void SetDefenseDepleteAmountMultiplier(float value) {
-            Target.FocusDepleteAmountMultiplier = value;
+            Target.MinDefenseRequired = value;
         }
 
         public void SetMiscController(EntityMiscController value) {
@@ -85,10 +73,6 @@ namespace Datenshi.Scripts.Entities {
 
         public void SetCurrentDirection(Direction value) {
             Target.CurrentDirection = value;
-        }
-
-        public void SetFocusTimeLeft(float value) {
-            Target.FocusTimeLeft = value;
         }
 
 

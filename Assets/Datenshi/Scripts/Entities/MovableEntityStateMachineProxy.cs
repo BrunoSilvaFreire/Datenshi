@@ -132,52 +132,12 @@ namespace Datenshi.Scripts.Entities {
             target.OnAttack = value;
         }
 
-        public void SetFocusAnimationSpeed(float value) {
-            if (target == null) {
-                return;
-            }
-
-            target.FocusAnimationSpeed = value;
-        }
-
-        public void SetFocusRecoverAmountMultiplier(float value) {
-            if (target == null) {
-                return;
-            }
-
-            target.FocusRecoverAmountMultiplier = value;
-        }
-
-        public void SetFocusDepleteAmountMultiplier(float value) {
-            if (target == null) {
-                return;
-            }
-
-            target.FocusDepleteAmountMultiplier = value;
-        }
-
-        public void SetFocusDamageMultiplier(float value) {
-            if (target == null) {
-                return;
-            }
-
-            target.FocusDamageMultiplier = value;
-        }
-
-        public void SetFocusMaxTime(float value) {
-            if (target == null) {
-                return;
-            }
-
-            target.FocusMaxTime = value;
-        }
-
         public void SetMinFocusRequired(float value) {
             if (target == null) {
                 return;
             }
 
-            target.MinFocusRequired = value;
+            target.MinDefenseRequired = value;
         }
 
         public void SetOnHealthChanged(UnityEvent value) {
@@ -274,22 +234,6 @@ namespace Datenshi.Scripts.Entities {
             }
 
             target.Ignored = value;
-        }
-
-        public void SetFocusing(bool value) {
-            if (target == null) {
-                return;
-            }
-
-            target.Focusing = value;
-        }
-
-        public void SetFocusTimeLeft(float value) {
-            if (target == null) {
-                return;
-            }
-
-            target.FocusTimeLeft = value;
         }
 
         public void SetDefending(bool value) {

@@ -15,6 +15,7 @@ namespace Datenshi.Scripts.Util {
             get {
                 foreach (var loadedLinker in loadedLinkers) {
                     bool valid;
+                    Debug.Log($"Found linker @ '{loadedLinker}' for '{key}'");
                     var obj = loadedLinker.GetReferenceValue(key, out valid);
                     if (valid) {
                         return obj;

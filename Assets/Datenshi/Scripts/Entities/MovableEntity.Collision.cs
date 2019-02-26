@@ -1,22 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Datenshi.Scripts.Movement;
-using Datenshi.Scripts.Movement.Config;
-using Datenshi.Scripts.Util.Volatiles;
+using Lunari.Tsuki;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityUtilities;
 
 namespace Datenshi.Scripts.Entities {
     public partial class MovableEntity {
-        [ShowInInspector]
+        [ShowInInspector, BoxGroup(MovementGroup)]
         public CollisionStatus CollisionStatus {
             get;
             set;
         }
 
 
-        [ReadOnly, ShowInInspector]
+        [ReadOnly, ShowInInspector, BoxGroup(MovementGroup)]
         private readonly List<ContactPoint2D> currentContacts = new List<ContactPoint2D>();
 
 

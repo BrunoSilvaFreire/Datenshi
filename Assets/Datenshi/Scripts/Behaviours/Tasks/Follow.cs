@@ -32,7 +32,7 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
             if (d > TeleportThreshold) {
                 Entity.transform.position = targetPos;
                 if (TeleportEffect != null) {
-                    TeleportEffect.PlayIfPresent(Entity, new EntityFeature(Entity));
+                    TeleportEffect.PlayIfPresent(Entity, features: new EntityFeature(Entity));
                 }
                 return TaskStatus.Running;
             }

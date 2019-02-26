@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 483066763, guid: 220592144c7fcfd4ca4aeb13babc9d40, type: 3}
+  m_Name: DefaultHitEffect
+  m_EditorClassIdentifier: 
+  Effects:
+  - {fileID: 114857177750928380}
+  - {fileID: 114637100151503998}
+--- !u!114 &114637100151503998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1355382805, guid: 220592144c7fcfd4ca4aeb13babc9d40, type: 3}
+  m_Name: ParticleEffect
+  m_EditorClassIdentifier: 
+  ParticlePrefab: {fileID: 198373253261171140, guid: 9d2d98736ac4eac4cb1f37c23166c0b5,
+    type: 3}
+  ForceDestroyOnFinished: 1
+--- !u!114 &114857177750928380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e3bbe4f21803a649a7690e771cc2ee0, type: 3}
+  m_Name: FMODAudioEffect
+  m_EditorClassIdentifier: 
+  AudioFX: {fileID: 11400000, guid: 5fa2b4c3c000ad6448e0720a504aff52, type: 2}
+  Pitch:
+    start: 0.9
+    end: 1.1

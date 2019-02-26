@@ -12,14 +12,18 @@ namespace Datenshi.Scripts.Editor {
             objectPos.y += EditorGUIUtility.singleLineHeight;
             var oldValue = idProp.stringValue;
             var originalString = oldValue.Split(':')[0];
-            idProp.stringValue = new PropertyName(
-                EditorGUI.TextField(position, "Key", originalString)
-            ).ToString();
+            var text = EditorGUI.TextField(position, "Key", originalString);
+            var prop = new PropertyName(originalString);
+            Debug.Log($"Prop = '{prop}'/'{oldValue}'@ '{text}'");
+            idProp.stringValue = originalString;
+            var r = objectPos;
+            r.y += EditorGUIUtility.singleLineHeight;
+            EditorGUI.PropertyField(r, idProp);
             EditorGUI.PropertyField(objectPos, property.FindPropertyRelative("obj"), new GUIContent(idProp.stringValue));
         }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label) {
-            return EditorGUIUtility.singleLineHeight * 2;
+            return EditorGUIUtility.singleLineHeight * 3;
         }
     }
 }

@@ -2,6 +2,7 @@
 using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 using Datenshi.Scripts.Util;
+using Lunari.Tsuki;
 using UnityEngine;
 using Action = BehaviorDesigner.Runtime.Tasks.Action;
 
@@ -29,12 +30,13 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
         }
 
         private TaskStatus GetClosest() {
-            Vector2? closest;
+            Vector2? closest = null;
             var distance = float.MaxValue;
             foreach (var key in Keys) {
-                var obj = Acessor[Keys.RandomElement()];
+                var obj = Acessor[key];
                 Vector2 pos;
-                if (!obj.AttempRetrievePosition(out pos)) {
+                if (!obj.AttemptRetrievePosition(out pos)) {
+                    Debug.LogError($"Found no object with key \'{key}\'");
                     continue;
                 }
 
@@ -49,6 +51,7 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
             }
 
             if (closest == null) {
+                Debug.LogError("Found no closest");
                 return TaskStatus.Failure;
             }
 
@@ -59,7 +62,7 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
         private TaskStatus GetRandom() {
             var obj = Acessor[Keys.RandomElement()];
             Vector2 pos;
-            if (obj.AttempRetrievePosition(out pos)) {
+            if (obj.AttemptRetrievePosition(out pos)) {
                 Position.Value = pos;
                 return TaskStatus.Success;
             }

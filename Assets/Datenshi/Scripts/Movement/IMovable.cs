@@ -1,5 +1,5 @@
 ﻿using Datenshi.Scripts.Movement.Config;
-using Datenshi.Scripts.Util.Volatiles;
+using Datenshi.Scripts.Util.Buffs;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Movement {
@@ -26,7 +26,7 @@ namespace Datenshi.Scripts.Movement {
             get;
         }
 
-        FloatVolatileProperty SpeedMultiplier {
+        FloatProperty SpeedMultiplier {
             get;
         }
 

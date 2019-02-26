@@ -9,6 +9,8 @@
 
 using System;
 using Datenshi.Scripts.Util;
+using Lunari.Tsuki;
+
 namespace Datenshi.Scripts.Input {
     public enum Actions : int{
         // Default

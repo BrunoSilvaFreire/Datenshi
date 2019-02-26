@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -17,12 +18,13 @@ MonoBehaviour:
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1432916263, guid: 220592144c7fcfd4ca4aeb13babc9d40, type: 3}
-  m_Name: ObjectShakeEffect
+  m_Name: Combatant_Damaged_Shake
   m_EditorClassIdentifier: 
   UseShakeControllerIfPresent: 1
   Duration:
@@ -33,7 +35,7 @@ MonoBehaviour:
       Range:
         start: 0
         end: 0
-      Constant: 17.42
+      Constant: 0.12
   Frequency:
     Source: 0
     TagName: 
@@ -53,7 +55,7 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
       m_ConstantMin: 0
-      m_ConstantMax: 26.3
+      m_ConstantMax: 5
   Intensity:
     Source: 0
     TagName: 
@@ -73,6 +75,6 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
       m_ConstantMin: 0
-      m_ConstantMax: 8.46
+      m_ConstantMax: 1
   Mode: 0
-  Dimensions: 7
+  Dimensions: -1

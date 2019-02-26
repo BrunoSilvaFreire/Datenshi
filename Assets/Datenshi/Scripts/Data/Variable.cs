@@ -64,8 +64,11 @@ namespace Datenshi.Scripts.Data {
             private set;
         }
 
-        public Variable(string key, T defaultValue) : base(key) {
+        public Variable(string key, T defaultValue = default(T)) : base(key) {
             DefaultValue = defaultValue;
+        }
+        public static implicit operator Variable<T>(string str) {
+            return new Variable<T>(str);
         }
     }
 }

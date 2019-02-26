@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Datenshi.Scripts.AI;
 using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Graphics;
 using Datenshi.Scripts.Input;
@@ -31,7 +32,7 @@ namespace Datenshi.Scripts.Entities {
         public const string GeneralGroup = "General";
 
 
-        [TitleGroup(MiscGroup), SerializeField]
+        [BoxGroup(MiscGroup), SerializeField]
         private bool timeScaleIndependent;
 
         public bool TimeScaleIndependent {
@@ -62,8 +63,9 @@ namespace Datenshi.Scripts.Entities {
         /// <summary>
         /// O provedor a partir de qual essa entidade está recebendo input.
         /// </summary>
-        [TitleGroup(MiscGroup, "Informações que não se encaixam em outros lugares aparecem aqui"), ShowInInspector]
-        public DatenshiInputProvider InputProvider => inputProvider;
+        [BoxGroup(MiscGroup), ShowInInspector]
+        public DatenshiInputProvider InputProvider
+            => overrideInputProvider != null ? overrideInputProvider : inputProvider;
 
         [SerializeField, HideInInspector]
         private DatenshiInputProvider inputProvider;
@@ -80,7 +82,7 @@ namespace Datenshi.Scripts.Entities {
         }
 
 
-        [TitleGroup(GeneralGroup), SerializeField]
+        [BoxGroup(GeneralGroup), SerializeField]
         private ColorizableRenderer colorizableRenderer;
 
         public ColorizableRenderer ColorizableRenderer {
@@ -92,35 +94,36 @@ namespace Datenshi.Scripts.Entities {
             }
         }
 
+        [BoxGroup(GeneralGroup)]
         public EntityMiscController MiscController;
 
-        [TitleGroup(GeneralGroup)]
+        [BoxGroup(GeneralGroup)]
         public Character.Character Character;
 
-        [TitleGroup(MiscGroup)]
+        [BoxGroup(GeneralGroup)]
         protected Direction direction;
 
 
-        [SerializeField]
+        [SerializeField, BoxGroup(MiscGroup, order: 10)]
         private UnityEvent onDestroyed;
 
         public UnityEvent OnDestroyed => onDestroyed;
 
-        [ShowInInspector, ReadOnly, TitleGroup(MiscGroup)]
+        [ShowInInspector, ReadOnly, BoxGroup(MiscGroup)]
         private List<VariableValue> variables = new List<VariableValue>();
 
 
         public void SetVariable<T>(Variable<T> variable, T value) {
-            var key = variable.Key;
+            var key = (PropertyName) variable.Key;
             VariableValue instance = null;
             foreach (var variableValue in variables) {
-                if (string.Equals(variableValue.Key, key)) {
+                if (variableValue.Key == key) {
                     instance = variableValue;
                 }
             }
 
             if (instance == null) {
-                instance = new VariableValue(key, value);
+                instance = new VariableValue(variable.Key, value);
                 variables.Add(instance);
                 return;
             }
@@ -129,9 +132,9 @@ namespace Datenshi.Scripts.Entities {
         }
 
         public T GetVariable<T>(Variable<T> variable) {
-            var key = variable.Key;
+            var key = (PropertyName) variable.Key;
             foreach (var variableValue in variables) {
-                if (string.Equals(variableValue.Key, key)) {
+                if (variableValue.Key == key) {
                     return (T) variableValue.Value;
                 }
             }
@@ -171,11 +174,22 @@ namespace Datenshi.Scripts.Entities {
 
             RequestOwnership(player);
         }
+
+        private DatenshiInputProvider overrideInputProvider;
+
+        public void ReleaseOverrideInputProvider() {
+            overrideInputProvider = null;
+        }
+
+        public void OverrideInputProvider(DummyInputProvider getComponentInChildren) {
+            Debug.Log("Overriding input provider @ " + getComponentInChildren);
+            overrideInputProvider = getComponentInChildren;
+        }
     }
 
     public sealed class VariableValue {
         [ShowInInspector]
-        private readonly string key;
+        private readonly PropertyName key;
 
         [ShowInInspector]
         private object value;
@@ -185,7 +199,7 @@ namespace Datenshi.Scripts.Entities {
             this.value = value;
         }
 
-        public string Key => key;
+        public PropertyName Key => key;
 
         public object Value {
             get {

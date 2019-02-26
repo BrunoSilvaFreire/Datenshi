@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Datenshi.Scripts.AI.Pathfinding;
 using Datenshi.Scripts.Util;
+using Lunari.Tsuki;
 using Unity.Collections;
 using Unity.Jobs;
 using UnityEngine;
