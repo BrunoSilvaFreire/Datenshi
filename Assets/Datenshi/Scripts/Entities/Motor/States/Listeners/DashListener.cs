@@ -12,7 +12,7 @@ namespace Datenshi.Scripts.Entities.Motor.States.Listeners {
         private static readonly Variable<LivingEntity.StaminaHandle> StaminaHandle = "movement.dash.staminaHandle";
         public static readonly Variable<bool> DashingLastFrame = "movement.dash.lastFrame";
 
-        public override void Tick(MovableEntity entity, StateMotor motor) {
+        public override void OnTick(MovableEntity entity, StateMotor motor) {
             var lastFrame = entity.GetVariable(DashingLastFrame);
             var p = entity.InputProvider;
             var hasProvider = p != null;

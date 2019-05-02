@@ -26,7 +26,7 @@ using UnityEditor;
 
 namespace Kino.Editor {
     [CanEditMultipleObjects]
-    [CustomEditor(typeof(AnalogGlitch))]
+    //[CustomEditor(typeof(AnalogGlitch))]
     public class AnalogGlitchEditor : UnityEditor.Editor {
         private SerializedProperty scanLineJitter;
         private SerializedProperty verticalJump;

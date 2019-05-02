@@ -7,7 +7,7 @@ namespace Datenshi.Scripts.Entities.Motor.States.Terrestrial {
         public TerrestrialMovements.TerrestrialMovementData MovementData;
         public AerialMovement AerialMovement;
 
-        protected override void Enter(MovableEntity entity, StateMotor motor, TerrestrialConfig config) {
+        protected override void OnEnter(MovableEntity entity, StateMotor motor, TerrestrialConfig config) {
             entity.Rigidbody.gravityScale = GravityScale;
         }
 

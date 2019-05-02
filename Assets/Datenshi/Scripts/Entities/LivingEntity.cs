@@ -1,9 +1,12 @@
 ﻿using System;
 using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Combat.Attacks;
+using Datenshi.Scripts.Graphics;
 using Datenshi.Scripts.Movement;
 using Datenshi.Scripts.Util;
 using Datenshi.Scripts.Util.Buffs;
+using Shiroi.FX.Services;
+using Shiroi.FX.Utilities;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
@@ -54,19 +57,7 @@ namespace Datenshi.Scripts.Entities {
         [BoxGroup(MiscGroup)]
         public float OutlineInvulnerabilityMinSecondsLeft = 2;
 
-        private void UpdateRendering() {
-            if (ColorizableRenderer != null) {
-                ColorizableRenderer.Outline = IsInvulnerable;
-                var color = ColorizableRenderer.OutlineColor;
-                if (invulnerabilitySecondsLeft > OutlineInvulnerabilityMinSecondsLeft) {
-                    color.a = 1;
-                } else {
-                    color.a = invulnerabilitySecondsLeft / OutlineInvulnerabilityMinSecondsLeft;
-                }
-
-                ColorizableRenderer.OutlineColor = color;
-            }
-        }
+        private void UpdateRendering() { }
 
 
         [SerializeField, BoxGroup(GeneralGroup)]
@@ -74,23 +65,17 @@ namespace Datenshi.Scripts.Entities {
 
 
         public Direction CurrentDirection {
-            get {
-                return direction;
-            }
-            set {
-                direction = value;
-            }
+            get { return direction; }
+
+            set { direction = value; }
         }
 
         public GameObject GameObject => gameObject;
 
         public bool Ignored {
-            get {
-                return ignored;
-            }
-            set {
-                ignored = value;
-            }
+            get { return ignored; }
+
+            set { ignored = value; }
         }
 
 

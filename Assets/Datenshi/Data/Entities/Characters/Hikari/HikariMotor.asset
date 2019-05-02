@@ -88,6 +88,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea9b191d614745fa98e919309dae0828, type: 3}
   m_Name: Defense Updater
   m_EditorClassIdentifier: 
+--- !u!114 &114848296572015206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f383a4b158924361b63b860d268dfc0a, type: 3}
+  m_Name: GroundedFXPlayer
+  m_EditorClassIdentifier: 
+  Enter:
+  - Effect: {fileID: 11400000, guid: f37720da40631bd408ee7d2a7b2cb2b0, type: 2}
+    PositionOffset: {x: 0, y: -0.9}
+  Exit:
+  - Effect: {fileID: 11400000, guid: f37720da40631bd408ee7d2a7b2cb2b0, type: 2}
+    PositionOffset: {x: 0, y: -1.7}
 --- !u!114 &114875747530634424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,6 +122,7 @@ MonoBehaviour:
   - {fileID: 114637583791975508}
   - {fileID: 114819462657444922}
   - {fileID: 114940951701717126}
+  - {fileID: 114848296572015206}
   GravityScale: 6
   MovementData:
     OposingForceMultiplier: 2

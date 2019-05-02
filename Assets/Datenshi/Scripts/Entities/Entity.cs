@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Datenshi.Scripts.AI;
 using Datenshi.Scripts.Data;
 using Datenshi.Scripts.Graphics;
+using Datenshi.Scripts.Graphics.Colorization;
 using Datenshi.Scripts.Input;
 using Datenshi.Scripts.Movement;
 using Datenshi.Scripts.Util;

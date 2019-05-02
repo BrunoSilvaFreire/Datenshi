@@ -5,7 +5,7 @@
             <value>Saber Successful Hit</value>
         </property>
         <property name="outputFormat">
-            <value>2</value>
+            <value>1</value>
         </property>
         <relationship name="folder">
             <destination>{eb36f35b-160d-49b5-b882-f0ecd9f61203}</destination>
@@ -115,7 +115,6 @@
     <object class="MixerBusEffectChain" id="{63d1b018-dbc7-477f-955a-a5565b56d8d0}">
         <relationship name="effects">
             <destination>{16da1f1d-5f3f-47c1-b761-b043974c19ef}</destination>
-            <destination>{d2d43bfb-d509-48de-9ca8-85685d86d987}</destination>
         </relationship>
     </object>
     <object class="MixerBusPanner" id="{4f8b4c55-a073-4495-8e58-41ae4b6edc37}"/>
@@ -142,10 +141,5 @@
     </object>
     <object class="MixerBusPanner" id="{d3a127f8-4a42-4b5f-aae4-f1ecdacca29e}"/>
     <object class="MixerBusFader" id="{16da1f1d-5f3f-47c1-b761-b043974c19ef}"/>
-    <object class="SpatialiserEffect" id="{d2d43bfb-d509-48de-9ca8-85685d86d987}">
-        <property name="maximumDistance">
-            <value>50</value>
-        </property>
-    </object>
     <object class="MixerBusFader" id="{432b81bd-ce0a-4275-8d03-41c0af1b815d}"/>
 </objects>

@@ -21,7 +21,7 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
         }
 
         public override void OnDrawGizmos() {
-            DebugUtil.DrawWireCircle2D(Entity.Center, Distance, Color.magenta);
+            Debugging.DrawWireCircle2D(Entity.Center, Distance, Color.magenta);
         }
     }
 }

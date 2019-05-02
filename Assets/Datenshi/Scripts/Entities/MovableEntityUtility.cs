@@ -22,7 +22,7 @@ namespace Datenshi.Scripts.Entities {
             min.y += entity.Rigidbody.velocity.y * Time.deltaTime;
             var max = new Vector2(maxX, min.y);
             min.y -= c.RejumpLength;
-            //DebugUtil.DrawArea(min, max, Color.red);
+            //Debugging.DrawArea(min, max, Color.red);
             return Physics2D.OverlapArea(min, max, GameResources.Instance.WorldMask);
         }
     }

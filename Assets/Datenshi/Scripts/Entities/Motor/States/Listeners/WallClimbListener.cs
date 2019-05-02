@@ -4,7 +4,7 @@ namespace Datenshi.Scripts.Entities.Motor.States.Listeners {
     public class WallClimbListener : MovementListener {
         public MovementState Destination;
 
-        public override void Tick(MovableEntity entity, StateMotor motor) {
+        public override void OnTick(MovableEntity entity, StateMotor motor) {
             var s = entity.CollisionStatus;
             /*if (entity.Velocity.y < 0) {
                 return;

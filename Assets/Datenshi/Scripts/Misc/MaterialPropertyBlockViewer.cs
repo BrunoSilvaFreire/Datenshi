@@ -1,5 +1,4 @@
-﻿using Datenshi.Scripts.Graphics;
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Datenshi.Scripts.Misc {
@@ -11,12 +10,10 @@ namespace Datenshi.Scripts.Misc {
         private MaterialPropertyBlock block;
 
         [ShowInInspector]
-        public Color Color => block == null ? Color.magenta : block.GetColor("_Color");
+        public Color Color => block?.GetColor("_Color") ?? Color.magenta;
 
         [ShowInInspector]
-        public Texture Texture => block == null ? null : block.GetTexture("_MainTex");
-
-        public float OverrideAmount => block == null ? -1 : block.GetFloat(ColorizableRenderer.OverrideAmountKey);
+        public Texture Texture => block?.GetTexture("_MainTex");
 
         private void OnValidate() {
             if (block == null) {

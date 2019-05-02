@@ -148,14 +148,6 @@ namespace Datenshi.Scripts.Entities {
             target.OnHealthChanged = value;
         }
 
-        public void SetDamageColorDuration(float value) {
-            if (target == null) {
-                return;
-            }
-
-            target.DamageColorDuration = value;
-        }
-
         public void SetDamageColor(Color value) {
             if (target == null) {
                 return;

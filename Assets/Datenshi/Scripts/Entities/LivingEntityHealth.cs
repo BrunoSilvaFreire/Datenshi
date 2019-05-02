@@ -1,5 +1,6 @@
 ﻿using Datenshi.Scripts.Combat;
 using Datenshi.Scripts.Graphics;
+using Datenshi.Scripts.Graphics.Colorization;
 using Shiroi.FX.Utilities;
 using Sirenix.OdinInspector;
 using UnityEditor;
@@ -31,9 +32,6 @@ namespace Datenshi.Scripts.Entities {
 
         [ShowIf(nameof(HasTemporaryInvulnerability)), ReadOnly, BoxGroup(HealthGroup)]
         private float invulnerabilitySecondsLeft;
-
-        [BoxGroup(HealthGroup)]
-        public float DamageColorDuration = .25F;
 
         [BoxGroup(HealthGroup)]
         public Color DamageColor = Color.white;
@@ -163,8 +161,8 @@ namespace Datenshi.Scripts.Entities {
             Debug.Log($"<color=#FF0000>{name} damaged by {entity} @ {damage}</color>");
 
             OnDamaged.Invoke(info);
-            ColorizableRenderer.RegisterTimedService(DamageColorDuration,
-                new ColorOverride(DamageColor, DamageColorAmount)
+            ColorizableRenderer.OutlineController.RegisterTimedService(DamageInvulnerabilityDuration,
+                new ColorMeta(DamageColor)
             );
             Health -= damage;
             if (DamageInvulnerability) {
@@ -181,6 +179,7 @@ namespace Datenshi.Scripts.Entities {
         [ShowInInspector, BoxGroup(HealthGroup)]
         public bool HasTemporaryInvulnerability => invulnerabilitySecondsLeft > 0;
 
+        public float InvulnerabilitySecondsLeft => invulnerabilitySecondsLeft;
 
         public void SetInvulnerable(float seconds) {
             invulnerabilitySecondsLeft += seconds;

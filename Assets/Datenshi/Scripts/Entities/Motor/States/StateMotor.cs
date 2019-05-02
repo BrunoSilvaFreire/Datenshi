@@ -47,36 +47,51 @@ namespace Datenshi.Scripts.Entities.Motor.States {
     }
 
     public abstract class MovementListener : ScriptableObject {
-        public abstract void Tick(MovableEntity entity, StateMotor motor);
+        public virtual void OnEnter(MovableEntity entity, StateMotor motor) { }
+        public virtual void OnExit(MovableEntity entity, StateMotor motor) { }
+        public virtual void OnTick(MovableEntity entity, StateMotor motor) { }
     }
 
     public abstract class MovementState : ScriptableObject {
-        [SerializeField, HideInInspector]
-        public List<MovementListener> Listeners;
+        [SerializeField, HideInInspector] public List<MovementListener> Listeners;
 
-        public virtual void Enter(MovableEntity entity, StateMotor motor) { }
-        public virtual void Exit(MovableEntity entity, StateMotor motor) { }
+        public void Enter(MovableEntity entity, StateMotor motor) {
+            foreach (var listener in Listeners) {
+                listener.OnEnter(entity, motor);
+            }
+            OnEnter(entity, motor);
+        }
+
+        public void Exit(MovableEntity entity, StateMotor motor) {
+            foreach (var listener in Listeners) {
+                listener.OnExit(entity, motor);
+            }
+            OnExit(entity, motor);
+        }
+
+        protected virtual void OnExit(MovableEntity entity, StateMotor motor) { }
+        protected virtual void OnEnter(MovableEntity entity, StateMotor motor) { }
         protected abstract void Tick(MovableEntity entity, StateMotor motor);
 
         public void Move(MovableEntity entity, StateMotor motor) {
             Tick(entity, motor);
             foreach (var listener in Listeners) {
-                listener.Tick(entity, motor);
+                listener.OnTick(entity, motor);
             }
         }
     }
 
     public abstract class MovementState<T> : MovementState where T : MovementConfig {
-        public sealed override void Enter(MovableEntity entity, StateMotor motor) {
-            Enter(entity, motor, entity.GetMovementConfigAs<T>());
+        protected sealed override void OnEnter(MovableEntity entity, StateMotor motor) {
+            OnEnter(entity, motor, entity.GetMovementConfigAs<T>());
         }
 
-        public sealed override void Exit(MovableEntity entity, StateMotor motor) {
-            Exit(entity, motor, entity.GetMovementConfigAs<T>());
+        protected sealed override void OnExit(MovableEntity entity, StateMotor motor) {
+            OnExit(entity, motor, entity.GetMovementConfigAs<T>());
         }
 
-        protected virtual void Enter(MovableEntity entity, StateMotor motor, T config) { }
-        protected virtual void Exit(MovableEntity entity, StateMotor motor, T config) { }
+        protected virtual void OnEnter(MovableEntity entity, StateMotor motor, T config) { }
+        protected virtual void OnExit(MovableEntity entity, StateMotor motor, T config) { }
 
         protected override void Tick(MovableEntity entity, StateMotor motor) {
             var vel = entity.Velocity;

@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Datenshi.Scripts.Entities.Misc {
     public class ContactDamager : MonoBehaviour, IDamageSource, IDefendable {
-        public LivingEntity Owner;
+        public SerializableDamageDealer Owner;
         public uint Damage;
         public float DefenseFocusComsuption = 5;
         public Vector2 ThrowbackForce;
@@ -15,12 +15,13 @@ namespace Datenshi.Scripts.Entities.Misc {
 
         private void OnCollisionEnter2D(Collision2D other) {
             var c = other.collider.GetComponentInParent<LivingEntity>();
-            if (Owner.Dead || !Owner.ShouldAttack(c)) {
+            var d = Owner.Value;
+            /*if (d.Dead || !d.ShouldAttack(c)) {
                 return;
-            }
-
-            var info = new DamageInfo(this, 1, c, Owner);
-            c.Damage(ref info, this);
+            }*/
+            Debug.Log("Contact with " + c);
+            var info = new DamageInfo(this, 1, c, d);
+            Debug.Log("Damaged for " + c.Damage(ref info));
         }
 
         public uint GetDamage(IDamageable damageable) {
@@ -32,12 +33,11 @@ namespace Datenshi.Scripts.Entities.Misc {
         }
 
         public float Defend(ICombatant combatant, ref DamageInfo info) {
-            var m = Owner as IMovable;
-            if (m != null) {
+            /*if (Owner is IMovable m) {
                 var vel = ThrowbackForce;
                 vel.x *= Owner.XDirectionTo(combatant.Center);
                 m.ExternalForces = vel;
-            }
+            }*/
 
             if (DefenseEffect != null) {
                 DefenseEffect.PlayIfPresent(this);

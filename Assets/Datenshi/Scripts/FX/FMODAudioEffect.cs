@@ -2,9 +2,11 @@
 using Shiroi.FX.Effects;
 using Shiroi.FX.Effects.Requirements;
 using Shiroi.FX.Utilities;
+using UnityEngine;
 
 namespace Datenshi.Scripts.FX {
     [Icon(Icons.AudioIcon)]
+    [CreateAssetMenu(menuName = "Datenshi/Effects/FMODAudioEffect")]
     public class FMODAudioEffect : Effect {
         public AudioFX AudioFX;
         public Range Pitch;

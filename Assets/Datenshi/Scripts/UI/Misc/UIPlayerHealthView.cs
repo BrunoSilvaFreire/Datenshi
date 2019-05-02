@@ -4,10 +4,9 @@ using UnityEngine;
 
 namespace Datenshi.Scripts.UI.Misc {
     public class UIPlayerHealthView : UIHealthView {
-        public PlayerController Player;
 
         private void Awake() {
-            Player.OnEntityChanged.AddListener(OnChanged);
+            PlayerController.Instance.OnEntityChanged.AddListener(OnChanged);
         }
 
 
@@ -31,7 +30,7 @@ namespace Datenshi.Scripts.UI.Misc {
         }
 
         protected override LivingEntity GetEntity() {
-            return Player.CurrentEntity as LivingEntity;
+            return PlayerController.Instance.CurrentEntity as LivingEntity;
         }
     }
 }

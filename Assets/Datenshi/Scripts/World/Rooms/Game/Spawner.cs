@@ -98,7 +98,7 @@ namespace Datenshi.Scripts.World.Rooms.Game {
                 return;
             }
 
-            if (currentGroup >= Wave.TotalGroups - 1 && CollectionUtil.IsEmpty(toBeKilled)) {
+            if (currentGroup >= Wave.TotalGroups - 1 && toBeKilled.IsEmpty()) {
                 playing = false;
                 OnCompleted.Invoke();
                 if (ToOpen) {
@@ -122,7 +122,7 @@ namespace Datenshi.Scripts.World.Rooms.Game {
 
             if (CurrentGroup.IsWaitForPrevious && currentGroup >= 0) {
                 if (!countdownStarted) {
-                    if (!CollectionUtil.IsEmpty(toBeKilled)) {
+                    if (!toBeKilled.IsEmpty()) {
                         return;
                     }
 

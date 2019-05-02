@@ -111,7 +111,7 @@ Shader "Datenshi/EntityShader" {
 		}
 		ENDCG
 		
-		//OurlinePass
+		//OutlinePass
         Lighting Off
         ZWrite Off
         Blend SrcAlpha OneMinusSrcAlpha
@@ -162,9 +162,9 @@ Shader "Datenshi/EntityShader" {
             fixed4 frag(v2f IN) : SV_Target
             {
                 fixed4 c = tex2D(_MainTex, IN.texcoord);
-                if (!_Outline) {
+                /*if (!_Outline) {
                     return Transparent;
-                }
+                }*/
 
                 // If outline is enabled and there is a pixel, try to draw an outline.
                 if (c.a > 0) {

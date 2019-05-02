@@ -35,7 +35,7 @@ namespace Datenshi.Scripts.Combat.Gravity {
             finalNode = null;
             float time = 0;
             if (precision > GameResources.Instance.MaxPrecision) {
-                return CollectionUtil.EmptyList<Vector2>();
+                return Collections.EmptyList<Vector2>();
             }
 
             var timeIncrementation = 1 / precision;

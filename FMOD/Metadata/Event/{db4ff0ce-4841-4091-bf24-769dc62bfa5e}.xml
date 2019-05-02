@@ -5,7 +5,7 @@
             <value>Triple Combo Light Saber</value>
         </property>
         <property name="outputFormat">
-            <value>2</value>
+            <value>1</value>
         </property>
         <relationship name="folder">
             <destination>{eb36f35b-160d-49b5-b882-f0ecd9f61203}</destination>
@@ -115,7 +115,6 @@
     <object class="MixerBusEffectChain" id="{69742e47-975d-4311-a61f-c42da14a92c2}">
         <relationship name="effects">
             <destination>{3e0fe934-47e4-4c42-87d9-e39a210008e7}</destination>
-            <destination>{586515a6-8049-4e29-b47b-199a18e28a4b}</destination>
         </relationship>
     </object>
     <object class="MixerBusPanner" id="{6d545bab-64e5-40b1-afff-8f43a57edc95}"/>
@@ -142,10 +141,5 @@
     </object>
     <object class="MixerBusPanner" id="{4205f41b-3aab-4a99-adab-edcba329e6f2}"/>
     <object class="MixerBusFader" id="{3e0fe934-47e4-4c42-87d9-e39a210008e7}"/>
-    <object class="SpatialiserEffect" id="{586515a6-8049-4e29-b47b-199a18e28a4b}">
-        <property name="maximumDistance">
-            <value>50</value>
-        </property>
-    </object>
     <object class="MixerBusFader" id="{0302bb1a-9129-4bbe-a9ed-d165c3caa3d6}"/>
 </objects>

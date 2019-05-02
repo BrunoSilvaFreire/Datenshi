@@ -41,7 +41,7 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
             var b = m.transform.position;
             var d = Vector2.Distance(a, b);
             var r = active ? MaxAllowedDistance : MinRequiredDistance;
-            DebugUtil.DrawWireCircle2D(a, r, Color.yellow);
+            Debugging.DrawWireCircle2D(a, r, Color.yellow);
             var valid = active ? r <= d : d >= r;
             var c = valid ? Color.red : Color.green;
             Debug.DrawLine(a, b, c);

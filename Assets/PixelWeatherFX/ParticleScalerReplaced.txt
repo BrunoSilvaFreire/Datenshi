@@ -1,0 +1,4 @@
+The particle scaler that comes with Pixel Weather has been removed with Unity 5.5.
+Unity now has built in tools for better handling particle scaling.
+
+Learn more about the new features here https://docs.unity3d.com/ScriptReference/ParticleSystemScalingMode.html

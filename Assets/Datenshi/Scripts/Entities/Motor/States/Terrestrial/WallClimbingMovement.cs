@@ -10,7 +10,7 @@ namespace Datenshi.Scripts.Entities.Motor.States.Terrestrial {
         public MovementState DefaultState;
         private static readonly Variable<float> EnteredAt = "movement.wallClimb.enteredAt";
 
-        protected override void Enter(MovableEntity entity, StateMotor motor, TerrestrialConfig config) {
+        protected override void OnEnter(MovableEntity entity, StateMotor motor, TerrestrialConfig config) {
 
             entity.SetVariable(EnteredAt, 0);
             entity.Rigidbody.gravityScale = 0;

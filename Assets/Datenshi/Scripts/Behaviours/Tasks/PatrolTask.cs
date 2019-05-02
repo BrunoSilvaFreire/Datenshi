@@ -108,10 +108,10 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
         }
 
         public override void OnDrawGizmos() {
-            DebugUtil.DrawWireBox2D(Entity.Center + Entity.CurrentDirection.X * SightRadius.Center, SightRadius.Size,
+            Debugging.DrawWireBox2D(Entity.Center + Entity.CurrentDirection.X * SightRadius.Center, SightRadius.Size,
                 Color.red);
             var color = waiting ? Color.yellow : Color.green;
-            DebugUtil.DrawWireBox2D(targetPos, Vector2.one, color);
+            Debugging.DrawWireBox2D(targetPos, Vector2.one, color);
             Debug.DrawLine(Entity.GroundPosition, targetPos, color);
         }
     }

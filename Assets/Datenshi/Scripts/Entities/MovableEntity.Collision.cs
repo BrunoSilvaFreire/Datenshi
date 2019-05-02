@@ -26,7 +26,7 @@ namespace Datenshi.Scripts.Entities {
             status.Right = currentContacts.Any(RightCollision);
             CollisionStatus = status;
             foreach (var point in currentContacts) {
-                DebugUtil.DrawWireCircle2D(point.point, 0.1F, Color.red);
+                Debugging.DrawWireCircle2D(point.point, 0.1F, Color.red);
                 Debug.DrawRay(point.point, point.normal, Color.red);
             }
 

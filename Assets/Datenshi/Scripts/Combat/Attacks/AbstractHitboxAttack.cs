@@ -41,7 +41,7 @@ namespace Datenshi.Scripts.Combat.Attacks {
             }
 
             hb.Center += (Vector2) entity.Transform.position;
-            DebugUtil.DrawWireBox2D(hb.Center, hb.Size, HitboxColor);
+            Debugging.DrawWireBox2D(hb.Center, hb.Size, HitboxColor);
             var success = false;
             var found = Physics2D.OverlapBoxAll(hb.Center, hb.Size, 0, GameResources.Instance.EntitiesMask);
             foreach (var hit in found) {
@@ -50,8 +50,7 @@ namespace Datenshi.Scripts.Combat.Attacks {
                     continue;
                 }
 
-                var e = d as ICombatant;
-                if (e != null && !entity.ShouldAttack(e)) {
+                if (d is ICombatant e && !entity.ShouldAttack(e)) {
                     continue;
                 }
 

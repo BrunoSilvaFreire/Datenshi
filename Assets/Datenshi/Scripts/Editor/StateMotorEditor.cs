@@ -4,6 +4,7 @@ using System.Linq;
 using Datenshi.Scripts.Entities.Motor.States;
 using Lunari.Tsuki;
 using Lunari.Tsuki.Editor;
+using Lunari.Tsuki.Editor.Extenders;
 using UnityEditor;
 using UnityEngine;
 
@@ -26,7 +27,7 @@ namespace Datenshi.Scripts.Editor {
         public override void OnInspectorGUI() {
             var states = motor.States;
             var notEmpty = states.Count > 0;
-            using (new EditorGUILayout.VerticalScope(Lunari.Tsuki.Editor.GUISkinProperties.box)) {
+            using (new EditorGUILayout.VerticalScope(GUIStyles.box)) {
                 using (new EditorGUILayout.HorizontalScope()) {
                     EditorGUILayout.PrefixLabel((notEmpty ? states.Count.ToString() : "No") + " states found");
                     stateSelector.OnInspectorGUI();

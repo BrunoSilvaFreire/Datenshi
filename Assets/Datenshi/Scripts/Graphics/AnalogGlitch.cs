@@ -76,6 +76,10 @@ namespace Datenshi.Scripts.Graphics {
         private Material material;
 
         private float verticalJumpTime;
+        private static readonly int Drift = Shader.PropertyToID("_ColorDrift");
+        private static readonly int Shake = Shader.PropertyToID("_HorizontalShake");
+        private static readonly int Jump = Shader.PropertyToID("_VerticalJump");
+        private static readonly int LineJitter = Shader.PropertyToID("_ScanLineJitter");
 
         private void Set(GlitchMeta.GlitchInfo info) {
             ColorDrift = info.ColorDrift;
@@ -93,15 +97,15 @@ namespace Datenshi.Scripts.Graphics {
 
             var slThresh = Mathf.Clamp01(1.0f - ScanLineJitter * 1.2f);
             var slDisp = 0.002f + Mathf.Pow(ScanLineJitter, 3) * 0.05f;
-            material.SetVector("_ScanLineJitter", new Vector2(slDisp, slThresh));
+            material.SetVector(LineJitter, new Vector2(slDisp, slThresh));
 
             var vj = new Vector2(VerticalJump, verticalJumpTime);
-            material.SetVector("_VerticalJump", vj);
+            material.SetVector(Jump, vj);
 
-            material.SetFloat("_HorizontalShake", HorizontalShake * 0.2f);
+            material.SetFloat(Shake, HorizontalShake * 0.2f);
 
             var cd = new Vector2(ColorDrift * 0.04f, Time.time * 606.11f);
-            material.SetVector("_ColorDrift", cd);
+            material.SetVector(Drift, cd);
 
             UnityEngine.Graphics.Blit(source, destination, material);
         }

@@ -32,7 +32,7 @@ namespace Datenshi.Scripts.Behaviours.Tasks {
         }
 
         public override void OnDrawGizmos() {
-            DebugUtil.DrawWireCircle2D(Entity.Center, SightRadius, Color.green);
+            Debugging.DrawWireCircle2D(Entity.Center, SightRadius, Color.green);
         }
     }
 }

@@ -5,10 +5,9 @@ using Datenshi.Scripts.Game;
 namespace Datenshi.Scripts.UI {
     public class UIPlayerView : UIDefaultColoredView {
         public Text CharacterNameLabel;
-        public PlayerController Player;
 
         private void Awake() {
-            Player.OnEntityChanged.AddListener(OnChanged);
+            PlayerController.Instance.OnEntityChanged.AddListener(OnChanged);
         }
 
         private void OnChanged(Entity arg1, Entity entity1) {
@@ -17,17 +16,17 @@ namespace Datenshi.Scripts.UI {
 
 
         protected override bool HasColorAvailable() {
-            var e = Player.CurrentEntity;
+            var e = PlayerController.Instance.CurrentEntity;
             var character = e != null ? e.Character : null;
             return character != null;
         }
 
         protected override Color GetAvailableColor() {
-            return Player.CurrentEntity.Character.SignatureColor;
+            return PlayerController.Instance.CurrentEntity.Character.SignatureColor;
         }
 
         protected override void UpdateColors(Color color) {
-            var e = Player.CurrentEntity;
+            var e = PlayerController.Instance.CurrentEntity;
             var character = e != null ? e.Character : null;
             CharacterNameLabel.text = character != null ? character.Alias : "No character selected :c";
             CharacterNameLabel.color = color;

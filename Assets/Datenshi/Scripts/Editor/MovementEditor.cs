@@ -4,8 +4,10 @@ using System.Linq;
 using Datenshi.Scripts.Entities.Motor.States;
 using Lunari.Tsuki;
 using Lunari.Tsuki.Editor;
+using Lunari.Tsuki.Editor.Extenders;
 using UnityEditor;
 using UnityEngine;
+using UnityUtilities;
 
 namespace Datenshi.Scripts.Editor {
     [CustomEditor(typeof(MovementState), true)]
@@ -25,7 +27,7 @@ namespace Datenshi.Scripts.Editor {
         public override void OnInspectorGUI() {
             var states = motor.Listeners ?? (motor.Listeners = new List<MovementListener>());
             var notEmpty = states.Count > 0;
-            using (new EditorGUILayout.VerticalScope(Lunari.Tsuki.Editor.GUISkinProperties.box)) {
+            using (new EditorGUILayout.VerticalScope(GUIStyles.box)) {
                 using (new EditorGUILayout.HorizontalScope()) {
                     EditorGUILayout.PrefixLabel((notEmpty ? states.Count.ToString() : "No") + " listeners found");
                     addListenerButton.OnInspectorGUI();
@@ -51,7 +53,7 @@ namespace Datenshi.Scripts.Editor {
                 }
             }
 
-            using (new EditorGUILayout.VerticalScope(Lunari.Tsuki.Editor.GUISkinProperties.box)) {
+            using (new EditorGUILayout.VerticalScope(GUIStyles.box)) {
                 DrawDefaultInspector();
             }
         }
@@ -75,7 +77,7 @@ namespace Datenshi.Scripts.Editor {
             var data = KnownPossibleStates;
             for (var i = 0; i < data.Count; i++) {
                 var s = data[i];
-                var pos = rect.GetLine((uint) i);
+                var pos = Rectangles.GetLine(rect, (uint) i);
                 if (!GUI.Button(pos, s.Name)) {
                     continue;
                 }
