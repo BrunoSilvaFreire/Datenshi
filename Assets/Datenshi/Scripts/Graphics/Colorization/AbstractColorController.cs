@@ -1,5 +1,5 @@
 namespace Datenshi.Scripts.Graphics {
-    public class ColorizableRenderer {
+    public class AbstractColorController {
         
     }
 }
